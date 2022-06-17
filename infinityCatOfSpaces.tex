@@ -1,0 +1,64 @@
+\begin{prop}[Quillen Model Structure on $\Top$]
+    The following three classes of maps endow $\Top$ with a model structure:
+    \begin{itemize}
+        \item Cofibrations are the maps which are retracts of relative CW-complexes. %TODO relative CW-complex def
+        \item Weak equivalences are the maps inducing isomorphisms on $\pi_n$ for $n\in\Nat$.
+        \item Fibrations are the maps with right lifting property against the maps $\set{D^n\xhookrightarrow{\left(\id_{D^n},0\right)}D^n\times I\mid n\in\Nat}$
+    \end{itemize}
+    We call this model structure the \emph{Quillen Model Structure on $\Top$}.
+\end{prop}
+\begin{prop}
+    The cofibrations of the Quillen Model Structure on $\Top$ are the smallest saturated class of maps containing the set $\set{\partial D^n\xhookrightarrow{}D^n}$.
+\end{prop}
+\begin{prop}[Quillen Model Structure on $\sSet$]
+    The following three classes of maps endow $\sSet$ with a model structure:
+    \begin{itemize}
+        \item Cofibrations are the monomorphisms.
+        \item Weak equivalences are the maps that are weak equivalences under geometric realization. %TODO define geometric realization
+        \item Fibrations are the maps with right lifting property against the maps $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n}$.
+    \end{itemize}
+    We call this model structure the \emph{Quillen Model Structure on $\sSet$}.
+\end{prop}
+\begin{prop}
+    The cofibrations of the Quillen Model Structure on $\sSet$ are the smallest saturated class of maps containing the set $\set{\partial\Delta^n\xhookrightarrow{}\Delta^n\mid n\in\Nat}$.
+\end{prop}
+\begin{prop}[Quillen Equivalence of the Model Structure on $\Top$ and $\sSet$]
+    The functors
+    \begin{equation*}
+        \lvert-\rvert\colon\sSet\rightleftarrows\Top\colon\Sing(-)
+    \end{equation*}
+    form a Quillen equivalence. 
+    \begin{proof}
+        %TODO adjointness
+        Since $\lvert-\rvert\colon\sSet\to\Top$ preserves as a left adjoint preserves colimits and $\lvert\partial\Delta^n\rvert\to\lvert\Delta^n\rvert\;\cong\;\partial D^n\xhookrightarrow{} D^n$, $\lvert-\rvert$ preserves cofibrations.
+        Since it also preserves weak equivalences by definition, it preserves trivial cofibrations and thus the adjunction is a Quillen adjunction.
+
+        To prove it is a Quillen equivalence, we need to prove that 
+        \begin{itemize}
+            \item for every cofibrant object $A\in\sSet$ and a fibrant replacement $\lvert A\rvert\xrightarrow{\textasciitilde}\widehat{\lvert A\rvert}$ the composition $A\to\Sing(\lvert A\rvert)\to\Sing(\widehat{\lvert A\rvert})$ where $A\to\Sing(\lvert A\rvert)$ is the adjuntion unit, is a weak equivalence.
+            \item for every fibrant object $X\in\Top$ and a cofibrant replacement $\widehat{\Sing(X)}\xrightarrow{\textasciitilde}\Sing(X)$ the composition $\lvert\widehat{\Sing(X)}\rvert\to\lvert\Sing(X)\rvert\to X$ where $\lvert\Sing(X)\rvert\to X$ is the adjunction counit, is a weak equivalence.
+        \end{itemize}
+        Since all simplicial sets are cofibrant and all topological spaces are fibrant, we can pick the replacements to be the identity in both cases.
+        Thus the statement is reduced to %TODO cite Kerodon 3.5.4.1 and 3.5.4.2 
+    \end{proof}
+\end{prop}
+%TODO define localization CatLR Definition 7.1.2.
+\begin{prop}
+    The Quillen equivalence 
+    \begin{equation*}
+        \lvert-\rvert\colon\sSet\rightleftarrows\Top\colon\Sing(-)
+    \end{equation*}
+    induces an equivalence of \inftycats/ 
+    \begin{equation*}
+        F\coloneqq\N(\lvert-\rvert)\colon \N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack\longleftrightarrow\N(\Top)\lbrack W_{\Top}^{-1}\rbrack\colon N(\Sing(-))\eqqcolon G\;.
+    \end{equation*}
+    \begin{proof}
+        Since we have $\N(\lvert W_{\sSet}\rvert)\subset N(W_{\Top})$ by definition, by the universal property of localization we obtain a map $F\colon \N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack\to\N(\Top)\lbrack W_{\Top}^{-1}\rbrack$.
+
+        To prove $\N(\Sing(W_{\Top}))\subset\N(W_{\sSet})$ we have to check that for a weak equivalence $X\to Y$, the induced map $\lvert\Sing(X)\rvert\to \lvert\Sing(Y)\rvert$ is also a weak equivalence.
+        This follows directly from that fact that a map is a weak equivalence if and only if it is an isomorphism in the homotopy category.
+        Thus we also obtain a functor $G\colon\N(\Top)\lbrack W_{\Top}^{-1}\rbrack\to\N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack$.
+
+        Since unit and counit are objectwise weak equivalences, their induced maps $\epsilon:\id\to GF$ and $\eta:FG\to \id$ are objectwise invertible and thus invertible natural transformations, which proves the proposition. %TODO cite proof 
+    \end{proof}
+\end{prop}
