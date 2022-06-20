@@ -1,0 +1,132 @@
+%TODO presentability
+%TODO intro about being able to compute fibers nicely
+\begin{prop}
+    Let 
+    \begin{center}
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+            {
+              X_0 && X_1\\
+              X_2 &{}& X\\
+              &Y&\\};
+            \path[-stealth]
+
+            (m-1-1) edge (m-1-3)
+            (m-1-1) edge (m-2-1)
+            (m-2-1) edge (m-2-3)
+            (m-1-3) edge (m-2-3);
+
+            \draw[->] (m-2-2) -- (m-3-2);
+        \end{tikzpicture}
+    \end{center}
+    be a homotopy pushout square in $\spaces$ over $Y$. 
+    We assume that the homotopy pullback for any such diagram along any map $\Delta^0\to Y$ is again a homotopy pushout. 
+
+    Then the homotopy pullback along any map $B\to Y$ is a homotopy pushout.
+    \begin{proof}
+        Let 
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+                {
+                  X_0\times_Y B && X_1\times_Y B\\
+                  X_2\times_Y B &{}& X\times_Y B\\
+                  &B&\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-3)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-3)
+                (m-1-3) edge (m-2-3);
+    
+                \draw[->] (m-2-2) -- (m-3-2);
+            \end{tikzpicture}
+        \end{center}
+        be the homotopy pullback along $f:B\to Y$.
+        Let $E$ be the homotopy pushout of this diagram and let $e:E\to X\times_Y B$ be a map induced by the univeral property of the homotopy pushout.
+
+        To prove the proposition, it suffices to prove that this map is a weak equivalence.
+        Thus let 
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+                {
+                  F_0 && F_1\\
+                  F_2 &{}& F^E\\
+                  &\Delta^0 &\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-3)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-3)
+                (m-1-3) edge (m-2-3);
+    
+                \draw[->] (m-2-2) -- (m-3-2);
+            \end{tikzpicture}
+        \end{center}
+        be the homotopy pullback of 
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+                {
+                  X_0\times_Y B && X_1\times_Y B\\
+                  X_2\times_Y B &{}& E\\
+                  &B&\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-3)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-3)
+                (m-1-3) edge (m-2-3);
+    
+                \draw[->] (m-2-2) -- (m-3-2);
+            \end{tikzpicture}
+        \end{center}
+        along a map $\Delta^0\to B$. 
+        Let
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+                {
+                  F_0 && F_1\\
+                  F_2 &{}& F^{X\times_Y B}\\
+                  &\Delta^0 &\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-3)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-3)
+                (m-1-3) edge (m-2-3);
+    
+                \draw[->] (m-2-2) -- (m-3-2);
+            \end{tikzpicture}
+        \end{center}
+        be the pullback along $\Delta^0\to B\to Y$.
+        By assumption, both fiber diagrams are homotopy pushouts, thus the induced map $F^E\to F^{X\times_Y B}$ is a weak equivalence.
+        Since the point $\Delta^0$ was arbitrary, this means that $E\to X\times_Y B$ is a fibrewise equivalence over $B$.
+
+        By the lifting and factorization properties of the model category, we can can replace the objects $E$ and $X\times_Y B$ with weakly equivalent objects $\widehat{E}$ and $\widehat{X\times_Y B}$ such that we have a commutative diagram
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+                {
+                    E &&X\times_Y B\\
+                    \widehat{E} &&\widehat{X\times_Y B}\\
+                    &B&\\};
+                \path[-stealth]
+
+                (m-1-1) edge (m-1-3)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-3)
+                (m-1-3) edge (m-2-3)
+                
+                (m-2-1) edge (m-3-2)
+                (m-2-3) edge (m-3-2);
+            \end{tikzpicture}
+        \end{center} 
+        where the maps going into $B$ maps are Kan fibrations and the vertical maps are tivial cofibrations.
+        The lower horizontal map is a fibrewise weak equivalence between Kan fibrations and thus a weak equivalence.
+
+        Therefore the upper horizontal map is a weak equivalence which proves the proposition.
+    \end{proof}
+\end{prop}
