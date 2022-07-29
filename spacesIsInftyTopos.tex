@@ -1,0 +1,151 @@
+\begin{lemma}[Universality for Pushouts]\label{lem:univForPushouts}
+    Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
+    The pullback functors $u^*\colon\faktor{C}{y}\to\faktor{C}{x}$ for maps $u\colon x\to y\in C_1$ preserve pushouts if and only if for all cubes
+    \begin{center}
+        \begin{tikzcd} [sep = .5 cm]
+            A \arrow [dr] \arrow [rr] \arrow [dd] & & B \arrow [dr] \arrow [dd] \\
+            & C \arrow [rr, crossing over] \arrow [dd] & & D \arrow [dd] & \\
+            A^{\prime} \arrow [dr] \arrow [rr] & & B^{\prime} \arrow [dr] \\
+            & C^{\prime} \arrow [from=uu, crossing over] \arrow [rr] & & D^{\prime} &
+        \end{tikzcd}
+    \end{center}
+    in $C$ where the vertial faces are pullbacks and the bottom square is a pushout, the top square is also a pushout.
+\end{lemma}
+\begin{lemma}[Descent for Pushouts]\label{lem:descForPushouts}
+    Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
+    Then all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha|_{\Lambda^2_0}$ is cartesian and $p,q$ are colimit cones are cartesian and if and only if for all cubes
+    \begin{center}
+        \begin{tikzcd} [sep = .5 cm]
+            A \arrow [dr] \arrow [rr] \arrow [dd] & & B \arrow [dr] \arrow [dd] \\
+            & C \arrow [rr, crossing over] \arrow [dd] & & D \arrow [dd] & \\
+            A^{\prime} \arrow [dr] \arrow [rr] & & B^{\prime} \arrow [dr] \\
+            & C^{\prime} \arrow [from=uu, crossing over] \arrow [rr] & & D^{\prime} &
+        \end{tikzcd}
+    \end{center}
+    in $C$ where the left and back face are pullbacks and the bottom and top square are a pushouts, the front and right squares are pullbacks.
+\end{lemma}
+\begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO reference?
+    Let $J$ be an ordinary category and let $M$ be a model category.
+    Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition
+    \begin{equation*}
+        \N(\Fun(J,M))\cong\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])
+    \end{equation*} 
+    they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
+
+    (Furthermore the map $\N(\Fun(J,M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.)
+    \begin{proof}
+        %TODO reference? (somewhere HTT?)
+    \end{proof}
+\end{lemma}
+\begin{corollary}
+    It suffices to prove the analogous statements of \cref{lem:univForPushouts} and \cref{lem:descForPushouts} in the model category $\Top$.
+    \begin{proof}
+        Since homotopy (co)limits in a model category $M$ correspond to (co)limits in the simplicial localization of $\N(M)[W^{-1}]$, we can replace the cubes by strictly commutative diagrams in $\Top$ by \cref{lem:replaceWithStrictDiagram}.
+        Since one can check diagrams to be homotopy (co)limits by checking that they are (co)limits in $\N(M)[W^{-1}]$, the specified faces are homotopy pullbacks and homotopy pushouts in $M$ respectively.
+        Thus it suffices to prove that the remaining faces are homotopy pullbacks or homotopy pushouts in $M$ as specified.
+    \end{proof}
+\end{corollary}
+\begin{lemma}
+    The \inftycat/ $\spaces$ has universal coproducts.
+    \begin{proof}
+        	Let $\left(X_i\right)_{i\in I}$ be a collection of topological spaces with $I$ small. 
+            Then the homotopy coproduct is given by the coproduct over cofibrant replacements $\bigcup\limits_{i\in I}\widehat{X_i}$ for each of the $X_i$.
+
+            However since in $\Top$ weak equivalences are closed under coproducts, the ordinary coproduct is already a homotopy coproduct.
+            Also a map $X_i\to\bigcup\limits_{i\in I} X_i$ is a Serre fibration since the domain of the generating fibrations is connected and coproducts in $\Top$ are disjoint.
+            Thus the ordinary pullback
+            \begin{center}
+                \begin{tikzcd} [sep = .5 cm]
+                    Y\times_{\bigcup\limits_{i\in I} X_i}X_i \arrow [r] \arrow [->>,d] & X_i \arrow [->>,d]\\
+                    Y \arrow [r] & \bigcup\limits_{i\in I} X_i
+                \end{tikzcd}
+            \end{center}
+            is a homotopy pullback and so $Y_i\to Y\times_{\bigcup\limits_{i\in I} X_i}X_i$ is a weak equivalence.
+            Since in $\Top$ coproducts commute with pullbacks, $\bigcup\limits_{i\in I}\left(Y\times_{\bigcup\limits_{i\in I} X_i}X_i\right)\cong Y$.
+            Thus $\bigcup\limits_{i\in I}Y\to Y$ is a weak equivalence, which proves that $Y$ is a homotopy coproduct.
+    \end{proof}
+\end{lemma}
+\begin{lemma}
+    Coproducts in the \inftycat/ $\spaces$ are disjoint.
+    \begin{proof}
+        Since homotopy coproducts are given by ordinary coproducts in $\Top$, we have to check whether a pushout
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                \emptyset \arrow [r] \arrow [d] & X \arrow [d]\\
+                Y \arrow [r] & X\cup Y
+            \end{tikzcd}
+        \end{center}
+        is a homotopy pullback.
+        As in the proof for universality of coproducts in $\Top$, we see that the map $X\to X\cup Y$ is a Serre fibration.
+        Since the square is an ordinary pullback, this already implies that it is a homotopy pullback.
+    \end{proof}
+\end{lemma}
+\begin{corollary}\label{cor:genCoproductComponentPb}
+    Let $\left(X_i\right)_{i\in I}$ be a collection of topological spaces and for ease of notation, set $Y_i=\bigcup\limits_{i\in I\setminus{\set{i}}}X_i$.
+    Then in the pullback square (which is also a homotopy pullback)
+    \begin{center}
+        \begin{tikzcd} [sep = .5 cm]
+            P_{ij} \arrow [r] \arrow [d] & X_i \arrow [d]\\
+            X_j \arrow [r] & \bigcup\limits_{i\in I} X_i
+        \end{tikzcd}
+    \end{center}
+    we have $P_{ij}=\emptyset$ for $i\neq j$ and $P_{ii}\cong X_i$.
+    \begin{proof}
+        First let $i\neq j$.
+        Then the lower square of the tower of pullback squares 
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                P_{ij} \arrow [r] \arrow [d] & X_i \arrow [d]\\
+                \overline{P_{ij}} \arrow [d] \arrow [r] & Y_j \arrow [d]\\
+                X_j \arrow [r] & Y_j\cup X_j
+            \end{tikzcd}
+        \end{center}
+        shows that $\overline{P_{ij}}=\emptyset$ by disjointness of (binary) coproducts and thus $P_{ij}=\emptyset$ as well.
+
+        Next we prove the case $i=j$. 
+        We need to prove that for the pullback square (that is also a homotopy pullback)
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                P_{ii} \arrow [r] \arrow [d] & X_i \arrow [d]\\
+                X_i \arrow [r] & X_i\cup Y_i
+            \end{tikzcd}
+        \end{center}
+        we have $P_{ii}\cong X_i$. 
+
+        By universality of coproducts we have $\left(X_i\times_{X_i\cup Y}X_i\right)\cup\left(Y_i\times_{X_i\cup Y_i}X_i\right)\cong X_i$.
+        But by disjointness of coproducts $Y_i\times_{X_i\cup Y_i}X_i=\emptyset$, and since $\left(X_i\times_{X_i\cup Y_i}X_i\right)\cup\emptyset\cong\left(X_i\times_{X_i\cup Y_i}X_i\right)$.
+        So $X_i\cong X_i\times_{X_i\cup Y_i}X_i$ which completes the proof.
+    \end{proof}
+\end{corollary}
+\begin{lemma}
+    The \inftycat/ $\spaces$ has descent for coproducts.
+    \begin{proof}
+        	Let $\left(X_i\right)_{i\in I}, \left(Y_i\right)_{i\in I}$ be families of topological spaces and let $\left(\alpha_i\colon X_i\to Y_i\right)_{i\in I}$ be a collection of maps.
+            Then define $P_{ij}$ as the pullback
+            \begin{center}
+                \begin{tikzcd} [sep = .5 cm]
+                    P_{ij} \arrow [r] \arrow [dd] & X_i \arrow [d]\\
+                    & \bigcup\limits_{i\in I}X_i \arrow [d]\\
+                    Y_j \arrow [r] & \bigcup\limits_{i\in I}Y_i
+                \end{tikzcd}\;.
+            \end{center}
+            Since $Y_i\to\bigcup\limits_{i\in I}Y_i$ is a Serre fibration, this means it is already a homotopy pullback.
+            
+            By universality of coproducts we have that the canonical map $\bigcup\limits_{i\in I} P_{ij}=\bigcup\limits_{i\in I} \left(X_i\times_{\bigcup\limits_{i\in I}Y_i}Y_j\right)\to \left(\bigcup\limits_{i\in I}X_i\right)\times_{\bigcup\limits_{i\in I}Y_i}Y_j$ is a weak equivalence.
+            So it remains to show that $P_{ij}\cong\emptyset$ for $i\neq j$ and $P_{ii}\to X_i$ is a weak equivalence.
+
+            Since $X_i\to\bigcup\limits_{i\in I}X_i\to\bigcup\limits_{i\in I}Y_i$ is equal to $X_i\to Y_i\to\bigcup\limits_{i\in I}Y_i$, we can also compute $P_{ij}$ as the successive pullback
+            \begin{center}
+                \begin{tikzcd} [sep = .5 cm]
+                    P_{ij} \arrow [r] \arrow [d] & X_i \arrow [d]\\
+                    Y_j\times_{\bigcup\limits_{i\in I}Y_i} Y_i \arrow [d] \arrow [r] & Y_i \arrow [d]\\
+                    Y_j \arrow [r] & \bigcup\limits_{i\in I}Y_i
+                \end{tikzcd}
+            \end{center}
+            by the pasting law for pullbacks.
+            (Note that all pullbacks here are already homotopy pullbacks.)
+
+            So it suffices to prove that $Y_j\times_{\bigcup\limits_{i\in I}Y_i} Y_i\cong\emptyset$ for $i\neq j$ and $Y_i\times_{\bigcup\limits_{i\in I}Y_i} Y_i\cong Y_i$. 
+            But we have already shown this in \cref{cor:genCoproductComponentPb}.
+    \end{proof}
+\end{lemma}

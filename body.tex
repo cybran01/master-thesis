@@ -8,9 +8,11 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{mathtools}
+\usepackage{faktor}
 \usepackage{tikz}
 \usetikzlibrary{matrix}
 \usetikzlibrary{arrows}
+\usetikzlibrary{cd}
 \usepackage{scrlayer-scrpage}
 \pagestyle{scrheadings}
 \usepackage{hyperref}
@@ -27,25 +29,40 @@
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{corollary}[definition]{Corollary}
 
-\newcommand{\sSet}{\text{sSet}}
-\newcommand{\Top}{\text{Top}}
 \newcommand{\Kan}{\textrm{Kan}} %TODO better font
 \newcommand{\spaces}{\mathcal{S}}
 \newcommand{\spacesPtd}{\mathcal{S_*}}
 \newcommand{\Nat}{\mathbb{N}}
 \newcommand{\id}{\text{id}}
-\newcommand{\Sing}{\text{Sing}}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
 \newcommand{\inftycat}{}
 \def\inftycat/{$\infty$-category}
 \newcommand{\inftycats}{}
 \def\inftycats/{$\infty$-categories}
 
+\DeclareMathOperator{\R}{R}
+\DeclareMathOperator{\C}{C}
 \DeclareMathOperator{\N}{N}
+\DeclareMathOperator{\Nhc}{N^{hc}}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sing}{Sing}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\Cat}{Cat}
+\DeclareMathOperator{\Cart}{Cart}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\sSet}{sSet}
+\DeclareMathOperator{\Top}{Top}
 
 \begin{document}
+    \section{Basics and Notation}
+    \subfile{basics.tex}
     \section{The \inftycat/ of Spaces $\spaces$}
-    \subfile{infinityCatOfSpaces.tex}
-    \section{Motivation for \infty-topoi}
-    \subfile{inftyTopoiMotivation.tex}
+    \subfile{inftyCatOfSpaces.tex}
+    \section{Motivation for $\infty$-topoi}
+    \subfile{inftyTopoiMotivation.tex} %TODO rewrite
+    \section{Definition of an \infty-Topos}
+    \subfile{inftyTopoiDefinition.tex}
+    \section{$\spaces$ as an \infty-Topos}
+    \subfile{spacesIsInftyTopos.tex}
 \end{document}

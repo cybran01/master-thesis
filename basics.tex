@@ -1,0 +1,106 @@
+%TODO define how partially ordered sets give rise to a category, definition of [n]
+\begin{definition}[Simplex Category]
+    Let $\Delta$ be the category with
+    \begin{itemize}
+        \item objects the categories $[n]$ for all $n\in\Nat$
+        \item morphisms functors between these categories (which are exactly the monotone increasing functions when viewing them as partially ordered sets).
+    \end{itemize}
+    We call this category the \emph{simplex category $\Delta$}.
+\end{definition}
+%TODO definition of sSet as simplicial category
+%TODO model structure(s) on sSet, def Kan complex and \inftycat/
+\begin{definition}[Nerve of an Ordinary Category] %TODO maybe explain why it commutes with limits
+    For a category $C$, we denote the composition $\Hom_{\Cat}(-,C)\circ i$ as $\Hom_{\Delta}(-,C)$, where $i:\Delta\xhookrightarrow{}\Cat$ is the inclusion as a full subcategory.
+    Let $\N\colon\Cat\to\sSet$ be the functor that sends
+    \begin{itemize}
+        \item a category $C$ to the simplicial set $\Hom_{\Delta}(-,C)$
+        \item a functor $F:C\to D$ to $\N(F)\colon\Hom_{\Delta}(-,C)\xrightarrow{F\circ -}\Hom_{\Delta}(-,D)$\;.
+    \end{itemize}
+    We then call $\N(C)$ the \emph{nerve of the category $C$}.
+\end{definition}
+%TODO prove that nerve is fully faithful/has left adjoint
+%TODO define \Cat_{\Delta} as category of simplicially enriched categories
+\begin{definition}[Realization of Simplicial Set as Simplicial Category]
+    For $[n]\in\Delta$ we define a simplicial category $\C[n]$ as follows:
+    \begin{itemize}
+        \item the objects of $\C[n]$ are the elements of the set $\set{0,\ldots,n}$
+        \item for $i,j\in\set{0,\ldots,n}$, the simplicial $\Hom$-objects are given by 
+            \begin{equation*}
+                \Hom_{\C[n]}(i,j)=\N(P_{i,j})
+            \end{equation*}
+            where $P_{i,j}$ is the partially ordered set of subsets of $\set{i,\ldots,j}$ which contain both $i$ and $j$ with the relation given by reverse inclusion
+        \item for $i,j,k\in\set{0,\ldots,n}$ the composition is given by $\N(-)$ applied to the map
+        \begin{align*}
+                P_{i,j}\times P_{j,k}&\to P_{i,k}\\
+                (I,J)&\mapsto I\cup J
+        \end{align*}
+    \end{itemize}
+    and it suffices to check the properties of a simplicial category.
+    For a morphism $[n]\to[m]\in\Delta$ we can define a functor
+    \begin{equation*}
+        \C[f]\colon\C[n]\to C[m]
+    \end{equation*}
+    which
+    \begin{itemize}
+        \item sends an object $i\in\C[n]$ to $f(i)\in\C[m]$
+        \item for $i,j\in\C[n]$ induces a map between $\Hom$-objects by applying $\N(-)$ to the map
+            \begin{align*}
+                P_{i,j}&\to P_{f(i),f(j)}\\
+                I&\mapsto f(I)
+            \end{align*}
+    \end{itemize}
+    so we obtain a functor $\C[-]\colon\Delta\to\Cat_{\Delta}$.
+    
+    Since $\Cat_{\Delta}$ is cocomplete, this functor extends up to unique natural isomorphism to a functor $\R\colon\sSet\to\Cat_{\Delta}$ such that 
+    \begin{center}
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+            {
+            \Delta & \Cat_{\Delta}\\
+            \sSet &  \\};
+            \path[-stealth]
+            
+            (m-1-1) edge node [above] {$\C[-]$} (m-1-2)
+            (m-2-1) edge node [below] {$\R$} (m-1-2);
+            \draw[right hook->] (m-1-1) edge node [left] {Yoneda} (m-2-1);
+        \end{tikzpicture}
+    \end{center}
+    commutes.
+
+    For a simplicial set $A$ we call $\R(A)$ the \emph{realization of $A$ as a simplicial category}.
+\end{definition}
+\begin{definition}[Homotopy Coherent Nerve] %HTT Definition 1.1.5.1. 
+    For a simplicial category $A$ we define the \emph{simplicial nerve (or homotopy coherent nerve) $\Nhc(A)$ of $A$} as $\Nhc(A)=\Hom_{\Cat_{\Delta}}(\C[-],A)$ and thus we obtain a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
+\end{definition}
+\begin{lemma}
+    We have an adjunction $R\dashv N$.
+    \begin{proof} %TODO be more accurate, e.g. https://ncatlab.org/nlab/show/Yoneda+extension
+        For every $n\in\Nat$, we have $\Hom_{\sSet}(\Delta^n,\Nhc(A))=\Nhc(A)_n=\Hom_{\Cat_{\Delta}}(\C[n],A)$ by definition.
+        Thus we have $\Hom_{\sSet}(\Delta^n,\Nhc(A))=\Hom_{\Cat_{\Delta}}(\R(\Delta^n),A)$ and since every presheaf is a colimit of representable presheaves and $\R$ commutes with colimits by construction we are finished.
+    \end{proof}
+\end{lemma}
+\begin{prop} %HTT Theorem 2.4.5.1.
+    Let $A$ be a simplicial category such that for every pair of objects $X,Y\in A$ the simplicial set $\Hom_A(X,Y)$ is a Kan-complex.
+    Then $\Nhc(A)$ is an \inftycat/.
+\end{prop}
+\begin{corollary}
+    Let $M$ be a simplicial model category.
+    Then the simplicial set $\Nhc(M^°)$ where $M^°$ denotes the restriction to cofibrant-fibrant objects is an \inftycat/.
+    \begin{proof}
+        The axioms of a simplicial model category imply that for every pair of objects $X,Y\in M^°$ the simplicial set $\Hom_{M^°}(X,Y)$ is a Kan-complex.
+    \end{proof}
+\end{corollary}
+\begin{definition}[Simplicial Localization] %TODO define localization CatLR Definition 7.1.2. and add existence
+    Let $C$ be a simplicial set and $W\subset C$ be a simplicial subset.
+
+    For a given \inftycat/ $D$, let $\Fun_W(C,D)\subset\Fun(C,D)$ be the full subcategory of functors $f\colon C\to D$ such that for every map in $u\in W_1$, $f(u)$ is invertible.
+    Then a \emph{localization of $C$ by $W\subset C$} is an \inftycat/ $C[W^{-1}]$ together with a functor $\gamma\in\Fun_W(C, C[W^{-1}])$ such that for every \inftycat/ $D$, $\gamma$ induces an equivalence of \inftycats/
+    \begin{equation*}
+        \Fun(C[W^{-1}],D)\xrightarrow{\textasciitilde}\Fun_W(C,D)\;.
+    \end{equation*}
+\end{definition}
+\begin{lemma}
+    Let $C$ be a simplicial set and $W\subset C$ be a simplicial subset.
+    Then the localization map $\gamma\colon C\to C[W^{-1}]$ is essentially surjecive.
+\end{lemma}
+%TODO define (co)limits and prove/state that they are computed pointwise in Functorcats HTT Proposition 5.1.2.2., HTT Corollary 5.1.2.3.

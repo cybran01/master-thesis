@@ -39,10 +39,10 @@
             \item for every fibrant object $X\in\Top$ and a cofibrant replacement $\widehat{\Sing(X)}\xrightarrow{\textasciitilde}\Sing(X)$ the composition $\lvert\widehat{\Sing(X)}\rvert\to\lvert\Sing(X)\rvert\to X$ where $\lvert\Sing(X)\rvert\to X$ is the adjunction counit, is a weak equivalence.
         \end{itemize}
         Since all simplicial sets are cofibrant and all topological spaces are fibrant, we can pick the replacements to be the identity in both cases.
-        Thus the statement is reduced to %TODO cite Kerodon 3.5.4.1 and 3.5.4.2 
+        Thus the statement is reduced to proving that unit and counit are objectwise weak equivalences. %TODO cite Kerodon 3.5.4.1 and 3.5.4.2 
     \end{proof}
 \end{prop}
-%TODO define localization CatLR Definition 7.1.2.
+%TODO define W_{\sSet},W_{\Top}
 \begin{prop}
     The Quillen equivalence 
     \begin{equation*}
@@ -50,18 +50,26 @@
     \end{equation*}
     induces an equivalence of \inftycats/ 
     \begin{equation*}
-        F\coloneqq\N(\lvert-\rvert)\colon \N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack\longleftrightarrow\N(\Top)\lbrack W_{\Top}^{-1}\rbrack\colon N(\Sing(-))\eqqcolon G\;.
+        F\coloneqq\N(\lvert-\rvert)\colon \N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack\longleftrightarrow\N(\Top)\lbrack W_{\Top}^{-1}\rbrack\colon \N(\Sing(-))\eqqcolon G\;.
     \end{equation*}
     \begin{proof}
-        Since we have $\N(\lvert W_{\sSet}\rvert)\subset N(W_{\Top})$ by definition, by the universal property of localization we obtain a map $F\colon \N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack\to\N(\Top)\lbrack W_{\Top}^{-1}\rbrack$.
+        Since we have $\N(\lvert W_{\sSet}\rvert)\subset \N(W_{\Top})$ by definition, by the universal property of localization we obtain a localization $F\colon \N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack\to\N(\Top)\lbrack W_{\Top}^{-1}\rbrack$.
 
         To prove $\N(\Sing(W_{\Top}))\subset\N(W_{\sSet})$ we have to check that for a weak equivalence $X\to Y$, the induced map $\lvert\Sing(X)\rvert\to \lvert\Sing(Y)\rvert$ is also a weak equivalence.
-        This follows directly from that fact that a map is a weak equivalence if and only if it is an isomorphism in the homotopy category.
+        This follows from that fact that a map is a weak equivalence if and only if it is an isomorphism in the homotopy category.
         Thus we also obtain a functor $G\colon\N(\Top)\lbrack W_{\Top}^{-1}\rbrack\to\N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack$.
 
-        Since unit and counit are objectwise weak equivalences, their induced maps $\epsilon:\id\to GF$ and $\eta:FG\to \id$ are objectwise invertible and thus invertible natural transformations, which proves the proposition. %TODO cite proof 
+        Since unit and counit are objectwise weak equivalences, their induced maps $\epsilon\colon\id\to GF$ and $\eta\colon FG\to \id$ are objectwise invertible and thus invertible natural transformations, which proves the proposition. %TODO cite proof 
     \end{proof}
 \end{prop}
-%TODO https://people.math.rochester.edu/faculty/doug/otherpapers/dwyer-kan-3.pdf prop 4.8 proves htpy coh nerve of fibcofib is localization at w.e.
-%TODO relation of h(co)lim of mode cat and simpl cat is in Higher Algebra 1.3.4.24
+\begin{prop} %TODO https://people.math.rochester.edu/faculty/doug/otherpapers/dwyer-kan-3.pdf prop 4.8 proves htpy coh nerve of fibcofib is localization at w.e.
+    Let $\gamma\colon\N(\sSet)\to\Nhc(\sSet^°)$ be a map given by applying $\N$ to a fibrant replacement functor $R\colon\sSet\to\sSet^°$ and composing with the inclusion $\N(\sSet^°)\to\Nhc(\sSet^°)$.
+    
+    Then the \inftycat/ $\Nhc(\sSet^°)$ together with $\gamma$ is a localization of $\N(\sSet)$ at $W_{\sSet}$.
+\end{prop}
+\begin{corollary}
+    There is an equivalence of \inftycats/ $\Nhc(\sSet^°)\to\N(\Top)[W_{\Top}^{-1}]$ induced by the universal property of simplicial localization.
+\end{corollary}
+%TODO pullbacks in homotopy theory Proof of Theorem 25 for Second cube theorem (universality)
+%TODO relation of h(co)lim of model cat and simpl cat is in Higher Algebra 1.3.4.24, also see HTT Corollary 4.2.4.8
 %TODO prove htpy hypothesis

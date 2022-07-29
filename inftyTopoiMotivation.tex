@@ -1,5 +1,7 @@
 %TODO presentability
 %TODO intro about being able to compute fibers nicely
+%TODO how to compute colim/lim in S Kerodon Proposition 7.5.1.5. and Corollary 7.5.7.7.
+%TODO define htpy pb functor, use HTT Proposition A.2.8.7
 \begin{prop}
     Let 
     \begin{center}
@@ -43,7 +45,7 @@
             \end{tikzpicture}
         \end{center}
         be the homotopy pullback along $f:B\to Y$.
-        Let $E$ be the homotopy pushout of this diagram and let $e:E\to X\times_Y B$ be a map induced by the univeral property of the homotopy pushout.
+        Let $E$ be the homotopy pushout of this diagram and let $e:E\to X\times_Y B$ be a map induced by the universal property of the homotopy pushout. %TODO how does this work
 
         To prove the proposition, it suffices to prove that this map is a weak equivalence.
         Thus let 
@@ -103,7 +105,7 @@
         \end{center}
         be the pullback along $\Delta^0\to B\to Y$.
         By assumption, both fiber diagrams are homotopy pushouts, thus the induced map $F^E\to F^{X\times_Y B}$ is a weak equivalence.
-        Since the point $\Delta^0$ was arbitrary, this means that $E\to X\times_Y B$ is a fibrewise equivalence over $B$.
+        Since the point $\Delta^0\to B$ was arbitrary, this means that $E\to X\times_Y B$ is a fiberwise equivalence over $B$.
 
         By the lifting and factorization properties of the model category, we can can replace the objects $E$ and $X\times_Y B$ with weakly equivalent objects $\widehat{E}$ and $\widehat{X\times_Y B}$ such that we have a commutative diagram
         \begin{center}
@@ -124,9 +126,10 @@
                 (m-2-3) edge (m-3-2);
             \end{tikzpicture}
         \end{center} 
-        where the maps going into $B$ maps are Kan fibrations and the vertical maps are tivial cofibrations.
+        where the maps going into $B$ maps are Kan fibrations and the vertical maps are trivial cofibrations.
         The lower horizontal map is a fibrewise weak equivalence between Kan fibrations and thus a weak equivalence.
 
         Therefore the upper horizontal map is a weak equivalence which proves the proposition.
     \end{proof}
 \end{prop}
+%TODO Kerodon Corollary 3.4.1.12/Proposition 3.4.2.9 for htpy invariance of pullback/pushout squares to replace everything with Kan complexes

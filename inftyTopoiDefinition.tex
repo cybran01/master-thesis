@@ -1,0 +1,129 @@
+\begin{definition}[$\kappa$-filtered] %HTT Definition 5.3.1.7.
+    Let $\kappa$ be a regular cardinal and $C$ be an \inftycat/.
+    We say that $C$ is \emph{$\kappa$-filtered} if for every map $f:K\to C$ with $K$ a $\kappa$-small simplicial set there exists a map $\overline{f}:K^{\rhd}\to C$ such that $\overline{f}\vert_K=f$.
+\end{definition}
+%TODO include Proposition 5.3.1.18. without proof
+% \begin{prop} %HTT Proposition 5.3.3.3.
+%     Let $C$ be an \inftycat/ and $\kappa$ a regular cardinal. Then the following are equivalent:
+%     \begin{itemize}
+%         \item $C$ is $\kappa$-filtered
+%         \item The colimit functor $\colim\colon\Fun(C,\Spaces)\to\Spaces$ preserves $\kappa$-small limits.
+%     \end{itemize}
+% \end{prop}
+\begin{definition} %HTT Definition 5.4.2.1.
+    Let $\kappa$ be a regular cardinal and let $C$ be a small $\infty$-category.
+    We define $\Ind_{\kappa}(C)\subset P(C)$ to be the full subcategory of $P(C)$ with objects consisting of those maps $C^{\op}\to\spaces$ that classify right fibrations $X\to C$ such that $X$ is $\kappa$-filtered. %TODO define what it means to classify
+\end{definition}
+\begin{definition}
+    Let $\kappa$ be a regular cardinal. An \inftycat/ $C$ is \emph{$\kappa$-accessible} if there exists a small \inftycat/ $C^0$ and a categorical equivalence
+    \begin{equation*}
+        \Ind_{\kappa}(C^0)\to C\;.
+    \end{equation*}
+    We say that $C$ is \emph{accessible} if it is $\kappa$-accessible for some cardinal $\kappa$.
+\end{definition}
+%TODO why is it then accessible for bigger kappa? Proposition HTT 5.4.2.9.
+\begin{definition}
+    An \inftycat/ is \emph{locally presentable} if it is accessible and admits small colimits.
+\end{definition}
+\begin{lemma} %TODO HTT Corollary 5.5.2.4., maybe also Corollary 5.3.5.4.
+    A locally presentable \inftycat/ $C$ admits small limits.
+\end{lemma}
+\begin{prop} %HTT Proposition A.3.7.6., due to Simpson
+    Let $C$ be an \inftycat/. Then the following are equivalent:
+    \begin{itemize}
+        \item $C$ is locally presentable.
+        \item There exists a combinatorical simplicial model category $M$ and a categorical equivalence $\Nhc(M^°)\simeq C$.
+    \end{itemize}
+\end{prop}
+% \begin{definition}[Universality of Colimits] %TODO how to elegantly define pullback functor?
+%     Let $C$ be an \inftycat/ that admits small colimits and pullbacks.
+%     If for any map $u\colon x\to y\in C_1$ the pullback functor $u^*\colon \faktor{C}{y}\to\faktor{C}{x}$ preserves colimits, then we say that \emph{$C$ has universal colimits}.
+% \end{definition}
+\begin{definition}[Cartesian Transformation]
+    Let $C$ be an \inftycat/ and let $K$ be a simplicial set.
+    Let $q,p\in\Fun(K,C)_0$ and let $\alpha\in\Fun(K,C)_1$ be a natural transformation $\alpha\colon p\to q$.
+    Then we say $\alpha$ is \emph{cartesian} if for all maps $u\colon\Delta^1\to K$ the induced map $\Delta^1\times\Delta^1\xrightarrow{\left(u,\id_{\Delta^1}\right)}K\times\Delta^1\xrightarrow{\alpha}C$ is a pullback square.
+\end{definition}
+% \begin{definition}[Descent] %HTT Definition 6.1.3.1.
+%     Let $C$ be an \inftycat/ that admits small colimits and pullbacks.
+    
+%     Its objects the same as $\Fun(\Delta^1,C)$, but we set the morphisms between them to be maps $\Delta^1\times\Delta^1\to C$ that are pullback squares. %TODO this needs pasting law for pullbacks. Also, why can we just compute in \Fun(\Delta^1,C)?
+    
+%     We say that \emph{$C$ has descent} if $\Cart(C)$ has small colimits and the inclusion $\Cart(C)\subset\Fun(\Delta^1,C)$ preserves them.
+% \end{definition}
+%TODO HTT Proposition 4.4.2.6.
+\begin{definition}[Universality]
+    Let $C$ be an \inftycat/ that admits small colimits and pullbacks.
+    We say that \emph{$C$ has universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $q$ is a  colimit cone and $\alpha$ is cartesian, $p$ is a colimit cone.
+\end{definition}
+\begin{definition}[Descent]
+    Let $C$ be an \inftycat/ that admits small colimits and pullbacks.
+    We say that \emph{$C$ has descent} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is cartesian.
+\end{definition}
+\begin{lemma}
+    A \inftycat/ $C$ has universal colimits if and only if it has universal pushouts and universal coproducts.
+\end{lemma}
+\begin{lemma}
+    A \inftycat/ $C$ has descent if and only if it has descent for pushouts and coproducts.
+    \begin{proof}
+        Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a map.
+        We prove the statement first for all finite dimensional $K$ by induction over the dimension of $K$. %TODO define dimension
+
+        For $\dim K=-1$ the statement is clear since $K$ is empty.
+
+        For $\dim K=0$ we have that $K\cong\bigcup\limits_{i\in I}\Delta^0$ for some small set $I$. 
+        In this case the statement is also clear since all maps are identity maps.
+
+        So let $\dim K=n+1$.
+        Then by the skeletal filtration, $K=K^{n+1}=K^n\bigcup\limits_{\cup_S \partial\Delta^{n+1}}\cup_S \Delta^{n+1}$ where $S$ is the set of non-degenerate simplicies of dimension $n+1$.
+        For ease of notation, we set $X=\cup_S \partial\Delta^{n+1}$ and $Y=\cup_S \Delta^{n+1}$.
+
+        By induction hypothesis and because $C$ admits small colimits, we obtain that $\alpha|_{\left(K^n\right)^{\rhd}}$, $\alpha|_{X^{\rhd}}$ are cartesian (where we abuse the notation of restriction, since it it not necessarily injective for $X$ and the conepoints which are the colimits are not necessarily in $K^{\rhd}$).
+
+        The map $\alpha|_{Y^{\rhd}}$ is cartesian as well: Since $\Delta^{n+1}$ has a terminal object, the colimit can be computed by evaluating the final vertex. 
+        In particular, the maps to the cone point are isomorphisms.
+        Then one again uses descent for coproducts.
+
+        By %HTT Proposition 4.4.2.2.
+        we know that the diagrams in $C$
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+                {
+                  p|_{X^{\rhd}}(\infty) & p|_{\left(K^n\right)^{\rhd}}(\infty)\\
+                  p|_{Y^{\rhd}}(\infty) & p(\infty)\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-2)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-2)
+                (m-1-2) edge (m-2-2);
+            \end{tikzpicture}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+                {
+                  q|_{X^{\rhd}}(\infty) & q|_{\left(K^n\right)^{\rhd}}(\infty)\\
+                  q|_{Y^{\rhd}}(\infty) & q(\infty)\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-2)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-2)
+                (m-1-2) edge (m-2-2);
+            \end{tikzpicture}
+        \end{center}
+        where $\infty$ denotes the respective cone points and the morphisms are the universal ones (which are unique up to contractible choice), are pushouts.
+    \end{proof}
+\end{lemma}
+\begin{lemma}
+    
+\end{lemma}
+\begin{definition}[\infty-Topos]
+    Let $C$ be an \inftycat/ fulfilling the following properties:
+    \begin{itemize}
+        \item $C$ is locally presentable.
+        \item $C$ has universal colimits.
+        \item $C$ has descent.
+    \end{itemize}
+    Then we call $C$ an \emph{\infty-topos}.
+\end{definition}
