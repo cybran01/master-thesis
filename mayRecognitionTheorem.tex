@@ -1,0 +1,87 @@
+\begin{definition}[(Augmented) Simplicial Objects] %TODO maybe define for all finite totally ordered sets
+    Let $C$ be an \inftycat/. 
+    We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
+    We call a map $U^+\colon\N(\Delta_+)^{\op}\to C$ an \emph{augmented simplicial object of the \inftycat/ $C$}.
+    %
+    %We refer to the \inftycats/ $\Fun(\N(\Delta)^{\op},C)$ and $\Fun(\N(\Delta_+)^{\op},C)$ as the \emph{\inftycat/ of simplicial objects} and the \emph{\inftycat/ of augmented simplicial objects} respectively.
+\end{definition}
+\begin{definition}[Groupoid Object]
+    Let $C$ be an \inftycat/ and let $U$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup S'$ with $S\cap S'$ consisting of a single element $\set{s}$ the square
+    \begin{center}
+        \begin{tikzpicture} %TODO make this nice, explain usage of S and S'
+            \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+            {
+              U([n]) & U(S)\\
+              U(S') &  U(\set{s})\\};
+            \path[-stealth]
+
+            (m-1-1) edge (m-1-2)
+            (m-1-1) edge (m-2-1)
+            (m-2-1) edge (m-2-2)
+            (m-1-2) edge (m-2-2);
+        \end{tikzpicture}
+    \end{center}
+    is a pullback square in $C$.
+    Then we call $U$ a \emph{groupoid object of $C$}.
+    We let $\Gpd(C)$ denote the full subcategory of $\Fun(\N(\Delta)^{\op},C)$ consisting of groupoid objects.
+\end{definition}
+\begin{definition}[Group Object]
+    Let $C$ be an \inftycat/ and let $U$ be a groupoid object.
+    If $U_0\cong *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
+\end{definition}
+\begin{definition}[\Cech/ Nerve]
+    Let $C$ be an \inftycat/ and let $U^+$ be an augmented simplicial object in $C$.
+    We call $U^+$ a \emph{\Cech/ nerve} if $U^+$ is a right Kan-extension of $U^+\vert_{\N(\Delta_+^{\leq 0})^{\op}}$ along the inclusion $\Delta^1\cong\N(\Delta_+^{\leq 0})^{\op}\xhookrightarrow{}\N(\Delta_+)^{\op}$.
+\end{definition}
+\begin{lemma}
+    A \Cech/ nerve is determined up to equivalence by the map $u\colon U_0\to U_{-1}$.
+\end{lemma}
+\begin{prop}\label{prop:grpdEffectiveIfPullback} %TODO HTT Proposition 6.1.2.11.
+    Let $U^+$ be an augmented simplicial object in an \inftycat/ $C$.
+    Then it is a \Cech/ nerve if and only if $U^+|_{\N(\Delta)^{\op}}$ is a groupoid object and the square
+    \begin{center}
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+            {
+            U_1 & U_0\\
+            U_0 & U_{-1}\\};
+            \path[-stealth]
+
+            (m-1-1) edge (m-1-2)
+            (m-1-1) edge (m-2-1)
+            (m-2-1) edge (m-2-2)
+            (m-1-2) edge (m-2-2);
+        \end{tikzpicture}
+    \end{center}
+    is a pullback square.
+\end{prop}
+\begin{definition}[Effective Groupoid Object]
+    Let $C$ be an \inftycat/ with small colimits and let $U$ be a groupoid object.
+    Then we call $U$ \emph{effective} if the diagram 
+    \begin{center}
+        \begin{tikzpicture}
+            \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+            {
+            U_1 & U_0\\
+            U_0 & \colim U\\};
+            \path[-stealth]
+
+            (m-1-1) edge (m-1-2)
+            (m-1-1) edge (m-2-1)
+            (m-2-1) edge (m-2-2)
+            (m-1-2) edge (m-2-2);
+        \end{tikzpicture}
+    \end{center}
+    is a pullback square.
+\end{definition}
+\begin{corollary}
+    Let $C$ be an \inftycat/ with small colimits. 
+    Then a groupoid $U$ is effective if and only if its colimit cone $\N(\Delta)^{op}\star\Delta^0\cong\N(\Delta_+)^{op}\to C$ is a \Cech/ nerve.
+    \begin{proof}
+        This follows directly from the equivalent characterization of an effective groupoid from \cref{prop:grpdEffectiveIfPullback}.
+    \end{proof}
+\end{corollary}
+\begin{prop}
+    Let $C$ be an \inftytop/.
+    Then every groupoid object $U$ is effective.
+\end{prop}
