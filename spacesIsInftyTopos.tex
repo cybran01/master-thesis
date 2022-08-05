@@ -10,6 +10,54 @@
         \end{tikzcd}
     \end{center}
     in $C$ where the vertial faces are pullbacks and the bottom square is a pushout, the top square is also a pushout.
+    \begin{proof}
+        By factoring the map $D\to\overline{D}\to D'$ into a weak equivalence followed by a fibration and pulling back successively, we obtain 
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                A \arrow [dr] \arrow [rr] \arrow [dd] & & B \arrow [dr] \arrow [dd] \\
+                & C \arrow [rr, crossing over] & & D \arrow [dd] & \\
+                \overline{A} \arrow [dr] \arrow [rr] \arrow [->>, dd] & & \overline{B} \arrow [dr] \arrow [->>, dd] \\
+                & \overline{C} \arrow [rr, crossing over] \arrow [from=uu, crossing over] \arrow [dd] & & \overline{D} \arrow [->>, dd] & \\
+                A^{\prime} \arrow [dr] \arrow [rr] & & B^{\prime} \arrow [dr] \\
+                & C^{\prime} \arrow [->>,from=uu, crossing over] \arrow [rr] & & D^{\prime} & \\
+            \end{tikzcd}
+        \end{center}
+        where $\overline{A}=A'\times_{D'}\overline{D}$, $\overline{B}=B'\times_{D'}\overline{D}$ and $\overline{C}=C'\times_{D'}\overline{D}$, the indicated maps are fibrations.
+        Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D\to\overline{D}$ is a weak equivalence, all vertical maps in the upper cube are weak equivalences.
+        Thus by %HTT ???
+        it is sufficent to show that the square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \overline{A} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
+                \overline{C} \arrow[r] & \overline{D} \\
+            \end{tikzcd}
+        \end{center}
+        is a homotopy pushout.
+
+        We factor the map $A\to\widehat{B}\to B$ into a cofibration followed by a weak equivalence.
+        We obtain a diagram 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A \arrow[>->, r] \arrow[d] & \widehat{B} \arrow[r] \arrow[d] & B \arrow[d] \\
+                C \arrow[>->, r] & C\cup_{A}\widehat{B} \arrow[r] & D \\
+            \end{tikzcd}
+        \end{center}
+        where the left square is a homotopy pushout as its a pushout along a cofibration and the outer square is homotopy pushout by definition, thus by the pasing law the right square is also homotopy pushout. 
+        This implies by %HTT
+        that $C\cup_{A}\widehat{B}\to D$ is a weak equivalence as well.
+        Pulling back this diagram along the fibration $\overline{D}\twoheadrightarrow D$ gives a diagram 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \overline{A} \arrow[>->, r] \arrow[d] & \widehat{B}\times_{D}\overline{D} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
+                \overline{C} \arrow[>->, r] & \left(C\cup_{A}\widehat{B}\right)\times_{D}\overline{D} \arrow[r] & \overline{D} \\
+            \end{tikzcd}
+        \end{center}
+        where the horizontal maps in the left diagram are cofibrations due to % Jeffrey Strom - Modern Classical Homotopy Theory Theorem 14.1 for pb along fib of cofib is cofib
+        and a pushout since $\Top$ has universality (as an ordinary category).
+        The right square is also homotopy pushout by %HTT ???
+        , since $\Top$ is right proper so pullbacks of weak equivalences along fibrations are again weak equivalences. 
+        Thus the outer square is a homotopy pushout which proves the proposition. 
+    \end{proof}
 \end{lemma}
 \begin{lemma}[Descent for Pushouts]\label{lem:descForPushouts}
     Let $C$ be an \inftycat/ that admits pushouts and pullbacks.

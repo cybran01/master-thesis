@@ -7,6 +7,14 @@
     \end{itemize}
     We call this category the \emph{simplex category $\Delta$}.
 \end{definition}
+\begin{definition}[Augmented Simplex Category]
+    Let $\Delta_+$ be the category with
+    \begin{itemize}
+        \item objects the categories $[n]$ for all $n\in\Nat$ and $[-1]=\emptyset$ which is also a totally ordered set
+        \item morphisms functors between these categories (which are exactly the monotone increasing functions when viewing them as partially ordered sets).
+    \end{itemize}
+    We call this category the \emph{augmented simplex category $\Delta_+$}.
+\end{definition}
 %TODO definition of sSet as simplicial category
 %TODO model structure(s) on sSet, def Kan complex and \inftycat/
 \begin{definition}[Nerve of an Ordinary Category] %TODO maybe explain why it commutes with limits
@@ -101,6 +109,19 @@
 \end{definition}
 \begin{lemma}
     Let $C$ be a simplicial set and $W\subset C$ be a simplicial subset.
-    Then the localization map $\gamma\colon C\to C[W^{-1}]$ is essentially surjecive.
+    Then the localization map $\gamma\colon C\to C[W^{-1}]$ is essentially surjective.
 \end{lemma}
 %TODO define (co)limits and prove/state that they are computed pointwise in Functorcats HTT Proposition 5.1.2.2., HTT Corollary 5.1.2.3.
+\begin{definition} %kerodon Definition 7.3.2.1
+    Let $F\colon C\to D$ be a functor between \inftycats/ and let $C_0\subset C$ be a full subcategory.
+    Then $F$ is \emph{right Kan-extended from $C_0$} if for all objects $c\in C$ the diagram
+    \begin{equation*}
+        \left(C_{c/}\times_C C_0\right)^{\lhd}\to C\to D %TODO second map is slice contraction
+    \end{equation*}
+    is a limit cone.
+\end{definition}
+%TODO Kan-ext induce adjoints
+\begin{prop}
+    Let $C$ be an \inftycat/, $C_0\subset C$ a full subcategory and $F\colon C_0\to D$ a functor between \inftycats/.
+    If $D$ is complete, then there exists a functor $F\colon C\to D$ that is right Kan-extended from $C_0$.
+\end{prop}
