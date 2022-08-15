@@ -103,7 +103,7 @@
             Also a map $X_i\to\bigcup\limits_{i\in I} X_i$ is a Serre fibration since the domain of the generating fibrations is connected and coproducts in $\Top$ are disjoint.
             Thus the ordinary pullback
             \begin{center}
-                \begin{tikzcd} [sep = .5 cm]
+                \begin{tikzcd} [sep = 1 cm]
                     Y\times_{\bigcup\limits_{i\in I} X_i}X_i \arrow [r] \arrow [->>,d] & X_i \arrow [->>,d]\\
                     Y \arrow [r] & \bigcup\limits_{i\in I} X_i
                 \end{tikzcd}
@@ -118,7 +118,7 @@
     \begin{proof}
         Since homotopy coproducts are given by ordinary coproducts in $\Top$, we have to check whether a pushout
         \begin{center}
-            \begin{tikzcd} [sep = .5 cm]
+            \begin{tikzcd} [sep = 1 cm]
                 \emptyset \arrow [r] \arrow [d] & X \arrow [d]\\
                 Y \arrow [r] & X\cup Y
             \end{tikzcd}
@@ -132,7 +132,7 @@
     Let $\left(X_i\right)_{i\in I}$ be a collection of topological spaces and for ease of notation, set $Y_i=\bigcup\limits_{i\in I\setminus{\set{i}}}X_i$.
     Then in the pullback square (which is also a homotopy pullback)
     \begin{center}
-        \begin{tikzcd} [sep = .5 cm]
+        \begin{tikzcd} [sep = 1 cm]
             P_{ij} \arrow [r] \arrow [d] & X_i \arrow [d]\\
             X_j \arrow [r] & \bigcup\limits_{i\in I} X_i
         \end{tikzcd}
@@ -142,7 +142,7 @@
         First let $i\neq j$.
         Then the lower square of the tower of pullback squares 
         \begin{center}
-            \begin{tikzcd} [sep = .5 cm]
+            \begin{tikzcd} [sep = 1 cm]
                 P_{ij} \arrow [r] \arrow [d] & X_i \arrow [d]\\
                 \overline{P_{ij}} \arrow [d] \arrow [r] & Y_j \arrow [d]\\
                 X_j \arrow [r] & Y_j\cup X_j
@@ -153,7 +153,7 @@
         Next we prove the case $i=j$. 
         We need to prove that for the pullback square (that is also a homotopy pullback)
         \begin{center}
-            \begin{tikzcd} [sep = .5 cm]
+            \begin{tikzcd} [sep = 1 cm]
                 P_{ii} \arrow [r] \arrow [d] & X_i \arrow [d]\\
                 X_i \arrow [r] & X_i\cup Y_i
             \end{tikzcd}
@@ -171,7 +171,7 @@
         	Let $\left(X_i\right)_{i\in I}, \left(Y_i\right)_{i\in I}$ be families of topological spaces and let $\left(\alpha_i\colon X_i\to Y_i\right)_{i\in I}$ be a collection of maps.
             Then define $P_{ij}$ as the pullback
             \begin{center}
-                \begin{tikzcd} [sep = .5 cm]
+                \begin{tikzcd} [sep = 1 cm]
                     P_{ij} \arrow [r] \arrow [dd] & X_i \arrow [d]\\
                     & \bigcup\limits_{i\in I}X_i \arrow [d]\\
                     Y_j \arrow [r] & \bigcup\limits_{i\in I}Y_i
@@ -184,7 +184,7 @@
 
             Since $X_i\to\bigcup\limits_{i\in I}X_i\to\bigcup\limits_{i\in I}Y_i$ is equal to $X_i\to Y_i\to\bigcup\limits_{i\in I}Y_i$, we can also compute $P_{ij}$ as the successive pullback
             \begin{center}
-                \begin{tikzcd} [sep = .5 cm]
+                \begin{tikzcd} [sep = 1 cm]
                     P_{ij} \arrow [r] \arrow [d] & X_i \arrow [d]\\
                     Y_j\times_{\bigcup\limits_{i\in I}Y_i} Y_i \arrow [d] \arrow [r] & Y_i \arrow [d]\\
                     Y_j \arrow [r] & \bigcup\limits_{i\in I}Y_i

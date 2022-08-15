@@ -62,17 +62,130 @@
 \end{definition}
 \begin{lemma}
     A \inftycat/ $C$ has universal colimits if and only if it has universal pushouts and universal coproducts.
+    \begin{proof}
+        Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation and let $q$ be a colimit cone. 
+        We prove the statement first for all finite dimensional $K$ by induction over the dimension of $K$.
+
+        For $\dim K=-1$ the statement is clear since $K$ is empty.
+        
+        Let $\dim K=n+1$. 
+        Then by the skeletal filtration, $K=K^{n+1}=K^n\bigcup\limits_{\cup_S \partial\Delta^{n+1}}\cup_S \Delta^{n+1}$ where $S$ is the set of non-degenerate simplicies of dimension $n+1$.
+        For ease of notation, we set $X_{0}=\cup_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\cup_S \Delta^{n+1}$.
+
+        Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ or $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoint of $q_i$ to be the colimit, and the conepoint of $p_i$ to be the pullback
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+                {
+                  p_i(\infty) & q(\infty)\\
+                  q_i(\infty) & p(\infty)\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-2)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-2)
+                (m-1-2) edge (m-2-2);
+            \end{tikzpicture}
+        \end{center}
+        Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$ which are cartesian.
+
+        By the induction hypothesis we thus have that $p_0$ and $p_1$ are colimit cones.
+
+        Since $\Delta^{n+1}$ has a terminal object, colimits over $\Delta^{n+1}$ can be computed by evalutaing the terminal object.
+        In particular it is given by evaluation of some element $x\in K_0$.
+
+        Thus we have $q_2(\infty)\cong\bigcup\limits_{s\in S} q(x_s)$ (where we have the coproduct in $C$ here and the $x_s$ corresponding to the final vertices of the $\Delta^{n+1}$).
+        So for every $s\in S$ the left square in the diagram
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+                {
+                    p(x_s) & p_2(\infty) & p(\infty)\\
+                    q(x_s) & q_2(\infty) & q(\infty)\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-2)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-2)
+                (m-1-2) edge (m-2-2)
+                (m-1-2) edge (m-1-3)
+                (m-2-2) edge (m-2-3)
+                (m-1-3) edge (m-2-3);
+            \end{tikzpicture}
+        \end{center}
+        is pullback by the pasting law, thus by universality for coproducts $p_2(\infty)\cong\bigcup\limits_{s\in S} p(x_s)$ and in particular $p_2$ is a colimit cone.
+        By %HTT Proposition 4.4.2.2.
+        we know that 
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+                {
+                  q_0(\infty) & q_1(\infty)\\
+                  q_2(\infty) & q(\infty)\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-2)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-2)
+                (m-1-2) edge (m-2-2);
+            \end{tikzpicture}
+        \end{center}
+        is a pushout square, so the cube corresponding to a natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd},C\right)_1$
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                p|_{X^{\rhd}}(\infty) \arrow [dr] \arrow [rr] \arrow [dd] & & p|_{\left(K^n\right)^{\rhd}}(\infty) \arrow [dr] \arrow [dd] \\
+                & p|_{Y^{\rhd}}(\infty) \arrow [rr, crossing over] \arrow [dd] & & p(\infty) \arrow [dd] & \\
+                q|_{X^{\rhd}}(\infty) \arrow [dr] \arrow [rr] & & q|_{\left(K^n\right)^{\rhd}}(\infty) \arrow [dr] \\
+                & q|_{Y^{\rhd}}(\infty) \arrow [from=uu, crossing over] \arrow [rr] & & q(\infty) &
+            \end{tikzcd}
+        \end{center}
+        is cartesian.
+        By descent for pushouts (since the bottom square is pushout) we thus have that the top square is also a pushout.
+        Again by %HTT Proposition 4.4.2.2.
+        it thus follows that $p(\infty)$ is a colimit cone.
+
+        It now remains to show that statement for general $K$.
+        Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (so all higher simplices are degenerate).
+        It can be shown that the inclusion $L\subset\N(\Nat)$ is a categorical equivalence. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
+
+        Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation and let $q$ be a colimit cone and let $\left(K^n\right)_{n\in\Nat}$ denote the skeletal filtration of $K$.
+        We can compute colimits over $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex is the colimit of the skeleton of corresponding degree and all higher simplicies are given by chains of the canonical maps. 
+
+        Since $L\subset\N(\Nat)$ is a categorical equivalence which preserve and reflect (co)limits, we can also compute the colimit of the induced diagram $L\to C$.
+
+        So let $F_q\colon L^{\rhd}\to C$ be the diagram induced by taking colimits of the skeleta as above.
+        Let $F_p\colon L^{\rhd}\to C$ be given on the $0$-simplices by taking pullbacks
+        \begin{center}
+            \begin{tikzpicture}
+                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
+                {
+                  F_p(n) & F_q(n)\\
+                  p(\infty)=F_p(\infty) & F_q(\infty)=q(\infty)\\};
+                \path[-stealth]
+    
+                (m-1-1) edge (m-1-2)
+                (m-1-1) edge (m-2-1)
+                (m-2-1) edge (m-2-2)
+                (m-1-2) edge (m-2-2);
+            \end{tikzpicture}
+        \end{center}
+        and on $1$-simplices by taking canonical maps.
+        Thus we get a cartesian natural transformation $\beta\colon F_p\to F_q$.
+        By universality for finite dimensional $K$ we have that $F_p(n)$ is the colimit of $p$ restricted $K^n$.
+        Since $L$ is $1$-dimensional, we have that $F_p$ is a colimit cone and thus $p(\infty)$ is the colimit of its skeleta.
+        This proves that $p$ is a colimit cone and thus the proposition.
+    \end{proof}
 \end{lemma}
 \begin{lemma}
     A \inftycat/ $C$ has descent if and only if it has descent for pushouts and coproducts. %TODO is this true? Or does one need universality?
-    \begin{proof} %TODO maybe mention why it suffices to prove things for arrows x\to\infty
+    \begin{proof} %TODO maybe mention why it suffices to prove things for arrows x\to\infty TODO change notation p|_? to p_? and be more clear
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a map.
         We prove the statement first for all finite dimensional $K$ by induction over the dimension of $K$. %TODO define dimension
 
         For $\dim K=-1$ the statement is clear since $K$ is empty.
 
-        For $\dim K=0$ we have that $K\cong\bigcup\limits_{i\in I}\Delta^0$ for some small set $I$. 
-        In this case the statement is also clear since all maps are identity maps.
+        %For $\dim K=0$ we have that $K\cong\bigcup\limits_{i\in I}\Delta^0$ for some small set $I$. 
+        %In this case the statement is also clear since all maps are identity maps.
 
         So let $\dim K=n+1$.
         Then by the skeletal filtration, $K=K^{n+1}=K^n\bigcup\limits_{\cup_S \partial\Delta^{n+1}}\cup_S \Delta^{n+1}$ where $S$ is the set of non-degenerate simplicies of dimension $n+1$.
@@ -82,7 +195,7 @@
 
         The map $\alpha|_{Y^{\rhd}}$ is cartesian as well: Since $\Delta^{n+1}$ has a terminal object, the colimit can be computed by evaluating the final vertex. 
         In particular, the maps to the cone point are isomorphisms.
-        Then one again uses descent for coproducts.
+        Then one uses descent for coproducts.
 
         By %HTT Proposition 4.4.2.2.
         we know that the canonical diagrams in $C$
@@ -164,7 +277,7 @@
         By universality, this implies that $q|_{X^{\rhd}}(\infty)\times_{q|_{\left(K^n\right)^{\rhd}}(\infty)}p|_{\left(K^n\right)^{\rhd}}(\infty)$ is a colimit of $p|_X$ and thus equivalent to $p|_{X^{\rhd}}(\infty)$.
         The other square follows analogously.
 
-        Thus the natural transformation $\beta\colon\left(\Lambda_0^2\right)^{\rhd}\to C$ represented by the diagram
+        Thus the natural transformation $\beta\colon\left(\Lambda_0^2\right)^{\rhd}\times\Delta^1\to C$ represented by the diagram
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 p|_{X^{\rhd}}(\infty) \arrow [dr] \arrow [rr] \arrow [dd] & & p|_{\left(K^n\right)^{\rhd}}(\infty) \arrow [dr] \arrow [dd] \\
