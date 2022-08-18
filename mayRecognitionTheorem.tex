@@ -146,31 +146,9 @@
     \end{proof}
 \end{prop}
 \begin{definition}
-    Let $C$ be an \inftycat/ with pullbacks and let $f\colon x\to y\in C_1$ be a map.
-    We say that $f$ is an \emph{effective epimorphism} if the pullback diagram in $C$
-    \begin{center}
-        \begin{tikzpicture}
-            \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-            {
-            x\times_y x& x\\
-            x & y\\};
-            \path[-stealth]
-
-            (m-1-1) edge (m-1-2)
-            (m-1-1) edge (m-2-1)
-            (m-2-1) edge (m-2-2)
-            (m-1-2) edge (m-2-2);
-        \end{tikzpicture}
-    \end{center}
-    is also a pushout. %TODO Kategorien II Satz 18.4.3
+    Let $C$ be an \inftycat/ with colimits and let $f\colon x\to y\in C_1$ be a map.
+    We say that $f$ is an \emph{effective epimorphism} if the \Cech/ nerve $C(f)$ is a colimit diagram.
 \end{definition}
-\begin{prop}
-    Let $C$ be a \inftytop/ and let $f\colon x\to y\in C_1$ be a map.
-    Then $f$ is an effective epimorphism if and only if its \Cech/ nerve $C(f)$ is a colimit diagram.
-    \begin{proof}
-        %TODO
-    \end{proof}
-\end{prop}
 \begin{prop}
     Let $C$ be an \inftytop/. 
     Then the functors
