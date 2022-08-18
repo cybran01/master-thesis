@@ -1,6 +1,35 @@
+\begin{prop}
+    A pushout along an h-cofibration is a homotopy pushout.
+    \begin{proof}
+        Let
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A \arrow[>->, r, "h"] \arrow[d] & B \arrow[d]\\
+                C \arrow[>->, r, "h"] & D \\
+            \end{tikzcd}
+        \end{center}
+        be a pushout with the inducated maps being h-cofibrations.
+        We factor the map $A\to C'\to C$ into a cofibration followed by a weak equivalence and obtain the diagram
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A \arrow[>->, r, "h"] \arrow[>->,d] & B \arrow[d]\\
+                C' \arrow[>->, r, "h"] \arrow[d, "\textasciitilde"] & D' \arrow[d, "\textasciitilde"] \\
+                C \arrow[>->, r, "h"] & D
+            \end{tikzcd}
+        \end{center}
+        by taking pushouts.
+        By %TODO hocolim_bar
+        we have that pushouts of weak equivalences along h-cofibrations are again weak equivalences.
+
+        The top square is a homotopy pushout as it is a pushout along a cofibration. 
+        The lower square is a homotopy pushout by %TODO HTT ??
+        .
+        Thus the outer square is a homotopy pushout which proves the proposition.
+    \end{proof}
+\end{prop}
 \begin{lemma}[Universality for Pushouts]\label{lem:univForPushouts}
     Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
-    The pullback functors $u^*\colon\faktor{C}{y}\to\faktor{C}{x}$ for maps $u\colon x\to y\in C_1$ preserve pushouts if and only if for all cubes
+    Then for all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha$ is cartesian and $q$ is a colimit cone we have that $p$ is also a colimit cone if and only if for all cubes
     \begin{center}
         \begin{tikzcd} [sep = .5 cm]
             A \arrow [dr] \arrow [rr] \arrow [dd] & & B \arrow [dr] \arrow [dd] \\
@@ -10,6 +39,13 @@
         \end{tikzcd}
     \end{center}
     in $C$ where the vertial faces are pullbacks and the bottom square is a pushout, the top square is also a pushout.
+    \begin{proof}
+        %TODO
+    \end{proof}
+\end{lemma}
+%TODO define universality and descent for shapes of diagrams to avoid clutter
+\begin{prop} %TODO move this prop to after the explanations
+    The \inftycat/ of spaces $\spaces$ has universality for pushouts.
     \begin{proof}
         By factoring the map $D\to\overline{D}\to D'$ into a weak equivalence followed by a fibration and pulling back successively, we obtain 
         \begin{center}
@@ -34,7 +70,7 @@
         \end{center}
         is a homotopy pushout.
 
-        We factor the map $A\to\widehat{B}\to B$ into a cofibration followed by a weak equivalence.
+        We factor the map $A\to\widehat{B}\to B$ into a h-cofibration followed by a weak equivalence.
         We obtain a diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -42,7 +78,7 @@
                 C \arrow[>->, r] & C\cup_{A}\widehat{B} \arrow[r] & D \\
             \end{tikzcd}
         \end{center}
-        where the left square is a homotopy pushout as its a pushout along a cofibration and the outer square is homotopy pushout by definition, thus by the pasing law the right square is also homotopy pushout. 
+        where the left square is a homotopy pushout as its a pushout along an h-cofibration and the outer square is homotopy pushout by definition, thus by the pasting law the right square is also homotopy pushout. 
         This implies by %HTT
         that $C\cup_{A}\widehat{B}\to D$ is a weak equivalence as well.
         Pulling back this diagram along the fibration $\overline{D}\twoheadrightarrow D$ gives a diagram 
@@ -52,13 +88,12 @@
                 \overline{C} \arrow[>->, r] & \left(C\cup_{A}\widehat{B}\right)\times_{D}\overline{D} \arrow[r] & \overline{D} \\
             \end{tikzcd}
         \end{center}
-        where the horizontal maps in the left diagram are cofibrations due to % Jeffrey Strom - Modern Classical Homotopy Theory Theorem 14.1 for pb along fib of cofib is cofib
+        where the horizontal maps in the left diagram are h-cofibrations due to % Jeffrey Strom - Modern Classical Homotopy Theory Theorem 14.1 for pb along fib of cofib is cofib, TODO is this true in the serre model str?
         and a pushout since $\Top$ has universality (as an ordinary category).
-        The right square is also homotopy pushout by %HTT ???
-        , since $\Top$ is right proper so pullbacks of weak equivalences along fibrations are again weak equivalences. 
+        The right square is also homotopy pushout since $\Top$ is right proper so pullbacks of weak equivalences along fibrations are again weak equivalences. 
         Thus the outer square is a homotopy pushout which proves the proposition. 
     \end{proof}
-\end{lemma}
+\end{prop}
 \begin{lemma}[Descent for Pushouts]\label{lem:descForPushouts}
     Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
     Then all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha|_{\Lambda^2_0}$ is cartesian and $p,q$ are colimit cones are cartesian and if and only if for all cubes
@@ -71,7 +106,16 @@
         \end{tikzcd}
     \end{center}
     in $C$ where the left and back face are pullbacks and the bottom and top square are a pushouts, the front and right squares are pullbacks.
+    \begin{proof}
+        %TODO
+    \end{proof}
 \end{lemma}
+\begin{prop}
+    The \inftycat/ of spaces $\spaces$ has descent for pushouts. 
+    \begin{proof}
+        %TODO
+    \end{proof}
+\end{prop}
 \begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO reference?
     Let $J$ be an ordinary category and let $M$ be a model category.
     Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition

@@ -81,14 +81,15 @@
     \end{center}
     is a pullback square.
 \end{definition}
-\begin{corollary}
+%TODO explain how cech nerve is computed and how it looks
+\begin{corollary}\label{cor:groupoidEffectiveIffColimCechNerve}
     Let $C$ be an \inftycat/ with small colimits. 
     Then a groupoid $U$ is effective if and only if its colimit cone $\N(\Delta)^{op}\star\Delta^0\cong\N(\Delta_+)^{op}\to C$ is a \Cech/ nerve.
     \begin{proof}
         This follows directly from the equivalent characterization of an effective groupoid from \cref{prop:grpdEffectiveIfPullback}.
     \end{proof}
 \end{corollary}
-\begin{prop} % Charles Rezk lecture notes 29pp
+\begin{prop}\label{prop:groupoidObjInToposAreEffective} % Charles Rezk lecture notes 29pp
     Let $C$ be an \inftytop/.
     Then every groupoid object $U$ is effective.
     \begin{proof}
@@ -149,29 +150,47 @@
     Let $C$ be an \inftycat/ with colimits and let $f\colon x\to y\in C_1$ be a map.
     We say that $f$ is an \emph{effective epimorphism} if the \Cech/ nerve $C(f)$ is a colimit diagram.
 \end{definition}
-\begin{prop}
+\begin{prop}\label{prop:mayRecognitionTheoremGroupoid}
     Let $C$ be an \inftytop/. 
     Then the functors
     \begin{equation*}
-        \Gpd(C)\subset\Fun(\N(\Delta)^{\op},C)\xrightarrow{\colim}\Fun(\N(\Delta_+)^{\op},C)
+        F\colon\Gpd(C)\subset\Fun(\N(\Delta)^{\op},C)\xrightarrow{\colim}\Fun(\N(\Delta_+)^{\op},C)
     \end{equation*}
     and 
     \begin{equation*}
-        \Fun(\Delta^1,C)_{\text{eff}}\subset\Fun(\Delta^1,C)\xrightarrow{C}\Fun(\N(\Delta_+)^{\op},C)
+        G\colon\Fun(\Delta^1,C)_{\text{eff}}\subset\Fun(\Delta^1,C)\xrightarrow{C}\Fun(\N(\Delta_+)^{\op},C)
     \end{equation*}
     are fully faithful and have the same essential image in $\Fun(\N(\Delta_+)^{\op},C)$.
-
+    
     Thus they induce an equivalence of \inftycats/ $\Gpd(C)\simeq\Fun(\Delta^1,C)_{\text{eff}}$.
+    \begin{proof}
+        Both functors are pointwise Kan-extensions along fully faithful functors:
+        The functor $F$ one is a left Kan-extension along $\N(\Delta)^{\op}\subset\N(\Delta_+)^{\op}$, and $G$ a right Kan-extension along $\Delta^1\subset\N(\Delta_+)^{\op}$.
+        Thus they are both fully faithful.
+
+        First, let $U$ be an element in the essential image of $G$. 
+        Then by definition of an effective epimorphism it is already a colimit diagram, and since $U|_{\N(\Delta)^{\op}}$ is a groupoid, it is in the essential image of $F$.
+
+        Now let $V$ be an element in the essential image of $F$. 
+        Then by \cref{prop:groupoidObjInToposAreEffective} and \cref{cor:groupoidEffectiveIffColimCechNerve} we know that it is a \Cech/ nerve and therefore by definition in the essential image of $G$.
+    \end{proof}
 \end{prop}
-\begin{lemma}
-    Let $C$ be an \inftytop/ and let $c\in C_0$.
-    If there is a map $*\to c$ which is an effective epimorphism, the any map $*\to c$ is an effective epimorphism.
-\end{lemma}
 \begin{definition}
-    Let $C$ be an \inftytop/, let $c\in C_0$ and let $x\colon *\to c\in C_1$ be a map.
-    We say that $c$ is \emph{connected} if $x$ is an effective epimorphism.
+    Let $C$ be an \inftycat/ with a terminal object.
+    Then write $C_*\subset\Fun(\Delta^1,C)$ for the full subcategory of maps with domain a fixed terminal object $*\in C$.
+    We call $C_*$ the \emph{\inftycat/ of pointed objects}.
+\end{definition}
+%TODO remark that choice of * does not matter
+\begin{definition}
+    Let $C$ be an \inftycat/ with terminal object and colimits. 
+    Then let $\Conn(C_*)\subset C_*$ be the full subcategory of effective morphisms.
+    We call $\Conn(C_*)$ the \emph{\inftycat/ of pointed connected objects}.
 \end{definition}
 \begin{corollary}
     Let $C$ be an \inftytop/. 
     Then there is an equivalence of \inftycats/ $\Grp(C)\simeq\Conn(C)$.
+    \begin{proof}
+        This follows immediately from \cref{prop:mayRecognitionTheoremGroupoid} and the definition of group objects.
+    \end{proof}
 \end{corollary}
+%TODO explain looping/delooping and do it all in Top
