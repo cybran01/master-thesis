@@ -1,4 +1,6 @@
-\begin{prop}
+%TODO order the statements correctly
+%TODO do the proofs in the Strom model structure and argue at the end that this gives the statements in the Quillen model structure
+\begin{prop}\label{prop:poAlongHCofibIsHtpyPo}
     A pushout along an h-cofibration is a homotopy pushout.
     \begin{proof}
         Let
@@ -32,10 +34,10 @@
     Then for all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha$ is cartesian and $q$ is a colimit cone we have that $p$ is also a colimit cone if and only if for all cubes
     \begin{center}
         \begin{tikzcd} [sep = .5 cm]
-            A \arrow [dr] \arrow [rr] \arrow [dd] & & B \arrow [dr] \arrow [dd] \\
-            & C \arrow [rr, crossing over] \arrow [dd] & & D \arrow [dd] & \\
-            A^{\prime} \arrow [dr] \arrow [rr] & & B^{\prime} \arrow [dr] \\
-            & C^{\prime} \arrow [from=uu, crossing over] \arrow [rr] & & D^{\prime} &
+            A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
+            & C^{\prime} \arrow [rr, crossing over] \arrow [dd] & & D^{\prime} \arrow [dd] & \\
+            A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+            & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
         \end{tikzcd}
     \end{center}
     in $C$ where the vertial faces are pullbacks and the bottom square is a pushout, the top square is also a pushout.
@@ -47,19 +49,21 @@
 \begin{prop} %TODO move this prop to after the explanations
     The \inftycat/ of spaces $\spaces$ has universality for pushouts.
     \begin{proof}
-        By factoring the map $D\to\overline{D}\to D'$ into a weak equivalence followed by a fibration and pulling back successively, we obtain 
+        We prove the analogous statement in the model category $\Top$, which is sufficent by \cref{cor:sufficientToProveInModCat}.
+
+        By factoring the map $D'\xrightarrow{\textasciitilde}\overline{D}\xtwoheadrightarrow{h} D$ into a weak equivalence followed by an h-fibration (which is also a Serre fibration) and pulling back successively, we obtain the diagram %TODO explain why we we use weak equivalence here: since the faces are pb in the SERRE model str, the 3 remaining vertical maps are only w.e.
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                A \arrow [dr] \arrow [rr] \arrow [dd] & & B \arrow [dr] \arrow [dd] \\
-                & C \arrow [rr, crossing over] & & D \arrow [dd] & \\
+                A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
+                & C^{\prime} \arrow [rr, crossing over] & & D^{\prime} \arrow [dd] & \\
                 \overline{A} \arrow [dr] \arrow [rr] \arrow [->>, dd] & & \overline{B} \arrow [dr] \arrow [->>, dd] \\
                 & \overline{C} \arrow [rr, crossing over] \arrow [from=uu, crossing over] \arrow [dd] & & \overline{D} \arrow [->>, dd] & \\
-                A^{\prime} \arrow [dr] \arrow [rr] & & B^{\prime} \arrow [dr] \\
-                & C^{\prime} \arrow [->>,from=uu, crossing over] \arrow [rr] & & D^{\prime} & \\
+                A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+                & C \arrow [->>,from=uu, crossing over] \arrow [rr] & & D & \\
             \end{tikzcd}
         \end{center}
-        where $\overline{A}=A'\times_{D'}\overline{D}$, $\overline{B}=B'\times_{D'}\overline{D}$ and $\overline{C}=C'\times_{D'}\overline{D}$, the indicated maps are fibrations.
-        Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D\to\overline{D}$ is a weak equivalence, all vertical maps in the upper cube are weak equivalences.
+        where $\overline{A}=A'\times_{D'}\overline{D}$, $\overline{B}=B'\times_{D'}\overline{D}$ and $\overline{C}=C'\times_{D'}\overline{D}$, and the indicated maps are fibrations.
+        Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D'\to\overline{D}$ is a weak equivalence, all vertical maps in the upper cube are weak equivalences.
         Thus by %HTT ???
         it is sufficent to show that the square
         \begin{center}
@@ -70,26 +74,26 @@
         \end{center}
         is a homotopy pushout.
 
-        We factor the map $A\to\widehat{B}\to B$ into a h-cofibration followed by a weak equivalence.
+        We factor the map $A\xtailrightarrow{h}\widehat{B}\xrightarrow{\textasciitilde} B$ into an h-cofibration followed by a weak equivalence.
         We obtain a diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                A \arrow[>->, r] \arrow[d] & \widehat{B} \arrow[r] \arrow[d] & B \arrow[d] \\
-                C \arrow[>->, r] & C\cup_{A}\widehat{B} \arrow[r] & D \\
+                A \arrow[>->, r, "h"] \arrow[d] & \widehat{B} \arrow[r, "\textasciitilde"] \arrow[d] & B \arrow[d] \\
+                C \arrow[>->, r, "h"] & C\cup_{A}\widehat{B} \arrow[r] & D \\
             \end{tikzcd}
         \end{center}
-        where the left square is a homotopy pushout as its a pushout along an h-cofibration and the outer square is homotopy pushout by definition, thus by the pasting law the right square is also homotopy pushout. 
+        where the left square is a homotopy pushout as its a pushout along an h-cofibration by \cref{prop:poAlongHCofibIsHtpyPo} and the outer square is homotopy pushout by definition, thus by the pasting law the right square is also homotopy pushout. 
         This implies by %HTT
         that $C\cup_{A}\widehat{B}\to D$ is a weak equivalence as well.
-        Pulling back this diagram along the fibration $\overline{D}\twoheadrightarrow D$ gives a diagram 
+        Pulling back this diagram along the h-fibration $\overline{D}\twoheadrightarrow D$ gives a diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{A} \arrow[>->, r] \arrow[d] & \widehat{B}\times_{D}\overline{D} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
-                \overline{C} \arrow[>->, r] & \left(C\cup_{A}\widehat{B}\right)\times_{D}\overline{D} \arrow[r] & \overline{D} \\
+                \overline{A} \arrow[>->, r, "h"] \arrow[d] & \widehat{B}\times_{D}\overline{D} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
+                \overline{C} \arrow[>->, r, "h" ] & \left(C\cup_{A}\widehat{B}\right)\times_{D}\overline{D} \arrow[r] & \overline{D} \\
             \end{tikzcd}
         \end{center}
         where the horizontal maps in the left diagram are h-cofibrations due to % Jeffrey Strom - Modern Classical Homotopy Theory Theorem 14.1 for pb along fib of cofib is cofib, TODO is this true in the serre model str?
-        and a pushout since $\Top$ has universality (as an ordinary category).
+        and its a pushout since $\Top$ has universality (as an ordinary category). %TODO maybe cite somewhere?
         The right square is also homotopy pushout since $\Top$ is right proper so pullbacks of weak equivalences along fibrations are again weak equivalences. 
         Thus the outer square is a homotopy pushout which proves the proposition. 
     \end{proof}
@@ -99,10 +103,10 @@
     Then all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha|_{\Lambda^2_0}$ is cartesian and $p,q$ are colimit cones are cartesian and if and only if for all cubes
     \begin{center}
         \begin{tikzcd} [sep = .5 cm]
-            A \arrow [dr] \arrow [rr] \arrow [dd] & & B \arrow [dr] \arrow [dd] \\
-            & C \arrow [rr, crossing over] \arrow [dd] & & D \arrow [dd] & \\
-            A^{\prime} \arrow [dr] \arrow [rr] & & B^{\prime} \arrow [dr] \\
-            & C^{\prime} \arrow [from=uu, crossing over] \arrow [rr] & & D^{\prime} &
+            A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
+            & C^{\prime} \arrow [rr, crossing over] \arrow [dd] & & D^{\prime} \arrow [dd] & \\
+            A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+            & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
         \end{tikzcd}
     \end{center}
     in $C$ where the left and back face are pullbacks and the bottom and top square are a pushouts, the front and right squares are pullbacks.
@@ -129,7 +133,7 @@
         %TODO reference? (somewhere HTT?)
     \end{proof}
 \end{lemma}
-\begin{corollary}
+\begin{corollary}\label{cor:sufficientToProveInModCat}
     It suffices to prove the analogous statements of \cref{lem:univForPushouts} and \cref{lem:descForPushouts} in the model category $\Top$.
     \begin{proof}
         Since homotopy (co)limits in a model category $M$ correspond to (co)limits in the simplicial localization of $\N(M)[W^{-1}]$, we can replace the cubes by strictly commutative diagrams in $\Top$ by \cref{lem:replaceWithStrictDiagram}.
@@ -172,7 +176,7 @@
         Since the square is an ordinary pullback, this already implies that it is a homotopy pullback.
     \end{proof}
 \end{lemma}
-\begin{corollary}\label{cor:genCoproductComponentPb}
+\begin{corollary}\label{cor:genCoproductComponentPb} %TODO fix indexing
     Let $\left(X_i\right)_{i\in I}$ be a collection of topological spaces and for ease of notation, set $Y_i=\bigcup\limits_{i\in I\setminus{\set{i}}}X_i$.
     Then in the pullback square (which is also a homotopy pullback)
     \begin{center}
