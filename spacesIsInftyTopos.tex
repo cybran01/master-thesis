@@ -114,10 +114,239 @@
         %TODO
     \end{proof}
 \end{lemma}
+\begin{prop}\label{prop:reductionStepDescent}
+    If for all cubes in the model category $\Top$
+    \begin{center}
+        \begin{tikzcd} [sep = .5 cm]
+            \overline{A} \arrow [dr] \arrow [rr] \arrow [->>,dd, "h"] & & \overline{B} \arrow [dr] \arrow[->>]{dd}[near start]{h} \\
+            & \overline{C} \arrow [rr, crossing over] & & \overline{D} \arrow [dd] & \\
+            A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+            & C \arrow [->>,from=uu,crossing over]{}[near start]{h} \arrow [rr] & & D &
+        \end{tikzcd}
+    \end{center}
+    where 
+    \begin{itemize}
+        \item left and back face are homotopy pullbacks
+        \item bottom and top square are pushouts and homotopy pushouts
+        \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are h-fibrations
+    \end{itemize}
+    the front and right squares are homotopy pullbacks, then $\spaces$ has descent for pushouts.
+    \begin{proof}
+        To prove that $\spaces$ has descent for pushouts, it suffices to prove the analogous statement in $\Top$ by \cref{cor:sufficientToProveInModCat}.
+        So starting from a cube 
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
+                & C^{\prime} \arrow [rr, crossing over] \arrow [dd] & & D^{\prime} \arrow [dd] & \\
+                A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+                & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
+            \end{tikzcd}
+        \end{center}
+        where the back and left square are homotopy pullbacks and top and bottom are homotopy pushouts, we show that we can construct a cube of the required form such that all faces are equivalent to the corresponding faces of the starting cube.
+        % \begin{center}
+        %     \begin{tikzcd} [sep = 4em]
+        %         C^{\prime} \arrow[d] & A^{\prime} \arrow[l] \arrow[r] \arrow[d] & B^{\prime} \arrow[d] \\
+        %         C & A \arrow[l] \arrow[r] & B \\
+        %     \end{tikzcd}
+        % \end{center}
+
+        We first factor the maps $A\xtailrightarrow{h}\hat{C}\xtwoheadrightarrow[\textasciitilde]{h} C$ and $B'\xrightarrow{\textasciitilde}\overline{B}\xtwoheadrightarrow{h} B$ to obtain the diagram
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                C^{\prime} \arrow[dd] & \hat{C}\times_CC' \arrow[->>]{l}[swap]{\textasciitilde} \arrow[dd] & A^{\prime} \arrow[l] \arrow[r] \arrow[d, "\textasciitilde"] & B^{\prime} \arrow[d, "\textasciitilde"] \\
+                && \overline{A} \arrow [->>,d, "h"] \arrow[r] & \overline{B} \arrow[->>,d, "h"] \\
+                C & \hat{C} \arrow[->>]{l}{h}[swap]{\textasciitilde} & A \arrow[>->,l, "h"] \arrow[r] & B 
+            \end{tikzcd}
+        \end{center}
+        where 
+        \begin{itemize}
+            \item $\overline{A}=A\times_{B}\overline{B}$
+            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one and by the pasting law for homotopy pullbacks as the outer and lower square are homotopy pullback
+        \end{itemize}
+        Next we factor the map $A'\xtailrightarrow{h}X\xrightarrow{\textasciitilde}\hat{C}\times_CC'$. 
+        Note that the diagram 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X \arrow[r, "\textasciitilde"] \arrow[d] & C' \arrow[d] \\
+                \hat{C} \arrow[->>]{r}{\textasciitilde}[swap]{h} & C \\
+            \end{tikzcd}
+        \end{center}
+        is a homotopy pullback square.
+        We form the diagram
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                C^{\prime} \arrow[dd] & X \arrow{l}[swap]{\textasciitilde} \arrow[d, "\textasciitilde"] & A^{\prime} \arrow[>->,l, "h"] \arrow[r] \arrow[d, "\textasciitilde"] & B^{\prime} \arrow[d, "\textasciitilde"] \\
+                & X\cup_{A'}\overline{A} \arrow[d] & \overline{A} \arrow[>->,l, "h"] \arrow [->>,d, "h"] \arrow[r] & \overline{B} \arrow[->>,d, "h"] \\
+                C & \hat{C} \arrow[->>]{l}{h}[swap]{\textasciitilde} & A \arrow[>->,l, "h"] \arrow[r] & B 
+            \end{tikzcd}
+        \end{center}
+        where $X\to X\cup_{A'}\overline{A}$ is a weak equivalence as its a pushout of a weak equivalence along an h-cofibration. %TODO reference
+        By the pasting law we thus have that
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A' \arrow[>->,r, "h"] \arrow[d] & X \arrow[d] \\
+                A \arrow[>->,r, "h"] & \hat{C} \\
+            \end{tikzcd}
+        \end{center}
+        is homotopy pullback.
+        Since this square is equivalent %TODO maybe define what that means
+        to the square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \overline{A} \arrow[>->,r, "h"] \arrow[->>,d, "h"] & X\cup_{A'}\overline{A} \arrow[d] \\
+                A \arrow[>->,r, "h"] & \hat{C} \\
+            \end{tikzcd}
+        \end{center}
+        we know that both are homotopy pullbacks.
+        Finally, we factor the map $X\cup_{A'}\overline{A}\xtailrightarrow[\textasciitilde]{h}\overline{C}\xtwoheadrightarrow{h}\hat{C}$.
+        Then 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \overline{A} \arrow[>->,r, "h"] \arrow[->>,d, "h"] & \overline{C} \arrow[->>,d, "h"] \\
+                A \arrow[>->,r, "h"] & \hat{C} \\
+            \end{tikzcd}
+        \end{center}
+        is again a homotopy pullback square. %TODO maybe say that this reduction is possible in any model cat
+
+        Thus we have obtained a diagram
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \overline{C} \arrow[->>,d, "h"] & \overline{A} \arrow[>->,l, "h"] \arrow[r] \arrow[->>,d, "h"] & \overline{B} \arrow[->>,d, "h"] \\
+                \hat{C} & A \arrow[>->,l, "h"] \arrow[r] & B \\
+            \end{tikzcd}
+        \end{center}
+        and we can form the cube 
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                \overline{A} \arrow[>->,dr, "h"] \arrow [rr] \arrow [->>,dd,"h"] & & \overline{B} \arrow [dr] \arrow[->>]{dd}[near start]{h} \\
+                & \overline{C} \arrow [rr, crossing over] & & \overline{C}\cup_{\overline{A}}\overline{B} \arrow [dd] & \\
+                A \arrow[>->,dr, "h"] \arrow [rr] & & B \arrow [dr] \\
+                & \hat{C} \arrow[->>, from=uu, crossing over]{}[near start]{h} \arrow [rr] & & \hat{C}\cup_A B &
+            \end{tikzcd}
+        \end{center}
+        by taking pushouts.
+        Since these are pushouts along h-cofibrations, they are already homotopy pushouts. 
+        Following the construction of this cube, we see that all faces are equivalent to their corresponding faces of the starting cube which proves the proposition.
+    \end{proof}
+\end{prop}
+\begin{lemma}\label{lem:mapOfCylIsQuasiFib} %TODO Cubical homotopy Theory Lemma 5.10.6, TODO prove for open and closed mapping cylinder, TODO prove assertions on pullbacks
+    Let 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X \arrow[d,->>, "h"] \arrow[r, "f"] & Y \arrow[d,->>, "h"] \\
+            A \arrow[r, "g"] & B \\
+        \end{tikzcd}
+    \end{center}
+    be a homotopy pullback.
+    Then the induced map $\M(f)\to\M(g)$ between mapping cylinders is a quasifibration. %TODO define quasifibration, (open) mapping cylinder
+    The same holds true if we take open mapping cylinders.
+    \begin{proof}
+        Let $\hat{b}\in\M(g)$. 
+        Then either $\hat{b}=(\hat{a},t)\in A\times[0,1)\subset\M(g)$ or $\hat{b}\in B\subset\M(g)$.
+        In the first case, we have a diagram
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X \arrow[r, "{x\mapsto (x,t)}"] \arrow[->>,d, "h"] & \M(f) \arrow[r, "\textasciitilde"] \arrow[d] & Y \arrow[->>,d, "h"] \\
+                A \arrow[r, "{a\mapsto (a,t)}"] & \M(g) \arrow[r, "\textasciitilde"] & B \\
+            \end{tikzcd}
+        \end{center}
+        where the outer square is the starting square and in particular homotopy pullback, so by the pasting law the left square is homotopy pullback as well.
+        Since the left square is also an ordinary pullback, the fiber  
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                F \arrow[r] \arrow[d] & X \arrow[r, "{x\mapsto (x,t)}"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
+                * \arrow[r, "\hat{b}"] & A \arrow[r, "{a\mapsto (a,t)}"] & \M(g) \\
+            \end{tikzcd}
+        \end{center}
+        is already a homotopy fiber since the right square is a pullback along a fibration and thus the outer square is a homotopy pullback.
+
+        In the second case we have the diagram
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                F \arrow[r] \arrow[d] & Y \arrow[r, hook, "\textasciitilde"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
+                * \arrow[r, "\hat{b}"] & B \arrow[r, hook, "\textasciitilde"] & \M(g) \\
+            \end{tikzcd}
+        \end{center}
+        where the indicated maps are weak equivalences since they are right inverse to the maps $\M(f)\to Y$ and $\M(g)\to B$ respectively, which are weak equivalences themselves.
+        Since the right square is pullback and homotopy pullback and the left side is as well, this means that the fiber $F$ is already a homotopy fiber which proves the proposition.
+    \end{proof}
+\end{lemma}
 \begin{prop}
     The \inftycat/ of spaces $\spaces$ has descent for pushouts. 
     \begin{proof}
-        %TODO
+        By \cref{prop:reductionStepDescent} it is sufficient to prove that for all cubes 
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                \overline{A} \arrow [dr] \arrow [rr] \arrow [->>,dd, "h"] & & \overline{B} \arrow [dr] \arrow[->>]{dd}[near start]{h} \\
+                & \overline{C} \arrow [rr, crossing over] & & \overline{D} \arrow [dd] & \\
+                A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+                & C \arrow [->>,from=uu,crossing over]{}[near start]{h} \arrow [rr] & & D &
+            \end{tikzcd}
+        \end{center}
+        where 
+        \begin{itemize}
+            \item left and back face are homotopy pullbacks
+            \item bottom and top square are pushouts and homotopy pushouts
+            \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are h-fibrations
+        \end{itemize}
+        the front and right squares are homotopy pullbacks.
+
+        By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations.
+        So we can form the cube 
+        \begin{center}
+            \begin{tikzcd} [sep = .75 cm]
+                \overline{A} \arrow [>->, dr, "h"] \arrow [>->, rr, "h"] \arrow [->>,dd, "h"] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow[dd] \\
+                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start,  "h"] & & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow [dd] & \\
+                A \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] & & \M(f_{AB}) \arrow [>->, dr, "h"] \\
+                & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \M(f_{AC})\cup_A\M(f_{AB}) &
+            \end{tikzcd}
+        \end{center}
+        where all faces are again equivalent to the corresponding faces of the original cube and the indicated maps are h-cofibrations by %TODO reference %TODO confirm this statement
+        .
+        
+        Next we prove that the map $p\colon\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\to\M(f_{AC})\cup_A\M(f_{AB})$ is a quasifibration.
+        By %TODO Hatcher Lemma 4K.3
+        we only need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
+
+        We take $U_1=\M(f_{AC})\cup_A\M(f_{AB})\setminus{B}$ and $U_2=\M(f_{AC})\cup_A\M(f_{AB})\setminus{C}$. 
+
+        Then $U_1\cap U_2=A\times [0,1)\cup_A A\times[0,1)\cong A\times (0,2)$ via the ''obvious'' homeomorphism. %TODO explain
+        Then $p^{-1}(U_1)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{B}}$, $p^{-1}(U_2)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{C}}$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$ (identified with $\overline{A}\times [0,1)\cup_{\overline{A}} \overline{A}\times[0,1)$ as before).
+        Then $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \overline{A} \arrow[d,->>, "h"] \arrow[r, "f_{\overline{A}\overline{C}}"] & \overline{C} \arrow[d,->>, "h"] \\
+                A \arrow[r, "f_{AC}"] & C \\
+            \end{tikzcd} 
+            \begin{tikzcd} [sep = 4em]
+                \overline{A} \arrow[d,->>, "h"] \arrow[r, "f_{\overline{A}\overline{B}}"] & \overline{B} \arrow[d,->>, "h"] \\
+                A \arrow[r, "f_{AB}"] & B \\
+            \end{tikzcd}
+        \end{center}
+        respectively.
+        Since the map $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ is a product of fibrations $f_{\overline{A}A}\times\id_{(0,2)}$, it is again a fibration and thus a quasifibration.
+
+        Finally, since the squares 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[r] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
+                \M(f_{AC}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+            \end{tikzcd}
+            \begin{tikzcd} [sep = 4em]
+                \M(f_{\overline{A}\overline{B}}) \arrow[d] \arrow[r] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
+                \M(f_{AB}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+            \end{tikzcd}
+        \end{center}
+        are both ordinary pullbacks %TODO maybe explain why
+        with both vertical maps quasifibrations, they are already homotopy pullbacks. %TODO maybe put this as an extra statement somewhere after introducing quasifibs
+        Taking the left square as an example, this follows from the fact that the fiber
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                F \arrow[r] \arrow[d] & \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[r] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
+                * \arrow[r] & \M(f_{AC}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+            \end{tikzcd}
+        \end{center}
+        is already a homotopy fiber and so the map between homotopy fibers of the vertical maps is a weak equivalence (as its the identity), which is an equivalent characterization of a homotopy pullback. %TODO reference
     \end{proof}
 \end{prop}
 \begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO reference?
