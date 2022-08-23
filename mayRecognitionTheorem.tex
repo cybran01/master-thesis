@@ -35,6 +35,26 @@
     Then there exists a functor $C\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
     An object $U^+\in\Fun(\N(\Delta_+)^{\op},C)_0$ in the essential image of $C$ is called a \emph{\Cech/ nerve}.
 \end{definition}
+\begin{remark}
+    Computing the \Cech/ nerve for a map $f\colon x\to y$ explicitly, one can see that up to equivalence it is given by
+    \begin{center}
+        \begin{tikzcd}
+            & C(f)_3 & C(f)_2 & C(f)_1 & C(f)_0 &  C(f)_{-1} \\ 
+            \ldots \arrow[r] \arrow[r, yshift=-1em] \arrow[r, yshift=1em] \arrow[r, yshift=-2em] \arrow[r, yshift=2em] 
+            & x\times_y x \times_y x \times_y x \arrow[r, yshift=.5em] \arrow[r, yshift=-.5em] \arrow[r, yshift=1.5em] \arrow[r, yshift=-1.5em] \arrow[l, yshift=.5em] \arrow[l, yshift=-.5em] \arrow[l, yshift=1.5em] \arrow[l, yshift=-1.5em]
+            & x\times_y x \times_y x\arrow[r] \arrow[r, yshift=-1em] \arrow[r, yshift=1em] \arrow[l] \arrow[l, yshift=-1em] \arrow[l, yshift=1em]
+            & x\times_y x \arrow[r, yshift=.5em] \arrow[r, yshift=-.5em] \arrow[l, yshift=.5em] \arrow[l, yshift=-.5em]
+            & x \arrow[l] \arrow[r, "f"] & y
+        \end{tikzcd}
+    \end{center}
+    where
+    \begin{itemize}
+        \item the unnamed arrows going from left to right are the maps induced by the face maps and are projections 
+        \item the unnamed arrows going from right to left are the maps induced by the degeneracy maps and are diagonal maps. 
+    \end{itemize}
+    Of course here we only shown a selection of the $1$-skeleton of $C(f)$.
+    The remaining maps of $\Delta^+$ are however compositions of face and degeneracy maps, which determines the $1$-skeleton; for all higher simplices we can make choices via the universal property of the iterated pullbacks, which all yield equivalent objects $C(f)$. %TODO confirm
+\end{remark}
 %TODO Add note: while kan ext is not unique, all kan ext have same essential image
 \begin{definition}
     Let $C$ be an \inftycat/ with small limits. 

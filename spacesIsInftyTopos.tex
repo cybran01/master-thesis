@@ -161,7 +161,7 @@
         where 
         \begin{itemize}
             \item $\overline{A}=A\times_{B}\overline{B}$
-            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one and by the pasting law for homotopy pullbacks as the outer and lower square are homotopy pullback
+            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks as the outer and lower square are homotopy pullback
         \end{itemize}
         Next we factor the map $A'\xtailrightarrow{h}X\xrightarrow{\textasciitilde}\hat{C}\times_CC'$. 
         Note that the diagram 
@@ -171,7 +171,7 @@
                 \hat{C} \arrow[->>]{r}{\textasciitilde}[swap]{h} & C \\
             \end{tikzcd}
         \end{center}
-        is a homotopy pullback square.
+        is a homotopy pullback square by.
         We form the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -181,15 +181,14 @@
             \end{tikzcd}
         \end{center}
         where $X\to X\cup_{A'}\overline{A}$ is a weak equivalence as its a pushout of a weak equivalence along an h-cofibration. %TODO reference
-        By the pasting law we thus have that
+        By the pasting law we have that
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 A' \arrow[>->,r, "h"] \arrow[d] & X \arrow[d] \\
                 A \arrow[>->,r, "h"] & \hat{C} \\
             \end{tikzcd}
         \end{center}
-        is homotopy pullback.
-        Since this square is equivalent %TODO maybe define what that means
+        is homotopy pullback and since this square is equivalent %TODO maybe define what that means
         to the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -310,9 +309,9 @@
 
         We take $U_1=\M(f_{AC})\cup_A\M(f_{AB})\setminus{B}$ and $U_2=\M(f_{AC})\cup_A\M(f_{AB})\setminus{C}$. 
 
-        Then $U_1\cap U_2=A\times [0,1)\cup_A A\times[0,1)\cong A\times (0,2)$ via the ''obvious'' homeomorphism. %TODO explain
+        We identify $U_1\cap U_2=A\times [0,1)\cup_A A\times[0,1)\cong A\times (0,2)$ via the ''obvious'' homeomorphism. %TODO explain
         Then $p^{-1}(U_1)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{B}}$, $p^{-1}(U_2)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{C}}$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$ (identified with $\overline{A}\times [0,1)\cup_{\overline{A}} \overline{A}\times[0,1)$ as before).
-        Then $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
+        It follows $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{A} \arrow[d,->>, "h"] \arrow[r, "f_{\overline{A}\overline{C}}"] & \overline{C} \arrow[d,->>, "h"] \\
