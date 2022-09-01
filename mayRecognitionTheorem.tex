@@ -52,8 +52,8 @@
         \item the unnamed arrows going from left to right are the maps induced by the face maps and are projections 
         \item the unnamed arrows going from right to left are the maps induced by the degeneracy maps and are diagonal maps. 
     \end{itemize}
-    Of course here we only shown a selection of the $1$-skeleton of $C(f)$.
-    The remaining maps of $\Delta^+$ are however compositions of face and degeneracy maps, which determines the $1$-skeleton; for all higher simplices we can make choices via the universal property of the iterated pullbacks, which all yield equivalent objects $C(f)$. %TODO confirm
+    Here we have only shown a selection of the $1$-skeleton of $C(f)$.
+    The remaining maps of $\Delta_+$ are however compositions of the shown face and degeneracy maps, which determines the $1$-skeleton; for all higher simplices we make choices via the universal property of the iterated pullbacks, which all yield equivalent objects $C(f)$. %TODO confirm
 \end{remark}
 %TODO Add note: while kan ext is not unique, all kan ext have same essential image
 \begin{definition}
@@ -214,3 +214,23 @@
     \end{proof}
 \end{corollary}
 %TODO explain looping/delooping and do it all in Top
+\subsection{The May Recognition Theorem in $\spaces$}
+%TODO define truncated obj/morphism HTT Definition 5.5.6.1. 
+\begin{definition}
+    Let $C$ be an \inftytop/ and let $\Disc(C)\subset C$ be the full subcategory of $0$-truncated objects.
+    We call $\Disc(C)$ the \emph{\inftycat/ of discrete objects of $C$}.
+\end{definition}
+%TODO HTT Proposition 5.5.6.18. for the fact that Disc has an accessible left adjoint
+%TODO Proposition 7.2.1.14. for being able to check eff epi in htpy cat
+\begin{lemma}
+    Let $x\colon*\to X\in\spaces_1$ be a map.
+    Then $x$ is an effective epimorphism if and only if $X$ is connected as a topological space.
+    \begin{proof}
+        By %HTT 7.2.1.14.
+        this is equivalent to checking that $L(x)$ is an effective epimorphism in the ordinary category $\ho(\Disc(C))$.
+        However $\ho(\Disc(C))$ is equivalent to the discrete topological spaces. %TODO why is this true?
+        Here the effective epimorphisms are exactly the surjective morphisms, and since for a discrete space there is a bijection $X\to\pi_0(X)$ we have that a map $f$ is effective if and only $\pi_0(L(f))$ is a surjective map.
+        Thus $x$ is effective if and only if $X$ has a single connected component, which proves the proposition.
+    \end{proof}
+\end{lemma}
+

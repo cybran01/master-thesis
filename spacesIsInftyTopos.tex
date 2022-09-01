@@ -127,7 +127,7 @@
     where 
     \begin{itemize}
         \item left and back face are homotopy pullbacks
-        \item bottom and top square are pushouts and homotopy pushouts
+        \item bottom and top square are pushouts and homotopy pushouts %TODO is ordinary po necessary?
         \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are h-fibrations
     \end{itemize}
     the front and right squares are homotopy pullbacks, then $\spaces$ has descent for pushouts.
@@ -348,7 +348,7 @@
         is already a homotopy fiber and so the map between homotopy fibers of the vertical maps is a weak equivalence (as its the identity), which is an equivalent characterization of a homotopy pullback. %TODO reference
     \end{proof}
 \end{prop}
-\begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO reference?
+\begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO is the statement even true in this generality?
     Let $J$ be an ordinary category and let $M$ be a model category.
     Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition
     \begin{equation*}
@@ -358,7 +358,7 @@
 
     (Furthermore the map $\N(\Fun(J,M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.)
     \begin{proof}
-        %TODO reference? (somewhere HTT?)
+        %TODO Proposition 1.3.4.25. HA
     \end{proof}
 \end{lemma}
 \begin{corollary}\label{cor:sufficientToProveInModCat}
@@ -366,7 +366,7 @@
     \begin{proof}
         Since homotopy (co)limits in a model category $M$ correspond to (co)limits in the simplicial localization of $\N(M)[W^{-1}]$, we can replace the cubes by strictly commutative diagrams in $\Top$ by \cref{lem:replaceWithStrictDiagram}.
         Since one can check diagrams to be homotopy (co)limits by checking that they are (co)limits in $\N(M)[W^{-1}]$, the specified faces are homotopy pullbacks and homotopy pushouts in $M$ respectively.
-        Thus it suffices to prove that the remaining faces are homotopy pullbacks or homotopy pushouts in $M$ as specified.
+        Thus it suffices to prove that the remaining faces are homotopy pullbacks or homotopy pushouts in $M$ as specified. %TODO Proposition 1.3.4.23 HA
     \end{proof}
 \end{corollary}
 \begin{lemma}
