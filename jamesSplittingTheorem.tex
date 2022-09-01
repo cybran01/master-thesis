@@ -1,0 +1,159 @@
+%TODO https://arxiv.org/pdf/1912.04130.pdf as source
+%TODO introduce suspension
+\begin{lemma}\label{lem:existenceOfPoSq} %TODO ON THE JAMES AND HILTON–MILNOR SPLITTINGS, & THE METASTABLE EHP SEQUENCE lemma 2.17
+    Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object.
+    Then there exists a pushout square  
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d] & \Omega\Sigma X \arrow[d] \\
+            \Omega\Sigma X \arrow[r] & * \\
+        \end{tikzcd}\;.
+    \end{center}
+    \begin{proof}
+        The definition of $\Sigma X$
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X \arrow[r] \arrow[d] & * \arrow[d, "i_1"] \\
+                * \arrow[r, "i_2"] & \Sigma X \\
+            \end{tikzcd}
+        \end{center}
+        shows that $i_1$ and $i_2$ are equivalent maps in $C$, since $X\to *\xrightarrow{i_1}\Sigma X$ and $X\to *\xrightarrow{i_2}\Sigma X$ are identical in $\ho(C)$ by construction and $X\to *$ is an epimorphism in $\ho(C)$ since $*$ is terminal.
+        Thus we get that 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X\times\Omega\Sigma X \arrow[r] \arrow[d] & \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_1"] \\
+                X \arrow[r] & * \arrow[r, "i_2"] & \Sigma X \\
+            \end{tikzcd}
+        \end{center}
+        are pullback squares.
+        By universality the top square of the cube
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                X\times\Omega\Sigma X \arrow [dr] \arrow [rr, "\pi_2"] \arrow [dd] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [dd, "i_1"] & \\
+                X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_1"] \\
+                & * \arrow [from=uu,crossing over] \arrow [rr, "i_2"] & & \Sigma X &
+            \end{tikzcd}
+        \end{center}
+        is a homotopy pushout which finishes the proof.
+    \end{proof}
+\end{lemma}
+%TODO remark that other map is usually not projection and explain why
+\begin{corollary}\label{lem:poOfProductIsSuspension} %Lemma 2.19
+    Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
+    Then
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d] & \Omega\Sigma X \arrow[d] \\
+            * \arrow[r] & \Sigma\Omega\Sigma X \\
+        \end{tikzcd}
+    \end{center}
+    is a pushout.
+    \begin{proof}
+        This follows from \cref{lem:existenceOfPoSq} and the pasting lemma applied to 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d] & \Omega\Sigma X \arrow[d] \\
+                \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d] \\
+                * \arrow[r] & \Sigma\Omega\Sigma X \\
+            \end{tikzcd}\;.
+        \end{center}
+    \end{proof}
+\end{corollary}
+\begin{lemma}
+    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Then 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X\vee Y \arrow[r] \arrow[d] & Y \arrow[d] \\
+            X \arrow[r] & * \\
+        \end{tikzcd}
+    \end{center}
+    is a pushout.
+    \begin{proof}
+        This follows from repeatedly applying the pasting law to 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                * \arrow[r] \arrow[d] & Y \arrow[r] \arrow[d] & * \arrow[d] \\
+                X \arrow[r] \arrow[d] & X\vee Y \arrow[r] \arrow[d] & X \arrow[d]\\
+                * \arrow[r] & Y \arrow[r] & * \\
+            \end{tikzcd}\;.
+        \end{center}
+    \end{proof}
+\end{lemma}
+\begin{lemma}\label{lem:poSqWithFactoringTerminal}
+    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Then there is a pushout square
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"] & Y \arrow[d] \\
+            X \arrow[r] & \Sigma\left(X\wedge Y\right) \\
+        \end{tikzcd}
+    \end{center}
+    such that the unlabeled morphisms factor through the terminal object.
+    \begin{proof}
+        The colimit of the diagram 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                * & * \arrow[l] \arrow[r] & * \\
+                X \arrow[d, equal] \arrow[u] & X\vee Y \arrow[l]  \arrow[r] \arrow[d] \arrow[u] & Y \arrow[d, equal] \arrow[u] \\
+                X  & X\times Y \arrow[l] \arrow[r] & Y \\
+            \end{tikzcd}
+        \end{center}
+        can be computed by either taking pushouts of the rows and then the pushout of the resulting diagram, or taking pushouts of the columns and then taking pushout of the resulting diagram.
+        
+        Taking pushouts of the rows results in the diagram $*\xleftarrow{}*\rightarrow X\cup_{X\times Y} Y$ and taking pushouts of the columns results in the diagram $*\xleftarrow{}X\wedge Y\rightarrow *$. 
+        Since the pushout of the latter diagram is $\Sigma\left(X\wedge Y\right)$ and the pushout of the first diagram must be equivalent to this, we have $X\cup_{X\times Y} Y\cong\Sigma\left(X\wedge Y\right)$.
+        The maps $X\to\Sigma\left(X\wedge Y\right)$ and $Y\to\Sigma\left(X\wedge Y\right)$ factor through $*$ by definition which proves the proposition.
+    \end{proof}
+\end{lemma}
+\begin{lemma}\label{lem:allSqArePo} %TODO corollary 2.24
+    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Then all squares of the diagram         
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"] & Y \arrow[r] \arrow[d] & * \arrow[d] \\
+            X \arrow[r] \arrow[d] & \Sigma\left(X\wedge Y\right) \arrow[r] \arrow[d] & \Sigma Y\vee\Sigma\left(X\wedge Y\right) \arrow[d]\\
+            * \arrow[r] &  \Sigma X\vee\Sigma\left(X\wedge Y\right)\arrow[r] & \Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right) \\
+        \end{tikzcd}\;.
+    \end{center}
+    are pushouts.
+    \begin{proof}
+        By \cref{lem:poSqWithFactoringTerminal} the top left square is a pushout square.
+        The top right square is a pushout by the pasting law applied to
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                Y \arrow[r] \arrow[d] & * \arrow[d] \\
+                * \arrow[r] \arrow[d] & \Sigma Y \arrow[d] \\
+                \Sigma\left(X\wedge Y\right) \arrow[r] & \Sigma Y\vee\Sigma\left(X\wedge Y\right) \\
+            \end{tikzcd}\
+        \end{center}
+        because $Y\to\Sigma\left(X\wedge Y\right)$ factors through $*$ (again by \cref{lem:poSqWithFactoringTerminal}).
+        The analogous argument also shows that the bottom left square is a pushout.
+
+        The bottom right square is a pushout since for pointed objects $A,B,C\in \left(C_*\right)_0$ the square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                B \arrow[r] \arrow[d] &  B\vee C \arrow[d] \\
+                A\vee B \arrow[r] & A\vee B\vee C\\
+            \end{tikzcd}\
+        \end{center}
+        is always a pushout and the wedge product is commutative. %TODO prove associativity+commutativity and maybe reference it here
+    \end{proof}
+\end{lemma}
+\begin{corollary}
+    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Then we have $\Sigma\left(X\times Y\right)\cong\Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right)$.
+    \begin{proof}
+        The outer square of \cref{lem:allSqArePo} proves this immediately. 
+    \end{proof}
+\end{corollary}
+\begin{corollary}
+    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$.
+    \begin{proof}
+        Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the left vertical and top horizontal maps of the big left square (top and bottom left squares combined) are equivalent to the maps of the square in \cref{lem:poOfProductIsSuspension}.
+        Since both are pushout squares, there is a canonical equivalence as required.
+    \end{proof}
+\end{corollary}
+%TODO prove James Splitting Theorem
