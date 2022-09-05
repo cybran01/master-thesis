@@ -206,7 +206,7 @@
     Then let $\Conn(C_*)\subset C_*$ be the full subcategory of effective morphisms.
     We call $\Conn(C_*)$ the \emph{\inftycat/ of pointed connected objects}.
 \end{definition}
-\begin{corollary}
+\begin{corollary}\label{prop:mayRecognitionTheoremGroup}
     Let $C$ be an \inftytop/. 
     Then there is an equivalence of \inftycats/ $\Grp(C)\simeq\Conn(C)$.
     \begin{proof}
@@ -233,4 +233,33 @@
         Thus $x$ is effective if and only if $X$ has a single connected component, which proves the proposition.
     \end{proof}
 \end{lemma}
+\begin{remark}
+    By definition of loop spaces and explicit computation, the \Cech/ nerve of an effective map $x\colon*\to X$ (so $X$ is a pointed connected space) is given by 
+    \begin{center}
+        \begin{tikzcd}
+            & C(x)_3 & C(x)_2 & C(x)_1 & C(x)_0 &  C(x)_{-1} \\ 
+            \ldots \arrow[r] \arrow[r, yshift=-1em] \arrow[r, yshift=1em] \arrow[r, yshift=-2em] \arrow[r, yshift=2em] 
+            & \Omega X\times\Omega X\times\Omega X \arrow[r, yshift=.5em] \arrow[r, yshift=-.5em] \arrow[r, yshift=1.5em] \arrow[r, yshift=-1.5em] \arrow[l, yshift=.5em] \arrow[l, yshift=-.5em] \arrow[l, yshift=1.5em] \arrow[l, yshift=-1.5em]
+            & \Omega X\times\Omega X\arrow[r] \arrow[r, yshift=-1em] \arrow[r, yshift=1em] \arrow[l] \arrow[l, yshift=-1em] \arrow[l, yshift=1em]
+            & \Omega X \arrow[r, yshift=.5em] \arrow[r, yshift=-.5em] \arrow[l, yshift=.5em] \arrow[l, yshift=-.5em]
+            & * \arrow[l] \arrow[r, "x"] & X
+        \end{tikzcd}
+    \end{center}
+    where
+    \begin{itemize}
+        \item the map induced by a face map 
+        \begin{itemize}
+            \item $d_0^n$ is $(\gamma_1,\gamma_2,\ldots,\gamma_n)\mapsto(\gamma_2,\ldots,\gamma_n)$
+            \item $d_n^n$ is $(\gamma_1,\ldots,\gamma_{n-1},\gamma_n)\mapsto(\gamma_1,\ldots,\gamma_{n-1})$
+            \item $d_k^n$ for $0<k<n$ is $(\gamma_1,\ldots,\gamma_k,\gamma_{k+1},\ldots,\gamma_n)\mapsto(\gamma_1,\ldots,\gamma_k\star\gamma_{k+1},\ldots,\gamma_n)$ where $\star$ denotes concatenation of loops
+        \end{itemize}
+        \item the map induced by a degeneracy map $s_k^n$ is injecting the constant loop $c_x$ at the $k$-th position.
+    \end{itemize}
+    We can thus view the map $\Conn(\spaces)\to\Grp(\spaces)$ as being a canonically enriched version of the loop space functor.
+    The statement of \cref{prop:mayRecognitionTheoremGroup} therefore allows us to recognize whether a pointed connected space $X$ is deloopable:
+
+    It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta^{\op}\right)\to\spaces$ %TODO can do this in top using replacement lemma?
+    where $U_n\cong X\times\ldots\times X$ with $X$ appearing $n$ times.
+    The delooping is then given by taking the colimit of this diagram and taking the canonical map $A\colon*\to\colim U$ to be a pointed space, as this fulfills $\Omega A\cong X$.
+\end{remark}
 

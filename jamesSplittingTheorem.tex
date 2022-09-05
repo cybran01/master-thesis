@@ -17,7 +17,7 @@
                 * \arrow[r, "i_2"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
-        shows that $i_1$ and $i_2$ are equivalent maps in $C$, since $X\to *\xrightarrow{i_1}\Sigma X$ and $X\to *\xrightarrow{i_2}\Sigma X$ are identical in $\ho(C)$ by construction and $X\to *$ is an epimorphism in $\ho(C)$ since $*$ is terminal.
+        shows that $i_1$ and $i_2$ are equivalent maps in $C$, since $X\to *\xrightarrow{i_1}\Sigma X$ and $X\to *\xrightarrow{i_2}\Sigma X$ are identical in $\ho(C)$ by construction and $X\to *$ is an epimorphism in $\ho(C)$ since $*$ is terminal. %TODO this proof is incorrect (it is not necessarily an epi); fix!
         Thus we get that 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -136,7 +136,7 @@
             \begin{tikzcd} [sep = 4em]
                 B \arrow[r] \arrow[d] &  B\vee C \arrow[d] \\
                 A\vee B \arrow[r] & A\vee B\vee C\\
-            \end{tikzcd}\
+            \end{tikzcd}
         \end{center}
         is always a pushout and the wedge product is commutative. %TODO prove associativity+commutativity and maybe reference it here
     \end{proof}
@@ -148,12 +148,39 @@
         The outer square of \cref{lem:allSqArePo} proves this immediately. 
     \end{proof}
 \end{corollary}
-\begin{corollary}
+\begin{lemma}\label{lem:suspensionCommutesWithProduct}
     Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
-    Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$.
+    Then there is a canonical equivalence $\Sigma\left(X\times Y\right)\cong X\times\Sigma Y$.
+    \begin{proof}
+        The squares
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X\vee Y \arrow[r] \arrow[d] &  X\vee * \arrow[d] \\
+                X\vee * \arrow[r] & X\vee\Sigma Y\\
+            \end{tikzcd}
+            \begin{tikzcd} [sep = 4em]
+                X\times Y \arrow[r] \arrow[d] &  X\times * \arrow[d] \\
+                X\times * \arrow[r] & X\times\Sigma Y\\
+            \end{tikzcd}\
+        \end{center}
+        are both pushouts; the first one as colimits commute and the second one due to universality. %TODO maybe explain at some earlier point how universality is equivalent to base change
+        Computing the pushout of the diagram as in \cref{lem:poSqWithFactoringTerminal}
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                * & * \arrow[l] \arrow[r] & * \\
+                X\vee * \arrow[d, equal] \arrow[u] & X\vee Y \arrow[l]  \arrow[r] \arrow[d] \arrow[u] & X\vee * \arrow[d, equal] \arrow[u] \\
+                X\times *  & X\times Y \arrow[l] \arrow[r] & X\times * \\
+            \end{tikzcd}
+        \end{center}
+        we get $X\times\Sigma Y$ by computing the pushout of the pushouts of the rows and $\Sigma\left(X\times Y\right)$ by computing the pushout of the pushouts of the columns, which proves the proposition.
+    \end{proof}
+\end{lemma}
+\begin{corollary}[James Splitting]
+    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$.
     \begin{proof}
         Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the left vertical and top horizontal maps of the big left square (top and bottom left squares combined) are equivalent to the maps of the square in \cref{lem:poOfProductIsSuspension}.
-        Since both are pushout squares, there is a canonical equivalence as required.
+        Since both are pushout squares, we get an equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$ and the proposition follows from \cref{lem:suspensionCommutesWithProduct}.
     \end{proof}
 \end{corollary}
 %TODO prove James Splitting Theorem
