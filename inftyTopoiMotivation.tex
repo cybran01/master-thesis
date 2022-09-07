@@ -2,134 +2,78 @@
 %TODO intro about being able to compute fibers nicely
 %TODO how to compute colim/lim in S Kerodon Proposition 7.5.1.5. and Corollary 7.5.7.7.
 %TODO define htpy pb functor, use HTT Proposition A.2.8.7
-\begin{prop}
-    Let 
-    \begin{center}
-        \begin{tikzpicture}
-            \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-            {
-              X_0 && X_1\\
-              X_2 &{}& X\\
-              &Y&\\};
-            \path[-stealth]
+%TODO HTT Theorem 6.1.0.6. for equiv char, Proposition 6.1.5.3. 
+Let $C$ denote be a locally presentable \inftycat/.
 
-            (m-1-1) edge (m-1-3)
-            (m-1-1) edge (m-2-1)
-            (m-2-1) edge (m-2-3)
-            (m-1-3) edge (m-2-3);
+In this section, we want to motivate the definition of an \inftytop/.
+Very vaguely speaking, an \inftytop/ is an \inftycat/ which behaves much like the \inftycat/ of spaces $\spaces$.
+There are different equivalent characterizations of an \inftytop/; for an overview and the proofs of these equivalent characterizations, see e.g. %HTT chapter 6.1
+.
+We will say that $C$ is an \inftytop/ if it has ''universal colimits'' and ''descent'' which corresponds to %HTT Theorem 6.1.0.6. (2)
+.
+The characterization of \inftytop/ in this way is due to Charles Rezk.
+Before we define ''universal colimits'' and ''descent'', we will give a brief motivation:
 
-            \draw[->] (m-2-2) -- (m-3-2);
-        \end{tikzpicture}
-    \end{center}
-    be a homotopy pushout square in $\spaces$ over $Y$. 
-    We assume that the homotopy pullback for any such diagram along any map $\Delta^0\to Y$ is again a homotopy pushout. 
+They are supposed to ensure fibers of maps behave nicely under various glueings, as they do in $\spaces$ (which we will prove to be an \inftytop/ later on).
 
-    Then the homotopy pullback along any map $B\to Y$ is a homotopy pushout.
-    \begin{proof}
-        Let 
-        \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-                {
-                  X_0\times_Y B && X_1\times_Y B\\
-                  X_2\times_Y B &{}& X\times_Y B\\
-                  &B&\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-3)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-3)
-                (m-1-3) edge (m-2-3);
-    
-                \draw[->] (m-2-2) -- (m-3-2);
-            \end{tikzpicture}
-        \end{center}
-        be the homotopy pullback along $f:B\to Y$.
-        Let $E$ be the homotopy pushout of this diagram and let $e:E\to X\times_Y B$ be a map induced by the universal property of the homotopy pushout. %TODO how does this work
+For universality, let 
+\begin{center}
+    \begin{tikzpicture}
+        \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
+        {
+            X_{01} && X_1\\
+            X_0 &{}& X\\};
+        \path[-stealth]
 
-        To prove the proposition, it suffices to prove that this map is a weak equivalence.
-        Thus let 
-        \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-                {
-                  F_0 && F_1\\
-                  F_2 &{}& F^E\\
-                  &\Delta^0 &\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-3)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-3)
-                (m-1-3) edge (m-2-3);
-    
-                \draw[->] (m-2-2) -- (m-3-2);
-            \end{tikzpicture}
-        \end{center}
-        be the homotopy pullback of 
-        \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-                {
-                  X_0\times_Y B && X_1\times_Y B\\
-                  X_2\times_Y B &{}& E\\
-                  &B&\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-3)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-3)
-                (m-1-3) edge (m-2-3);
-    
-                \draw[->] (m-2-2) -- (m-3-2);
-            \end{tikzpicture}
-        \end{center}
-        along a map $\Delta^0\to B$. 
-        Let
-        \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=1em,minimum width=2em]
-                {
-                  F_0 && F_1\\
-                  F_2 &{}& F^{X\times_Y B}\\
-                  &\Delta^0 &\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-3)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-3)
-                (m-1-3) edge (m-2-3);
-    
-                \draw[->] (m-2-2) -- (m-3-2);
-            \end{tikzpicture}
-        \end{center}
-        be the pullback along $\Delta^0\to B\to Y$.
-        By assumption, both fiber diagrams are homotopy pushouts, thus the induced map $F^E\to F^{X\times_Y B}$ is a weak equivalence.
-        Since the point $\Delta^0\to B$ was arbitrary, this means that $E\to X\times_Y B$ is a fiberwise equivalence over $B$.
+        (m-1-1) edge (m-1-3)
+        (m-1-1) edge (m-2-1)
+        (m-2-1) edge (m-2-3)
+        (m-1-3) edge (m-2-3);
+    \end{tikzpicture}
+\end{center}
+be a homotopy pushout square in $\spaces$ and let $b\colon*\to B$ be a point.
+Pulling the diagram back along this point, we obtain a commutative cube in $\spaces$
+\begin{center}
+    \begin{tikzcd} [sep = .5 cm]
+        F_{01} \arrow [dr] \arrow [rr] \arrow [dd] & & F_1 \arrow [dr] \arrow [dd] \\
+        & F_0 \arrow [rr, crossing over] \arrow [dd] & & F \arrow [dd] & \\
+        X_{01} \arrow [dr] \arrow [rr] & & X_1 \arrow [dr] \\
+        & X_0 \arrow [from=uu, crossing over] \arrow [rr] & & X &
+    \end{tikzcd}
+\end{center}
+whose side faces are pullbacks by the pasting law.
+The top square consists of fibers over $B$ and since the bottom square is a pushout we want that the top square is a pushout as well so that we can compute $F$ from the fibers $F_{01},F_0$ and $F_1$. 
 
-        By the lifting and factorization properties of the model category, we can can replace the objects $E$ and $X\times_Y B$ with weakly equivalent objects $\widehat{E}$ and $\widehat{X\times_Y B}$ such that we have a commutative diagram
-        \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                    E &&X\times_Y B\\
-                    \widehat{E} &&\widehat{X\times_Y B}\\
-                    &B&\\};
-                \path[-stealth]
+For all cubes in $\Top$ such that the vertical faces are homotopy pullbacks and the bottom square is a homotopy pushout, the top face is a homotopy pushout as well.
+This is called  ''universality of pushouts''.
+By the pasting law this shows that our desired statement is not only true for pulling back along points, we can pull back the pushout square over $X\to B$ along arbitrary maps $A\to B$ and the resulting cube will have a pushout as a top square.
 
-                (m-1-1) edge (m-1-3)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-3)
-                (m-1-3) edge (m-2-3)
-                
-                (m-2-1) edge (m-3-2)
-                (m-2-3) edge (m-3-2);
-            \end{tikzpicture}
-        \end{center} 
-        where the maps going into $B$ maps are Kan fibrations and the vertical maps are trivial cofibrations.
-        The lower horizontal map is a fibrewise weak equivalence between Kan fibrations and thus a weak equivalence.
+We can also ask for this to be true not only for pushouts but general colimits; this is true as well, but it turns it that is suffices to check it for pushouts and small coproducts.
 
-        Therefore the upper horizontal map is a weak equivalence which proves the proposition.
-    \end{proof}
-\end{prop}
-%TODO Kerodon Corollary 3.4.1.12/Proposition 3.4.2.9 for htpy invariance of pullback/pushout squares to replace everything with Kan complexes
+For descent, when given a diagram 
+\begin{center}
+    \begin{tikzcd} [sep = 4em]
+        X_0 \arrow[d] & X_{01} \arrow[l, >->] \arrow[r, >->] \arrow[d] & X_1 \arrow[d] \\
+        B_0 & B_{01} \arrow[l, >->] \arrow[r, >->] & B_1 \\
+    \end{tikzcd}
+\end{center}
+where the horizontal maps are nice inclusions (cofibrations) and the vertical maps have equivalent homotopy fibers, then the induced map $X_0\cup_{X_{01}}X_1\to B_0\cup_{B_{01}}B_1$ should have equivalent fibers as well.
+''Having equivalent fibers'' is supposed to mean that the induced maps between fibers of the vertical maps are weak equivalences.
+
+This is equivalent to stating that in a cube 
+\begin{center}
+    \begin{tikzcd} [sep = .5 cm]
+        X_{01} \arrow [dr, >->] \arrow [rr, >->] \arrow [dd] & & X_1 \arrow [dr, >->] \arrow [dd] \\
+        & X_0 \arrow [rr, crossing over, >->] \arrow [dd] & & X_0\cup_{X_{01}}X_1 \arrow [dd] & \\
+        B_{01} \arrow [dr, >->] \arrow [rr, >->] & & B_1 \arrow [dr, >->] \\
+        & B_0 \arrow [from=uu, crossing over] \arrow [rr, >->] & & B_0\cup_{B_{01}}B_1 &
+    \end{tikzcd}
+\end{center}
+when the left and rear faces are homotopy pullback and the top and bottom faces are pushouts (hence also homotopy pushouts due to the horizontal maps being cofibrations), the front and right faces are homotopy pullbacks as well.
+
+This property holds true in $\Top$ with the Quillen model structure; even better, it only requires the top and bottom square to be homotopy pushouts.
+This property will be called ''descent for pushouts''.
+Therefore when switching to the \inftycat/ of spaces $\spaces$, the property can be stated as that in a cube (which is a diagram $\Delta^1\times\Delta^1\times\Delta^1\to C$) where the left and rear faces are pullbacks and top and bottom faces are pushouts, the front and left faces are pullbacks as well.
+A natural generalization is to replace pushouts by arbitrary small diagrams, which is also true in $\Top$ (and therfore $\spaces$).
+
+It will again turn out that we can always reduce to showing descent for only pushouts and small coproducts.
