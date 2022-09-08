@@ -15,7 +15,7 @@
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 A \arrow[>->, r, "h"] \arrow[>->,d] & B \arrow[d]\\
-                C' \arrow[>->, r, "h"] \arrow[d, "\textasciitilde"] & D' \arrow[d, "\textasciitilde"] \\
+                C' \arrow[>->, r, "h"] \arrow[d, "\sim"] & D' \arrow[d, "\sim"] \\
                 C \arrow[>->, r, "h"] & D
             \end{tikzcd}
         \end{center}
@@ -51,7 +51,7 @@
     \begin{proof}
         We prove the analogous statement in the model category $\Top$, which is sufficent by \cref{cor:sufficientToProveInModCat}.
 
-        By factoring the map $D'\xrightarrow{\textasciitilde}\overline{D}\xtwoheadrightarrow{h} D$ into a weak equivalence followed by an h-fibration (which is also a Serre fibration) and pulling back successively, we obtain the diagram %TODO explain why we we use weak equivalence here: since the faces are pb in the SERRE model str, the 3 remaining vertical maps are only w.e.
+        By factoring the map $D'\xrightarrow{\sim}\overline{D}\xtwoheadrightarrow{h} D$ into a weak equivalence followed by an h-fibration (which is also a Serre fibration) and pulling back successively, we obtain the diagram %TODO explain why we we use weak equivalence here: since the faces are pb in the SERRE model str, the 3 remaining vertical maps are only w.e.
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
@@ -74,11 +74,11 @@
         \end{center}
         is a homotopy pushout.
 
-        We factor the map $A\xtailrightarrow{h}\widehat{B}\xrightarrow{\textasciitilde} B$ into an h-cofibration followed by a weak equivalence.
+        We factor the map $A\xtailrightarrow{h}\widehat{B}\xrightarrow{\sim} B$ into an h-cofibration followed by a weak equivalence.
         We obtain a diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                A \arrow[>->, r, "h"] \arrow[d] & \widehat{B} \arrow[r, "\textasciitilde"] \arrow[d] & B \arrow[d] \\
+                A \arrow[>->, r, "h"] \arrow[d] & \widehat{B} \arrow[r, "\sim"] \arrow[d] & B \arrow[d] \\
                 C \arrow[>->, r, "h"] & C\cup_{A}\widehat{B} \arrow[r] & D \\
             \end{tikzcd}
         \end{center}
@@ -144,12 +144,12 @@
         \end{center}
         where the back and left square are homotopy pullbacks and top and bottom are homotopy pushouts, we show that we can construct a cube of the required form such that all faces are equivalent to the corresponding faces of the starting cube.
         
-        We first factor the maps $A\xtailrightarrow{h}\hat{C}\xtwoheadrightarrow[\textasciitilde]{h} C$ and $B'\xrightarrow{\textasciitilde}\overline{B}\xtwoheadrightarrow{h} B$ to obtain the diagram
+        We first factor the maps $A\xtailrightarrow{h}\hat{C}\xtwoheadrightarrow[\sim]{h} C$ and $B'\xrightarrow{\sim}\overline{B}\xtwoheadrightarrow{h} B$ to obtain the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                C^{\prime} \arrow[dd] & \hat{C}\times_CC' \arrow[->>]{l}[swap]{\textasciitilde} \arrow[dd] & A^{\prime} \arrow[l] \arrow[r] \arrow[d, "\textasciitilde"] & B^{\prime} \arrow[d, "\textasciitilde"] \\
+                C^{\prime} \arrow[dd] & \hat{C}\times_CC' \arrow[->>]{l}[swap]{\sim} \arrow[dd] & A^{\prime} \arrow[l] \arrow[r] \arrow[d, "\sim"] & B^{\prime} \arrow[d, "\sim"] \\
                 && \overline{A} \arrow [->>,d, "h"] \arrow[r] & \overline{B} \arrow[->>,d, "h"] \\
-                C & \hat{C} \arrow[->>]{l}{h}[swap]{\textasciitilde} & A \arrow[>->,l, "h"] \arrow[r] & B 
+                C & \hat{C} \arrow[->>]{l}{h}[swap]{\sim} & A \arrow[>->,l, "h"] \arrow[r] & B 
             \end{tikzcd}
         \end{center}
         where 
@@ -157,21 +157,21 @@
             \item $\overline{A}=A\times_{B}\overline{B}$
             \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks as the outer and lower square are homotopy pullback
         \end{itemize}
-        Next we factor the map $A'\xtailrightarrow{h}X\xrightarrow{\textasciitilde}\hat{C}\times_CC'$. 
+        Next we factor the map $A'\xtailrightarrow{h}X\xrightarrow{\sim}\hat{C}\times_CC'$. 
         Note that the diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X \arrow[r, "\textasciitilde"] \arrow[d] & C' \arrow[d] \\
-                \hat{C} \arrow[->>]{r}{\textasciitilde}[swap]{h} & C \\
+                X \arrow[r, "\sim"] \arrow[d] & C' \arrow[d] \\
+                \hat{C} \arrow[->>]{r}{\sim}[swap]{h} & C \\
             \end{tikzcd}
         \end{center}
         is a homotopy pullback square by.
         We form the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                C^{\prime} \arrow[dd] & X \arrow{l}[swap]{\textasciitilde} \arrow[d, "\textasciitilde"] & A^{\prime} \arrow[>->,l, "h"] \arrow[r] \arrow[d, "\textasciitilde"] & B^{\prime} \arrow[d, "\textasciitilde"] \\
+                C^{\prime} \arrow[dd] & X \arrow{l}[swap]{\sim} \arrow[d, "\sim"] & A^{\prime} \arrow[>->,l, "h"] \arrow[r] \arrow[d, "\sim"] & B^{\prime} \arrow[d, "\sim"] \\
                 & X\cup_{A'}\overline{A} \arrow[d] & \overline{A} \arrow[>->,l, "h"] \arrow [->>,d, "h"] \arrow[r] & \overline{B} \arrow[->>,d, "h"] \\
-                C & \hat{C} \arrow[->>]{l}{h}[swap]{\textasciitilde} & A \arrow[>->,l, "h"] \arrow[r] & B 
+                C & \hat{C} \arrow[->>]{l}{h}[swap]{\sim} & A \arrow[>->,l, "h"] \arrow[r] & B 
             \end{tikzcd}
         \end{center}
         where $X\to X\cup_{A'}\overline{A}$ is a weak equivalence as its a pushout of a weak equivalence along an h-cofibration. %TODO reference
@@ -191,7 +191,7 @@
             \end{tikzcd}
         \end{center}
         we know that both are homotopy pullbacks.
-        Finally, we factor the map $X\cup_{A'}\overline{A}\xtailrightarrow[\textasciitilde]{h}\overline{C}\xtwoheadrightarrow{h}\hat{C}$.
+        Finally, we factor the map $X\cup_{A'}\overline{A}\xtailrightarrow[\sim]{h}\overline{C}\xtwoheadrightarrow{h}\hat{C}$.
         Then 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -239,8 +239,8 @@
         In the first case, we have a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X \arrow[r, "{x\mapsto (x,t)}"] \arrow[->>,d, "h"] & \M(f) \arrow[r, "\textasciitilde"] \arrow[d] & Y \arrow[->>,d, "h"] \\
-                A \arrow[r, "{a\mapsto (a,t)}"] & \M(g) \arrow[r, "\textasciitilde"] & B \\
+                X \arrow[r, "{x\mapsto (x,t)}"] \arrow[->>,d, "h"] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[->>,d, "h"] \\
+                A \arrow[r, "{a\mapsto (a,t)}"] & \M(g) \arrow[r, "\sim"] & B \\
             \end{tikzcd}
         \end{center}
         where the outer square is the starting square and in particular homotopy pullback, so by the pasting law the left square is homotopy pullback as well.
@@ -256,8 +256,8 @@
         In the second case we have the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & Y \arrow[r, hook, "\textasciitilde"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
-                * \arrow[r, "\hat{b}"] & B \arrow[r, hook, "\textasciitilde"] & \M(g) \\
+                F \arrow[r] \arrow[d] & Y \arrow[r, hook, "\sim"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
+                * \arrow[r, "\hat{b}"] & B \arrow[r, hook, "\sim"] & \M(g) \\
             \end{tikzcd}
         \end{center}
         where the indicated maps are weak equivalences since they are right inverse to the maps $\M(f)\to Y$ and $\M(g)\to B$ respectively, which are weak equivalences themselves.
