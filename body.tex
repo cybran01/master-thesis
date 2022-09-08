@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{scrartcl}
+\documentclass[a4paper,10pt, twoside]{scrartcl}
 
 \usepackage{polyglossia}
 \usepackage{csquotes}
@@ -8,16 +8,17 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{mathtools}
+\usepackage{stackengine}
 \usepackage{faktor}
 \usepackage{tikz}
 \usetikzlibrary{matrix}
 \usetikzlibrary{arrows}
 \usetikzlibrary{cd}
-\usepackage{scrlayer-scrpage}
-\pagestyle{scrheadings}
+\usepackage[automark, headsepline]{scrlayer-scrpage}
+\ihead{\leftmark}
+\ohead{\rightmark}
 \usepackage{hyperref}
 \usepackage{cleveref}
-
 \usepackage{subfiles}
 
 \setkomafont{section}{\normalfont\Large}
@@ -71,47 +72,49 @@
 \DeclareMathOperator{\ho}{ho}
 \DeclareMathOperator{\Disc}{Disc}
 
-%TODO make the distance between text and arrow better
+\newcommand\xtailrightarrow[2][]{\ensurestackMath{\mathrel{%
+  \stackengine{1pt}{%
+    \stackengine{0pt}{\rightarrowtail}{\scriptstyle#2}{O}{c}{F}{F}{S}%
+  }{\scriptstyle#1}{U}{c}{F}{F}{S}%
+}}}
+
+\newcommand\xtwoheadrightarrow[2][]{\ensurestackMath{\mathrel{%
+  \stackengine{1pt}{%
+    \stackengine{0pt}{\twoheadrightarrow}{\scriptstyle#2}{O}{c}{F}{F}{S}%
+  }{\scriptstyle#1}{U}{c}{F}{F}{S}%
+}}}
+
 \makeatletter
-\providecommand*{\twoheadrightarrowfill@}{%
-  \arrowfill@\relbar\relbar\twoheadrightarrow
-}
-\providecommand*{\twoheadleftarrowfill@}{%
-  \arrowfill@\twoheadleftarrow\relbar\relbar
-}
-\providecommand*{\tailrightarrowfill@}{%
-  \arrowfill@\relbar\relbar\rightarrowtail
-}
-\providecommand*{\tailleftarrowfill@}{%
-  \arrowfill@\leftarrowtail\relbar\relbar
-}
-\providecommand*{\xtwoheadrightarrow}[2][]{%
-  \ext@arrow 0579\twoheadrightarrowfill@{#1}{#2}%
-}
-\providecommand*{\xtwoheadleftarrow}[2][]{%
-  \ext@arrow 5097\twoheadleftarrowfill@{#1}{#2}%
-}
-\providecommand*{\xtailrightarrow}[2][]{%
-  \ext@arrow 0580\tailrightarrowfill@{#1}{#2}%
-}
-\providecommand*{\xtailleftarrow}[2][]{%
-  \ext@arrow 5098\tailleftarrowfill@{#1}{#2}%
-}
+\newcounter{blankpages}
+\def\cleardoubleoddstandardpage{%
+\clearpage
+\if@twoside \ifodd \c@page \else
+ \stepcounter{blankpages}%
+  \hbox {}\thispagestyle{empty}\newpage \if@twocolumn \hbox {}\thispagestyle{empty}\newpage \fi 
+\fi \fi }
 \makeatother
+\renewcommand\thepage{\the\numexpr\value{page}-\value{blankpages}\relax}
 
 \begin{document}
+    
     \section{Basics and Notation}
     \subfile{basics.tex}
+    \cleardoubleoddstandardpage
     \section{The \inftycat/ of Spaces $\spaces$}
     \subfile{inftyCatOfSpaces.tex}
+    \cleardoubleoddstandardpage
     \section{Motivation for $\infty$-Topoi}
-    \subfile{inftyTopoiMotivation.tex} %TODO rewrite
+    \subfile{inftyTopoiMotivation.tex}
+    \cleardoubleoddstandardpage
     \section{Definition of $\infty$-Topoi}
     \subfile{inftyTopoiDefinition.tex}
+    \cleardoubleoddstandardpage
     \section{$\spaces$ as an $\infty$-Topos}
     \subfile{spacesIsInftyTopos.tex}
+    \cleardoubleoddstandardpage
     \section{The May Recognition Theorem}
     \subfile{mayRecognitionTheorem.tex}
+    \cleardoubleoddstandardpage
     \section{The James Splitting Theorem}
     \subfile{jamesSplittingTheorem.tex}
 \end{document}
