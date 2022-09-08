@@ -2,16 +2,16 @@
 \begin{definition}[Simplex Category]
     Let $\Delta$ be the category with
     \begin{itemize}
-        \item objects the categories $[n]$ for all $n\in\Nat$
-        \item morphisms functors between these categories (which are exactly the monotone increasing functions when viewing them as partially ordered sets).
+        \item objects the categories $[n]=\{0\to1\to\ldots\to n\}\subset\Nat$ for all $n\in\Nat$
+        \item morphisms functors between these categories (which are exactly monotone increasing functions).
     \end{itemize}
     We call this category the \emph{simplex category $\Delta$}.
 \end{definition}
 \begin{definition}[Augmented Simplex Category]
     Let $\Delta_+$ be the category with
     \begin{itemize}
-        \item objects the categories $[n]$ for all $n\in\Nat$ and $[-1]=\emptyset$ which is also a totally ordered set
-        \item morphisms functors between these categories (which are exactly the monotone increasing functions when viewing them as partially ordered sets).
+        \item objects the categories $[n]$ for all $n\in\Nat$ and $[-1]=\emptyset$
+        \item morphisms functors between these categories (which again are exactly the monotone increasing functions).
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
 \end{definition}
@@ -26,9 +26,11 @@
     \end{itemize}
     We then call $\N(C)$ the \emph{nerve of the category $C$}.
 \end{definition}
-%TODO prove that nerve is fully faithful/has left adjoint
+\begin{lemma} %Kerodon Proposition 1.2.2.1
+    The nerve functor $\N\colon\Cat\to\sSet$ is fully faithful and has a left adjoint $\ho\colon\sSet\to\Cat$ which we call the \emph{homotopy category} of a simplicial set.
+\end{lemma}
 %TODO define \Cat_{\Delta} as category of simplicially enriched categories
-\begin{definition}[Realization of Simplicial Set as Simplicial Category]
+\begin{construction}[The Homotopy Coherent Nerve]
     For $[n]\in\Delta$ we define a simplicial category $\C[n]$ as follows:
     \begin{itemize}
         \item the objects of $\C[n]$ are the elements of the set $\set{0,\ldots,n}$
@@ -42,8 +44,7 @@
                 P_{i,j}\times P_{j,k}&\to P_{i,k}\\
                 (I,J)&\mapsto I\cup J
         \end{align*}
-    \end{itemize}
-    and it suffices to check the properties of a simplicial category.
+    \end{itemize}.
     For a morphism $[n]\to[m]\in\Delta$ we can define a functor
     \begin{equation*}
         \C[f]\colon\C[n]\to C[m]
@@ -58,35 +59,10 @@
             \end{align*}
     \end{itemize}
     so we obtain a functor $\C[-]\colon\Delta\to\Cat_{\Delta}$.
-    
-    Since $\Cat_{\Delta}$ is cocomplete, this functor extends up to unique natural isomorphism to a functor $\R\colon\sSet\to\Cat_{\Delta}$ such that 
-    \begin{center}
-        \begin{tikzpicture}
-            \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-            {
-            \Delta & \Cat_{\Delta}\\
-            \sSet &  \\};
-            \path[-stealth]
-            
-            (m-1-1) edge node [above] {$\C[-]$} (m-1-2)
-            (m-2-1) edge node [below] {$\R$} (m-1-2);
-            \draw[right hook->] (m-1-1) edge node [left] {Yoneda} (m-2-1);
-        \end{tikzpicture}
-    \end{center}
-    commutes.
-
-    For a simplicial set $A$ we call $\R(A)$ the \emph{realization of $A$ as a simplicial category}.
-\end{definition}
+\end{construction}
 \begin{definition}[Homotopy Coherent Nerve] %HTT Definition 1.1.5.1. 
     For a simplicial category $A$ we define the \emph{simplicial nerve (or homotopy coherent nerve) $\Nhc(A)$ of $A$} as $\Nhc(A)=\Hom_{\Cat_{\Delta}}(\C[-],A)$ and thus we obtain a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
 \end{definition}
-\begin{lemma}
-    We have an adjunction $R\dashv N$.
-    \begin{proof} %TODO be more accurate, e.g. https://ncatlab.org/nlab/show/Yoneda+extension
-        For every $n\in\Nat$, we have $\Hom_{\sSet}(\Delta^n,\Nhc(A))=\Nhc(A)_n=\Hom_{\Cat_{\Delta}}(\C[n],A)$ by definition.
-        Thus we have $\Hom_{\sSet}(\Delta^n,\Nhc(A))=\Hom_{\Cat_{\Delta}}(\R(\Delta^n),A)$ and since every presheaf is a colimit of representable presheaves and $\R$ commutes with colimits by construction we are finished.
-    \end{proof}
-\end{lemma}
 \begin{prop} %HTT Theorem 2.4.5.1.
     Let $A$ be a simplicial category such that for every pair of objects $X,Y\in A$ the simplicial set $\Hom_A(X,Y)$ is a Kan-complex.
     Then $\Nhc(A)$ is an \inftycat/.
@@ -116,13 +92,25 @@
     Let $F\colon C\to D$ be a functor between \inftycats/ and let $C_0\subset C$ be a full subcategory.
     Then $F$ is \emph{right Kan-extended from $C_0$} if for all objects $c\in C$ the diagram
     \begin{equation*}
-        \left(C_{c/}\times_C C_0\right)^{\lhd}\to C\to D %TODO second map is slice contraction
+        \left(C_{c/}\times_C C_0\right)^{\lhd}\to \Delta^0\star C_{c/}\xrightarrow{c} C\to D
     \end{equation*}
-    is a limit cone.
+    where the map $c\colon\Delta^0\star C_{c/}\to C$ is the contraction map, is a limit cone.
+
+    Dually, $F$ is \emph{left Kan-extended from $C_0$} if for all objects $c\in C$ the diagram
+    \begin{equation*}
+        \left(C_{/c}\times_C C_0\right)^{\rhd}\to C_{/c}\star\Delta^0 \xrightarrow{c} C\to D
+    \end{equation*}
+    where the map $c\colon C_{/c}\star\Delta^0\to C$ is the contraction map, is a colimit cone.
 \end{definition}
 %TODO Kan-ext induce adjoints
 \begin{prop} %TODO kerodon Proposition 7.3.5.1
     Let $C$ be an \inftycat/, $C_0\subset C$ a full subcategory and $F\colon C_0\to D$ a functor between \inftycats/.
     If $D$ is complete, then there exists a functor $F\colon C\to D$ that is right Kan-extended from $C_0$.
+
+    Dually if $C$ is cocomplete, then then there exists a functor $F\colon C\to D$ that is left Kan-extended from $C_0$.
+    Furthermore, both Kan-extensions are fully faithful.
+    \begin{proof}
+        %TODO maybe?
+    \end{proof}
 \end{prop}
 %TODO kerodon Proposition 7.3.5.1. for existence of Kan ext
