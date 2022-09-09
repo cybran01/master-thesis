@@ -10,6 +10,7 @@
 %         \item The colimit functor $\colim\colon\Fun(C,\Spaces)\to\Spaces$ preserves $\kappa$-small limits.
 %     \end{itemize}
 % \end{prop}
+%TODO rewrite and use compact objects, HTT Definition 5.3.4.5.
 \begin{definition} %HTT Definition 5.4.2.1.
     Let $\kappa$ be a regular cardinal and let $C$ be a small $\infty$-category.
     We define $\Ind_{\kappa}(C)\subset P(C)$ to be the full subcategory of $P(C)$ with objects consisting of those maps $C^{\op}\to\spaces$ that classify right fibrations $X\to C$ such that $X$ is $\kappa$-filtered. %TODO define what it means to classify
@@ -140,7 +141,7 @@
             \end{tikzcd}
         \end{center}
         is cartesian.
-        By descent for pushouts (since the bottom square is pushout) we thus have that the top square is also a pushout.
+        By universality for pushouts (since the bottom square is pushout) we thus have that the top square is also a pushout.
         Again by %HTT Proposition 4.4.2.2.
         it thus follows that $p(\infty)$ is a colimit cone.
 
@@ -171,7 +172,7 @@
         \end{center}
         and on $1$-simplices by taking canonical maps.
         Thus we get a cartesian natural transformation $\beta\colon F_p\to F_q$.
-        By universality for finite dimensional $K$ we have that $F_p(n)$ is the colimit of $p$ restricted $K^n$.
+        By universality for finite dimensional $K$ we have that $F_p(n)$ is the colimit of $p|_{K^n}$.
         Since $L$ is $1$-dimensional, we have that $F_p$ is a colimit cone and thus $p(\infty)$ is the colimit of its skeleta.
         This proves that $p$ is a colimit cone and thus the proposition.
     \end{proof}
