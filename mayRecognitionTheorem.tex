@@ -61,7 +61,7 @@
     For a map $f\in C_1$ we call $C(f)$ the \Cech/ nerve of $f$.
 \end{definition}
 \begin{lemma}
-    A \Cech/ nerve is determined up to equivalence by the map $u\colon U_0\to U_{-1}$.
+    A \Cech/ nerve is determined up to equivalence by the map $u\colon U_0\to U_{-1}$. %TODO is this needed?
 \end{lemma}
 \begin{prop}\label{prop:grpdEffectiveIfPullback} %TODO HTT Proposition 6.1.2.11.
     Let $U^+$ be an augmented simplicial object in an \inftycat/ $C$.
@@ -227,14 +227,14 @@
     Then $x$ is an effective epimorphism if and only if $X$ is connected as a topological space.
     \begin{proof}
         By %HTT 7.2.1.14.
-        this is equivalent to checking that $L(x)$ is an effective epimorphism in the ordinary category $\ho(\Disc(C))$.
+        this is equivalent to checking that $L(x)$ is an effective epimorphism in the ordinary category $\ho(\Disc(C))$. %Wwhat is L? (adjoint to incl!)
         However $\ho(\Disc(C))$ is equivalent to the discrete topological spaces. %TODO why is this true?
         Here the effective epimorphisms are exactly the surjective morphisms, and since for a discrete space there is a bijection $X\to\pi_0(X)$ we have that a map $f$ is effective if and only $\pi_0(L(f))$ is a surjective map.
         Thus $x$ is effective if and only if $X$ has a single connected component, which proves the proposition.
     \end{proof}
 \end{lemma}
 \begin{remark}
-    By definition of loop spaces and explicit computation, the \Cech/ nerve of an effective map $x\colon*\to X$ (so $X$ is a pointed connected space) is given by 
+    By definition of loop spaces and explicit computation, the \Cech/ nerve of an effective map $x\colon*\to X$ in $\Top$ (so $X$ is a pointed connected space) is given by 
     \begin{center}
         \begin{tikzcd}
             & C(x)_3 & C(x)_2 & C(x)_1 & C(x)_0 &  C(x)_{-1} \\ 

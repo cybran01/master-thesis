@@ -5,7 +5,7 @@
     Then there exists a pushout square  
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d] & \Omega\Sigma X \arrow[d] \\
+            X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\alpha"] & \Omega\Sigma X \arrow[d] \\
             \Omega\Sigma X \arrow[r] & * \\
         \end{tikzcd}\;.
     \end{center}
@@ -13,42 +13,148 @@
         The definition of $\Sigma X$
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X \arrow[r] \arrow[d] & * \arrow[d, "i_1"] \\
-                * \arrow[r, "i_2"] & \Sigma X \\
+                X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
+                * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
-        shows that $i_1$ and $i_2$ are equivalent maps in $C$, since $X\to *\xrightarrow{i_1}\Sigma X$ and $X\to *\xrightarrow{i_2}\Sigma X$ are identical in $\ho(C)$ by construction and $X\to *$ is an epimorphism in $\ho(C)$ since $*$ is terminal. %TODO this proof is incorrect (it is not necessarily an epi); fix!
-        Thus we get that 
+        shows that $i_1$ and $i_2$ are equivalent maps in $C$ (meaning identical in $\ho(C)$), since $X\to *\xrightarrow{i_0}\Sigma X$ and $X\to *\xrightarrow{i_1}\Sigma X$ are identical in $\ho(C)$ by construction and the canonical point $x\colon*\to X$ is a right inverse to $X\to *$.
+        Thus we get that both
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X\times\Omega\Sigma X \arrow[r] \arrow[d] & \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_1"] \\
-                X \arrow[r] & * \arrow[r, "i_2"] & \Sigma X \\
+                \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
+                * \arrow[r, "i_0"] & \Sigma X \\
+            \end{tikzcd}
+            \begin{tikzcd} [sep = 4em]
+                \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
+                * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
         are pullback squares.
-        By universality the top square of the cube
+        Now we pick a product together with projections to obtain a pullback square 
         \begin{center}
-            \begin{tikzcd} [sep = .5 cm]
-                X\times\Omega\Sigma X \arrow [dr] \arrow [rr, "\pi_2"] \arrow [dd] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
-                & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [dd, "i_1"] & \\
-                X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_1"] \\
-                & * \arrow [from=uu,crossing over] \arrow [rr, "i_2"] & & \Sigma X &
+            \begin{tikzcd} [sep = 4em]
+                X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\pi_1"] & \Omega\Sigma X \arrow[d] \\
+                X \arrow[r] & * \\
             \end{tikzcd}
         \end{center}
-        is a homotopy pushout which finishes the proof.
+        and assemble these pullback squares into a diagram
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [dd, "i_0"] & \\
+                X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
+                & * \arrow [from=uu,crossing over] \arrow [rr, "i_1"] & & \Sigma X &
+            \end{tikzcd}
+        \end{center}
+        where tree vertical squares are pullback and the bottom square is a pushout.
+        We now want to construct a map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ such that we have a commutative cube vertical sides pullback.
+        By %TODO Kerodon Lemma 1.4.7.5. 
+        the map $\Lambda_1^2\times\Delta^1\cup_{\Delta_1^2\times\set{1}}\Delta^2\times\Delta^1\to\Delta^2\times\Delta^1$ is inner anodyne, so we can lift
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                & & & * \arrow [dd, "i_0"] & \\
+                X \arrow [drrr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
+                & & & \Sigma X &
+            \end{tikzcd}
+        \end{center}
+        and obtain 
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [from=ulll, crossing over, shorten >= 1.1em]  \arrow [dd, "i_0"] & \\
+                X \arrow [dr] \arrow [rr] \arrow [drrr, shorten >= 3pt] & & * \arrow [dr, "i_0"] \\
+                & * \arrow [from=uu,crossing over] \arrow [rr, swap, "i_1"] & & \Sigma X &
+            \end{tikzcd}
+        \end{center}
+        where the back prism commutes.
+        In the subdiagram
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                X\times\Omega\Sigma X \arrow [dd] \arrow [dddrrr, "j"] & & \\
+                & & & \\
+                X \arrow [dr] \arrow [drrr, shorten >= 3pt] & & \\
+                & * \arrow[from=uuul, crossing over] \arrow [rr, swap, "i_1"] & & \Sigma X\\
+            \end{tikzcd}
+        \end{center}
+        all faces except the one opposite to $X$ commute and since this corresponds to a map $\Lambda^3_1\to C$, we can lift it to a map $\Delta^3\to C$.
+        Thus we can construct the commutative square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X\times\Omega\Sigma X \arrow[r] \arrow[d] \arrow[dr, "j"] & * \arrow[d, "i_0"] \\
+                * \arrow[r, "i_1"] & \Sigma X \\
+            \end{tikzcd}
+        \end{center}
+        and this induces a map $\Delta^1\star\left(\Delta^1\times\Delta^1\right)\to C$ corresponding to a diagram
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                X\times\Omega\Sigma X \arrow[dr, near end, outer sep= -1.5pt, "\alpha", shorten >=-0.5em] \arrow [drrr] \arrow [dash, dddrrr, shorten >= 2.5cm] \arrow [dddrrr, near end, "j", shorten <= 2cm] & & \\
+                & \Omega\Sigma X \arrow [dd,  crossing over] \arrow [rr] & & * \arrow[dd, "i_0"]\\
+                & & \\
+                & * \arrow[from=uuul] \arrow [rr, swap, "i_1"] & & \Sigma X\\
+            \end{tikzcd}
+        \end{center}
+        since
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
+                * \arrow[r, "i_1"] & \Sigma X \\
+            \end{tikzcd}
+        \end{center}
+        is a pullback square.
+        This fills the remaining simplices of the desired cube.
+
+        The outer square of 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X\times\Omega\Sigma X \arrow[d, "\pi_1"] \arrow[r, "\alpha"] & \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
+                X \arrow[r] & * \arrow[r, "i_1"] & \Sigma X \\
+            \end{tikzcd}
+        \end{center}
+        is a pullback square since 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X\times\Omega\Sigma X \arrow[d, "\pi_1"] \arrow[r, "\pi_2"] & \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
+                X \arrow[r] & * \arrow[r, "i_0"] & \Sigma X \\
+            \end{tikzcd}
+        \end{center}
+        is one and top and their top and bottom maps are equivalent.
+        Thus by the pasting law all vertical squares of the cube
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                X\times\Omega\Sigma X \arrow [dr, "\alpha"] \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [dd, "i_0"] & \\
+                X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
+                & * \arrow [from=uu,crossing over] \arrow [rr, "i_1"] & & \Sigma X &
+            \end{tikzcd}
+        \end{center}
+        are pullbacks and since the bottom square is a pushout, by universality the top square is pushout which finishes the proof.
     \end{proof}
 \end{lemma}
-%TODO remark that other map is usually not projection and explain why
+\begin{remark}
+    The map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ can in general not be identified with the projection $\pi_2$.
+    This is because we are not able to choose the map $\alpha$ freely since the higher simplices must be compatible along the ''diagonal'' of our cube (which our map $\alpha$ fulfills by construction).
+
+    If we assume $\alpha=\pi_2$ then by universality have that 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X\times \Omega\Sigma X \arrow[r,"\pi_2"] \arrow[d, "\pi_2"] & \Omega\Sigma X \arrow[d] \\
+            \Omega\Sigma X \arrow[r] & \Sigma X \times \Omega\Sigma X\\
+        \end{tikzcd}
+    \end{center}
+    is a pushout.
+    But $\Omega\Sigma X\times \Sigma X$ is not generally contractible. 
+\end{remark}
 \begin{corollary}\label{lem:poOfProductIsSuspension} %Lemma 2.19
     Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
-    Then
+    Then there exists a square
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d] & \Omega\Sigma X \arrow[d] \\
             * \arrow[r] & \Sigma\Omega\Sigma X \\
         \end{tikzcd}
     \end{center}
-    is a pushout.
+    that is a pushout.
     \begin{proof}
         This follows from \cref{lem:existenceOfPoSq} and the pasting lemma applied to 
         \begin{center}
@@ -104,7 +210,7 @@
         
         Taking pushouts of the rows results in the diagram $*\xleftarrow{}*\rightarrow X\cup_{X\times Y} Y$ and taking pushouts of the columns results in the diagram $*\xleftarrow{}X\wedge Y\rightarrow *$. 
         Since the pushout of the latter diagram is $\Sigma\left(X\wedge Y\right)$ and the pushout of the first diagram must be equivalent to this, we have $X\cup_{X\times Y} Y\cong\Sigma\left(X\wedge Y\right)$.
-        The maps $X\to\Sigma\left(X\wedge Y\right)$ and $Y\to\Sigma\left(X\wedge Y\right)$ factor through $*$ by definition which proves the proposition.
+        The maps $X\to\Sigma\left(X\wedge Y\right)$ and $Y\to\Sigma\left(X\wedge Y\right)$ factor through $*$ by construction which proves the proposition.
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:allSqArePo} %TODO corollary 2.24
