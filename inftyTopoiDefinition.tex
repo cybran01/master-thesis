@@ -1,66 +1,67 @@
-\begin{definition}[$\kappa$-filtered] %HTT Definition 5.3.1.7.
-    Let $\kappa$ be a regular cardinal and $C$ be an \inftycat/.
-    We say that $C$ is \emph{$\kappa$-filtered} if for every map $f:K\to C$ with $K$ a $\kappa$-small simplicial set there exists a map $\overline{f}:K^{\rhd}\to C$ such that $\overline{f}\vert_K=f$.
-\end{definition}
-%TODO include Proposition 5.3.1.18. without proof
-% \begin{prop} %HTT Proposition 5.3.3.3.
-%     Let $C$ be an \inftycat/ and $\kappa$ a regular cardinal. Then the following are equivalent:
-%     \begin{itemize}
-%         \item $C$ is $\kappa$-filtered
-%         \item The colimit functor $\colim\colon\Fun(C,\Spaces)\to\Spaces$ preserves $\kappa$-small limits.
-%     \end{itemize}
-% \end{prop}
-%TODO rewrite and use compact objects, HTT Definition 5.3.4.5.
-\begin{definition} %HTT Definition 5.4.2.1.
-    Let $\kappa$ be a regular cardinal and let $C$ be a small $\infty$-category.
-    We define $\Ind_{\kappa}(C)\subset P(C)$ to be the full subcategory of $P(C)$ with objects consisting of those maps $C^{\op}\to\spaces$ that classify right fibrations $X\to C$ such that $X$ is $\kappa$-filtered. %TODO define what it means to classify
-\end{definition}
+Before giving a proper definition of \inftytops/, we need to introduce another property.
+Since this we be the least interesting for our purposes, we will give a very pragmatic introduction.
 \begin{definition}
-    Let $\kappa$ be a regular cardinal. An \inftycat/ $C$ is \emph{$\kappa$-accessible} if there exists a small \inftycat/ $C^0$ and a categorical equivalence
-    \begin{equation*}
-        \Ind_{\kappa}(C^0)\to C\;.
-    \end{equation*}
-    We say that $C$ is \emph{accessible} if it is $\kappa$-accessible for some cardinal $\kappa$.
+    An \inftycat/ $C$ is \emph{locally presentable} if there exists a combinatorial simplicial model category $A$ and an equivalence of \inftycats/ $\Nhc(A^°)\to C$.
 \end{definition}
-%TODO why is it then accessible for bigger kappa? Proposition HTT 5.4.2.9.
-\begin{definition}
-    An \inftycat/ is \emph{locally presentable} if it is accessible and admits small colimits.
-\end{definition}
-\begin{lemma} %TODO HTT Corollary 5.5.2.4., maybe also Corollary 5.3.5.4.
-    A locally presentable \inftycat/ $C$ admits small limits.
-\end{lemma}
-\begin{prop} %HTT Proposition A.3.7.6., due to Simpson
-    Let $C$ be an \inftycat/. Then the following are equivalent:
-    \begin{itemize}
-        \item $C$ is locally presentable.
-        \item There exists a combinatorical simplicial model category $M$ and a categorical equivalence $\Nhc(M^°)\simeq C$.
-    \end{itemize}
-\end{prop}
-% \begin{definition}[Universality of Colimits] %TODO how to elegantly define pullback functor?
-%     Let $C$ be an \inftycat/ that admits small colimits and pullbacks.
-%     If for any map $u\colon x\to y\in C_1$ the pullback functor $u^*\colon \faktor{C}{y}\to\faktor{C}{x}$ preserves colimits, then we say that \emph{$C$ has universal colimits}.
-% \end{definition}
+\begin{corollary}
+    A presentably \inftycat/ $C$ has small colimits and small limits.
+    \begin{proof}
+        These are computed in some combinatorial simplicial model category $A$ where they exist.
+    \end{proof}
+\end{corollary}
+\begin{corollary}
+    The \inftycat/ of spaces $\spaces$ is locally presentable.
+    \begin{proof}
+        This follows directly by \cref{prop:homotopyHypothesis} and \cref{cor:htpyCoherentNerveIsLoc}.
+    \end{proof}
+\end{corollary}
+An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in %HTT 5.5.1.1, A.3.7.6
+.
+
+In essence, being locally presentable means being determined by a ''small'' amount of data, despite the category in question not needing to be small itself.
+% To be more precise: By %TODO HTT 5.5.1.1 (4)
+% an \inftycat/ $C$ is locally presentable if and only if there exists a regular cardinal $\kappa$ and an \inftycat/ $D$ with $\kappa$-small colimits such that there is an equivalence of \inftycats/ $\Ind_{\kappa}D\to C$.
+
+% Here $\Ind_{\kappa}D$ is the full subcategory of $\Fun(D^{\op},S)$ with objects consisting of those maps $C^{\op}\to\spaces$ that classify right fibrations $X\to C$ such that $X$ is $\kappa$-filtered (see e.g. %HTT Definition 5.3.5.1
+% for details on this).
+
+% One can show that this effectively means that $C$ is the \inftycat/ obtained by freely adjoining filtered colimits to $D$. %TODO HTT §5.3.5 
+
+Next we introduce cartesian transformations which allow us to encode universality and descent in a concise manner.
 \begin{definition}[Cartesian Transformation]
     Let $C$ be an \inftycat/ and let $K$ be a simplicial set.
     Let $q,p\in\Fun(K,C)_0$ and let $\alpha\in\Fun(K,C)_1$ be a natural transformation $\alpha\colon p\to q$.
-    Then we say $\alpha$ is \emph{cartesian} if for all maps $u\colon\Delta^1\to K$ the induced map $\Delta^1\times\Delta^1\xrightarrow{\left(u,\id_{\Delta^1}\right)}K\times\Delta^1\xrightarrow{\alpha}C$ is a pullback square.
+    Then we say $\alpha$ is \emph{cartesian} if for all maps $u\colon\Delta^1\to K$ the induced map $\Delta^1\times\Delta^1\xrightarrow{\left(u,\id_{\Delta^1}\right)}K\times\Delta^1\xrightarrow{\alpha}C$ is a pullback square. %TODO add comm sq
 \end{definition}
-% \begin{definition}[Descent] %HTT Definition 6.1.3.1.
-%     Let $C$ be an \inftycat/ that admits small colimits and pullbacks.
-    
-%     Its objects the same as $\Fun(\Delta^1,C)$, but we set the morphisms between them to be maps $\Delta^1\times\Delta^1\to C$ that are pullback squares. %TODO this needs pasting law for pullbacks. Also, why can we just compute in \Fun(\Delta^1,C)?
-    
-%     We say that \emph{$C$ has descent} if $\Cart(C)$ has small colimits and the inclusion $\Cart(C)\subset\Fun(\Delta^1,C)$ preserves them.
-% \end{definition}
 %TODO HTT Proposition 4.4.2.6.
 \begin{definition}[Universality]
-    Let $C$ be an \inftycat/ that admits small colimits and pullbacks.
-    We say that \emph{$C$ has universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $q$ is a  colimit cone and $\alpha$ is cartesian, $p$ is a colimit cone.
+    Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a simplicial set.
+    We say that \emph{$C$ has $K$-shaped universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is a colimit cone.
+    We say that \emph{$C$ has universal colimits} if $C$ has $K$-shaped universal colimits for every small simplicial set $K$.
 \end{definition}
 \begin{definition}[Descent]
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks.
-    We say that \emph{$C$ has descent} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is cartesian.
+    We say that \emph{$C$ has $K$-shaped descent} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is cartesian.
+    We say that \emph{$C$ has desent} if $C$ has $K$-shaped descent for every small simplicial set $K$.
 \end{definition}
+\begin{remark}
+    We want to describe universality and descent explicitly for pushouts ($\Lambda^2_0$-shaped diagrams), because these will be important cases as the next two lemmas will show.
+    A natural transformation $\alpha\colon\left(\Lambda_0^2\right)^{\rhd}\times\Delta^1\cong\Delta^1\times\Delta^1\times\Delta^1\to C$ is a cube
+    \begin{center}
+        \begin{tikzcd} [sep = .5 cm]
+            \alpha|_{\set{0,0,0}} \arrow [dr] \arrow [rr] \arrow [dd] & & \alpha|_{\set{0,1,0}} \arrow [dr] \arrow [dd] \\
+            & \alpha|_{\set{1,0,0}} \arrow [rr, crossing over] \arrow [dd] & & \alpha|_{\set{1,1,0}} \arrow [dd] & \\
+            \alpha|_{\set{0,0,1}} \arrow [dr] \arrow [rr] & & \alpha|_{\set{0,1,1}} \arrow [dr] \\
+            & \alpha|_{\set{1,0,1}} \arrow [from=uu, crossing over] \arrow [rr] & & \alpha|_{\set{1,1,1}} &
+        \end{tikzcd}\;.
+    \end{center}
+    Universality for pushouts means that whenever the vertical faces are pullbacks and the bottom face is a pushout, then the top face is a pushout.
+    Descent for pushouts means that whenever left and rear face are pullbacks and top and bottom faces are pushouts, then the right and front face are pullbacks as well.
+    
+    So this definition is exactly the one given in \cref{sec:motivationInftyTopoi}.
+\end{remark}
+In order to prove that a given \inftycat/ has universality and descent we only need to check it for two types of diagrams: pushouts and small coproducts.
+This is the content of the next two lemmas and will be used later to prove that $\spaces$ is an \inftytop/.
 \begin{lemma}
     A \inftycat/ $C$ has universal colimits if and only if it has universal pushouts and universal coproducts.
     \begin{proof}

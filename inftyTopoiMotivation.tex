@@ -3,18 +3,18 @@
 %TODO how to compute colim/lim in S Kerodon Proposition 7.5.1.5. and Corollary 7.5.7.7.
 %TODO define htpy pb functor, use HTT Proposition A.2.8.7
 %TODO HTT Theorem 6.1.0.6. for equiv char, Proposition 6.1.5.3. 
-Let $C$ denote be a locally presentable \inftycat/.
+Let $C$ be a locally presentable \inftycat/.
 
 In this section, we want to motivate the definition of an \inftytop/.
 Very vaguely speaking, an \inftytop/ is an \inftycat/ which behaves much like the \inftycat/ of spaces $\spaces$.
-There are different equivalent characterizations of an \inftytop/; for an overview and the proofs of these equivalent characterizations, see e.g. %HTT chapter 6.1
+There are different equivalent characterizations of an \inftytop/; for an overview and the proofs of some of these equivalent characterizations, see e.g. %HTT chapter 6.1
 .
 We will say that $C$ is an \inftytop/ if it has ''universal colimits'' and ''descent'' which corresponds to %HTT Theorem 6.1.0.6. (2)
 .
-The characterization of \inftytop/ in this way is due to Charles Rezk.
+This characterization of \inftytops/ is due to Charles Rezk.
 Before we define ''universal colimits'' and ''descent'', we will give a brief motivation:
 
-They are supposed to ensure fibers of maps behave nicely under various glueings, as they do in $\spaces$ (which we will prove to be an \inftytop/ later on).
+Both properties are supposed to ensure fibers of maps behave nicely under various glueings, as they do in $\spaces$ (which we will prove to be an \inftytop/ later on).
 
 For universality, let 
 \begin{center}
@@ -69,11 +69,11 @@ This is equivalent to stating that in a cube
         & B_0 \arrow [from=uu, crossing over] \arrow [rr, >->] & & B_0\cup_{B_{01}}B_1 &
     \end{tikzcd}
 \end{center}
-when the left and rear faces are homotopy pullback and the top and bottom faces are pushouts (hence also homotopy pushouts due to the horizontal maps being cofibrations), the front and right faces are homotopy pullbacks as well.
+where the left and rear faces are homotopy pullbacks and the top and bottom faces are pushouts (hence also homotopy pushouts due to the horizontal maps being cofibrations), the front and right faces are homotopy pullbacks as well.
 
-This property holds true in $\Top$ with the Quillen model structure; even better, it only requires the top and bottom square to be homotopy pushouts.
+This property holds true in $\Top$; even better, it only requires the top and bottom square to be homotopy pushouts.
 This property will be called ''descent for pushouts''.
 Therefore when switching to the \inftycat/ of spaces $\spaces$, the property can be stated as that in a cube (which is a diagram $\Delta^1\times\Delta^1\times\Delta^1\to\spaces$) where the left and rear faces are pullbacks and top and bottom faces are pushouts, the front and left faces are pullbacks as well.
-A natural generalization is to replace pushouts by arbitrary small diagrams, which is also true in $\Top$ (and therfore $\spaces$).
+A natural generalization is to replace pushouts by arbitrary small diagrams, which is also true in $\Top$ (and therefore $\spaces$).
 
 It will again turn out that we can always reduce to showing descent for only pushouts and small coproducts.
