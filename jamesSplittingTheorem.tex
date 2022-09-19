@@ -40,19 +40,19 @@
         and assemble these pullback squares into a diagram
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
                 & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [dd, "i_0"] & \\
                 X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
                 & * \arrow [from=uu,crossing over] \arrow [rr, "i_1"] & & \Sigma X &
             \end{tikzcd}
         \end{center}
-        where tree vertical squares are pullback and the bottom square is a pushout.
-        We now want to construct a map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ such that we have a commutative cube vertical sides pullback.
+        where three vertical squares are pullback and the bottom square is a pushout.
+        We now want to construct a map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ such that we have a commutative cube with all vertical sides pullbacks.
         By %TODO Kerodon Lemma 1.4.7.5. 
         the map $\Lambda_1^2\times\Delta^1\cup_{\Delta_1^2\times\set{1}}\Delta^2\times\Delta^1\to\Delta^2\times\Delta^1$ is inner anodyne, so we can lift
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
                 & & & * \arrow [dd, "i_0"] & \\
                 X \arrow [drrr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
                 & & & \Sigma X &
@@ -61,7 +61,7 @@
         and obtain 
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
                 & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [from=ulll, crossing over, shorten >= 1.1em]  \arrow [dd, "i_0"] & \\
                 X \arrow [dr] \arrow [rr] \arrow [drrr, shorten >= 3pt] & & * \arrow [dr, "i_0"] \\
                 & * \arrow [from=uu,crossing over] \arrow [rr, swap, "i_1"] & & \Sigma X &

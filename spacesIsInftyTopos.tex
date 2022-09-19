@@ -1,5 +1,68 @@
 %TODO order the statements correctly
 %TODO do the proofs in the Strom model structure and argue at the end that this gives the statements in the Quillen model structure
+In this section we will prove that our \inftycat/ of spaces $\spaces$ is an \inftytop/.
+We will keep our proofs topological; for a different approach using simplicial sets see e.g. %TODO
+In order to transfer reasoning back and forth from the model category $\Top$ and $\spaces$ we need the following lemma.
+\begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO is the statement even true in this generality?
+    Let $J$ be an ordinary category and let $M$ be a model category.
+    Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition
+    \begin{equation*}
+        \N(\Fun(J,M))\cong\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}]) %TODO is this correct?
+    \end{equation*} 
+    they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
+
+    (Furthermore the map $\N(\Fun(J,M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.)
+    \begin{proof}
+        %TODO Proposition 1.3.4.25. HA
+    \end{proof}
+\end{lemma}
+Since both coproducts and pushouts in \inftycats/ are indexed by nerves of ordinary categories and we are able to work in the model category by the following corollary:
+\begin{corollary}\label{cor:sufficientToProveInModCat}
+    Let $M$ be a model category with weak equivalences $W$. 
+    Then $\N(M)[W^{-1}]$ has universal colimits if and only if $M$ has universal homotopy pushouts and universal homotopy coproducts as a model category.
+    
+    If further $\N(M)[W^{-1}]$ has universal colimits, then $M$ has descent if and only if it has descent for homotopy pushouts and homotopy coproducts as a model category.
+    \begin{proof}
+        A diagram $\N(J)^{\rhd}\to\N(M)[W^{-1}]$ is a colimit cone if and only if some equivalent replacement $J^{\rhd}\to M$ as in \cref{lem:replaceWithStrictDiagram} is a homotopy colimit cone in $M$.
+        Given a diagram $J^{\rhd}\to M$, is is a homotopy colimit cone if and only if $\N(J)^{\rhd}\to\N(M)[W^{-1}]$ is a colimit cone.
+        The analogous statement is also true for limits and homotopy limits.
+        Thus the proposition follows from \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} respectively.
+    \end{proof}
+\end{corollary}
+We will use the interaction of the \Strom/ model structure and the Quillen model structure to prove universality and descent $\Top$.
+Our most important (and very non trivial) part of this interaction is the following proposition.
+% \begin{lemma}[Universality for Pushouts]\label{lem:univForPushouts}
+%     Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
+%     Then for all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha$ is cartesian and $q$ is a colimit cone we have that $p$ is also a colimit cone if and only if for all cubes
+%     \begin{center}
+%         \begin{tikzcd} [sep = .5 cm]
+%             A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
+%             & C^{\prime} \arrow [rr, crossing over] \arrow [dd] & & D^{\prime} \arrow [dd] & \\
+%             A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+%             & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
+%         \end{tikzcd}
+%     \end{center}
+%     in $C$ where the vertial faces are pullbacks and the bottom square is a pushout, the top square is also a pushout.
+%     \begin{proof}
+%         %TODO
+%     \end{proof}
+% \end{lemma}
+% \begin{lemma}[Descent for Pushouts]\label{lem:descForPushouts}
+%     Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
+%     Then all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha|_{\Lambda^2_0}$ is cartesian and $p,q$ are colimit cones are cartesian and if and only if for all cubes
+%     \begin{center}
+%         \begin{tikzcd} [sep = .5 cm]
+%             A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
+%             & C^{\prime} \arrow [rr, crossing over] \arrow [dd] & & D^{\prime} \arrow [dd] & \\
+%             A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+%             & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
+%         \end{tikzcd}
+%     \end{center}
+%     in $C$ where the left and back face are pullbacks and the bottom and top square are a pushouts, the front and right squares are pullbacks.
+%     \begin{proof}
+%         %TODO
+%     \end{proof}
+% \end{lemma}
 \begin{prop}\label{prop:poAlongHCofibIsHtpyPo}
     A pushout along an h-cofibration is a homotopy pushout.
     \begin{proof}
@@ -29,22 +92,6 @@
         Thus the outer square is a homotopy pushout which proves the proposition.
     \end{proof}
 \end{prop}
-\begin{lemma}[Universality for Pushouts]\label{lem:univForPushouts}
-    Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
-    Then for all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha$ is cartesian and $q$ is a colimit cone we have that $p$ is also a colimit cone if and only if for all cubes
-    \begin{center}
-        \begin{tikzcd} [sep = .5 cm]
-            A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
-            & C^{\prime} \arrow [rr, crossing over] \arrow [dd] & & D^{\prime} \arrow [dd] & \\
-            A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
-            & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
-        \end{tikzcd}
-    \end{center}
-    in $C$ where the vertial faces are pullbacks and the bottom square is a pushout, the top square is also a pushout.
-    \begin{proof}
-        %TODO
-    \end{proof}
-\end{lemma}
 %TODO define universality and descent for shapes of diagrams to avoid clutter
 \begin{prop} %TODO move this prop to after the explanations
     The \inftycat/ of spaces $\spaces$ has universality for pushouts.
@@ -98,20 +145,24 @@
         Thus the outer square is a homotopy pushout which proves the proposition. 
     \end{proof}
 \end{prop}
-\begin{lemma}[Descent for Pushouts]\label{lem:descForPushouts}
-    Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
-    Then all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha|_{\Lambda^2_0}$ is cartesian and $p,q$ are colimit cones are cartesian and if and only if for all cubes
-    \begin{center}
-        \begin{tikzcd} [sep = .5 cm]
-            A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
-            & C^{\prime} \arrow [rr, crossing over] \arrow [dd] & & D^{\prime} \arrow [dd] & \\
-            A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
-            & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
-        \end{tikzcd}
-    \end{center}
-    in $C$ where the left and back face are pullbacks and the bottom and top square are a pushouts, the front and right squares are pullbacks.
+\begin{lemma}
+    The \inftycat/ $\spaces$ has universal coproducts.
     \begin{proof}
-        %TODO
+        	Let $\left(X_i\right)_{i\in I}$ be a collection of topological spaces with $I$ small. 
+            Then the homotopy coproduct is given by the coproduct over cofibrant replacements $\bigcup\limits_{i\in I}\widehat{X_i}$ for each of the $X_i$.
+
+            However since in $\Top$ weak equivalences are closed under coproducts, the ordinary coproduct is already a homotopy coproduct.
+            Also a map $X_i\to\bigcup\limits_{i\in I} X_i$ is a Serre fibration since the domain of the generating fibrations is connected and coproducts in $\Top$ are disjoint.
+            Thus the ordinary pullback
+            \begin{center}
+                \begin{tikzcd} [sep = 1 cm]
+                    Y\times_{\bigcup\limits_{i\in I} X_i}X_i \arrow [r] \arrow [->>,d] & X_i \arrow [->>,d]\\
+                    Y \arrow [r] & \bigcup\limits_{i\in I} X_i
+                \end{tikzcd}
+            \end{center}
+            is a homotopy pullback and so $Y_i\to Y\times_{\bigcup\limits_{i\in I} X_i}X_i$ is a weak equivalence.
+            Since in $\Top$ coproducts commute with pullbacks, $\bigcup\limits_{i\in I}\left(Y\times_{\bigcup\limits_{i\in I} X_i}X_i\right)\cong Y$.
+            Thus $\bigcup\limits_{i\in I}Y\to Y$ is a weak equivalence, which proves that $Y$ is a homotopy coproduct.
     \end{proof}
 \end{lemma}
 \begin{prop}\label{prop:reductionStepDescent}
@@ -339,50 +390,10 @@
                 * \arrow[r] & \M(f_{AC}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
             \end{tikzcd}
         \end{center}
-        is already a homotopy fiber and so the map between homotopy fibers of the vertical maps is a weak equivalence (as its the identity), which is an equivalent characterization of a homotopy pullback. %TODO reference
+        is already a homotopy fiber and so the map between homotopy fibers of the vertical maps is the identity and thus a weak equivalence.
+        But this is an equivalent characterization of a homotopy pullback. %TODO reference
     \end{proof}
 \end{prop}
-\begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO is the statement even true in this generality?
-    Let $J$ be an ordinary category and let $M$ be a model category.
-    Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition
-    \begin{equation*}
-        \N(\Fun(J,M))\cong\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])
-    \end{equation*} 
-    they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
-
-    (Furthermore the map $\N(\Fun(J,M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.)
-    \begin{proof}
-        %TODO Proposition 1.3.4.25. HA
-    \end{proof}
-\end{lemma}
-\begin{corollary}\label{cor:sufficientToProveInModCat}
-    It suffices to prove the analogous statements of \cref{lem:univForPushouts} and \cref{lem:descForPushouts} in the model category $\Top$.
-    \begin{proof}
-        Since homotopy (co)limits in a model category $M$ correspond to (co)limits in the simplicial localization of $\N(M)[W^{-1}]$, we can replace the cubes by strictly commutative diagrams in $\Top$ by \cref{lem:replaceWithStrictDiagram}.
-        Since one can check diagrams to be homotopy (co)limits by checking that they are (co)limits in $\N(M)[W^{-1}]$, the specified faces are homotopy pullbacks and homotopy pushouts in $M$ respectively.
-        Thus it suffices to prove that the remaining faces are homotopy pullbacks or homotopy pushouts in $M$ as specified. %TODO Proposition 1.3.4.23 HA
-    \end{proof}
-\end{corollary}
-\begin{lemma}
-    The \inftycat/ $\spaces$ has universal coproducts.
-    \begin{proof}
-        	Let $\left(X_i\right)_{i\in I}$ be a collection of topological spaces with $I$ small. 
-            Then the homotopy coproduct is given by the coproduct over cofibrant replacements $\bigcup\limits_{i\in I}\widehat{X_i}$ for each of the $X_i$.
-
-            However since in $\Top$ weak equivalences are closed under coproducts, the ordinary coproduct is already a homotopy coproduct.
-            Also a map $X_i\to\bigcup\limits_{i\in I} X_i$ is a Serre fibration since the domain of the generating fibrations is connected and coproducts in $\Top$ are disjoint.
-            Thus the ordinary pullback
-            \begin{center}
-                \begin{tikzcd} [sep = 1 cm]
-                    Y\times_{\bigcup\limits_{i\in I} X_i}X_i \arrow [r] \arrow [->>,d] & X_i \arrow [->>,d]\\
-                    Y \arrow [r] & \bigcup\limits_{i\in I} X_i
-                \end{tikzcd}
-            \end{center}
-            is a homotopy pullback and so $Y_i\to Y\times_{\bigcup\limits_{i\in I} X_i}X_i$ is a weak equivalence.
-            Since in $\Top$ coproducts commute with pullbacks, $\bigcup\limits_{i\in I}\left(Y\times_{\bigcup\limits_{i\in I} X_i}X_i\right)\cong Y$.
-            Thus $\bigcup\limits_{i\in I}Y\to Y$ is a weak equivalence, which proves that $Y$ is a homotopy coproduct.
-    \end{proof}
-\end{lemma}
 \begin{lemma}
     Coproducts in the \inftycat/ $\spaces$ are disjoint.
     \begin{proof}
