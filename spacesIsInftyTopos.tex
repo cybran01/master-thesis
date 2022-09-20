@@ -2,16 +2,16 @@
 %TODO do the proofs in the Strom model structure and argue at the end that this gives the statements in the Quillen model structure
 In this section we will prove that our \inftycat/ of spaces $\spaces$ is an \inftytop/.
 We will keep our proofs topological; for a different approach using simplicial sets see e.g. %TODO
-In order to transfer reasoning back and forth from the model category $\Top$ and $\spaces$ we need the following lemma.
+In order to transfer reasoning back and forth from the model category $\Top$ and the \inftycat/ $\spaces$ we need the following lemma.
 \begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO is the statement even true in this generality?
     Let $J$ be an ordinary category and let $M$ be a model category.
     Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition
     \begin{equation*}
-        \N(\Fun(J,M))\cong\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}]) %TODO is this correct?
+        \Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}]) %TODO is this correct?
     \end{equation*} 
     they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
 
-    (Furthermore the map $\N(\Fun(J,M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.)
+    Furthermore the map $\N(\Fun(J,M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.
     \begin{proof}
         %TODO Proposition 1.3.4.25. HA
     \end{proof}
@@ -29,7 +29,9 @@ Since both coproducts and pushouts in \inftycats/ are indexed by nerves of ordin
         Thus the proposition follows from \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} respectively.
     \end{proof}
 \end{corollary}
-We will use the interaction of the \Strom/ model structure and the Quillen model structure to prove universality and descent $\Top$.
+We will use the interaction of the \Strom/ model structure and the Quillen model structure to prove universality and descent in $\Top$.
+Note that whenever referring to $\Top$ as a model category, we implicitly mean the Quillen model structure. 
+Cofibrations and fibrations of the \Strom/ model structure are tagged by the letteer $h$.
 Our most important (and very non trivial) part of this interaction is the following proposition.
 % \begin{lemma}[Universality for Pushouts]\label{lem:univForPushouts}
 %     Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
@@ -92,12 +94,9 @@ Our most important (and very non trivial) part of this interaction is the follow
         Thus the outer square is a homotopy pushout which proves the proposition.
     \end{proof}
 \end{prop}
-%TODO define universality and descent for shapes of diagrams to avoid clutter
-\begin{prop} %TODO move this prop to after the explanations
-    The \inftycat/ of spaces $\spaces$ has universality for pushouts.
+\begin{prop}\label{lem:topUniversalPo}
+    The model category $\Top$ has universality for homotopy pushouts.
     \begin{proof}
-        We prove the analogous statement in the model category $\Top$, which is sufficent by \cref{cor:sufficientToProveInModCat}.
-
         By factoring the map $D'\xrightarrow{\sim}\overline{D}\xtwoheadrightarrow{h} D$ into a weak equivalence followed by an h-fibration (which is also a Serre fibration) and pulling back successively, we obtain the diagram %TODO explain why we we use weak equivalence here: since the faces are pb in the SERRE model str, the 3 remaining vertical maps are only w.e.
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
@@ -140,13 +139,13 @@ Our most important (and very non trivial) part of this interaction is the follow
             \end{tikzcd}
         \end{center}
         where the horizontal maps in the left diagram are h-cofibrations due to % Jeffrey Strom - Modern Classical Homotopy Theory Theorem 14.1 for pb along fib of cofib is cofib, TODO is this true in the serre model str?
-        and its a pushout since $\Top$ has universality (as an ordinary category). %TODO maybe cite somewhere?
+        and its a pushout since $\Top$ has universality (as an ordinary category, so pulling back a pushout square gives a pushout square again). %TODO maybe cite somewhere?
         The right square is also homotopy pushout since $\Top$ is right proper so pullbacks of weak equivalences along fibrations are again weak equivalences. 
         Thus the outer square is a homotopy pushout which proves the proposition. 
     \end{proof}
 \end{prop}
-\begin{lemma}
-    The \inftycat/ $\spaces$ has universal coproducts.
+\begin{lemma}\label{lem:topUniversalCoproduct}
+    The model category $\Top$ has universal homotopy coproducts.
     \begin{proof}
         	Let $\left(X_i\right)_{i\in I}$ be a collection of topological spaces with $I$ small. 
             Then the homotopy coproduct is given by the coproduct over cofibrant replacements $\bigcup\limits_{i\in I}\widehat{X_i}$ for each of the $X_i$.
@@ -165,6 +164,10 @@ Our most important (and very non trivial) part of this interaction is the follow
             Thus $\bigcup\limits_{i\in I}Y\to Y$ is a weak equivalence, which proves that $Y$ is a homotopy coproduct.
     \end{proof}
 \end{lemma}
+Thus by \cref{cor:sufficientToProveInModCat} we $\spaces$ has universal colimits.
+It now remains to show that it also has descent.
+
+We start proving the case for pushouts by the following reduction step. 
 \begin{prop}\label{prop:reductionStepDescent}
     If for all cubes in the model category $\Top$
     \begin{center}
@@ -181,10 +184,9 @@ Our most important (and very non trivial) part of this interaction is the follow
         \item bottom and top square are pushouts and homotopy pushouts %TODO is ordinary po necessary?
         \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are h-fibrations
     \end{itemize}
-    the front and right squares are homotopy pullbacks, then $\spaces$ has descent for pushouts.
+    the front and right squares are homotopy pullbacks, then $\Top$ has descent for homotopy pushouts.
     \begin{proof}
-        To prove that $\spaces$ has descent for pushouts, it suffices to prove the analogous statement in $\Top$ by \cref{cor:sufficientToProveInModCat}.
-        So starting from a cube 
+        Starting from a cube 
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
@@ -206,7 +208,7 @@ Our most important (and very non trivial) part of this interaction is the follow
         where 
         \begin{itemize}
             \item $\overline{A}=A\times_{B}\overline{B}$
-            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks as the outer and lower square are homotopy pullback
+            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks as the outer and lower square are homotopy pullback.
         \end{itemize}
         Next we factor the map $A'\xtailrightarrow{h}X\xrightarrow{\sim}\hat{C}\times_CC'$. 
         Note that the diagram 
@@ -216,7 +218,7 @@ Our most important (and very non trivial) part of this interaction is the follow
                 \hat{C} \arrow[->>]{r}{\sim}[swap]{h} & C \\
             \end{tikzcd}
         \end{center}
-        is a homotopy pullback square by.
+        is a homotopy pullback square.
         We form the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -273,6 +275,30 @@ Our most important (and very non trivial) part of this interaction is the follow
         Following the construction of this cube, we see that all faces are equivalent to their corresponding faces of the starting cube which proves the proposition.
     \end{proof}
 \end{prop}
+For the last part of the proof we need the following definitions.
+\begin{definition}
+    Let $M$ be a model category and $f\colon X\to Y$ be a map.
+    Then we call $f$ a \emph{quasifibration} if for every map $*\to Y$ (where $*$ is the terminal object) the ordinary pullback square
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            F \arrow[r] \arrow[d] & X \arrow[d, "f"] \\
+            * \arrow[r] & Y\\
+        \end{tikzcd}
+    \end{center}
+    is a homotopy pullback.
+\end{definition}
+\begin{definition}
+    Let $f\colon A\to B$ be a map of topological spaces and let $I=[0,1]$.
+    Then we let
+    \begin{equation*}
+        \M(f)\coloneqq\faktor{\left(A\times I\right)\cup B}{(a,0)\sim f(a)}
+    \end{equation*}
+    denote the \emph{mapping cylinder of $f$}.
+
+    It will be convenient to also allow other intervalls instead of $I=[0,1]$; we will allow $I=[0,x]$ and $I=[0,x)$ for $x>0$.
+    The analogous construction with $I=[0,x]$ will still referred to as a \emph{closed mapping cylinder of $f$};
+    the construction with half open intervalls $I=[0,x)$ will be referred to as an \emph{open mapping cylinder of $f$}. %TODO perhaps describe factorization
+\end{definition}
 \begin{lemma}\label{lem:mapOfCylIsQuasiFib} %TODO Cubical homotopy Theory Lemma 5.10.6, TODO prove for open and closed mapping cylinder, TODO prove assertions on pullbacks
     Let 
     \begin{center}
@@ -281,12 +307,14 @@ Our most important (and very non trivial) part of this interaction is the follow
             A \arrow[r, "g"] & B \\
         \end{tikzcd}
     \end{center}
-    be a homotopy pullback.
-    Then the induced map $\M(f)\to\M(g)$ between mapping cylinders is a quasifibration. %TODO define quasifibration, (open) mapping cylinder
-    The same holds true if we take open mapping cylinders.
+    be a homotopy pullback (but not necessarily a pullback).
+    Then the induced map $\M(f)\to\M(g)$ between mapping cylinders is a quasifibration.
+    The same holds true for closed and open mapping cylinders.
     \begin{proof}
+        For convenience we will only prove the case $I=[0,1]$ since the other cases follow by the analogous argument.
+
         Let $\hat{b}\in\M(g)$. 
-        Then either $\hat{b}=(\hat{a},t)\in A\times[0,1)\subset\M(g)$ or $\hat{b}\in B\subset\M(g)$.
+        Then either $\hat{b}=(\hat{a},t)\in A\times(0,1]\subset\M(g)$ or $\hat{b}\in B\subset\M(g)$.
         In the first case, we have a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -295,14 +323,15 @@ Our most important (and very non trivial) part of this interaction is the follow
             \end{tikzcd}
         \end{center}
         where the outer square is the starting square and in particular homotopy pullback, so by the pasting law the left square is homotopy pullback as well.
-        Since the left square is also an ordinary pullback, the fiber  
+        Since the left square is also an ordinary pullback, in the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 F \arrow[r] \arrow[d] & X \arrow[r, "{x\mapsto (x,t)}"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
                 * \arrow[r, "\hat{b}"] & A \arrow[r, "{a\mapsto (a,t)}"] & \M(g) \\
             \end{tikzcd}
         \end{center}
-        is already a homotopy fiber since the right square is a pullback along a fibration and thus the outer square is a homotopy pullback.
+        the left square is homotopy pullback since its the pullback along a fibration.
+        Thus the outer square is a homotopy pullback which proves that the fiber $F$ is a homotopy fiber.
 
         In the second case we have the diagram
         \begin{center}
@@ -315,8 +344,8 @@ Our most important (and very non trivial) part of this interaction is the follow
         Since the right square is pullback and homotopy pullback and the left side is as well, this means that the fiber $F$ is already a homotopy fiber which proves the proposition.
     \end{proof}
 \end{lemma}
-\begin{prop}
-    The \inftycat/ of spaces $\spaces$ has descent for pushouts. 
+\begin{prop}\label{lem:topDescentPo}
+    The model category $\Top$ has descent for homotopy pushouts. 
     \begin{proof}
         By \cref{prop:reductionStepDescent} it is sufficient to prove that for all cubes 
         \begin{center}
@@ -335,7 +364,7 @@ Our most important (and very non trivial) part of this interaction is the follow
         \end{itemize}
         the front and right squares are homotopy pullbacks.
 
-        By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations.
+        By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations. %TODO why are inclusions cofibs
         So we can form the cube 
         \begin{center}
             \begin{tikzcd} [sep = .75 cm]
@@ -394,8 +423,10 @@ Our most important (and very non trivial) part of this interaction is the follow
         But this is an equivalent characterization of a homotopy pullback. %TODO reference
     \end{proof}
 \end{prop}
+Lastly, we need to prove descent for homotopy pullbacks. 
+For this we again need some preliminaries.
 \begin{lemma}
-    Coproducts in the \inftycat/ $\spaces$ are disjoint.
+    Homotopy coproducts in the model category $\Top$ are disjoint.
     \begin{proof}
         Since homotopy coproducts are given by ordinary coproducts in $\Top$, we have to check whether a pushout
         \begin{center}
@@ -446,8 +477,8 @@ Our most important (and very non trivial) part of this interaction is the follow
         So $X_i\cong X_i\times_{X_i\cup Y_i}X_i$ which completes the proof.
     \end{proof}
 \end{corollary}
-\begin{lemma}
-    The \inftycat/ $\spaces$ has descent for coproducts.
+\begin{lemma}\label{lem:topDescentCoproduct}
+    The model category $\Top$ has descent for coproducts.
     \begin{proof}
         	Let $\left(X_i\right)_{i\in I}, \left(Y_i\right)_{i\in I}$ be families of topological spaces and let $\left(\alpha_i\colon X_i\to Y_i\right)_{i\in I}$ be a collection of maps.
             Then define $P_{ij}$ as the pullback
@@ -478,3 +509,10 @@ Our most important (and very non trivial) part of this interaction is the follow
             But we have already shown this in \cref{cor:genCoproductComponentPb}.
     \end{proof}
 \end{lemma}
+\begin{corollary}
+    The \inftycat/ of spaces $\spaces$ is an \inftytop/.
+    \begin{proof}
+        We know $\spaces$ is locally presentable from \cref{cor:spacesIsLocPres}.
+        \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} proves that $\spaces$ has universal colimits, and together with \cref{lem:topDescentPo} with \cref{lem:topDescentCoproduct} proves that it has descent.
+    \end{proof}
+\end{corollary}
