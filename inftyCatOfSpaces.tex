@@ -27,22 +27,22 @@ When speaking of cofibrations, fibrations or weak equivalences between topologic
 \begin{prop}[Quillen Model Structure on $\Top$]
     The following three classes of maps endow $\Top$ with a model structure:
     \begin{itemize}
-        \item Cofibrations are the maps which are closed Hurewicz cofibrations. %TODO reference
+        \item Cofibrations are the maps which are retracts of relative CW-complexes. %TODO relative CW-complex def
         \item Weak equivalences are the maps inducing isomorphisms on $\pi_n$ for $n\in\Nat$.
         \item Fibrations are the maps with right lifting property against the class of maps $\set{D^n\xhookrightarrow{\left(\id_{D^n},0\right)}D^n\times I\mid n\in\Nat}$.
     \end{itemize}
     We call this model structure the \emph{Quillen Model Structure on $\Top$}.
 \end{prop}
-When referring to this model structure, we will speak of h-cofibrations and h-fibrations, and we will call the weak equivalences homotopy equivalences.
 \begin{prop}[\Strom/ Model Structure on $\Top$]
     The following three classes of maps endow $\Top$ with a model structure:
     \begin{itemize}
-        \item Cofibrations are the maps which are retracts of relative CW-complexes. %TODO relative CW-complex def
+        \item Cofibrations are the maps which are closed Hurewicz cofibrations. %TODO reference
         \item Weak equivalences are the homotopy equivalences.
         \item Fibrations are the maps with right lifting property against the class of maps $\set{X\xhookrightarrow{\left(\id_{X},0\right)}X\times I\mid X\in\Top}$ (which are also called Hurewicz fibrations).
     \end{itemize}
     We call this model structure the \emph{\Strom/ Model Structure on $\Top$}.
 \end{prop}
+When referring to the \Strom/ model structure, we will speak of h-cofibrations and h-fibrations, and we will call the weak equivalences homotopy equivalences.
 \begin{remark}[Properness]
     The Quillen model structures on $\sSet$ and $\Top$ are both proper (meaning left and right proper).
     The same is true for the \Strom/ model structure, since all objects in this model category are cofibrant and fibrant.
