@@ -1,3 +1,6 @@
+In this section we will give a proof on the May Recognition Theorem in the abstract setting of an \inftytop/.
+This theorem allows one to recognize which pointed spaces are (equivalent to) loop spaces.
+We will see that descent will play a mayor role in this.
 \begin{definition}[(Augmented) Simplicial Objects] %TODO maybe define for all finite totally ordered sets
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
@@ -29,7 +32,7 @@
     Let $C$ be an \inftycat/ and let $U$ be a groupoid object.
     If $U_0\cong *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
 \end{definition}
-\begin{definition}
+\begin{definition} %TODO make better
     Let $C$ be an \inftycat/ with small limits and let $\Delta^1\subset\N(\Delta_+)^{\op}$ be the inclusion corresponding to the full subcategory $[0]\to[-1]$.
     
     Then there exists a functor $C\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
@@ -60,9 +63,10 @@
     Let $C$ be an \inftycat/ with small limits. 
     For a map $f\in C_1$ we call $C(f)$ the \Cech/ nerve of $f$.
 \end{definition}
-\begin{lemma}
-    A \Cech/ nerve is determined up to equivalence by the map $u\colon U_0\to U_{-1}$. %TODO is this needed?
-\end{lemma}
+% \begin{lemma} %TODO is this needed?
+%     A \Cech/ nerve is determined up to equivalence by the map $u\colon U_0\to U_{-1}$. %TODO is this needed?
+% \end{lemma}
+We will need the following proposition.
 \begin{prop}\label{prop:grpdEffectiveIfPullback} %TODO HTT Proposition 6.1.2.11.
     Let $U^+$ be an augmented simplicial object in an \inftycat/ $C$.
     Then it is a \Cech/ nerve if and only if $U^+|_{\N(\Delta)^{\op}}$ is a groupoid object and the square
@@ -104,11 +108,12 @@
 %TODO explain how cech nerve is computed and how it looks
 \begin{corollary}\label{cor:groupoidEffectiveIffColimCechNerve}
     Let $C$ be an \inftycat/ with small colimits. 
-    Then a groupoid $U$ is effective if and only if its colimit cone $\N(\Delta)^{op}\star\Delta^0\cong\N(\Delta_+)^{op}\to C$ is a \Cech/ nerve.
+    Then a groupoid object $U$ is effective if and only if its colimit cone $\N(\Delta)^{\op}\star\Delta^0\cong\N(\Delta_+)^{\op}\to C$ is a \Cech/ nerve.
     \begin{proof}
         This follows directly from the equivalent characterization of an effective groupoid from \cref{prop:grpdEffectiveIfPullback}.
     \end{proof}
 \end{corollary}
+The following proposition is at the heart of the proof of the May Recognition Theorem.
 \begin{prop}\label{prop:groupoidObjInToposAreEffective} % Charles Rezk lecture notes 29pp
     Let $C$ be an \inftytop/.
     Then every groupoid object $U$ is effective.
@@ -206,7 +211,7 @@
     Then let $\Conn(C_*)\subset C_*$ be the full subcategory of effective morphisms.
     We call $\Conn(C_*)$ the \emph{\inftycat/ of pointed connected objects}.
 \end{definition}
-\begin{corollary}\label{prop:mayRecognitionTheoremGroup}
+\begin{corollary}[May Recognition Theorem]\label{prop:mayRecognitionTheoremGroup}
     Let $C$ be an \inftytop/. 
     Then there is an equivalence of \inftycats/ $\Grp(C)\simeq\Conn(C)$.
     \begin{proof}
@@ -215,7 +220,21 @@
 \end{corollary}
 %TODO explain looping/delooping and do it all in Top
 \subsection{The May Recognition Theorem in $\spaces$}
-%TODO define truncated obj/morphism HTT Definition 5.5.6.1. 
+We now want to check that our formulation of the May Recognition Theorem really gives the expected formulation in $\Top$.
+
+%TODO define truncated obj/morphism HTT Definition 5.5.6.1.
+\begin{definition}
+    Let $A$ be a simplicial set and let $k\geq -1$.
+    We say that $A$ is \emph{$k$-truncated} if for all $n>k$ and $x\in A_0$ we have $\pi_n\left(A,x\right)=0$.
+\end{definition}
+\begin{definition}
+    Let $C$ be an \inftycat/ and let $k\geq-1$.
+    We say that an object $X\in C_0$ is \emph{$k$-truncated} if for every object $Y\in C_0$, the mapping space %TODO define
+    $\Map_C(Y,X)$ is $k$-truncated as a simplicial set.
+\end{definition}
+\begin{remark}
+    Our two definitions of $k$-truncatedness agree %TODO
+\end{remark}
 \begin{definition}
     Let $C$ be an \inftytop/ and let $\Disc(C)\subset C$ be the full subcategory of $0$-truncated objects.
     We call $\Disc(C)$ the \emph{\inftycat/ of discrete objects of $C$}.
@@ -227,8 +246,8 @@
     Then $x$ is an effective epimorphism if and only if $X$ is connected as a topological space.
     \begin{proof}
         By %HTT 7.2.1.14.
-        this is equivalent to checking that $L(x)$ is an effective epimorphism in the ordinary category $\ho(\Disc(C))$. %Wwhat is L? (adjoint to incl!)
-        However $\ho(\Disc(C))$ is equivalent to the discrete topological spaces. %TODO why is this true?
+        this is equivalent to checking that $L(x)$ is an effective epimorphism in the ordinary category $\ho(\Disc(\spaces))$. %Wwhat is L? (adjoint to incl!)
+        However $\ho(\Disc(\spaces))$ is equivalent to the discrete topological spaces. %TODO why is this true?
         Here the effective epimorphisms are exactly the surjective morphisms, and since for a discrete space there is a bijection $X\to\pi_0(X)$ we have that a map $f$ is effective if and only $\pi_0(L(f))$ is a surjective map.
         Thus $x$ is effective if and only if $X$ has a single connected component, which proves the proposition.
     \end{proof}

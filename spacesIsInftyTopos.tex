@@ -11,7 +11,7 @@ In order to transfer reasoning back and forth from the model category $\Top$ and
     \end{equation*} 
     they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
 
-    Furthermore the map $\N(\Fun(J,M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.
+    Furthermore the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.
     \begin{proof}
         %TODO Proposition 1.3.4.25. HA
     \end{proof}
@@ -433,7 +433,8 @@ For the last part of the proof we need the following definitions.
     \end{proof}
 \end{prop}
 Lastly, we need to prove descent for homotopy coproducts. 
-We will show that this already follows from the fact that $\Top$ has disjoint binary homotopy coproducts and universality for homotopy coproducts.
+Our proof of this will again demonstrate that descent is somewhat linked to universality.
+We will show that is is a consequence of having disjoint binary homotopy coproducts and universality for homotopy coproducts.
 \begin{definition}
     Let $M$ be a model category.
     We say that \emph{binary homotopy coproducts are disjoint} in $M$ if every homotopy pushout square
@@ -443,7 +444,7 @@ We will show that this already follows from the fact that $\Top$ has disjoint bi
             Y \arrow [r] & X\cup^h Y
         \end{tikzcd}
     \end{center}
-    (where $\emptyset$ is the initial object and $X\cup^h Y$ the homotopy coproduct) is a homotopy pullback.
+    (where $\emptyset$ is the initial object and $X\cup^h Y$ a homotopy coproduct) is a homotopy pullback.
 \end{definition}
 \begin{lemma}\label{lem:binCoprodDisjoint}
     Binary homotopy coproducts in the model category $\Top$ are disjoint.
@@ -561,7 +562,7 @@ We will show that this already follows from the fact that $\Top$ has disjoint bi
     Then $M$ has descent for homotopy coproducts.
     \begin{proof}
         Let $\left(X_i\right)_{i\in I}$ and $\left(Y_i\right)_{i\in I}$ be families of objects and let $\left(f_i\colon X_i\to Y_i\right)_{i\in I}$ be a collection of maps.
-        Note that homotopy coproducts are computed by replacing all objects with cofibrant objects and taking the ordinary pushout, without loss of generality we assume our families of objects to be cofibrant and their coproducts to be ordinary coproducts.
+        Note that homotopy coproducts are computed by replacing all objects with cofibrant objects and taking the ordinary pushout, without loss of generality we assume our families of objects to be cofibrant and their homotopy coproducts to be ordinary coproducts.
         We have to prove that 
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
@@ -580,11 +581,7 @@ We will show that this already follows from the fact that $\Top$ has disjoint bi
                 \overline{Y_k} \arrow [->>,r] & \bigcup\limits_{i\in I}Y_i
             \end{tikzcd}
         \end{center}
-        and choose cofibrant replacements $\widehat{P_{kj}}$.
-        By universality of homotopy coproducts we have that the canonical map $\bigcup\limits_{j\in I}^h \left(\overline{Y_k}\times_{\bigcup\limits_{i\in I}X_i}X_j\right)\simeq\bigcup\limits_{j\in I}\widehat{P_{kj}}\to\overline{Y_k}\times_{\bigcup\limits_{i\in I}Y_i}\left(\bigcup\limits_{j\in I}X_j\right)$ is a weak equivalence.
-        So it remains to show that $P_{kj}\simeq\emptyset$ for $k\neq j$ and $X_k\to P_{kk}$ is a weak equivalence.
-
-        Since $X_j\to\bigcup\limits_{i\in I}X_i\to\bigcup\limits_{i\in I}Y_i$ is equal to $X_j\to Y_j\to\bigcup\limits_{i\in I}Y_i$, we can also compute $P_{kj}$ as the successive pullback
+        and since $X_j\to\bigcup\limits_{i\in I}X_i\to\bigcup\limits_{i\in I}Y_i$ is equal to $X_j\to Y_j\to\bigcup\limits_{i\in I}Y_i$, we can also compute $P_{kj}$ as the successive pullback
         \begin{center}%TODO perhaps compute this first then maybe we dont need to take cofibrant replacements?
             \begin{tikzcd} [sep = 1 cm]
                 P_{kj} \arrow [r] \arrow [d] & X_j \arrow [d]\\
@@ -595,8 +592,13 @@ We will show that this already follows from the fact that $\Top$ has disjoint bi
         by the pasting law for pullbacks.
         (Note that all pullbacks here are already homotopy pullbacks.)
 
-        So it suffices to prove that $\overline{Y_k}\times_{\bigcup\limits_{i\in I}Y_i} Y_j\simeq\emptyset$ for $k\neq j$ and $\overline{Y_k}\times_{\bigcup\limits_{i\in I}Y_i} Y_k\simeq Y_k$. %TODO why? (univ for empty coprod + pullback along identity)
-        But we have already shown this in \cref{cor:genCoproductComponentPb}.
+        By \cref{cor:genCoproductComponentPb} we have that $\overline{Y_k}\times_{\bigcup\limits_{i\in I}Y_i} Y_j\simeq\emptyset$ for $k\neq j$ and $\overline{Y_k}\times_{\bigcup\limits_{i\in I}Y_i} Y_k\simeq Y_k$. %TODO why? (univ for empty coprod + pullback along identity)
+        This in particular shows that $P_{kj}\simeq\emptyset$ for $j\neq k$ and $P_{kk}\simeq X_k$. %TODO explain why maybe
+        
+        Note that $P_{kj}$ is cofibrant for all $k,j\in I$. 
+        We now want to conclude by showing that the universal map $X_k\to P_{kk}$ is a weak equivalence.
+        By universality of homotopy coproducts we have that the canonical map $\bigcup\limits_{j\in I}^hP_{kj}\simeq\bigcup\limits_{j\in I}P_{kj}\simeq\bigcup\limits_{j\in I} \left(\overline{Y_k}\times_{\bigcup\limits_{i\in I}X_i}X_j\right)\to\overline{Y_k}\times_{\bigcup\limits_{i\in I}Y_i}\left(\bigcup\limits_{j\in I}X_j\right)$ is a weak equivalence.
+        But since $P_{kj}\simeq\emptyset$ for $j\neq k$ and $P_{kk}\simeq X_k$, $\bigcup\limits_{j\in I}P_{kj}\simeq X_k$ so this proves the proposition.
     \end{proof}
 \end{corollary}
 \begin{lemma}\label{lem:topDescentCoproduct}
