@@ -601,12 +601,12 @@ We will show that is is a consequence of having disjoint binary homotopy coprodu
         But since $P_{kj}\simeq\emptyset$ for $j\neq k$ and $P_{kk}\simeq X_k$, $\bigcup\limits_{j\in I}P_{kj}\simeq X_k$ so this proves the proposition.
     \end{proof}
 \end{corollary}
-\begin{lemma}\label{lem:topDescentCoproduct}
+\begin{corollary}\label{cor:topDescentCoproduct}
     The model category $\Top$ has descent for homotopy coproducts.
     \begin{proof}
         By \cref{cor:disjointImpliesDescent} this follows from \cref{lem:binCoprodDisjoint} and \cref{lem:topUniversalCoproduct}.
     \end{proof}
-\end{lemma}
+\end{corollary}
 \begin{remark}
     One can prove descent for coproducts much more directly in $\Top$:
 
@@ -625,6 +625,6 @@ We will show that is is a consequence of having disjoint binary homotopy coprodu
     The \inftycat/ of spaces $\spaces$ is an \inftytop/.
     \begin{proof}
         We know $\spaces$ is locally presentable from \cref{cor:spacesIsLocPres}.
-        \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} proves that $\spaces$ has universal colimits, and together with \cref{lem:topDescentPo} and \cref{lem:topDescentCoproduct} proves that it has descent.
+        \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} proves that $\spaces$ has universal colimits, and together with \cref{lem:topDescentPo} and \cref{cor:topDescentCoproduct} proves that it has descent.
     \end{proof}
 \end{corollary}
