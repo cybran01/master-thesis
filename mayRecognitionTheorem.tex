@@ -249,7 +249,7 @@ We now want to check that our formulation of the May Recognition Theorem really 
     If $X$ is $k$-truncated then for all $n>k$ the space $\Omega^n X$ is contractible, which implies that $\Map_{\spaces}(S^n,X)\to X$ is a weak equivalence by the long exact sequence for fibrations.
 
     Since for every simplicial set $A$ the functor $\Map_{\spaces}(A,-)$ preserves weak equivalences between fibrant objets, we know that $\Map_{\spaces}\left(A,\Map_{\spaces}(S^n, X)\right)\to\Map_{\spaces}\left(A, X\right)$ is a weak equivalence as well. %TODO define mapping space in such a way that it preserves all w.e. 
-    As $\Map_{\spaces}\left(A,\Map_{\spaces}(S^n, X)\right)\cong\Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right)$, from the pullback square 
+    As $\Map_{\spaces}\left(A,\Map_{\spaces}(S^n, X)\right)\simeq\Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right)$, from the pullback square 
     \begin{center}
         \begin{tikzcd} [sep = 1 cm]
             \Omega^n \Map_{\spaces}(A, X) \arrow [r] \arrow [d] & \Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right) \arrow [->>,d, "\ev_s"]\\
@@ -260,8 +260,8 @@ We now want to check that our formulation of the May Recognition Theorem really 
     \begin{equation*}
         \pi_k\left(\Omega^n \Map_{\spaces}(A, X),f\right)\cong 0
     \end{equation*}
-    for arbitrary $f\in\Omega^n\Map_{\spaces}(A, X)$ since $\Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right)\to\Map_{\spaces}(A, X)$ is a weak equivalence.
-    This implies that the space $\Map_{\spaces}(A,X)$ is $k$-truncated. 
+    for all $f\in\Omega^n\Map_{\spaces}(A, X)$ since $\Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right)\to\Map_{\spaces}(A, X)$ is a weak equivalence.
+    Thus the space $\Map_{\spaces}(A,X)$ is $k$-truncated. 
 \end{remark}
 \begin{definition}
     Let $C$ be an \inftytop/ and let $\Disc(C)\subset C$ be the full subcategory of $0$-truncated objects.
