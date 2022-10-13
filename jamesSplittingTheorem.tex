@@ -41,7 +41,7 @@ We begin by introducing the objects that we want to work with.
         be the \emph{smash product of $X$ and $Y$} (where the map $X\vee Y\to X\times Y$ is the canonical map from the universal property induced by the maps $X\vee Y\to X$ and $X\vee Y\to Y$).
     \end{itemize}
 \end{definition}
-The next lemma is a key lemma of this proof.
+The next lemma is a key lemma of the proof of the James Splitting Theorem.
 There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
 \begin{lemma}\label{lem:existenceOfPoSq} %TODO ON THE JAMES AND HILTON–MILNOR SPLITTINGS, & THE METASTABLE EHP SEQUENCE lemma 2.17
     Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object.
@@ -265,7 +265,7 @@ We will also need to prove some basic facts about wedges and smash products.
             X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"] & Y \arrow[r] \arrow[d] & * \arrow[d] \\
             X \arrow[r] \arrow[d] & \Sigma\left(X\wedge Y\right) \arrow[r] \arrow[d] & \Sigma Y\vee\Sigma\left(X\wedge Y\right) \arrow[d]\\
             * \arrow[r] &  \Sigma X\vee\Sigma\left(X\wedge Y\right)\arrow[r] & \Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right) \\
-        \end{tikzcd}\;.
+        \end{tikzcd}
     \end{center}
     are pushouts.
     \begin{proof}
@@ -291,7 +291,7 @@ We will also need to prove some basic facts about wedges and smash products.
         is always a pushout and the wedge sum is commutative. %TODO prove associativity+commutativity and maybe reference it here
     \end{proof}
 \end{lemma}
-The following corollary is not needed for the James Spliting Theorem, however it is useful and immediate from what we have already shown.
+The following corollary is not needed for the James Splitting Theorem, however it is useful and immediate from what we have already shown.
 \begin{corollary}
     Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
     Then we have $\Sigma\left(X\times Y\right)\cong\Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right)$.
@@ -299,9 +299,9 @@ The following corollary is not needed for the James Spliting Theorem, however it
         The outer square of \cref{lem:allSqArePo} proves this immediately. 
     \end{proof}
 \end{corollary}
-\begin{lemma}\label{lem:suspensionCommutesWithProduct}
+\begin{lemma}\label{lem:suspensionCommutesWithSmash}
     Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
-    Then there is a canonical equivalence $\Sigma\left(X\times Y\right)\cong X\times\Sigma Y$.
+    Then there is a canonical equivalence $\Sigma\left(X\wedge Y\right)\cong X\wedge\Sigma Y$.
     \begin{proof}
         The squares
         \begin{center}
@@ -323,14 +323,43 @@ The following corollary is not needed for the James Spliting Theorem, however it
                 X\times *  & X\times Y \arrow[l] \arrow[r] & X\times * \\
             \end{tikzcd}
         \end{center}
-        we get $X\times\Sigma Y$ by computing the pushout of the pushouts of the rows and $\Sigma\left(X\times Y\right)$ by computing the pushout of the pushouts of the columns, which proves the proposition.
+        we get $X\wedge\Sigma Y$ by computing the pushout of the pushouts of the rows and $\Sigma\left(X\wedge Y\right)$ by computing the pushout of the pushouts of the columns, which proves the proposition.
     \end{proof}
 \end{lemma}
-\begin{corollary}[James Splitting]
-    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+\begin{corollary}[Fundamental James Splitting]\label{cor:fundamentalJamesSplitting}
+    Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
     Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$.
     \begin{proof}
         Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the left vertical and top horizontal maps of the big left square (top and bottom left squares combined) are equivalent to the maps of the square in \cref{lem:poOfProductIsSuspension}.
-        Since both are pushout squares, we get an equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$ and the proposition follows from \cref{lem:suspensionCommutesWithProduct}.
+        Since both are pushout squares, we get an equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$ and the proposition follows from \cref{lem:suspensionCommutesWithSmash}.
     \end{proof}
 \end{corollary}
+\begin{corollary}[Fundamental James Splitting, iterated]
+    Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
+    Then for all $n\geq 1$ there is a canonical equivalence
+    \begin{equation*}
+        \Sigma\Omega\Sigma X \cong\bigvee\limits_{1\leq i\leq n}\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)
+    \end{equation*}
+    induced by \cref{cor:fundamentalJamesSplitting}.
+    Here $\Sigma X^{\wedge i}$ denotes $\Sigma\left(X\wedge X\wedge\ldots\wedge X\right)$ with $X$ appearing $i$ times.
+    \begin{proof}
+        This follows inductively from \cref{cor:fundamentalJamesSplitting} and \cref{lem:suspensionCommutesWithSmash}.
+    \end{proof}
+\end{corollary}
+\begin{definition}
+    Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
+    Then the canonical maps 
+    \begin{equation*}
+        c_X^n\colon\bigvee\limits_{1\leq i\leq n}\Sigma X^{\wedge i}\to\bigvee\limits_{1\leq i\leq n}\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\cong}\Sigma\Omega\Sigma X
+    \end{equation*}
+    induce a map
+    \begin{equation*}
+        c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
+    \end{equation*}
+    which we refer to as the \emph{comparison map}.
+\end{definition}
+Our goal now is to prove that this map is an equivalence whenever $X$ is a $0$-connected pointed object. %TODO define k-connected objects, perhaps at definition of truncation
+We will prove this only in $\spaces$, however this case is already enough to derive the result for general topoi (see \cref{rem:genTopoiComparisonMapEq}).
+
+The main idea is to show that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ is $n$-connected and thus vanishes as $n\to\infty$.
+For this proof we need some stability properties of connectedness.
