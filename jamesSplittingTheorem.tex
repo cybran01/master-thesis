@@ -338,7 +338,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
     Then for all $n\geq 1$ there is a canonical equivalence
     \begin{equation*}
-        \Sigma\Omega\Sigma X \cong\bigvee\limits_{1\leq i\leq n}\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)
+        \Sigma\Omega\Sigma X \cong\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)
     \end{equation*}
     induced by \cref{cor:fundamentalJamesSplitting}.
     Here $\Sigma X^{\wedge i}$ denotes $\Sigma\left(X\wedge X\wedge\ldots\wedge X\right)$ with $X$ appearing $i$ times.
@@ -350,7 +350,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
     Then the canonical maps 
     \begin{equation*}
-        c_X^n\colon\bigvee\limits_{1\leq i\leq n}\Sigma X^{\wedge i}\to\bigvee\limits_{1\leq i\leq n}\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\cong}\Sigma\Omega\Sigma X
+        c_X^n\colon\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\cong}\Sigma\Omega\Sigma X
     \end{equation*}
     induce a map
     \begin{equation*}
@@ -358,8 +358,137 @@ The following corollary is not needed for the James Splitting Theorem, however i
     \end{equation*}
     which we refer to as the \emph{comparison map}.
 \end{definition}
-Our goal now is to prove that this map is an equivalence whenever $X$ is a $0$-connected pointed object. %TODO define k-connected objects, perhaps at definition of truncation
+\begin{definition}
+    Let $C$ be an \inftytop/.
+    With the convention that every map is $(-2)$-connected, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-connected} for $k\geq -1$ if
+    \begin{itemize}
+        \item it is an effective epimorphism
+        \item the diagonal map $X\to X\times_YX$ is $(k-1)$-connected.
+    \end{itemize} 
+    If $f$ is connected for all $k\in\Nat$, then we say that $f$ is \emph{$\infty$-connected}.
+    We consider an object $X$ to be \emph{$k$-connected} if the map $X\to *$ is $k$-connected.
+\end{definition}
+\begin{remark}
+    In $\spaces$ this definition agrees (up to an index shift depending on convention) with the usual notion of connectedness. 
+    %TODO elaborate %TODO prove this agrees with standard def (after shift of index at least), HTT Proposition 6.5.1.16 (6) Proposition 6.5.1.20. for section
+\end{remark}
+\begin{definition}
+    We say that an \inftytop/ $C$ is \emph{hypercomplete} if every $\infty$-connected map is an equivalence.
+\end{definition}
+\begin{remark}
+    Every equivalence is $\infty$-connected, however the converse is not true for general \inftytops/.
+    The \inftytop/ $\spaces$ is hypercomplete. %TODO reference HTT 
+\end{remark}
+Our goal now is to prove that the comparison map is an equivalence whenever $X$ is a $0$-connected pointed object. %TODO define k-connected objects, perhaps at definition of truncation
 We will prove this only in $\spaces$, however this case is already enough to derive the result for general topoi (see \cref{rem:genTopoiComparisonMapEq}).
 
-The main idea is to show that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ is $n$-connected and thus vanishes as $n\to\infty$.
+The main idea is to show that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ becomes increasingly connected and vanishes as $n\to\infty$.
 For this proof we need some stability properties of connectedness.
+\begin{prop}\label{prop:conn}
+    Let $C$ be an \inftytop/ and $k\geq -2$.
+    Then
+    \begin{enumerate}[label={(\roman*)}]
+        \item $k$-connected morphisms are stable under pushout. \label{prop:connStableUnderPo}
+        \item $k$-connected morphisms are stable under pullback.\label{prop:connStableUnderPb}
+        \item for morphisms $f\colon X\to Y$ and $g\colon Y\to Z$ with $f$ $k$-connected, the morphism $g$ is $k$-connected if and only if $gf$ is $k$-connected. \label{prop:connRightCancel}
+        \item for a morphism $f\colon X\to Y$ with a section $s\colon Y\to X$, $f$ is $(k+1)$-connected if and only if $s$ is $k$-connected. \label{prop:connSection}
+        \item the class of $k$-connected objects is stable under filtered colimits. \label{prop:connStableFilteredColim}
+    \end{enumerate}
+    \begin{proof}
+        %TODO Proposition 4.10. in paper
+    \end{proof}
+\end{prop}
+\begin{prop}[Blakers-Massay Theorem]\label{prop:blakersMassay}
+    Let $C$ be an \inftytop/ and let 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            A \arrow[r, "g"] \arrow[d, "f"] &  C \arrow[d] \\
+            B \arrow[r] & D \\
+        \end{tikzcd}
+    \end{center}
+    be a pushout square in $C$.
+    Then if $f$ is $n$-connected and $g$ is $m$-connected, the universal map $A\to B\times_{D}C$ is $(n+m)$-connected.
+    \begin{proof}
+        %TODO gen_blakers_massay Corollary 4.3.1
+    \end{proof}
+\end{prop}
+With these we can deduce the following statements:
+\begin{corollary}\label{cor:connEst}
+    Let $C$ be an \inftytop/, $X,Y\in \left(C_*\right)_0$ pointed objects and $k,l\geq 0$. 
+    If $X$ is $k$-connected and $Y$ is $l$-connected, then
+    \begin{enumerate}[label={(\roman*)}]
+        \item the suspension $\Sigma X$ is $(k+1)$-connected. \label{cor:connEstSuspension}
+        \item the canonical map $X\to X\vee Y$ is $(l-1)$-connected. \label{cor:connEstVeeIncl}
+        \item the smash product $X\wedge Y$ is $(k + l + 1)$-connected. \label{cor:connEstSmash}
+        \item for every $n\geq 0$, the smash product $X^{\wedge n}$ is $(n(k+1)-1)$-connected. \label{cor:connEstIteratedSmash}
+    \end{enumerate}
+    \begin{proof}
+        \ref{cor:connEstSuspension}: Since $X$ is $k$-connected by \cref{prop:conn} \ref{prop:connStableUnderPo} the pushout of the map $X\to *$ which is a map $*\to \Sigma X$ is $k$-connected.
+        Thus by \cref{prop:conn} \ref{prop:connSection} the map $\Sigma X\to *$ is $(k+1)$-connected.
+
+        \ref{cor:connEstVeeIncl}: Since the map $*\to Y$ is $(l-1)$-connected by \cref{prop:conn} \ref{prop:connSection}, by \cref{prop:conn} \ref{prop:connStableUnderPo} the map $X\to X\vee Y$ is also $(l-1)$-connected.
+        
+        \ref{cor:connEstSmash}: By \cref{prop:blakersMassay} and \cref{lem:poOfCollapseMapsIsTrivial} we have that $X\vee Y\to X\times Y$ is  $(k+l)$-connected. 
+        By \cref{prop:conn} \ref{prop:connStableUnderPo} the map $*\to X\wedge Y$ is thus also $(k+l)$-connected and so by \cref{prop:conn} \ref{prop:connSection} the space $X\wedge Y$ is $(k+l+1)$-connected.
+
+        \ref{cor:connEstIteratedSmash}: This follows by induction on \ref{cor:connEstSmash}.
+    \end{proof}
+\end{corollary}
+% \begin{corollary}[Freudenthal Suspension Theorem]\label{cor:freudenthalSuspension}
+%     Let $C$ be an \inftytop/ and let $X$ be a pointed object that is $n$-connected.
+%     Then the universal morphism $X\to\Omega\Sigma X$ is $2n$-connected.
+%     \begin{proof}
+%         This is \cref{prop:blakersMassay} applied to the square 
+%         \begin{center}
+%             \begin{tikzcd} [sep = 4em]
+%                 X \arrow[r] \arrow[d] &  * \arrow[d] \\
+%                 * \arrow[r] & \Sigma X \\
+%             \end{tikzcd}\;.
+%         \end{center}
+%     \end{proof}
+% \end{corollary}
+\begin{prop}[James Splitting for Presheaf Categories]\label{prop:jamesSplittingPresheaf} %ref Proposition 4.18 
+    Let $A$ be an \inftycat/ and let $X$ be a pointed and $0$-connected object in the \inftytop/ $\Fun(A,\spaces)$. %TODO why is this an \inftytop/?
+    Then the comparison morphism 
+    \begin{equation*}
+        c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
+    \end{equation*}
+    is an equivalence. 
+    \begin{proof}
+        Since $\Fun(A,\spaces)$ is hypercomplete %TODO reference
+        it suffices to prove that $c_X$ is $\infty$-connected.
+
+        First for each $n\in\Nat_{\geq 1}$ we have $2$-simplices in $\Fun(A,\spaces)$
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \bigvee\limits_{i=1}^{n}\Sigma X^{\wedge i} \arrow[r] \arrow[dr] & \bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i} \arrow[d, "c_X"] \\
+                & \Sigma\Omega\Sigma X \\
+            \end{tikzcd}
+        \end{center}
+        induced by the universal property.
+
+        By \cref{cor:connEst} \ref{cor:connEstIteratedSmash} $X^{\wedge n}$ is $(n-1)$-connected.
+        By \cref{prop:conn} \ref{prop:connStableUnderPo} and \cref{prop:conn} \ref{prop:connStableUnderPo} we have that $\Omega\Sigma X$ is $0$-connected, so by \cref{cor:connEst} \ref{cor:connEstSmash} $\Sigma\Omega\Sigma X$ is $1$-connected and combining this via \cref{cor:connEst} \ref{cor:connEstSmash} shows that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ is $(n+1)$-connected.
+
+        So the map 
+        \begin{equation*}
+            c_X^n\colon\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\cong}\Sigma\Omega\Sigma X
+        \end{equation*}
+        corresponding to the diagonal map of the above triangle is $n$-connected by \cref{cor:connEst} \ref{cor:connEstVeeIncl}.
+
+        Since by \cref{cor:connEst} \ref{cor:connEstIteratedSmash} and \cref{cor:connEst} \ref{cor:connEstSmash} every object of the filtered colimit $\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}$ is at least $(n+1)$-connected, by \cref{cor:connEst} \ref{prop:connStableFilteredColim} it is iself $(n+1)$-connected.
+        So by \cref{cor:connEst} \ref{cor:connEstVeeIncl} we have that the horizontal map of the triangle $\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}\cong\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}$ is $n$-connected.
+
+        As the diagonal as well as the horizontal map of the triangle above are $n$-connected, from \cref{prop:conn} \ref{prop:connRightCancel} it follows that $c_X$ is $n$-connected. 
+        As $n$ was arbitrary, $c_X$ is therefore an equivalence.
+    \end{proof}
+\end{prop}
+\begin{remark}\label{rem:genTopoiComparisonMapEq}
+    Due to the equivalent characterizations of \inftytops/ as in %TODO HTT
+    for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
+    
+    Then if for a pointed object $X\in\left(C_*\right)_0$ the comparison morphism $c_{i(X)}$ is an equivalence in $Fun(A,\spaces)$, so is $c_X$ in $C$ (see %TODO paper, Lemma 4.17.
+    ).
+    If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\spaces$ is hypercomplete and $Fun(A,\spaces)$ inherits this property. %TODO define hypercomplete %TODO prove that X 0-conn => i(X) 0-conn
+    But we have proven this in \cref{prop:jamesSplittingPresheaf}, so it is true for all \inftytops/.
+\end{remark}
