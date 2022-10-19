@@ -218,70 +218,100 @@ The following proposition is at the heart of the proof of the May Recognition Th
         This follows immediately from \cref{prop:mayRecognitionTheoremGroupoid} and the definition of group objects.
     \end{proof}
 \end{corollary}
-%TODO explain looping/delooping and do it all in Top
 \subsection{The May Recognition Theorem in $\spaces$}
 We now want to check that our formulation of the May Recognition Theorem really gives the expected formulation in $\Top$.
-%TODO define truncated obj/morphism HTT Definition 5.5.6.1.
 \begin{definition}
-    Let $A$ be a simplicial set and let $k\geq -1$.
-    We say that $A$ is \emph{$k$-truncated} if for all $n>k$ and $x\in A$ we have $\pi_n\left(A,x\right)=0$.
-\end{definition}
-\begin{definition}
-    Let $C$ be an \inftycat/ and let $k\geq-1$.
-    We say that an object $X\in C_0$ is \emph{$k$-truncated} if for every object $Y\in C_0$, the mapping space %TODO define mapping space
-    $\Map_C(Y,X)$ is $k$-truncated as a simplicial set.
-\end{definition}
-\begin{remark}
-    Our two definitions of $k$-truncatedness agree:
-    The observation $\Map_{\spaces}(*,X)\simeq X$ proves the first implication.
+    Let $C$ be an \inftytop/.
+    With the convention that the $(-2)$-truncated maps are the equivalences, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-truncated} for $k\geq -1$ if the diagonal map $X\to X\times_YX$ is $(k-1)$-truncated.
     
-    For the second implication consider a fibrant simplicial set $X$.
-    We next fix models for the pointed simplicial spheres, e.g. we choose $S^0=\Delta^0\cup\Delta^0$ with the basepoint $s$ as one of the canonical choices and for $n\geq 1$ we choose $S^n=\faktor{\Delta^n}{\partial\Delta^n}$ to be pointed by the equivalence class of $\partial\Delta^n$.
-    Then for every point $x\in X$ we get a pullback square
+    We consider an object $X$ to be \emph{$k$-truncated} if the map $X\to *$ is $k$-truncated.
+\end{definition}
+%TODO make this a little cleaner to read, check that is really works in all degrees
+\begin{remark}
+    Note that in $\spaces$ this definition agrees with the following:
+    
+    A map of topological spaces $f\colon X\to Y$ with homotopy fiber $F$ if $k$-truncated if and only if for all $x\in F$ and $n>k$ we have $\pi_n(F,x)\cong 0$.
+    We set $(-2)$-truncated to mean that it is non-empty and contractible, and $(-1)$-truncated to mean that it is non-empty or contractible.
+    
+    This is because for a pullback square in $\spaces$ 
     \begin{center}
-        \begin{tikzcd} [sep = 1 cm]
-            \Omega^n X \arrow [r] \arrow [d] & \Map_{\spaces}(S^n,X) \arrow [->>,d, "\ev_s"]\\
-            * \arrow [r, "x"] & X
+        \begin{tikzcd} [sep = 4em]
+            X\times_{Y} X \arrow[r, "g"] \arrow[d, "g"] & X \arrow[d, "f"] \\
+            X \arrow[r, "f"] & Y \\
         \end{tikzcd}
     \end{center}
-    where for $n\geq 1$ we take the simplicial model of the sphere $S^n=\faktor{\Delta^n}{\partial\Delta^n}$ to be pointed by the basepoint $s$ given by the equivalence class of $\partial\Delta^n$.
-
-    If $X$ is $k$-truncated then for all $n>k$ the space $\Omega^n X$ is contractible, which implies that $\Map_{\spaces}(S^n,X)\to X$ is a weak equivalence by the long exact sequence for fibrations.
-
-    Since for every simplicial set $A$ the functor $\Map_{\spaces}(A,-)$ preserves weak equivalences between fibrant objets, we know that $\Map_{\spaces}\left(A,\Map_{\spaces}(S^n, X)\right)\to\Map_{\spaces}\left(A, X\right)$ is a weak equivalence as well. %TODO define mapping space in such a way that it preserves all w.e. 
-    As $\Map_{\spaces}\left(A,\Map_{\spaces}(S^n, X)\right)\simeq\Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right)$, from the pullback square 
-    \begin{center}
-        \begin{tikzcd} [sep = 1 cm]
-            \Omega^n \Map_{\spaces}(A, X) \arrow [r] \arrow [d] & \Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right) \arrow [->>,d, "\ev_s"]\\
-            * \arrow [r, "f"] & \Map_{\spaces}(A, X)
-        \end{tikzcd}
-    \end{center}
-    as above and the long exact sequence we obtain that 
-    \begin{equation*}
-        \pi_k\left(\Omega^n \Map_{\spaces}(A, X),f\right)\cong 0
-    \end{equation*}
-    for all $f\in\Omega^n\Map_{\spaces}(A, X)$ since $\Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right)\to\Map_{\spaces}(A, X)$ is a weak equivalence.
-    Thus the space $\Map_{\spaces}(A,X)$ is $k$-truncated. 
+    by the fiberwise characterization of homotopy pullbacks we have that $g$ is $k$-truncated if and only if $f$ is $k$-truncated.
+    
+    Furthermore a map $f\colon X\to Y$ equipped with a section $s\colon Y\to X$ is $n$-truncted if and only if the section $s$ is $(n-1)$-truncated (as can be proven by inspection of the long exact sequences of homotopy groups).
+    
+    Since $X\to X\times_YX$ is the canonical section of $X\times_{Y} X\to Y$, this allows us to recursively reduce to the case of $f\colon X\to Y$ being $(-2)$-truncated, which in both definitions means that it is an equivalence.
 \end{remark}
 \begin{definition}
     Let $C$ be an \inftytop/ and let $\Disc(C)\subset C$ be the full subcategory of $0$-truncated objects.
     We call $\Disc(C)$ the \emph{\inftycat/ of discrete objects of $C$}.
 \end{definition}
-%TODO HTT Proposition 5.5.6.18. for the fact that Disc has an accessible left adjoint
-%TODO Proposition 7.2.1.14. for being able to check eff epi in htpy cat
-\begin{lemma} %TODO CatLR Proposition 7.8.3. 
-    Let $x\colon*\to X\in\spaces_1$ be a map.
-    Then $x$ is an effective epimorphism if and only if $X$ is connected as a topological space.
+\begin{prop}\label{prop:effInSpaceIffSurj}
+    In map $f\colon x\to y$ in $\spaces$ is an effective epimorphism if and only if it induces a surjection on connected components.
     \begin{proof}
         First, by %CatLR 7.8.3.
         there is a fully faithful functor $i\colon\N(\Set)\to\spaces$ whose essential image consists precisely of the discrete objects and has $\pi_0\colon\spaces\to\N(\Set)$ as a left adjoint.
         By %HTT 7.2.1.14.
         the statement of the lemma is thus equivalent to checking whether $\pi_0(x)$ is an effective epimorphism in $\Set$.
-        
         In $\Set$ the effective epimorphisms are exactly the surjective morphisms, so we have that a map $f$ in $\spaces$ is an effective epimorphism precisely if $\pi_0(f)$ is surjective.
         Thus $x$ is effective if and only if $X$ has a single connected component, which proves the proposition.
     \end{proof}
-\end{lemma}
+\end{prop}
+\begin{corollary} %TODO CatLR Proposition 7.8.3. 
+    Let $x\colon*\to X\in\spaces_1$ be a map.
+    Then $x$ is an effective epimorphism if and only if $X$ is connected as a topological space.
+    \begin{proof}
+        This follows from \cref{prop:effInSpaceIffSurj} and the fact that $*$ has exactly one connected component.
+    \end{proof}
+\end{corollary}
+%TODO define truncated obj/morphism HTT Definition 5.5.6.1.
+% \begin{definition}
+%     Let $A$ be a simplicial set and let $k\geq -1$.
+%     We say that $A$ is \emph{$k$-truncated} if for all $n>k$ and $x\in A$ we have $\pi_n\left(A,x\right)=0$.
+% \end{definition}
+% \begin{definition}
+%     Let $C$ be an \inftycat/ and let $k\geq-1$.
+%     We say that an object $X\in C_0$ is \emph{$k$-truncated} if for every object $Y\in C_0$, the mapping space %TODO define mapping space
+%     $\Map_C(Y,X)$ is $k$-truncated as a simplicial set.
+% \end{definition}
+% \begin{remark}
+%     Our two definitions of $k$-truncatedness agree:
+%     The observation $\Map_{\spaces}(*,X)\simeq X$ proves the first implication.
+    
+%     For the second implication consider a fibrant simplicial set $X$.
+%     We next fix models for the pointed simplicial spheres, e.g. we choose $S^0=\Delta^0\cup\Delta^0$ with the basepoint $s$ as one of the canonical choices and for $n\geq 1$ we choose $S^n=\faktor{\Delta^n}{\partial\Delta^n}$ to be pointed by the equivalence class of $\partial\Delta^n$.
+%     Then for every point $x\in X$ we get a pullback square
+%     \begin{center}
+%         \begin{tikzcd} [sep = 1 cm]
+%             \Omega^n X \arrow [r] \arrow [d] & \Map_{\spaces}(S^n,X) \arrow [->>,d, "\ev_s"]\\
+%             * \arrow [r, "x"] & X
+%         \end{tikzcd}
+%     \end{center}
+%     where for $n\geq 1$ we take the simplicial model of the sphere $S^n=\faktor{\Delta^n}{\partial\Delta^n}$ to be pointed by the basepoint $s$ given by the equivalence class of $\partial\Delta^n$.
+
+%     If $X$ is $k$-truncated then for all $n>k$ the space $\Omega^n X$ is contractible, which implies that $\Map_{\spaces}(S^n,X)\to X$ is a weak equivalence by the long exact sequence for fibrations.
+
+%     Since for every simplicial set $A$ the functor $\Map_{\spaces}(A,-)$ preserves weak equivalences between fibrant objets, we know that $\Map_{\spaces}\left(A,\Map_{\spaces}(S^n, X)\right)\to\Map_{\spaces}\left(A, X\right)$ is a weak equivalence as well. %TODO define mapping space in such a way that it preserves all w.e. 
+%     As $\Map_{\spaces}\left(A,\Map_{\spaces}(S^n, X)\right)\simeq\Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right)$, from the pullback square 
+%     \begin{center}
+%         \begin{tikzcd} [sep = 1 cm]
+%             \Omega^n \Map_{\spaces}(A, X) \arrow [r] \arrow [d] & \Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right) \arrow [->>,d, "\ev_s"]\\
+%             * \arrow [r, "f"] & \Map_{\spaces}(A, X)
+%         \end{tikzcd}
+%     \end{center}
+%     as above and the long exact sequence we obtain that 
+%     \begin{equation*}
+%         \pi_k\left(\Omega^n \Map_{\spaces}(A, X),f\right)\cong 0
+%     \end{equation*}
+%     for all $f\in\Omega^n\Map_{\spaces}(A, X)$ since $\Map_{\spaces}\left(S^n,\Map_{\spaces}(A, X)\right)\to\Map_{\spaces}(A, X)$ is a weak equivalence.
+%     Thus the space $\Map_{\spaces}(A,X)$ is $k$-truncated. 
+% \end{remark}
+%TODO HTT Proposition 5.5.6.18. for the fact that Disc has an accessible left adjoint
+%TODO Proposition 7.2.1.14. for being able to check eff epi in htpy cat
 \begin{remark}
     By definition of loop spaces and explicit computation, the \Cech/ nerve of an effective map $x\colon*\to X$ in $\Top$ (so $X$ is a pointed connected space) is given by %TODO define loop spaces
     \begin{center}

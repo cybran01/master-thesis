@@ -358,6 +358,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     \end{equation*}
     which we refer to as the \emph{comparison map}.
 \end{definition}
+%TODO remark similarity to truncatedness
 \begin{definition}
     Let $C$ be an \inftytop/.
     With the convention that every map is $(-2)$-connected, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-connected} for $k\geq -1$ if
@@ -368,9 +369,33 @@ The following corollary is not needed for the James Splitting Theorem, however i
     If $f$ is connected for all $k\in\Nat$, then we say that $f$ is \emph{$\infty$-connected}.
     We consider an object $X$ to be \emph{$k$-connected} if the map $X\to *$ is $k$-connected.
 \end{definition}
+% \begin{remark}
+%     In $\spaces$ this definition agrees (up to an index shift depending on convention) with the usual notion of connectedness. 
+%     %TODO elaborate %TODO prove this agrees with standard def (after shift of index at least), HTT Proposition 6.5.1.16 (6) Proposition 6.5.1.20. for section
+% \end{remark}
 \begin{remark}
-    In $\spaces$ this definition agrees (up to an index shift depending on convention) with the usual notion of connectedness. 
-    %TODO elaborate %TODO prove this agrees with standard def (after shift of index at least), HTT Proposition 6.5.1.16 (6) Proposition 6.5.1.20. for section
+    Note that in $\spaces$ this definition agrees with the following:
+    
+    A map of topological spaces $f\colon X\to Y$ with homotopy fiber $F$ if $k$-connected if and only if for all $x\in F$ and $n\leq k$ we have $\pi_n(F,x)\cong 0$.
+    We say that every space is $(-2)$-connected and that a space is $(-1)$-connected if it is inhabited.
+    
+    This is because for a pullback square in $\spaces$ 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X\times_{Y} X \arrow[r, "g"] \arrow[d, "g"] & X \arrow[d, "f"] \\
+            X \arrow[r, "f"] & Y \\
+        \end{tikzcd}
+    \end{center}
+    $g$ is $k$-connected if and only if $f$ is $k$-connected since
+    \begin{itemize}
+        \item for $k=-2$ there is nothing to prove
+        \item for $k\geq -1$ the fiber is inhabited for all chosen basepoints and thus $f$ is an effective epimorphism (see \cref{prop:effInSpaceIffSurj}).
+            Since homotopy fibers are essentially constant on connected components, this allows us to prove that $f$ is $k$-connected if $g$ is $k$-connected (the other implication does not need $f$ to be an effective epimorphism and follows directly from the fiberwise characterization of homotopy pullbacks). %TODO maybe say how to do this
+    \end{itemize}
+    
+    Furthermore a map $f\colon X\to Y$ equipped with a section $s\colon Y\to X$ is $n$-connected if and only if the section $s$ is $(n-1)$-connected (as can be proven by inspection of the long exact sequences of homotopy groups).
+    
+    Since $X\to X\times_YX$ is the canonical section of $X\times_{Y} X\to Y$, this allows us to recursively reduce to the case of $f\colon X\to Y$ being $(-2)$-connected, which in both definitions means that it is an arbitrary map.
 \end{remark}
 \begin{definition}
     We say that an \inftytop/ $C$ is \emph{hypercomplete} if every $\infty$-connected map is an equivalence.
