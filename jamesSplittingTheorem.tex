@@ -375,10 +375,10 @@ The following corollary is not needed for the James Splitting Theorem, however i
 % \end{remark}
 \begin{remark}
     Note that in $\spaces$ this definition agrees with the following:
-    
-    A map of topological spaces $f\colon X\to Y$ with homotopy fiber $F$ if $k$-connected if and only if for all $x\in F$ and $n\leq k$ we have $\pi_n(F,x)\cong 0$.
-    We say that every space is $(-2)$-connected and that a space is $(-1)$-connected if it is inhabited.
-    
+    \begin{definition*}
+        A map of topological spaces $f\colon X\to Y$ with homotopy fiber $F$ if $k$-connected if and only if for all $x\in F$ and $n\leq k$ we have $\pi_n(F,x)\cong 0$.
+        We say that every space is $(-2)$-connected and that a space is $(-1)$-connected if it is inhabited.
+    \end{definition*}
     This is because for a pullback square in $\spaces$ 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -493,7 +493,7 @@ With these we can deduce the following statements:
         induced by the universal property.
 
         By \cref{cor:connEst} \ref{cor:connEstIteratedSmash} $X^{\wedge n}$ is $(n-1)$-connected.
-        By \cref{prop:conn} \ref{prop:connStableUnderPo} and \cref{prop:conn} \ref{prop:connStableUnderPo} we have that $\Omega\Sigma X$ is $0$-connected, so by \cref{cor:connEst} \ref{cor:connEstSmash} $\Sigma\Omega\Sigma X$ is $1$-connected and combining this via \cref{cor:connEst} \ref{cor:connEstSmash} shows that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ is $(n+1)$-connected.
+        By \cref{prop:conn} \ref{prop:connStableUnderPo} and \cref{prop:conn} \ref{prop:connStableUnderPb} we have that $\Omega\Sigma X$ is $0$-connected, so by \cref{cor:connEst} \ref{cor:connEstSuspension} $\Sigma\Omega\Sigma X$ is $1$-connected and combining this via \cref{cor:connEst} \ref{cor:connEstSmash} shows that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ is $(n+1)$-connected.
 
         So the map 
         \begin{equation*}
@@ -501,7 +501,7 @@ With these we can deduce the following statements:
         \end{equation*}
         corresponding to the diagonal map of the above triangle is $n$-connected by \cref{cor:connEst} \ref{cor:connEstVeeIncl}.
 
-        Since by \cref{cor:connEst} \ref{cor:connEstIteratedSmash} and \cref{cor:connEst} \ref{cor:connEstSmash} every object of the filtered colimit $\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}$ is at least $(n+1)$-connected, by \cref{cor:connEst} \ref{prop:connStableFilteredColim} it is iself $(n+1)$-connected.
+        Since by \cref{cor:connEst} \ref{cor:connEstIteratedSmash} and \cref{cor:connEst} \ref{cor:connEstSmash} every object of the filtered colimit $\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}$ is at least $(n+1)$-connected, by \cref{prop:conn} \ref{prop:connStableFilteredColim} it is iself $(n+1)$-connected.
         So by \cref{cor:connEst} \ref{cor:connEstVeeIncl} we have that the horizontal map of the triangle $\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}\cong\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}$ is $n$-connected.
 
         As the diagonal as well as the horizontal map of the triangle above are $n$-connected, from \cref{prop:conn} \ref{prop:connRightCancel} it follows that $c_X$ is $n$-connected. 

@@ -35,7 +35,7 @@ We will see that descent will play a mayor role in this.
 \begin{definition} %TODO make better
     Let $C$ be an \inftycat/ with small limits and let $\Delta^1\subset\N(\Delta_+)^{\op}$ be the inclusion corresponding to the full subcategory $[0]\to[-1]$.
     
-    Then there exists a functor $C\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
+    Then by \cref{prop:exKanExt} there exists a functor $C\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
     An object $U^+\in\Fun(\N(\Delta_+)^{\op},C)_0$ in the essential image of $C$ is called a \emph{\Cech/ nerve}.
 \end{definition}
 \begin{remark}
@@ -176,7 +176,7 @@ The following proposition is at the heart of the proof of the May Recognition Th
     We say that $f$ is an \emph{effective epimorphism} if the \Cech/ nerve $C(f)$ is a colimit diagram.
 \end{definition}
 \begin{prop}\label{prop:mayRecognitionTheoremGroupoid}
-    Let $C$ be an \inftytop/. 
+    Let $C$ be an \inftytop/ and let $\Fun(\Delta^1,C)_{\text{eff}}\subset\Fun(\Delta^1,C)$ be the full subcategory of effective epimorphisms.  
     Then the functors
     \begin{equation*}
         F\colon\Gpd(C)\subset\Fun(\N(\Delta)^{\op},C)\xrightarrow{\colim}\Fun(\N(\Delta_+)^{\op},C)
@@ -229,10 +229,10 @@ We now want to check that our formulation of the May Recognition Theorem really 
 %TODO make this a little cleaner to read, check that is really works in all degrees
 \begin{remark}
     Note that in $\spaces$ this definition agrees with the following:
-    
-    A map of topological spaces $f\colon X\to Y$ with homotopy fiber $F$ if $k$-truncated if and only if for all $x\in F$ and $n>k$ we have $\pi_n(F,x)\cong 0$.
-    We set $(-2)$-truncated to mean that it is non-empty and contractible, and $(-1)$-truncated to mean that it is non-empty or contractible.
-    
+    \begin{definition*}
+        A map of topological spaces $f\colon X\to Y$ with homotopy fiber $F$ if $k$-truncated if and only if for all $x\in F$ and $n>k$ we have $\pi_n(F,x)\cong 0$.
+        We set $(-2)$-truncated to mean that it is non-empty and contractible, and $(-1)$-truncated to mean that it is non-empty or contractible.
+    \end{definition*}
     This is because for a pullback square in $\spaces$ 
     \begin{center}
         \begin{tikzcd} [sep = 4em]

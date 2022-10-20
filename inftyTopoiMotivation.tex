@@ -3,16 +3,14 @@
 %TODO how to compute colim/lim in S Kerodon Proposition 7.5.1.5. and Corollary 7.5.7.7.
 %TODO define htpy pb functor, use HTT Proposition A.2.8.7
 %TODO HTT Theorem 6.1.0.6. for equiv char, Proposition 6.1.5.3. 
-Let $C$ be a locally presentable \inftycat/.
-
 In this section, we want to motivate the definition of an \inftytop/.
 Very vaguely speaking, an \inftytop/ is an \inftycat/ which behaves much like the \inftycat/ of spaces $\spaces$.
 There are different equivalent characterizations of an \inftytop/; for an overview and the proofs of some of these equivalent characterizations, see e.g. %HTT chapter 6.1
 .
-We will say that $C$ is an \inftytop/ if it has ''universal colimits'' and ''descent'' which corresponds to %HTT Theorem 6.1.0.6. (2)
+We will say that $C$ is an \inftytop/ if it has ``universal colimits'' and ``descent'' which corresponds to %HTT Theorem 6.1.0.6. (2)
 .
 This characterization of \inftytops/ is due to Charles Rezk.
-Before we define ''universal colimits'' and ''descent'', we will give a brief motivation:
+Before we define ``universal colimits'' and ``descent'', we will give a brief motivation:
 
 Both properties are supposed to ensure fibers of maps behave nicely under various glueings, as they do in $\spaces$ (which we will prove to be an \inftytop/ later on).
 
@@ -45,7 +43,7 @@ whose side faces are pullbacks by the pasting law.
 The top square consists of fibers over $B$ and since the bottom square is a pushout we want that the top square is a pushout as well so that we can compute $F$ from the fibers $F_{01},F_0$ and $F_1$. 
 
 For all cubes in $\Top$ such that the vertical faces are homotopy pullbacks and the bottom square is a homotopy pushout, the top face is a homotopy pushout as well.
-This is called  ''universality of pushouts''.
+This is called  ``universality of pushouts''.
 By the pasting law this shows that our desired statement is not only true for pulling back along points, we can pull back the pushout square over $X\to B$ along arbitrary maps $A\to B$ and the resulting cube will have a pushout as a top square.
 
 We can also ask for this to be true not only for pushouts but general colimits; this is true as well, but it turns it that is suffices to check it for pushouts and small coproducts.
@@ -58,7 +56,7 @@ For descent, when given a diagram
     \end{tikzcd}
 \end{center}
 where the horizontal maps are nice inclusions (cofibrations) and the vertical maps have equivalent homotopy fibers, then the induced map $X_0\cup_{X_{01}}X_1\to B_0\cup_{B_{01}}B_1$ should have equivalent fibers as well.
-''Having equivalent fibers'' is supposed to mean that the induced maps between fibers of the vertical maps are weak equivalences.
+``Having equivalent fibers'' is supposed to mean that the induced maps between fibers of the vertical maps are weak equivalences.
 
 This is equivalent to stating that in a cube 
 \begin{center}
@@ -71,8 +69,8 @@ This is equivalent to stating that in a cube
 \end{center}
 where the left and rear faces are homotopy pullbacks and the top and bottom faces are pushouts (hence also homotopy pushouts due to the horizontal maps being cofibrations), the front and right faces are homotopy pullbacks as well.
 
-This property holds true in $\Top$; even better, it only requires the top and bottom square to be homotopy pushouts.
-This property will be called ''descent for pushouts''.
+This property holds true in $\Top$; even better, it requires the top and bottom square to be only homotopy pushouts.
+This property will be called ``descent for pushouts''.
 Therefore when switching to the \inftycat/ of spaces $\spaces$, the property can be stated as that in a cube (which is a diagram $\Delta^1\times\Delta^1\times\Delta^1\to\spaces$) where the left and rear faces are pullbacks and top and bottom faces are pushouts, the front and left faces are pullbacks as well.
 A natural generalization is to replace pushouts by arbitrary small diagrams, which is also true in $\Top$ (and therefore $\spaces$).
 
