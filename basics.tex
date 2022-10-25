@@ -1,4 +1,4 @@
-In this section we would like to fix some of the notation used througout the rest of the text and remind the reader of some concepts which we will be important later on.
+In this section we would like to fix some of the notation used throughout the rest of the text and remind the reader of some concepts which we will be important later on.
 We will not give proofs for any statements; however we will point to the relevant literature in case one is unfamiliar with them.
 \begin{definition}[Simplex Category]
     Let $\Delta$ be the category with
@@ -11,10 +11,13 @@ We will not give proofs for any statements; however we will point to the relevan
 \begin{definition}[Augmented Simplex Category]
     Let $\Delta_+$ be the category with
     \begin{itemize}
-        \item objects the categories $[n]$ for all $n\in\Nat$ and $[-1]=\emptyset$
+        \item objects the categories $[n]$ for all $n\in\Nat_{n\geq-1}$ where $[-1]=\emptyset$ is the empty category
         \item morphisms functors between these categories (which again are exactly the monotone increasing functions).
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
+\end{definition}
+\begin{definition}[Simplicial Set]
+    We set $\sSet=\Fun(\Delta^{\op},\Set)$ to be the \emph{category of simplicial sets}.
 \end{definition}
 \begin{definition}[Nerve of an Ordinary Category]
     For a category $C$, we denote the composition $\Hom_{\Cat}(-,C)\circ i$ as $\Hom_{\Delta}(-,C)$, where $i:\Delta\xhookrightarrow{}\Cat$ is the inclusion as a full subcategory.
@@ -25,21 +28,40 @@ We will not give proofs for any statements; however we will point to the relevan
     \end{itemize}
     We then call $\N(C)$ the \emph{nerve of the category $C$}.
 \end{definition}
-\begin{lemma} %Kerodon Proposition 1.2.2.1
+\begin{lemma}
     The nerve functor $\N\colon\Cat\to\sSet$ is fully faithful and has a left adjoint $\ho\colon\sSet\to\Cat$ which we call the \emph{homotopy category} of a simplicial set.
+    \begin{proof}[Reference]
+        \cite[Proposition 1.2.2.1]{kerodon}
+    \end{proof}
 \end{lemma}
 \begin{definition}
     We let $\Cat_{\Delta}$ denote the category of small categories enriched over $\sSet$.
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
+
+    We call a simplicial category $C$ \emph{tensored} if if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
+    \begin{equation*}
+        \Hom_C(X\otimes K,-)\cong\Hom_{\sSet}(K,\Hom_C(X,-))\;.
+    \end{equation*}
+
+    We call a simplicial category $C$ \emph{powered} if for each $Y\in C$ and $K\in\sSet$ there is an object $Y^K$ such that there is a natural isomorphism
+    \begin{equation*}
+        \Hom_C(-,Y^K)\cong\Hom_{\sSet}(K,\Hom_C(-,Y))\;.
+    \end{equation*}
+    We note that due to the functoriality of the right side, these extend to functors $-\otimes -:C\times\sSet\to C$ and $-^-:C\times\sSet^{\op}\to C$.
 \end{definition}
 \begin{definition}[Simplicial Model Category]
-    A \emph{simplicial model category} is a simplicial category $C$ that is equipped with a model structure such that for a cofibration $i:A\rightarrowtail B$ and a fibration $p:X\twoheadrightarrow Y$ the induced map of simplicial sets
+    A \emph{simplicial model category} is a simplicial category $C$ that is 
+    \begin{itemize}
+        \item tensored and powered
+        \item equipped with a model structure
+    \end{itemize} 
+    such that for a cofibration $i:A\rightarrowtail B$ and a fibration $p:X\twoheadrightarrow Y$ in the model structure the induced map of simplicial sets
     \begin{equation*}
         \Hom_C(B,X)\to\Hom_C(A,X)\times_{\Hom_C(A,Y)}\Hom_C(B,Y)
     \end{equation*}
     is a fibration that additionally is a weak equivalence whenever $i$ or $p$ is a weak equivalence.
 \end{definition}
-\begin{construction}
+\begin{construction}%[{\cite[Notation 2.4.3.1]{kerodon}}] TODO decide
     For $[n]\in\Delta$ we define a simplicial category $\C[n]$ as follows:
     \begin{itemize}
         \item the objects of $\C[n]$ are the elements of the set $\set{0,\ldots,n}$
@@ -47,14 +69,14 @@ We will not give proofs for any statements; however we will point to the relevan
             \begin{equation*}
                 \Hom_{\C[n]}(i,j)=\N(P_{i,j})
             \end{equation*}
-            where $P_{i,j}$ is the partially ordered set of subsets of $\set{i,\ldots,j}$ which contain both $i$ and $j$ with the relation given by reverse inclusion
-        \item for $i,j,k\in\set{0,\ldots,n}$ the composition is given by $\N(-)$ applied to the map
+            where $P_{i,j}$ is the partially ordered set of subsets of $\set{0,\ldots,n}$ which contain both $i$ and $j$ with the relation given by reverse inclusion
+        \item for $i,j,k\in\set{0,\ldots,n}$ the composition is given by applying the nerve $\N(-)$ to the map
         \begin{align*}
                 P_{i,j}\times P_{j,k}&\to P_{i,k}\\
                 (I,J)&\mapsto I\cup J\;.
         \end{align*}
     \end{itemize}
-    For a morphism $[n]\to[m]\in\Delta$ we can define a functor
+    For a morphism $[n]\to[m]\in\Delta$ we define
     \begin{equation*}
         \C[f]\colon\C[n]\to C[m]
     \end{equation*}
@@ -69,41 +91,38 @@ We will not give proofs for any statements; however we will point to the relevan
     \end{itemize}
     so we obtain a functor $\C[-]\colon\Delta\to\Cat_{\Delta}$.
 \end{construction}
-\begin{definition}[Homotopy Coherent Nerve] %HTT Definition 1.1.5.1. 
+\begin{definition}[Homotopy Coherent Nerve]
     For a simplicial category $A$ we define the \emph{simplicial nerve (or homotopy coherent nerve) $\Nhc(A)$ of $A$} as $\Nhc(A)=\Hom_{\Cat_{\Delta}}(\C[-],A)$ and thus we obtain a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
 \end{definition}
 We will also need the standard model structure on $\sSet$, the Quillen model structure. 
 Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
 \begin{prop}[Quillen Model Structure on $\sSet$]
-    The following three classes of maps endow $\sSet$ with a model structure:
-    \begin{itemize}
-        \item Cofibrations are the monomorphisms.
-        \item Weak equivalences are the maps that are weak equivalences under geometric realization. %TODO define geometric realization
-        \item Fibrations are the maps with right lifting property against the maps $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n}$.
-    \end{itemize}
+    There is a unique model structure on $\sSet$ where the cofibrations are the monomorphisms and the fibrant objects are Kan-complexes.
+
+    The fibrations of this model structure are the maps having the right lifting property against the maps $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n}$.
+    The weak equivalences are the maps which are weak equivalences in $\Top$ after geometric realization.
+
     We call this model structure the \emph{Quillen Model Structure on $\sSet$}.
+    \begin{reference}
+        \cite[Theorem 3.1.8 and Theorem 3.1.29]{cisinski_2019} and \cite[Chap. II, 3.1, Theorem 1]{Quillen1967}
+    \end{reference}
 \end{prop}
 For completess sake we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structre does for Kan-complexes.
-\begin{prop}[Quillen Model Structure on $\sSet$]
-    The following three classes of maps endow $\sSet$ with a model structure:
+\begin{prop}[Joyal Model Structure on $\sSet$]
+    The following two classes of maps endow $\sSet$ with a unique model structure:
     \begin{itemize}
         \item Cofibrations are the monomorphisms.
         \item The weak equivalences are the maps $A\to B$ such that for every \inftycat/ $C$ the induced map $\ho(\Fun(B,C))\to\ho(\Fun(A,C))$ is a categorical equivalence.
             Analogous to ordinary category theory, we also call these maps \emph{categorical equivalences}.
     \end{itemize}
-    The model structure is already uniquely determined by these choices.
+    The fibrant objects of this model structure are the \inftycats/.
+
     We call this model structure the \emph{Joyal Model Structure on $\sSet$}.
+    \begin{reference}
+        \cite[Definition 3.3.7]{cisinski_2019}
+    \end{reference}
 \end{prop}
-% \begin{remark}
-%     When we say that a class of maps is generated by another class $I$, we mean that it is the smallest saturated class of morphisms containing $I$.
-%     Being saturated means that it is closed under
-%     \begin{itemize}
-%         \item transfinite composition
-%         \item pushouts
-%         \item and retracts.
-%     \end{itemize}
-% \end{remark}
-\begin{prop} %TODO CatLR Theorem 3.9.7. Corollary 3.6.6.
+\begin{prop}
     Let $F\colon C\to D$ be a map between \inftycats/.
     Then the following are equivalent:
     \begin{itemize}
@@ -111,10 +130,16 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
         \item $F$ is fully faithful and essentially surjective
         \item There exists a map $G\colon D\to C$ and invertible natural transformations $FG\simeq \id_D$ and $GF\simeq \id_C$.
     \end{itemize}
+    \begin{reference}
+        \cite[Corollary 3.6.6 and Theorem 3.9.7]{cisinski_2019}
+    \end{reference}
 \end{prop}
-\begin{prop} %HTT Theorem 2.4.5.1.
+\begin{prop}
     Let $A$ be a simplicial category such that for every pair of objects $X,Y\in A$ the simplicial set $\Hom_A(X,Y)$ is a Kan-complex.
     Then $\Nhc(A)$ is an \inftycat/.
+    \begin{reference}
+        \cite[Theorem 2.4.5.1]{kerodon}
+    \end{reference}
 \end{prop}
 \begin{corollary}
     Let $M$ be a simplicial model category.
@@ -134,21 +159,13 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
 \end{definition}
 \begin{lemma}\label{prop:simpLocEssSurj}
     Let $C$ be a simplicial set and $W\subset C$ be a simplicial subset.
-    The any localization functor $\gamma\colon C\to C[W^{-1}]$ is essentially surjective.
+    The a simplicial localization exists, is essentially unique and the localization functor $\gamma\colon C\to C[W^{-1}]$ is essentially surjective.
 
-    Furthermore, we can always assume the localization to be bijective on objects.
-    \begin{proof}
-        By %TODO CatLR Remark 7.1.4.  
-        a simplicial localization can be constructed in such a way that it is bijective on the objects, thus in particular essentially surjective. %TODO cite 
-        By essential uniqueness we thus have that all localization functors are essentially surjective.
-        %
-        %One can also prove this from ordinary category theory, since $\ho(C)\to \ho(C)[W_1^{-1}]\cong\ho(C[W^{-1}])$ is a localization and thus essentially surjective. %TODO CatLR Remark 7.1.6
-    \end{proof}
+    Furthermore, we can always assume $\gamma$ to be bijective on objects.
+    \begin{reference}
+        \cite[Proposition 7.1.3 and Remark 7.1.4]{cisinski_2019}
+    \end{reference}
 \end{lemma}
-\begin{prop} %TODO CatLR Proposition 7.1.3
-    Let $C$ be a simplicial set and $W\subset C$ be a simplicial subset.
-    Then a localization $\gamma\colon C\to C[W^{-1}]$ exists and is essentially unique.
-\end{prop}
 %TODO define (co)limits and prove/state that they are computed pointwise in Functorcats HTT Proposition 5.1.2.2., HTT Corollary 5.1.2.3.
 \begin{construction}[(Co)Slice Contraction]%TODO kerodon 4.3.5.12.
     Let $f\colon X\to Y$ be a morphism of simplicial sets.
@@ -179,18 +196,17 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
 \end{definition}
 \begin{remark}
     There is also a notion of Kan-extensions along general functors. 
-    We will not need this, but it can be found e.g. %TODO Kerodon 7.3.1
-    .
+    We will not need this, but it can be found in e.g. \cite[\S 7.3.1]{kerodon}.
 \end{remark}
-%TODO Kan-ext induce adjoints
-\begin{prop}\label{prop:exKanExt} %TODO kerodon Proposition 7.3.5.1
+\begin{prop}\label{prop:exKanExt}
     Let $C$ be an \inftycat/, $C_0\subset C$ a full subcategory and $F\colon C_0\to D$ a functor between \inftycats/.
     If $D$ is complete, then there exists a functor $F\colon C\to D$ that is right Kan-extended from $C_0$.
 
     Dually if $C$ is cocomplete, then then there exists a functor $F\colon C\to D$ that is left Kan-extended from $C_0$.
     
-    Furthermore, in both cases there is a fully faithful functor $\Fun(C_0,D)\to\Fun(C,D)$ that is right or left adjoint respectively to the restriction and given by computing right or left Kan-extensions respectively.
-    \begin{proof}
-        %TODO reference fully faithfulness, TODO kerodon Proposition 7.3.5.1. for existence of Kan ext
-    \end{proof}
+    Furthermore, in both cases there is a fully faithful functor $\Fun(C_0,D)\to\Fun(C,D)$ that is right/left adjoint to the restriction functor and given by computing right/left Kan-extensions respectively.
+    \begin{reference}
+        The existence and adjointness for left Kan-extensions is a corollary of \cite[Corollary 7.3.6.4]{kerodon} (and the dual of this proves the statement for right Kan-extensions).
+        The fully faithfulness is implied by \cite[Corollary 7.3.1.16]{kerodon} since it is shown that counit/unit of the adjunction is an equivalence.
+    \end{reference}
 \end{prop}

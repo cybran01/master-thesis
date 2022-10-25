@@ -18,6 +18,8 @@
 \ihead{\leftmark}
 \ohead{\rightmark}
 \usepackage{enumitem}
+\usepackage[backend=biber,style=alphabetic]{biblatex}
+\addbibresource{sources.bib}
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{subfiles}
@@ -35,6 +37,8 @@
 \newtheorem{corollary}[definition]{Corollary}
 \newtheorem{remark}[definition]{Remark}
 \newtheorem{construction}[definition]{Construction}
+
+\newenvironment{reference}{\renewcommand{\qedsymbol}{}\begin{proof}[Reference]}{\end{proof}}
 
 \newcommand{\Kan}{\textrm{Kan}} %TODO better font
 \newcommand{\spaces}{\mathcal{S}}
@@ -123,4 +127,6 @@
     \cleardoubleoddstandardpage
     \section{The James Splitting Theorem}
     \subfile{jamesSplittingTheorem.tex}
+    \cleardoubleoddstandardpage
+    \printbibliography
 \end{document}
