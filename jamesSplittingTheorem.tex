@@ -1,8 +1,7 @@
 In this section we will give a proof of the James Splitting Theorem relying only on universality, therefore in particular proving it for general \inftytops/. 
-The main source is %https://arxiv.org/pdf/1912.04130.pdf
-.
+The main source is \cite[\S 2.2 and \S 4]{splittings_21}.
 
-We begin by introducing the objects that we want to work with.
+We begin by introducing the objects that we will need to work with.
 \begin{definition}
     Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
     Then we let 
@@ -43,7 +42,7 @@ We begin by introducing the objects that we want to work with.
 \end{definition}
 The next lemma is a key lemma of the proof of the James Splitting Theorem.
 There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
-\begin{lemma}\label{lem:existenceOfPoSq} %TODO ON THE JAMES AND HILTON–MILNOR SPLITTINGS, & THE METASTABLE EHP SEQUENCE lemma 2.17
+\begin{lemma}\label{lem:existenceOfPoSq}
     Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object.
     Then there exists a pushout square  
     \begin{center}
@@ -91,8 +90,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         \end{center}
         where three vertical squares are pullback and the bottom square is a pushout.
         We now want to construct a map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ such that we have a commutative cube with all vertical sides pullbacks.
-        By %TODO Kerodon Lemma 1.4.7.5. 
-        the map $\Lambda_1^2\times\Delta^1\cup_{\Lambda_1^2\times\set{1}}\Delta^2\times\Delta^1\to\Delta^2\times\Delta^1$ is inner anodyne, so we can lift
+        By e.g. \cite[Lemma 1.4.7.5]{kerodon} the map $\Lambda_1^2\times\Delta^1\cup_{\Lambda_1^2\times\set{1}}\Delta^2\times\Delta^1\to\Delta^2\times\Delta^1$ is inner anodyne, so we can lift
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
@@ -188,7 +186,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
     is a pushout.
     But $\Omega\Sigma X\times \Sigma X$ is not generally contractible. 
 \end{remark}
-\begin{corollary}\label{lem:poOfProductIsSuspension} %Lemma 2.19
+\begin{corollary}\label{lem:poOfProductIsSuspension}
     Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
     Then there exists a square
     \begin{center}
@@ -257,7 +255,7 @@ We will also need to prove some basic facts about wedges and smash products.
         The maps $X\to\Sigma\left(X\wedge Y\right)$ and $Y\to\Sigma\left(X\wedge Y\right)$ factor through $*$ by construction which proves the proposition.
     \end{proof}
 \end{lemma}
-\begin{lemma}\label{lem:allSqArePo} %TODO corollary 2.24
+\begin{lemma}\label{lem:allSqArePo}
     Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
     Then all squares of the diagram         
     \begin{center}
@@ -288,7 +286,7 @@ We will also need to prove some basic facts about wedges and smash products.
                 A\vee B \arrow[r] & A\vee B\vee C\\
             \end{tikzcd}
         \end{center}
-        is always a pushout and the wedge sum is commutative. %TODO prove associativity+commutativity and maybe reference it here
+        is always a pushout and the wedge sum is commutative.
     \end{proof}
 \end{lemma}
 The following corollary is not needed for the James Splitting Theorem, however it is useful and immediate from what we have already shown.
@@ -369,10 +367,6 @@ The following corollary is not needed for the James Splitting Theorem, however i
     If $f$ is connected for all $k\in\Nat$, then we say that $f$ is \emph{$\infty$-connected}.
     We consider an object $X$ to be \emph{$k$-connected} if the map $X\to *$ is $k$-connected.
 \end{definition}
-% \begin{remark}
-%     In $\spaces$ this definition agrees (up to an index shift depending on convention) with the usual notion of connectedness. 
-%     %TODO elaborate %TODO prove this agrees with standard def (after shift of index at least), HTT Proposition 6.5.1.16 (6) Proposition 6.5.1.20. for section
-% \end{remark}
 \begin{remark}
     Note that in $\spaces$ this definition agrees with the following:
     \begin{definition*}
@@ -404,7 +398,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     Every equivalence is $\infty$-connected, however the converse is not true for general \inftytops/.
     The \inftytop/ $\spaces$ is hypercomplete. %TODO reference HTT 
 \end{remark}
-Our goal now is to prove that the comparison map is an equivalence whenever $X$ is a $0$-connected pointed object. %TODO define k-connected objects, perhaps at definition of truncation
+Our goal now is to prove that the comparison map is an equivalence whenever $X$ is a $0$-connected pointed object.
 We will prove this only in $\spaces$, however this case is already enough to derive the result for general topoi (see \cref{rem:genTopoiComparisonMapEq}).
 
 The main idea is to show that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ becomes increasingly connected and vanishes as $n\to\infty$.
@@ -419,9 +413,9 @@ For this proof we need some stability properties of connectedness.
         \item for a morphism $f\colon X\to Y$ with a section $s\colon Y\to X$, $f$ is $(k+1)$-connected if and only if $s$ is $k$-connected. \label{prop:connSection}
         \item the class of $k$-connected objects is stable under filtered colimits. \label{prop:connStableFilteredColim}
     \end{enumerate}
-    \begin{proof}
-        %TODO Proposition 4.10. in paper
-    \end{proof}
+    \begin{reference}
+        \cite[Proposition 4.10]{splittings_21}
+    \end{reference}
 \end{prop}
 \begin{prop}[Blakers-Massay Theorem]\label{prop:blakersMassay}
     Let $C$ be an \inftytop/ and let 
@@ -434,7 +428,7 @@ For this proof we need some stability properties of connectedness.
     be a pushout square in $C$.
     Then if $f$ is $n$-connected and $g$ is $m$-connected, the universal map $A\to B\times_{D}C$ is $(n+m)$-connected.
     \begin{proof}
-        %TODO gen_blakers_massay Corollary 4.3.1
+        \cite[Corollary 4.3.1]{gen_blakers_massey}
     \end{proof}
 \end{prop}
 With these we can deduce the following statements:
@@ -459,19 +453,6 @@ With these we can deduce the following statements:
         \ref{cor:connEstIteratedSmash}: This follows by induction on \ref{cor:connEstSmash}.
     \end{proof}
 \end{corollary}
-% \begin{corollary}[Freudenthal Suspension Theorem]\label{cor:freudenthalSuspension}
-%     Let $C$ be an \inftytop/ and let $X$ be a pointed object that is $n$-connected.
-%     Then the universal morphism $X\to\Omega\Sigma X$ is $2n$-connected.
-%     \begin{proof}
-%         This is \cref{prop:blakersMassay} applied to the square 
-%         \begin{center}
-%             \begin{tikzcd} [sep = 4em]
-%                 X \arrow[r] \arrow[d] &  * \arrow[d] \\
-%                 * \arrow[r] & \Sigma X \\
-%             \end{tikzcd}\;.
-%         \end{center}
-%     \end{proof}
-% \end{corollary}
 \begin{prop}[James Splitting for Presheaf Categories]\label{prop:jamesSplittingPresheaf} %ref Proposition 4.18 
     Let $A$ be an \inftycat/ and let $X$ be a pointed and $0$-connected object in the \inftytop/ $\Fun(A,\spaces)$. %TODO why is this an \inftytop/?
     Then the comparison morphism 
@@ -508,12 +489,54 @@ With these we can deduce the following statements:
         As $n$ was arbitrary, $c_X$ is therefore an equivalence.
     \end{proof}
 \end{prop}
+\begin{corollary}[Classical James Splitting]\label{cor:classicalJamesSplitting}
+    Let $X$ be a pointed and $0$-connected object in $\spaces$.
+    Then     
+    \begin{equation*}
+        c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
+    \end{equation*}
+    is an equivalence. 
+    \begin{proof}
+        This is \cref{prop:jamesSplittingPresheaf} with $A=\Delta^0$.
+    \end{proof}
+\end{corollary}
 \begin{remark}\label{rem:genTopoiComparisonMapEq}
-    Due to the equivalent characterizations of \inftytops/ as in %TODO HTT
-    for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
+    Due to the equivalent characterizations of \inftytops/ in \cite[Definition 6.1.0.4]{HTT} for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
     
-    Then if for a pointed object $X\in\left(C_*\right)_0$ the comparison morphism $c_{i(X)}$ is an equivalence in $Fun(A,\spaces)$, so is $c_X$ in $C$ (see %TODO paper, Lemma 4.17.
-    ).
-    If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\spaces$ is hypercomplete and $Fun(A,\spaces)$ inherits this property. %TODO define hypercomplete %TODO prove that X 0-conn => i(X) 0-conn
+    Then if for a pointed object $X\in\left(C_*\right)_0$ the comparison morphism $c_{i(X)}$ is an equivalence in $Fun(A,\spaces)$, so is $c_X$ in $C$ (see \cite[Lemma 4.17]{splittings_21}).
+    If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\spaces$ is hypercomplete and $Fun(A,\spaces)$ inherits this property. %TODO prove that X 0-conn => i(X) 0-conn
     But we have proven this in \cref{prop:jamesSplittingPresheaf}, so it is true for all \inftytops/.
 \end{remark}
+Lastly, we give an application of the James Splitting Theorem.
+\begin{lemma}\label{lem:reducedHomLoopOfSpheres}
+    Let $H_*$ be a reduced homology theory and let $S^n$ with $n>0$ be a model of the pointed sphere.
+    Then
+    \begin{equation*}
+        H_k(\Omega S^{n+1})\cong\bigoplus\limits_{i=1}^{\infty}H_k(S^{ni})\;.
+    \end{equation*}
+    \begin{proof}
+        Note that for $n>0$ the sphere is $0$-connected.
+        Thus by \cref{cor:classicalJamesSplitting} we have an isomorphism 
+        \begin{equation*}
+            H_{k+1}\left(\bigvee\limits_{i=1}^{\infty}\Sigma \left(S^n\right)^{\wedge i}\right)\cong H_{k+1}\left(\Sigma\Omega\Sigma S^n\right)\;.
+        \end{equation*}
+        This gives an isomorphism
+        \begin{equation*}
+            \bigoplus\limits_{i=1}^{\infty}H_k\left(\left(S^n\right)^{\wedge i}\right)\cong H_k\left(\Omega S^{n+1}\right)
+        \end{equation*}
+        and the fact that $S^{n_1}\wedge S^{n_2}\cong S^{n_1+n_2}$ proves the claim.
+    \end{proof}
+\end{lemma}
+\begin{corollary}
+    For $H_*$ reduced ordinary homology and $S^n$ with $n>0$ a model of the pointed sphere, we have
+    \begin{equation*}
+        H_k(\Omega S^{n+1})\cong
+        \begin{cases}
+            \mathbb{Z} & k=ni ~for~ i\in\Nat\\
+            0 & else
+        \end{cases}\;.
+    \end{equation*}
+    \begin{proof}
+        This follows from \cref{lem:reducedHomLoopOfSpheres} and the reduced ordinary homology of the spheres.
+    \end{proof}
+\end{corollary}

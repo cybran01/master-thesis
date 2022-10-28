@@ -1,5 +1,7 @@
 In this section we would like to fix some of the notation used throughout the rest of the text and remind the reader of some concepts which we will be important later on.
-We will not give proofs for any statements; however we will point to the relevant literature in case one is unfamiliar with them.
+We assume some familiarity with \inftycats/ and Kan-complexes, in particular familiarity with limits/colimits.
+We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts).
+We will not give proofs for any statements; we will however point to the relevant literature.
 \begin{definition}[Simplex Category]
     Let $\Delta$ be the category with
     \begin{itemize}
@@ -35,9 +37,9 @@ We will not give proofs for any statements; however we will point to the relevan
     \end{proof}
 \end{lemma}
 \begin{definition}
-    We let $\Cat_{\Delta}$ denote the category of small categories enriched over $\sSet$.
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
-
+    We let $\Cat_{\Delta}$ denote the \emph{category of (small) categories enriched over $\sSet$} with morphisms $\sSet$-enriched functors.
+    
     We call a simplicial category $C$ \emph{tensored} if if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
     \begin{equation*}
         \Hom_C(X\otimes K,-)\cong\Hom_{\sSet}(K,\Hom_C(X,-))\;.
@@ -48,6 +50,8 @@ We will not give proofs for any statements; however we will point to the relevan
         \Hom_C(-,Y^K)\cong\Hom_{\sSet}(K,\Hom_C(-,Y))\;.
     \end{equation*}
     We note that due to the functoriality of the right side, these extend to functors $-\otimes -:C\times\sSet\to C$ and $-^-:C\times\sSet^{\op}\to C$.
+
+    We simplicial model category is a \emph{combinatorial simplicial model category} if it is combinatorial as a model category (meaning it is locally presentable and cofibrantly generated).
 \end{definition}
 \begin{definition}[Simplicial Model Category]
     A \emph{simplicial model category} is a simplicial category $C$ that is 
@@ -104,7 +108,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
 
     We call this model structure the \emph{Quillen Model Structure on $\sSet$}.
     \begin{reference}
-        \cite[Theorem 3.1.8 and Theorem 3.1.29]{cisinski_2019} and \cite[Chap. II, 3.1, Theorem 1]{Quillen1967}
+        \cite[Theorem 3.1.8 and Theorem 3.1.29]{cisinski_2019} and \cite[Chap. II, \S 3, Theorem 1]{Quillen1967}
     \end{reference}
 \end{prop}
 For completess sake we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structre does for Kan-complexes.

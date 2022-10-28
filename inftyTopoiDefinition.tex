@@ -15,17 +15,8 @@ Since this we be the least interesting for our purposes, we will give a very pra
         This follows directly by \cref{prop:homotopyHypothesis} and \cref{cor:htpyCoherentNerveIsLoc}.
     \end{proof}
 \end{corollary}
-An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in %HTT 5.5.1.1, A.3.7.6
-.
-
-In essence, being locally presentable means being determined by a ``small'' amount of data, despite the category in question not needing to be small itself.
-% To be more precise: By %TODO HTT 5.5.1.1 (4)
-% an \inftycat/ $C$ is locally presentable if and only if there exists a regular cardinal $\kappa$ and an \inftycat/ $D$ with $\kappa$-small colimits such that there is an equivalence of \inftycats/ $\Ind_{\kappa}D\to C$.
-
-% Here $\Ind_{\kappa}D$ is the full subcategory of $\Fun(D^{\op},S)$ with objects consisting of those maps $C^{\op}\to\spaces$ that classify right fibrations $X\to C$ such that $X$ is $\kappa$-filtered (see e.g. %HTT Definition 5.3.5.1
-% for details on this).
-
-% One can show that this effectively means that $C$ is the \inftycat/ obtained by freely adjoining filtered colimits to $D$. %TODO HTT §5.3.5 
+An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in \cite[Theorem 5.5.1.1 and Proposition A.3.7.6]{HTT}.
+In essence, an \inftycat/ being locally presentable means it is being determined by a ``small'' amount of data, despite the category in question not needing to be small itself.
 
 Next we introduce cartesian transformations which allow us to encode universality and descent in a concise manner.
 \begin{definition}[Cartesian Transformation]
@@ -33,7 +24,6 @@ Next we introduce cartesian transformations which allow us to encode universalit
     Let $q,p\in\Fun(K,C)_0$ and let $\alpha\in\Fun(K,C)_1$ be a natural transformation $\alpha\colon p\to q$.
     Then we say $\alpha$ is \emph{cartesian} if for all maps $u\colon\Delta^1\to K$ the induced map $\Delta^1\times\Delta^1\xrightarrow{\left(u,\id_{\Delta^1}\right)}K\times\Delta^1\xrightarrow{\alpha}C$ is a pullback square. %TODO add comm sq
 \end{definition}
-%TODO HTT Proposition 4.4.2.6.
 \begin{definition}[Universality]
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a simplicial set.
     We say that \emph{$C$ has $K$-shaped universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is a colimit cone.
@@ -73,6 +63,25 @@ Next we introduce cartesian transformations which allow us to encode universalit
 \end{definition}
 In order to prove that a given \inftycat/ has universality and descent we only need to check it for two types of diagrams: pushouts and small coproducts.
 This is the content of the next two lemmas and will be used later to prove that $\spaces$ is an \inftytop/.
+
+We will require the following proposition for the proof.
+\begin{prop}\label{prop:colimitDecompositionPushouts}
+    Let $C$ be a cocomplete \inftycat/ and let $p\colon K\to C$ be a map of simplicial sets. 
+    Let $K$ be the pushout of
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            K_0 \arrow[r] \arrow[d, hook] & K_2 \arrow[d, hook] \\
+            K_1 \arrow[r] & K
+        \end{tikzcd}
+    \end{center}
+    where $K_0\xhookrightarrow{} K_1$ is a monomorphism.
+
+    Let $X$ be a colimit of $K_0\to K\to C$, $Y$ colimit of $K_1\to K\to C$ and $Z$ a colimit of $K_2\to K\to C$.
+    Then colimits of $p$ can be identified with pushouts $K_1\cup_{K_0}K_2$ in $C$.
+    \begin{reference}
+        \cite[Proposition 4.4.2.2]{HTT}
+    \end{reference}
+\end{prop}
 \begin{lemma}\label{lem:univColimIffUnivPoAndCoprod}
     A \inftycat/ $C$ has universal colimits if and only if it has universal pushouts and universal coproducts.
     \begin{proof}
@@ -132,8 +141,7 @@ This is the content of the next two lemmas and will be used later to prove that 
         \end{center}
         is pullback by the pasting law, thus by universality for coproducts $p_2(\infty)\cong\bigcup\limits_{s\in S} p(x_s)$ and in particular $p_2$ is a colimit cone.
         
-        By %HTT Proposition 4.4.2.2.
-        we know that 
+        By \cref{prop:colimitDecompositionPushouts} we know that 
         \begin{center}
             \begin{tikzpicture}
                 \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
@@ -160,8 +168,7 @@ This is the content of the next two lemmas and will be used later to prove that 
         \end{center}
         which determines a natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd},C\right)_1$ is cartesian by the pasting law.
         By universality for pushouts (since the bottom square is pushout) we thus have that the top square is also a pushout.
-        Again by %HTT Proposition 4.4.2.2.
-        it follows that $p(\infty)$ is a colimit cone.
+        Again by \cref{prop:colimitDecompositionPushouts} it follows that $p(\infty)$ is a colimit cone.
 
         It now remains to show that statement for general $K$.
         Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category via the ordering $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (and all higher simplices are degenerate).
@@ -197,14 +204,11 @@ This is the content of the next two lemmas and will be used later to prove that 
 \end{lemma}
 \begin{lemma}\label{lem:descentIffDescentPoAndCoprod}
     A \inftycat/ $C$ that has universal colimits has descent if and only if it has descent for pushouts and coproducts.
-    \begin{proof} %TODO maybe mention why it suffices to prove things for arrows x\to\infty TODO change notation p|_? to p_? and be more clear
+    \begin{proof} %TODO maybe mention why it suffices to prove things for arrows x\to\infty
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a map.
         We prove the statement first for all finite dimensional $K$ by induction over the dimension of $K$. %TODO define dimension
 
         For $\dim K=-1$ the statement follows since $K$ must be empty and thus is the coproduct over the empty indexing category.
-
-        %For $\dim K=0$ we have that $K\cong\bigcup\limits_{i\in I}\Delta^0$ for some small set $I$. 
-        %In this case the statement is also clear since all maps are identity maps.
 
         So let $\dim K=n+1$.
         Then by the skeletal filtration        
@@ -232,8 +236,7 @@ This is the content of the next two lemmas and will be used later to prove that 
         is a pullback since the left square is pullback as $\alpha_2|_{X_2}$ is cartesian and the right square is pullback by descent for coproducts.
         Thus $\alpha_2$ is cartesian.
 
-        By %HTT Proposition 4.4.2.2.
-        we know that
+        By \cref{prop:colimitDecompositionPushouts} we know that
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p_0(\infty) \arrow[d] \arrow[r] & p_1(\infty) \arrow[d] \\

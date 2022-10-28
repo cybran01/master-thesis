@@ -22,10 +22,13 @@ When speaking of cofibrations, fibrations or weak equivalences between topologic
     The following three classes of maps endow $\Top$ with a model structure:
     \begin{itemize}
         \item Cofibrations are the maps which are retracts of relative CW-complexes. %TODO relative CW-complex def
-        \item Weak equivalences are the usual weak equivalences. %TODO DEFINE
+        \item Weak equivalences are weak equivalences of topological spaces. %TODO DEFINE
         \item Fibrations are the maps with right lifting property against the class of maps $\set{D^n\xhookrightarrow{\left(\id_{D^n},0\right)}D^n\times I\mid n\in\Nat}$ which are called \emph{Serre fibrations}.
     \end{itemize}
     We call this model structure the \emph{Quillen Model Structure on $\Top$}.
+    \begin{reference}
+        \cite[Chap. II, \S 3, Theorem 1]{Quillen1967}
+    \end{reference}
 \end{prop}
 The other model structure on $\Top$ we will need is given by the following.
 \begin{prop}[\Strom/ Model Structure on $\Top$]
@@ -33,9 +36,12 @@ The other model structure on $\Top$ we will need is given by the following.
     \begin{itemize}
         \item Cofibrations are the maps which are closed Hurewicz cofibrations. %TODO reference
         \item Weak equivalences are the homotopy equivalences.
-        \item Fibrations are the maps with right lifting property against the class of maps $\set{X\xhookrightarrow{\left(\id_{X},0\right)}X\times I\mid X\in\Top}$ which are called Hurewicz fibrations.
+        \item Fibrations are the maps with right lifting property against the class of maps $\set{X\xhookrightarrow{\left(\id_{X},0\right)}X\times I\mid X\in\Top}$ which are called \emph{Hurewicz fibrations}.
     \end{itemize}
     We call this model structure the \emph{\Strom/ Model Structure on $\Top$}.
+    \begin{reference}
+       \cite{Strom1972}
+    \end{reference}
 \end{prop}
 When referring to the \Strom/ model structure, we will speak of h-cofibrations and h-fibrations, and we will call the weak equivalences homotopy equivalences.
 \begin{remark}[Properness]

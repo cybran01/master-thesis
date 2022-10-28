@@ -1,7 +1,5 @@
-%TODO order the statements correctly
-%TODO do the proofs in the Strom model structure and argue at the end that this gives the statements in the Quillen model structure
 In this section we will prove that our \inftycat/ of spaces $\spaces$ is an \inftytop/.
-We will keep our proofs topological; for a different approach using simplicial sets see e.g. %TODO
+We will keep our proofs topological; for a different approach using simplicial sets see e.g. \cite[\S 6]{HTT}.
 In order to transfer reasoning back and forth from the model category $\Top$ and the \inftycat/ $\spaces$ we need the following lemma.
 \begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO is the statement even true in this generality?
     Let $J$ be an ordinary category and let $M$ be a model category.
@@ -12,9 +10,9 @@ In order to transfer reasoning back and forth from the model category $\Top$ and
     they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
 
     Furthermore the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.
-    \begin{proof}
-        %TODO Proposition 1.3.4.25. HA
-    \end{proof}
+    \begin{reference}
+        \cite[Proposition 1.3.4.25]{higher_algebra}
+    \end{reference}
 \end{lemma}
 Since both coproducts and pushouts in \inftycats/ are indexed by nerves of ordinary categories and we are able to work in the underlying model category $\Top$ by the following corollary:
 \begin{corollary}\label{cor:sufficientToProveInModCat}
@@ -31,40 +29,8 @@ Since both coproducts and pushouts in \inftycats/ are indexed by nerves of ordin
 \end{corollary}
 We will use the interaction of the \Strom/ model structure and the Quillen model structure to prove universality and descent in $\Top$.
 Note that whenever referring to $\Top$ as a model category, we implicitly mean the Quillen model structure. 
-Cofibrations and fibrations of the \Strom/ model structure are tagged by the letteer $h$.
+Cofibrations and fibrations of the \Strom/ model structure are tagged by the letter $h$.
 Our most important (and very non trivial) part of this interaction is the following proposition.
-% \begin{lemma}[Universality for Pushouts]\label{lem:univForPushouts}
-%     Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
-%     Then for all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha$ is cartesian and $q$ is a colimit cone we have that $p$ is also a colimit cone if and only if for all cubes
-%     \begin{center}
-%         \begin{tikzcd} [sep = .5 cm]
-%             A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
-%             & C^{\prime} \arrow [rr, crossing over] \arrow [dd] & & D^{\prime} \arrow [dd] & \\
-%             A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
-%             & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
-%         \end{tikzcd}
-%     \end{center}
-%     in $C$ where the vertial faces are pullbacks and the bottom square is a pushout, the top square is also a pushout.
-%     \begin{proof}
-%         %TODO
-%     \end{proof}
-% \end{lemma}
-% \begin{lemma}[Descent for Pushouts]\label{lem:descForPushouts}
-%     Let $C$ be an \inftycat/ that admits pushouts and pullbacks.
-%     Then all natural transformations $\alpha\colon p\to q\in\Fun\left(\left(\Lambda^2_0\right)^{\rhd},C\right)_1$ such that $\alpha|_{\Lambda^2_0}$ is cartesian and $p,q$ are colimit cones are cartesian and if and only if for all cubes
-%     \begin{center}
-%         \begin{tikzcd} [sep = .5 cm]
-%             A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
-%             & C^{\prime} \arrow [rr, crossing over] \arrow [dd] & & D^{\prime} \arrow [dd] & \\
-%             A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
-%             & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
-%         \end{tikzcd}
-%     \end{center}
-%     in $C$ where the left and back face are pullbacks and the bottom and top square are a pushouts, the front and right squares are pullbacks.
-%     \begin{proof}
-%         %TODO
-%     \end{proof}
-% \end{lemma}
 \begin{prop}\label{prop:poAlongHCofibIsHtpyPo}
     A pushout along an h-cofibration is a homotopy pushout.
     \begin{proof}
@@ -85,13 +51,10 @@ Our most important (and very non trivial) part of this interaction is the follow
             \end{tikzcd}
         \end{center}
         by taking pushouts.
-        By %TODO hocolim_bar
-        we have that pushouts of weak equivalences along h-cofibrations are again weak equivalences.
+        By \cite[Proposition 1.1]{hcolim_bar} we have that pushouts of weak equivalences along h-cofibrations are again weak equivalences.
 
         The top square is a homotopy pushout as it is a pushout along a cofibration. 
-        The lower square is a homotopy pushout by %TODO HTT ??
-        .
-        Thus the outer square is a homotopy pushout which proves the proposition.
+        Since the lower square is a also a homotopy pushout, the outer square is a homotopy pushout which proves the proposition.
     \end{proof}
 \end{prop}
 \begin{prop}\label{lem:topUniversalPo}
@@ -101,17 +64,16 @@ Our most important (and very non trivial) part of this interaction is the follow
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
-                & C^{\prime} \arrow [rr, crossing over] & & D^{\prime} \arrow [dd] & \\
+                & C^{\prime} \arrow [rr, crossing over] & & D^{\prime} \arrow [dd, "\sim"] & \\
                 \overline{A} \arrow [dr] \arrow [rr] \arrow [->>, dd] & & \overline{B} \arrow [dr] \arrow [->>, dd] \\
                 & \overline{C} \arrow [rr, crossing over] \arrow [from=uu, crossing over] \arrow [dd] & & \overline{D} \arrow [->>, dd] & \\
                 A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
                 & C \arrow [->>,from=uu, crossing over] \arrow [rr] & & D & \\
             \end{tikzcd}
         \end{center}
-        where $\overline{A}=A'\times_{D'}\overline{D}$, $\overline{B}=B'\times_{D'}\overline{D}$ and $\overline{C}=C'\times_{D'}\overline{D}$, and the indicated maps are fibrations.
+        where $\overline{A}=A\times_{D}\overline{D}$, $\overline{B}=B\times_{D}\overline{D}$ and $\overline{C}=C\times_{D}\overline{D}$, and the indicated maps are fibrations.
         Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D'\to\overline{D}$ is a weak equivalence, all vertical maps in the upper cube are weak equivalences.
-        Thus by %HTT ???
-        it is sufficent to show that the square
+        Thus it is sufficent to show that the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{A} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
@@ -120,28 +82,38 @@ Our most important (and very non trivial) part of this interaction is the follow
         \end{center}
         is a homotopy pushout.
 
-        We factor the map $A\xtailrightarrow{h}\widehat{B}\xrightarrow{\sim} B$ into an h-cofibration followed by a weak equivalence.
-        We obtain a diagram 
+        We factor the maps $A\xtailrightarrow{h}\widehat{B}\xrightarrow{\sim} B$ and $A\xtailrightarrow{h}\widehat{C}\xrightarrow{\sim} C$ into an h-cofibration followed by a weak equivalence.
+        We obtain a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                A \arrow[>->, r, "h"] \arrow[d] & \widehat{B} \arrow[r, "\sim"] \arrow[d] & B \arrow[d] \\
-                C \arrow[>->, r, "h"] & C\cup_{A}\widehat{B} \arrow[r] & D \\
+                A \arrow[>->, r, "h"] \arrow[>->, d, "h"] & \widehat{B} \arrow[r, "\sim"] \arrow[>->, d, "h"] & B \arrow[dd] \\
+                \widehat{C} \arrow[>->, r, "h"] \arrow[d, "\sim"] & \widehat{B}\cup_A\widehat{C} \arrow[dr] & \\
+                C \arrow[rr] & & D
             \end{tikzcd}
         \end{center}
-        where the left square is a homotopy pushout as its a pushout along an h-cofibration by \cref{prop:poAlongHCofibIsHtpyPo} and the outer square is homotopy pushout by definition, thus by the pasting law the right square is also homotopy pushout. 
-        This implies by %HTT
-        that $C\cup_{A}\widehat{B}\to D$ is a weak equivalence as well.
-        Pulling back this diagram along the h-fibration $\overline{D}\twoheadrightarrow D$ gives a diagram 
+        where the small square is a homotopy pushout as its a pushout along an h-cofibration by \cref{prop:poAlongHCofibIsHtpyPo} so $\widehat{B}\cup_A\widehat{C}\to D$ is a weak equivalence.
+        Pulling back the small square along the h-fibration $\overline{D}\xtwoheadrightarrow{h} D$ gives the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{A} \arrow[>->, r, "h"] \arrow[d] & \widehat{B}\times_{D}\overline{D} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
-                \overline{C} \arrow[>->, r, "h" ] & \left(C\cup_{A}\widehat{B}\right)\times_{D}\overline{D} \arrow[r] & \overline{D} \\
+                \overline{A} \arrow[>->, r, "h"] \arrow[>->, d, "h"] & \widehat{B}\times_{D}\overline{D} \arrow[>->, d, "h"] \\
+                \widehat{C}\times_{D}\overline{D} \arrow[>->, r, "h" ] & \left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}\\
             \end{tikzcd}
         \end{center}
-        where the horizontal maps in the left diagram are h-cofibrations due to % Jeffrey Strom - Modern Classical Homotopy Theory Theorem 14.1 for pb along fib of cofib is cofib, TODO is this true in the serre model str?
-        and its a pushout since $\Top$ has universality (as an ordinary category, so pulling back a pushout square gives a pushout square again). %TODO maybe cite somewhere?
-        The right square is also homotopy pushout since $\Top$ is right proper so pullbacks of weak equivalences along fibrations are again weak equivalences. 
-        Thus the outer square is a homotopy pushout which proves the proposition. 
+        where the horizontal maps are h-cofibrations since pullbacks of h-cofibrations along h-fibrations are again h-cofibrations by \cite[Theorem 12]{note_on_cofibs_2}.
+        
+        Let $q\colon\left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}\xtwoheadrightarrow{h}\widehat{B}\cup_A\widehat{C}$ denote the pullback of $\overline{D}\xtwoheadrightarrow{h} D$ along  $\widehat{B}\cup_A\widehat{C}\to D$.
+        Since h-cofibrations are in particular closed embeddings we have $\widehat{B}\times_{D}\overline{D}\cong q^{-1}(\widehat{B})$, $\widehat{C}\times_{D}\overline{D}\cong q^{-1}(\widehat{C})$ and $\overline{A}\cong q^{-1}(A)\cong q^{-1}(\widehat{B})\cap q^{-1}(\widehat{C})$. %TODO why h-cofib closed embeddings?
+        As $q^{-1}(\widehat{B})$ and $q^{-1}(\widehat{C})$ are closed, this implies by point set topology that the square is an ordinary pushout.
+
+        Thus it is a pushout along an h-cofibration, hence by \cref{prop:poAlongHCofibIsHtpyPo} a homotopy pushout.
+        Because the square is equivalent to 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \overline{A} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
+                \overline{C} \arrow[r] & \overline{D} \\
+            \end{tikzcd}
+        \end{center}
+        this proves the proposition.
     \end{proof}
 \end{prop}
 \begin{lemma}\label{lem:topUniversalCoproduct}
@@ -285,7 +257,7 @@ We start proving the case for pushouts by the following reduction step.
     \end{proof}
 \end{prop}
 For the last part of the proof we need the following definitions.
-\begin{definition}
+\begin{definition}[Quasifibration]
     Let $M$ be a model category and $f\colon X\to Y$ be a map.
     Then we call $f$ a \emph{quasifibration} if for every map $*\to Y$ (where $*$ is the terminal object) the ordinary pullback square
     \begin{center}
@@ -296,7 +268,7 @@ For the last part of the proof we need the following definitions.
     \end{center}
     is a homotopy pullback.
 \end{definition}
-\begin{definition}
+\begin{definition}[Mapping Cylinder]
     Let $f\colon A\to B$ be a map of topological spaces and let $I=[0,1]$.
     Then we let
     \begin{equation*}
@@ -308,7 +280,8 @@ For the last part of the proof we need the following definitions.
     The analogous construction with $I=[0,x]$ will still referred to as a \emph{closed mapping cylinder of $f$};
     the construction with half open intervalls $I=[0,x)$ will be referred to as an \emph{open mapping cylinder of $f$}. %TODO perhaps describe factorization
 \end{definition}
-\begin{lemma}\label{lem:mapOfCylIsQuasiFib} %TODO Cubical homotopy Theory Lemma 5.10.6, TODO prove for open and closed mapping cylinder, TODO prove assertions on pullbacks
+%TODO CONTINUE HERE
+\begin{lemma}\label{lem:mapOfCylIsQuasiFib} %TODO prove assertions on pullbacks
     Let 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -321,6 +294,7 @@ For the last part of the proof we need the following definitions.
     The same holds true for closed and open mapping cylinders.
     \begin{proof}
         For convenience we will only prove the case $I=[0,1]$ since the other cases follow by the analogous argument.
+        The proof follows \cite[Lemma 5.10.6]{cubical_htpy_theory}.
 
         Let $\hat{b}\in\M(g)$. 
         Then either $\hat{b}=(\hat{a},t)\in A\times(0,1]\subset\M(g)$ or $\hat{b}\in B\subset\M(g)$.
@@ -383,12 +357,10 @@ For the last part of the proof we need the following definitions.
                 & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \M(f_{AC})\cup_A\M(f_{AB}) &
             \end{tikzcd}
         \end{center}
-        where all faces are again equivalent to the corresponding faces of the original cube and the indicated maps are h-cofibrations by %TODO reference %TODO confirm this statement
-        .
+        where all faces are again equivalent to the corresponding faces of the original cube and the indicated maps are h-cofibrations as they are either pushouts of cofibrations or inclusions into the mapping cylinder. %TODO why does this mean they are cofibs?
         
         Next we prove that the map $p\colon\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\to\M(f_{AC})\cup_A\M(f_{AB})$ is a quasifibration.
-        By %TODO Hatcher Lemma 4K.3
-        we only need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
+        By \cite[Lemma 4K.3]{hatcher2002algebraic} we only need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
 
         We take $U_1=\M(f_{AC})\cup_A\M(f_{AB})\setminus{B}$ and $U_2=\M(f_{AC})\cup_A\M(f_{AB})\setminus{C}$. 
 
@@ -518,45 +490,6 @@ We will show that descent for homotopy coproducts is a consequence of having dis
         So $\overline{X_k}\times_{X_k\cup^h Y_k}X_k\simeq X_k$ which completes the proof.
     \end{proof}
 \end{corollary}
-% \begin{corollary} %TODO fix indexing
-%     Let $\left(X_i\right)_{i\in I}$ be a collection of topological spaces.
-%     Then in the pullback square (which is also a homotopy pullback)
-%     \begin{center}
-%         \begin{tikzcd} [sep = 1 cm]
-%             P_{kj} \arrow [r] \arrow [->>,d] & X_k \arrow [->>,d]\\
-%             X_j \arrow [r] & \bigcup\limits_{i\in I} X_i
-%         \end{tikzcd}
-%     \end{center}
-%     we have $P_{kj}=\emptyset$ for $k\neq j$ and $P_{kk}\cong X_k$.
-%     \begin{proof}
-%         For ease of notation, set $Y_k=\bigcup\limits_{i\in I\setminus{\set{k}}}X_i$.
-
-%         First let $k\neq j$.
-%         Then the lower square of the tower of pullback squares 
-%         \begin{center}
-%             \begin{tikzcd} [sep = 1 cm]
-%                 P_{kj} \arrow [r] \arrow [d] & X_k \arrow [d]\\
-%                 \overline{P_{kj}} \arrow [d] \arrow [r] & Y_j \arrow [d]\\
-%                 X_j \arrow [r] & Y_j\cup X_j
-%             \end{tikzcd}
-%         \end{center}
-%         shows that $\overline{P_{kj}}=\emptyset$ by disjointness of binary coproducts and thus $P_{kj}=\emptyset$ as well.
-
-%         Next we prove the case $k=j$. 
-%         We need to prove that for the pullback square (that is also a homotopy pullback)
-%         \begin{center}
-%             \begin{tikzcd} [sep = 1 cm]
-%                 P_{kk} \arrow [r] \arrow [d] & X_k \arrow [d]\\
-%                 X_k \arrow [r] & X_k\cup Y_i
-%             \end{tikzcd}
-%         \end{center}
-%         we have $P_{kk}\cong X_k$. 
-
-%         By universality of coproducts we have $\left(X_k\times_{X_k\cup Y_k}X_k\right)\cup\left(Y_k\times_{X_k\cup Y_k}X_k\right)\cong X_k$.
-%         But by disjointness of coproducts $Y_k\times_{X_k\cup Y_k}X_k=\emptyset$ and $\left(X_k\times_{X_k\cup Y_k}X_k\right)\cup\emptyset\cong\left(X_k\times_{X_k\cup Y_k}X_k\right)$.
-%         So $X_k\cong X_k\times_{X_k\cup Y_k}X_k$ which completes the proof.
-%     \end{proof}
-% \end{corollary}
 \begin{corollary}\label{cor:disjointImpliesDescent}
     Let $M$ be a right proper model category with universal coproducts and disjoint binary homotopy coproducts.
     Then $M$ has descent for homotopy coproducts.
