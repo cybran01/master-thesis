@@ -1,64 +1,96 @@
-%TODO presentability
+%TODO motivate presentability, make motivation for universality more like talk
 In this section, we want to motivate the definition of an \inftytop/.
 Very vaguely speaking, an \inftytop/ is an \inftycat/ which behaves much like the \inftycat/ of spaces $\spaces$.
 There are different equivalent characterizations of an \inftytop/; for an overview and the proofs of some of these equivalent characterizations, see e.g. \cite[\S 6.1]{HTT}.
-We will say that $C$ is an \inftytop/ if it has ``universal colimits'' and ``descent'' which corresponds to \cite[Theorem 6.1.0.6 (2)]{HTT}.
+We will say that an \inftycat/ $C$ is an \inftytop/ if it 
+\begin{itemize} 
+    \item is ``locally presentable''
+    \item has ``universal colimits'' (also called ``universality'')
+    \item has ``descent'' 
+\end{itemize}
+which corresponds to \cite[Theorem 6.1.0.6 (2)]{HTT}.
 This characterization of \inftytops/ is due to Charles Rezk.
-Before we define ``universal colimits'' and ``descent'', we will give a brief motivation:
+We will give precise meaning of all of these conditions in \cref{sec:inftyTopDef} and will only give some intuition here.
 
-Both properties are supposed to ensure fibers of maps behave nicely under various glueings, as they do in $\spaces$ (which we will prove to be an \inftytop/ later on).
+First, the condition that an \inftycat/ is locally presentable means that it is determined by a ``small'' amount of data, despite it not needing to be small itself.
+This condition is the least interesting for what the goal of this thesis is and we will deal with it in a very pragmatic way (see \cref{def:locallyPresentable}).
 
-For universality, let 
+The other two conditions are somewhat related to each other as we will see when proving them for $\spaces$.
+They are both supposed to ensure fibers of maps behave nicely under various glueings.
+
+To motivate $C$ needing universal colimits, let $X\xtwoheadrightarrow{} B$ be a fibration, $X_1,X_2\subset X$ be a ``sufficiently good'' cover and let $X_0=X_1\cap X_2$, so that we have a homotopy pushout square
 \begin{center}
     \begin{tikzcd} [column sep = 1em, row sep = 3em]
-        X_{01} \arrow[rr] \arrow [d] && X_1\arrow [d]\\
-        X_0 \arrow[rr]&{} \arrow [d] & X\\
+        X_{0} \arrow[>->, rr] \arrow [>->, d] && X_1 \arrow [>->, d]\\
+        X_2 \arrow[>->, rr] & {} \arrow [->>, d] & X\\
         & B &
     \end{tikzcd}
 \end{center}
-be a homotopy pushout square in $\spaces$ over $B$ and let $b\colon*\to B$ be a point.
-Pulling the diagram back along this point, we obtain a commutative cube in $\spaces$
+over $B$, where for $X_i\xtwoheadrightarrow{} B$ for all $i\in\set{0,1,2}$ are also fibrations.
+We may view this situation as the fibration $X\xtwoheadrightarrow{} B$ being ``glued together'' by the fibrations $X_1\xtwoheadrightarrow{} B$ and $X_2\xtwoheadrightarrow{} B$ which are compatible along the intersection.
+Now let $b\colon*\to B$ be a point. 
+Pulling the square back along this point gives a diagram
 \begin{center}
-    \begin{tikzcd} [sep = .5 cm]
-        F_{01} \arrow [dr] \arrow [rr] \arrow [dd] & & F_1 \arrow [dr] \arrow [dd] \\
-        & F_0 \arrow [rr, crossing over] \arrow [dd] & & F \arrow [dd] & \\
-        X_{01} \arrow [dr] \arrow [rr] & & X_1 \arrow [dr] \\
-        & X_0 \arrow [from=uu, crossing over] \arrow [rr] & & X &
+    \begin{tikzcd} [column sep = 1em, row sep = 3em]
+        F_{0} \arrow[>->, rr] \arrow [>->, d] && F_1 \arrow [>->, d] & X_{0} \arrow[>->, rr] \arrow [>->, d] && X_1 \arrow [>->, d]\\
+        F_2 \arrow[>->, rr] & {} \arrow [->>, d] & F & X_2 \arrow[>->, rr] & {} \arrow [->>, d] & X\\
+        & * \arrow[rrr, "b"] & & & B &
     \end{tikzcd}
 \end{center}
-whose side faces are pullbacks by the pasting law.
-The top square consists of fibers over $B$ and since the bottom square is a pushout we want that the top square is a pushout as well so that we can compute $F$ from the fibers $F_{01},F_0$ and $F_1$. 
+where we omit the maps $F_i\to X_i$ for $i\in\set{0,1,2}$ and $F\to X$ for clarity.
+Since the right square is a homotopy pushout, we also want the map of homotopy fibers to be a homotopy pushout as this is true in $\Top$.
 
-For all cubes in $\Top$ such that the vertical faces are homotopy pullbacks and the bottom square is a homotopy pushout, the top face is a homotopy pushout as well.
+Asking for this implies a more general statement:
+Let $f\colon A\to B$ be a map and $a\colon *\to A$ be a point.
+Then by pulling back we get a diagram 
+\begin{center}
+    \begin{tikzcd} [column sep = 1em, row sep = 3em]
+        F_{0} \arrow[>->, rr] \arrow [>->, d] && F_1 \arrow [>->, d] & Y_{0} \arrow[>->, rr] \arrow [>->, d] && Y_1 \arrow [>->, d] & X_{0} \arrow[>->, rr] \arrow [>->, d] && X_1 \arrow [>->, d]\\
+        F_2 \arrow[>->, rr] & {} \arrow [->>, d] & F & Y_2 \arrow[>->, rr] & {} \arrow [->>, d] & Y & X_2 \arrow[>->, rr] & {} \arrow [->>, d] & X\\
+        & * \arrow[rrr, "a"] & & & A \arrow[rrr, "f"] & & & B &
+    \end{tikzcd}
+\end{center}
+and $F$ is the homotopy fiber of $X\twoheadrightarrow B$ at $f(a)$ and $Y\twoheadrightarrow A$ at $a$.
+We want to show that the middle square is a homotopy pushout.
+Note that the pushout $Y_1\cup_{Y_0}Y_2\to A$ is a homotopy pushout. 
+By replacing the canonical map $Y_1\cup_{Y_0}Y_2\to A$ with a fibration via a factorization $Y_1\cup_{Y_0}Y_2\xtailrightarrow{\sim}\overline{Y}\twoheadrightarrow A$ (note that $\overline{Y}$ is also a homotopy pushout) and the canonical map $Y_1\cup_{Y_0}Y_2\to Y$ by a lift $\alpha\colon\overline{Y}\to Y$, we know that $F$ is also the homotopy fiber of $\overline{Y}\twoheadrightarrow A$.
+But this means that $\alpha$ induces weak equivalences between all homotopy fibers of the fibrations $\overline{Y}\twoheadrightarrow A$ and $Y\twoheadrightarrow A$, hence $\alpha$ is a weak equivalence (e.g. by the long exact sequence of homotopy groups) and therefore $Y$ is a homotopy pushout.
+
+Using the pasting lemma, asking for the middle square to be a homotopy pushout gives the following statement: 
+For a cube 
+\begin{center}
+    \begin{tikzcd} [sep = .5 cm]
+        Y_{0} \arrow [dr] \arrow [rr] \arrow [dd] & & Y_1 \arrow [dr] \arrow [dd] \\
+        & Y_2 \arrow [rr, crossing over] \arrow [dd] & & Y \arrow [dd] & \\
+        X_{0} \arrow [dr] \arrow [rr] & & X_1 \arrow [dr] \\
+        & X_2 \arrow [from=uu, crossing over] \arrow [rr] & & X &
+    \end{tikzcd}
+\end{center}
+whose side faces are homotopy pullbacks and whose bottom face is a homotopy pushout, the top face is also a homotopy pushout.
 This is called  ``universality of pushouts''.
-By the pasting law this shows that our desired statement is not only true for pulling back along points, we can pull back a pushout square over $B$ along arbitrary maps $A\to B$ and the resulting cube will have a pushout as a top square.
+We can also ask for this to be true not only for pushouts but general small colimits; this is true as well, but it turns it that is suffices to check it for pushouts and small coproducts as we will see in \cref{lem:univColimIffUnivPoAndCoprod}.
 
-We can also ask for this to be true not only for pushouts but general colimits; this is true as well, but it turns it that is suffices to check it for pushouts and small coproducts as we will see in \cref{lem:univColimIffUnivPoAndCoprod}.
-
-For descent, when given a diagram 
+We next take a look at descent.
+When given a diagram 
 \begin{center}
     \begin{tikzcd} [sep = 4em]
-        X_0 \arrow[d] & X_{01} \arrow[l, >->] \arrow[r, >->] \arrow[d] & X_1 \arrow[d] \\
-        B_0 & B_{01} \arrow[l, >->] \arrow[r, >->] & B_1 \\
+        X_1 \arrow[d] & X_{0} \arrow[l, >->] \arrow[r, >->] \arrow[d] & X_2 \arrow[d] \\
+        B_1 & B_{0} \arrow[l, >->] \arrow[r, >->] & B_2 \\
     \end{tikzcd}
 \end{center}
-where the horizontal maps are nice inclusions (cofibrations) and the vertical maps have equivalent homotopy fibers, then the induced map $X_0\cup_{X_{01}}X_1\to B_0\cup_{B_{01}}B_1$ should have equivalent fibers as well.
+where the horizontal maps are nice inclusions (cofibrations) and the vertical maps have equivalent homotopy fibers, then the induced map of homotopy pushouts $X_1\cup_{X_{0}}X_2\to B_1\cup_{B_{0}}B_2$ should have equivalent fibers as well.
 ``Having equivalent fibers'' is supposed to mean that the induced maps between fibers of the vertical maps are weak equivalences.
-
-This is equivalent to stating that in a cube 
+This gives the following statement:
+In a cube 
 \begin{center}
     \begin{tikzcd} [sep = .5 cm]
-        X_{01} \arrow [dr, >->] \arrow [rr, >->] \arrow [dd] & & X_1 \arrow [dr, >->] \arrow [dd] \\
-        & X_0 \arrow [rr, crossing over, >->] \arrow [dd] & & X_0\cup_{X_{01}}X_1 \arrow [dd] & \\
-        B_{01} \arrow [dr, >->] \arrow [rr, >->] & & B_1 \arrow [dr, >->] \\
-        & B_0 \arrow [from=uu, crossing over] \arrow [rr, >->] & & B_0\cup_{B_{01}}B_1 &
+        X_{0} \arrow [dr, >->] \arrow [rr, >->] \arrow [dd] & & X_1 \arrow [dr, >->] \arrow [dd] \\
+        & X_2 \arrow [rr, crossing over, >->] \arrow [dd] & & X_1\cup_{X_{0}}X_2 \arrow [dd] & \\
+        B_{0} \arrow [dr, >->] \arrow [rr, >->] & & B_1 \arrow [dr, >->] \\
+        & B_2 \arrow [from=uu, crossing over] \arrow [rr, >->] & & B_1\cup_{B_{0}}B_2 &
     \end{tikzcd}
 \end{center}
-where the left and rear faces are homotopy pullbacks and the top and bottom faces are pushouts (hence also homotopy pushouts due to the horizontal maps being cofibrations), the front and right faces are homotopy pullbacks as well.
-
-This property holds true in $\Top$; even better, it requires the top and bottom square to be only homotopy pushouts.
+where the left and rear faces are homotopy pullbacks and the top and bottom faces are homotopy pushouts, the front and right faces are homotopy pullbacks as well.
 This property will be called ``descent for pushouts''.
-Therefore when switching to the \inftycat/ of spaces $\spaces$, the property can be stated as that in a cube (which is a diagram $\Delta^1\times\Delta^1\times\Delta^1\to\spaces$) where the left and rear faces are pullbacks and top and bottom faces are pushouts, the front and left faces are pullbacks as well.
-A natural generalization is to replace pushouts by arbitrary small diagrams, which is also true in $\Top$ (and therefore $\spaces$).
-
+A natural generalization is to replace pushouts by arbitrary small diagrams.
 It will again turn out that we can always reduce to showing descent for only pushouts and small coproducts, which we will see in \cref{lem:descentIffDescentPoAndCoprod}.

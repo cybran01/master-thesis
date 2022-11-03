@@ -1,6 +1,6 @@
 Before giving a proper definition of universality and descent, we need to introduce another more subtle property that we want an \inftytop/ to fulfill.
 Since this we be the least interesting for our purposes, we will give a very pragmatic introduction.
-\begin{definition}
+\begin{definition}\label{def:locallyPresentable}
     An \inftycat/ $C$ is \emph{locally presentable} if there exists a combinatorial simplicial model category $A$ and an equivalence of \inftycats/ $\Nhc(A^°)\to C$.
 \end{definition}
 \begin{corollary}
@@ -16,7 +16,6 @@ Since this we be the least interesting for our purposes, we will give a very pra
     \end{proof}
 \end{corollary}
 An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in \cite[Theorem 5.5.1.1 and Proposition A.3.7.6]{HTT}.
-In essence, an \inftycat/ being locally presentable means it is being determined by a ``small'' amount of data, despite the category in question not needing to be small itself.
 
 Next we introduce cartesian transformations which allow us to encode universality and descent in a concise manner.
 \begin{definition}[Cartesian Transformation]
@@ -76,7 +75,7 @@ We will require the following proposition for the proof.
     \end{center}
     where $K_0\xhookrightarrow{} K_1$ is a monomorphism.
 
-    Let $X$ be a colimit of $K_0\to K\to C$, $Y$ colimit of $K_1\to K\to C$ and $Z$ a colimit of $K_2\to K\to C$.
+    Let $X$ be a colimit of $K_0\to K\to C$, $Y$ a colimit of $K_1\to K\to C$ and $Z$ a colimit of $K_2\to K\to C$.
     Then colimits of $p$ can be identified with pushouts $K_1\cup_{K_0}K_2$ in $C$.
     \begin{reference}
         \cite[Proposition 4.4.2.2]{HTT}

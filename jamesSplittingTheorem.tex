@@ -396,7 +396,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
 \end{definition}
 \begin{remark}
     Every equivalence is $\infty$-connected, however the converse is not true for general \inftytops/.
-    The \inftytop/ $\spaces$ is hypercomplete. %TODO reference HTT 
+    For every small \inftycat/ $A$ the \inftytop/ $\Fun(A,\spaces)$ is hypercomplete. %TODO reference (HTT ??) 
 \end{remark}
 Our goal now is to prove that the comparison map is an equivalence whenever $X$ is a $0$-connected pointed object.
 We will prove this only in $\spaces$, however this case is already enough to derive the result for general topoi (see \cref{rem:genTopoiComparisonMapEq}).
@@ -501,10 +501,10 @@ With these we can deduce the following statements:
     \end{proof}
 \end{corollary}
 \begin{remark}\label{rem:genTopoiComparisonMapEq}
-    Due to the equivalent characterizations of \inftytops/ in \cite[Definition 6.1.0.4]{HTT} for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
+    Due to the equivalent characterizations of \inftytops/ in \cite[Definition 6.1.0.6]{HTT} for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
     
     Then if for a pointed object $X\in\left(C_*\right)_0$ the comparison morphism $c_{i(X)}$ is an equivalence in $Fun(A,\spaces)$, so is $c_X$ in $C$ (see \cite[Lemma 4.17]{splittings_21}).
-    If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\spaces$ is hypercomplete and $Fun(A,\spaces)$ inherits this property. %TODO prove that X 0-conn => i(X) 0-conn
+    If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\Fun(A,\spaces)$ is hypercomplete. %TODO prove that X 0-conn => i(X) 0-conn
     But we have proven this in \cref{prop:jamesSplittingPresheaf}, so it is true for all \inftytops/.
 \end{remark}
 Lastly, we give an application of the James Splitting Theorem.

@@ -65,14 +65,14 @@ Our most important (and very non trivial) part of this interaction is the follow
             \begin{tikzcd} [sep = .5 cm]
                 A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
                 & C^{\prime} \arrow [rr, crossing over] & & D^{\prime} \arrow [dd, "\sim"] & \\
-                \overline{A} \arrow [dr] \arrow [rr] \arrow [->>, dd] & & \overline{B} \arrow [dr] \arrow [->>, dd] \\
-                & \overline{C} \arrow [rr, crossing over] \arrow [from=uu, crossing over] \arrow [dd] & & \overline{D} \arrow [->>, dd] & \\
+                \overline{A} \arrow [dr] \arrow [rr] \arrow [->>, dd, "h"] & & \overline{B} \arrow [dr] \arrow [->>, dd, near start, "h"] \\
+                & \overline{C} \arrow [rr, crossing over] \arrow [from=uu, crossing over] & & \overline{D} \arrow [->>, dd, "h"] & \\
                 A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
-                & C \arrow [->>,from=uu, crossing over] \arrow [rr] & & D & \\
+                & C \arrow [->>,from=uu, crossing over, near start, "h"] \arrow [rr] & & D & \\
             \end{tikzcd}
         \end{center}
-        where $\overline{A}=A\times_{D}\overline{D}$, $\overline{B}=B\times_{D}\overline{D}$ and $\overline{C}=C\times_{D}\overline{D}$, and the indicated maps are fibrations.
-        Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D'\to\overline{D}$ is a weak equivalence, all vertical maps in the upper cube are weak equivalences.
+        where $\overline{A}=A\times_{D}\overline{D}$, $\overline{B}=B\times_{D}\overline{D}$ and $\overline{C}=C\times_{D}\overline{D}$.
+        Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D'\xrightarrow{\sim}\overline{D}$ is a weak equivalence, all vertical maps in the upper cube are weak equivalences.
         Thus it is sufficent to show that the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
