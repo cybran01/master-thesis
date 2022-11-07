@@ -1,4 +1,4 @@
-%TODO motivate presentability, make motivation for universality more like talk
+%TODO motivate presentability (perhaps its necessary for categorical homotopy groups)
 In this section, we want to motivate the definition of an \inftytop/.
 Very vaguely speaking, an \inftytop/ is an \inftycat/ which behaves much like the \inftycat/ of spaces $\spaces$.
 There are different equivalent characterizations of an \inftytop/; for an overview and the proofs of some of these equivalent characterizations, see e.g. \cite[\S 6.1]{HTT}.
@@ -53,7 +53,7 @@ Then by pulling back we get a diagram
 and $F$ is the homotopy fiber of $X\twoheadrightarrow B$ at $f(a)$ and $Y\twoheadrightarrow A$ at $a$.
 We want to show that the middle square is a homotopy pushout.
 Note that the pushout $Y_1\cup_{Y_0}Y_2\to A$ is a homotopy pushout. 
-By replacing the canonical map $Y_1\cup_{Y_0}Y_2\to A$ with a fibration via a factorization $Y_1\cup_{Y_0}Y_2\xtailrightarrow{\sim}\overline{Y}\twoheadrightarrow A$ (note that $\overline{Y}$ is also a homotopy pushout) and the canonical map $Y_1\cup_{Y_0}Y_2\to Y$ by a lift $\alpha\colon\overline{Y}\to Y$, we know that $F$ is also the homotopy fiber of $\overline{Y}\twoheadrightarrow A$.
+By replacing the canonical map $Y_1\cup_{Y_0}Y_2\to A$ with a fibration via a factorization $Y_1\cup_{Y_0}Y_2\xtailrightarrow{\sim}\overline{Y}\twoheadrightarrow A$ (note that $\overline{Y}$ is also a homotopy pushout) and the canonical map $Y_1\cup_{Y_0}Y_2\to Y$ by a lift $\alpha\colon\overline{Y}\to Y$, we know that $F$ is also a homotopy fiber of $\overline{Y}\twoheadrightarrow A$.
 But this means that $\alpha$ induces weak equivalences between all homotopy fibers of the fibrations $\overline{Y}\twoheadrightarrow A$ and $Y\twoheadrightarrow A$, hence $\alpha$ is a weak equivalence (e.g. by the long exact sequence of homotopy groups) and therefore $Y$ is a homotopy pushout.
 
 Using the pasting lemma, asking for the middle square to be a homotopy pushout gives the following statement: 
@@ -80,7 +80,7 @@ When given a diagram
 \end{center}
 where the horizontal maps are nice inclusions (cofibrations) and the vertical maps have equivalent homotopy fibers, then the induced map of homotopy pushouts $X_1\cup_{X_{0}}X_2\to B_1\cup_{B_{0}}B_2$ should have equivalent fibers as well.
 ``Having equivalent fibers'' is supposed to mean that the induced maps between fibers of the vertical maps are weak equivalences.
-This gives the following statement:
+By the fiberwise characterization of homotopy pullbacks this gives the following statement:
 In a cube 
 \begin{center}
     \begin{tikzcd} [sep = .5 cm]
@@ -92,5 +92,5 @@ In a cube
 \end{center}
 where the left and rear faces are homotopy pullbacks and the top and bottom faces are homotopy pushouts, the front and right faces are homotopy pullbacks as well.
 This property will be called ``descent for pushouts''.
-A natural generalization is to replace pushouts by arbitrary small diagrams.
+Again a natural generalization to consider is to replace pushouts by arbitrary small diagrams.
 It will again turn out that we can always reduce to showing descent for only pushouts and small coproducts, which we will see in \cref{lem:descentIffDescentPoAndCoprod}.
