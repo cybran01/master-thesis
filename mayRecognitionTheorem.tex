@@ -1,6 +1,6 @@
 In this section we will give a proof on the May Recognition Theorem in the abstract setting of an \inftytop/.
 This theorem allows one to recognize which pointed spaces are (equivalent to) loop spaces.
-We will see that descent will play a mayor role in this.
+We will see that descent will play a major role in this.
 \begin{definition}[(Augmented) Simplicial Objects] %TODO maybe define for all finite totally ordered sets
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
@@ -32,7 +32,7 @@ We will see that descent will play a mayor role in this.
     Let $C$ be an \inftycat/ and let $U$ be a groupoid object.
     If $U_0\cong *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
 \end{definition}
-\begin{definition}
+\begin{definition}[\Cech/ Nerve]
     Let $C$ be an \inftycat/ with small limits and let $\Delta^1\subset\N(\Delta_+)^{\op}$ be the inclusion corresponding to the full subcategory $[0]\to[-1]$.
     
     Then by \cref{prop:exKanExt} there exists a functor $C\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
@@ -58,34 +58,6 @@ We will see that descent will play a mayor role in this.
     Here we have only shown a selection of the $1$-skeleton of $C(f)$.
     The remaining maps of $\Delta_+$ are however compositions of the shown face and degeneracy maps, which determines the $1$-skeleton; for all higher simplices we make choices via the universal property of the iterated pullbacks, which all yield equivalent objects $C(f)$. %TODO confirm
 \end{remark}
-%TODO Add note: while kan ext is not unique, all kan ext have same essential image
-\begin{definition}
-    Let $C$ be an \inftycat/ with small limits. 
-    For a map $f\in C_1$ we call $C(f)$ the \Cech/ nerve of $f$.
-\end{definition}
-We will need the following proposition.
-\begin{prop}\label{prop:grpdEffectiveIfPullback} 
-    Let $U^+$ be an augmented simplicial object in an \inftycat/ $C$.
-    Then it is a \Cech/ nerve if and only if $U^+|_{\N(\Delta)^{\op}}$ is a groupoid object and the square
-    \begin{center}
-        \begin{tikzpicture}
-            \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-            {
-            U_1^+ & U_0^+\\
-            U_0^+ & U_{-1}^+\\};
-            \path[-stealth]
-
-            (m-1-1) edge (m-1-2)
-            (m-1-1) edge (m-2-1)
-            (m-2-1) edge (m-2-2)
-            (m-1-2) edge (m-2-2);
-        \end{tikzpicture}
-    \end{center}
-    is a pullback square.
-    \begin{reference}
-        \cite[Proposition 6.1.2.11]{HTT}
-    \end{reference}
-\end{prop}
 \begin{definition}[Effective Groupoid Object]
     Let $C$ be an \inftycat/ with small colimits and let $U$ be a groupoid object.
     Then we call $U$ \emph{effective} if the diagram 
@@ -105,6 +77,21 @@ We will need the following proposition.
     \end{center}
     is a pullback square.
 \end{definition}
+We will need the following proposition.
+\begin{prop}\label{prop:grpdEffectiveIfPullback} 
+    Let $U^+$ be an augmented simplicial object in an \inftycat/ $C$.
+    Then it is a \Cech/ nerve if and only if $U^+|_{\N(\Delta)^{\op}}$ is a groupoid object and the square
+    \begin{center} %TODO add description to top and left map
+        \begin{tikzcd} [sep = 4em]
+            U_1^+ \arrow[r] \arrow[d] & U_0^+ \arrow[d] \\
+            U_0^+ \arrow[r] & U_{-1}^+ \\
+        \end{tikzcd}
+    \end{center}
+    is a pullback square.
+    \begin{reference}
+        \cite[Proposition 6.1.2.11]{HTT}
+    \end{reference}
+\end{prop}
 \begin{corollary}\label{cor:groupoidEffectiveIffColimCechNerve}
     Let $C$ be an \inftycat/ with small colimits. 
     Then a groupoid object $U$ is effective if and only if its colimit cone $\N(\Delta)^{\op}\star\Delta^0\cong\N(\Delta_+)^{\op}\to C$ is a \Cech/ nerve.
@@ -113,12 +100,12 @@ We will need the following proposition.
     \end{proof}
 \end{corollary}
 The following proposition is at the heart of the proof of the May Recognition Theorem. 
-The proof follows \cite[pp 29-30]{toposes_and_htpy_toposes}.
+The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
 \begin{prop}\label{prop:groupoidObjInToposAreEffective}
     Let $C$ be an \inftytop/.
     Then every groupoid object $U$ is effective.
     \begin{proof}
-        Let $\alpha\colon\N\left(\Delta_+\right)\to\N\left(\Delta\right)$ the map induced by the functor sending a morphism $f\colon [m]\to[n]\in\Delta_+$ to 
+        Let $\alpha\colon\N\left(\Delta_+\right)\to\N\left(\Delta\right)$ be the map induced by the functor sending a morphism $f\colon [m]\to[n]\in\Delta_+$ to 
         \begin{align*}
             \alpha(f)\colon [m+1]&\to[n+1]\\
             i&\mapsto
@@ -127,51 +114,32 @@ The proof follows \cite[pp 29-30]{toposes_and_htpy_toposes}.
                 n+1 & i=m+1\;.
             \end{cases}
         \end{align*}
-        Then $U\circ\alpha^{\op}$ is an augmented simplicial object with $U_{n+1}=(U\circ\alpha^{\op})_n$.
+        Then $\overline{U}\coloneqq U\circ\alpha^{\op}$ is an augmented simplicial object with $U_{n+1}=\overline{U}_n$.
         Let $f\colon [m]\to[n]$ be some map. Then the diagram
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                U_{n+1} & U_n\\
-                U_{m+1} & U_m\\
-                U_{\set{m,m+1}} & U_{\set{m}}\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2)
-                (m-2-1) edge (m-3-1)
-                (m-2-2) edge (m-3-2)
-                (m-3-1) edge (m-3-2);
-            \end{tikzpicture}
+            \begin{tikzcd} [sep = 4em]
+                \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"\overline{U}(f)"] & U_n \arrow[d, "U(f)"] \\
+                \overline{U}_m=U_{m+1} \arrow[r] \arrow[d] & U_m \arrow[d] \\
+                U_{\set{m,m+1}} \arrow[r] & U_{\set{m}} \\
+            \end{tikzcd}
         \end{center}
         where the horizontal maps are given by the inclusions $[n]\xhookrightarrow{}[n+1]$, is commutative. 
         As the outer and lower square are pullbacks because $U$ is a groupoid object, the upper square is a pullback by the pasting law.
-        Thus the natural transformation $(U\circ\alpha^{\op})|_{\N(\Delta)^{\op}}\to U$ is cartesian.
+        Thus the natural transformation $\overline{U}|_{\N(\Delta)^{\op}}\to U$ induced by the inclusions $[n]\xhookrightarrow{}[n+1]$ is cartesian.
 
         Descent now implies that 
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                  (U\circ\alpha^{\op})_0 & \colim (U\circ\alpha^{\op})\\
-                  U_0 &  \colim U\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2);
-            \end{tikzpicture}
+            \begin{tikzcd} [sep = 4em]
+                \overline{U}_0 \arrow[r] \arrow[d] & \colim\overline{U}|_{\N(\Delta)^{\op}} \arrow[d] \\
+                U_0 \arrow[r] & \colim U \\
+            \end{tikzcd}
         \end{center}
         is a pullback diagram.
-        Since by e.g. \cite[Lemma 6.1.3.17]{HTT} we have that $\colim (U\circ\alpha^{\op})\cong(U\circ\alpha^{\op})_{-1} = U_0$ and $(U\circ\alpha^{\op})_0=U_1$ this proves the proposition.
+        Since by e.g. \cite[Lemma 6.1.3.17]{HTT} we have that $\colim\overline{U}|_{\N(\Delta)^{\op}}\cong\overline{U}_{-1} = U_0$ and $\overline{U}_0=U_1$ this proves the proposition.
     \end{proof}
 \end{prop}
-\begin{definition}
-    Let $C$ be an \inftycat/ with colimits and let $f\colon x\to y\in C_1$ be a map.
+\begin{definition}[Effective Epimorphism],
+    Let $C$ be an \inftycat/ with small limits and let $f\colon x\to y\in C_1$ be a map.
     We say that $f$ is an \emph{effective epimorphism} if the \Cech/ nerve $C(f)$ is a colimit diagram.
 \end{definition}
 \begin{prop}\label{prop:mayRecognitionTheoremGroupoid}
@@ -253,9 +221,8 @@ We now want to check that our formulation of the May Recognition Theorem really 
     In map $f\colon x\to y$ in $\spaces$ is an effective epimorphism if and only if it induces a surjection on connected components.
     \begin{proof}
         First, by \cite[Proposition 7.8.3]{cisinski_2019} there is a fully faithful functor $i\colon\N(\Set)\to\spaces$ whose essential image consists precisely of the discrete objects and has $\pi_0\colon\spaces\to\N(\Set)$ as a left adjoint.
-        By \cite[Proposition 7.2.1.14]{HTT} the statement of the lemma is thus equivalent to checking whether $\pi_0(x)$ is an effective epimorphism in $\Set$.
+        By \cite[Proposition 7.2.1.14]{HTT} the statement of the lemma is thus equivalent to checking whether $\pi_0(f)$ is an effective epimorphism in $\Set$.
         In $\Set$ the effective epimorphisms are exactly the surjective morphisms, so we have that a map $f$ in $\spaces$ is an effective epimorphism precisely if $\pi_0(f)$ is surjective.
-        Thus $x$ is effective if and only if $X$ has a single connected component, which proves the proposition.
     \end{proof}
 \end{prop}
 \begin{corollary}
@@ -290,7 +257,7 @@ We now want to check that our formulation of the May Recognition Theorem really 
     We can thus view the map $\Conn(\spaces)\to\Grp(\spaces)$ as being a canonically enriched version of the loop space functor.
     The statement of \cref{prop:mayRecognitionTheoremGroup} therefore allows us to recognize whether a pointed connected space $X$ is deloopable:
 
-    It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta^{\op}\right)\to\spaces$ where $U_n= X\times\ldots\times X$ with $X$ appearing $n$ times. %TODO is this true or does it need additional hypothesis (like certain maps being projections, etc)?
-    The delooping is then given by taking the colimit of this diagram and taking the canonical map $A\colon*\to\colim U$ to be a pointed space, as this fulfills $\Omega A\cong X$.
+    It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta^{\op}\right)\to\spaces$ where $U_n= X\times\ldots\times X$ with $X$ appearing $n$ times and $U_0=*$. %TODO is this true or does it need additional hypothesis (like certain maps being projections, etc)?
+    The delooping is then given by taking the colimit of this diagram and taking the canonical map $A\colon*\to\colim U$ to be a pointed space, as this fulfills $\Omega A\simeq X$.
 \end{remark}
 

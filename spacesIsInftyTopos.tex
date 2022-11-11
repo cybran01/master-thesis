@@ -297,20 +297,20 @@ For the last part of the proof we need the following definitions.
         The proof follows \cite[Lemma 5.10.6]{cubical_htpy_theory}.
 
         Let $\hat{b}\in\M(g)$. 
-        Then either $\hat{b}=(\hat{a},t)\in A\times(0,1]\subset\M(g)$ or $\hat{b}\in B\subset\M(g)$.
+        Then either $\hat{b}=(\hat{a},\hat{t})\in A\times(0,1]\subset\M(g)$ or $\hat{b}\in B\subset\M(g)$.
         In the first case, we have a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X \arrow[r, "{x\mapsto (x,t)}"] \arrow[->>,d, "h"] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[->>,d, "h"] \\
-                A \arrow[r, "{a\mapsto (a,t)}"] & \M(g) \arrow[r, "\sim"] & B \\
+                X \arrow[r, "{x\mapsto (x,\hat{t})}"] \arrow[->>,d, "h"] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[->>,d, "h"] \\
+                A \arrow[r, "{a\mapsto (a,\hat{t})}"] & \M(g) \arrow[r, "\sim"] & B \\
             \end{tikzcd}
         \end{center}
         where the outer square is the starting square and in particular homotopy pullback, so by the pasting law the left square is homotopy pullback as well.
         Since the left square is also an ordinary pullback, in the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & X \arrow[r, "{x\mapsto (x,t)}"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
-                * \arrow[r, "\hat{b}"] & A \arrow[r, "{a\mapsto (a,t)}"] & \M(g) \\
+                F \arrow[r] \arrow[d] & X \arrow[r, "{x\mapsto (x,\hat{t})}"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
+                * \arrow[r, "\hat{b}"] & A \arrow[r, "{a\mapsto (a,\hat{t})}"] & \M(g) \\
             \end{tikzcd}
         \end{center}
         the left square is homotopy pullback since its the pullback along a fibration.
@@ -319,8 +319,8 @@ For the last part of the proof we need the following definitions.
         In the second case we have the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & Y \arrow[r, hook, "\sim"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
-                * \arrow[r, "\hat{b}"] & B \arrow[r, hook, "\sim"] & \M(g) \\
+                F \arrow[r] \arrow[d] & Y \arrow[r, "\sim"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
+                * \arrow[r, "\hat{b}"] & B \arrow[r, "\sim"] & \M(g) \\
             \end{tikzcd}
         \end{center}
         where the indicated maps are weak equivalences since they are right inverse to the maps $\M(f)\to Y$ and $\M(g)\to B$ respectively, which are weak equivalences themselves.
@@ -357,7 +357,7 @@ For the last part of the proof we need the following definitions.
                 & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \M(f_{AC})\cup_A\M(f_{AB}) &
             \end{tikzcd}
         \end{center}
-        where all faces are again equivalent to the corresponding faces of the original cube and the indicated maps are h-cofibrations as they are either pushouts of h-cofibrations or inclusions into the mapping cylinder. %TODO why does this mean they are cofibs?
+        where all faces are again equivalent to the corresponding faces of the original cube and the indicated maps are h-cofibrations as they are either pushouts of h-cofibrations or inclusions into the mapping cylinder (see e.g. \cite[Theorem 2]{note_on_cofibs_1}).
         
         Next we prove that the map $p\colon\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\to\M(f_{AC})\cup_A\M(f_{AB})$ is a quasifibration.
         By \cite[Lemma 4K.3]{hatcher2002algebraic} we only need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.

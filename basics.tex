@@ -36,7 +36,7 @@ We will not give proofs for any statements; we will however point to the relevan
         \cite[Proposition 1.2.2.1]{kerodon}
     \end{proof}
 \end{lemma}
-\begin{definition}
+\begin{definition}[Simplicial Category]
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
     We let $\Cat_{\Delta}$ denote the \emph{category of (small) categories enriched over $\sSet$} with morphisms $\sSet$-enriched functors.
     
@@ -50,9 +50,42 @@ We will not give proofs for any statements; we will however point to the relevan
         \Hom_C(-,Y^K)\cong\Hom_{\sSet}(K,\Hom_C(-,Y))\;.
     \end{equation*}
     We note that due to the functoriality of the right side, these extend to functors $-\otimes -:C\times\sSet\to C$ and $-^-:C\times\sSet^{\op}\to C$.
-
-    We simplicial model category is a \emph{combinatorial simplicial model category} if it is combinatorial as a model category (meaning it is locally presentable and cofibrantly generated).
 \end{definition}
+\begin{definition}[Weak Factorization System]
+    Let $C$ be a category and let $\Map(C)$ denote the class of all maps of $C$.
+    Let $L,R\subset\Map(C)$ be subclasses.
+    If 
+    \begin{itemize}
+        \item every morphism $f$ in $C$ can be factorized as $f=p\circ i$ with $i\in L$, $p\in R$
+        \item $L$ consists precisely of the morphisms having the left lifting property against $R$
+        \item $R$ consists precisely of the morphisms having the left lifting property against $L$
+    \end{itemize}
+    then the pair $(L,R)$ is a \emph{weak factorization system on $C$}.
+\end{definition}
+\begin{definition}[Model Category]
+    Let $C$ be a complete and cocomplete category and let $\Map(C)$ denote the class of all maps of $C$.
+    Let $\Cof,\Fib,\W\subset\Map(C)$ be subclasses which we will call \emph{cofibrations}, \emph{fibrations} and \emph{weak equivalences} respectively.
+    Then we call $C$ together with this data a \emph{model category} if the following hold:
+    \begin{itemize}
+        \item $\W$ contains all isomorphisms and has the two-out-of-three property.
+        \item $(\Cof\cap\W,\Fib)$ is a weak factorization system.
+        \item $(\Cof,\Fib\cap\W)$ is a weak factorization system.
+    \end{itemize}
+    We say that $C$ together with $(\Cof,\Fib,\W)$ is a \emph{combinatorial model structure} if $C$ is locally presentable and the model structure is cofibrantly generated.
+\end{definition}
+We will need the standard model structure on $\sSet$, the Quillen model structure. 
+Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
+\begin{prop}[Quillen Model Structure on $\sSet$]
+    There is a unique model structure on $\sSet$ where the cofibrations are the monomorphisms and the fibrant objects are Kan-complexes.
+
+    The fibrations of this model structure are the maps having the right lifting property against the maps $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n}$.
+    The weak equivalences are the maps which are weak equivalences in $\Top$ after geometric realization.
+
+    We call this model structure the \emph{Quillen Model Structure on $\sSet$}.
+    \begin{reference}
+        \cite[Theorem 3.1.8 and Theorem 3.1.29]{cisinski_2019} and \cite[Chap. II, \S 3, Theorem 1]{Quillen1967}
+    \end{reference}
+\end{prop}
 \begin{definition}[Simplicial Model Category]
     A \emph{simplicial model category} is a simplicial category $C$ that is 
     \begin{itemize}
@@ -64,6 +97,8 @@ We will not give proofs for any statements; we will however point to the relevan
         \Hom_C(B,X)\to\Hom_C(A,X)\times_{\Hom_C(A,Y)}\Hom_C(B,Y)
     \end{equation*}
     is a fibration that additionally is a weak equivalence whenever $i$ or $p$ is a weak equivalence.
+    
+    We call a simplicial model category is a \emph{combinatorial simplicial model category} if its underlying model category is a combinatorial model category.
 \end{definition}
 \begin{construction}%[{\cite[Notation 2.4.3.1]{kerodon}}] TODO decide
     For $[n]\in\Delta$ we define a simplicial category $\C[n]$ as follows:
@@ -98,20 +133,7 @@ We will not give proofs for any statements; we will however point to the relevan
 \begin{definition}[Homotopy Coherent Nerve]
     For a simplicial category $A$ we define the \emph{simplicial nerve (or homotopy coherent nerve) $\Nhc(A)$ of $A$} as $\Nhc(A)=\Hom_{\Cat_{\Delta}}(\C[-],A)$ and thus we obtain a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
 \end{definition}
-We will also need the standard model structure on $\sSet$, the Quillen model structure. 
-Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
-\begin{prop}[Quillen Model Structure on $\sSet$]
-    There is a unique model structure on $\sSet$ where the cofibrations are the monomorphisms and the fibrant objects are Kan-complexes.
-
-    The fibrations of this model structure are the maps having the right lifting property against the maps $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n}$.
-    The weak equivalences are the maps which are weak equivalences in $\Top$ after geometric realization.
-
-    We call this model structure the \emph{Quillen Model Structure on $\sSet$}.
-    \begin{reference}
-        \cite[Theorem 3.1.8 and Theorem 3.1.29]{cisinski_2019} and \cite[Chap. II, \S 3, Theorem 1]{Quillen1967}
-    \end{reference}
-\end{prop}
-For completess sake we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structre does for Kan-complexes.
+For completess sake we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.
 \begin{prop}[Joyal Model Structure on $\sSet$]
     The following two classes of maps endow $\sSet$ with a unique model structure:
     \begin{itemize}
@@ -120,7 +142,7 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
             Analogous to ordinary category theory, we also call these maps \emph{categorical equivalences}.
     \end{itemize}
     The fibrant objects of this model structure are the \inftycats/.
-
+    We refer to categorical equivalences whose domain and target are both \inftycats/ as \emph{equivalences of \inftycats/}.
     We call this model structure the \emph{Joyal Model Structure on $\sSet$}.
     \begin{reference}
         \cite[Definition 3.3.7]{cisinski_2019}
@@ -130,7 +152,7 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
     Let $F\colon C\to D$ be a map between \inftycats/.
     Then the following are equivalent:
     \begin{itemize}
-        \item $F$ is a weak equivalence in the Joyal model structure
+        \item $F$ is a weak equivalence in the Joyal model structure (thus an equivalence of \inftycats/)
         \item $F$ is fully faithful and essentially surjective
         \item There exists a map $G\colon D\to C$ and invertible natural transformations $FG\simeq \id_D$ and $GF\simeq \id_C$.
     \end{itemize}

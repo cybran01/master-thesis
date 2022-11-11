@@ -2,11 +2,11 @@ In the following we will describe three model structures that will be used throu
 The Quillen model structure on $\sSet$ (which was already introduced in the previous section), the Quillen model structure on $\Top$ and the \Strom/ model structure on $\Top$.
 The first two will turn out the be Quillen equivalent and will be used to define the \inftycat/ of spaces $\spaces$.
 
-The \Strom/ model structure will be important later on; its interaction with the Quillen model structure on $\Top$ will be important parts of our proof that $\spaces$ itself is an \inftytop/.
+The \Strom/ model structure will be important later on; its interaction with the Quillen model structure on $\Top$ will be important parts of our proof that $\spaces$ is an \inftytop/.
 \begin{prop}\label{prop:sSetCombSimpModelStructure}
     The Quillen model structure on $\sSet$ together with its natural enrichement over itself gives it the structure of a combinatorial simplicial model category.
     \begin{proof}
-        First we note that by \cite[Remark 7.11.15]{cisinski_2019} the category $\sSet$ together with the Quillen model structure is a combinatorial model category.
+        First we note that the category $\sSet$ together with the Quillen model structure is a combinatorial model category (see e.g. \cite[Remark 7.11.15]{cisinski_2019}).
         
         The category $\sSet$ is enriched over itself by setting $\Hom_{\sSet}(A,B)_n=\hom_{\sSet}(A\times\Delta^n,B)$ so it is a simplicial category.
         It is further tensored (via the product) and powered (via the just defined $\Hom_{\sSet}$).
@@ -58,7 +58,7 @@ It follows from the definitions that every h-fibration is already a fibration an
     \begin{proof}
         By \cite[Corollary 1.1.8.5]{kerodon} the functors are adjoint.
 
-        Thus $\lvert-\rvert\colon\sSet\to\Top$ preserves colimits and since $\lvert\partial\Delta^n\rvert\to\lvert\Delta^n\rvert\;\cong\;S^{n-1}\xhookrightarrow{} D^n$, geometric realization preserves cofibrations.
+        Thus $\lvert-\rvert\colon\sSet\to\Top$ preserves colimits and since $\lvert\partial\Delta^n\rvert\to\lvert\Delta^n\rvert\;\cong\;S^{n-1}\xhookrightarrow{} D^n$, geometric realization preserves cofibrations. %TODO can we just use that mono give inc of cw after |-|?
         Since it also preserves weak equivalences by definition, it preserves trivial cofibrations and thus the adjunction is a Quillen adjunction.
 
         To prove it is a Quillen equivalence, we need to prove that 

@@ -90,7 +90,8 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         \end{center}
         where three vertical squares are pullback and the bottom square is a pushout.
         We now want to construct a map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ such that we have a commutative cube with all vertical sides pullbacks.
-        By e.g. \cite[Lemma 1.4.7.5]{kerodon} the map $\Lambda_1^2\times\Delta^1\cup_{\Lambda_1^2\times\set{1}}\Delta^2\times\Delta^1\to\Delta^2\times\Delta^1$ is inner anodyne, so we can lift
+        By e.g. \cite[Lemma 1.4.7.5]{kerodon} the map $\Lambda_1^2\times\Delta^1\cup_{\Lambda_1^2\times\set{1}}\Delta^2\times\set{1
+        }\to\Delta^2\times\Delta^1$ is inner anodyne, so we can lift
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
@@ -200,7 +201,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         This follows from \cref{lem:existenceOfPoSq} and the pasting lemma applied to 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d] & \Omega\Sigma X \arrow[d] \\
+                X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\alpha"] & \Omega\Sigma X \arrow[d] \\
                 \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d] \\
                 * \arrow[r] & \Sigma\Omega\Sigma X \\
             \end{tikzcd}\;.
@@ -383,7 +384,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     $g$ is $k$-connected if and only if $f$ is $k$-connected since
     \begin{itemize}
         \item for $k=-2$ there is nothing to prove
-        \item for $k\geq -1$ the fiber is inhabited for all chosen basepoints and thus $f$ is an effective epimorphism (see \cref{prop:effInSpaceIffSurj}).
+        \item for $k\geq -1$ the homotopy fiber is inhabited for all chosen basepoints and thus $f$ is an effective epimorphism (see \cref{prop:effInSpaceIffSurj}).
             Since homotopy fibers are essentially constant on connected components, this allows us to prove that $f$ is $k$-connected if $g$ is $k$-connected from the fiberwise characterization of homotopy pullbacks. %TODO maybe say how to do this
             The other implication does not need $f$ to be an effective epimorphism and follows directly from the fiberwise characterization of homotopy pullbacks. 
     \end{itemize}
