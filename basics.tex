@@ -1,7 +1,7 @@
 In this section we would like to fix some of the notation used throughout the rest of the text and remind the reader of some concepts which we will be important later on.
-We assume some familiarity with \inftycats/ and Kan-complexes, in particular familiarity with limits/colimits.
+We assume some familiarity with \inftycats/ and Kan-complexes, in particular familiarity with limits/colimits in \inftycats/.
 We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts).
-We will not give proofs for any statements; we will however point to the relevant literature.
+We will not give proofs for any statements in this section; we will however point to the relevant literature.
 \begin{definition}[Simplex Category]
     Let $\Delta$ be the category with
     \begin{itemize}
@@ -13,7 +13,7 @@ We will not give proofs for any statements; we will however point to the relevan
 \begin{definition}[Augmented Simplex Category]
     Let $\Delta_+$ be the category with
     \begin{itemize}
-        \item objects the categories $[n]$ for all $n\in\Nat_{n\geq-1}$ where $[-1]=\emptyset$ is the empty category
+        \item objects the categories $[n]$ for all $n\in\Nat\cup\set{-1}$ where $[-1]=\emptyset$ is the empty category
         \item morphisms functors between these categories (which again are exactly the monotone increasing functions).
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
@@ -22,15 +22,12 @@ We will not give proofs for any statements; we will however point to the relevan
     We set $\sSet=\Fun(\Delta^{\op},\Set)$ to be the \emph{category of simplicial sets}.
 \end{definition}
 \begin{definition}[Nerve of an Ordinary Category]
-    For a category $C$, we denote the composition $\Hom_{\Cat}(-,C)\circ i$ as $\Hom_{\Delta}(-,C)$, where $i:\Delta\xhookrightarrow{}\Cat$ is the inclusion as a full subcategory.
-    Let $\N\colon\Cat\to\sSet$ be the functor that sends
-    \begin{itemize}
-        \item a category $C$ to the simplicial set $\Hom_{\Delta}(-,C)$
-        \item a functor $F:C\to D$ to $\N(F)\colon\Hom_{\Delta}(-,C)\xrightarrow{F\circ -}\Hom_{\Delta}(-,D)$\;.
-    \end{itemize}
+    Let $\Cat$ denote the category of small categories and let $i:\Delta\xhookrightarrow{}\Cat$ be the inclusion as a full subcategory.
+    For a small category $C$, we set composition $\N(C)=\hom_{\Cat}(-,C)\circ i^{\op}$.
+    Since this construction is functorial in $C$, we get a functor $\N\colon\Cat\to\sSet$. 
     We then call $\N(C)$ the \emph{nerve of the category $C$}.
 \end{definition}
-\begin{lemma}
+\begin{lemma}[Homotopy Category]
     The nerve functor $\N\colon\Cat\to\sSet$ is fully faithful and has a left adjoint $\ho\colon\sSet\to\Cat$ which we call the \emph{homotopy category} of a simplicial set.
     \begin{proof}[Reference]
         \cite[Proposition 1.2.2.1]{kerodon}
@@ -38,7 +35,7 @@ We will not give proofs for any statements; we will however point to the relevan
 \end{lemma}
 \begin{definition}[Simplicial Category]
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
-    We let $\Cat_{\Delta}$ denote the \emph{category of (small) categories enriched over $\sSet$} with morphisms $\sSet$-enriched functors.
+    We let $\Cat_{\Delta}$ denote the \emph{category of small categories enriched over $\sSet$} with morphisms $\sSet$-enriched functors.
     
     We call a simplicial category $C$ \emph{tensored} if if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
     \begin{equation*}
@@ -58,7 +55,7 @@ We will not give proofs for any statements; we will however point to the relevan
     \begin{itemize}
         \item every morphism $f$ in $C$ can be factorized as $f=p\circ i$ with $i\in L$, $p\in R$
         \item $L$ consists precisely of the morphisms having the left lifting property against $R$
-        \item $R$ consists precisely of the morphisms having the left lifting property against $L$
+        \item $R$ consists precisely of the morphisms having the right lifting property against $L$
     \end{itemize}
     then the pair $(L,R)$ is a \emph{weak factorization system on $C$}.
 \end{definition}

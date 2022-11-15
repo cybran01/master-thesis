@@ -21,7 +21,7 @@ When speaking of cofibrations, fibrations or weak equivalences between topologic
 \begin{prop}[Quillen Model Structure on $\Top$]
     The following three classes of maps endow $\Top$ with a model structure:
     \begin{itemize}
-        \item Cofibrations are the maps which are retracts of relative CW-complexes. %TODO relative CW-complex def
+        \item Cofibrations are the maps which are retracts of relative cell complexes. %TODO NOT relative CW, only relative cell-complex %TODO maybe define?
         \item Weak equivalences are weak equivalences of topological spaces. %TODO DEFINE
         \item Fibrations are the Serre fibrations.
     \end{itemize}
@@ -49,7 +49,7 @@ It follows from the definitions that every h-fibration is already a fibration an
     The same is true for the \Strom/ model structure, since all objects in this model category are cofibrant and fibrant.
     Hence whenever computing homotopy pushouts/pullbacks, it will suffice to only replace one map by a cofibration/fibration.
 \end{remark}
-\begin{prop}[Quillen Equivalence of the Quillen Model Structures on $\Top$ and $\sSet$]\label{prop:quillenEqSSetTop}
+\begin{prop}[Quillen Equivalence of Quillen Model Structures]\label{prop:quillenEqSSetTop}
     The functors
     \begin{equation*}
         \lvert-\rvert\colon\sSet\rightleftarrows\Top\mkern+3mu:\mkern-3mu\Sing(-)
@@ -58,7 +58,7 @@ It follows from the definitions that every h-fibration is already a fibration an
     \begin{proof}
         By \cite[Corollary 1.1.8.5]{kerodon} the functors are adjoint.
 
-        Thus $\lvert-\rvert\colon\sSet\to\Top$ preserves colimits and since $\lvert\partial\Delta^n\rvert\to\lvert\Delta^n\rvert\;\cong\;S^{n-1}\xhookrightarrow{} D^n$, geometric realization preserves cofibrations. %TODO can we just use that mono give inc of cw after |-|?
+        Thus $\lvert-\rvert\colon\sSet\to\Top$ preserves colimits and since $\lvert\partial\Delta^n\xhookrightarrow{}\Delta^n\rvert\;\cong\;S^{n-1}\xhookrightarrow{} D^n$ (which is a cofibration in $\Top$), geometric realization preserves cofibrations.
         Since it also preserves weak equivalences by definition, it preserves trivial cofibrations and thus the adjunction is a Quillen adjunction.
 
         To prove it is a Quillen equivalence, we need to prove that 
@@ -68,18 +68,18 @@ It follows from the definitions that every h-fibration is already a fibration an
         \end{itemize}
         Since all simplicial sets are cofibrant and all topological spaces are fibrant, we can pick the replacements to be the identity in both cases.
         Thus the statement is reduced to proving that unit and counit are objectwise weak equivalences. 
-        This is proven in \cite[Theorem 3.5.4.1 and Corollary 3.5.4.2]{kerodon}.
+        This is proven in e.g. \cite[Theorem 3.5.4.1 and Corollary 3.5.4.2]{kerodon}.
     \end{proof}
 \end{prop}
 %TODO define W_{\sSet},W_{\Top}
-\begin{corollary}\label{prop:homotopyHypothesis}
+\begin{corollary}[Homotopy Hypothesis]\label{prop:homotopyHypothesis}
     The Quillen equivalence 
     \begin{equation*}
         \lvert-\rvert\colon\sSet\rightleftarrows\Top\mkern+3mu:\mkern-3mu\Sing(-)
     \end{equation*}
     induces an equivalence of \inftycats/ 
     \begin{equation*}
-        F\coloneqq\N(\lvert-\rvert)\colon \N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack\longleftrightarrow\N(\Top)\lbrack W_{\Top}^{-1}\rbrack\mkern+3mu:\mkern-3mu\N(\Sing(-))\eqqcolon G\;.
+        \N(\lvert-\rvert)\colon \N(\sSet)\lbrack W_{\sSet}^{-1}\rbrack\longleftrightarrow\N(\Top)\lbrack W_{\Top}^{-1}\rbrack\mkern+3mu:\mkern-3mu\N(\Sing(-))\;.
     \end{equation*}
     \begin{proof}
         Using \cref{prop:quillenEqSSetTop} this follows from the fact that Quillen equivalences induce equivalences of \inftycats/ after simplicial localization at the weak equivalences, see e.g. \cite[Corollary 1.3]{quillen_adj_15}.
@@ -88,7 +88,7 @@ It follows from the definitions that every h-fibration is already a fibration an
 \begin{corollary}\label{cor:htpyCoherentNerveIsLoc}
     There is an equivalence of \inftycats/ $\Nhc(\sSet^°)\to\N(\Top)[W_{\Top}^{-1}]$ induced by the universal property of simplicial localization.
     \begin{proof}
-        By \cite[Theorem 1.3.4.20]{higher_algebra} we have an equivalence of \inftycats/ $\Nhc(\sSet^°)\to\N(\sSet)[W_{\sSet}^{-1}]$.
+        Using that $\sSet$ is a combinatorial simplicial model category, by \cite[Theorem 1.3.4.20]{higher_algebra} we have an equivalence of \inftycats/ $\Nhc(\sSet^°)\to\N(\sSet)[W_{\sSet}^{-1}]$.
         By \cref{prop:homotopyHypothesis} we also have an equivalence of \inftycats/ $\N(\sSet)[W_{\sSet}^{-1}]\to\N(\Top)[W_{\Top}^{-1}]$.
         Composition now gives the desired map.
     \end{proof}
