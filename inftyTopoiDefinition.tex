@@ -86,7 +86,7 @@ We will require the following proposition for the proof.
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation and let $q$ be a colimit cone. 
         We prove the statement first for all finite dimensional $K$ by induction over the dimension of $K$.
 
-        For $\dim K=-1$ the statement follows since $K$ must be empty and thus is the coproduct over the empty indexing category.
+        For $\dim K=-1$ the statement follows since $K=\emptyset$ is the coproduct over the empty indexing category.
         
         Let $\dim K=n+1$. 
         Then by the skeletal filtration
@@ -115,10 +115,9 @@ We will require the following proposition for the proof.
 
         By the pasting law and the induction hypothesis we thus have that $p_0$ and $p_1$ are colimit cones.
 
-        Since $\Delta^{n+1}$ has a terminal object, colimits over $\Delta^{n+1}$ can be computed by evalutaing the terminal object.
-        In particular it is given by evaluation of some element $x\in K_0$.
-
-        Thus we have $q_2(\infty)\cong\bigcup\limits_{s\in S} q(x_s)$ (where $x_s\in K_0$ is the final vertex of the corresponding $\Delta^{n+1}$ in $X_2=\bigcup\limits_{s\in S} \Delta^{n+1}$).
+        Since $\Delta^{n+1}$ has a terminal object, colimits over $\Delta^{n+1}$ can be computed by evaluating the terminal object.
+        Let the family $(x_s)_{s\in S}$ be the images of the terminal objects of the components in $X_2=\bigcup\limits_{s\in S} \Delta^{n+1}$ under the map $X_2\to K$.
+        Then we have $q_2(\infty)\cong\bigcup\limits_{s\in S} q(x_s)$ as colimits commute.
         So for every $s\in S$ the left square in the diagram
         \begin{center}
             \begin{tikzpicture}
@@ -137,7 +136,7 @@ We will require the following proposition for the proof.
                 (m-1-3) edge (m-2-3);
             \end{tikzpicture}
         \end{center}
-        is pullback by the pasting law, thus by universality for coproducts $p_2(\infty)\cong\bigcup\limits_{s\in S} p(x_s)$ and in particular $p_2$ is a colimit cone.
+        is a pullback by the pasting law, thus by universality for coproducts $p_2(\infty)\cong\bigcup\limits_{s\in S} p(x_s)$ and in particular $p_2$ is a colimit cone.
         
         By \cref{prop:colimitDecompositionPushouts} we know that 
         \begin{center}
@@ -155,7 +154,7 @@ We will require the following proposition for the proof.
             \end{tikzpicture}
         \end{center}
         is a pushout square.
-        Furthermore, the cube induced by $\alpha$ and the $\alpha_i$
+        Furthermore the cube induced by $\alpha$ and the $\alpha_i$
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 p_0(\infty) \arrow [dr] \arrow [rr] \arrow [dd] & & p_1(\infty) \arrow [dr] \arrow [dd] \\
@@ -169,22 +168,22 @@ We will require the following proposition for the proof.
         Again by \cref{prop:colimitDecompositionPushouts} it follows that $p(\infty)$ is a colimit cone.
 
         It now remains to show that statement for general $K$.
-        Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category via the ordering $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (and all higher simplices are degenerate).
+        Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category via the ordering $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (with all higher simplices degenerate).
         It can be shown that the inclusion $L\subset\N(\Nat)$ is a categorical equivalence. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
 
-        Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation and let $q$ be a colimit cone and let $\left(K^n\right)_{n\in\Nat}$ denote the skeletal filtration of $K$.
+        Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation, let $q$ be a colimit cone and let $\left(K^n\right)_{n\in\Nat}$ denote the skeletal filtration of $K$.
         We can compute colimits of any diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex is the colimit of the skeleton of corresponding degree and all higher simplicies are given by chains of the canonical maps. 
 
         Since $L\subset\N(\Nat)$ is a categorical equivalence (which preserve and reflect (co)limits), we can also compute the colimit of the induced diagram $L\to C$. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
 
-        So let $F_q\colon L^{\rhd}\to C$ be the diagram induced by taking colimits of the skeleta as above.
-        Let $F_p\colon L^{\rhd}\to C$ be given on the $0$-simplices by taking pullbacks
+        So let $F_q\colon L^{\rhd}\to C$ be the diagram induced by taking colimits of the skeleta as described above.
+        Let $F_p\colon L^{\rhd}\to C$ be given by taking pullbacks
         \begin{center}
             \begin{tikzpicture}
                 \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
                 {
-                  F_p(n) & F_q(n)\\
-                  p(\infty)=F_p(\infty) & F_q(\infty)=q(\infty)\\};
+                  F_p(n) & F_p(\infty)=p(\infty)\\
+                  F_q(n) & F_q(\infty)=q(\infty)\\};
                 \path[-stealth]
     
                 (m-1-1) edge (m-1-2)
@@ -193,20 +192,19 @@ We will require the following proposition for the proof.
                 (m-1-2) edge (m-2-2);
             \end{tikzpicture}
         \end{center}
-        and on $1$-simplices by taking canonical maps.
-        Thus we get a cartesian natural transformation $\beta\colon F_p\to F_q$.
-        By universality for finite dimensional $K$ we have that for every $n\in\Nat$, $F_p(n)$ is the colimit of $p|_{K^n}$.
-        Since $L$ is $1$-dimensional, $F_p$ is a colimit cone and thus $p(\infty)$ is the colimit of its skeleta.
+        and thus we get a cartesian natural transformation $\beta\colon F_p\to F_q\in\Fun(L^{\rhd},C)_1$.
+        Since $L$ is $1$-dimensional, $F_p$ is a colimit cone by universality for finite dimensional diagrams.
+        By universality for finite dimensional $K$ we also have that for every $n\in\Nat$, $F_p(n)$ is the colimit of the $p|_{K^n}$.
         This proves that $p$ is a colimit cone and thus the proposition.
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:descentIffDescentPoAndCoprod}
     A \inftycat/ $C$ that has universal colimits has descent if and only if it has descent for pushouts and coproducts.
     \begin{proof} %TODO maybe mention why it suffices to prove things for arrows x\to\infty
-        Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a map.
-        We prove the statement first for all finite dimensional $K$ by induction over the dimension of $K$. %TODO define dimension
+        Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be natural transformation between colimit cones such that $\alpha|_K$ is cartesian.
+        We first prove the statement for all finite dimensional $K$ by induction over the dimension of $K$. %TODO define dimension
 
-        For $\dim K=-1$ the statement follows since $K$ must be empty and thus is the coproduct over the empty indexing category.
+        For $\dim K=-1$ the statement follows since $K=\emptyset$ is the coproduct over the empty indexing category.
 
         So let $\dim K=n+1$.
         Then by the skeletal filtration        
@@ -216,22 +214,22 @@ We will require the following proposition for the proof.
         where $S$ is the set of non-degenerate simplicies of dimension $n+1$.
         For ease of notation, we again set $X_{0}=\bigcup\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\bigcup\limits_S \Delta^{n+1}$.
         
-        Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ or $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoints to be the colimits.
+        Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ and $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoints to be the colimits.
         Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$. %TODO how?
-        By induction hypothesis we obtain that $\alpha_0$ and $\alpha_1$ are cartesian.
+        By the induction hypothesis we obtain that $\alpha_0$ and $\alpha_1$ are cartesian.
 
         The map $\alpha_2$ is cartesian as well: 
-        Since $\Delta^{n+1}$ has a terminal object, the colimit can be computed by evaluating the final vertex. 
-        In particular it is given by evaluation of some element $x\in K_0$.
-        Therefore we have $q_2(\infty)\cong\bigcup\limits_{s\in S} q(x_s^{n+1})$ and $p_2(\infty)\cong\bigcup\limits_{s\in S} p(x_s^{n+1})$ (where $x_s^i\in K_0$ is the $i$-th vertex of the corresponding $\Delta^{n+1}$ in $X_2=\bigcup\limits_{s\in S} \Delta^{n+1}$).
+        Since $\Delta^{n+1}$ has a terminal object, a colimit of a diagram indexed over $\Delta^{n+1}$ can be computed by evaluating the final vertex. 
+        Let the family $(x_s^i)_{i\in\set{0,\ldots,n+1},s\in S}$ be family of images consisting of the $i$-th vertex of the components in $X_2=\bigcup\limits_{s\in S} \Delta^{n+1}$ under the map $X_2\to K$.
+        We have $q_2(\infty)\cong\bigcup\limits_{s\in S} q(x_s^{n+1})$ and $p_2(\infty)\cong\bigcup\limits_{s\in S} p(x_s^{n+1})$.
         For each $s\in S$ and $i\in\set{0,\ldots,n+1}$ the outer square of the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                p(x_s^i) \arrow[r] \arrow[d] & p_2(x_s^{n+1}) \arrow[r] \arrow[d] & p_2(\infty) \arrow[d] \\
-                q(x_s^i) \arrow[r] & q_2(x_s^{n+1}) \arrow[r] & q_2(\infty)\\
+                p_2(x_s^i) \arrow[r] \arrow[d] & p_2(x_s^{n+1}) \arrow[r] \arrow[d] & p_2(\infty) \arrow[d] \\
+                q_2(x_s^i) \arrow[r] & q_2(x_s^{n+1}) \arrow[r] & q_2(\infty)\\
             \end{tikzcd}
         \end{center}
-        is a pullback since the left square is pullback as $\alpha_2|_{X_2}$ is cartesian and the right square is pullback by descent for coproducts.
+        is a pullback since the left square is a pullback because $\alpha_2|_{X_2}$ is cartesian and the right square is a pullback by descent for coproducts.
         Thus $\alpha_2$ is cartesian.
 
         By \cref{prop:colimitDecompositionPushouts} we know that
@@ -259,7 +257,7 @@ We will require the following proposition for the proof.
         \end{center}
         are pullbacks: 
 
-        For all $x\in \left(X_0\right)_0$ and $i\in\set{1,2}$ the left square of the diagram 
+        For all objects $x$ in $X_0$ and $i\in\set{1,2}$ the left square of the diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p_0(x) \arrow[r] \arrow[d] & q_0(\infty)\times_{q_i(\infty)}p_i(\infty) \arrow[r] \arrow[d] & p_i(\infty) \arrow[d] \\
@@ -280,8 +278,15 @@ We will require the following proposition for the proof.
         \end{center}
         is cartesian because $C$ has descent for pushouts.
 
-        Since every object $x\in K_0$ already lies in the image of either $X_1$ or $X_2$, the map $p(x)\to p(\infty)$ always factors as $p_1(x)\to p_1(\infty)\to p(\infty)$ or $p_2(x)\to p_2(\infty)\to p(\infty)$.
-        Descent for $\alpha$ therefore follows by the pasting lemma since both $\alpha_1$ and $\alpha_2$ are cartesian and the front and right side of the cube are pullbacks.
+        Since every object $x\in K_0$ already lies in the image of either $X_1$ or $X_2$, the maps $p(x)\to p(\infty)$ and $q(x)\to q(\infty)$ always factor through $p_1(\infty)$ or $p_2(\infty)$ respectively.
+        Because for $i\in\set{1,2}$ the diagram
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                p_i(x) \arrow[r] \arrow[d] & p_i(\infty) \arrow[r] \arrow[d] & p(\infty) \arrow[d] \\
+                q_i(x) \arrow[r] & q_i(\infty) \arrow[r] & q(\infty)\\
+            \end{tikzcd}
+        \end{center}
+        is a pullback by the pasting lemma due to the above cube and since $\alpha_i$ is cartesian, it follows that $\alpha$ is cartesian.
 
         The case for general $K$ follows from the following argument:
 
@@ -289,10 +294,10 @@ We will require the following proposition for the proof.
         Let $K^n\subset K$ denote the $n$-th skeleton and let $F_p\colon L^{\rhd}\to C$ an $F_q\colon L^{\rhd}\to C$ be functors that 
         \begin{itemize}
             \item for each object $n\in L_0$ are the colimit of $p|_{K^n}$ and $q|_{K^n}$ respectively 
-            \item have $p(\infty)$ and $q(\infty)$ for their respective conepoints
-            \item have choices for canonical maps as their $1$-simplices.
+            \item have $p(\infty)$ and $q(\infty)$ as their respective conepoints
         \end{itemize}
-        By descent for finite dimensions and universality we know that for all $n\in\Nat$ and $x\in K^n$ the outer square of
+        so in particular, they are colimit cones.
+        By descent for finite dimensions we know that for all $n\in\Nat$ and $x\in K^n$ the outer square of
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p|_{K^n}(x) \arrow[r] \arrow[d] & q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty) \arrow[r] \arrow[d] & p|_{K^{n+1}}(\infty) \arrow[d] \\
@@ -300,7 +305,7 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         is a pullback and hence by the pasting lemma so is the left square.
-        By universality this implies that $q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty)$ is equivalent to $p|_{K^n}$ which shows that
+        By universality this implies that $q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty)$ is equivalent to $p|_{K^n}(\infty)$ which shows that
         \begin{center}
             \begin{tikzpicture}
                 \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
