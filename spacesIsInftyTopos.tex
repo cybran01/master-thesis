@@ -153,17 +153,17 @@ We start proving the case for pushouts by the following reduction step.
     If for all cubes in the model category $\Top$
     \begin{center}
         \begin{tikzcd} [sep = .5 cm]
-            \overline{A} \arrow [dr] \arrow [rr] \arrow [->>,dd, "h"] & & \overline{B} \arrow [dr] \arrow[->>]{dd}[near start]{h} \\
+            \overline{A} \arrow [dr] \arrow [rr] \arrow [->>,dd] & & \overline{B} \arrow [dr] \arrow[->>,dd] \\
             & \overline{C} \arrow [rr, crossing over] & & \overline{D} \arrow [dd] & \\
             A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
-            & C \arrow [->>,from=uu,crossing over]{}[near start]{h} \arrow [rr] & & D &
+            & C \arrow [->>,from=uu,crossing over] \arrow [rr] & & D &
         \end{tikzcd}
     \end{center}
     where 
     \begin{itemize}
         \item left and back face are homotopy pullbacks
         \item bottom and top square homotopy pushouts %TODO is ordinary po necessary?
-        \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are h-fibrations
+        \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are fibrations
     \end{itemize}
     the front and right squares are homotopy pullbacks, then $\Top$ has descent for homotopy pushouts.
     \begin{proof}
@@ -178,59 +178,58 @@ We start proving the case for pushouts by the following reduction step.
         \end{center}
         where the back and left square are homotopy pullbacks and top and bottom are homotopy pushouts, we show that we can construct a cube of the required form such that all faces are equivalent to the corresponding faces of the starting cube.
         
-        We first factor the maps $A\xtailrightarrow{h}\hat{C}\xtwoheadrightarrow[\sim]{h} C$ and $B'\xrightarrow{\sim}\overline{B}\xtwoheadrightarrow{h} B$ to obtain the diagram
+        We first factor the maps $A\xtailrightarrow{}\hat{C}\xtwoheadrightarrow[]{\sim} C$ and $B'\xrightarrow{\sim}\overline{B}\xtwoheadrightarrow{} B$ to obtain the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 C^{\prime} \arrow[dd] & \hat{C}\times_CC' \arrow[->>]{l}[swap]{\sim} \arrow[dd] & A^{\prime} \arrow[l] \arrow[r] \arrow[d, "\sim"] & B^{\prime} \arrow[d, "\sim"] \\
-                && \overline{A} \arrow [->>,d, "h"] \arrow[r] & \overline{B} \arrow[->>,d, "h"] \\
-                C & \hat{C} \arrow[->>]{l}{h}[swap]{\sim} & A \arrow[>->,l, "h"] \arrow[r] & B 
+                && \overline{A} \arrow [->>,d, ""] \arrow[r] & \overline{B} \arrow[->>,d, ""] \\
+                C & \hat{C} \arrow[->>]{l}{}[swap]{\sim} & A \arrow[>->,l, ""] \arrow[r] & B 
             \end{tikzcd}
         \end{center}
         where 
         \begin{itemize}
             \item $\overline{A}=A\times_{B}\overline{B}$
-            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks as the outer and lower square are homotopy pullback.
+            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks as the outer and lower square are homotopy pullbacks.
         \end{itemize}
-        Next we factor the map $A'\xtailrightarrow{h}X\xrightarrow{\sim}\hat{C}\times_CC'$. 
+        Next we factor the map $A'\xtailrightarrow{}X\xrightarrow{\sim}\hat{C}\times_CC'$. 
         Note that the diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 X \arrow[r, "\sim"] \arrow[d] & C' \arrow[d] \\
-                \hat{C} \arrow[->>]{r}{\sim}[swap]{h} & C \\
+                \hat{C} \arrow[->>]{r}{\sim}[swap]{} & C \\
             \end{tikzcd}
         \end{center}
         is a homotopy pullback square.
         We form the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                C^{\prime} \arrow[dd] & X \arrow{l}[swap]{\sim} \arrow[d, "\sim"] & A^{\prime} \arrow[>->,l, "h"] \arrow[r] \arrow[d, "\sim"] & B^{\prime} \arrow[d, "\sim"] \\
-                & X\cup_{A'}\overline{A} \arrow[d] & \overline{A} \arrow[>->,l, "h"] \arrow [->>,d, "h"] \arrow[r] & \overline{B} \arrow[->>,d, "h"] \\
-                C & \hat{C} \arrow[->>]{l}{h}[swap]{\sim} & A \arrow[>->,l, "h"] \arrow[r] & B 
+                C^{\prime} \arrow[dd] & X \arrow{l}[swap]{\sim} \arrow[d, "\sim"] & A^{\prime} \arrow[>->,l, ""] \arrow[r] \arrow[d, "\sim"] & B^{\prime} \arrow[d, "\sim"] \\
+                & X\cup_{A'}\overline{A} \arrow[d] & \overline{A} \arrow[>->,l, ""] \arrow [->>,d, ""] \arrow[r] & \overline{B} \arrow[->>,d, ""] \\
+                C & \hat{C} \arrow[->>]{l}{}[swap]{\sim} & A \arrow[>->,l, ""] \arrow[r] & B 
             \end{tikzcd}
         \end{center}
-        where $X\to X\cup_{A'}\overline{A}$ is a weak equivalence as its a pushout of a weak equivalence along an h-cofibration. %TODO reference
+        where $X\to X\cup_{A'}\overline{A}$ is a weak equivalence as its a pushout of a weak equivalence along a cofibration.
         By the pasting law we have that
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                A' \arrow[>->,r, "h"] \arrow[d] & X \arrow[d] \\
-                A \arrow[>->,r, "h"] & \hat{C} \\
+                A' \arrow[>->,r, ""] \arrow[d] & X \arrow[d] \\
+                A \arrow[>->,r, ""] & \hat{C} \\
             \end{tikzcd}
         \end{center}
-        is homotopy pullback and since this square is equivalent %TODO maybe define what that means
-        to the square
+        is a homotopy pullback and since this square is equivalent to the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{A} \arrow[>->,r, "h"] \arrow[->>,d, "h"] & X\cup_{A'}\overline{A} \arrow[d] \\
-                A \arrow[>->,r, "h"] & \hat{C} \\
+                \overline{A} \arrow[>->,r, ""] \arrow[->>,d, ""] & X\cup_{A'}\overline{A} \arrow[d] \\
+                A \arrow[>->,r, ""] & \hat{C} \\
             \end{tikzcd}
         \end{center}
         we know that both are homotopy pullbacks.
-        Finally, we factor the map $X\cup_{A'}\overline{A}\xtailrightarrow[\sim]{h}\overline{C}\xtwoheadrightarrow{h}\hat{C}$.
+        Finally, we factor the map $X\cup_{A'}\overline{A}\xtailrightarrow[]{\sim}\overline{C}\xtwoheadrightarrow{}\hat{C}$.
         Then 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{A} \arrow[>->,r, "h"] \arrow[->>,d, "h"] & \overline{C} \arrow[->>,d, "h"] \\
-                A \arrow[>->,r, "h"] & \hat{C} \\
+                \overline{A} \arrow[>->,r, ""] \arrow[->>,d, ""] & \overline{C} \arrow[->>,d, ""] \\
+                A \arrow[>->,r, ""] & \hat{C} \\
             \end{tikzcd}
         \end{center}
         is again a homotopy pullback square. %TODO maybe say that this reduction is possible in any model cat
@@ -238,21 +237,21 @@ We start proving the case for pushouts by the following reduction step.
         Thus we have obtained a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{C} \arrow[->>,d, "h"] & \overline{A} \arrow[>->,l, "h"] \arrow[r] \arrow[->>,d, "h"] & \overline{B} \arrow[->>,d, "h"] \\
-                \hat{C} & A \arrow[>->,l, "h"] \arrow[r] & B \\
+                \overline{C} \arrow[->>,d, ""] & \overline{A} \arrow[>->,l, ""] \arrow[r] \arrow[->>,d, ""] & \overline{B} \arrow[->>,d, ""] \\
+                \hat{C} & A \arrow[>->,l, ""] \arrow[r] & B \\
             \end{tikzcd}
         \end{center}
         and we can form the cube 
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                \overline{A} \arrow[>->,dr, "h"] \arrow [rr] \arrow [->>,dd,"h"] & & \overline{B} \arrow [dr] \arrow[->>]{dd}[near start]{h} \\
+                \overline{A} \arrow[>->,dr, ""] \arrow [rr] \arrow [->>,dd,""] & & \overline{B} \arrow [>->,dr,""] \arrow[->>]{dd}[near start]{} \\
                 & \overline{C} \arrow [rr, crossing over] & & \overline{C}\cup_{\overline{A}}\overline{B} \arrow [dd] & \\
-                A \arrow[>->,dr, "h"] \arrow [rr] & & B \arrow [dr] \\
-                & \hat{C} \arrow[->>, from=uu, crossing over]{}[near start]{h} \arrow [rr] & & \hat{C}\cup_A B &
+                A \arrow[>->,dr, ""] \arrow [rr] & & B \arrow [>->,dr,""] \\
+                & \hat{C} \arrow[->>, from=uu, crossing over]{}[near start]{} \arrow [rr] & & \hat{C}\cup_A B &
             \end{tikzcd}
         \end{center}
         by taking pushouts.
-        Since these are pushouts along h-cofibrations, they are already homotopy pushouts. 
+        Since these are pushouts along cofibrations, they are already homotopy pushouts. 
         Following the construction of this cube, we see that all faces are equivalent to their corresponding faces of the starting cube which proves the proposition.
     \end{proof}
 \end{prop}
@@ -281,11 +280,11 @@ For the last part of the proof we need the following definitions.
     the construction with half open intervalls $I=[0,x)$ will be referred to as an \emph{open mapping cylinder of $f$}. %TODO perhaps describe factorization
 \end{definition}
 %TODO reference for inclusion into mapping cylinder is closed Hurewicz cofib
-\begin{lemma}\label{lem:mapOfCylIsQuasiFib} %TODO prove assertions on pullbacks
+\begin{lemma}\label{lem:mapOfCylIsQuasiFib} %TODO prove that the claimed ordinary pbs are actuall ordinary pbs
     Let 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X \arrow[d,->>, "h"] \arrow[r, "f"] & Y \arrow[d,->>, "h"] \\
+            X \arrow[d,->>] \arrow[r, "f"] & Y \arrow[d,->>] \\
             A \arrow[r, "g"] & B \\
         \end{tikzcd}
     \end{center}
@@ -301,7 +300,7 @@ For the last part of the proof we need the following definitions.
         In the first case, we have a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X \arrow[r, "{x\mapsto (x,\hat{t})}"] \arrow[->>,d, "h"] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[->>,d, "h"] \\
+                X \arrow[r, "{x\mapsto (x,\hat{t})}"] \arrow[->>,d] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[->>,d] \\
                 A \arrow[r, "{a\mapsto (a,\hat{t})}"] & \M(g) \arrow[r, "\sim"] & B \\
             \end{tikzcd}
         \end{center}
@@ -309,7 +308,7 @@ For the last part of the proof we need the following definitions.
         Since the left square is also an ordinary pullback, in the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & X \arrow[r, "{x\mapsto (x,\hat{t})}"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
+                F \arrow[r] \arrow[d] & X \arrow[r, "{x\mapsto (x,\hat{t})}"] \arrow[->>,d] & \M(f) \arrow[d] \\
                 * \arrow[r, "\hat{b}"] & A \arrow[r, "{a\mapsto (a,\hat{t})}"] & \M(g) \\
             \end{tikzcd}
         \end{center}
@@ -319,7 +318,7 @@ For the last part of the proof we need the following definitions.
         In the second case we have the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & Y \arrow[r, "\sim"] \arrow[->>,d, "h"] & \M(f) \arrow[d] \\
+                F \arrow[r] \arrow[d] & Y \arrow[r, "\sim"] \arrow[->>,d] & \M(f) \arrow[d] \\
                 * \arrow[r, "\hat{b}"] & B \arrow[r, "\sim"] & \M(g) \\
             \end{tikzcd}
         \end{center}
@@ -333,17 +332,17 @@ For the last part of the proof we need the following definitions.
         By \cref{prop:reductionStepDescent} it is sufficient to prove that for all cubes 
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                \overline{A} \arrow [dr] \arrow [rr] \arrow [->>,dd, "h"] & & \overline{B} \arrow [dr] \arrow[->>]{dd}[near start]{h} \\
+                \overline{A} \arrow [dr] \arrow [rr] \arrow [->>,dd] & & \overline{B} \arrow [dr] \arrow[->>]{dd}[near start]{} \\
                 & \overline{C} \arrow [rr, crossing over] & & \overline{D} \arrow [dd] & \\
                 A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
-                & C \arrow [->>,from=uu,crossing over]{}[near start]{h} \arrow [rr] & & D &
+                & C \arrow [->>,from=uu,crossing over]{}[near start]{} \arrow [rr] & & D &
             \end{tikzcd}
         \end{center}
         where 
         \begin{itemize}
             \item left and back face are homotopy pullbacks
             \item bottom and top square are homotopy pushouts
-            \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are h-fibrations
+            \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are fibrations
         \end{itemize}
         the front and right squares are homotopy pullbacks.
 
@@ -351,13 +350,14 @@ For the last part of the proof we need the following definitions.
         So we can form the cube 
         \begin{center}
             \begin{tikzcd} [sep = .75 cm]
-                \overline{A} \arrow [>->, dr, "h"] \arrow [>->, rr, "h"] \arrow [->>,dd, "h"] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow[dd] \\
+                \overline{A} \arrow [>->, dr, "h"] \arrow [>->, rr, "h"] \arrow [->>,dd] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow[dd] \\
                 & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start,  "h"] & & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow [dd] & \\
                 A \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] & & \M(f_{AB}) \arrow [>->, dr, "h"] \\
                 & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \M(f_{AC})\cup_A\M(f_{AB}) &
             \end{tikzcd}
         \end{center}
-        where all faces are again equivalent to the corresponding faces of the original cube and the indicated maps are h-cofibrations as they are either pushouts of h-cofibrations or inclusions into the mapping cylinder (see e.g. \cite[Theorem 2]{note_on_cofibs_1}).
+        where the indicated maps are h-cofibrations as they are either inclusions into the mapping cylinder (see e.g. \cite[Theorem 2]{note_on_cofibs_1}) or pushouts of h-cofibrations.
+        All faces are again equivalent to the corresponding faces of the original cube since top and bottom squares are homotopy pushouts by \cref{prop:poAlongHCofibIsHtpyPo}.
         
         Next we prove that the map $p\colon\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\to\M(f_{AC})\cup_A\M(f_{AB})$ is a quasifibration.
         By \cite[Lemma 4K.3]{hatcher2002algebraic} we only need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
@@ -369,11 +369,11 @@ For the last part of the proof we need the following definitions.
         It follows $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{A} \arrow[d,->>, "h"] \arrow[r, "f_{\overline{A}\overline{C}}"] & \overline{C} \arrow[d,->>, "h"] \\
+                \overline{A} \arrow[d,->>] \arrow[r, "f_{\overline{A}\overline{C}}"] & \overline{C} \arrow[d,->>] \\
                 A \arrow[r, "f_{AC}"] & C \\
             \end{tikzcd} 
             \begin{tikzcd} [sep = 4em]
-                \overline{A} \arrow[d,->>, "h"] \arrow[r, "f_{\overline{A}\overline{B}}"] & \overline{B} \arrow[d,->>, "h"] \\
+                \overline{A} \arrow[d,->>] \arrow[r, "f_{\overline{A}\overline{B}}"] & \overline{B} \arrow[d,->>] \\
                 A \arrow[r, "f_{AB}"] & B \\
             \end{tikzcd}
         \end{center}
@@ -412,7 +412,7 @@ We will do this implicitly; if one is uncomfortable doing that, one can view the
 
 Our proof of descent for homotopy coproducts will again demonstrate that descent is somewhat linked to universality.
 We will show that descent for homotopy coproducts is a consequence of having disjoint binary homotopy coproducts and universality for homotopy coproducts.
-To avoid confusion between homotopy and ordinary limits/colimits, we will tag homotopy limits/colimits with ``h''.
+To avoid confusion between homotopy and ordinary limits/colimits, we will tag homotopy limits/colimits with ``h'' (in particular, the ``h'' here does not refer to the \Strom/ model structure).
 \begin{definition}
     Let $M$ be a model category.
     We say that \emph{binary homotopy coproducts are disjoint} in $M$ if every homotopy pushout square
