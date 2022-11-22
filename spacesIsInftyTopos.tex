@@ -41,20 +41,16 @@ Our most important (and quite non trivial) part of this interaction is the follo
                 C \arrow[>->, r, "h"] & D \\
             \end{tikzcd}
         \end{center}
-        be a pushout with the inducated maps being h-cofibrations.
-        We factor the map $A\to C'\to C$ into a cofibration followed by a weak equivalence and obtain the diagram
+        be a pushout with the indicated maps being h-cofibrations.
+        We factor the map $A\xtailrightarrow{} C'\xrightarrow{\sim} C$ into a cofibration followed by a weak equivalence and obtain the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                A \arrow[>->, r, "h"] \arrow[>->,d] & B \arrow[d]\\
-                C' \arrow[>->, r, "h"] \arrow[d, "\sim"] & D' \arrow[d, "\sim"] \\
-                C \arrow[>->, r, "h"] & D
-            \end{tikzcd}
+                C' \arrow[d,"\sim"] & A \arrow[>->, r, "h"] \arrow[>->,l] \arrow[d, equal] & B \arrow[d, equal]\\
+                C & A \arrow[>->, r, "h"] \arrow[l] & B \\
+            \end{tikzcd}\;.
         \end{center}
-        by taking pushouts.
-        By \cite[Proposition 1.1]{hcolim_bar} we have that pushouts of weak equivalences along h-cofibrations are again weak equivalences.
-
-        The top square is a homotopy pushout as it is a pushout along a cofibration. 
-        Since the lower square is a also a homotopy pushout, the outer square is a homotopy pushout which proves the proposition.
+        By \cite[Proposition 1.1]{hcolim_bar} we have that the map induced by the pushouts $C'\cup_AB\to C\cup_AB$ is a again a weak equivalence.
+        But since $C'\cup_AB$ is a homotopy pushout (since its a pushout along a cofibration), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.
     \end{proof}
 \end{prop}
 \begin{prop}\label{lem:topUniversalPo}
@@ -461,7 +457,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         For ease of notation, set $Y_k=\bigcup\limits_{i\in I\setminus{\set{k}}}^hX_i$.
 
         We first consider the case $k\neq j$.
-        We get homotopy pullbacks 
+        We define $P_k$ and $P_{kj}$ to be the homotopy pullbacks 
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 P_{kj} \arrow [r] \arrow [d] & X_j \arrow [d]\\
@@ -474,7 +470,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         This proves that $P_{kj}\simeq\emptyset$.
 
         Next we prove the case $k=j$.
-        We need to prove that
+        We need to show that
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 X_k \arrow [r] \arrow [d] & X_k \arrow [d]\\
@@ -534,15 +530,14 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
 \begin{remark}
     One can prove descent for coproducts much more directly in $\Top$:
     
-    In the setting of \cref{cor:disjointImpliesDescent} the square
+    Since homotopy coproducts can be computed by the ordinary coproducts in $\Top$, in the setting of \cref{cor:disjointImpliesDescent} the square
     \begin{center}
         \begin{tikzcd} [sep = 1 cm]
             X_k \arrow [r] \arrow [d] & \bigcup\limits_{i\in I}X_i \arrow [d, "\bigcup\limits_{i\in I}f_i"]\\
             Y_k \arrow [r] & \bigcup\limits_{i\in I}Y_i
         \end{tikzcd}
     \end{center}
-    is a pullback square as can be checked by point set topology.
-    Since the map $Y_k\to\bigcup\limits_{i\in I}Y_i$ is a fibration, it is already a homotopy pullback which proves the proposition.
+    is a pullback square as can be checked by point set topology and since the map $Y_k\to\bigcup\limits_{i\in I}Y_i$ is a fibration, it is already a homotopy pullback which proves the proposition.
 \end{remark}
 \begin{corollary}
     The \inftycat/ of spaces $\spaces$ is an \inftytop/.

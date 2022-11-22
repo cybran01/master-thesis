@@ -105,7 +105,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     Let $C$ be an \inftytop/.
     Then every groupoid object $U$ is effective.
     \begin{proof}
-        Let $\alpha\colon\N\left(\Delta_+\right)\to\N\left(\Delta\right)$ be the map induced by the functor sending a morphism $f\colon [m]\to[n]\in\Delta_+$ to 
+        Let $\alpha\colon\N\left(\Delta_+\right)\to\N\left(\Delta\right)$ be the map induced by the functor sending a morphism $f\colon [m]\to[n]\in\Map(\Delta_+)$ to 
         \begin{align*}
             \alpha(f)\colon [m+1]&\to[n+1]\\
             i&\mapsto
@@ -115,7 +115,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
             \end{cases}
         \end{align*}
         Then $\overline{U}\coloneqq U\circ\alpha^{\op}$ is an augmented simplicial object with $U_{n+1}=\overline{U}_n$.
-        Let $f\colon [m]\to[n]$ be some map. Then the diagram
+        Let $f\colon [m]\to[n]\in\Map(\Delta)$ be some map. Then the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"\overline{U}(f)"] & U_n \arrow[d, "U(f)"] \\
@@ -197,7 +197,7 @@ We now want to check that our formulation of the May Recognition Theorem really 
 \begin{remark}
     Note that in $\spaces$ this definition agrees with the following:
     \begin{definition*}
-        A map of topological spaces $f\colon X\to Y$ with homotopy fiber $F$ if $k$-truncated if and only if for all $x\in F$ and $n>k$ we have $\pi_n(F,x)\cong 0$.
+        A map of topological spaces $f\colon X\to Y$ is $k$-truncated if and only if for all its homotopy fibers $F$, $x\in F$ and $n>k$ we have $\pi_n(F,x)\cong 0$.
         We set $(-2)$-truncated to mean that it is non-empty and contractible, and $(-1)$-truncated to mean that it is non-empty or contractible.
     \end{definition*}
     This is because for a pullback square in $\spaces$ 
