@@ -14,7 +14,7 @@ In order to transfer reasoning back and forth from the model category $\Top$ and
         \cite[Proposition 1.3.4.25]{higher_algebra}
     \end{reference}
 \end{lemma}
-Since both coproducts and pushouts in \inftycats/ are indexed by nerves of ordinary categories and we are able to work in the underlying model category $\Top$ by the following corollary:
+Since both coproducts and pushouts in \inftycats/ are indexed by nerves of ordinary categories, we are able to work in the underlying model category $\Top$ by the following corollary:
 \begin{corollary}\label{cor:sufficientToProveInModCat}
     Let $M$ be a model category with weak equivalences $W$. 
     Then $\N(M)[W^{-1}]$ has universal colimits if and only if $M$ has universal homotopy pushouts and universal homotopy coproducts as a model category.
@@ -360,8 +360,8 @@ For the last part of the proof we need the following definitions.
 
         We take $U_1=\M(f_{AC})\cup_A\M(f_{AB})\setminus{B}$ and $U_2=\M(f_{AC})\cup_A\M(f_{AB})\setminus{C}$. 
 
-        We identify $U_1\cap U_2=A\times [0,1)\cup_A A\times[0,1)\cong A\times (0,2)$ via the ``obvious'' homeomorphism. %TODO explain
-        Then $p^{-1}(U_1)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{B}}$, $p^{-1}(U_2)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{C}}$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$ (identified with $\overline{A}\times [0,1)\cup_{\overline{A}} \overline{A}\times[0,1)$ as before).
+        We identify $U_1\cap U_2=A\times [0,1)\cup_{A\times\set{0}} A\times[0,1)\cong A\times (0,2)$ via the ``obvious'' homeomorphism. %TODO explain
+        Then $p^{-1}(U_1)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{B}}$, $p^{-1}(U_2)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{C}}$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$ (identified with $\overline{A}\times [0,1)\cup_{\overline{A}\times\set{0}} \overline{A}\times[0,1)$ as before).
         It follows $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -543,6 +543,6 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
     The \inftycat/ of spaces $\spaces$ is an \inftytop/.
     \begin{proof}
         We know $\spaces$ is locally presentable from \cref{cor:spacesIsLocPres}.
-        \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} proves that $\spaces$ has universal colimits, and together with \cref{lem:topDescentPo} and \cref{cor:topDescentCoproduct} proves that it has descent.
+        \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} prove that $\spaces$ has universal colimits, and \cref{lem:topDescentPo} together with \cref{cor:topDescentCoproduct} then prove that it has descent.
     \end{proof}
 \end{corollary}

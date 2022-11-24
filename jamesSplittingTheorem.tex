@@ -210,7 +210,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
 \end{corollary}
 We will also need to prove some basic facts about wedges and smash products.
 \begin{lemma}\label{lem:poOfCollapseMapsIsTrivial}
-    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -231,7 +231,7 @@ We will also need to prove some basic facts about wedges and smash products.
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:poSqWithFactoringTerminal}
-    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then there is a pushout square
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -257,7 +257,7 @@ We will also need to prove some basic facts about wedges and smash products.
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:allSqArePo}
-    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then all squares of the diagram         
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -292,14 +292,14 @@ We will also need to prove some basic facts about wedges and smash products.
 \end{lemma}
 The following corollary is not needed for the James Splitting Theorem, however it is useful and immediate from what we have already shown.
 \begin{corollary}
-    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then we have $\Sigma\left(X\times Y\right)\cong\Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right)$.
     \begin{proof}
         The outer square of \cref{lem:allSqArePo} proves this immediately. 
     \end{proof}
 \end{corollary}
 \begin{lemma}\label{lem:suspensionCommutesWithSmash}
-    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
+    Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then there is a canonical equivalence $\Sigma\left(X\wedge Y\right)\cong X\wedge\Sigma Y$.
     \begin{proof}
         The squares
@@ -326,7 +326,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     \end{proof}
 \end{lemma}
 \begin{corollary}[Fundamental James Splitting]\label{cor:fundamentalJamesSplitting}
-    Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
+    Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$.
     \begin{proof}
         Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the left vertical and top horizontal maps of the big left square (top and bottom left squares combined) are equivalent to the maps of the square in \cref{lem:poOfProductIsSuspension}.
@@ -334,7 +334,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     \end{proof}
 \end{corollary}
 \begin{corollary}[Fundamental James Splitting, iterated]
-    Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
+    Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then for all $n\geq 1$ there is a canonical equivalence
     \begin{equation*}
         \Sigma\Omega\Sigma X \cong\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)
@@ -346,7 +346,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     \end{proof}
 \end{corollary}
 \begin{definition}
-    Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
+    Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then the canonical maps 
     \begin{equation*}
         c_X^n\colon\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\cong}\Sigma\Omega\Sigma X
@@ -358,7 +358,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     which we refer to as the \emph{comparison map}.
 \end{definition}
 %TODO remark similarity to truncatedness
-\begin{definition}
+\begin{definition}\label{def:connected}
     Let $C$ be an \inftytop/.
     With the convention that every map is $(-2)$-connected, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-connected} for $k\geq -1$ if
     \begin{itemize}
@@ -435,7 +435,7 @@ For this proof we need some stability properties of connectedness.
 \end{prop}
 With these we can deduce the following statements:
 \begin{corollary}\label{cor:connEst}
-    Let $C$ be an \inftytop/, $X,Y\in \left(C_*\right)_0$ pointed objects and $k,l\geq 0$. 
+    Let $C$ be an \inftytop/, $X,Y$ pointed objects in $C$ and $k,l\geq 0$. 
     If $X$ is $k$-connected and $Y$ is $l$-connected, then
     \begin{enumerate}[label={(\roman*)}]
         \item the suspension $\Sigma X$ is $(k+1)$-connected. \label{cor:connEstSuspension}
@@ -505,7 +505,7 @@ With these we can deduce the following statements:
 \begin{remark}\label{rem:genTopoiComparisonMapEq}
     Due to the equivalent characterizations of \inftytops/ in \cite[Definition 6.1.0.6]{HTT} for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
     
-    Then if for a pointed object $X\in\left(C_*\right)_0$ the comparison morphism $c_{i(X)}$ is an equivalence in $Fun(A,\spaces)$, so is $c_X$ in $C$ (see \cite[Lemma 4.17]{splittings_21}).
+    Then if for a pointed object $X$ in $C$ the comparison morphism $c_{i(X)}$ is an equivalence in $Fun(A,\spaces)$, so is $c_X$ in $C$ (see \cite[Lemma 4.17]{splittings_21}).
     If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\Fun(A,\spaces)$ is hypercomplete. %TODO prove that X 0-conn => i(X) 0-conn
     But we have proven this in \cref{prop:jamesSplittingPresheaf}, so it is true for all \inftytops/.
 \end{remark}

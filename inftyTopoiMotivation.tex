@@ -51,8 +51,8 @@ Then by pulling back we get a diagram
     \end{tikzcd}
 \end{center}
 and $F$ is the homotopy fiber of $X\twoheadrightarrow B$ at $f(a)$ and $Y\twoheadrightarrow A$ at $a$.
-We want to show that the middle square is a homotopy pushout.
-Note that the pushout $Y_1\cup_{Y_0}Y_2\to A$ is a homotopy pushout. 
+Then the the middle square is a homotopy pushout:
+Note that the pushout $Y_1\cup_{Y_0}Y_2$ is a homotopy pushout. 
 By replacing the canonical map $Y_1\cup_{Y_0}Y_2\to A$ with a fibration via a factorization $Y_1\cup_{Y_0}Y_2\xtailrightarrow{\sim}\overline{Y}\twoheadrightarrow A$ (note that $\overline{Y}$ is also a homotopy pushout) and the canonical map $Y_1\cup_{Y_0}Y_2\to Y$ by a lift $\alpha\colon\overline{Y}\to Y$, we know that $F$ is also a homotopy fiber of $\overline{Y}\twoheadrightarrow A$.
 But this means that $\alpha$ induces weak equivalences between all homotopy fibers of the fibrations $\overline{Y}\twoheadrightarrow A$ and $Y\twoheadrightarrow A$, hence $\alpha$ is a weak equivalence (e.g. by the long exact sequence of homotopy groups) and therefore $Y$ is a homotopy pushout.
 
@@ -67,7 +67,7 @@ For a cube
     \end{tikzcd}
 \end{center}
 whose side faces are homotopy pullbacks and whose bottom face is a homotopy pushout, the top face is also a homotopy pushout.
-This is called  ``universality of pushouts''.
+This is called  ``universality of pushouts'' and is also known as Mathers Second Cube Theorem in $\Top$.
 We can also ask for this to be true not only for pushouts but general small colimits; this is true as well, but it turns it that is suffices to check it for pushouts and small coproducts as we will see in \cref{lem:univColimIffUnivPoAndCoprod}.
 
 We next take a look at descent.
@@ -91,6 +91,6 @@ In a cube
     \end{tikzcd}
 \end{center}
 where the left and rear faces are homotopy pullbacks and the top and bottom faces are homotopy pushouts, the front and right faces are homotopy pullbacks as well.
-This property will be called ``descent for pushouts''.
+This property will be called ``descent for pushouts'' and is also known as Mathers First Cube Theorem in $\Top$.
 Again a natural generalization to consider is to replace pushouts by arbitrary small diagrams.
-It will again turn out that we can always reduce to showing descent for only pushouts and small coproducts, which we will see in \cref{lem:descentIffDescentPoAndCoprod}.
+It will again turn out that we can reduce to showing descent for only pushouts and small coproducts, which we will see in \cref{lem:descentIffDescentPoAndCoprod}.

@@ -47,7 +47,7 @@ Next we introduce cartesian transformations which allow us to encode universalit
         \end{tikzcd}\;.
     \end{center}
     Universality for pushouts means that whenever the vertical faces are pullbacks and the bottom face is a pushout, then the top face is a pushout.
-    Descent for pushouts means that whenever left and rear face are pullbacks and top and bottom faces are pushouts, then the right and front face are pullbacks as well.
+    Descent for pushouts means that whenever the left and rear faces are pullbacks and top and bottom faces are pushouts, then the right and front faces are pullbacks as well.
     
     So this definition is exactly the one given in \cref{sec:motivationInftyTopoi}.
 \end{remark}
@@ -169,12 +169,12 @@ We will require the following proposition for the proof.
 
         It now remains to show that statement for general $K$.
         Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category via the ordering $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (with all higher simplices degenerate).
-        It can be shown that the inclusion $L\subset\N(\Nat)$ is a categorical equivalence. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
+        It can be shown that the inclusion $L\subset\N(\Nat)$ is a weak categorical equivalence. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
 
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation, let $q$ be a colimit cone and let $\left(K^n\right)_{n\in\Nat}$ denote the skeletal filtration of $K$.
         We can compute colimits of any diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex is the colimit of the skeleton of corresponding degree and all higher simplicies are given by chains of the canonical maps. 
 
-        Since $L\subset\N(\Nat)$ is a categorical equivalence (which preserve and reflect (co)limits), we can also compute the colimit of the induced diagram $L\to C$. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
+        Since $L\subset\N(\Nat)$ is a weak categorical equivalence (which preserve and reflect (co)limits), we can also compute the colimit of the induced diagram $L\to C$. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
 
         So let $F_q\colon L^{\rhd}\to C$ be the diagram induced by taking colimits of the skeleta as described above.
         Let $F_p\colon L^{\rhd}\to C$ be given by taking pullbacks

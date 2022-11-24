@@ -6,7 +6,7 @@ We will not give proofs for any statements in this section; we will however poin
     Let $\Delta$ be the category with
     \begin{itemize}
         \item objects the categories $[n]=\{0\to1\to\ldots\to n\}\subset\Nat$ for all $n\in\Nat$
-        \item morphisms functors between these categories (which are exactly monotone increasing functions).
+        \item morphisms functors between these categories (which are precisely the monotone increasing functions).
     \end{itemize}
     We call this category the \emph{simplex category $\Delta$}.
 \end{definition}
@@ -14,7 +14,7 @@ We will not give proofs for any statements in this section; we will however poin
     Let $\Delta_+$ be the category with
     \begin{itemize}
         \item objects the categories $[n]$ for all $n\in\Nat\cup\set{-1}$ where $[-1]=\emptyset$ is the empty category
-        \item morphisms functors between these categories (which again are exactly the monotone increasing functions).
+        \item morphisms functors between these categories (which again are precisely the monotone increasing functions).
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
 \end{definition}
@@ -95,7 +95,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
     \end{equation*}
     is a fibration that additionally is a weak equivalence whenever $i$ or $p$ is a weak equivalence.
     
-    We call a simplicial model category is a \emph{combinatorial simplicial model category} if its underlying model category is a combinatorial model category.
+    We say that a simplicial model category is a \emph{combinatorial simplicial model category} if its underlying model category is a combinatorial model category.
 \end{definition}
 \begin{construction}%[{\cite[Notation 2.4.3.1]{kerodon}}] TODO decide
     For $[n]\in\Delta$ we define a simplicial category $\C[n]$ as follows:
@@ -136,20 +136,20 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
     \begin{itemize}
         \item Cofibrations are the monomorphisms.
         \item The weak equivalences are the maps $A\to B$ such that for every \inftycat/ $C$ the induced map $\ho(\Fun(B,C))\to\ho(\Fun(A,C))$ is a categorical equivalence.
-            Analogous to ordinary category theory, we also call these maps \emph{categorical equivalences}.
     \end{itemize}
     The fibrant objects of this model structure are the \inftycats/.
-    We refer to categorical equivalences whose domain and target are both \inftycats/ as \emph{equivalences of \inftycats/}.
+    We refer to the weak equivalences of this model structure as \emph{weak categorical equivalences}.
+    We refer to weak categorical equivalences whose domain and target are both \inftycats/ as \emph{equivalences of \inftycats/}.
     We call this model structure the \emph{Joyal Model Structure on $\sSet$}.
     \begin{reference}
-        \cite[Definition 3.3.7]{cisinski_2019}
+        \cite[Definition 3.3.7 and Theorem 3.6.8]{cisinski_2019}
     \end{reference}
 \end{prop}
 \begin{prop}
     Let $F\colon C\to D$ be a map between \inftycats/.
     Then the following are equivalent:
     \begin{itemize}
-        \item $F$ is a weak equivalence in the Joyal model structure (thus an equivalence of \inftycats/)
+        \item $F$ is a weak categorical equivalence (thus an equivalence of \inftycats/)
         \item $F$ is fully faithful and essentially surjective
         \item There exists a map $G\colon D\to C$ and invertible natural transformations $FG\simeq \id_D$ and $GF\simeq \id_C$.
     \end{itemize}

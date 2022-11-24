@@ -1,0 +1,52 @@
+\documentclass[a4paper,10pt]{scrreprt}
+
+\usepackage{polyglossia}
+\setmainlanguage{german}
+\usepackage{graphicx}
+
+\newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi} 
+\newcommand{\todayA}{\leadingzero{\day}.\leadingzero{\month}.\the\year}
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+ 
+        \Huge
+        \textbf{The $\infty$-Topos of Spaces and Applications}
+ 
+        \vspace{0.5cm}
+        \LARGE
+        Global Analysis
+ 
+        \vspace{1.5cm}
+ 
+        \textbf{Simon Lang}
+
+        \large 
+        Matr. Nr.: 1864218
+ 		
+ 		\vfill
+         \includegraphics[width=0.6\textwidth]{ur-logo-bildmarke-grau.png}
+ 
+        \vfill
+        \normalsize
+        A Thesis Submitted in Partial Fulfillment of the Requirements for the Degree
+
+        \LARGE
+        \textbf{Master of Science (MSc)}
+
+        \vspace{0.8cm}
+ 
+        \Large
+        University of Regensburg
+
+        Due Date: ??.??.????
+
+        Print Date: \todayA
+
+        Supervisor: Prof. Dr. Georgios Raptis
+ 
+    \end{center}
+\end{titlepage}
+\end{document}
