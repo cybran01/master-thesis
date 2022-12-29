@@ -143,7 +143,92 @@ Our most important (and quite non trivial) part of this interaction is the follo
 \end{lemma}
 Therefore by \cref{cor:sufficientToProveInModCat} we know $\spaces$ has universal colimits.
 It remains to show that it also has descent.
+Insertion of proof of new stuff starts here -------------------------------------
+\begin{definition}[Pairs and Triples of Spaces]
+    Let $\Top^{(2)}$ denote the category of \emph{pairs of topological spaces} $(X,A)$ with $A\subset X$ a subspace and maps $f\colon(X_1,A_1)\to (X_2,A_2)$ being continuous maps $f\colon X_1\to X_2$ such that $\im f|_{A_1}\subset A_2$.
+    We call these maps \emph{maps of pairs}.
+    
+    A \emph{homotopy of maps of pairs} $f,g\colon(X_1,A_1)\to (X_2,A_2)$ is a map $h\colon(X_1\times I,A_1\times I)\to (X_2,A_2)$ such that $h_0=f$ and $h_1=g$.
+    We define $(X,A)\times I$ to mean $(X\times I,A\times I)$.
 
+    In a similar fashion we define maps of triples:
+    Let $\Top^{(3)}$ denote the category of \emph{triples of topological spaces} $(X,A,B)$ with $B\subset A\subset X$ subspaces and maps $f\colon(X_1,A_1,B_1)\to (X_2,A_2,B_2)$ being continuous maps $f\colon X_1\to X_2$ such that $\im f|_{A_1}\subset A_2$ and $\im f|_{B_1}\subset B_2$.
+    We call these maps \emph{maps of triples}.
+    
+    A \emph{homotopy of maps of triples} $f,g\colon(X_1,A_1,B_1)\to (X_2,A_2,B_2)$ is a map $h\colon(X_1\times I,A_1\times I,B_1\times I)\to (X_2,A_2,B_2)$ such that $h_0=f$ and $h_1=g$.
+    We define $(X,A,B)\times I$ to mean $(X\times I,A\times I, B\times I)$.
+\end{definition}
+\begin{definition}[Triad]
+    A tiple of spaces $(X;X_1,X_2)$ is called a \emph{triad} if $X_1\subset X$ and $X_2\subset X$ are subspaces of $X$.
+\end{definition}
+\begin{lemma}[Relative HEP]
+    Let $(X;X_1,X_2)$ be a triad such that $X_1\cap X_2\to X_2$ and $X_1\cup X_2\to X$ are h-cofibrations. 
+    Then given a homotopy $h\colon(X_1,X_1\cap X_2)\times I\to(Y,A)$ and a map $f\colon(X,X_2)\to(Y,A)$ such that $h_0=f|_{X_1}$, there exists a homotopy $H\colon(X,X_2)\times I\to(Y,A)$ such that $H|_{X_1}=h$ and $H_0=f$.
+    \begin{proof}
+        We apply the homotopy extension property twice: First we extend $h|_{\left(X_1\cap X_2\right)\times I}$ to a homotopy $h'\colon X_2\times I\to A$ with $h'_0=f|_{X_2}$.
+        Then we can extend $h\cup_{X_1\cap X_2} h'\colon \left(X_1\cup X_2\right)\times I\to Y$ to the desired homotopy $H$.
+    \end{proof}
+\end{lemma}
+%TODO add all used triads as examples HERE
+%TODO define concat and inverses on htpies 
+\begin{definition}[Weak Equivalence of Pairs]\label{def:weOfPairs}
+    Let $f\colon(X,A)\to (Y,B)$ be a map such that 
+    \begin{itemize}
+        \item for all $n\geq 1$ and $a\in A$ the induced map $\pi_n(X,A,a)\to\pi_n(Y,B,f(a))$ is a bijection
+        \item $\pi_0(f)^{-1}\im\left(\pi_0(A)\to\pi_0(B)\right)=\im\left(\pi_0(B)\to\pi_0(Y)\right)$.
+    \end{itemize}
+    Then we call $f$ a \emph{weak equivalence of pairs}.
+\end{definition}
+\begin{remark}\label{rmk:emptyFiber}
+    For a map $f\colon(X,A)\to (Y,B)$ the inclusion $\pi_0(f)^{-1}\im\left(\pi_0(A)\to\pi_0(X)\right)\subset\im\left(\pi_0(B)\to\pi_0(Y)\right)$ always holds.
+    Having an equality means that for all $x\in X$ such that there is a path from $f(x)$ to some element in $B$, there also exists a path from $x$ to some element of $A$.
+    This is equivalent to saying that if the homotopy fiber of $A\hookrightarrow X$ at $x\in X$ is empty, then so is the homotopy fiber of $B\hookrightarrow Y$ at $f(x)$ since the homotopy fiber of a map at a point is empty if and only if the point is in a connected component that does not intersect the image of the map.
+\end{remark}
+\begin{lemma}\label{lem:weOfaPairsIsHtpyPb}
+    Let $f\colon(X,A)\to (Y,B)$ be a map.
+    Then the following are equivalent:
+    \begin{enumerate}[label={(\roman*)}]
+        \item The map $f$ is a weak equivalence of pairs. \label{itm:weOfPairs}
+        \item The induced commutative square \begin{center} 
+            \begin{tikzcd} [sep = 4em]
+                A \arrow [r, "f|_A"] \arrow [d, hook] & B \arrow [d, hook]\\
+                X \arrow [r, "f"] & Y
+            \end{tikzcd}
+        \end{center}
+        is a homotopy pullback square. \label{itm:htpyPb}
+    \end{enumerate}
+    \begin{proof}
+        We model the homotopy fibers for a given point $x_0\in X$ as the pullbacks of the squares
+        \begin{center} 
+            \begin{tikzcd} [sep = 4em]
+                F_{x_0} \arrow [r, hook] \arrow [->>, d, "h"', "p"] & P_{x_0}X \arrow [->>, d, "h"', "\ev_1"]\\
+                A \arrow [r, hook] & X
+            \end{tikzcd}
+            \begin{tikzcd} [sep = 4em]
+                G_{y_0} \arrow [r, hook] \arrow [->>, d, "h"', "q"] & P_{y_0}Y \arrow [->>, d, "h"', "\ev_1"]\\
+                B \arrow [r, hook] & Y
+            \end{tikzcd}
+        \end{center}
+        where $P_{x_0}X$ and $P_{y_0}Y$ are the path mapping spaces of the maps $x_0\colon *\to X$ and  $y_0\colon *\to Y$ respectively.
+        We can identify $F$ with subspace of $P_{x_0}X$ such that every path in $F$ starts at $x_0$ and ends at a point in $A$ (and analogously for $G$).
+        Let $\alpha\colon F\to G$ denote the induced map between fibers.
+        Proving \ref{itm:htpyPb} is equivalent to showing that this map is a weak equivalence.
+
+        If $F\neq\emptyset$ we have that for every point $z\in F$ and $n\geq 1$ the induced maps $\pi_n(X,A,p(z))\to \pi_{n-1}(F_{z(1)},\const_{z(1)})$ and $\pi_n(Y,B,f(p(z)))\to \pi_{n-1}(G_{\alpha(z)(1)},\const_{\alpha(z)(1)})$ are bijections by \cite[Theorem 5.1.8]{lectures_htpy_thy}.
+        The map $\Lambda\colon F_{x_0}\to F_{z(1)}, \gamma\mapsto \overline{z}*\gamma$ is a homotopy equivalence with homotopy inverse $\Lambda^{-1}\colon F_{z(1)}\to F_{x_0}, \gamma\mapsto z*\gamma$, hence it induces a bijection $\pi_{n-1}(F_{x_0},z)\to\pi_{n-1}(F_{z(1)},\overline{z}*z)$.
+        Since there is a homotopy $H\colon I\times I\to X$ contracting the loop $\overline{z}*z$ to the point $z(1)$ such that $H_0=\overline{z}*z$, $H_1=\const_{z(1)}$ and $\partial I\times I=\const_{z(1)}$ and thus corresponds to a path $I\to F$ from $\overline{z}*z$ to $\const_{z(1)}$, we get a bijection $\pi_{n-1}(F_{z(1)},\overline{z}*z)\to\pi_{n-1}(F_{z(1)},\const_{z(1)})$.
+        
+        These bijections induce a commutative square
+        \begin{center} 
+            \begin{tikzcd} [sep = 4em]
+                \pi_n(X,A,p(z)) \arrow [r, "\cong"] \arrow [d] & \pi_{n-1}(F_{x_0},z) \arrow [d]\\
+                \pi_n(Y,B,f(p(z))) \arrow [r, "\cong"] & \pi_{n-1}(G_{f(x_0)},\alpha(z))
+            \end{tikzcd}
+        \end{center}
+        which together with \cref{rmk:emptyFiber} proves that \ref{itm:weOfPairs} and \ref{itm:htpyPb} are equivalent.
+    \end{proof}
+\end{lemma}
+%and ends here -------------------------------------
 We start proving the case for pushouts by the following reduction step. 
 \begin{prop}\label{prop:reductionStepDescent}
     If for all cubes in the model category $\Top$
