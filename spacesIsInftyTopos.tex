@@ -121,7 +121,7 @@ Our most important (and quite non trivial) part of this interaction is the follo
 
             Let $f\colon Y\to\bigcup\limits_{i\in I}X_i$ be a map and let $\left(Y_i\to X_i\right)_{i\in I}$ and $\left(Y_i\to Y\right)_{i\in I}$ be families of maps such that for all $k\in I$ we have a commutative square
             \begin{center}
-                \begin{tikzcd} [sep = 1 cm]
+                \begin{tikzcd} [sep = 4em]
                     Y_k \arrow [r] \arrow [d] & Y \arrow [d]\\
                     X_k \arrow [r] & \bigcup\limits_{i\in I} X_i
                 \end{tikzcd}
@@ -143,7 +143,7 @@ Our most important (and quite non trivial) part of this interaction is the follo
 \end{lemma}
 Therefore by \cref{cor:sufficientToProveInModCat} we know $\spaces$ has universal colimits.
 It remains to show that it also has descent.
-Insertion of proof of new stuff starts here -------------------------------------
+%Insertion of proof of new stuff starts here -------------------------------------
 \begin{definition}[Pairs and Triples of Spaces]
     Let $\Top^{(2)}$ denote the category of \emph{pairs of topological spaces} $(X,A)$ with $A\subset X$ a subspace and maps $f\colon(X_1,A_1)\to (X_2,A_2)$ being continuous maps $f\colon X_1\to X_2$ such that $\im f|_{A_1}\subset A_2$.
     We call these maps \emph{maps of pairs}.
@@ -161,9 +161,9 @@ Insertion of proof of new stuff starts here ------------------------------------
 \begin{definition}[Triad]
     A tiple of spaces $(X;X_1,X_2)$ is called a \emph{triad} if $X_1\subset X$ and $X_2\subset X$ are subspaces of $X$.
 \end{definition}
-\begin{lemma}[Relative HEP]
+\begin{lemma}[Relative HEP]\label{lem:rHEP}
     Let $(X;X_1,X_2)$ be a triad such that $X_1\cap X_2\to X_2$ and $X_1\cup X_2\to X$ are h-cofibrations. 
-    Then given a homotopy $h\colon(X_1,X_1\cap X_2)\times I\to(Y,A)$ and a map $f\colon(X,X_2)\to(Y,A)$ such that $h_0=f|_{X_1}$, there exists a homotopy $H\colon(X,X_2)\times I\to(Y,A)$ such that $H|_{X_1}=h$ and $H_0=f$.
+    Then given a homotopy $h\colon(X_1,X_1\cap X_2)\times I\to(Y,A)$ and a map $f\colon(X,X_2)\to(Y,A)$ such that $h_0=f|_{X_1}$, there exists a homotopy $H\colon(X,X_2)\times I\to(Y,A)$ such that $H|_{X_1\times I}=h$ and $H_0=f$.
     \begin{proof}
         We apply the homotopy extension property twice: First we extend $h|_{\left(X_1\cap X_2\right)\times I}$ to a homotopy $h'\colon X_2\times I\to A$ with $h'_0=f|_{X_2}$.
         Then we can extend $h\cup_{X_1\cap X_2} h'\colon \left(X_1\cup X_2\right)\times I\to Y$ to the desired homotopy $H$.
@@ -175,14 +175,15 @@ Insertion of proof of new stuff starts here ------------------------------------
     Let $f\colon(X,A)\to (Y,B)$ be a map such that 
     \begin{itemize}
         \item for all $n\geq 1$ and $a\in A$ the induced map $\pi_n(X,A,a)\to\pi_n(Y,B,f(a))$ is a bijection
-        \item $\pi_0(f)^{-1}\im\left(\pi_0(A)\to\pi_0(B)\right)=\im\left(\pi_0(B)\to\pi_0(Y)\right)$.
+        \item $\pi_0(f)^{-1}\im\left(\pi_0(B)\to\pi_0(Y)\right)=\im\left(\pi_0(A)\to\pi_0(X)\right)$.
     \end{itemize}
     Then we call $f$ a \emph{weak equivalence of pairs}.
 \end{definition}
 \begin{remark}\label{rmk:emptyFiber}
-    For a map $f\colon(X,A)\to (Y,B)$ the inclusion $\pi_0(f)^{-1}\im\left(\pi_0(A)\to\pi_0(X)\right)\subset\im\left(\pi_0(B)\to\pi_0(Y)\right)$ always holds.
+    For a map $f\colon(X,A)\to (Y,B)$ the inclusion $\im\left(\pi_0(A)\to\pi_0(X)\right)\subset\pi_0(f)^{-1}\im\left(\pi_0(B)\to\pi_0(Y)\right)$ always holds.
     Having an equality means that for all $x\in X$ such that there is a path from $f(x)$ to some element in $B$, there also exists a path from $x$ to some element of $A$.
-    This is equivalent to saying that if the homotopy fiber of $A\hookrightarrow X$ at $x\in X$ is empty, then so is the homotopy fiber of $B\hookrightarrow Y$ at $f(x)$ since the homotopy fiber of a map at a point is empty if and only if the point is in a connected component that does not intersect the image of the map.
+    This is equivalent to saying that if the homotopy fiber of $A\hookrightarrow X$ at $x\in X$ is empty, then so is the homotopy fiber of $B\hookrightarrow Y$ at $f(x)$.
+    This is because the homotopy fiber of a map at a point is empty if and only if the point is in a connected component that does not intersect the image of the map.
 \end{remark}
 \begin{lemma}\label{lem:weOfaPairsIsHtpyPb}
     Let $f\colon(X,A)\to (Y,B)$ be a map.
@@ -198,36 +199,126 @@ Insertion of proof of new stuff starts here ------------------------------------
         is a homotopy pullback square. \label{itm:htpyPb}
     \end{enumerate}
     \begin{proof}
-        We model the homotopy fibers for a given point $x_0\in X$ as the pullbacks of the squares
+        We model the homotopy fibers for given points $x_0\in X$ and $y_0\in Y$ as the pullbacks of the squares
         \begin{center} 
             \begin{tikzcd} [sep = 4em]
-                F_{x_0} \arrow [r, hook] \arrow [->>, d, "h"', "p"] & P_{x_0}X \arrow [->>, d, "h"', "\ev_1"]\\
+                F_{x_0} \arrow [r, hook] \arrow [->>, d, "h"', "\ev_1"] & P_{x_0}X \arrow [->>, d, "h"', "\ev_1"]\\
                 A \arrow [r, hook] & X
             \end{tikzcd}
             \begin{tikzcd} [sep = 4em]
-                G_{y_0} \arrow [r, hook] \arrow [->>, d, "h"', "q"] & P_{y_0}Y \arrow [->>, d, "h"', "\ev_1"]\\
+                G_{y_0} \arrow [r, hook] \arrow [->>, d, "h"', "\ev_1"] & P_{y_0}Y \arrow [->>, d, "h"', "\ev_1"]\\
                 B \arrow [r, hook] & Y
             \end{tikzcd}
         \end{center}
         where $P_{x_0}X$ and $P_{y_0}Y$ are the path mapping spaces of the maps $x_0\colon *\to X$ and  $y_0\colon *\to Y$ respectively.
-        We can identify $F$ with subspace of $P_{x_0}X$ such that every path in $F$ starts at $x_0$ and ends at a point in $A$ (and analogously for $G$).
-        Let $\alpha\colon F\to G$ denote the induced map between fibers.
+        We can identify $F_{x_0}$ with subspace of $P_{x_0}X$ of paths that start at $x_0$ and end at a point in $A$ (and analogously for $G$).
+        Let $\alpha\colon F_{x_0}\to G_{f(x_0)}, \gamma\mapsto f\gamma$ denote the induced map between fibers.
         Proving \ref{itm:htpyPb} is equivalent to showing that this map is a weak equivalence.
 
-        If $F\neq\emptyset$ we have that for every point $z\in F$ and $n\geq 1$ the induced maps $\pi_n(X,A,p(z))\to \pi_{n-1}(F_{z(1)},\const_{z(1)})$ and $\pi_n(Y,B,f(p(z)))\to \pi_{n-1}(G_{\alpha(z)(1)},\const_{\alpha(z)(1)})$ are bijections by \cite[Theorem 5.1.8]{lectures_htpy_thy}.
-        The map $\Lambda\colon F_{x_0}\to F_{z(1)}, \gamma\mapsto \overline{z}*\gamma$ is a homotopy equivalence with homotopy inverse $\Lambda^{-1}\colon F_{z(1)}\to F_{x_0}, \gamma\mapsto z*\gamma$, hence it induces a bijection $\pi_{n-1}(F_{x_0},z)\to\pi_{n-1}(F_{z(1)},\overline{z}*z)$.
-        Since there is a homotopy $H\colon I\times I\to X$ contracting the loop $\overline{z}*z$ to the point $z(1)$ such that $H_0=\overline{z}*z$, $H_1=\const_{z(1)}$ and $\partial I\times I=\const_{z(1)}$ and thus corresponds to a path $I\to F$ from $\overline{z}*z$ to $\const_{z(1)}$, we get a bijection $\pi_{n-1}(F_{z(1)},\overline{z}*z)\to\pi_{n-1}(F_{z(1)},\const_{z(1)})$.
+        If $F_{x_0}\neq\emptyset$ we have that for every point $z\in F_{x_0}$ and $n\geq 1$ the induced maps $\pi_n(X,A,z(1))\to \pi_{n-1}(F_{z(1)},\const_{z(1)})$ and $\pi_n(Y,B,f(p(z)))\to \pi_{n-1}(G_{\alpha(z)(1)},\const_{\alpha(z)(1)})$ are isomorphisms by \cite[Theorem 5.1.8]{lectures_htpy_thy}.
+        The map $\Lambda\colon F_{x_0}\to F_{z(1)}, \gamma\mapsto \overline{z}*\gamma$ is a homotopy equivalence with homotopy inverse $\Lambda^{-1}\colon F_{z(1)}\to F_{x_0}, \gamma\mapsto z*\gamma$, hence it induces an isomorphism $\pi_{n-1}(F_{x_0},z)\to\pi_{n-1}(F_{z(1)},\overline{z}*z)$.
+        Since there is a homotopy $H\colon I\times I\to X$ contracting the loop $\overline{z}*z$ to the point $z(1)$ such that $H_0=\overline{z}*z$, $H_1=\const_{z(1)}$ and $\partial I\times I=\const_{z(1)}$ and thus corresponds to a path $I\to F$ from $\overline{z}*z$ to $\const_{z(1)}$, we get an isomorphism $\pi_{n-1}(F_{z(1)},\overline{z}*z)\to\pi_{n-1}(F_{z(1)},\const_{z(1)})$.
         
-        These bijections induce a commutative square
+        These isomorphisms induce a commutative square
         \begin{center} 
             \begin{tikzcd} [sep = 4em]
-                \pi_n(X,A,p(z)) \arrow [r, "\cong"] \arrow [d] & \pi_{n-1}(F_{x_0},z) \arrow [d]\\
-                \pi_n(Y,B,f(p(z))) \arrow [r, "\cong"] & \pi_{n-1}(G_{f(x_0)},\alpha(z))
+                \pi_n(X,A,z(1)) \arrow [r, "\cong"] \arrow [d, "\pi_n(f)"] & \pi_{n-1}(F_{x_0},z) \arrow [d, "\pi_{n-1}(\alpha)"]\\
+                \pi_n(Y,B,f(z(1))) \arrow [r, "\cong"] & \pi_{n-1}(G_{f(x_0)},\alpha(z))
             \end{tikzcd}
         \end{center}
-        which together with \cref{rmk:emptyFiber} proves that \ref{itm:weOfPairs} and \ref{itm:htpyPb} are equivalent.
+        which together with \cref{rmk:emptyFiber} for the case $F_{x_0}=\emptyset$ proves that \ref{itm:weOfPairs} and \ref{itm:htpyPb} are equivalent.
     \end{proof}
 \end{lemma}
+\begin{definition}
+    Let $J^n=\set{0}\times I^n\cup I\times\partial I^n\subset\partial I^{n+1}\subset I^{n+1}$.
+
+    For a pair of spaces $(X,A)$, $a\in A$  and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
+\end{definition}
+\begin{lemma}\label{lem:compressionVariation}
+    Let $n\geq 1$, $e\colon(I^{n+1},\set{1}\times I^n)\to (X,A)$, $*=(1,0,\ldots,0)\in\set{1}\times\partial I^n$ and $a=e(*)$. 
+    Then $e|_{J^n}\colon(J^n,\set{1}\times\partial I^n,*)\to(X,A,a)$ represents the equivalence class of the constant map in $\pi_n(X,A,a)$. %TODO different def of \pi_n used here! J^n instead of I^n
+    \begin{proof}
+        Fix a homeomorphism $I^n\cong J^n$ which restricts to a homeomorphism $\partial I^n\cong \partial J^n$.
+        Then the square  
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                J^n\times\partial I\cup\partial J^n\times I \arrow [r] \arrow [>->, d, "h"] & I^{n+1} \arrow [->>, d, "h","\simeq"']\\
+                J^n\times I \arrow[r,"\simeq"] & *
+            \end{tikzcd}
+        \end{center}
+        where the top horizontal map on
+        \begin{itemize}
+            \item $J^n\times\set{0}$ is the inclusion $J^n\hookrightarrow I^{n+1}$
+            \item $J^n\times\set{1}$ is the inclusion $J^n\cong\set{1}\times I^n\hookrightarrow I^{n+1}$
+            \item on $\partial J^n \times I$ is the map $\partial J^n \times I\to\partial J^n\cong \set{1}\times\partial I^n \hookrightarrow I^{n+1}$
+        \end{itemize}
+        admits a lift $H$. 
+        This lift is a homotopy $H\colon(J^n,\set{1}\times \partial I^n,*)\times I\to (X,A,a)$ from $e|_{J^n}$ to some map $H_1=f$ with $\im f\subset A$ and is constant on $\partial J^n\times I$.
+        Since $\im f\subset A$ and $J^n$ is contractible with respect to $*$, $f$ represents $\const_a$ which proves the proposition. 
+    \end{proof}
+\end{lemma}
+\begin{prop}\label{prop:eqCharInjSurj} %TODO cite w.e. and quasifibs lemma 3.3
+    Given a map $f\colon(X,A)\to (Y,B)$ and $n\geq0$, the following are equivalent:
+    \begin{enumerate}[label={(\roman*)}]
+        \item For every $a\in A$ the map $\pi_n(X,A,a)\to \pi_n(Y,B,f(a))$ is injective and $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(a))$ is surjective.
+            If $n=0$, replace the injectivity statement by $\pi_0(f)^{-1}\im\left(\pi_0(B)\to\pi_0(Y)\right)=\im\left(\pi_0(A)\to\pi_0(X)\right)$. \label{itm:injAndSurjOfHtpyGrps}
+        \item Given maps $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$, $g(J^n,\set{1}\times\partial I^n)\to(X,A)$ and a homotopy $h\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ from $e|_{J^n}$ to $fg$, there exists a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ and homotopy $H\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ from $e$ to $fG$ such that $H|_{J^n\times I}=h$ and $G|_{J^n}=g$. \label{itm:liftingMapsAndHtpy}
+        \item The statement of \ref{itm:liftingMapsAndHtpy} holds with the additional assumption that $e|_{J^n}=fg$ and $h$ is the constant homotopy. \label{itm:liftingMapsAndHtpyConst}
+    \end{enumerate}
+    \begin{proof}
+        \ref{itm:liftingMapsAndHtpyConst} implies \ref{itm:injAndSurjOfHtpyGrps}:
+
+        We first prove the injectivity statement for $n=0$. 
+        By \cref{rmk:emptyFiber} we need to show that when given $x\in X$ and path $f(x)$ to some element of $B$, there exists a path from $x$ to some element of $A$.
+
+        So let $e$ be a path from $f(x)$ to $b\in B$ and $g=x$.
+        Then by \ref{itm:liftingMapsAndHtpyConst} there is a map $G\colon (I,\set{1})\to(X,A)$ such that $G(0)=g=x$.
+        This is the desired path.
+
+        We next prove that for $n\geq 1$ \ref{itm:liftingMapsAndHtpyConst} implies injectivity of $\pi_n(X,A,a)\to \pi_n(Y,B,f(b))$.
+        Given $[\lambda],[\mu]\in\pi_n(X,A,a)$ such that $\pi_n(f)([\lambda])=\pi_n(f)([\mu])$, we have a homotopy $\widetilde{h}\colon(I^n,\partial I^n,J^{n-1})\times I\to (Y,B,b)$ from $f\lambda$ to $f\mu$.
+        Set $e=\widetilde{h}$ and using $J^n=J^{n-1}\times I\cup I^n\times\partial I$ define $g$ to be $\lambda$ on $I^n\times\set{0}$, $\mu$ on $I^n\times\set{1}$ and $\const_a$ on $J^{n-1}\times I$.
+        Then $e|_{J^n}=fg$ and so by \ref{itm:liftingMapsAndHtpyConst} we get a map $G\colon(I^{n+1},\set{1}\times I)\to(X,A)$ with $G|_{J^n}=g$. 
+        Thus $G$ is a homotopy $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ from $\lambda$ to $\mu$, hence $[\lambda]=[\mu]$ in $\pi_n(X,A,a)$.
+
+        Lastly we show that for $n\geq 0$ \ref{itm:liftingMapsAndHtpyConst} implies surjectivity of $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(b))$.
+        Let $[\lambda]\in\pi_n(Y,B,f(a))$ and set $e=\lambda$ and $g=\const_a$. 
+        Then we get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ and homotopy $H\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ from $e$ to $fG$ such that $H|_{J^n\times I}$ is $\const_{f(a)}$ and $G|_{J^n}=\const_a$.
+        Thus $G$ is a map $(I^{n+1},\partial I^{n+1},J^n)\to (X,A,a)$ and $H$ is a homotopy $(I^{n+1},\partial I^{n+1},J^n)\times I\to(Y,B,f(a))$ from $\lambda$ to $fG$ which shows $[\lambda]=[fG]$ in $\pi_n(Y,B,f(a))$.
+
+        \ref{itm:liftingMapsAndHtpyConst} implies \ref{itm:liftingMapsAndHtpy}:
+
+        Let $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$, $g(J^n,\set{1}\times\partial I^n)\to(X,A)$ and $h\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ be a homotopy from $e|_{J^n}$ to $fg$.
+        By the relative homotopy extension property (\cref{lem:rHEP}) applied to the triad $(I^{n+1};J^n,\set{1}\times I^n)$, there exists a homotopy $j\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ extending $h$ such that $j_0=e$.
+        Since $j_1|_{J^n}=fg$ we can apply \ref{itm:liftingMapsAndHtpyConst} to get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ such that $G|_{J^n}=g$ and a homotopy $k\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $k|_{J^n\times I}$ is the constant homotopy of $j_1|_{J^n}=fg$. 
+        Let $\const_{fg}\colon(J^n\times I,\set{1}\times\partial I^n\times I)\to (Y,B)$ denote the constant homotopy of $j_1|_{J^n}=fg$.
+        Then we can pick a homotopy $L\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to (Y,B)$ from $h*\const_{fg}$ to $h$ such that $L|_{J^n\times\set{0}\times I}=e|_{J^n}\times\id_I$ and $L|_{J^n\times\set{1}\times I}=fg\times\id_I$. %TODO why?
+        We now apply \cref{lem:rHEP} again to the triad $(I^{n+1}\times I;J^{n+1},\set{1}\times I^n\times I)$, noting that $J^{n+1}=J^n\times I\cup I^{n+1}\times\partial I$, to extend the homotopy given by the union of $L$, $e$ on $I^{n+1}\times\set{0}\times I$ and $fG$ on $I^{n+1}\times\set{1}\times I$ to a homotopy $\widetilde{L}\colon(I^{n+1}\times I,\set{1}\times I^n\times I)\times I\to(Y,B)$ such that $\widetilde{L}_0=j*k$.
+        Setting $H=\widetilde{L}_1$ gives the desired homotopy.
+
+        \ref{itm:injAndSurjOfHtpyGrps} implies \ref{itm:liftingMapsAndHtpyConst}:
+
+        For $n=0$ we view $e$ as a path from $f(g)$ to some element of $b\in B$, so by \cref{rmk:emptyFiber} we can choose a path $G'\colon I\to X$ which goes from $g$ to some element $a\in A$.
+        Since $\pi_1(f)\colon\pi_1(X,A,a)\to\pi_1(Y,B,f(a))$ is surjective we can pick a map $\lambda\colon(I^1,\partial I^1,J^0)\to(X,A,a)$ and a homotopy $L\colon(I^1,\partial I^1,J^0)\times I\to(Y,B,f(a))$ from $\overline{fG'}*e$ to $f\lambda$.
+        Adding the constant homotopy, we obtain a homotopy $M\colon(I^1,\partial I^1,J^0)\times I\to (Y,B,f(g))$ from $fG'*(\overline{fG'}*e)$ to $fG'*f\lambda=f(G'*\lambda)$.
+        We can now pick a homotopy $N\colon(I^1,\partial I^1,J^0)\times I\to(Y,B,f(g))$ from $fG'*(\overline{fG'}*e)$ to $e$. 
+        Setting $G=G'*\lambda$ and $H=\overline{N}*M$ then gives the desired maps.
+
+        For $n\geq 1$, we fix a homotopy equivalence of triples $(I^n,\partial I^n, J^{n-1})\simeq (J^n,\set{1}\times\partial I^n,*)$ where $*=(1,0,\ldots,0)\in I^{n+1}$.
+        Given maps $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$ and $g(J^n,\set{1}\times\partial I^n)\to(X,A)$ with $e|_{J^n}=fg$, setting $a=g(*)$ we can view $g$ as an element of $\pi_n(X,A,a)$ via the aforementioned homotopy equivalence of triples.
+        Then $fg$ is homotopic to the constant map in $\pi_n(Y,B,f(a))$ by \cref{lem:compressionVariation}.
+        By injectivity, we thus get a homotopy $j\colon(J^n,\set{1}\times\partial I^n)\times I\to(X,A,a)$ from $g$ to $\const_a$.
+        Next we apply the relative homotopy extension property to the triad $(I^{n+1};J^n,\set{1}\times I^n)$ to extend the homotopy $fj$ to a homotopy $K\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $K_0=e$.
+        Since $K_1|_{J^n}=\const_{f(a)}$, it is a map $K_1\colon(I^{n+1},\partial I^{n+1},J^n)\to(Y,B,f(a))$ and represents an element in $\pi_{n+1}(Y,B,f(a))$.
+        By surjectivity of $\pi_{n+1}(f)$ we then get a map $J^1\colon(I^{n+1},\partial I^{n+1},J^n)\to(X,A,a)$ and a homotopy of triples $L$ from $K_1$ to $fJ_1$.
+        By the  relative homotopy extension property for $(I^{n+1};J^n,\set{1}\times I^n)$ we extend the reverse homotopy of $j$ to a homotopy of $J\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ which ends at $J_1$.
+        Setting $G=J_0$ we have $G|_{J^n}=j_0=g$.
+        Furthermore we have the homotopy $(K*L)*\overline{fJ}\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ from $fg$ to $fg$.
+        We pick a homotopy $M\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to(Y,B)$ from $(fj*\const_{f(a)})*\overline{fj}$ to the constant homotopy at $fg$ such that $M_{J^n\times\set{0}\times I}$ and $M_{J^n\times\set{1}\times I}$ are both the constant homotopies at $fg$.
+        Using the relative homotopy extension property on $(I^{n+2};J^n\times I\cup I^{n+1}\times\set{0}\cup I^{n+1}\times\set{1},\set{1}\times I^{n+1})$, we extend the homotopy given by the constant homotopy at $e$ on $I^{n+1}\times\set{0}\times I$, the constant homotopy at $fG$ on $I^{n+1}\times\set{1}\times I$ and $M$ on $J^n\times I\times I$ to a homotopy $\widetilde{M}\colon(I^{n+2},\set{1}\times I^{n+1})\times I\to(Y,B)$ with $\widetilde{M}_0=(K*L)*\overline{fJ}$.
+        Now setting $H=\widetilde{M_1}$ gives the desired homotopy from $e$ to $fG$ that is the constant homotopy at $fg$ on $J^n\times I$.
+    \end{proof}
+\end{prop}
 %and ends here -------------------------------------
 We start proving the case for pushouts by the following reduction step. 
 \begin{prop}\label{prop:reductionStepDescent}
