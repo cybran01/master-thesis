@@ -159,7 +159,10 @@ It remains to show that it also has descent.
     We define $(X,A,B)\times I$ to mean $(X\times I,A\times I, B\times I)$.
 \end{definition}
 \begin{definition}[Triad]
-    A tiple of spaces $(X;X_1,X_2)$ is called a \emph{triad} if $X_1\subset X$ and $X_2\subset X$ are subspaces of $X$.
+    A triple of spaces $(X;X_1,X_2)$ is called a \emph{triad} if $X_1\subset X$ and $X_2\subset X$ are subspaces of $X$.
+    A triad $(X;X_1,X_2)$ is called \emph{excisive} if $X_1^°\cup X_2^°=X$.
+
+    A map of triads $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ is a continuous map $f\colon X\to Y$ such that $f(X_1)\subset Y_1$ and $f(X_2)\subset Y_2$.
 \end{definition}
 \begin{lemma}[Relative HEP]\label{lem:rHEP}
     Let $(X;X_1,X_2)$ be a triad such that $X_1\cap X_2\to X_2$ and $X_1\cup X_2\to X$ are h-cofibrations. 
@@ -310,15 +313,77 @@ It remains to show that it also has descent.
         By injectivity, we thus get a homotopy $j\colon(J^n,\set{1}\times\partial I^n)\times I\to(X,A,a)$ from $g$ to $\const_a$.
         Next we apply the relative homotopy extension property to the triad $(I^{n+1};J^n,\set{1}\times I^n)$ to extend the homotopy $fj$ to a homotopy $K\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $K_0=e$.
         Since $K_1|_{J^n}=\const_{f(a)}$, it is a map $K_1\colon(I^{n+1},\partial I^{n+1},J^n)\to(Y,B,f(a))$ and represents an element in $\pi_{n+1}(Y,B,f(a))$.
-        By surjectivity of $\pi_{n+1}(f)$ we then get a map $J^1\colon(I^{n+1},\partial I^{n+1},J^n)\to(X,A,a)$ and a homotopy of triples $L$ from $K_1$ to $fJ_1$.
+        By surjectivity of $\pi_{n+1}(f)$ we then get a map $J_1\colon(I^{n+1},\partial I^{n+1},J^n)\to(X,A,a)$ and a homotopy of triples $L$ from $K_1$ to $fJ_1$.
         By the  relative homotopy extension property for $(I^{n+1};J^n,\set{1}\times I^n)$ we extend the reverse homotopy of $j$ to a homotopy of $J\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ which ends at $J_1$.
         Setting $G=J_0$ we have $G|_{J^n}=j_0=g$.
         Furthermore we have the homotopy $(K*L)*\overline{fJ}\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ from $fg$ to $fg$.
-        We pick a homotopy $M\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to(Y,B)$ from $(fj*\const_{f(a)})*\overline{fj}$ to the constant homotopy at $fg$ such that $M_{J^n\times\set{0}\times I}$ and $M_{J^n\times\set{1}\times I}$ are both the constant homotopies at $fg$.
+        We pick a homotopy $M\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to(Y,B)$ from $(fj*\const_{f(a)})*\overline{fj}$ to the constant homotopy at $fg$ such that $M|_{J^n\times\set{0}\times I}$ and $M|_{J^n\times\set{1}\times I}$ are both the constant homotopies at $fg$.
         Using the relative homotopy extension property on $(I^{n+2};J^n\times I\cup I^{n+1}\times\set{0}\cup I^{n+1}\times\set{1},\set{1}\times I^{n+1})$, we extend the homotopy given by the constant homotopy at $e$ on $I^{n+1}\times\set{0}\times I$, the constant homotopy at $fG$ on $I^{n+1}\times\set{1}\times I$ and $M$ on $J^n\times I\times I$ to a homotopy $\widetilde{M}\colon(I^{n+2},\set{1}\times I^{n+1})\times I\to(Y,B)$ with $\widetilde{M}_0=(K*L)*\overline{fJ}$.
         Now setting $H=\widetilde{M_1}$ gives the desired homotopy from $e$ to $fG$ that is the constant homotopy at $fg$ on $J^n\times I$.
     \end{proof}
 \end{prop}
+%TODO put mapping cylinder here
+\begin{lemma}\label{lem:replaceByEmbedding}
+    Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
+    Then there exists an excisive triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ and maps of triads $\widetilde{f}\colon(X;X_1,X_2)\to(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$, $j\colon(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})\to(Y;Y_1,Y_2)$ factoring $j\widetilde{f}=f$ such that
+    \begin{itemize}
+        \item $\widetilde{f}$ is an inclusion and $j$ is a weak equivalence 
+        \item $f(X_i^°)=f(X)\cap \widetilde{Y_i}^°$ for $i\in\set{1,2}$
+        \item $j$ induces a weak equivalence of pairs $(\widetilde{Y_i},\widetilde{Y_1}\cap \widetilde{Y_2})\to(Y_i,Y_1\cap Y_2)$ for $i\in\set{1,2}$
+        \item and $j$ induces a weak equivalence of pairs $(\widetilde{Y},\widetilde{Y_i})\to(Y,Y_i)$ for $i\in\set{1,2}$.
+    \end{itemize}
+    \begin{proof}
+        Let $\widetilde{Y}=\M(f)$ be the mapping cylinder of $f$.
+        We set $\widetilde{Y_i}=\M(f|_{X_i})\cup f^{-1}(Y_i)\times\left(0,\frac{1}{2}\right)$ where we consider $f|_{X_i}$ to be a map $X_i\to Y_i$.
+        Then the triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ together with the choices of $\widetilde{f}\colon X\to \widetilde{Y}$ as the inclusion into the mapping cylinder and as $g\colon\widetilde{Y}\to Y$ the contraction map give a factorization of $f$.
+        
+        We first show that $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ is excisive:
+        First assume $x\in X\times(0,1]\subset\M(f)$, then $x\in X_i^°\times(0,1]$ for some $i\in\set{1,2}$.
+        Since $X_i^°\times(0,1]$ is open and contained in $\widetilde{Y_i}$, we have $x\in \widetilde{Y_i}^°$.
+        
+        If $x\in Y\subset\M(f)$, then $x\in Y_i^°\subset\M(f)$ for some $i\in\set{1,2}$.
+        In this case $x$ is contained in the open set $f^{-1}(Y_i^°)\times (0,\frac{1}{2})\cup Y_i^°\subset\widetilde{Y_i}$, hence $x\in \widetilde{Y_i}^°$.
+
+        We now show $f(X_i^°)=f(X)\cap \widetilde{Y_i}^°$: 
+        Since $X_i^°\times(\frac{1}{2},1]=Y_i^°\cap X\times(\frac{1}{2},1]$, we have $f(X_i^°)\supset f(X)\cap \widetilde{Y_i}^°$.
+        The other inclusion follows from the definition of $\widetilde{Y_i}$.
+
+        The remaining assumptions on $j$ follow from the following observation: 
+        The canonical deformation retraction of $M(f)$ to $Y$ restricts to the subspaces $\widetilde{Y_1},\widetilde{Y_2}$ and $\widetilde{Y_1}\cap\widetilde{Y_2}$.
+        Hence for all $i\in\set{1,2}$ the indicated maps in the commutative squares
+        \begin{center} 
+            \begin{tikzcd} [sep = 4em]
+                \widetilde{Y_i} \arrow [r, "j|_{\widetilde{Y_i}}", "\simeq"'] \arrow [d, hook] & Y_i \arrow [d, hook]\\
+                \widetilde{Y} \arrow [r, "j", "\simeq"'] & Y
+            \end{tikzcd}
+            \begin{tikzcd} [sep = 4em]
+                \widetilde{Y_1}\cap\widetilde{Y_2} \arrow [r, "j|_{\widetilde{Y_1}\cap\widetilde{Y_2}}", "\simeq"'] \arrow [d, hook] & Y_1\cap Y_2 \arrow [d, hook]\\
+                \widetilde{Y_i} \arrow [r, "j|_{\widetilde{Y_i}}", "\simeq"'] & Y_i
+            \end{tikzcd}
+        \end{center} 
+        are homotopy equivalences (hence weak equivalences).
+        Therefore the proposition follows by \cref{lem:weOfaPairsIsHtpyPb}.
+    \end{proof}
+\end{lemma}
+%TODO mention lebesgue number lemma and J^n\subset I^{n+1} DR-pair
+\begin{prop}%TODO cite quasifibs Thm 1.2
+    Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
+    Then if the maps $f\colon(X_i,X_1\cap X_2)\to(Y_i,Y_1\cap Y_2)$ are weak equivalences of pairs for $i\in\set{1,2}$, the maps $f\colon(X,X_i)\to(Y,Y_i)$ are weak equivalences of pairs for $i\in\set{1,2}$ as well.
+    \begin{proof}
+        We can assume $f$ to be an inclusion such that $f(X_i^°)=f(X)\cap Y_i^°$ for $i\in\set{1,2}$ by applying \cref{lem:replaceByEmbedding} and replacing it with $\widetilde{f}$.
+        The assumptions on $g$ together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homtopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
+        
+        By the definition of a weak equivalence of pairs, it suffices to show that under the given assumptions the statement of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpyConst} holds for all $n\geq 0$.
+    
+        So let $g\colon(J^n,\set{1}\times\partial I^n)\to(X,X_i)$ and $g\colon(I^{n+1},\set{1}\times I^n)\to(Y,Y_i)$ be given such that $e|_{J^n}=g$.
+        As $J^n\subset I^{n+1}$ are both compact metric spaces, we can find a Lebesgue number $\delta$ for the cover $Y_1^°,Y_2^°\subset Y$ and the map $e$.
+        We pick a cubical subdivision $\mathcal{C}$ of $I^{n+1}$ such that the diameter of every cube $c\in\mathcal{C}$ is smaller then $\delta$.
+        This ensures that for every cube $c\in\mathcal{C}$ there is a $i\in\set{1,2}$ such that $e(c)\subset Y_i^°$.
+        Whenever $e(c)\subset Y_i^°$ we also have $g(c\cap J^n)\subset X_i^°$ for the same $i\in\set{1,2}$, since $fg(c\cap J^n)\subset f(X)\cap Y_i^°=f(X_i^°)$ and $f$ is an inclusion.
+        Note that this cubical subdivision gives a CW-structure on $I^{n+1}$ such that $J^n\subset I^{n+1}$ is a subcomplex.
+    \end{proof}
+\end{prop}
+%TODO conclude intersection stable version from descent, hypercover prop 4.6
 %and ends here -------------------------------------
 We start proving the case for pushouts by the following reduction step. 
 \begin{prop}\label{prop:reductionStepDescent}
