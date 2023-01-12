@@ -220,7 +220,7 @@ It remains to show that it also has descent.
 
         If $F_{x_0}\neq\emptyset$ we have that for every point $z\in F_{x_0}$ and $n\geq 1$ the induced maps $\pi_n(X,A,z(1))\to \pi_{n-1}(F_{z(1)},\const_{z(1)})$ and $\pi_n(Y,B,f(p(z)))\to \pi_{n-1}(G_{\alpha(z)(1)},\const_{\alpha(z)(1)})$ are isomorphisms by \cite[Theorem 5.1.8]{lectures_htpy_thy}.
         The map $\Lambda\colon F_{x_0}\to F_{z(1)}, \gamma\mapsto \overline{z}*\gamma$ is a homotopy equivalence with homotopy inverse $\Lambda^{-1}\colon F_{z(1)}\to F_{x_0}, \gamma\mapsto z*\gamma$, hence it induces an isomorphism $\pi_{n-1}(F_{x_0},z)\to\pi_{n-1}(F_{z(1)},\overline{z}*z)$.
-        Since there is a homotopy $H\colon I\times I\to X$ contracting the loop $\overline{z}*z$ to the point $z(1)$ such that $H_0=\overline{z}*z$, $H_1=\const_{z(1)}$ and $\partial I\times I=\const_{z(1)}$ and thus corresponds to a path $I\to F$ from $\overline{z}*z$ to $\const_{z(1)}$, we get an isomorphism $\pi_{n-1}(F_{z(1)},\overline{z}*z)\to\pi_{n-1}(F_{z(1)},\const_{z(1)})$.
+        Since there is a homotopy $H\colon I\times I\to X$ contracting the loop $\overline{z}*z$ to the point $z(1)$ such that $H_0=\overline{z}*z$, $H_1=\const_{z(1)}$ and $\partial I\times I=\const_{z(1)}$ and thus corresponds to a path $I\to F_{z(1)}$ from $\overline{z}*z$ to $\const_{z(1)}$, we get an isomorphism $\pi_{n-1}(F_{z(1)},\overline{z}*z)\to\pi_{n-1}(F_{z(1)},\const_{z(1)})$.
         
         These isomorphisms induce a commutative square
         \begin{center} 
@@ -328,7 +328,7 @@ It remains to show that it also has descent.
     Then there exists an excisive triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ and maps of triads $\widetilde{f}\colon(X;X_1,X_2)\to(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$, $j\colon(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})\to(Y;Y_1,Y_2)$ factoring $j\widetilde{f}=f$ such that
     \begin{itemize}
         \item $\widetilde{f}$ is an inclusion and $j$ is a weak equivalence 
-        \item $f(X_i^°)=f(X)\cap \widetilde{Y_i}^°$ for $i\in\set{1,2}$
+        \item $\widetilde{f}(X_i^°)=\widetilde{f}(X)\cap \widetilde{Y_i}^°$ for $i\in\set{1,2}$
         \item $j$ induces a weak equivalence of pairs $(\widetilde{Y_i},\widetilde{Y_1}\cap \widetilde{Y_2})\to(Y_i,Y_1\cap Y_2)$ for $i\in\set{1,2}$
         \item and $j$ induces a weak equivalence of pairs $(\widetilde{Y},\widetilde{Y_i})\to(Y,Y_i)$ for $i\in\set{1,2}$.
     \end{itemize}
@@ -368,7 +368,7 @@ It remains to show that it also has descent.
 %TODO mention lebesgue number lemma and J^n\subset I^{n+1} DR-pair
 \begin{prop}%TODO cite quasifibs Thm 1.2
     Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
-    Then if the maps $f\colon(X_i,X_1\cap X_2)\to(Y_i,Y_1\cap Y_2)$ are weak equivalences of pairs for $i\in\set{1,2}$, the maps $f\colon(X,X_i)\to(Y,Y_i)$ are weak equivalences of pairs for $i\in\set{1,2}$ as well.
+    Then if the maps $f|_{X_i}\colon(X_i,X_1\cap X_2)\to(Y_i,Y_1\cap Y_2)$ are weak equivalences of pairs for $i\in\set{1,2}$, the maps $f\colon(X,X_i)\to(Y,Y_i)$ are weak equivalences of pairs for $i\in\set{1,2}$ as well.
     \begin{proof}
         We can assume $f$ to be an inclusion such that $f(X_i^°)=f(X)\cap Y_i^°$ for $i\in\set{1,2}$ by applying \cref{lem:replaceByEmbedding} and replacing it with $\widetilde{f}$.
         The assumptions on $g$ together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homtopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
@@ -381,8 +381,45 @@ It remains to show that it also has descent.
         This ensures that for every cube $c\in\mathcal{C}$ there is a $i\in\set{1,2}$ such that $e(c)\subset Y_i^°$.
         Whenever $e(c)\subset Y_i^°$ we also have $g(c\cap J^n)\subset X_i^°$ for the same $i\in\set{1,2}$, since $fg(c\cap J^n)\subset f(X)\cap Y_i^°=f(X_i^°)$ and $f$ is an inclusion.
         Note that this cubical subdivision gives a CW-structure on $I^{n+1}$ such that $J^n\subset I^{n+1}$ is a subcomplex.
+
+        We identify $I^{n+1}=I\times I^n$.
+        The cubical subdivision $\mathcal{C}$ gives a cubical subdivision $\mathcal{D}$ of $I^n$ and a partition of $I$ into subintervalls of equal length $I_r=[v_r,v_{r+1}]\subset I$ with $0=v_0<v_1<\ldots<v_s=1$.
+        We will construct the desired maps $G$ and $H$ on the spaces $I_r\times K$ where $K$ is a cell of the CW-structure induced by $\mathcal{D}$ on $I^n$.
+        These maps will be constructed such that for all cells $K$ and $r\in\set{0,\ldots,s-1}$
+        \begin{itemize}
+            \item if $e(I_r\times K)\subset Y_j^°$ then $G(I_r\times K)\subset X_j$ and $H(I_r\times K\times I)\subset Y_j$ for the same $j\in\set{1,2}$
+            \item if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ then $G(\set{v_{r+1}}\times K)\subset X_1\cap X_2$ and $H(\set{v_{r+1}}\times K\times I)\subset Y_1\cap Y_2$.
+        \end{itemize}
+        Let $\Gamma^m$ denote the collection of cells of the CW-structure on $I^n$ whose dimension is $m$ for $m\in\set{0,\ldots,n}$ and whose intersection with $(I^n)^°$ is nonempty.
+        We will use a nested induction argument, where the outer induction runs through the intervalls $I_r$ with $r\in\set{0,\ldots,s-1}$ and for fixed $r$ the inner induction runs through $m\in\set{0,\ldots,n}$ over the collections $\Gamma^m$.
+
+        So for the induction step with given $r$ and $m$, set $L_r^m=\left([0,v_r]\times I^n\right)\cup J^n\cup \bigcup\limits_{K\in\Gamma^m}\left(I_r\times K\right)\subset I^{n+1}$.
+        Then by the induction hypothesis we have maps $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ extending $g$ and the constant homotopy at $fg=e|_{J^n}$ respectively such that $H$ is a homotopy from $e|_{L_r^m}$ to $fG$.
+        Furthermore these maps fulfill the two conditions above.
+
+        We now pick a $K\in\Gamma^{m+1}$ and proceed via a case distinction:
+        First if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ and $e(I_r\times K)\subset Y_j^°$ is contained in exactly one of the $Y_j^°$, we have that $G$ and $H$ restrict to maps $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\to(X_j,X_1\cap X_2)$ and $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\times I\to(X_j,X_1\cap X_2)$ which can be identified with maps $g'\colon(J^m, \set{1}\times\partial{I^m})\to(X_j,X_1\cap X_2)$ and $h'\colon (J^m, \set{1}\times\partial{I^m})\times I\to(X_j,X_1\cap X_2)$ respectively.
+        
+        Together with $e'=e|_{I_r\times K}\colon(I^{m+1},\set{1}\times I^m)\to(Y_j,Y_1\cap Y_2)$ and the equivalence of pairs $f\colon(X_j,X_1\cap X_2)\to(Y_j,Y_1\cap Y_2)$ these fulfill the conditions of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpy}. 
+        So by \cref{prop:eqCharInjSurj} there exist extensions $G'$ and $H'$ which we can then identify with maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ fulfilling the desired properties.
+
+        In the remaining cases either $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$ or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$ and we can pick a deformation retract $F\colon I_r\times K\times I\to I_r\times K$ of $I_r\times\partial K\cup\set{v_r}\times K$ by TODO %TODO
+        and set $G'=GF_1$ and $H'=eF*HF_1$.
+
+        Now note that since we work ourselves upwards from the dimensions and keep the maps fixed on $J^n$, the constructed maps $G'$ and $H'$ are always compatible to the maps from the previous step.
+        Hence by doing the induction step for all $K\in\Gamma^{m+1}$ we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively.
+        We also note that $L_r^n=\left([0,v_{r+1}]\times I^n\right)\cup J^n$, thus $L_{s-1}^n=I^{n+1}$.
+
+        It only remains to check that the final extensions $G$ and $H$ are maps of pairs $(I^{n+1},\set{1}\times I^n)\to(X,X_i)$ and $(I^{n+1},\set{1}\times I^n)\times I\to(Y,Y_i)$ respectively.
+        Let $K\in L_{s-1}^n$ and note that $\bigcup\limits_{K\in L_{s-1}^n}\set{1}\times K=\set{1}\times I^n$.
+        Since $e(\set{1}\times I^n)\subset Y_i$, we always have $e(I_{s-1}\times K)\subset Y_i^°$ or $e(\set{1}\times K)\subset Y_1\cap Y_2$ and both cases imply $G(\set{1}\times K)\subset X_i$ and $H(\set{1}\times K\times I)\subset X_i$.
+        Thus we have proven the proposition.
     \end{proof}
 \end{prop}
+%TODO remark that this is essentially already descent for po
+\begin{corollary}[Locality of Quasifibrations]\label{cor:locOfQuasifib}
+    %TODO
+\end{corollary}
 %TODO conclude intersection stable version from descent, hypercover prop 4.6
 %and ends here -------------------------------------
 We start proving the case for pushouts by the following reduction step. 
@@ -593,16 +630,16 @@ For the last part of the proof we need the following definitions.
                 & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \M(f_{AC})\cup_A\M(f_{AB}) &
             \end{tikzcd}
         \end{center}
-        where the indicated maps are h-cofibrations as they are either inclusions into the mapping cylinder (see e.g. \cite[Theorem 2]{note_on_cofibs_1}) or pushouts of h-cofibrations.
+        where the indicated maps are h-cofibrations as they are either inclusions into the mapping cylinder (see e.g. \cite[Theorem 2]{note_on_cofibs_1}) or pushouts of such.
         All faces are again equivalent to the corresponding faces of the original cube since top and bottom squares are homotopy pushouts by \cref{prop:poAlongHCofibIsHtpyPo}.
         
         Next we prove that the map $p\colon\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\to\M(f_{AC})\cup_A\M(f_{AB})$ is a quasifibration.
-        By \cite[Lemma 4K.3]{hatcher2002algebraic} we only need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
+        By \cref{cor:locOfQuasifib} we only need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
 
         We take $U_1=\M(f_{AC})\cup_A\M(f_{AB})\setminus{B}$ and $U_2=\M(f_{AC})\cup_A\M(f_{AB})\setminus{C}$. 
 
-        We identify $U_1\cap U_2=A\times [0,1)\cup_{A\times\set{0}} A\times[0,1)\cong A\times (0,2)$ via the ``obvious'' homeomorphism. %TODO explain
-        Then $p^{-1}(U_1)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{B}}$, $p^{-1}(U_2)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{C}}$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$ (identified with $\overline{A}\times [0,1)\cup_{\overline{A}\times\set{0}} \overline{A}\times[0,1)$ as before).
+        We identify $U_1\cap U_2=A\times (0,1]\cup_{A\times\set{1}} A\times(0,1]\cong A\times (0,2)$ via the ``obvious'' homeomorphism. %TODO obvious homeo?
+        Then $p^{-1}(U_1)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{B}}$, $p^{-1}(U_2)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{C}}$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$ (identified with $\overline{A}\times (0,1]\cup_{\overline{A}\times\set{1}} \overline{A}\times(0,1]$ as before).
         It follows $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -629,21 +666,21 @@ For the last part of the proof we need the following definitions.
             \end{tikzcd}
         \end{center}
         are both ordinary pullbacks %TODO maybe explain why
-        with both vertical maps quasifibrations, they are already homotopy pullbacks. %TODO maybe put this as an extra statement somewhere after introducing quasifibs
-        Taking the left square as an example, this follows from the fact that the fiber
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[r] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
-                * \arrow[r] & \M(f_{AC}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
-            \end{tikzcd}
-        \end{center}
-        is already a homotopy fiber and so the map between homotopy fibers of the vertical maps is the identity and thus a weak equivalence.
-        But this is an equivalent characterization of a homotopy pullback. %TODO reference
+        with both vertical maps quasifibrations, they are already homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
+        % Taking the left square as an example, this follows from the fact that the fiber %TODO use elsewhere?
+        % \begin{center}
+        %     \begin{tikzcd} [sep = 4em]
+        %         F \arrow[r] \arrow[d] & \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[r] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
+        %         * \arrow[r] & \M(f_{AC}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+        %     \end{tikzcd}
+        % \end{center}
+        % is already a homotopy fiber and so the map between homotopy fibers of the vertical maps is the identity and thus a weak equivalence.
+        % But this is an equivalent characterization of a homotopy pullback. %TODO reference
     \end{proof}
 \end{prop}
 Lastly, we need to prove descent for homotopy coproducts.
 For readability purposes, we will abuse notation a little:
-We will always work with seemingly fixed diagrams throughout the proofs without replacing it before computing limits/colimits.
+We will always work with seemingly fixed diagrams throughout the proofs without replacing them before computing limits/colimits.
 This is of course not possible in general, since one cannot e.g. extend a given span to a homotopy pushout without replacing it first.
 We will do this implicitly; if one is uncomfortable doing that, one can view the proofs as being in the \inftycat/ presented by the given model category, where the issue disappears.
 
