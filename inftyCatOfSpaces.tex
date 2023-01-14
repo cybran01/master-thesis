@@ -2,7 +2,7 @@ In the following we will describe three model structures that will be used throu
 The Quillen model structure on $\sSet$ (which was already introduced in the previous section), the Quillen model structure on $\Top$ and the \Strom/ model structure on $\Top$.
 The first two will turn out the be Quillen equivalent and will be used to define the \inftycat/ of spaces $\spaces$.
 
-The \Strom/ model structure will be important later on; its interaction with the Quillen model structure on $\Top$ will be important parts of our proof that $\spaces$ is an \inftytop/.
+The \Strom/ model structure will be important later on; its interaction with the Quillen model structure on $\Top$ will be an important part of our proof that $\spaces$ is an \inftytop/.
 \begin{prop}\label{prop:sSetCombSimpModelStructure}
     The Quillen model structure on $\sSet$ together with its natural enrichement over itself gives it the structure of a combinatorial simplicial model category.
     \begin{proof}
@@ -17,12 +17,50 @@ The \Strom/ model structure will be important later on; its interaction with the
         is a fibration that additionally is a weak equivalence whenever $A\xtailrightarrow{} B$ or $X\xtwoheadrightarrow{} Y$ is a weak equivalence, so $\sSet$ is a simplicial model category.
     \end{proof}
 \end{prop}
-%TODO define here explicitly retracts of relative cell complexes, w.e., serre fibrations, closed hurewicz cofibrations. htpy eq, hurewicz fibrations
+\begin{definition}[Serre Fibration]
+    Let $f\colon X\to Y$ be a map such that for all $n\in\Nat$ all commutative squares
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            D^n \arrow[r] \arrow[d, hook, "{(\id_{D^n},0)}"'] & X \arrow[d, "f"] \\
+            D^n\times I \arrow[ur, dashed, "\exists"] \arrow[r] & Y \\
+        \end{tikzcd}
+    \end{center}
+    admit a lift. 
+    %(In  other  words, $f$ has the right lifting property against the maps $\set{D^n\xhookrightarrow{(\id_{D^n},0)}D^n\times I\mid n\in\Nat}$.) 
+    Then we call $f$ a \emph{Serre fibration}.
+\end{definition}
+\begin{definition}[Hurewicz Fibration]
+    Let $f\colon X\to Y$ be a map such that for all spaces $X$ and all squares
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X \arrow[r] \arrow[d, hook, "{(\id_{X},0)}"'] & X \arrow[d, "f"] \\
+            X\times I \arrow[ur, dashed, "\exists"] \arrow[r] & Y \\
+        \end{tikzcd}
+    \end{center}
+    admit a lift.
+    Then we call $f$ a \emph{Hurewicz fibration}.
+\end{definition}
+\begin{definition}[Hurewicz Cofibration]
+    Let $i\colon A\to B$ be a map such that for all spaces $X$ and maps $A\times I\to X$, $B\to X$ that make the diagram below commute, there exists a map $B\times I\to X$ such that
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            A \arrow[r,"\id_A\times\set{0}"] \arrow[d, "i"'] & A\times I \arrow[d, "i\times\id_I"] \arrow[ddr, bend left] & \\
+            B \arrow[r,"\id_B\times\set{0}"] \arrow[drr, bend right] & B\times I \arrow[dr, dashed, "\exists"] & \\
+            &&X
+        \end{tikzcd}
+    \end{center}
+    commutes.
+    Then we say $i$ fulfuills the \emph{homotopy extension property (HEP)} or $i$ is a \emph{Hurewicz cofibration}.
+    If the image $i(A)$ is closed, we call $i$ a \emph{closed Hurewicz cofibration}.
+\end{definition}
+\begin{remark}
+    A Hurewicz cofibration is always an inclusion, see \cite[Proposition 4H.1]{hatcher2002algebraic}.
+\end{remark}
+%TODO w.e., htpy eq
 When speaking of cofibrations, fibrations or weak equivalences between topological spaces, we are always referring to the following model structure.
 \begin{prop}[Quillen Model Structure on $\Top$]
-    The following three classes of maps endow $\Top$ with a model structure:
+    The following classes of maps endow $\Top$ with a model structure:
     \begin{itemize}
-        \item Cofibrations are the maps which are retracts of relative cell complexes. %TODO NOT relative CW, only relative cell-complex %TODO maybe define?
         \item Weak equivalences are weak equivalences of topological spaces. %TODO DEFINE
         \item Fibrations are the Serre fibrations.
     \end{itemize}
@@ -35,7 +73,7 @@ The other model structure on $\Top$ we will need is given by the following.
 \begin{prop}[\Strom/ Model Structure on $\Top$]
     The following three classes of maps endow $\Top$ with a model structure:
     \begin{itemize}
-        \item Cofibrations are the closed Hurewicz cofibrations, which we will refer to as \emph{h-cofibrations}. %TODO define HEP
+        \item Cofibrations are the closed Hurewicz cofibrations, which we will refer to as \emph{h-cofibrations}.
         \item Weak equivalences are the homotopy equivalences.
         \item Fibrations are the Hurewicz fibrations, which we will refer to as \emph{h-fibrations}.
     \end{itemize}
@@ -44,7 +82,9 @@ The other model structure on $\Top$ we will need is given by the following.
        \cite{Strom1972}
     \end{reference}
 \end{prop}
-It follows from the definitions that every h-fibration is already a fibration and every homotopy equivalence is a weak equivalence.
+\begin{remark}
+    Since every h-fibration is already a fibration and every homotopy equivalence is a weak equivalence, every cofibration is a h-cofibration.
+\end{remark}
 \begin{remark}[Properness]
     The Quillen model structures on $\sSet$ and $\Top$ are both proper (meaning left and right proper).
     The same is true for the \Strom/ model structure, since all objects in this model category are cofibrant and fibrant.

@@ -5,7 +5,7 @@ There are different equivalent characterizations of an \inftytop/; for an overvi
 We will say that an \inftycat/ $C$ is an \inftytop/ if it 
 \begin{itemize} 
     \item is ``locally presentable''
-    \item has ``universal colimits'' (also called ``universality'')
+    \item has ``universal colimits'' (also just called ``universality'')
     \item has ``descent'' 
 \end{itemize}
 which corresponds to \cite[Theorem 6.1.0.6 (2)]{HTT}.
@@ -13,12 +13,12 @@ This characterization of \inftytops/ is due to Charles Rezk.
 We will give precise meaning of all of these conditions in \cref{sec:inftyTopDef} and will only give some intuition here.
 
 First, the condition that an \inftycat/ is locally presentable means that it is determined by a ``small'' amount of data, despite it not needing to be small itself.
-This condition is the least interesting for what the goal of this thesis is and we will deal with it in a very pragmatic way (see \cref{def:locallyPresentable}).
+We will deal with this condition in a very pragmatic way (see \cref{def:locallyPresentable}).
 
 The other two conditions are somewhat related to each other as we will see when proving them for $\spaces$.
 They are both supposed to ensure fibers of maps behave nicely under various glueings.
 
-To motivate $C$ needing universal colimits, let $X\xtwoheadrightarrow{} B$ be a fibration, $X_1,X_2\subset X$ be a ``sufficiently good'' cover and let $X_0=X_1\cap X_2$, so that we have a homotopy pushout square
+To motivate universal colimits, let $X\xtwoheadrightarrow{} B$ be a fibration, $X_1,X_2\subset X$ be a ``sufficiently good'' cover and let $X_0=X_1\cap X_2$, so that we have a homotopy pushout square
 \begin{center}
     \begin{tikzcd} [column sep = 1em, row sep = 3em]
         X_{0} \arrow[>->, rr] \arrow [>->, d] && X_1 \arrow [>->, d]\\
@@ -85,9 +85,9 @@ In a cube
 \begin{center}
     \begin{tikzcd} [sep = .5 cm]
         X_{0} \arrow [dr, >->] \arrow [rr, >->] \arrow [dd] & & X_1 \arrow [dr, >->] \arrow [dd] \\
-        & X_2 \arrow [rr, crossing over, >->] \arrow [dd] & & X_1\cup_{X_{0}}X_2 \arrow [dd] & \\
+        & X_2 \arrow [rr, crossing over, >->] \arrow [dd] & &[-1em] X_1\cup_{X_{0}}X_2 \arrow [dd] & \\
         B_{0} \arrow [dr, >->] \arrow [rr, >->] & & B_1 \arrow [dr, >->] \\
-        & B_2 \arrow [from=uu, crossing over] \arrow [rr, >->] & & B_1\cup_{B_{0}}B_2 &
+        & B_2 \arrow [from=uu, crossing over] \arrow [rr, >->] & &[-1em] B_1\cup_{B_{0}}B_2 &
     \end{tikzcd}
 \end{center}
 where the left and rear faces are homotopy pullbacks and the top and bottom faces are homotopy pushouts, the front and right faces are homotopy pullbacks as well.

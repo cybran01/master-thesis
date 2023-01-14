@@ -172,7 +172,13 @@ It remains to show that it also has descent.
         Then we can extend $h\cup_{X_1\cap X_2} h'\colon \left(X_1\cup X_2\right)\times I\to Y$ to the desired homotopy $H$.
     \end{proof}
 \end{lemma}
-%TODO add all used triads (I^{n+1};J^n,\set{1}\times I^n) as examples HERE, and maybe also deformation retract $J^n\subset I1{n+1}$
+\begin{remark}\label{rmk:cwInclIsHCofib}
+    The triads $(I^{n+1};J^n,\set{1}\times I^n)$ fulfills the requirements of \cref{lem:rHEP} for all $n\geq 0$.
+    This is because all of the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are h-cofibrations. %TODO why
+    
+    This is due to the fact that $S^{n-1}\hookrightarrow D^n$ is a CW-pair, and for any CW-pair $A\hookrightarrow X$ the map $\set{0}\times A\cup I\times X\hookrightarrow I\times X$ is a deformation retract and thus has the homotopy extension property (see \cite[Proposition 0.16]{hatcher2002algebraic}).
+    Since $A\hookrightarrow X$ is a closed embedding, $A\hookrightarrow X$ is a h-cofibration.
+\end{remark}
 \begin{definition}
     Let $H_1,H_2\colon X\times I\to Y$ be homotopies such that $(H_1)_1=(H_2)_0$.
     Then we define 
@@ -235,22 +241,25 @@ It remains to show that it also has descent.
             \end{tikzcd}
         \end{center}
         where $P_{x_0}X$ and $P_{y_0}Y$ are the path mapping spaces of the maps $x_0\colon *\to X$ and  $y_0\colon *\to Y$ respectively.
-        We can identify $F_{x_0}$ with subspace of $P_{x_0}X$ of paths that start at $x_0$ and end at a point in $A$ (and analogously for $G$).
+        We can identify $F_{x_0}$ with the subspace of $P_{x_0}X$ of paths that start at $x_0$ and end at a point in $A$ (and analogously for $G_{y_0}$).
         Let $\alpha\colon F_{x_0}\to G_{f(x_0)}, \gamma\mapsto f\gamma$ denote the induced map between fibers.
         Proving \ref{itm:htpyPb} is equivalent to showing that this map is a weak equivalence.
 
-        If $F_{x_0}\neq\emptyset$ we have that for every point $z\in F_{x_0}$ and $n\geq 1$ the induced maps $\pi_n(X,A,z(1))\to \pi_{n-1}(F_{z(1)},\const_{z(1)})$ and $\pi_n(Y,B,f(p(z)))\to \pi_{n-1}(G_{\alpha(z)(1)},\const_{\alpha(z)(1)})$ are isomorphisms by \cite[Theorem 5.1.8]{lectures_htpy_thy}.
+        If $F_{x_0}\neq\emptyset$ we have that for every point $z\in F_{x_0}$ and $n\geq 1$ the induced maps $\pi_n(X,A,z(1))\to \pi_{n-1}(F_{z(1)},\const_{z(1)})$ and $\pi_n(Y,B,f(z(1)))\to \pi_{n-1}(G_{\alpha(z)(1)},\const_{\alpha(z)(1)})$ are isomorphisms by \cite[Theorem 5.1.8]{lectures_htpy_thy}.
         The map $\Lambda\colon F_{x_0}\to F_{z(1)}, \gamma\mapsto \overline{z}*\gamma$ is a homotopy equivalence with homotopy inverse $\Lambda^{-1}\colon F_{z(1)}\to F_{x_0}, \gamma\mapsto z*\gamma$, hence it induces an isomorphism $\pi_{n-1}(F_{x_0},z)\to\pi_{n-1}(F_{z(1)},\overline{z}*z)$.
-        Since there is a homotopy $H\colon I\times I\to X$ contracting the loop $\overline{z}*z$ to the point $z(1)$ such that $H_0=\overline{z}*z$, $H_1=\const_{z(1)}$ and $\partial I\times I=\const_{z(1)}$ and thus corresponds to a path $I\to F_{z(1)}$ from $\overline{z}*z$ to $\const_{z(1)}$, we get an isomorphism $\pi_{n-1}(F_{z(1)},\overline{z}*z)\to\pi_{n-1}(F_{z(1)},\const_{z(1)})$.
+        By \cref{rmk:choiceOfConstantHtpy} there is a homotopy $H\colon I\times I\to X$ contracting the loop $\overline{z}*z$ to the point $z(1)$ such that $H_0=\overline{z}*z$, $H_1=\const_{z(1)}$ and $\partial I\times I=\const_{z(1)}$.
+        This homotopy thus corresponds to a path $\lambda\colon I\to F_{z(1)}$ from $\overline{z}*z$ to $\const_{z(1)}$ which induces isomorphisms $\pi_{n-1}(F_{z(1)},\overline{z}*z)\to\pi_{n-1}(F_{z(1)},\const_{z(1)})$ for all $n\geq 1$.
+
+        This also gives homotopy equivalence $\Gamma\colon G_{f(x_0)}\to F_{f(z(1))}, \gamma\mapsto f\overline{z}*\gamma$ and a path $f\lambda$ from $\overline{fz}*fz$ to $\const_{\alpha(z)(1)}$ which induce the analogous isomorphisms.
         
-        These isomorphisms induce a commutative square
+        Together these isomorphisms fit into a commutative square
         \begin{center} 
             \begin{tikzcd} [sep = 4em]
                 \pi_n(X,A,z(1)) \arrow [r, "\cong"] \arrow [d, "\pi_n(f)"] & \pi_{n-1}(F_{x_0},z) \arrow [d, "\pi_{n-1}(\alpha)"]\\
                 \pi_n(Y,B,f(z(1))) \arrow [r, "\cong"] & \pi_{n-1}(G_{f(x_0)},\alpha(z))
             \end{tikzcd}
         \end{center}
-        which together with \cref{rmk:emptyFiber} for the case $F_{x_0}=\emptyset$ proves that \ref{itm:weOfPairs} and \ref{itm:htpyPb} are equivalent.
+        which with \cref{rmk:emptyFiber} for the case $F_{x_0}=\emptyset$ proves that \ref{itm:weOfPairs} and \ref{itm:htpyPb} are equivalent.
     \end{proof}
 \end{lemma}
 \begin{definition}
@@ -386,14 +395,14 @@ It remains to show that it also has descent.
         Since $X_i^°\times(0,1]$ is open and contained in $\widetilde{Y_i}$, we have $x\in \widetilde{Y_i}^°$.
         
         If $x\in Y\subset\M(f)$, then $x\in Y_i^°\subset\M(f)$ for some $i\in\set{1,2}$.
-        In this case $x$ is contained in the open set $f^{-1}(Y_i^°)\times (0,\frac{1}{2})\cup Y_i^°\subset\widetilde{Y_i}$, hence $x\in \widetilde{Y_i}^°$.
+        In this case $x$ is contained in the open set $\widetilde{f}^{-1}(Y_i^°)\times (0,\frac{1}{2})\cup Y_i^°\subset\widetilde{Y_i}$, hence $x\in \widetilde{Y_i}^°$.
 
-        We now show $f(X_i^°)=f(X)\cap \widetilde{Y_i}^°$: 
-        Since $X_i^°\times(\frac{1}{2},1]=Y_i^°\cap X\times(\frac{1}{2},1]$, we have $f(X_i^°)\supset f(X)\cap \widetilde{Y_i}^°$.
+        We now show $\widetilde{f}(X_i^°)=\widetilde{f}(X)\cap \widetilde{Y_i}^°$: 
+        Since $X_i^°\times(\frac{1}{2},1]=Y_i^°\cap X\times(\frac{1}{2},1]$, we have $\widetilde{f}(X_i^°)\supset \widetilde{f}(X)\cap \widetilde{Y_i}^°$.
         The other inclusion follows from the definition of $\widetilde{Y_i}$.
 
         The remaining assumptions on $j$ follow from the following observation: 
-        The canonical deformation retraction of $M(f)$ to $Y$ restricts to the subspaces $\widetilde{Y_1},\widetilde{Y_2}$ and $\widetilde{Y_1}\cap\widetilde{Y_2}$.
+        The canonical deformation retraction of $\M(f)$ to $Y$ restricts to a deformation retraction from $\widetilde{Y_1}$ to $Y_1$, $\widetilde{Y_2}$ to $Y_2$ and $\widetilde{Y_1}\cap\widetilde{Y_2}$ to $Y_1\cap Y_2$.
         Hence for all $i\in\set{1,2}$ the indicated maps in the commutative squares
         \begin{center} 
             \begin{tikzcd} [sep = 4em]
@@ -417,11 +426,11 @@ It remains to show that it also has descent.
         The proof will follow \cite[Theorem 1.2]{may1990weak}.
 
         We can assume $f$ to be an inclusion such that $f(X_i^°)=f(X)\cap Y_i^°$ for $i\in\set{1,2}$ by applying \cref{lem:replaceByEmbedding} and replacing it with $\widetilde{f}$.
-        The assumptions on $g$ together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homtopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
+        The assumptions on the map $g$ from \cref{lem:replaceByEmbedding} together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homtopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
         
         By the definition of a weak equivalence of pairs, it suffices to show that under the given assumptions the statement of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpyConst} holds for all $n\geq 0$.
     
-        So let $g\colon(J^n,\set{1}\times\partial I^n)\to(X,X_i)$ and $g\colon(I^{n+1},\set{1}\times I^n)\to(Y,Y_i)$ be given such that $e|_{J^n}=g$.
+        So let $g\colon(J^n,\set{1}\times\partial I^n)\to(X,X_i)$ and $e\colon(I^{n+1},\set{1}\times I^n)\to(Y,Y_i)$ be given such that $e|_{J^n}=g$.
         As $J^n\subset I^{n+1}$ are both compact metric spaces, we can find a Lebesgue number $\delta$ for the cover $Y_1^°,Y_2^°\subset Y$ and the map $e$.
         We pick a cubical subdivision $\mathcal{C}$ of $I^{n+1}$ such that the diameter of every cube $c\in\mathcal{C}$ is smaller then $\delta$.
         This ensures that for every cube $c\in\mathcal{C}$ there is a $i\in\set{1,2}$ such that $e(c)\subset Y_i^°$.
@@ -430,36 +439,38 @@ It remains to show that it also has descent.
 
         We identify $I^{n+1}=I\times I^n$.
         The cubical subdivision $\mathcal{C}$ gives a cubical subdivision $\mathcal{D}$ of $I^n$ and a partition of $I$ into subintervalls of equal length $I_r=[v_r,v_{r+1}]\subset I$ with $0=v_0<v_1<\ldots<v_s=1$.
-        We will construct the desired maps $G$ and $H$ on the spaces $I_r\times K$ where $K$ is a cell of the CW-structure induced by $\mathcal{D}$ on $I^n$.
-        These maps will be constructed such that for all cells $K$ and $r\in\set{0,\ldots,s-1}$
+        Let $\Gamma^m$ denote the collection of cells of the CW-structure on $I^n$ whose dimension is $m$ for $m\in\set{0,\ldots,n}$ and who are not contained in $\partial I^n$ and define $\Gamma^{-1}=\emptyset$.
+        
+        Then for $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n+1}$ let $L_r^m=\left([0,v_r]\times I^n\right)\cup J^n\cup\bigcup\limits_{K\in\Gamma^{m-1}}\left(I_r\times K\right)\subset I^{n+1}$.
+        We also note that $L_r^{n+1}=\left([0,v_{r+1}]\times I^n\right)\cup J^n=L_{r+1}^0$ and $L_s^{n+1}=I^{n+1}$.
+
+        We will use a nested induction argument, where the outer induction step extends maps given on $L_r^{n+1}$ to $L_{r+1}^{n+1}$ for $r\in\set{0\ldots,s-2}$ and for fixed $r\in\set{0,\ldots,s-1}$ the inner induction extends maps on $L_r^m$ for $m\in\set{0,\ldots,n}$ over all cells of the form $I_r\times K$ with $K\in\Gamma^m$, hence to $L_r^{m+1}$.
+        
+        We will construct the desired maps $G$ and $H$ such that for all cells $K\in\Gamma^m$ and $r\in\set{0,\ldots,s-1}$
         \begin{itemize}
             \item if $e(I_r\times K)\subset Y_j^°$ then $G(I_r\times K)\subset X_j$ and $H(I_r\times K\times I)\subset Y_j$ for the same $j\in\set{1,2}$
             \item if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ then $G(\set{v_{r+1}}\times K)\subset X_1\cap X_2$ and $H(\set{v_{r+1}}\times K\times I)\subset Y_1\cap Y_2$.
         \end{itemize}
         We will refer to these conditions as the \emph{patching conditions}.
-        Let $\Gamma^m$ denote the collection of cells of the CW-structure on $I^n$ whose dimension is $m$ for $m\in\set{0,\ldots,n}$ and whose intersection with $(I^n)^°$ is nonempty.
-        We will use a nested induction argument, where the outer induction runs through the intervalls $I_r$ with $r\in\set{0,\ldots,s-1}$ and for fixed $r$ the inner induction runs through $m\in\set{0,\ldots,n-1}$ over the collections $\Gamma^m$ to extend cells to $\Gamma^{m+1}$.
-
-        So for the induction step with given $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n-1}$, set $L_r^m=\left([0,v_r]\times I^n\right)\cup J^n\cup \bigcup\limits_{K\in\Gamma^m}\left(I_r\times K\right)\subset I^{n+1}$ for $m\geq 1$ and $L_r^0=\left([0,v_r]\times I^n\right)\cup J^n\subset I^{n+1}$ else.
+       
+        So for the induction step with given $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$.
         Then by the induction hypothesis we have maps $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ extending $g$ and the constant homotopy at $fg=e|_{J^n}$ respectively such that $H$ is a homotopy from $e|_{L_r^m}$ to $fG$ that also fulfill the patching conditions.
 
-        We now pick a $K\in\Gamma^{m+1}$ and proceed via a case distinction:
+        We now pick a $K\in\Gamma^m$ and proceed via a case distinction:
         First if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ and $e(I_r\times K)\subset Y_j^°$ is contained in exactly one of the $Y_j^°$, we have that $G$ and $H$ restrict to maps $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\to(X_j,X_1\cap X_2)$ and $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\times I\to(X_j,X_1\cap X_2)$ which can be identified with maps $g'\colon(J^m, \set{1}\times\partial{I^m})\to(X_j,X_1\cap X_2)$ and $h'\colon (J^m, \set{1}\times\partial{I^m})\times I\to(X_j,X_1\cap X_2)$ respectively.
         
         Together with $e|_{I_r\times K}\cong e'\colon(I^{m+1},\set{1}\times I^m)\to(Y_j,Y_1\cap Y_2)$ and the equivalence of pairs $f\colon(X_j,X_1\cap X_2)\to(Y_j,Y_1\cap Y_2)$ these fulfill the conditions of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpy}. 
-        So by \cref{prop:eqCharInjSurj} there exist extensions $G'$ and $H'$ which we can then identify with maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ fulfilling the desired properties.
+        So by \cref{prop:eqCharInjSurj} there exist extensions $G'_K$ and $H'_K$ which we can then identify with maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ fulfilling the desired properties.
 
         In the remaining cases either $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$ or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$.
-        We can pick a deformation retract $F\colon I_r\times K\times I\to I_r\times K$ of $I_r\times\partial K\cup\set{v_r}\times K$ by TODO %TODO
-        and set $G'=GF_1$ and $H'=eF*HF_1$ which considered as maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ respectively fullfill the desired properties.
+        We can pick a deformation retract $F\colon I_r\times K\times I\to I_r\times K$ of $I_r\times\partial K\cup\set{v_r}\times K$ by \cref{rmk:cwInclIsHCofib} and set $G'_K=GF_1$ and $H'_K=eF*HF_1$ which considered as maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ respectively fulfill the desired properties.
 
-        Now note that since we work ourselves upwards from the dimensions and keep the maps fixed on $J^n$, the constructed maps $G'$ and $H'$ are always compatible to the maps from the previous step.
-        Hence by doing the induction step for all $K\in\Gamma^{m+1}$ we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively.
-        We also note that $L_r^n=\left([0,v_{r+1}]\times I^n\right)\cup J^n$, thus $L_{s-1}^n=I^{n+1}$.
+        Now note that since we work ourselves upwards from the dimensions, the constructed extensions $G'_K$ and $H'_K$ are always compatible along the boundaries of $I_r\times K$ and thus we can glue them together to obtain extensions to $L_r^m\cup\bigcup\limits_{K\in\Gamma^m}I^r\times K=L_r^{m+1}$.
+        Hence we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively.
 
         It only remains to check that the final extensions $G$ and $H$ are maps of pairs $(I^{n+1},\set{1}\times I^n)\to(X,X_i)$ and $(I^{n+1},\set{1}\times I^n)\times I\to(Y,Y_i)$ respectively.
-        Let $K\in L_{s-1}^n$ and note that $\bigcup\limits_{K\in L_{s-1}^n}\set{1}\times K=\set{1}\times I^n$.
-        Since $e(\set{1}\times I^n)\subset Y_i$, we always have $e(I_{s-1}\times K)\subset Y_i^°$ or $e(\set{1}\times K)\subset Y_1\cap Y_2$ and both cases imply $G(\set{1}\times K)\subset X_i$ and $H(\set{1}\times K\times I)\subset X_i$.
+        Let $K\in\Gamma^n$ and note that $\bigcup\limits_{K\in\Gamma^n}\set{1}\times K=\set{1}\times I^n$.
+        Since $e(\set{1}\times I^n)\subset Y_i$, we always have $e(I_{s-1}\times K)\subset Y_i^°$ or $e(\set{1}\times K)\subset Y_1\cap Y_2$ and both cases imply $G(\set{1}\times K)\subset X_i$ and $H(\set{1}\times K\times I)\subset X_i$ by the patching conditions.
         Thus we have proven the proposition.
     \end{proof}
 \end{prop}
@@ -557,7 +568,7 @@ It remains to show that it also has descent.
     \end{proof}
 \end{corollary}
 \begin{remark}
-    Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is called ,,Locality of Quasifibrations'':
+    Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is called ``Locality of Quasifibrations'':
     
     Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover such that for every pair of indces $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
     Then if $f^{-1}{U_i}\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
@@ -761,9 +772,9 @@ We begin with the following reduction step.
         \begin{center}
             \begin{tikzcd} [sep = .75 cm]
                 \overline{A} \arrow [>->, dr, "h"] \arrow [>->, rr, "h"] \arrow [->>,dd] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow[dd] \\
-                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start,  "h"] & & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow [dd] & \\
+                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start,  "h"] & &[-2.5em] \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow [dd] & \\
                 A \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] & & \M(f_{AB}) \arrow [>->, dr, "h"] \\
-                & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \M(f_{AC})\cup_A\M(f_{AB}) &
+                & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & &[-2.5em] \M(f_{AC})\cup_A\M(f_{AB}) &
             \end{tikzcd}
         \end{center}
         where the indicated maps are h-cofibrations as they are either inclusions into the mapping cylinder or pushouts of such.
@@ -775,7 +786,7 @@ We begin with the following reduction step.
         We take $U_1=\M(f_{AC})\cup_A\M(f_{AB})\setminus{B}$ and $U_2=\M(f_{AC})\cup_A\M(f_{AB})\setminus{C}$. 
 
         We identify $U_1\cap U_2=A\times (0,1]\cup_{A\times\set{1}} A\times(0,1]\cong A\times (0,2)$ via the ``obvious'' homeomorphism. %TODO obvious homeo?
-        Then $p^{-1}(U_1)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{B}}$, $p^{-1}(U_2)=\M(f_{\overline{A}\overline{B}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{C}}$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$ (identified with $\overline{A}\times (0,1]\cup_{\overline{A}\times\set{1}} \overline{A}\times(0,1]$ as before).
+        Then $p^{-1}(U_1)=\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{B}}$, $p^{-1}(U_2)=\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{C}}$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$ (identified with $\overline{A}\times (0,1]\cup_{\overline{A}\times\set{1}} \overline{A}\times(0,1]$ as before).
         It follows $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -957,6 +968,6 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
     The \inftycat/ of spaces $\spaces$ is an \inftytop/.
     \begin{proof}
         We know $\spaces$ is locally presentable from \cref{cor:spacesIsLocPres}.
-        \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} prove that $\spaces$ has universal colimits, and \cref{lem:topDescentPo} together with \cref{cor:topDescentCoproduct} then prove that it has descent.
+        \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} prove that $\spaces$ has universal colimits, and \cref{prop:topDescentPo} together with \cref{cor:topDescentCoproduct} then prove that it has descent.
     \end{proof}
 \end{corollary}

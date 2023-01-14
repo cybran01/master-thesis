@@ -1,4 +1,5 @@
 In this section we will give a proof on the May Recognition Theorem in the abstract setting of an \inftytop/.
+The ideas presented here are due to \cite{segal_cat_and_cohom}.
 This theorem allows one to recognize which pointed spaces are (equivalent to) loop spaces.
 We will see that descent will play a major role in this.
 \begin{definition}[(Augmented) Simplicial Objects] %TODO maybe define for all finite totally ordered sets
@@ -32,7 +33,7 @@ We will see that descent will play a major role in this.
     Let $C$ be an \inftycat/ and let $U$ be a groupoid object.
     If $U_0\cong *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
 \end{definition}
-\begin{definition}[\Cech/ Nerve]
+\begin{definition}[\Cech/ Nerve] %TODO maybe replace functor C with \v{C}
     Let $C$ be an \inftycat/ with small limits and let $\Delta^1\subset\N(\Delta_+)^{\op}$ be the inclusion corresponding to the full subcategory $[0]\to[-1]$.
     
     Then by \cref{prop:exKanExt} there exists a functor $C\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
@@ -52,8 +53,8 @@ We will see that descent will play a major role in this.
     \end{center}
     where
     \begin{itemize}
-        \item the unnamed arrows going from left to right are the maps induced by the face maps and are projections 
-        \item the unnamed arrows going from right to left are the maps induced by the degeneracy maps and are diagonal maps. 
+        \item the arrows going from left to right are the maps induced by the face maps and are projections 
+        \item the arrows going from right to left are the maps induced by the degeneracy maps and are diagonal maps. 
     \end{itemize}
     Here we have only shown a selection of the $1$-skeleton of $C(f)$.
     The remaining maps of $\Delta_+$ are however compositions of the shown face and degeneracy maps, which determines the $1$-skeleton; for all higher simplices we make choices via the universal property of the iterated pullbacks, which all yield equivalent objects $C(f)$. %TODO confirm
@@ -120,7 +121,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
             \begin{tikzcd} [sep = 4em]
                 \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"\overline{U}(f)"] & U_n \arrow[d, "U(f)"] \\
                 \overline{U}_m=U_{m+1} \arrow[r] \arrow[d] & U_m \arrow[d] \\
-                U_{\set{m,m+1}} \arrow[r] & U_{\set{m}} \\
+                U_{\set{m,m+1}} \arrow[r] & U_{\set{m}}
             \end{tikzcd}
         \end{center}
         where the horizontal maps are given by the inclusions $[n]\xhookrightarrow{}[n+1]$, is commutative. 
@@ -173,7 +174,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     We call $C_*$ the \emph{\inftycat/ of pointed objects} and we call on object $X$ in $C_*$ a \emph{pointed object in $C$}.
 \end{definition}
 \begin{remark}
-    Since terminal objects are essentially unique, choosing different terminal objects induces equivalent model of \inftycats/ of pointed objects.
+    Since terminal objects are essentially unique, choosing different terminal objects induces equivalent models of \inftycats/ of pointed objects.
 \end{remark}
 \begin{definition}
     Let $C$ be an \inftycat/ with small limits. 
@@ -182,7 +183,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
 \end{definition}
 \begin{remark}
     We will later introduce notions of higher connectedness. 
-    It follows from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}.
+    It follows from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}, hence we call these objects connected.
 \end{remark}
 \begin{corollary}[May Recognition Theorem]\label{prop:mayRecognitionTheoremGroup}
     Let $C$ be an \inftytop/. 

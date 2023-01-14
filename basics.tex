@@ -48,6 +48,7 @@ We will not give proofs for any statements in this section; we will however poin
     \end{equation*}
     We note that due to the functoriality of the right side, these extend to functors $-\otimes -:C\times\sSet\to C$ and $-^-:C\times\sSet^{\op}\to C$.
 \end{definition}
+%TODO perhapss define RLP/LLP
 \begin{definition}[Weak Factorization System]
     Let $C$ be a category and let $\Map(C)$ denote the class of all maps of $C$.
     Let $L,R\subset\Map(C)$ be subclasses.
@@ -73,9 +74,12 @@ We will not give proofs for any statements in this section; we will however poin
 We will need the standard model structure on $\sSet$, the Quillen model structure. 
 Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
 \begin{prop}[Quillen Model Structure on $\sSet$]
-    There is a unique model structure on $\sSet$ where the cofibrations are the monomorphisms and the fibrant objects are Kan-complexes.
-
-    The fibrations of this model structure are the maps having the right lifting property against the maps $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n}$.
+    There is a unique model structure on $\sSet$ where 
+    \begin{itemize}
+        \item the cofibrations are the maps having the left lifting property against the maps $\set{\partial\Delta^n\xhookrightarrow{}\Delta^n\mid n\in\Nat}$ which are exactly the monomorphisms
+        \item the fibrations are the maps having the right lifting property against the maps $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n, n\in\Nat}$.
+    \end{itemize}
+    The fibrant objects are the \emph{Kan-complexes}.
     The weak equivalences are the maps which are weak equivalences in $\Top$ after geometric realization.
 
     We call this model structure the \emph{Quillen Model Structure on $\sSet$}.
@@ -219,7 +223,7 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
 \end{definition}
 \begin{remark}
     There is also a notion of Kan-extensions along general functors. 
-    We will not need this, but it can be found in e.g. \cite[\S 7.3.1]{kerodon}.
+    We will not need this, but it can be found in \cite[\S 7.3.1]{kerodon}.
 \end{remark}
 \begin{prop}\label{prop:exKanExt}
     Let $C$ be an \inftycat/, $C_0\subset C$ a full subcategory and $F\colon C_0\to D$ a functor between \inftycats/.
