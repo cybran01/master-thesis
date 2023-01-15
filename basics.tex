@@ -194,6 +194,12 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
     \end{reference}
 \end{lemma}
 %TODO define (co)limits and prove/state that they are computed pointwise in Functorcats HTT Proposition 5.1.2.2., HTT Corollary 5.1.2.3.
+\begin{definition}[Join]
+    For simplicial sets $X,Y\in\sSet$ let $X\star Y$ denote the \emph{join} which on simplicies is given by $(X\star Y)_n=X_n\cup Y_n\cup\bigcup\limits_{i+j=n-1}X_i\times X_j$.
+    The join is functorial in both arguments.
+    
+    For a simplicial set $X$, we further define $X^{\lhd}=\Delta^0\star X$ and $X^{\rhd}=X\star\Delta^0$.
+\end{definition}
 \begin{construction}[(Co)Slice Contraction]%TODO kerodon 4.3.5.12.
     Let $f\colon X\to Y$ be a morphism of simplicial sets.
     Then let $c\colon Y_{/f}\star X\to Y$ be defined as follows:

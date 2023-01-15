@@ -1,4 +1,4 @@
-Before giving a proper definition of universality and descent, we need to introduce another more subtle property that we want an \inftytop/ to fulfill.
+Before giving a proper definition of universality and descent, we need to introduce local presentability for \inftycats/.
 Since this we be the least interesting for our purposes, we will give a very pragmatic introduction.
 \begin{definition}\label{def:locallyPresentable}
     An \inftycat/ $C$ is \emph{locally presentable} if there exists a combinatorial simplicial model category $A$ and an equivalence of \inftycats/ $\Nhc(A^°)\to C$.
@@ -15,13 +15,21 @@ Since this we be the least interesting for our purposes, we will give a very pra
         This follows directly by \cref{prop:homotopyHypothesis} and \cref{cor:htpyCoherentNerveIsLoc}.
     \end{proof}
 \end{corollary}
+Note that $\Top$ as an ordinary category is not locally presentable.
 An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in \cite[Theorem 5.5.1.1 and Proposition A.3.7.6]{HTT}.
 
 Next we introduce cartesian transformations which allow us to encode universality and descent in a concise manner.
 \begin{definition}[Cartesian Transformation]
     Let $C$ be an \inftycat/ and let $K$ be a simplicial set.
     Let $q,p\in\Fun(K,C)_0$ and let $\alpha\in\Fun(K,C)_1$ be a natural transformation $\alpha\colon p\to q$.
-    Then we say $\alpha$ is \emph{cartesian} if for all maps $u\colon\Delta^1\to K$ the induced map $\Delta^1\times\Delta^1\xrightarrow{\left(u,\id_{\Delta^1}\right)}K\times\Delta^1\xrightarrow{\alpha}C$ is a pullback square. %TODO add comm sq
+    Then we say $\alpha$ is \emph{cartesian} if for all maps $u\colon\Delta^1\to K$ the induced map $\Delta^1\times\Delta^1\xrightarrow{\left(u,\id_{\Delta^1}\right)}K\times\Delta^1\xrightarrow{\alpha}C$ which we can represent by 
+    \begin{center}
+        \begin{tikzcd} [sep= 4em]
+            p(x) \arrow[r, "\alpha(x)"] \arrow [d, "p(f)"'] & q(x) \arrow [d, "q(f)"]\\
+            p(y) \arrow[r, "\alpha(y)"] & q(y)
+        \end{tikzcd}
+    \end{center}
+    is a pullback square. 
 \end{definition}
 \begin{definition}[Universality]
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a simplicial set.

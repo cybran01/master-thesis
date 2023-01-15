@@ -177,7 +177,7 @@ It remains to show that it also has descent.
     This is because all of the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are h-cofibrations. %TODO why
     
     This is due to the fact that $S^{n-1}\hookrightarrow D^n$ is a CW-pair, and for any CW-pair $A\hookrightarrow X$ the map $\set{0}\times A\cup I\times X\hookrightarrow I\times X$ is a deformation retract and thus has the homotopy extension property (see \cite[Proposition 0.16]{hatcher2002algebraic}).
-    Since $A\hookrightarrow X$ is a closed embedding, $A\hookrightarrow X$ is a h-cofibration.
+    Since $A\hookrightarrow X$ is closed, $A\hookrightarrow X$ is a h-cofibration.
 \end{remark}
 \begin{definition}
     Let $H_1,H_2\colon X\times I\to Y$ be homotopies such that $(H_1)_1=(H_2)_0$.
@@ -359,6 +359,8 @@ It remains to show that it also has descent.
         
         Using the relative homotopy extension property on $(I^{n+2};J^n\times I\cup I^{n+1}\times\set{0}\cup I^{n+1}\times\set{1},\set{1}\times I^{n+1})$, we extend the homotopy given by the constant homotopy at $e$ on $I^{n+1}\times\set{0}\times I$, the constant homotopy at $fG$ on $I^{n+1}\times\set{1}\times I$ and $M$ on $J^n\times I\times I$ to a homotopy $\widetilde{M}\colon(I^{n+2},\set{1}\times I^{n+1})\times I\to(Y,B)$ with $\widetilde{M}_0=(K*L)*\overline{fJ}$.
         Now setting $H=\widetilde{M_1}$ gives the desired homotopy from $e$ to $fG$ that is the constant homotopy at $fg$ on $J^n\times I$.
+
+        Since \ref{itm:liftingMapsAndHtpy} implies \ref{itm:liftingMapsAndHtpyConst} trivially we have proven the proposition. %TODO maybe change order of implicationsin proof to be more clear what the equivalences proven are
     \end{proof}
 \end{prop}
 \begin{definition}[Mapping Cylinder]
@@ -467,6 +469,7 @@ It remains to show that it also has descent.
 
         Now note that since we work ourselves upwards from the dimensions, the constructed extensions $G'_K$ and $H'_K$ are always compatible along the boundaries of $I_r\times K$ and thus we can glue them together to obtain extensions to $L_r^m\cup\bigcup\limits_{K\in\Gamma^m}I^r\times K=L_r^{m+1}$.
         Hence we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively.
+        (For the latter one also needs that $L_r^{m+1}\times I\cong\left(L_r^m\times I\right)\cup\bigcup\limits_{K\in\Gamma^m}\left(I^r\times K\times I\right)$, which follows from that fact that since $I$ is locally compact, the functor $-\times I$ preserves colimits).
 
         It only remains to check that the final extensions $G$ and $H$ are maps of pairs $(I^{n+1},\set{1}\times I^n)\to(X,X_i)$ and $(I^{n+1},\set{1}\times I^n)\times I\to(Y,Y_i)$ respectively.
         Let $K\in\Gamma^n$ and note that $\bigcup\limits_{K\in\Gamma^n}\set{1}\times K=\set{1}\times I^n$.
