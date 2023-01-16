@@ -173,6 +173,7 @@ It remains to show that it also has descent.
     \end{proof}
 \end{lemma}
 \begin{remark}\label{rmk:cwInclIsHCofib}
+    Let $J^n=\set{0}\times I^n\cup I\times\partial I^n\subset\partial I^{n+1}\subset I^{n+1}$. %TODO maybe put somewhere better
     The triads $(I^{n+1};J^n,\set{1}\times I^n)$ fulfills the requirements of \cref{lem:rHEP} for all $n\geq 0$.
     This is because all of the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are h-cofibrations. %TODO why
     
@@ -263,9 +264,8 @@ It remains to show that it also has descent.
     \end{proof}
 \end{lemma}
 \begin{definition}
-    Let $J^n=\set{0}\times I^n\cup I\times\partial I^n\subset\partial I^{n+1}\subset I^{n+1}$.
-
     For a pair of spaces $(X,A)$, $a\in A$  and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
+    %TODO add alternative spaces 
 \end{definition}
 \begin{lemma}\label{lem:compressionVariation}
     Let $n\geq 1$, $e\colon(I^{n+1},\set{1}\times I^n)\to (X,A)$, $*=(1,0,\ldots,0)\in\set{1}\times\partial I^n$ and $a=e(*)$. 
@@ -276,17 +276,17 @@ It remains to show that it also has descent.
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 J^n\times\partial I\cup\partial J^n\times I \arrow [r] \arrow [>->, d, "h"] & I^{n+1} \arrow [->>, d, "h","\simeq"']\\
-                J^n\times I \arrow[r,"\simeq"] & *
+                J^n\times I \arrow[ur, dashed, "\exists H"] \arrow[r,"\simeq"] & *
             \end{tikzcd}
         \end{center}
         where the top horizontal map on
         \begin{itemize}
             \item $J^n\times\set{0}$ is the inclusion $J^n\hookrightarrow I^{n+1}$
             \item $J^n\times\set{1}$ is the inclusion $J^n\cong\set{1}\times I^n\hookrightarrow I^{n+1}$
-            \item on $\partial J^n \times I$ is the map $\partial J^n \times I\to\partial J^n\cong \set{1}\times\partial I^n \hookrightarrow I^{n+1}$
+            \item on $\partial J^n \times I$ is the map $\partial J^n \times I=\set{1}\times\partial I^n\times I\to\set{1}\times\partial I^n \hookrightarrow I^{n+1}$
         \end{itemize}
         admits a lift $H$. 
-        This lift is a homotopy $H\colon(J^n,\set{1}\times \partial I^n,*)\times I\to (X,A,a)$ from $e|_{J^n}$ to some map $H_1=f$ with $\im f\subset A$ and is constant on $\partial J^n\times I$.
+        As $H$ is constant on $\partial J^n\times I$, this lift gives a homotopy $\widetilde{H}=eH\colon(J^n,\set{1}\times \partial I^n,*)\times I\to (X,A,a)$  that is constant on $\partial J^n\times I$ from $e|_{J^n}$ to some map $\widetilde{H}_1=f$ with $\im f\subset A$.
         Since $\im f\subset A$ and $J^n$ is contractible with respect to $*$, $f$ represents $\const_a$ which proves the proposition. 
     \end{proof}
 \end{lemma}
@@ -455,8 +455,7 @@ It remains to show that it also has descent.
         \end{itemize}
         We will refer to these conditions as the \emph{patching conditions}.
        
-        So for the induction step with given $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$.
-        Then by the induction hypothesis we have maps $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ extending $g$ and the constant homotopy at $fg=e|_{J^n}$ respectively such that $H$ is a homotopy from $e|_{L_r^m}$ to $fG$ that also fulfill the patching conditions.
+        So for the induction step with given $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$, by the induction hypothesis we have maps $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ extending $g$ and the constant homotopy at $fg=e|_{J^n}$ respectively such that $H$ is a homotopy from $e|_{L_r^m}$ to $fG$ that also fulfill the patching conditions.
 
         We now pick a $K\in\Gamma^m$ and proceed via a case distinction:
         First if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ and $e(I_r\times K)\subset Y_j^°$ is contained in exactly one of the $Y_j^°$, we have that $G$ and $H$ restrict to maps $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\to(X_j,X_1\cap X_2)$ and $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\times I\to(X_j,X_1\cap X_2)$ which can be identified with maps $g'\colon(J^m, \set{1}\times\partial{I^m})\to(X_j,X_1\cap X_2)$ and $h'\colon (J^m, \set{1}\times\partial{I^m})\times I\to(X_j,X_1\cap X_2)$ respectively.
@@ -469,7 +468,7 @@ It remains to show that it also has descent.
 
         Now note that since we work ourselves upwards from the dimensions, the constructed extensions $G'_K$ and $H'_K$ are always compatible along the boundaries of $I_r\times K$ and thus we can glue them together to obtain extensions to $L_r^m\cup\bigcup\limits_{K\in\Gamma^m}I^r\times K=L_r^{m+1}$.
         Hence we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively.
-        (For the latter one also needs that $L_r^{m+1}\times I\cong\left(L_r^m\times I\right)\cup\bigcup\limits_{K\in\Gamma^m}\left(I^r\times K\times I\right)$, which follows from that fact that since $I$ is locally compact, the functor $-\times I$ preserves colimits).
+        (For the latter one also needs that $L_r^{m+1}\times I\cong\left(L_r^m\times I\right)\cup\bigcup\limits_{K\in\Gamma^m}\left(I^r\times K\times I\right)$, which follows from that fact that since all spaces here are hausdorff and compact, continuous bijections are already homeomorphisms).
 
         It only remains to check that the final extensions $G$ and $H$ are maps of pairs $(I^{n+1},\set{1}\times I^n)\to(X,X_i)$ and $(I^{n+1},\set{1}\times I^n)\times I\to(Y,Y_i)$ respectively.
         Let $K\in\Gamma^n$ and note that $\bigcup\limits_{K\in\Gamma^n}\set{1}\times K=\set{1}\times I^n$.
@@ -490,7 +489,7 @@ It remains to show that it also has descent.
             \end{tikzcd}
         \end{center}
         where bottom and top square homotopy pushouts and left and back face are homotopy pullbacks.
-        Then all side faced of the induced cube 
+        Then all side faces of the induced cube 
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A}\times\left(0,2\right) \arrow [dr, hook] \arrow [rr, hook] \arrow [dd] & & \M^{[0,2)}(f_{\overline{A}\overline{B}}) \arrow [dr, hook] \arrow[dd] \\
@@ -574,7 +573,7 @@ It remains to show that it also has descent.
     Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is called ``Locality of Quasifibrations'':
     
     Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover such that for every pair of indces $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
-    Then if $f^{-1}{U_i}\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
+    Then if $f^{-1}(U_i)\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
 
     One can conclude this by using that the homotopy colimit of such a cover is the space itself (see \cite[Proposition 4.6 (c)]{hypercovers}):
     Because all squares
@@ -694,9 +693,9 @@ We begin with the following reduction step.
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A} \arrow[>->,dr, ""] \arrow [rr] \arrow [->>,dd,""] & & \overline{B} \arrow [>->,dr,""] \arrow[->>]{dd}[near start]{} \\
-                & \overline{C} \arrow [rr, crossing over] & & \overline{C}\cup_{\overline{A}}\overline{B} \arrow [dd] & \\
+                & \overline{C} \arrow [rr, crossing over] & &[-1em] \overline{C}\cup_{\overline{A}}\overline{B} \arrow [dd] & \\
                 A \arrow[>->,dr, ""] \arrow [rr] & & B \arrow [>->,dr,""] \\
-                & \hat{C} \arrow[->>, from=uu, crossing over]{}[near start]{} \arrow [rr] & & \hat{C}\cup_A B &
+                & \hat{C} \arrow[->>, from=uu, crossing over]{}[near start]{} \arrow [rr] & &[-1em] \hat{C}\cup_A B &
             \end{tikzcd}
         \end{center}
         by taking pushouts.
@@ -708,12 +707,12 @@ We begin with the following reduction step.
     Let 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X \arrow[d,->>] \arrow[r, "f"] & Y \arrow[d,->>] \\
+            X \arrow[d, "p"] \arrow[r, "f"] & Y \arrow[d, "q"] \\
             A \arrow[r, "g"] & B \\
         \end{tikzcd}
     \end{center}
-    be a homotopy pullback (but not necessarily a pullback).
-    Then the induced map $\M(f)\to\M(g)$ between mapping cylinders is a quasifibration.
+    be a homotopy pullback such that $p$ and $q$ are quasifibrations.
+    Then the induced map $\M(f)\to\M(g)$ between mapping cylinders is also a quasifibration.
     The same holds true for closed and open mapping cylinders.
     \begin{proof}
         For convenience we will only prove the case $I=[0,1]$ since the other cases follow by the analogous argument.
@@ -724,26 +723,26 @@ We begin with the following reduction step.
         In the first case, we have a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X \arrow[r, "{x\mapsto (x,\hat{t})}"] \arrow[->>,d] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[->>,d] \\
-                A \arrow[r, "{a\mapsto (a,\hat{t})}"] & \M(g) \arrow[r, "\sim"] & B \\
+                X \arrow[r, hook, "{x\mapsto (x,\hat{t})}"] \arrow[d, "p"] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[d, "q"] \\
+                A \arrow[r, hook, "{a\mapsto (a,\hat{t})}"] & \M(g) \arrow[r, "\sim"] & B \\
             \end{tikzcd}
         \end{center}
         where the outer square is the starting square and in particular homotopy pullback, so by the pasting law the left square is homotopy pullback as well.
         Since the left square is also an ordinary pullback, in the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & X \arrow[r, "{x\mapsto (x,\hat{t})}"] \arrow[->>,d] & \M(f) \arrow[d] \\
-                * \arrow[r, "\hat{b}"] & A \arrow[r, "{a\mapsto (a,\hat{t})}"] & \M(g) \\
+                F \arrow[r] \arrow[d] & X \arrow[r, hook, "{x\mapsto (x,\hat{t})}"] \arrow[d, "p"] & \M(f) \arrow[d] \\
+                * \arrow[r, "\hat{b}"] & A \arrow[r, hook, "{a\mapsto (a,\hat{t})}"] & \M(g) \\
             \end{tikzcd}
         \end{center}
-        the left square is homotopy pullback since its the pullback along a fibration.
+        the left square is homotopy pullback since its the pullback of a quasifibration.
         Thus the outer square is a homotopy pullback which proves that the fiber $F$ is a homotopy fiber.
 
         In the second case we have the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & Y \arrow[r, "\sim"] \arrow[->>,d] & \M(f) \arrow[d] \\
-                * \arrow[r, "\hat{b}"] & B \arrow[r, "\sim"] & \M(g) \\
+                F \arrow[r] \arrow[d] & Y \arrow[r, hook, "\sim"] \arrow[d, "q"] & \M(f) \arrow[d] \\
+                * \arrow[r, "\hat{b}"] & B \arrow[r, hook, "\sim"] & \M(g) \\
             \end{tikzcd}
         \end{center}
         where the indicated maps are weak equivalences since they are right inverse to the maps $\M(f)\to Y$ and $\M(g)\to B$ respectively, which are weak equivalences themselves.
@@ -785,11 +784,11 @@ We begin with the following reduction step.
         
         Next we prove that the map $p\colon\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\to\M(f_{AC})\cup_A\M(f_{AB})$ is a quasifibration.
         By \cref{cor:locOfQuasifib} we only need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
+        We note that $\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\cong\M^{[0,2)}(f_{\overline{A}\overline{C}})\cup_{\overline{A}\times(0,2)}\M^{[0,2)}(f_{\overline{A}\overline{B}})$ and $\M(f_{AC})\cup_A\M(f_{AB})\cong\M^{[0,2)}(f_{AC})\cup_{A\times (0,2)}\M^{[0,2)}(f_{AB})$.
 
-        We take $U_1=\M(f_{AC})\cup_A\M(f_{AB})\setminus{B}$ and $U_2=\M(f_{AC})\cup_A\M(f_{AB})\setminus{C}$. 
+        We take $U_1=\M^{[0,2)}(f_{AC})$ and $U_2=\M^{[0,2)}(f_{AB})$. 
 
-        We identify $U_1\cap U_2=A\times (0,1]\cup_{A\times\set{1}} A\times(0,1]\cong A\times (0,2)$ via the ``obvious'' homeomorphism. %TODO obvious homeo?
-        Then $p^{-1}(U_1)=\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{B}}$, $p^{-1}(U_2)=\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\setminus{\overline{C}}$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$ (identified with $\overline{A}\times (0,1]\cup_{\overline{A}\times\set{1}} \overline{A}\times(0,1]$ as before).
+        Then $p^{-1}(U_1)=\M^{[0,2)}(f_{\overline{A}\overline{C}})$, $p^{-1}(U_2)=\M^{[0,2)}(f_{\overline{A}\overline{B}})$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$.
         It follows $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -949,6 +948,10 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         But since $P_{kj}\simeq\emptyset$ for $j\neq k$ and $P_{kk}\simeq X_k$ we obtain $\bigcup\limits_{j\in I}P_{kj}\simeq X_k$ and this proves the proposition.
     \end{proof}
 \end{corollary}
+\begin{remark}
+    One can also conclude disjointness of binary homotopy coproducts from descent for homotopy coproducts.
+    Hence a model category with universal homotopy coproducts has descent for homotopy coproducts if and only if it has disjoint binary homotopy coproducts.
+\end{remark}
 \begin{corollary}\label{cor:topDescentCoproduct}
     The model category $\Top$ has descent for homotopy coproducts.
     \begin{proof}

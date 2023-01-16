@@ -22,26 +22,26 @@ Next we introduce cartesian transformations which allow us to encode universalit
 \begin{definition}[Cartesian Transformation]
     Let $C$ be an \inftycat/ and let $K$ be a simplicial set.
     Let $q,p\in\Fun(K,C)_0$ and let $\alpha\in\Fun(K,C)_1$ be a natural transformation $\alpha\colon p\to q$.
-    Then we say $\alpha$ is \emph{cartesian} if for all maps $u\colon\Delta^1\to K$ the induced map $\Delta^1\times\Delta^1\xrightarrow{\left(u,\id_{\Delta^1}\right)}K\times\Delta^1\xrightarrow{\alpha}C$ which we can represent by 
+    Then we say $\alpha$ is \emph{cartesian} if for all maps $u\colon\Delta^1\to K$ the square 
     \begin{center}
         \begin{tikzcd} [sep= 4em]
             p(x) \arrow[r, "\alpha(x)"] \arrow [d, "p(f)"'] & q(x) \arrow [d, "q(f)"]\\
             p(y) \arrow[r, "\alpha(y)"] & q(y)
         \end{tikzcd}
     \end{center}
-    is a pullback square. 
+    represented by the map $\Delta^1\times\Delta^1\xrightarrow{\left(u,\id_{\Delta^1}\right)}K\times\Delta^1\xrightarrow{\alpha}C$ is a pullback square. 
 \end{definition}
 \begin{definition}[Universality]
-    Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a simplicial set.
+    Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set.
     We say that \emph{$C$ has $K$-shaped universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is a colimit cone.
     
     We say that \emph{$C$ has universal colimits} if $C$ has $K$-shaped universal colimits for every small simplicial set $K$.
 \end{definition}
 \begin{definition}[Descent]
-    Let $C$ be an \inftycat/ that admits small colimits and pullbacks.
+    Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set..
     We say that \emph{$C$ has $K$-shaped descent} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is cartesian.
     
-    We say that \emph{$C$ has desent} if $C$ has $K$-shaped descent for every small simplicial set $K$.
+    We say that \emph{$C$ has descent} if $C$ has $K$-shaped descent for every small simplicial set $K$.
 \end{definition}
 \begin{remark}
     We want to describe universality and descent explicitly for pushouts ($\Lambda^2_0$-shaped diagrams), because these will be important cases as \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} will show.
@@ -119,9 +119,9 @@ We will require the following proposition for the proof.
                 (m-1-2) edge (m-2-2);
             \end{tikzpicture}\;.
         \end{center}
-        Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$ which are cartesian. %TODO how? (where does map to cone come from?)
+        Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$ which are cartesian by the pasting law. %TODO how? (where does map to cone come from?)
 
-        By the pasting law and the induction hypothesis we thus have that $p_0$ and $p_1$ are colimit cones.
+        By the induction hypothesis we thus have that $p_0$ and $p_1$ are colimit cones.
 
         Since $\Delta^{n+1}$ has a terminal object, colimits over $\Delta^{n+1}$ can be computed by evaluating the terminal object.
         Let the family $(x_s)_{s\in S}$ be the images of the terminal objects of the components in $X_2=\bigcup\limits_{s\in S} \Delta^{n+1}$ under the map $X_2\to K$.
@@ -162,7 +162,7 @@ We will require the following proposition for the proof.
             \end{tikzpicture}
         \end{center}
         is a pushout square.
-        Furthermore the cube induced by $\alpha$ and the $\alpha_i$
+        Furthermore the natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd},C\right)_1$ induced by $\alpha$ and the $\alpha_i$ which we represent by a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 p_0(\infty) \arrow [dr] \arrow [rr] \arrow [dd] & & p_1(\infty) \arrow [dr] \arrow [dd] \\
@@ -171,16 +171,16 @@ We will require the following proposition for the proof.
                 & q_2(\infty) \arrow [from=uu, crossing over] \arrow [rr] & & q(\infty) &
             \end{tikzcd}
         \end{center}
-        which determines a natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd},C\right)_1$ is cartesian by the pasting law.
+        is cartesian by the pasting law.
         By universality for pushouts (since the bottom square is pushout) we thus have that the top square is also a pushout.
-        Again by \cref{prop:colimitDecompositionPushouts} it follows that $p(\infty)$ is a colimit cone.
+        Again by \cref{prop:colimitDecompositionPushouts} it follows that $p$ is a colimit cone.
 
         It now remains to show that statement for general $K$.
         Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category via the ordering $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (with all higher simplices degenerate).
         It can be shown that the inclusion $L\subset\N(\Nat)$ is a weak categorical equivalence. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
 
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation, let $q$ be a colimit cone and let $\left(K^n\right)_{n\in\Nat}$ denote the skeletal filtration of $K$.
-        We can compute colimits of any diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex is the colimit of the skeleton of corresponding degree and all higher simplicies are given by chains of the canonical maps. 
+        We can compute colimits of any diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex $n\in\Nat$ is the colimit of $K^n\to C$ and all higher simplicies are given by chains of the canonical maps. 
 
         Since $L\subset\N(\Nat)$ is a weak categorical equivalence (which preserve and reflect (co)limits), we can also compute the colimit of the induced diagram $L\to C$. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
 
@@ -200,9 +200,9 @@ We will require the following proposition for the proof.
                 (m-1-2) edge (m-2-2);
             \end{tikzpicture}
         \end{center}
-        and thus we get a cartesian natural transformation $\beta\colon F_p\to F_q\in\Fun(L^{\rhd},C)_1$.
+        and thus we get a cartesian natural transformation $\gamma\colon F_p\to F_q\in\Fun(L^{\rhd},C)_1$.
         Since $L$ is $1$-dimensional, $F_p$ is a colimit cone by universality for finite dimensional diagrams.
-        By universality for finite dimensional $K$ we also have that for every $n\in\Nat$, $F_p(n)$ is the colimit of the $p|_{K^n}$.
+        By universality for finite dimensional $K$ we also have that $F_p(n)$ is the colimit of $p|_{K^n}$ for every $n\in\Nat$.
         This proves that $p$ is a colimit cone and thus the proposition.
     \end{proof}
 \end{lemma}
@@ -328,8 +328,8 @@ We will require the following proposition for the proof.
                 (m-1-2) edge (m-2-2);
             \end{tikzpicture}
         \end{center}
-        is a pullback, so the transformation $\beta\colon F_p\to F_q$ induced by $\alpha$ is cartesian when restricted to $L$.
-        Since $L$ is $1$-dimensional, again from finite dimensional descent we have that $\beta$ is cartesian.
+        is a pullback, so the transformation $\gamma\colon F_p\to F_q$ induced by $\alpha$ is cartesian when restricted to $L$.
+        Since $L$ is $1$-dimensional, again from finite dimensional descent we have that $\gamma$ is cartesian.
         This shows that for all $n\in\Nat$ the square
         \begin{center}
             \begin{tikzpicture}
