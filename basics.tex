@@ -1,5 +1,5 @@
-In this section we would like to fix some of the notation used throughout the rest of the text and remind the reader of some concepts which we will be important later on.
-We assume some familiarity with \inftycats/ and Kan-complexes, in particular familiarity with limits/colimits in \inftycats/.
+In this section we would like to fix the general notation on \inftycats/ and model categories used throughout the rest of the text and remind the reader of some concepts which we will be important later on.
+Some familiarity with \inftycats/ and Kan-complexes is assumed, in particular familiarity with limits/colimits in \inftycats/.
 We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts).
 We will not give proofs for any statements in this section; we will however point to the relevant literature.
 \begin{definition}[Simplex Category]
@@ -35,9 +35,9 @@ We will not give proofs for any statements in this section; we will however poin
 \end{lemma}
 \begin{definition}[Simplicial Category]
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
-    We let $\Cat_{\Delta}$ denote the \emph{category of small categories enriched over $\sSet$} with morphisms $\sSet$-enriched functors.
+    Let $\Cat_{\Delta}$ denote the \emph{category of small categories enriched over $\sSet$} with morphisms $\sSet$-enriched functors.
     
-    We call a simplicial category $C$ \emph{tensored} if if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
+    We call a simplicial category $C$ \emph{tensored} if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
     \begin{equation*}
         \Hom_C(X\otimes K,-)\cong\Hom_{\sSet}(K,\Hom_C(X,-))\;.
     \end{equation*}
@@ -46,7 +46,7 @@ We will not give proofs for any statements in this section; we will however poin
     \begin{equation*}
         \Hom_C(-,Y^K)\cong\Hom_{\sSet}(K,\Hom_C(-,Y))\;.
     \end{equation*}
-    We note that due to the functoriality of the right side, these extend to functors $-\otimes -:C\times\sSet\to C$ and $-^-:C\times\sSet^{\op}\to C$.
+    Note that due to the functoriality of the right side, these extend to functors $-\otimes -:C\times\sSet\to C$ and $-^-:C\times\sSet^{\op}\to C$.
 \end{definition}
 %TODO perhapss define RLP/LLP
 \begin{definition}[Weak Factorization System]
@@ -116,7 +116,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
                 (I,J)&\mapsto I\cup J\;.
         \end{align*}
     \end{itemize}
-    For a morphism $[n]\to[m]\in\Delta$ we define
+    Given a morphism $[n]\to[m]\in\Delta$ we define
     \begin{equation*}
         \C[f]\colon\C[n]\to C[m]
     \end{equation*}
@@ -132,9 +132,10 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
     so we obtain a functor $\C[-]\colon\Delta\to\Cat_{\Delta}$.
 \end{construction}
 \begin{definition}[Homotopy Coherent Nerve]
-    For a simplicial category $A$ we define the \emph{simplicial nerve (or homotopy coherent nerve) $\Nhc(A)$ of $A$} as $\Nhc(A)=\Hom_{\Cat_{\Delta}}(\C[-],A)$ and thus we obtain a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
+    For a simplicial category $A$ we define the \emph{simplicial nerve (or homotopy coherent nerve) $\Nhc(A)$ of $A$} as $\Nhc(A)=\Hom_{\Cat_{\Delta}}(\C[-],A)$; 
+    Thus we obtain a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
 \end{definition}
-For completess sake we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.
+For completeness sake we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.
 \begin{prop}[Joyal Model Structure on $\sSet$]
     The following two classes of maps endow $\sSet$ with a unique model structure:
     \begin{itemize}
@@ -186,7 +187,7 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
 \end{definition}
 \begin{lemma}\label{prop:simpLocEssSurj}
     Let $C$ be a simplicial set and $W\subset C$ be a simplicial subset.
-    The a simplicial localization exists, is essentially unique and the localization functor $\gamma\colon C\to C[W^{-1}]$ is essentially surjective.
+    Then a simplicial localization exists, is essentially unique and the localization functor $\gamma\colon C\to C[W^{-1}]$ is essentially surjective.
 
     Furthermore, we can always assume $\gamma$ to be bijective on objects.
     \begin{reference}
@@ -195,7 +196,7 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
 \end{lemma}
 %TODO define (co)limits and prove/state that they are computed pointwise in Functorcats HTT Proposition 5.1.2.2., HTT Corollary 5.1.2.3.
 \begin{definition}[Join]
-    For simplicial sets $X,Y\in\sSet$ let $X\star Y$ denote the \emph{join} which on simplicies is given by $(X\star Y)_n=X_n\cup Y_n\cup\bigcup\limits_{i+j=n-1}X_i\times X_j$.
+    For simplicial sets $X,Y\in\sSet$ let $X\star Y$ denote the \emph{join} which on simplices is given by $(X\star Y)_n=X_n\cup Y_n\cup\bigcup\limits_{i+j=n-1}X_i\times X_j$.
     The join is functorial in both arguments.
     
     For a simplicial set $X$, we further define $X^{\lhd}=\Delta^0\star X$ and $X^{\rhd}=X\star\Delta^0$.
@@ -210,7 +211,7 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
               We can thus identify $\sigma^+\colon\Delta^p\to Y_{/f}$ with a morphism $\overline{f}\colon\Delta^p\star X\to Y$ such that $\overline{f}|_{X}=f$.
               We then set $c(\sigma)=\Delta^n\cong\Delta^p\star\Delta^q\xrightarrow{\id_{\Delta^p}\star\sigma^-}\Delta^p\star X\xrightarrow{\overline{f}} Y$.
     \end{itemize}
-    we call $c$ the \emph{slice contraction morphism}.
+    We call $c$ the \emph{slice contraction morphism}.
     The analogous construction $c\colon c\colon X\star Y_{f/}\to Y$ is called the \emph{coslice contraction morphism}.
 \end{construction}
 \begin{definition} %kerodon Definition 7.3.2.1
@@ -235,11 +236,11 @@ For completess sake we will also describe the Joyal model structure on $\sSet$, 
     Let $C$ be an \inftycat/, $C_0\subset C$ a full subcategory and $F\colon C_0\to D$ a functor between \inftycats/.
     If $D$ is complete, then there exists a functor $F\colon C\to D$ that is right Kan-extended from $C_0$.
 
-    Dually if $C$ is cocomplete, then then there exists a functor $F\colon C\to D$ that is left Kan-extended from $C_0$.
+    Dually if $C$ is cocomplete, then there exists a functor $F\colon C\to D$ that is left Kan-extended from $C_0$.
     
     Furthermore, in both cases there is a fully faithful functor $\Fun(C_0,D)\to\Fun(C,D)$ that is right/left adjoint to the restriction functor and given by computing right/left Kan-extensions respectively.
     \begin{reference}
         The existence and adjointness for left Kan-extensions is a corollary of \cite[Corollary 7.3.6.4]{kerodon} (and the dual of this proves the statement for right Kan-extensions).
-        The fully faithfulness is implied by \cite[Corollary 7.3.1.16]{kerodon} since it is shown that counit/unit of the adjunction is an equivalence.
+        The full faithfulness is implied by \cite[Corollary 7.3.1.16]{kerodon} since it is shown that counit/unit of the adjunction is an equivalence.
     \end{reference}
 \end{prop}

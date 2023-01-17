@@ -9,7 +9,7 @@ In order to transfer reasoning back and forth from the model category $\Top$ and
     \end{equation*} 
     they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
 
-    Furthermore the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.
+    Furthermore, the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.
     \begin{reference}
         \cite[Proposition 1.3.4.25]{higher_algebra}
     \end{reference}
@@ -22,15 +22,15 @@ Since both coproducts and pushouts in \inftycats/ are indexed by nerves of ordin
     If further $\N(M)[W^{-1}]$ has universal colimits, then $M$ has descent if and only if it has descent for homotopy pushouts and homotopy coproducts as a model category.
     \begin{proof}
         A diagram $\N(J)^{\rhd}\to\N(M)[W^{-1}]$ is a colimit cone if and only if some equivalent replacement $J^{\rhd}\to M$ as in \cref{lem:replaceWithStrictDiagram} is a homotopy colimit cone in $M$.
-        Given a diagram $J^{\rhd}\to M$, is is a homotopy colimit cone if and only if $\N(J)^{\rhd}\to\N(M)[W^{-1}]$ is a colimit cone.
+        Given a diagram $J^{\rhd}\to M$, is a homotopy colimit cone if and only if $\N(J)^{\rhd}\to\N(M)[W^{-1}]$ is a colimit cone.
         The analogous statement is also true for limits and homotopy limits.
         Thus the proposition follows from \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} respectively.
     \end{proof}
 \end{corollary}
 We will use the interaction of the \Strom/ model structure and the Quillen model structure to prove universality and descent in $\Top$.
 Note that whenever referring to $\Top$ as a model category, we implicitly mean the Quillen model structure. 
-Cofibrations and fibrations of the \Strom/ model structure are tagged by the letter $h$.
-Our most important (and quite non trivial) part of this interaction is the following proposition.
+Cofibrations and fibrations of the \Strom/ model structure in diagrams are tagged by the letter ``h''.
+The most important (and quite non-trivial) part of the interaction between Quillen and \Strom/ model structure on $\Top$ is the following proposition.
 \begin{prop}\label{prop:poAlongHCofibIsHtpyPo}
     A pushout along an h-cofibration is a homotopy pushout.
     \begin{proof}
@@ -49,10 +49,11 @@ Our most important (and quite non trivial) part of this interaction is the follo
                 C & A \arrow[>->, r, "h"] \arrow[l] & B \\
             \end{tikzcd}\;.
         \end{center}
-        By \cite[Proposition 1.1]{hcolim_bar} we have that the map induced by the pushouts $C'\cup_AB\to C\cup_AB$ is a again a weak equivalence.
-        But since $C'\cup_AB$ is a homotopy pushout (since its a pushout along a cofibration), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.
+        By \cite[Proposition 1.1]{hcolim_bar} we have that the map induced by the pushouts $C'\cup_AB\to C\cup_AB$ is again a weak equivalence.
+        But since $C'\cup_AB$ is a homotopy pushout (since it is a pushout along a cofibration), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.
     \end{proof}
 \end{prop}
+%TODO insert  section proof of universality here
 \begin{prop}\label{lem:topUniversalPo}
     The model category $\Top$ has universality for homotopy pushouts.
     \begin{proof}
@@ -69,7 +70,7 @@ Our most important (and quite non trivial) part of this interaction is the follo
         \end{center}
         where $\overline{A}=A\times_{D}\overline{D}$, $\overline{B}=B\times_{D}\overline{D}$ and $\overline{C}=C\times_{D}\overline{D}$.
         Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D'\xrightarrow{\sim}\overline{D}$ is a weak equivalence, all vertical maps in the upper cube are weak equivalences.
-        Thus it is sufficent to show that the square
+        Thus it is sufficient to show that the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{A} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
@@ -87,12 +88,12 @@ Our most important (and quite non trivial) part of this interaction is the follo
                 C \arrow[rr] & & D
             \end{tikzcd}
         \end{center}
-        where the small square is a homotopy pushout as its a pushout along an h-cofibration by \cref{prop:poAlongHCofibIsHtpyPo} so $\widehat{B}\cup_A\widehat{C}\to D$ is a weak equivalence.
+        where the small square is a homotopy pushout as it is a pushout along an h-cofibration by \cref{prop:poAlongHCofibIsHtpyPo} so $\widehat{B}\cup_A\widehat{C}\to D$ is a weak equivalence.
         Pulling back the small square along the h-fibration $\overline{D}\xtwoheadrightarrow{h} D$ gives the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{A} \arrow[>->, r, "h"] \arrow[>->, d, "h"] & \widehat{B}\times_{D}\overline{D} \arrow[>->, d, "h"] \\
-                \widehat{C}\times_{D}\overline{D} \arrow[>->, r, "h" ] & \left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}\\
+                \widehat{C}\times_{D}\overline{D} \arrow[>->, r, "h"] & \left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}\\
             \end{tikzcd}
         \end{center}
         where the horizontal maps are h-cofibrations since pullbacks of h-cofibrations along h-fibrations are again h-cofibrations by \cite[Theorem 12]{note_on_cofibs_2}.
@@ -102,14 +103,14 @@ Our most important (and quite non trivial) part of this interaction is the follo
         As $q^{-1}(\widehat{B})$ and $q^{-1}(\widehat{C})$ are closed, this implies by point set topology that the square is an ordinary pushout.
 
         Thus it is a pushout along an h-cofibration, hence by \cref{prop:poAlongHCofibIsHtpyPo} a homotopy pushout.
-        Because by right properness of $\Top$ the square is equivalent to 
+        By right properness of $\Top$ the square is equivalent to 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{A} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
                 \overline{C} \arrow[r] & \overline{D} \\
             \end{tikzcd}
         \end{center}
-        this proves the proposition.
+        which proves the proposition.
     \end{proof}
 \end{prop}
 \begin{lemma}\label{lem:topUniversalCoproduct}
@@ -117,7 +118,7 @@ Our most important (and quite non trivial) part of this interaction is the follo
     \begin{proof}
         	Let $\left(X_i\right)_{i\in I}$ and $\left(Y_i\right)_{i\in I}$ be collections of topological spaces with $I$ small. 
             In a model category the homotopy coproduct of such a family is given by the ordinary coproduct of cofibrant replacements $\bigcup\limits_{i\in I}\widehat{X_i}$ for each of the $X_i$.
-            However since in $\Top$ weak equivalences are closed under coproducts, the ordinary coproduct $\bigcup\limits_{i\in I}X_i$ is already a homotopy coproduct.
+            However, since in $\Top$ weak equivalences are closed under coproducts, the ordinary coproduct $\bigcup\limits_{i\in I}X_i$ is already a homotopy coproduct.
 
             Let $f\colon Y\to\bigcup\limits_{i\in I}X_i$ be a map and let $\left(Y_i\to X_i\right)_{i\in I}$ and $\left(Y_i\to Y\right)_{i\in I}$ be families of maps such that for all $k\in I$ we have a commutative square
             \begin{center}
@@ -129,7 +130,7 @@ Our most important (and quite non trivial) part of this interaction is the follo
             that is a homotopy pullback.
 
             Note that every inclusion map $X_k\to\bigcup\limits_{i\in I} X_i$ is already a fibration as can be checked by its lifting properties.
-            Therefore the ordinary pullback
+            Therefore, the ordinary pullback
             \begin{center}
                 \begin{tikzcd} [sep = 1 cm]
                     Y\times_{\bigcup\limits_{i\in I} X_i}X_k \arrow [->>,r] \arrow [d] & Y \arrow [d]\\
@@ -141,19 +142,20 @@ Our most important (and quite non trivial) part of this interaction is the follo
             This proves that $Y$ is a homotopy coproduct.
     \end{proof}
 \end{lemma}
-Therefore by \cref{cor:sufficientToProveInModCat} we know $\spaces$ has universal colimits.
+Therefore, by \cref{cor:sufficientToProveInModCat} we know $\spaces$ has universal colimits.
 It remains to show that it also has descent.
+%TODO insert section about descent of po here
 %Insertion of proof of new stuff starts here -------------------------------------
 \begin{definition}[Pairs and Triples of Spaces]
     Let $\Top^{(2)}$ denote the category of \emph{pairs of topological spaces} $(X,A)$ with $A\subset X$ a subspace and maps $f\colon(X_1,A_1)\to (X_2,A_2)$ being continuous maps $f\colon X_1\to X_2$ such that $f(A_1)\subset A_2$.
-    We call these maps \emph{maps of pairs}.
+    We refer to these maps as \emph{maps of pairs}.
     
     We define $(X,A)\times I$ to mean $(X\times I,A\times I)$.
     A \emph{homotopy of maps of pairs} $f,g\colon(X_1,A_1)\to (X_2,A_2)$ is a map $h\colon(X_1\times I,A_1\times I)\to (X_2,A_2)$ such that $h_0=f$ and $h_1=g$.
 
-    In a similar fashion we define maps of triples:
+    Similarly, we define maps of triples:
     Let $\Top^{(3)}$ denote the category of \emph{triples of topological spaces} $(X,A,B)$ with $B\subset A\subset X$ subspaces and maps $f\colon(X_1,A_1,B_1)\to (X_2,A_2,B_2)$ being continuous maps $f\colon X_1\to X_2$ such that $\im f(A_1)\subset A_2$ and $\im f(B_1)\subset B_2$.
-    We call these maps \emph{maps of triples}.
+    We refer to these maps as \emph{maps of triples}.
     
     We define $(X,A,B)\times I$ to mean $(X\times I,A\times I, B\times I)$.
     A \emph{homotopy of maps of triples} $f,g\colon(X_1,A_1,B_1)\to (X_2,A_2,B_2)$ is a map $h\colon(X_1\times I,A_1\times I,B_1\times I)\to (X_2,A_2,B_2)$ such that $h_0=f$ and $h_1=g$.
@@ -174,11 +176,8 @@ It remains to show that it also has descent.
 \end{lemma}
 \begin{remark}\label{rmk:cwInclIsHCofib}
     Let $J^n=\set{0}\times I^n\cup I\times\partial I^n\subset\partial I^{n+1}\subset I^{n+1}$. %TODO maybe put somewhere better
-    The triads $(I^{n+1};J^n,\set{1}\times I^n)$ fulfills the requirements of \cref{lem:rHEP} for all $n\geq 0$.
-    This is because all of the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are h-cofibrations. %TODO why
-    
-    This is due to the fact that $S^{n-1}\hookrightarrow D^n$ is a CW-pair, and for any CW-pair $A\hookrightarrow X$ the map $\set{0}\times A\cup I\times X\hookrightarrow I\times X$ is a deformation retract and thus has the homotopy extension property (see \cite[Proposition 0.16]{hatcher2002algebraic}).
-    Since $A\hookrightarrow X$ is closed, $A\hookrightarrow X$ is a h-cofibration.
+    The triads $(I^{n+1};J^n,\set{1}\times I^n)$ fulfill the requirements of \cref{lem:rHEP} for all $n\geq 0$.
+    This is because all the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are h-cofibrations.
 \end{remark}
 \begin{definition}
     Let $H_1,H_2\colon X\times I\to Y$ be homotopies such that $(H_1)_1=(H_2)_0$.
@@ -192,7 +191,7 @@ It remains to show that it also has descent.
     \end{align*}
     to be the \emph{concatenation of homotopies $H_1, H_2$}.
 
-    Furthermore for a homotopy $H\colon X\times I\to Y$ we define $\overline{H}(x,t)=H(x,1-t)$ to be the \emph{reverse homotopy of $H$} and for a map $f\colon X\to Y$ we define $\const_f\colon X\times I\to Y$ to be the constant homotopy.
+    Furthermore, for a homotopy $H\colon X\times I\to Y$ we define $\overline{H}(x,t)=H(x,1-t)$ to be the \emph{reverse homotopy of $H$} and for a map $f\colon X\to Y$ we define $\const_f\colon X\times I\to Y$ to be the constant homotopy.
     
     Note that these definitions also preserve homotopies/maps of pairs and triples.
 \end{definition}
@@ -216,6 +215,7 @@ It remains to show that it also has descent.
     This is equivalent to saying that if the homotopy fiber of $A\hookrightarrow X$ at $x\in X$ is empty, then so is the homotopy fiber of $B\hookrightarrow Y$ at $f(x)$.
     This is because the homotopy fiber of a map at a point is empty if and only if the point is in a connected component that does not intersect the image of the map.
 \end{remark}
+We will need the following lemma to translate our statements to the language of pairs of maps and back.
 \begin{lemma}\label{lem:weOfaPairsIsHtpyPb}
     Let $f\colon(X,A)\to (Y,B)$ be a map.
     Then the following are equivalent:
@@ -251,7 +251,7 @@ It remains to show that it also has descent.
         By \cref{rmk:choiceOfConstantHtpy} there is a homotopy $H\colon I\times I\to X$ contracting the loop $\overline{z}*z$ to the point $z(1)$ such that $H_0=\overline{z}*z$, $H_1=\const_{z(1)}$ and $\partial I\times I=\const_{z(1)}$.
         This homotopy thus corresponds to a path $\lambda\colon I\to F_{z(1)}$ from $\overline{z}*z$ to $\const_{z(1)}$ which induces isomorphisms $\pi_{n-1}(F_{z(1)},\overline{z}*z)\to\pi_{n-1}(F_{z(1)},\const_{z(1)})$ for all $n\geq 1$.
 
-        This also gives homotopy equivalence $\Gamma\colon G_{f(x_0)}\to F_{f(z(1))}, \gamma\mapsto f\overline{z}*\gamma$ and a path $f\lambda$ from $\overline{fz}*fz$ to $\const_{\alpha(z)(1)}$ which induce the analogous isomorphisms.
+        This also gives a homotopy equivalence $\Gamma\colon G_{f(x_0)}\to F_{f(z(1))}, \gamma\mapsto f\overline{z}*\gamma$ and a path $f\lambda$ from $\overline{fz}*fz$ to $\const_{\alpha(z)(1)}$ which induce the analogous isomorphisms.
         
         Together these isomorphisms fit into a commutative square
         \begin{center} 
@@ -354,7 +354,7 @@ It remains to show that it also has descent.
         By the  relative homotopy extension property for $(I^{n+1};J^n,\set{1}\times I^n)$ we extend the reverse homotopy of $j$ to a homotopy of $J\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ which ends at $J_1$.
         Setting $G=J_0$ we have $G|_{J^n}=j_0=g$.
 
-        Furthermore we have the homotopy $(K*L)*\overline{fJ}\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ from $fg$ to $fg$.
+        Furthermore, we have the homotopy $(K*L)*\overline{fJ}\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ from $fg$ to $fg$.
         By \cref{rmk:choiceOfConstantHtpy} we can pick a homotopy $M\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to(Y,B)$ from $(fj*\const_{f(a)})*\overline{fj}$ to the constant homotopy at $fg$ such that $M|_{J^n\times\set{0}\times I}$ and $M|_{J^n\times\set{1}\times I}$ are both the constant homotopies at $fg$.
         
         Using the relative homotopy extension property on $(I^{n+2};J^n\times I\cup I^{n+1}\times\set{0}\cup I^{n+1}\times\set{1},\set{1}\times I^{n+1})$, we extend the homotopy given by the constant homotopy at $e$ on $I^{n+1}\times\set{0}\times I$, the constant homotopy at $fG$ on $I^{n+1}\times\set{1}\times I$ and $M$ on $J^n\times I\times I$ to a homotopy $\widetilde{M}\colon(I^{n+2},\set{1}\times I^{n+1})\times I\to(Y,B)$ with $\widetilde{M}_0=(K*L)*\overline{fJ}$.
@@ -405,7 +405,7 @@ It remains to show that it also has descent.
 
         The remaining assumptions on $j$ follow from the following observation: 
         The canonical deformation retraction of $\M(f)$ to $Y$ restricts to a deformation retraction from $\widetilde{Y_1}$ to $Y_1$, $\widetilde{Y_2}$ to $Y_2$ and $\widetilde{Y_1}\cap\widetilde{Y_2}$ to $Y_1\cap Y_2$.
-        Hence for all $i\in\set{1,2}$ the indicated maps in the commutative squares
+        Hence, for all $i\in\set{1,2}$ the indicated maps in the commutative squares
         \begin{center} 
             \begin{tikzcd} [sep = 4em]
                 \widetilde{Y_i} \arrow [r, "j|_{\widetilde{Y_i}}", "\simeq"'] \arrow [d, hook] & Y_i \arrow [d, hook]\\
@@ -417,13 +417,13 @@ It remains to show that it also has descent.
             \end{tikzcd}
         \end{center} 
         are homotopy equivalences (hence weak equivalences).
-        Therefore the proposition follows by \cref{lem:weOfaPairsIsHtpyPb}.
+        Therefore, the proposition follows by \cref{lem:weOfaPairsIsHtpyPb}.
     \end{proof}
 \end{lemma}
 %TODO mention lebesgue number lemma and J^n\subset I^{n+1} DR-pair, maybe use incl of cw
 \begin{prop}\label{prop:descentForPairs} %TODO cite quasifibs Thm 1.2
     Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
-    Then if the maps $f|_{X_i}\colon(X_i,X_1\cap X_2)\to(Y_i,Y_1\cap Y_2)$ are weak equivalences of pairs for $i\in\set{1,2}$, the maps $f\colon(X,X_i)\to(Y,Y_i)$ are weak equivalences of pairs for $i\in\set{1,2}$ as well.
+    Then, if the maps $f|_{X_i}\colon(X_i,X_1\cap X_2)\to(Y_i,Y_1\cap Y_2)$ are weak equivalences of pairs for $i\in\set{1,2}$, the maps $f\colon(X,X_i)\to(Y,Y_i)$ are weak equivalences of pairs for $i\in\set{1,2}$ as well.
     \begin{proof}
         The proof will follow \cite[Theorem 1.2]{may1990weak}.
 
@@ -434,8 +434,8 @@ It remains to show that it also has descent.
     
         So let $g\colon(J^n,\set{1}\times\partial I^n)\to(X,X_i)$ and $e\colon(I^{n+1},\set{1}\times I^n)\to(Y,Y_i)$ be given such that $e|_{J^n}=g$.
         As $J^n\subset I^{n+1}$ are both compact metric spaces, we can find a Lebesgue number $\delta$ for the cover $Y_1^°,Y_2^°\subset Y$ and the map $e$.
-        We pick a cubical subdivision $\mathcal{C}$ of $I^{n+1}$ such that the diameter of every cube $c\in\mathcal{C}$ is smaller then $\delta$.
-        This ensures that for every cube $c\in\mathcal{C}$ there is a $i\in\set{1,2}$ such that $e(c)\subset Y_i^°$.
+        We pick a cubical subdivision $\mathcal{C}$ of $I^{n+1}$ such that the diameter of every cube $c\in\mathcal{C}$ is smaller than $\delta$.
+        This ensures that for every cube $c\in\mathcal{C}$ there is an $i\in\set{1,2}$ such that $e(c)\subset Y_i^°$.
         Whenever $e(c)\subset Y_i^°$ we also have $g(c\cap J^n)\subset X_i^°$ for the same $i\in\set{1,2}$, since $fg(c\cap J^n)\subset f(X)\cap Y_i^°=f(X_i^°)$ and $f$ is an inclusion.
         Note that this cubical subdivision gives a CW-structure on $I^{n+1}$ such that $J^n\subset I^{n+1}$ is a subcomplex.
 
@@ -448,7 +448,7 @@ It remains to show that it also has descent.
 
         We will use a nested induction argument, where the outer induction step extends maps given on $L_r^{n+1}$ to $L_{r+1}^{n+1}$ for $r\in\set{0\ldots,s-2}$ and for fixed $r\in\set{0,\ldots,s-1}$ the inner induction extends maps on $L_r^m$ for $m\in\set{0,\ldots,n}$ over all cells of the form $I_r\times K$ with $K\in\Gamma^m$, hence to $L_r^{m+1}$.
         
-        We will construct the desired maps $G$ and $H$ such that for all cells $K\in\Gamma^m$ and $r\in\set{0,\ldots,s-1}$
+        The desired maps $G$ and $H$ will be constructed such that for all cells $K\in\Gamma^m$ and $r\in\set{0,\ldots,s-1}$
         \begin{itemize}
             \item if $e(I_r\times K)\subset Y_j^°$ then $G(I_r\times K)\subset X_j$ and $H(I_r\times K\times I)\subset Y_j$ for the same $j\in\set{1,2}$
             \item if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ then $G(\set{v_{r+1}}\times K)\subset X_1\cap X_2$ and $H(\set{v_{r+1}}\times K\times I)\subset Y_1\cap Y_2$.
@@ -466,8 +466,8 @@ It remains to show that it also has descent.
         In the remaining cases either $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$ or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$.
         We can pick a deformation retract $F\colon I_r\times K\times I\to I_r\times K$ of $I_r\times\partial K\cup\set{v_r}\times K$ by \cref{rmk:cwInclIsHCofib} and set $G'_K=GF_1$ and $H'_K=eF*HF_1$ which considered as maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ respectively fulfill the desired properties.
 
-        Now note that since we work ourselves upwards from the dimensions, the constructed extensions $G'_K$ and $H'_K$ are always compatible along the boundaries of $I_r\times K$ and thus we can glue them together to obtain extensions to $L_r^m\cup\bigcup\limits_{K\in\Gamma^m}I^r\times K=L_r^{m+1}$.
-        Hence we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively.
+        Now note that since we work ourselves upwards from the dimensions, the constructed extensions $G'_K$ and $H'_K$ are always compatible along the boundaries of $I_r\times K$, and thus we can glue them together to obtain extensions to $L_r^m\cup\bigcup\limits_{K\in\Gamma^m}I^r\times K=L_r^{m+1}$.
+        Hence, we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively.
         (For the latter one also needs that $L_r^{m+1}\times I\cong\left(L_r^m\times I\right)\cup\bigcup\limits_{K\in\Gamma^m}\left(I^r\times K\times I\right)$, which follows from that fact that since all spaces here are hausdorff and compact, continuous bijections are already homeomorphisms).
 
         It only remains to check that the final extensions $G$ and $H$ are maps of pairs $(I^{n+1},\set{1}\times I^n)\to(X,X_i)$ and $(I^{n+1},\set{1}\times I^n)\times I\to(Y,Y_i)$ respectively.
@@ -493,7 +493,7 @@ It remains to show that it also has descent.
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A}\times\left(0,2\right) \arrow [dr, hook] \arrow [rr, hook] \arrow [dd] & & \M^{[0,2)}(f_{\overline{A}\overline{B}}) \arrow [dr, hook] \arrow[dd] \\
-                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [rr, crossing over, hook] & & \overline{X} \arrow [dd] & \\
+                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [rr, crossing over, hook] & &[2em] \overline{X} \arrow [dd] & \\
                 A\times(0,2) \arrow [dr, hook] \arrow [rr, hook] & & \M^{[0,2)}(f_{AB}) \arrow [dr, hook] \\
                 & \M^{[0,2)}(f_{AC}) \arrow [from=uu,crossing over] \arrow [rr, hook] & & X
             \end{tikzcd}
@@ -503,11 +503,11 @@ It remains to show that it also has descent.
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A} \arrow [dr] \arrow [rr] \arrow [from=dd, "\sim"] & & \overline{B} \arrow [dr] \arrow [from=dd, near end, "\sim"] \\
-                & \overline{C} \arrow [rr, crossing over] & & \overline{D} \arrow [from=dd] & \\
+                & \overline{C} \arrow [rr, crossing over] & &[2em] \overline{D} \arrow [from=dd] & \\
                 \overline{A}\times\set{1} \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] \arrow [dd, hook, "\sim"] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow [dd, hook, near end, "\sim"] \\
                 & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start, "h"] \arrow [to=uu, crossing over, near end, "\sim"] & & \overline{X} \arrow [equals, dd, "\sim"] \\
-                \overline{A}\times\left(0,2\right) \arrow [dr] \arrow [rr] & & \M^{[0,2)}(f_{\overline{A}\overline{B}}) \arrow [dr] \\
-                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [from=uu, hook, crossing over, near end, "\sim"] \arrow [rr] & & \overline{X} \\
+                \overline{A}\times\left(0,2\right) \arrow [dr, hook] \arrow [rr, hook] & & \M^{[0,2)}(f_{\overline{A}\overline{B}}) \arrow [dr, hook] \\
+                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [from=uu, hook, crossing over, near end, "\sim"] \arrow [rr, hook] & & \overline{X} \\
             \end{tikzcd}
         \end{center}
         is a weak equivalence since pushouts along h-cofibrations are homotopy pushouts. 
@@ -535,6 +535,8 @@ It remains to show that it also has descent.
         Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are pullback squares since $f_{\overline{X}X}$ is a map of excisive triads $(\overline{X};\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}}))\to(X;\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC}))$.
     \end{proof}
 \end{prop}
+%TODO subsection about quasifibs & descent
+We will now give an alternative proof of descent for pushouts using the notion of quasifibrations.
 \begin{definition}[Quasifibration]
     Let $M$ be a model category and $f\colon X\to Y$ be a map.
     Then we call $f$ a \emph{quasifibration} if for every map $*\to Y$ (where $*$ is a terminal object) the ordinary pullback square
@@ -546,6 +548,32 @@ It remains to show that it also has descent.
     \end{center}
     is a homotopy pullback.
 \end{definition}
+It turns out that a weak version of the locality of quasifibrations (\cref{cor:locOfQuasifib}) is sufficient to prove descent for pushouts.
+This relationship also goes the other way as the next remark shows.
+\begin{remark}
+    Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is called ``Locality of Quasifibrations'':
+    
+    Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover such that for every pair of indices $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
+    Then if $f^{-1}(U_i)\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
+
+    One can conclude this by using that the homotopy colimit of such a cover is the space itself (see \cite[Proposition 4.6 (c)]{hypercovers}):
+    Because all squares
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            f^{-1}(U_j) \arrow [r, hook] \arrow [d] & f^{-1}(U_i) \arrow [d]\\
+            U_j\arrow [r, hook] & U_i
+        \end{tikzcd}
+    \end{center}
+    are homotopy pullbacks, the squares 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            f^{-1}(U_i) \arrow [r, hook] \arrow [d] & X=\hcolim\limits_{i\in I}(f^{-1}(U_i)) \arrow [d]\\
+            U_i \arrow [r, hook] & Y=\hcolim\limits_{i\in I}(U_i)
+        \end{tikzcd}
+    \end{center}
+    are homotopy pullbacks by descent and the proposition follows since $(U_i)_{i\in I}$ is a cover of $Y$.
+\end{remark}
+The main tool we will use to prove descent of pushouts via quasifibrations is the following.
 \begin{corollary}[Weak Locality of Quasifibrations]\label{cor:locOfQuasifib}
     Let $f\colon X\to Y$ be a map and $U_1, U_2\subset Y$ be open such that $f^{-1}(U_1)\to U_1$, $f^{-1}(U_2)\to U_2$ and $f^{-1}(U_1)\cap f^{-1}(U_2)=f^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
     Then $f$ is a quasifibration.
@@ -569,35 +597,8 @@ It remains to show that it also has descent.
         The proposition now follows every point $y\in Y$ lies in some $U_i$, hence the ordinary fiber of $f\colon X\to Y$ is the homotopy fiber by the pasting law.
     \end{proof}
 \end{corollary}
-\begin{remark}
-    Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is called ``Locality of Quasifibrations'':
-    
-    Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover such that for every pair of indces $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
-    Then if $f^{-1}(U_i)\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
-
-    One can conclude this by using that the homotopy colimit of such a cover is the space itself (see \cite[Proposition 4.6 (c)]{hypercovers}):
-    Because all squares
-    \begin{center}
-        \begin{tikzcd} [sep = 4em]
-            f^{-1}(U_j) \arrow [r, hook] \arrow [d] & f^{-1}(U_i) \arrow [d]\\
-            U_j\arrow [r, hook] & U_i
-        \end{tikzcd}
-    \end{center}
-    are homotopy pullbacks, the squares 
-    \begin{center}
-        \begin{tikzcd} [sep = 4em]
-            f^{-1}(U_i) \arrow [r, hook] \arrow [d] & X=\hcolim\limits_{i\in I}(f^{-1}(U_i)) \arrow [d]\\
-            U_i \arrow [r, hook] & Y=\hcolim\limits_{i\in I}(U_i)
-        \end{tikzcd}
-    \end{center}
-    are homotopy pullbacks by descent and the proposition follows since $(U_i)_{i\in I}$ is a cover of $Y$.
-\end{remark}
-The previous remark shows a relationship of quasifibrations and descent in $\Top$.
-Next we will see that \cref{cor:locOfQuasifib} can be used to derive descent for pushouts, highlighting this connection.
-This will give an alternative proof (\cref{lem:topDescentPoAlt}) of \cref{prop:topDescentPo}.
-
-We begin with the following reduction step. 
-\begin{prop}\label{prop:reductionStepDescent}
+In order to reduce to a situation where \cref{cor:locOfQuasifib} is applicable we will need to use the next two lemmas.
+\begin{lemma}\label{lem:reductionStepDescent}
     If for all cubes in the model category $\Top$
     \begin{center}
         \begin{tikzcd} [sep = .5 cm]
@@ -637,7 +638,7 @@ We begin with the following reduction step.
         where 
         \begin{itemize}
             \item $\overline{A}=A\times_{B}\overline{B}$
-            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks as the outer and lower square are homotopy pullbacks.
+            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks.
         \end{itemize}
         Next we factor the map $A'\xtailrightarrow{}X\xrightarrow{\sim}\hat{C}\times_CC'$. 
         Note that the diagram 
@@ -702,7 +703,7 @@ We begin with the following reduction step.
         Since these are pushouts along cofibrations, they are already homotopy pushouts. 
         Following the construction of this cube, we see that all faces are equivalent to their corresponding faces of the starting cube which proves the proposition.
     \end{proof}
-\end{prop}
+\end{lemma}
 \begin{lemma}\label{lem:mapOfCylIsQuasiFib} %TODO prove that the claimed ordinary pbs are actuall ordinary pbs
     Let 
     \begin{center}
@@ -716,7 +717,7 @@ We begin with the following reduction step.
     The same holds true for closed and open mapping cylinders.
     \begin{proof}
         For convenience we will only prove the case $I=[0,1]$ since the other cases follow by the analogous argument.
-        The proof follows \cite[Lemma 5.10.6]{cubical_htpy_theory}.
+        The proof is essentially \cite[Lemma 5.10.6]{cubical_htpy_theory}.
 
         Let $\hat{b}\in\M(g)$. 
         Then either $\hat{b}=(\hat{a},\hat{t})\in A\times(0,1]\subset\M(g)$ or $\hat{b}\in B\subset\M(g)$.
@@ -752,7 +753,7 @@ We begin with the following reduction step.
 \begin{prop}\label{lem:topDescentPoAlt}
     The model category $\Top$ has descent for homotopy pushouts. 
     \begin{proof}
-        By \cref{prop:reductionStepDescent} it is sufficient to prove that for all cubes 
+        By \cref{lem:reductionStepDescent} it is sufficient to prove that for all cubes 
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A} \arrow [dr] \arrow [rr] \arrow [->>,dd] & & \overline{B} \arrow [dr] \arrow[->>]{dd}[near start]{} \\
@@ -827,6 +828,7 @@ We begin with the following reduction step.
         % But this is an equivalent characterization of a homotopy pullback. %TODO reference
     \end{proof}
 \end{prop}
+%TODO section on descent for htpy coprod
 Lastly, we need to prove descent for homotopy coproducts.
 For readability purposes, we will abuse notation a little:
 We will always work with seemingly fixed diagrams throughout the proofs without replacing them before computing limits/colimits.

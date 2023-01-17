@@ -18,7 +18,7 @@ Since this we be the least interesting for our purposes, we will give a very pra
 Note that $\Top$ as an ordinary category is not locally presentable.
 An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in \cite[Theorem 5.5.1.1 and Proposition A.3.7.6]{HTT}.
 
-Next we introduce cartesian transformations which allow us to encode universality and descent in a concise manner.
+Next we introduce cartesian transformations which allow us to encode universality and descent concisely.
 \begin{definition}[Cartesian Transformation]
     Let $C$ be an \inftycat/ and let $K$ be a simplicial set.
     Let $q,p\in\Fun(K,C)_0$ and let $\alpha\in\Fun(K,C)_1$ be a natural transformation $\alpha\colon p\to q$.
@@ -38,7 +38,7 @@ Next we introduce cartesian transformations which allow us to encode universalit
     We say that \emph{$C$ has universal colimits} if $C$ has $K$-shaped universal colimits for every small simplicial set $K$.
 \end{definition}
 \begin{definition}[Descent]
-    Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set..
+    Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set.
     We say that \emph{$C$ has $K$-shaped descent} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is cartesian.
     
     We say that \emph{$C$ has descent} if $C$ has $K$-shaped descent for every small simplicial set $K$.
@@ -51,7 +51,7 @@ Next we introduce cartesian transformations which allow us to encode universalit
             \alpha|_{\set{0,0,0}} \arrow [dr] \arrow [rr] \arrow [dd] & & \alpha|_{\set{0,1,0}} \arrow [dr] \arrow [dd] \\
             & \alpha|_{\set{1,0,0}} \arrow [rr, crossing over] \arrow [dd] & & \alpha|_{\set{1,1,0}} \arrow [dd] & \\
             \alpha|_{\set{0,0,1}} \arrow [dr] \arrow [rr] & & \alpha|_{\set{0,1,1}} \arrow [dr] \\
-            & \alpha|_{\set{1,0,1}} \arrow [from=uu, crossing over] \arrow [rr] & & \alpha|_{\set{1,1,1}} &
+            & \alpha|_{\set{1,0,1}} \arrow [from=uu, crossing over] \arrow [rr] & & \alpha|_{\set{1,1,1}}
         \end{tikzcd}\;.
     \end{center}
     Universality for pushouts means that whenever the vertical faces are pullbacks and the bottom face is a pushout, then the top face is a pushout.
@@ -101,7 +101,7 @@ We will require the following proposition for the proof.
         \begin{equation*}
             K=K^{n+1}=K^n\coprod\limits_{\bigcup\limits_S \partial\Delta^{n+1}}\bigcup_S \Delta^{n+1}
         \end{equation*}
-        where $S$ is the set of non-degenerate simplicies of dimension $n+1$.
+        where $S$ is the set of non-degenerate simplices of dimension $n+1$.
         For ease of notation, we set $X_{0}=\bigcup\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\bigcup\limits_S \Delta^{n+1}$.
 
         Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ or $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoint of $q_i$ to be the colimit, and the conepoint of $p_i$ to be the pullback %TODO how does that even define a cone?
@@ -162,7 +162,7 @@ We will require the following proposition for the proof.
             \end{tikzpicture}
         \end{center}
         is a pushout square.
-        Furthermore the natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd},C\right)_1$ induced by $\alpha$ and the $\alpha_i$ which we represent by a cube
+        Furthermore, the natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd},C\right)_1$ induced by $\alpha$ and the $\alpha_i$ which we represent by a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 p_0(\infty) \arrow [dr] \arrow [rr] \arrow [dd] & & p_1(\infty) \arrow [dr] \arrow [dd] \\
@@ -180,7 +180,7 @@ We will require the following proposition for the proof.
         It can be shown that the inclusion $L\subset\N(\Nat)$ is a weak categorical equivalence. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
 
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation, let $q$ be a colimit cone and let $\left(K^n\right)_{n\in\Nat}$ denote the skeletal filtration of $K$.
-        We can compute colimits of any diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex $n\in\Nat$ is the colimit of $K^n\to C$ and all higher simplicies are given by chains of the canonical maps. 
+        We can compute colimits of any diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex $n\in\Nat$ is the colimit of $K^n\to C$ and all higher simplices are given by chains of the canonical maps. 
 
         Since $L\subset\N(\Nat)$ is a weak categorical equivalence (which preserve and reflect (co)limits), we can also compute the colimit of the induced diagram $L\to C$. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
 
@@ -200,7 +200,7 @@ We will require the following proposition for the proof.
                 (m-1-2) edge (m-2-2);
             \end{tikzpicture}
         \end{center}
-        and thus we get a cartesian natural transformation $\gamma\colon F_p\to F_q\in\Fun(L^{\rhd},C)_1$.
+        which induce a cartesian natural transformation $\gamma\colon F_p\to F_q\in\Fun(L^{\rhd},C)_1$.
         Since $L$ is $1$-dimensional, $F_p$ is a colimit cone by universality for finite dimensional diagrams.
         By universality for finite dimensional $K$ we also have that $F_p(n)$ is the colimit of $p|_{K^n}$ for every $n\in\Nat$.
         This proves that $p$ is a colimit cone and thus the proposition.
@@ -219,7 +219,7 @@ We will require the following proposition for the proof.
         \begin{equation*}
             K=K^{n+1}=K^n\coprod\limits_{\bigcup\limits_S \partial\Delta^{n+1}}\bigcup_S \Delta^{n+1}
         \end{equation*}
-        where $S$ is the set of non-degenerate simplicies of dimension $n+1$.
+        where $S$ is the set of non-degenerate simplices of dimension $n+1$.
         For ease of notation, we again set $X_{0}=\bigcup\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\bigcup\limits_S \Delta^{n+1}$.
         
         Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ and $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoints to be the colimits.
@@ -382,6 +382,6 @@ We will require the following proposition for the proof.
             \end{tikzpicture}
         \end{center}
         where the left square is pullback by descent for finite dimensions. 
-        Thus the outer square cartesian, proving the propsition.
+        Thus the outer square cartesian, proving the proposition.
     \end{proof}
 \end{lemma}

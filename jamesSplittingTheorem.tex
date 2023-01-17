@@ -106,7 +106,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
                 X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
                 & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [from=ulll, crossing over, shorten >= 1.1em]  \arrow [dd, "i_0"] & \\
                 X \arrow [dr] \arrow [rr] \arrow [drrr, shorten >= 3pt] & & * \arrow [dr, "i_0"] \\
-                & * \arrow [from=uu,crossing over] \arrow [rr, swap, "i_1"] & & \Sigma X &
+                & * \arrow [from=uu, crossing over] \arrow [rr, swap, "i_1"] & & \Sigma X &
             \end{tikzcd}
         \end{center}
         where the back prism commutes.
@@ -167,7 +167,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
                 X\times\Omega\Sigma X \arrow [dr, "\alpha"] \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
                 & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [dd, "i_0"] & \\
                 X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
-                & * \arrow [from=uu,crossing over] \arrow [rr, "i_1"] & & \Sigma X &
+                & * \arrow [from=uu, crossing over] \arrow [rr, "i_1"] & & \Sigma X &
             \end{tikzcd}
         \end{center}
         are pullbacks and since the bottom square is a pushout, by universality the top square is pushout which finishes the proof.
@@ -175,7 +175,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
 \end{lemma}
 \begin{remark}\label{rmk:mapNotProj}
     The map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ can in general not be identified with the projection $\pi_2$.
-    This is because we are not able to choose the map $\alpha$ freely since the higher simplices must be compatible along the ''diagonal'' of our cube (which our map $\alpha$ fulfills by construction).
+    This is because we are not able to choose the map $\alpha$ freely since the higher simplices must be compatible along the ``diagonal'' of our cube (which our map $\alpha$ fulfills by construction).
 
     If we assume $\alpha=\pi_2$ then by universality we have that 
     \begin{center}
@@ -389,7 +389,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
             The other implication does not need $f$ to be an effective epimorphism and follows directly from the fiberwise characterization of homotopy pullbacks. 
     \end{itemize}
     
-    Furthermore a map $f\colon X\to Y$ equipped with a section $s\colon Y\to X$ is $n$-connected if and only if the section $s$ is $(n-1)$-connected (as can be proven by inspection of the long exact sequences of homotopy groups).
+    Furthermore, a map $f\colon X\to Y$ equipped with a section $s\colon Y\to X$ is $n$-connected if and only if the section $s$ is $(n-1)$-connected (as can be proven by inspection of the long exact sequences of homotopy groups).
     
     Since $X\to X\times_YX$ is the canonical section of $X\times_{Y} X\to Y$, this allows us to recursively reduce to the case of $f\colon X\to Y$ being $(-2)$-connected, which in both definitions means that it is an arbitrary map.
 \end{remark}
@@ -430,7 +430,7 @@ For this proof we need some stability properties of connectedness.
     be a pushout square in $C$.
     Then if $f$ is $n$-connected and $g$ is $m$-connected, the universal map $A\to B\times_{D}C$ is $(n+m)$-connected.
     \begin{reference}
-        \cite[Corollary 4.3.1]{gen_blakers_massey}, but this can also be proven by a reduction to topoi of the form $\Fun(A,\spaces)$ similar to \cref{rem:genTopoiComparisonMapEq}.
+        A very general version for \inftytops/ can be found in \cite[Corollary 4.3.1]{gen_blakers_massey}, but the version used here can also be proven by a reduction to topoi of the form $\Fun(A,\spaces)$ similar to \cref{rem:genTopoiComparisonMapEq} and thus derived from the ordinary Blakers-Massay Theorem in $\Top$.
     \end{reference}
 \end{prop}
 With these we can deduce the following statements:
