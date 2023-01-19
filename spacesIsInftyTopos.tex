@@ -144,7 +144,16 @@ The most important (and quite non-trivial) part of the interaction between Quill
 \end{lemma}
 Therefore, by \cref{cor:sufficientToProveInModCat} we know $\spaces$ has universal colimits.
 It remains to show that it also has descent.
+
 %TODO insert section about descent of po here
+The proof of descent will be more involved then the proof of universality.
+The main theorem will be \cref{prop:descentForPairs}. 
+There are two routes that lead from this theroem to descent for pushouts:
+One can either give a direct proof via decomposition of mapping cylinders (see \cref{prop:topDescentPo}) or it can be used to prove a weak version of the locality of quasifibrations (see \cref{cor:locOfQuasifib}).
+We will showcase both; 
+the first since it is very direct and the second since descent is closely related to locality as \cref{rmk:locOfQuasifibDescent} demonstrates.
+
+As a first step we will fix some notation related to pairs and triples of spaces. 
 %Insertion of proof of new stuff starts here -------------------------------------
 \begin{definition}[Pairs and Triples of Spaces]
     Let $\Top^{(2)}$ denote the category of \emph{pairs of topological spaces} $(X,A)$ with $A\subset X$ a subspace and maps $f\colon(X_1,A_1)\to (X_2,A_2)$ being continuous maps $f\colon X_1\to X_2$ such that $f(A_1)\subset A_2$.
@@ -177,7 +186,7 @@ It remains to show that it also has descent.
 \begin{remark}\label{rmk:cwInclIsHCofib}
     Let $J^n=\set{0}\times I^n\cup I\times\partial I^n\subset\partial I^{n+1}\subset I^{n+1}$. %TODO maybe put somewhere better
     The triads $(I^{n+1};J^n,\set{1}\times I^n)$ fulfill the requirements of \cref{lem:rHEP} for all $n\geq 0$.
-    This is because all the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are h-cofibrations.
+    This is because all the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are cofibrations and thus also h-cofibrations.
 \end{remark}
 \begin{definition}
     Let $H_1,H_2\colon X\times I\to Y$ be homotopies such that $(H_1)_1=(H_2)_0$.
@@ -201,6 +210,12 @@ It remains to show that it also has descent.
 
     Note that this is also true for homotopies of pairs and triples.
 \end{remark}
+We next fix a model for the homotopy groups/sets of pairs.
+Since we will use a subdivision argument, the model as maps of triples from $(I^n,\partial I^n,J^{n-1})$ is most convenient.
+\begin{definition}
+    For a pair of spaces $(X,A)$, $a\in A$ and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
+\end{definition}
+As expected we get a canonical group structure on these sets for $n\geq 2$ (that is even abelian for $n\geq 3$), but we will not need this.
 \begin{definition}[Weak Equivalence of Pairs]\label{def:weOfPairs}
     Let $f\colon(X,A)\to (Y,B)$ be a map such that 
     \begin{itemize}
@@ -263,10 +278,7 @@ We will need the following lemma to translate our statements to the language of 
         which with \cref{rmk:emptyFiber} for the case $F_{x_0}=\emptyset$ proves that \ref{itm:weOfPairs} and \ref{itm:htpyPb} are equivalent.
     \end{proof}
 \end{lemma}
-\begin{definition}
-    For a pair of spaces $(X,A)$, $a\in A$  and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
-    %TODO add alternative spaces 
-\end{definition}
+The next lemma is a variant of what is commonly referred to as the ``compression criterion''.
 \begin{lemma}\label{lem:compressionVariation}
     Let $n\geq 1$, $e\colon(I^{n+1},\set{1}\times I^n)\to (X,A)$, $*=(1,0,\ldots,0)\in\set{1}\times\partial I^n$ and $a=e(*)$. 
     Then $e|_{J^n}\colon(J^n,\set{1}\times\partial I^n,*)\to(X,A,a)$ represents the equivalence class of the constant map in $\pi_n(X,A,a)$. %TODO different def of \pi_n used here! J^n instead of I^n
@@ -290,6 +302,7 @@ We will need the following lemma to translate our statements to the language of 
         Since $\im f\subset A$ and $J^n$ is contractible with respect to $*$, $f$ represents $\const_a$ which proves the proposition. 
     \end{proof}
 \end{lemma}
+The next proposition is the most important part of the proof of \cref{prop:descentForPairs} from which we will derive descent for pushouts.
 \begin{prop}\label{prop:eqCharInjSurj}
     Given a map $f\colon(X,A)\to (Y,B)$ and $n\geq0$, the following are equivalent:
     \begin{enumerate}[label={(\roman*)}]
@@ -306,39 +319,27 @@ We will need the following lemma to translate our statements to the language of 
         We first prove the injectivity statement for $n=0$. 
         By \cref{rmk:emptyFiber} we need to show that when given $x\in X$ and path $f(x)$ to some element of $B$, there exists a path from $x$ to some element of $A$.
 
-        So let $e$ be a path from $f(x)$ to $b\in B$ and $g=x$.
-        Then by \ref{itm:liftingMapsAndHtpyConst} there is a map $G\colon (I,\set{1})\to(X,A)$ such that $G(0)=g=x$.
+        So let $g=x$ and $e$ be a path from $f(x)$ to $b\in B$.
+        Then by \ref{itm:liftingMapsAndHtpyConst} there is a map $G\colon (I,\set{1})\to(X,A)$ such that $G(0)=x=g$.
         This is the desired path.
 
-        We next prove that for $n\geq 1$ \ref{itm:liftingMapsAndHtpyConst} implies injectivity of $\pi_n(X,A,a)\to \pi_n(Y,B,f(b))$.
+        We next prove that for $n\geq 1$, \ref{itm:liftingMapsAndHtpyConst} implies injectivity of $\pi_n(X,A,a)\to \pi_n(Y,B,f(b))$.
         Given $[\lambda],[\mu]\in\pi_n(X,A,a)$ such that $\pi_n(f)([\lambda])=\pi_n(f)([\mu])$, we have a homotopy $\widetilde{h}\colon(I^n,\partial I^n,J^{n-1})\times I\to (Y,B,b)$ from $f\lambda$ to $f\mu$.
         Set $e=\widetilde{h}$ and using $J^n=J^{n-1}\times I\cup I^n\times\partial I$ define $g$ to be $\lambda$ on $I^n\times\set{0}$, $\mu$ on $I^n\times\set{1}$ and $\const_a$ on $J^{n-1}\times I$.
-        Then $e|_{J^n}=fg$ and so by \ref{itm:liftingMapsAndHtpyConst} we get a map $G\colon(I^{n+1},\set{1}\times I)\to(X,A)$ with $G|_{J^n}=g$. 
+        Then $e|_{J^n}=fg$ and so by \ref{itm:liftingMapsAndHtpyConst} we get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ with $G|_{J^n}=g$. 
         Thus $G$ is a homotopy $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ from $\lambda$ to $\mu$, hence $[\lambda]=[\mu]$ in $\pi_n(X,A,a)$.
 
-        Lastly we show that for $n\geq 0$ \ref{itm:liftingMapsAndHtpyConst} implies surjectivity of $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(b))$.
+        Lastly we show that for $n\geq 0$, \ref{itm:liftingMapsAndHtpyConst} implies surjectivity of $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(b))$.
         Let $[\lambda]\in\pi_n(Y,B,f(a))$ and set $e=\lambda$ and $g=\const_a$. 
         Then we get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ and homotopy $H\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ from $e$ to $fG$ such that $H|_{J^n\times I}$ is $\const_{f(a)}$ and $G|_{J^n}=\const_a$.
-        Thus $G$ is a map $(I^{n+1},\partial I^{n+1},J^n)\to (X,A,a)$ and $H$ is a homotopy $(I^{n+1},\partial I^{n+1},J^n)\times I\to(Y,B,f(a))$ from $\lambda$ to $fG$ which shows $[\lambda]=[fG]$ in $\pi_n(Y,B,f(a))$.
-
-        \ref{itm:liftingMapsAndHtpyConst} implies \ref{itm:liftingMapsAndHtpy}:
-
-        Let $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$, $g(J^n,\set{1}\times\partial I^n)\to(X,A)$ and $h\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ be a homotopy from $e|_{J^n}$ to $fg$.
-        By the relative homotopy extension property (\cref{lem:rHEP}) applied to the triad $(I^{n+1};J^n,\set{1}\times I^n)$, there exists a homotopy $j\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ extending $h$ such that $j_0=e$.
-        
-        Since $j_1|_{J^n}=fg$ we can apply \ref{itm:liftingMapsAndHtpyConst} to get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ such that $G|_{J^n}=g$ and a homotopy $k\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $k|_{J^n\times I}$ is the constant homotopy of $j_1|_{J^n}=fg$. 
-        Let $\const_{fg}\colon(J^n\times I,\set{1}\times\partial I^n\times I)\to (Y,B)$ denote the constant homotopy of $j_1|_{J^n}=fg$.
-        Then by \cref{rmk:choiceOfConstantHtpy} we can pick a homotopy $L\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to (Y,B)$ from $h*\const_{fg}$ to $h$ such that $L|_{J^n\times\set{0}\times I}=e|_{J^n}\times\id_I$ and $L|_{J^n\times\set{1}\times I}=fg\times\id_I$. %TODO why?
-        
-        We now apply \cref{lem:rHEP} again to the triad $(I^{n+1}\times I;J^{n+1},\set{1}\times I^n\times I)$, noting that $J^{n+1}=J^n\times I\cup I^{n+1}\times\partial I$, to extend the homotopy given by the union of $L$, $e$ on $I^{n+1}\times\set{0}\times I$ and $fG$ on $I^{n+1}\times\set{1}\times I$ to a homotopy $\widetilde{L}\colon(I^{n+1}\times I,\set{1}\times I^n\times I)\times I\to(Y,B)$ such that $\widetilde{L}_0=j*k$.
-        Setting $H=\widetilde{L}_1$ gives the desired homotopy.
+        Thus $G$ is a map $(I^{n+1},\partial I^{n+1},J^n)\to (X,A,a)$ and $H$ is a homotopy $(I^{n+1},\partial I^{n+1},J^n)\times I\to(Y,B,f(a))$ from $\lambda$ to $fG$ which shows $[\lambda]=[fG]$ in $\pi_{n+1}(Y,B,f(a))$.
 
         \ref{itm:injAndSurjOfHtpyGrps} implies \ref{itm:liftingMapsAndHtpyConst}:
 
         For $n=0$ we view $e$ as a path from $f(g)$ to some element of $b\in B$, so by \cref{rmk:emptyFiber} we can choose a path $G'\colon I\to X$ which goes from $g$ to some element $a\in A$.
         Since $\pi_1(f)\colon\pi_1(X,A,a)\to\pi_1(Y,B,f(a))$ is surjective we can pick a map $\lambda\colon(I^1,\partial I^1,J^0)\to(X,A,a)$ and a homotopy $L\colon(I^1,\partial I^1,J^0)\times I\to(Y,B,f(a))$ from $\overline{fG'}*e$ to $f\lambda$.
         
-        Adding the constant homotopy at $fG'$, we obtain a homotopy $M\colon(I^1,\partial I^1,J^0)\times I\to (Y,B,f(g))$ from $fG'*(\overline{fG'}*e)$ to $fG'*f\lambda=f(G'*\lambda)$.
+        Concatenating the constant homotopy at $fG'$, we obtain a homotopy $M\colon(I^1,\partial I^1,J^0)\times I\to (Y,B,f(g))$ from $fG'*(\overline{fG'}*e)$ to $fG'*f\lambda=f(G'*\lambda)$.
         By \cref{rmk:choiceOfConstantHtpy} can now pick a homotopy $N\colon(I^1,\partial I^1,J^0)\times I\to(Y,B,f(g))$ from $fG'*(\overline{fG'}*e)$ to $e$. 
         Setting $G=G'*\lambda$ and $H=\overline{N}*M$ then gives the desired maps.
 
@@ -347,22 +348,35 @@ We will need the following lemma to translate our statements to the language of 
         Then $fg$ is homotopic to the constant map in $\pi_n(Y,B,f(a))$ by \cref{lem:compressionVariation}.
 
         By injectivity, we thus get a homotopy $j\colon(J^n,\set{1}\times\partial I^n)\times I\to(X,A,a)$ from $g$ to $\const_a$.
-        Next we apply the relative homotopy extension property to the triad $(I^{n+1};J^n,\set{1}\times I^n)$ to extend the homotopy $fj$ to a homotopy $K\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $K_0=e$.
+        Next we apply relative homotopy extension to the triad $(I^{n+1};J^n,\set{1}\times I^n)$ to extend the homotopy $fj$ to a homotopy $K\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $K_0=e$.
         Since $K_1|_{J^n}=\const_{f(a)}$, it is a map $K_1\colon(I^{n+1},\partial I^{n+1},J^n)\to(Y,B,f(a))$ and represents an element in $\pi_{n+1}(Y,B,f(a))$.
         
-        By surjectivity of $\pi_{n+1}(f)$ we then get a map $J_1\colon(I^{n+1},\partial I^{n+1},J^n)\to(X,A,a)$ and a homotopy of triples $L$ from $K_1$ to $fJ_1$.
-        By the  relative homotopy extension property for $(I^{n+1};J^n,\set{1}\times I^n)$ we extend the reverse homotopy of $j$ to a homotopy of $J\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ which ends at $J_1$.
+        By surjectivity of $\pi_{n+1}(f)$ we then get a map $J_1\colon(I^{n+1},\partial I^{n+1},J^n)\to(X,A,a)$ and a homotopy of triples $L\colon(I^{n+1},\partial I^{n+1},J^n)\times I\to(Y,B,f(a))$ from $K_1$ to $fJ_1$.
+        By the relative homotopy extension property for $(I^{n+1};J^n,\set{1}\times I^n)$ and by reversing the unit intervall, we extend the $j$ to a homotopy $J\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ which ends at $J_1$.
         Setting $G=J_0$ we have $G|_{J^n}=j_0=g$.
 
         Furthermore, we have the homotopy $(K*L)*\overline{fJ}\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ from $fg$ to $fg$.
-        By \cref{rmk:choiceOfConstantHtpy} we can pick a homotopy $M\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to(Y,B)$ from $(fj*\const_{f(a)})*\overline{fj}$ to the constant homotopy at $fg$ such that $M|_{J^n\times\set{0}\times I}$ and $M|_{J^n\times\set{1}\times I}$ are both the constant homotopies at $fg$.
+        By \cref{rmk:choiceOfConstantHtpy} we can pick a homotopy $M\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to(Y,B)$ from $(fj*\const_{f(a)})*\overline{fj}$ to the constant homotopy at $fg$ such that $M|_{J^n\times\set{0}\times I}$ and $M|_{J^n\times\set{1}\times I}$ are both also the constant homotopies at $fg$.
         
         Using the relative homotopy extension property on $(I^{n+2};J^n\times I\cup I^{n+1}\times\set{0}\cup I^{n+1}\times\set{1},\set{1}\times I^{n+1})$, we extend the homotopy given by the constant homotopy at $e$ on $I^{n+1}\times\set{0}\times I$, the constant homotopy at $fG$ on $I^{n+1}\times\set{1}\times I$ and $M$ on $J^n\times I\times I$ to a homotopy $\widetilde{M}\colon(I^{n+2},\set{1}\times I^{n+1})\times I\to(Y,B)$ with $\widetilde{M}_0=(K*L)*\overline{fJ}$.
         Now setting $H=\widetilde{M_1}$ gives the desired homotopy from $e$ to $fG$ that is the constant homotopy at $fg$ on $J^n\times I$.
+        
+        \ref{itm:liftingMapsAndHtpyConst} implies \ref{itm:liftingMapsAndHtpy}:
 
-        Since \ref{itm:liftingMapsAndHtpy} implies \ref{itm:liftingMapsAndHtpyConst} trivially we have proven the proposition. %TODO maybe change order of implicationsin proof to be more clear what the equivalences proven are
+        Let $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$, $g(J^n,\set{1}\times\partial I^n)\to(X,A)$ and $h\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ be a homotopy from $e|_{J^n}$ to $fg$.
+        By relative homotopy extension applied to the triad $(I^{n+1};J^n,\set{1}\times I^n)$, there exists a homotopy $j\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ extending $h$ such that $j_0=e$.
+        
+        Since $j_1|_{J^n}=fg$ we can apply \ref{itm:liftingMapsAndHtpyConst} to get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ such that $G|_{J^n}=g$ and a homotopy $k\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $k|_{J^n\times I}$ is the constant homotopy of $j_1|_{J^n}=fg$. 
+        Then by \cref{rmk:choiceOfConstantHtpy} we can pick a homotopy $L\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to (Y,B)$ from $h*\const_{fg}$ to $h$ such that $L|_{J^n\times\set{0}\times I}=\const_{e|_{J^n}}$ and $L|_{J^n\times\set{1}\times I}=\const_{fg}$.
+        
+        We now apply relative homotopy extension to the triad $(I^{n+1}\times I;J^{n+1},\set{1}\times I^n\times I)$, noting that $J^{n+1}=J^n\times I\cup I^{n+1}\times\partial I$, to extend the homotopy given by the union of $L$ on $J^n\times I\times I$, $e$ on $I^{n+1}\times\set{0}\times I$ and $fG$ on $I^{n+1}\times\set{1}\times I$ to a homotopy $\widetilde{L}\colon(I^{n+1}\times I,\set{1}\times I^n\times I)\times I\to(Y,B)$ such that $\widetilde{L}_0=j*k$.
+        Setting $H=\widetilde{L}_1$ gives the desired homotopy.
+
+
+        Since \ref{itm:liftingMapsAndHtpy} implies \ref{itm:liftingMapsAndHtpyConst} trivially we have proven the proposition.
     \end{proof}
 \end{prop}
+For convenience we fix notation for some variations of the mapping cylinder construction.
 \begin{definition}[Mapping Cylinder]
     Let $f\colon A\to B$ be a map of topological spaces and let $I=[0,1]$.
     Then we let
@@ -375,7 +389,7 @@ We will need the following lemma to translate our statements to the language of 
     The analogous construction with $I=[0,x]$ will be referred to as a \emph{closed mapping cylinder of $f$} and denoted $\M^{[0,x]}(f)$;
     the construction with half open intervalls $I=[0,x)$ will be referred to as an \emph{open mapping cylinder of $f$} and denoted $\M^{[0,x)}(f)$. %TODO perhaps describe factorization
 \end{definition}
-\begin{remark}%TODO maybe put this to the def of Strom model str
+\begin{remark}
     Note that the inclusion $A\xrightarrow{\id_A\times\set{1}}\M(f)$ is a h-cofibration (see e.g. \cite[Theorem 2]{note_on_cofibs_1}).
 \end{remark}
 \begin{lemma}\label{lem:replaceByEmbedding}
@@ -476,6 +490,8 @@ We will need the following lemma to translate our statements to the language of 
         Thus we have proven the proposition.
     \end{proof}
 \end{prop}
+This concludes the technical preliminaries. 
+We are now ready to give a proof of descent for pushouts.
 \begin{prop}\label{prop:topDescentPo}
     The model category $\Top$ has descent for homotopy pushouts. 
     \begin{proof}
@@ -548,32 +564,7 @@ We will now give an alternative proof of descent for pushouts using the notion o
     \end{center}
     is a homotopy pullback.
 \end{definition}
-It turns out that a weak version of the locality of quasifibrations (\cref{cor:locOfQuasifib}) is sufficient to prove descent for pushouts.
-This relationship also goes the other way as the next remark shows.
-\begin{remark}
-    Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is called ``Locality of Quasifibrations'':
-    
-    Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover such that for every pair of indices $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
-    Then if $f^{-1}(U_i)\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
-
-    One can conclude this by using that the homotopy colimit of such a cover is the space itself (see \cite[Proposition 4.6 (c)]{hypercovers}):
-    Because all squares
-    \begin{center}
-        \begin{tikzcd} [sep = 4em]
-            f^{-1}(U_j) \arrow [r, hook] \arrow [d] & f^{-1}(U_i) \arrow [d]\\
-            U_j\arrow [r, hook] & U_i
-        \end{tikzcd}
-    \end{center}
-    are homotopy pullbacks, the squares 
-    \begin{center}
-        \begin{tikzcd} [sep = 4em]
-            f^{-1}(U_i) \arrow [r, hook] \arrow [d] & X=\hcolim\limits_{i\in I}(f^{-1}(U_i)) \arrow [d]\\
-            U_i \arrow [r, hook] & Y=\hcolim\limits_{i\in I}(U_i)
-        \end{tikzcd}
-    \end{center}
-    are homotopy pullbacks by descent and the proposition follows since $(U_i)_{i\in I}$ is a cover of $Y$.
-\end{remark}
-The main tool we will use to prove descent of pushouts via quasifibrations is the following.
+The following weak version of the locality of quasifibrations (\cref{cor:locOfQuasifib}) is sufficient to prove descent for pushouts.
 \begin{corollary}[Weak Locality of Quasifibrations]\label{cor:locOfQuasifib}
     Let $f\colon X\to Y$ be a map and $U_1, U_2\subset Y$ be open such that $f^{-1}(U_1)\to U_1$, $f^{-1}(U_2)\to U_2$ and $f^{-1}(U_1)\cap f^{-1}(U_2)=f^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
     Then $f$ is a quasifibration.
@@ -590,14 +581,40 @@ The main tool we will use to prove descent of pushouts via quasifibrations is th
             \end{tikzcd}
         \end{center} 
         are ordinary pullback squares.
-        Using \cref{lem:weOfaPairsIsHtpyPb} the given assumptions imply that the first square is also a homotopy pullback since top and bottom map are quasifibrations.
+        Using \cref{lem:weOfaPairsIsHtpyPb} the given assumptions imply that the first square is a homotopy pullback since top and bottom map are quasifibrations.
         Thus $f$ is a map of excisive triads $(X;f^{-1}(U_1),f^{-1}(U_2))\to(Y;U_1,U_2)$ such that $f|_{f^{-1}(U_i)}\colon(f^{-1}(U_i),f^{-1}(U_1)\cap f^{-1}(U_2))\to (U_i,U_1\cap U_2)$ are weak equivalences for $i\in\set{1,2}$.
 
-        Now \cref{prop:descentForPairs} implies that top and bottom map of the second square are quasifibrations, hence it is also homotopy pullback.
-        The proposition now follows every point $y\in Y$ lies in some $U_i$, hence the ordinary fiber of $f\colon X\to Y$ is the homotopy fiber by the pasting law.
+        Now \cref{prop:descentForPairs} implies that the second square is also homotopy pullback.
+        The proposition now follows since every point $y\in Y$ lies in some $U_i$, hence the ordinary fiber of $f\colon X\to Y$ is the homotopy fiber by the pasting law.
     \end{proof}
 \end{corollary}
-In order to reduce to a situation where \cref{cor:locOfQuasifib} is applicable we will need to use the next two lemmas.
+The relationship of locality of quasifibrations and descent also goes the other way as the next remark shows.
+\begin{remark}\label{rmk:locOfQuasifibDescent}
+    Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is often called ``Locality of Quasifibrations'':
+    
+    Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover such that for every pair of indices $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
+    Then if $f^{-1}(U_i)\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
+
+    One can conclude this by using that the homotopy colimit of such a cover is the space itself (see \cite[Proposition 4.6 (c)]{hypercovers}):
+    Because all squares
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            f^{-1}(U_j) \arrow [r, hook] \arrow [d] & f^{-1}(U_i) \arrow [d]\\
+            U_j\arrow [r, hook] & U_i
+        \end{tikzcd}
+    \end{center}
+    are homotopy pullbacks, the ordinary pullback squares 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            f^{-1}(U_i) \arrow [r, hook] \arrow [d] & X=\hcolim\limits_{i\in I}(f^{-1}(U_i)) \arrow [d]\\
+            U_i \arrow [r, hook] & Y=\hcolim\limits_{i\in I}(U_i)
+        \end{tikzcd}
+    \end{center}
+    are homotopy pullbacks by descent and the proposition follows since $(U_i)_{i\in I}$ is a cover of $Y$.
+
+    A direct proof of the locality of quasifibrations can be found in \cite[Theorem A.1.2]{aguilar2002algebraic}.
+\end{remark}
+The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQuasifib} is applicable.
 \begin{lemma}\label{lem:reductionStepDescent}
     If for all cubes in the model category $\Top$
     \begin{center}
@@ -746,10 +763,11 @@ In order to reduce to a situation where \cref{cor:locOfQuasifib} is applicable w
                 * \arrow[r, "\hat{b}"] & B \arrow[r, hook, "\sim"] & \M(g) \\
             \end{tikzcd}
         \end{center}
-        where the indicated maps are weak equivalences since they are right inverse to the maps $\M(f)\to Y$ and $\M(g)\to B$ respectively, which are weak equivalences themselves.
+        where the indicated maps are weak equivalences since they are right inverse to the contraction maps $\M(f)\to Y$ and $\M(g)\to B$ respectively, which are weak equivalences themselves.
         Since the right square is pullback and homotopy pullback and the left side is as well, this means that the fiber $F$ is already a homotopy fiber which proves the proposition.
     \end{proof}
 \end{lemma}
+This finishes the preparation and we will now prove descent for pushouts via locality of quasifibrations.
 \begin{prop}\label{lem:topDescentPoAlt}
     The model category $\Top$ has descent for homotopy pushouts. 
     \begin{proof}
@@ -835,7 +853,7 @@ We will always work with seemingly fixed diagrams throughout the proofs without 
 This is of course not possible in general, since one cannot e.g. extend a given span to a homotopy pushout without replacing it first.
 We will do this implicitly; if one is uncomfortable doing that, one can view the proofs as being in the \inftycat/ presented by the given model category, where the issue disappears.
 
-Our proof of descent for homotopy coproducts will again demonstrate that descent is somewhat linked to universality.
+Our proof of descent for homotopy coproducts will demonstrate that descent is somewhat linked to universality.
 We will show that descent for homotopy coproducts is a consequence of having disjoint binary homotopy coproducts and universality for homotopy coproducts.
 To avoid confusion between homotopy and ordinary limits/colimits, we will tag homotopy limits/colimits with ``h'' (in particular, the ``h'' here does not refer to the \Strom/ model structure).
 \begin{definition}
