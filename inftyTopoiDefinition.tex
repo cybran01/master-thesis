@@ -104,7 +104,7 @@ We will require the following proposition for the proof.
         where $S$ is the set of non-degenerate simplices of dimension $n+1$.
         For ease of notation, we set $X_{0}=\bigcup\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\bigcup\limits_S \Delta^{n+1}$.
 
-        Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ or $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoint of $q_i$ to be the colimit, and the conepoint of $p_i$ to be the pullback %TODO how does that even define a cone?
+        Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ or $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoint of $q_i$ to be the colimit, and the conepoint of $p_i$ to be the pullback 
         \begin{center}
             \begin{tikzpicture}
                 \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
@@ -119,7 +119,7 @@ We will require the following proposition for the proof.
                 (m-1-2) edge (m-2-2);
             \end{tikzpicture}\;.
         \end{center}
-        Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$ which are cartesian by the pasting law. %TODO how? (where does map to cone come from?)
+        Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$ which are cartesian by the pasting law.
 
         By the induction hypothesis we thus have that $p_0$ and $p_1$ are colimit cones.
 
@@ -177,7 +177,7 @@ We will require the following proposition for the proof.
 
         It now remains to show that statement for general $K$.
         Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category via the ordering $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (with all higher simplices degenerate).
-        It can be shown that the inclusion $L\subset\N(\Nat)$ is a weak categorical equivalence. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
+        It can be shown that the inclusion $L\subset\N(\Nat)$ is a weak categorical equivalence.
 
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation, let $q$ be a colimit cone and let $\left(K^n\right)_{n\in\Nat}$ denote the skeletal filtration of $K$.
         We can compute colimits of any diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex $n\in\Nat$ is the colimit of $K^n\to C$ and all higher simplices are given by chains of the canonical maps. 
@@ -208,9 +208,9 @@ We will require the following proposition for the proof.
 \end{lemma}
 \begin{lemma}\label{lem:descentIffDescentPoAndCoprod}
     A \inftycat/ $C$ that has universal colimits has descent if and only if it has descent for pushouts and coproducts.
-    \begin{proof} %TODO maybe mention why it suffices to prove things for arrows x\to\infty
+    \begin{proof}
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be natural transformation between colimit cones such that $\alpha|_K$ is cartesian.
-        We first prove the statement for all finite dimensional $K$ by induction over the dimension of $K$. %TODO define dimension
+        We first prove the statement for all finite dimensional $K$ by induction over the dimension of $K$.
 
         For $\dim K=-1$ the statement follows since $K=\emptyset$ is the coproduct over the empty indexing category.
 
@@ -223,7 +223,7 @@ We will require the following proposition for the proof.
         For ease of notation, we again set $X_{0}=\bigcup\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\bigcup\limits_S \Delta^{n+1}$.
         
         Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ and $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoints to be the colimits.
-        Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$. %TODO how?
+        Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$.
         By the induction hypothesis we obtain that $\alpha_0$ and $\alpha_1$ are cartesian.
 
         The map $\alpha_2$ is cartesian as well: 

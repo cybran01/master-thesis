@@ -53,11 +53,11 @@ The most important (and quite non-trivial) part of the interaction between Quill
         But since $C'\cup_AB$ is a homotopy pushout (since it is a pushout along a cofibration), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.
     \end{proof}
 \end{prop}
-%TODO insert  section proof of universality here
+%TODO insert section proof of universality here
 \begin{prop}\label{lem:topUniversalPo}
     The model category $\Top$ has universality for homotopy pushouts.
     \begin{proof}
-        By factoring the map $D'\xrightarrow{\sim}\overline{D}\xtwoheadrightarrow{h} D$ into a weak equivalence followed by an h-fibration (which is also a fibration) and pulling back successively, we obtain the diagram %TODO explain why we we use weak equivalence here: since the faces are pb in the SERRE model str, the 3 remaining vertical maps are only w.e.
+        By factoring the map $D'\xrightarrow{\sim}\overline{D}\xtwoheadrightarrow{h} D$ into a weak equivalence followed by an h-fibration (which is also a fibration) and pulling back successively, we obtain the diagram
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
@@ -99,7 +99,7 @@ The most important (and quite non-trivial) part of the interaction between Quill
         where the horizontal maps are h-cofibrations since pullbacks of h-cofibrations along h-fibrations are again h-cofibrations by \cite[Theorem 12]{note_on_cofibs_2}.
         
         Let $q\colon\left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}\xtwoheadrightarrow{h}\widehat{B}\cup_A\widehat{C}$ denote the pullback of $\overline{D}\xtwoheadrightarrow{h} D$ along  $\widehat{B}\cup_A\widehat{C}\to D$.
-        Since h-cofibrations are in particular closed embeddings we have $\widehat{B}\times_{D}\overline{D}\cong q^{-1}(\widehat{B})$, $\widehat{C}\times_{D}\overline{D}\cong q^{-1}(\widehat{C})$ and $\overline{A}\cong q^{-1}(A)\cong q^{-1}(\widehat{B})\cap q^{-1}(\widehat{C})$. %TODO why h-cofib closed embeddings?
+        Since h-cofibrations are in particular closed embeddings we have $\widehat{B}\times_{D}\overline{D}\cong q^{-1}(\widehat{B})$, $\widehat{C}\times_{D}\overline{D}\cong q^{-1}(\widehat{C})$ and $\overline{A}\cong q^{-1}(A)\cong q^{-1}(\widehat{B})\cap q^{-1}(\widehat{C})$.
         As $q^{-1}(\widehat{B})$ and $q^{-1}(\widehat{C})$ are closed, this implies by point set topology that the square is an ordinary pushout.
 
         Thus it is a pushout along an h-cofibration, hence by \cref{prop:poAlongHCofibIsHtpyPo} a homotopy pushout.
@@ -184,7 +184,7 @@ As a first step we will fix some notation related to pairs and triples of spaces
     \end{proof}
 \end{lemma}
 \begin{remark}\label{rmk:cwInclIsHCofib}
-    Let $J^n=\set{0}\times I^n\cup I\times\partial I^n\subset\partial I^{n+1}\subset I^{n+1}$. %TODO maybe put somewhere better
+    Let $J^n=\set{0}\times I^n\cup I\times\partial I^n\subset\partial I^{n+1}\subset I^{n+1}$.
     The triads $(I^{n+1};J^n,\set{1}\times I^n)$ fulfill the requirements of \cref{lem:rHEP} for all $n\geq 0$.
     This is because all the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are cofibrations and thus also h-cofibrations.
 \end{remark}
@@ -281,7 +281,7 @@ We will need the following lemma to translate our statements to the language of 
 The next lemma is a variant of what is commonly referred to as the ``compression criterion''.
 \begin{lemma}\label{lem:compressionVariation}
     Let $n\geq 1$, $e\colon(I^{n+1},\set{1}\times I^n)\to (X,A)$, $*=(1,0,\ldots,0)\in\set{1}\times\partial I^n$ and $a=e(*)$. 
-    Then $e|_{J^n}\colon(J^n,\set{1}\times\partial I^n,*)\to(X,A,a)$ represents the equivalence class of the constant map in $\pi_n(X,A,a)$. %TODO different def of \pi_n used here! J^n instead of I^n
+    Then $e|_{J^n}\colon(J^n,\set{1}\times\partial I^n,*)\to(X,A,a)$ represents the equivalence class of the constant map in $\pi_n(X,A,a)$.
     \begin{proof}
         Fix a homeomorphism $I^n\cong J^n$ which restricts to a homeomorphism $\partial I^n\cong \partial J^n$.
         Then the square  
@@ -387,7 +387,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 
     It will be convenient to also allow other intervalls instead of $I=[0,1]$; we will allow $I=[0,x]$ and $I=[0,x)$ for $x>0$.
     The analogous construction with $I=[0,x]$ will be referred to as a \emph{closed mapping cylinder of $f$} and denoted $\M^{[0,x]}(f)$;
-    the construction with half open intervalls $I=[0,x)$ will be referred to as an \emph{open mapping cylinder of $f$} and denoted $\M^{[0,x)}(f)$. %TODO perhaps describe factorization
+    the construction with half open intervalls $I=[0,x)$ will be referred to as an \emph{open mapping cylinder of $f$} and denoted $\M^{[0,x)}(f)$.
 \end{definition}
 \begin{remark}
     Note that the inclusion $A\xrightarrow{\id_A\times\set{1}}\M(f)$ is a h-cofibration (see e.g. \cite[Theorem 2]{note_on_cofibs_1}).
@@ -397,7 +397,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
     Then there exists an excisive triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ and maps of triads $\widetilde{f}\colon(X;X_1,X_2)\to(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$, $j\colon(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})\to(Y;Y_1,Y_2)$ factoring $j\widetilde{f}=f$ such that
     \begin{itemize}
         \item $\widetilde{f}$ is an inclusion and $j$ is a weak equivalence 
-        \item $\widetilde{f}(X_i^°)=\widetilde{f}(X)\cap \widetilde{Y_i}^°$ for $i\in\set{1,2}$
+        \item $\widetilde{f}(X_i^°)=\widetilde{f}(X)\cap \widetilde{Y_i}^°$ and $\widetilde{f}(X_i)=\widetilde{f}(X)\cap \widetilde{Y_i}$ for $i\in\set{1,2}$
         \item $j$ induces a weak equivalence of pairs $(\widetilde{Y_i},\widetilde{Y_1}\cap \widetilde{Y_2})\to(Y_i,Y_1\cap Y_2)$ for $i\in\set{1,2}$
         \item and $j$ induces a weak equivalence of pairs $(\widetilde{Y},\widetilde{Y_i})\to(Y,Y_i)$ for $i\in\set{1,2}$.
     \end{itemize}
@@ -405,6 +405,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         Let $\widetilde{Y}=\M(f)$ be the mapping cylinder of $f$.
         We set $\widetilde{Y_i}=\M(f|_{X_i})\cup f^{-1}(Y_i)\times\left(0,\frac{1}{2}\right)$ where we consider $f|_{X_i}$ to be a map $X_i\to Y_i$.
         Then the triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ together with the choices of $\widetilde{f}\colon X\to \widetilde{Y}$ as the inclusion into the mapping cylinder and as $g\colon\widetilde{Y}\to Y$ the contraction map give a factorization of $f$.
+        This also immediately gives $\widetilde{f}(X_i)=\widetilde{f}(X)\cap \widetilde{Y_i}$.
         
         We first show that $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ is excisive:
         First assume $x\in X\times(0,1]\subset\M(f)$, then $x\in X_i^°\times(0,1]$ for some $i\in\set{1,2}$.
@@ -434,28 +435,27 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         Therefore, the proposition follows by \cref{lem:weOfaPairsIsHtpyPb}.
     \end{proof}
 \end{lemma}
-%TODO mention lebesgue number lemma and J^n\subset I^{n+1} DR-pair, maybe use incl of cw
-\begin{prop}\label{prop:descentForPairs} %TODO cite quasifibs Thm 1.2
+%TODO mention lebesgue number lemma
+\begin{prop}\label{prop:descentForPairs}
     Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
     Then, if the maps $f|_{X_i}\colon(X_i,X_1\cap X_2)\to(Y_i,Y_1\cap Y_2)$ are weak equivalences of pairs for $i\in\set{1,2}$, the maps $f\colon(X,X_i)\to(Y,Y_i)$ are weak equivalences of pairs for $i\in\set{1,2}$ as well.
     \begin{proof}
         The proof will follow \cite[Theorem 1.2]{may1990weak}.
 
-        We can assume $f$ to be an inclusion such that $f(X_i^°)=f(X)\cap Y_i^°$ for $i\in\set{1,2}$ by applying \cref{lem:replaceByEmbedding} and replacing it with $\widetilde{f}$.
+        We can assume $f$ to be an inclusion such that $f(X_i^°)=f(X)\cap Y_i^°$ and $f(X_i)=f(X)\cap Y_i$ for $i\in\set{1,2}$ by applying \cref{lem:replaceByEmbedding} and replacing it with $\widetilde{f}$.
         The assumptions on the map $g$ from \cref{lem:replaceByEmbedding} together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homtopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
         
         By the definition of a weak equivalence of pairs, it suffices to show that under the given assumptions the statement of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpyConst} holds for all $n\geq 0$.
     
         So let $g\colon(J^n,\set{1}\times\partial I^n)\to(X,X_i)$ and $e\colon(I^{n+1},\set{1}\times I^n)\to(Y,Y_i)$ be given such that $e|_{J^n}=g$.
         As $J^n\subset I^{n+1}$ are both compact metric spaces, we can find a Lebesgue number $\delta$ for the cover $Y_1^°,Y_2^°\subset Y$ and the map $e$.
-        We pick a cubical subdivision $\mathcal{C}$ of $I^{n+1}$ such that the diameter of every cube $c\in\mathcal{C}$ is smaller than $\delta$.
-        This ensures that for every cube $c\in\mathcal{C}$ there is an $i\in\set{1,2}$ such that $e(c)\subset Y_i^°$.
-        Whenever $e(c)\subset Y_i^°$ we also have $g(c\cap J^n)\subset X_i^°$ for the same $i\in\set{1,2}$, since $fg(c\cap J^n)\subset f(X)\cap Y_i^°=f(X_i^°)$ and $f$ is an inclusion.
+        We pick a cubical subdivision $\mathcal{C}$ of $I^{n+1}$ such that the diameter of every cube is smaller than $\delta$.
+        This ensures that for every cubical cell $c\in\mathcal{C}$ there is an $i\in\set{1,2}$ such that $e(c)\subset Y_i^°$.
         Note that this cubical subdivision gives a CW-structure on $I^{n+1}$ such that $J^n\subset I^{n+1}$ is a subcomplex.
 
         We identify $I^{n+1}=I\times I^n$.
         The cubical subdivision $\mathcal{C}$ gives a cubical subdivision $\mathcal{D}$ of $I^n$ and a partition of $I$ into subintervalls of equal length $I_r=[v_r,v_{r+1}]\subset I$ with $0=v_0<v_1<\ldots<v_s=1$.
-        Let $\Gamma^m$ denote the collection of cells of the CW-structure on $I^n$ whose dimension is $m$ for $m\in\set{0,\ldots,n}$ and who are not contained in $\partial I^n$ and define $\Gamma^{-1}=\emptyset$.
+        Let $\Gamma^m$ denote the collection of cells of the CW-structure on $I^n$ with dimension $m\in\set{0,\ldots,n}$ who are not contained in $\partial I^n$, and define $\Gamma^{-1}=\emptyset$.
         
         Then for $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n+1}$ let $L_r^m=\left([0,v_r]\times I^n\right)\cup J^n\cup\bigcup\limits_{K\in\Gamma^{m-1}}\left(I_r\times K\right)\subset I^{n+1}$.
         We also note that $L_r^{n+1}=\left([0,v_{r+1}]\times I^n\right)\cup J^n=L_{r+1}^0$ and $L_s^{n+1}=I^{n+1}$.
@@ -468,11 +468,17 @@ For convenience we fix notation for some variations of the mapping cylinder cons
             \item if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ then $G(\set{v_{r+1}}\times K)\subset X_1\cap X_2$ and $H(\set{v_{r+1}}\times K\times I)\subset Y_1\cap Y_2$.
         \end{itemize}
         We will refer to these conditions as the \emph{patching conditions}.
-       
+        Note that for a cubical cell $c\in\mathcal{C}$ 
+        \begin{itemize}
+            \item if $e(c)\subset Y_j^°$ then $fg(c\cap J^n)\subset f(X)\cap Y_j=f(X_j^°)$ and thus $g(c\cap J^n)\subset X_j^°$ since $f$ is an inclusion
+            \item if $e(c)\subset Y_1\cap Y_2$ then $fg(c\cap J^n)\subset f(X)\cap Y_1\cap Y_2=f(X_1\cap X_2)$ and thus $g(c\cap J^n)\subset X_1\cap X_2$
+        \end{itemize}
+        and therefore any cell contained in $J^n$ fulfills the patching conditions.
+        
         So for the induction step with given $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$, by the induction hypothesis we have maps $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ extending $g$ and the constant homotopy at $fg=e|_{J^n}$ respectively such that $H$ is a homotopy from $e|_{L_r^m}$ to $fG$ that also fulfill the patching conditions.
 
         We now pick a $K\in\Gamma^m$ and proceed via a case distinction:
-        First if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ and $e(I_r\times K)\subset Y_j^°$ is contained in exactly one of the $Y_j^°$, we have that $G$ and $H$ restrict to maps $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\to(X_j,X_1\cap X_2)$ and $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\times I\to(X_j,X_1\cap X_2)$ which can be identified with maps $g'\colon(J^m, \set{1}\times\partial{I^m})\to(X_j,X_1\cap X_2)$ and $h'\colon (J^m, \set{1}\times\partial{I^m})\times I\to(X_j,X_1\cap X_2)$ respectively.
+        First if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ and $e(I_r\times K)\subset Y_j^°$ is contained in exactly one of the $Y_j^°$, we have that $G$ and $H$ restrict to maps $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\to(X_j,X_1\cap X_2)$ and $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\times I\to(X_j,X_1\cap X_2)$ respectively, which can be identified with maps $g'\colon(J^m, \set{1}\times\partial{I^m})\to(X_j,X_1\cap X_2)$ and $h'\colon (J^m, \set{1}\times\partial{I^m})\times I\to(X_j,X_1\cap X_2)$.
         
         Together with $e|_{I_r\times K}\cong e'\colon(I^{m+1},\set{1}\times I^m)\to(Y_j,Y_1\cap Y_2)$ and the equivalence of pairs $f\colon(X_j,X_1\cap X_2)\to(Y_j,Y_1\cap Y_2)$ these fulfill the conditions of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpy}. 
         So by \cref{prop:eqCharInjSurj} there exist extensions $G'_K$ and $H'_K$ which we can then identify with maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ fulfilling the desired properties.
@@ -628,7 +634,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
     where 
     \begin{itemize}
         \item left and back face are homotopy pullbacks
-        \item bottom and top square homotopy pushouts %TODO is ordinary po necessary?
+        \item bottom and top square homotopy pushouts 
         \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are fibrations
     \end{itemize}
     the front and right squares are homotopy pullbacks, then $\Top$ has descent for homotopy pushouts.
@@ -698,7 +704,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
                 A \arrow[>->,r, ""] & \hat{C} \\
             \end{tikzcd}
         \end{center}
-        is again a homotopy pullback square. %TODO maybe say that this reduction is possible in any model cat
+        is again a homotopy pullback square.
 
         Thus we have obtained a diagram
         \begin{center}
@@ -721,7 +727,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         Following the construction of this cube, we see that all faces are equivalent to their corresponding faces of the starting cube which proves the proposition.
     \end{proof}
 \end{lemma}
-\begin{lemma}\label{lem:mapOfCylIsQuasiFib} %TODO prove that the claimed ordinary pbs are actuall ordinary pbs
+\begin{lemma}\label{lem:mapOfCylIsQuasiFib}
     Let 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -788,7 +794,7 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         \end{itemize}
         the front and right squares are homotopy pullbacks.
 
-        By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations. %TODO why are inclusions cofibs
+        By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations.
         So we can form the cube 
         \begin{center}
             \begin{tikzcd} [sep = .75 cm]
@@ -833,17 +839,7 @@ This finishes the preparation and we will now prove descent for pushouts via loc
                 \M(f_{AB}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
             \end{tikzcd}
         \end{center}
-        are both ordinary pullbacks %TODO maybe explain why
-        with both vertical maps quasifibrations, they are already homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
-        % Taking the left square as an example, this follows from the fact that the fiber %TODO use elsewhere?
-        % \begin{center}
-        %     \begin{tikzcd} [sep = 4em]
-        %         F \arrow[r] \arrow[d] & \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[r] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
-        %         * \arrow[r] & \M(f_{AC}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
-        %     \end{tikzcd}
-        % \end{center}
-        % is already a homotopy fiber and so the map between homotopy fibers of the vertical maps is the identity and thus a weak equivalence.
-        % But this is an equivalent characterization of a homotopy pullback. %TODO reference
+        are both ordinary pullbacks with both vertical maps quasifibrations, they are already homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
     \end{proof}
 \end{prop}
 %TODO section on descent for htpy coprod

@@ -2,17 +2,15 @@ In this section we will give a proof on the May Recognition Theorem in the abstr
 The presentation of loop spaces here is due to \cite{segal_cat_and_cohom}.
 This theorem allows one to recognize which pointed spaces are (equivalent to) loop spaces.
 We will see that descent will play a major role in this.
-\begin{definition}[(Augmented) Simplicial Objects] %TODO maybe define for all finite totally ordered sets
+\begin{definition}[(Augmented) Simplicial Objects]
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
     We call a map $U^+\colon\N(\Delta_+)^{\op}\to C$ an \emph{augmented simplicial object of the \inftycat/ $C$}.
-    %
-    %We refer to the \inftycats/ $\Fun(\N(\Delta)^{\op},C)$ and $\Fun(\N(\Delta_+)^{\op},C)$ as the \emph{\inftycat/ of simplicial objects} and the \emph{\inftycat/ of augmented simplicial objects} respectively.
 \end{definition}
 \begin{definition}[Groupoid Object]
     Let $C$ be an \inftycat/ and let $U$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup S'$ with $S\cap S'$ consisting of a single element $\set{s}$ the square
     \begin{center}
-        \begin{tikzpicture} %TODO make this nice, explain usage of S and S'
+        \begin{tikzpicture}
             \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
             {
               U_n & U(S)\\
@@ -33,17 +31,17 @@ We will see that descent will play a major role in this.
     Let $C$ be an \inftycat/ and let $U$ be a groupoid object.
     If $U_0\cong *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
 \end{definition}
-\begin{definition}[\Cech/ Nerve] %TODO maybe replace functor C with \v{C}
+\begin{definition}[\Cech/ Nerve]
     Let $C$ be an \inftycat/ with small limits and let $\Delta^1\subset\N(\Delta_+)^{\op}$ be the inclusion corresponding to the full subcategory $[0]\to[-1]$.
     
-    Then by \cref{prop:exKanExt} there exists a functor $C\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
-    An object $U^+\in\Fun(\N(\Delta_+)^{\op},C)_0$ in the essential image of $C$ is called a \emph{\Cech/ nerve}.
+    Then by \cref{prop:exKanExt} there exists a functor $\CN\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
+    An object $U^+\in\Fun(\N(\Delta_+)^{\op},C)_0$ in the essential image of $\CN$ is called a \emph{\Cech/ nerve}.
 \end{definition}
 \begin{remark}
     Computing the \Cech/ nerve for a map $f\colon x\to y$ explicitly, one can see that up to equivalence it is given by
     \begin{center}
         \begin{tikzcd}
-            & C(f)_3 & C(f)_2 & C(f)_1 & C(f)_0 &  C(f)_{-1} \\ 
+            & \CN(f)_3 & \CN(f)_2 & \CN(f)_1 & \CN(f)_0 & \CN(f)_{-1} \\ 
             \ldots \arrow[r] \arrow[r, yshift=-1em] \arrow[r, yshift=1em] \arrow[r, yshift=-2em] \arrow[r, yshift=2em] 
             & x\times_y x \times_y x \times_y x \arrow[r, yshift=.5em] \arrow[r, yshift=-.5em] \arrow[r, yshift=1.5em] \arrow[r, yshift=-1.5em] \arrow[l, yshift=.5em] \arrow[l, yshift=-.5em] \arrow[l, yshift=1.5em] \arrow[l, yshift=-1.5em]
             & x\times_y x \times_y x\arrow[r] \arrow[r, yshift=-1em] \arrow[r, yshift=1em] \arrow[l] \arrow[l, yshift=-1em] \arrow[l, yshift=1em]
@@ -56,8 +54,8 @@ We will see that descent will play a major role in this.
         \item the arrows going from left to right are the maps induced by the face maps and are projections 
         \item the arrows going from right to left are the maps induced by the degeneracy maps and are diagonal maps. 
     \end{itemize}
-    Here we have only shown a selection of the $1$-skeleton of $C(f)$.
-    The remaining maps of $\Delta_+$ are however compositions of the shown face and degeneracy maps, which determines the $1$-skeleton; for all higher simplices we make choices via the universal property of the iterated pullbacks, which all yield equivalent objects $C(f)$. %TODO confirm
+    Here we have only shown a selection of the $1$-skeleton of $\CN(f)$.
+    The remaining maps of $\Delta_+$ are however compositions of the shown face and degeneracy maps, which determines the $1$-skeleton; for all higher simplices we make choices via the universal property of the iterated pullbacks, which all yield equivalent objects $\CN(f)$.
 \end{remark}
 \begin{definition}[Effective Groupoid Object]
     Let $C$ be an \inftycat/ with small colimits and let $U$ be a groupoid object.
@@ -82,9 +80,9 @@ We will need the following proposition which provides an alternative characteriz
 \begin{prop}\label{prop:grpdEffectiveIfPullback} 
     Let $U^+$ be an augmented simplicial object in an \inftycat/ $C$.
     Then it is a \Cech/ nerve if and only if $U^+|_{\N(\Delta)^{\op}}$ is a groupoid object and the square
-    \begin{center} %TODO add description to top and left map
+    \begin{center}
         \begin{tikzcd} [sep = 4em]
-            U_1^+ \arrow[r] \arrow[d] & U_0^+ \arrow[d] \\
+            U_1^+ \arrow[r, "\delta_0^1"] \arrow[d, "\delta_1^1"'] & U_0^+ \arrow[d] \\
             U_0^+ \arrow[r] & U_{-1}^+ \\
         \end{tikzcd}
     \end{center}
@@ -141,7 +139,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
 \end{prop}
 \begin{definition}[Effective Epimorphism]
     Let $C$ be an \inftycat/ with small limits and let $f\in C_1$ be a map.
-    We say that $f$ is an \emph{effective epimorphism} if the \Cech/ nerve $C(f)$ is a colimit diagram.
+    We say that $f$ is an \emph{effective epimorphism} if the \Cech/ nerve $\CN(f)$ is a colimit diagram.
 \end{definition}
 \begin{prop}\label{prop:mayRecognitionTheoremGroupoid}
     Let $C$ be an \inftytop/ and let $\Fun(\Delta^1,C)_{\text{eff}}\subset\Fun(\Delta^1,C)$ be the full subcategory of effective epimorphisms.  
@@ -151,7 +149,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     \end{equation*}
     and 
     \begin{equation*}
-        G\colon\Fun(\Delta^1,C)_{\text{eff}}\subset\Fun(\Delta^1,C)\xrightarrow{C}\Fun(\N(\Delta_+)^{\op},C)
+        G\colon\Fun(\Delta^1,C)_{\text{eff}}\subset\Fun(\Delta^1,C)\xrightarrow{\CN}\Fun(\N(\Delta_+)^{\op},C)
     \end{equation*}
     are fully faithful and have the same essential image in $\Fun(\N(\Delta_+)^{\op},C)$.
     
@@ -200,7 +198,6 @@ We now want to check that our formulation of the May Recognition Theorem really 
     
     We consider an object $X$ to be \emph{$k$-truncated} if the map $X\to *$ is $k$-truncated.
 \end{definition}
-%TODO make this a little cleaner to read, check that is really works in all degrees
 \begin{remark}
     Note that in $\spaces$ this definition agrees with the following:
     \begin{definition*}
@@ -240,10 +237,10 @@ We now want to check that our formulation of the May Recognition Theorem really 
     \end{proof}
 \end{corollary}
 \begin{remark}
-    By definition of loop spaces and explicit computation, the \Cech/ nerve of an effective map $x\colon*\to X$ in $\Top$ (so $X$ is a pointed connected space) is given by
+    By definition of loop spaces and explicit computation, the \Cech/ nerve of an effective map $x\colon*\to X$ in $\Top$ (meaning $X$ is a pointed connected space) is given by
     \begin{center}
         \begin{tikzcd}
-            & C(x)_3 & C(x)_2 & C(x)_1 & C(x)_0 &  C(x)_{-1} \\ 
+            & \CN(x)_3 & \CN(x)_2 & \CN(x)_1 & \CN(x)_0 &  \CN(x)_{-1} \\ 
             \ldots \arrow[r] \arrow[r, yshift=-1em] \arrow[r, yshift=1em] \arrow[r, yshift=-2em] \arrow[r, yshift=2em] 
             & \Omega X\times\Omega X\times\Omega X \arrow[r, yshift=.5em] \arrow[r, yshift=-.5em] \arrow[r, yshift=1.5em] \arrow[r, yshift=-1.5em] \arrow[l, yshift=.5em] \arrow[l, yshift=-.5em] \arrow[l, yshift=1.5em] \arrow[l, yshift=-1.5em]
             & \Omega X\times\Omega X\arrow[r] \arrow[r, yshift=-1em] \arrow[r, yshift=1em] \arrow[l] \arrow[l, yshift=-1em] \arrow[l, yshift=1em]
@@ -264,7 +261,6 @@ We now want to check that our formulation of the May Recognition Theorem really 
     We can thus view the map $\Conn(\spaces)\to\Grp(\spaces)$ as being a canonically enriched version of the loop space functor.
     The statement of \cref{prop:mayRecognitionTheoremGroup} therefore allows us to recognize whether a pointed connected space $X$ is deloopable:
 
-    It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta^{\op}\right)\to\spaces$ where $U_n= X\times\ldots\times X$ with $X$ appearing $n$ times and $U_0=*$. %TODO is this true or does it need additional hypothesis (like certain maps being projections, etc)?
+    It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta^{\op}\right)\to\spaces$ with $U_1=X$ (hence $U_n\simeq X\times\ldots\times X$ with $X$ appearing $n$ times).
     The delooping is then given by taking the colimit of this diagram and taking the canonical map $A\colon*\to\colim U$ to be a pointed space, as this fulfills $\Omega A\simeq X$.
 \end{remark}
-

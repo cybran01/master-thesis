@@ -48,7 +48,7 @@ We will not give proofs for any statements in this section; we will however poin
     \end{equation*}
     Note that due to the functoriality of the right side, these extend to functors $-\otimes -:C\times\sSet\to C$ and $-^-:C\times\sSet^{\op}\to C$.
 \end{definition}
-%TODO perhapss define RLP/LLP
+%TODO perhaps define RLP/LLP
 \begin{definition}[Weak Factorization System]
     Let $C$ be a category and let $\Map(C)$ denote the class of all maps of $C$.
     Let $L,R\subset\Map(C)$ be subclasses.
@@ -176,7 +176,7 @@ For completeness sake we will also describe the Joyal model structure on $\sSet$
         The axioms of a simplicial model category imply that for every pair of objects $X,Y\in M^°$ the simplicial set $\Hom_{M^°}(X,Y)$ is a Kan-complex.
     \end{proof}
 \end{corollary}
-\begin{definition}[Simplicial Localization] %TODO define localization CatLR Definition 7.1.2. and add existence
+\begin{definition}[Simplicial Localization]
     Let $C$ be a simplicial set and $W\subset C$ be a simplicial subset.
 
     For a given \inftycat/ $D$, let $\Fun_W(C,D)\subset\Fun(C,D)$ be the full subcategory of functors $f\colon C\to D$ such that for every map in $u\in W_1$, $f(u)$ is invertible.
@@ -194,7 +194,6 @@ For completeness sake we will also describe the Joyal model structure on $\sSet$
         \cite[Proposition 7.1.3 and Remark 7.1.4]{cisinski_2019}
     \end{reference}
 \end{lemma}
-%TODO define (co)limits and prove/state that they are computed pointwise in Functorcats HTT Proposition 5.1.2.2., HTT Corollary 5.1.2.3.
 \begin{definition}[Join]
     For simplicial sets $X,Y\in\sSet$ let $X\star Y$ denote the \emph{join} which on simplices is given by $(X\star Y)_n=X_n\cup Y_n\cup\bigcup\limits_{i+j=n-1}X_i\times X_j$.
     The join is functorial in both arguments.

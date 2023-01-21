@@ -313,7 +313,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
                 X\times * \arrow[r] & X\times\Sigma Y\\
             \end{tikzcd}\
         \end{center}
-        are both pushouts; the first one as colimits commute and the second one due to universality. %TODO maybe explain at some earlier point how universality is equivalent to base change
+        are both pushouts; the first one as colimits commute and the second one due to universality.
         Computing the pushout of the diagram as in \cref{lem:poSqWithFactoringTerminal}
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -357,7 +357,6 @@ The following corollary is not needed for the James Splitting Theorem, however i
     \end{equation*}
     which we refer to as the \emph{comparison map}.
 \end{definition}
-%TODO remark similarity to truncatedness
 \begin{definition}\label{def:connected}
     Let $C$ be an \inftytop/.
     With the convention that every map is $(-2)$-connected, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-connected} for $k\geq -1$ if
@@ -385,7 +384,7 @@ The following corollary is not needed for the James Splitting Theorem, however i
     \begin{itemize}
         \item for $k=-2$ there is nothing to prove
         \item for $k\geq -1$ the homotopy fiber is inhabited for all chosen basepoints and thus $f$ is an effective epimorphism (see \cref{prop:effInSpaceIffSurj}).
-            Since homotopy fibers are essentially constant on connected components, this allows us to prove that $f$ is $k$-connected if $g$ is $k$-connected from the fiberwise characterization of homotopy pullbacks. %TODO maybe say how to do this
+            Since homotopy fibers are essentially constant on connected components, this allows us to prove that $f$ is $k$-connected if $g$ is $k$-connected from the fiberwise characterization of homotopy pullbacks.
             The other implication does not need $f$ to be an effective epimorphism and follows directly from the fiberwise characterization of homotopy pullbacks. 
     \end{itemize}
     
@@ -398,7 +397,8 @@ The following corollary is not needed for the James Splitting Theorem, however i
 \end{definition}
 \begin{remark}
     Every equivalence is $\infty$-connected, however the converse is not true for general \inftytops/.
-    For every small \inftycat/ $A$ the \inftytop/ $\Fun(A,\spaces)$ is hypercomplete. %TODO reference (HTT ??) 
+    For every small \inftycat/ $A$, $\Fun(A,\spaces)$ is an \inftytop/ that is hypercomplete.
+    This can be seen using \cite[Remark 6.5.4.7]{HTT}.
 \end{remark}
 Our goal now is to prove that the comparison map is an equivalence whenever $X$ is a $0$-connected pointed object.
 We will prove this only in $\spaces$, however this case is already enough to derive the result for general topoi (see \cref{rem:genTopoiComparisonMapEq}).
@@ -456,15 +456,14 @@ With these we can deduce the following statements:
     \end{proof}
 \end{corollary}
 \begin{prop}[James Splitting for Presheaf Categories]\label{prop:jamesSplittingPresheaf} %ref Proposition 4.18 
-    Let $A$ be an \inftycat/ and let $X$ be a pointed and $0$-connected object in the \inftytop/ $\Fun(A,\spaces)$. %TODO why is this an \inftytop/?
+    Let $A$ be an \inftycat/ and let $X$ be a pointed and $0$-connected object in the \inftytop/ $\Fun(A,\spaces)$.
     Then the comparison morphism 
     \begin{equation*}
         c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
     \end{equation*}
     is an equivalence. 
     \begin{proof}
-        Since $\Fun(A,\spaces)$ is hypercomplete %TODO reference
-        it suffices to prove that $c_X$ is $\infty$-connected.
+        Since $\Fun(A,\spaces)$ is hypercomplete it suffices to prove that $c_X$ is $\infty$-connected.
 
         First for each $n\in\Nat_{\geq 1}$ we have $2$-simplices in $\Fun(A,\spaces)$
         \begin{center}
@@ -506,7 +505,7 @@ With these we can deduce the following statements:
     Due to the equivalent characterizations of \inftytops/ in \cite[Definition 6.1.0.6]{HTT} for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
     
     Then if for a pointed object $X$ in $C$ the comparison morphism $c_{i(X)}$ is an equivalence in $Fun(A,\spaces)$, so is $c_X$ in $C$ (see \cite[Lemma 4.17]{splittings_21}).
-    If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\Fun(A,\spaces)$ is hypercomplete. %TODO prove that X 0-conn => i(X) 0-conn
+    If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\Fun(A,\spaces)$ is hypercomplete. 
     But we have proven this in \cref{prop:jamesSplittingPresheaf}, so it is true for all \inftytops/.
 \end{remark}
 Lastly, we give an application of the James Splitting Theorem.
