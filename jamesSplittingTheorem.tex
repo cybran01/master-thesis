@@ -1,7 +1,8 @@
-In this section we will give a proof of the James Splitting Theorem relying only on universality, therefore in particular proving it for general \inftytops/. 
+In this section we will give a proof of the James Splitting Theorem for general \inftytops/.
+The classical James Splitting Theorem in $\spaces$ states that for connected pointed objects $X$, there is a canonical equivalence $\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X$.
 The main source is \cite[\S 2.2 and \S 4]{splittings_21}.
 
-We begin by introducing the objects that we will need to work with.
+We begin by introducing some well known constructions that we will need throughout the rest of this section.
 \begin{definition}
     Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. 
     Then we let 
@@ -40,7 +41,12 @@ We begin by introducing the objects that we will need to work with.
         be the \emph{smash product of $X$ and $Y$} (where the map $X\vee Y\to X\times Y$ is the canonical map from the universal property induced by the maps $X\vee Y\to X$ and $X\vee Y\to Y$).
     \end{itemize}
 \end{definition}
-The next lemma is a key lemma of the proof of the James Splitting Theorem.
+\addcontentsline{toc}{subsection}{The Fundamental James Splitting}
+\subsection*{The Fundamental James Splitting}
+As a first step, we will show that there is a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ for an arbitrary pointed object $X$.
+We will call this the \emph{Fundamental James Splitting}.
+
+The next lemma is a key ingredient of the proof of the Fundamental James Splitting.
 There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
 \begin{lemma}\label{lem:existenceOfPoSq}
     Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object.
@@ -290,7 +296,7 @@ We will also need to prove some basic facts about wedges and smash products.
         is always a pushout and the wedge sum is commutative.
     \end{proof}
 \end{lemma}
-The following corollary is not needed for the James Splitting Theorem, however it is useful and immediate from what we have already shown.
+The following corollary is not needed for our proof, however it is useful and immediate from what we have already shown.
 \begin{corollary}
     Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then we have $\Sigma\left(X\times Y\right)\cong\Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right)$.
@@ -333,6 +339,13 @@ The following corollary is not needed for the James Splitting Theorem, however i
         Since both are pushout squares, we get an equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$ and the proposition follows from \cref{lem:suspensionCommutesWithSmash}.
     \end{proof}
 \end{corollary}
+\addcontentsline{toc}{subsection}{The James Splitting Theorem in $\Fun(A,\spaces)$}
+\subsection*{The James Splitting Theorem in $\Fun(A,\spaces)$}
+We will now prove the James Splitting Theorem for general \inftytops/.
+By \cref{rem:genTopoiComparisonMapEq} we will see that it suffices to prove this for \inftytops/ of the form $\Fun(A,\spaces)$ by a localization argument.
+
+We will however work in the setting of general \inftytops/ whenever possible; 
+in fact, only the very last step will require us to restrict to $C=\Fun(A,\spaces)$ since we need our topos to be hypercomplete, which is not true generally.
 \begin{corollary}[Fundamental James Splitting, iterated]
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then for all $n\geq 1$ there is a canonical equivalence

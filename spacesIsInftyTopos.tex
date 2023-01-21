@@ -53,7 +53,9 @@ The most important (and quite non-trivial) part of the interaction between Quill
         But since $C'\cup_AB$ is a homotopy pushout (since it is a pushout along a cofibration), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.
     \end{proof}
 \end{prop}
-%TODO insert section proof of universality here
+\addcontentsline{toc}{subsection}{Universality}
+\subsection*{Universality}
+Using the preceding proposition and the fact that pullbacks of h-cofibrations along h-fibrations are again h-cofibrations, we first prove universality for pushouts.
 \begin{prop}\label{lem:topUniversalPo}
     The model category $\Top$ has universality for homotopy pushouts.
     \begin{proof}
@@ -144,17 +146,17 @@ The most important (and quite non-trivial) part of the interaction between Quill
 \end{lemma}
 Therefore, by \cref{cor:sufficientToProveInModCat} we know $\spaces$ has universal colimits.
 It remains to show that it also has descent.
-
-%TODO insert section about descent of po here
-The proof of descent will be more involved then the proof of universality.
-The main theorem will be \cref{prop:descentForPairs}. 
+\addcontentsline{toc}{subsection}{Descent for Homotopy Pushouts}
+\subsection*{Descent for Homotopy Pushouts}
+Proving descent will be more involved then the proof of universality.
+The main theorem we use to achieve this will be \cref{prop:descentForPairs}. 
 There are two routes that lead from this theroem to descent for pushouts:
 One can either give a direct proof via decomposition of mapping cylinders (see \cref{prop:topDescentPo}) or it can be used to prove a weak version of the locality of quasifibrations (see \cref{cor:locOfQuasifib}).
-We will showcase both; 
-the first since it is very direct and the second since descent is closely related to locality as \cref{rmk:locOfQuasifibDescent} demonstrates.
+
+We will show both; 
+the first since it is very direct and the second since descent is closely related to locality of quasifibrations as \cref{rmk:locOfQuasifibDescent} demonstrates.
 
 As a first step we will fix some notation related to pairs and triples of spaces. 
-%Insertion of proof of new stuff starts here -------------------------------------
 \begin{definition}[Pairs and Triples of Spaces]
     Let $\Top^{(2)}$ denote the category of \emph{pairs of topological spaces} $(X,A)$ with $A\subset X$ a subspace and maps $f\colon(X_1,A_1)\to (X_2,A_2)$ being continuous maps $f\colon X_1\to X_2$ such that $f(A_1)\subset A_2$.
     We refer to these maps as \emph{maps of pairs}.
@@ -215,7 +217,7 @@ Since we will use a subdivision argument, the model as maps of triples from $(I^
 \begin{definition}
     For a pair of spaces $(X,A)$, $a\in A$ and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
 \end{definition}
-As expected we get a canonical group structure on these sets for $n\geq 2$ (that is even abelian for $n\geq 3$), but we will not need this.
+There is a canonical group structure on these sets for $n\geq 2$ (that is even abelian for $n\geq 3$).
 \begin{definition}[Weak Equivalence of Pairs]\label{def:weOfPairs}
     Let $f\colon(X,A)\to (Y,B)$ be a map such that 
     \begin{itemize}
@@ -557,7 +559,8 @@ We are now ready to give a proof of descent for pushouts.
         Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are pullback squares since $f_{\overline{X}X}$ is a map of excisive triads $(\overline{X};\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}}))\to(X;\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC}))$.
     \end{proof}
 \end{prop}
-%TODO subsection about quasifibs & descent
+\addcontentsline{toc}{subsection}{Descent and Quasifibrations}
+\subsection*{Descent and Quasifibrations}
 We will now give an alternative proof of descent for pushouts using the notion of quasifibrations.
 \begin{definition}[Quasifibration]
     Let $M$ be a model category and $f\colon X\to Y$ be a map.
@@ -842,7 +845,8 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         are both ordinary pullbacks with both vertical maps quasifibrations, they are already homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
     \end{proof}
 \end{prop}
-%TODO section on descent for htpy coprod
+\addcontentsline{toc}{subsection}{Descent for Homoptopy Coproducts}
+\subsection*{Descent for Homoptopy Coproducts}
 Lastly, we need to prove descent for homotopy coproducts.
 For readability purposes, we will abuse notation a little:
 We will always work with seemingly fixed diagrams throughout the proofs without replacing them before computing limits/colimits.
