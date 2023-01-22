@@ -8,11 +8,11 @@ The \Strom/ model structure will be important later on; its interaction with the
     \begin{proof}
         First we note that the category $\sSet$ together with the Quillen model structure is a combinatorial model category (see e.g. \cite[Remark 7.11.15]{cisinski_2019}).
         
-        The category $\sSet$ is enriched over itself by setting $\Hom_{\sSet}(A,B)_n=\hom_{\sSet}(A\times\Delta^n,B)$ so it is a simplicial category.
-        It is further tensored (via the product) and powered (via the just defined $\Hom_{\sSet}(-,-)$).
+        The category $\sSet$ is enriched over itself by $\Fun(A,B)_n=\hom_{\sSet}(A\times\Delta^n,B)$ so it is a simplicial category.
+        It is further tensored (via the product) and powered (via $\Fun(-,-)$).
         By \cite[Corollary 1.4.5.6, Theorem 3.1.3.1 and Theorem 3.1.3.5]{kerodon} we have that for a cofibration $A\xtailrightarrow{} B$ and a fibration $X\xtwoheadrightarrow{} Y$ the induced map 
         \begin{equation*}
-            \Hom_{\sSet}(B,X)\to\Hom_{\sSet}(A,X)\times_{\Hom_{\sSet}(A,Y)}\Hom_{\sSet}(B,Y)
+            \Fun(B,X)\to\Fun(A,X)\times_{\Fun(A,Y)}\Fun(B,Y)
         \end{equation*}
         is a fibration that additionally is a weak equivalence whenever $A\xtailrightarrow{} B$ or $X\xtwoheadrightarrow{} Y$ is a weak equivalence, so $\sSet$ is a simplicial model category.
     \end{proof}
@@ -30,7 +30,7 @@ The \Strom/ model structure will be important later on; its interaction with the
     Then we call $f$ a \emph{Serre fibration}.
 \end{definition}
 \begin{definition}[Hurewicz Fibration]
-    Let $f\colon X\to Y$ be a map such that for all spaces $X$ and all squares
+    Let $f\colon X\to Y$ be a map such that for all spaces $X$ all commutative squares
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             X \arrow[r] \arrow[d, hook, "{(\id_{X},0)}"'] & X \arrow[d, "f"] \\

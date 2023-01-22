@@ -9,7 +9,7 @@ In order to transfer reasoning back and forth from the model category $\Top$ and
     \end{equation*} 
     they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
 
-    Furthermore, the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in $J$.
+    Furthermore, the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in its arguments.
     \begin{reference}
         \cite[Proposition 1.3.4.25]{higher_algebra}
     \end{reference}
@@ -150,7 +150,7 @@ It remains to show that it also has descent.
 \subsection*{Descent for Homotopy Pushouts}
 Proving descent will be more involved then the proof of universality.
 The main theorem we use to achieve this will be \cref{prop:descentForPairs}. 
-There are two routes that lead from this theroem to descent for pushouts:
+There are two routes that lead from this theorem to descent for pushouts:
 One can either give a direct proof via decomposition of mapping cylinders (see \cref{prop:topDescentPo}) or it can be used to prove a weak version of the locality of quasifibrations (see \cref{cor:locOfQuasifib}).
 
 We will show both; 
@@ -392,7 +392,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
     the construction with half open intervalls $I=[0,x)$ will be referred to as an \emph{open mapping cylinder of $f$} and denoted $\M^{[0,x)}(f)$.
 \end{definition}
 \begin{remark}
-    Note that the inclusion $A\xrightarrow{\id_A\times\set{1}}\M(f)$ is a h-cofibration (see e.g. \cite[Theorem 2]{note_on_cofibs_1}).
+    Note that the inclusion $A\xrightarrow{(\id_A,1)}\M(f)$ is a h-cofibration (see e.g. \cite[Theorem 2]{note_on_cofibs_1}).
 \end{remark}
 \begin{lemma}\label{lem:replaceByEmbedding}
     Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
@@ -556,7 +556,7 @@ We are now ready to give a proof of descent for pushouts.
         respectively. 
         The equivalences of the back squares and front squares follows from the analogous argument.
 
-        Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are pullback squares since $f_{\overline{X}X}$ is a map of excisive triads $(\overline{X};\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}}))\to(X;\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC}))$.
+        Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are pullback squares since $f_{\overline{X}X}$ is a map of excisive triads $f_{\overline{X}X}\colon(\overline{X};\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}}))\to(X;\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC}))$.
     \end{proof}
 \end{prop}
 \addcontentsline{toc}{subsection}{Descent and Quasifibrations}
@@ -599,7 +599,7 @@ The following weak version of the locality of quasifibrations (\cref{cor:locOfQu
 \end{corollary}
 The relationship of locality of quasifibrations and descent also goes the other way as the next remark shows.
 \begin{remark}\label{rmk:locOfQuasifibDescent}
-    Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is often called ``Locality of Quasifibrations'':
+    Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is called ``Locality of Quasifibrations'':
     
     Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover such that for every pair of indices $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
     Then if $f^{-1}(U_i)\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
@@ -811,11 +811,10 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         All faces are again equivalent to the corresponding faces of the original cube since top and bottom squares are homotopy pushouts by \cref{prop:poAlongHCofibIsHtpyPo}.
         
         Next we prove that the map $p\colon\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\to\M(f_{AC})\cup_A\M(f_{AB})$ is a quasifibration.
-        By \cref{cor:locOfQuasifib} we only need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
+        By \cref{cor:locOfQuasifib} we need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
         We note that $\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\cong\M^{[0,2)}(f_{\overline{A}\overline{C}})\cup_{\overline{A}\times(0,2)}\M^{[0,2)}(f_{\overline{A}\overline{B}})$ and $\M(f_{AC})\cup_A\M(f_{AB})\cong\M^{[0,2)}(f_{AC})\cup_{A\times (0,2)}\M^{[0,2)}(f_{AB})$.
 
         We take $U_1=\M^{[0,2)}(f_{AC})$ and $U_2=\M^{[0,2)}(f_{AB})$. 
-
         Then $p^{-1}(U_1)=\M^{[0,2)}(f_{\overline{A}\overline{C}})$, $p^{-1}(U_2)=\M^{[0,2)}(f_{\overline{A}\overline{B}})$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$.
         It follows $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
         \begin{center}
@@ -842,14 +841,14 @@ This finishes the preparation and we will now prove descent for pushouts via loc
                 \M(f_{AB}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
             \end{tikzcd}
         \end{center}
-        are both ordinary pullbacks with both vertical maps quasifibrations, they are already homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
+        are both ordinary pullbacks with both vertical maps quasifibrations, they are homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
     \end{proof}
 \end{prop}
 \addcontentsline{toc}{subsection}{Descent for Homoptopy Coproducts}
 \subsection*{Descent for Homoptopy Coproducts}
 Lastly, we need to prove descent for homotopy coproducts.
 For readability purposes, we will abuse notation a little:
-We will always work with seemingly fixed diagrams throughout the proofs without replacing them before computing limits/colimits.
+We will always work with seemingly fixed diagrams throughout the proofs without replacing them before computing their homotopy limits/colimits.
 This is of course not possible in general, since one cannot e.g. extend a given span to a homotopy pushout without replacing it first.
 We will do this implicitly; if one is uncomfortable doing that, one can view the proofs as being in the \inftycat/ presented by the given model category, where the issue disappears.
 

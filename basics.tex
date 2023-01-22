@@ -39,12 +39,12 @@ We will not give proofs for any statements in this section; we will however poin
     
     We call a simplicial category $C$ \emph{tensored} if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
     \begin{equation*}
-        \Hom_C(X\otimes K,-)\cong\Hom_{\sSet}(K,\Hom_C(X,-))\;.
+        \Hom_C(X\otimes K,-)\cong\Fun(K,\Hom_C(X,-))\;.
     \end{equation*}
 
     We call a simplicial category $C$ \emph{powered} if for each $Y\in C$ and $K\in\sSet$ there is an object $Y^K$ such that there is a natural isomorphism
     \begin{equation*}
-        \Hom_C(-,Y^K)\cong\Hom_{\sSet}(K,\Hom_C(-,Y))\;.
+        \Hom_C(-,Y^K)\cong\Fun(K,\Hom_C(-,Y))\;.
     \end{equation*}
     Note that due to the functoriality of the right side, these extend to functors $-\otimes -:C\times\sSet\to C$ and $-^-:C\times\sSet^{\op}\to C$.
 \end{definition}
@@ -69,14 +69,14 @@ We will not give proofs for any statements in this section; we will however poin
         \item $(\Cof\cap\W,\Fib)$ is a weak factorization system.
         \item $(\Cof,\Fib\cap\W)$ is a weak factorization system.
     \end{itemize}
-    We say that $C$ together with $(\Cof,\Fib,\W)$ is a \emph{combinatorial model structure} if $C$ is locally presentable and the model structure is cofibrantly generated.
+    We say that $C$ together with $(\Cof,\Fib,\W)$ is a \emph{combinatorial model category} if $C$ is locally presentable and the model structure is cofibrantly generated.
 \end{definition}
 We will need the standard model structure on $\sSet$, the Quillen model structure. 
 Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
 \begin{prop}[Quillen Model Structure on $\sSet$]
     There is a unique model structure on $\sSet$ where 
     \begin{itemize}
-        \item the cofibrations are the maps having the left lifting property against the maps $\set{\partial\Delta^n\xhookrightarrow{}\Delta^n\mid n\in\Nat}$ which are exactly the monomorphisms
+        \item the cofibrations are the maps having the left lifting property against the maps $\set{\partial\Delta^n\xhookrightarrow{}\Delta^n\mid n\in\Nat}$, which are exactly the monomorphisms.
         \item the fibrations are the maps having the right lifting property against the maps $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n, n\in\Nat}$.
     \end{itemize}
     The fibrant objects are the \emph{Kan-complexes}.

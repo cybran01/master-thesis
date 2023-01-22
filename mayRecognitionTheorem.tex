@@ -1,7 +1,7 @@
 In this section we will give a proof on the May Recognition Theorem in the abstract setting of an \inftytop/.
 The presentation of loop spaces here is due to \cite{segal_cat_and_cohom}.
 This theorem allows one to recognize which pointed spaces are (equivalent to) loop spaces.
-We will see that descent will play a major role in this.
+We will see that descent plays a major role in this.
 \begin{definition}[(Augmented) Simplicial Objects]
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
@@ -117,7 +117,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
         Let $f\colon [m]\to[n]\in\Map(\Delta)$ be some map. Then the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"\overline{U}(f)"] & U_n \arrow[d, "U(f)"] \\
+                \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"\overline{U}(f)"'] & U_n \arrow[d, "U(f)"] \\
                 \overline{U}_m=U_{m+1} \arrow[r] \arrow[d] & U_m \arrow[d] \\
                 U_{\set{m,m+1}} \arrow[r] & U_{\set{m}}
             \end{tikzcd}
@@ -169,7 +169,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
 \begin{definition}
     Let $C$ be an \inftycat/ with a terminal object.
     Then write $C_*\subset\Fun(\Delta^1,C)$ for the full subcategory of maps with domain a fixed terminal object $*\in C_0$.
-    We call $C_*$ the \emph{\inftycat/ of pointed objects}, and we call on object $X$ in $C_*$ a \emph{pointed object in $C$}.
+    We call $C_*$ the \emph{\inftycat/ of pointed objects}, and we call an object $X$ in $C_*$ a \emph{pointed object in $C$}.
 \end{definition}
 \begin{remark}
     Since terminal objects are essentially unique, choosing different terminal objects induces equivalent models of \inftycats/ of pointed objects.
@@ -223,7 +223,7 @@ We now want to check that our formulation of the May Recognition Theorem really 
     We call $\Disc(C)$ the \emph{\inftycat/ of discrete objects of $C$}.
 \end{definition}
 \begin{prop}\label{prop:effInSpaceIffSurj}
-    In map $f\colon x\to y$ in $\spaces$ is an effective epimorphism if and only if it induces a surjection on connected components.
+    A map $f\colon x\to y$ in $\spaces$ is an effective epimorphism if and only if it induces a surjection on connected components.
     \begin{proof}
         First, by \cite[Proposition 7.8.3]{cisinski_2019} there is a fully faithful functor $i\colon\N(\Set)\to\spaces$ whose essential image consists precisely of the discrete objects and has $\pi_0\colon\spaces\to\N(\Set)$ as a left adjoint.
         By \cite[Proposition 7.2.1.14]{HTT} the statement of the lemma is thus equivalent to checking whether $\pi_0(f)$ is an effective epimorphism in $\Set$.
@@ -238,7 +238,7 @@ We now want to check that our formulation of the May Recognition Theorem really 
     \end{proof}
 \end{corollary}
 \begin{remark}
-    By definition of loop spaces and explicit computation, the \Cech/ nerve of an effective map $x\colon*\to X$ in $\Top$ (meaning $X$ is a pointed connected space) is given by
+    By the definition of loop spaces and explicit computation, the \Cech/ nerve of an effective map $x\colon*\to X$ in $\Top$ (meaning $X$ is a pointed connected space) is given by
     \begin{center}
         \begin{tikzcd}
             & \CN(x)_3 & \CN(x)_2 & \CN(x)_1 & \CN(x)_0 &  \CN(x)_{-1} \\ 
@@ -255,7 +255,7 @@ We now want to check that our formulation of the May Recognition Theorem really 
         \begin{itemize}
             \item $d_0^n$ is $(\gamma_1,\gamma_2,\ldots,\gamma_n)\mapsto(\gamma_2,\ldots,\gamma_n)$
             \item $d_n^n$ is $(\gamma_1,\ldots,\gamma_{n-1},\gamma_n)\mapsto(\gamma_1,\ldots,\gamma_{n-1})$
-            \item $d_k^n$ for $0<k<n$ is $(\gamma_1,\ldots,\gamma_k,\gamma_{k+1},\ldots,\gamma_n)\mapsto(\gamma_1,\ldots,\gamma_k\star\gamma_{k+1},\ldots,\gamma_n)$ where $\star$ denotes concatenation of loops
+            \item $d_k^n$ for $0<k<n$ is $(\gamma_1,\ldots,\gamma_k,\gamma_{k+1},\ldots,\gamma_n)\mapsto(\gamma_1,\ldots,\gamma_k*\gamma_{k+1},\ldots,\gamma_n)$ where $*$ denotes concatenation of loops
         \end{itemize}
         \item the map induced by a degeneracy map $s_k^n$ is injecting the constant loop $c_x$ at the $k$-th position.
     \end{itemize}

@@ -66,7 +66,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
             \end{tikzcd}
         \end{center}
         shows that $i_1$ and $i_2$ are equivalent maps in $C$ (meaning identical in $\ho(C)$), since $X\to *\xrightarrow{i_0}\Sigma X$ and $X\to *\xrightarrow{i_1}\Sigma X$ are identical in $\ho(C)$ by construction and the canonical point $x\colon*\to X$ is a right inverse to $X\to *$.
-        Thus we get that both
+        Thus we get that the squares
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
@@ -126,14 +126,14 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
             \end{tikzcd}
         \end{center}
         all faces except the one opposite to $X$ commute and since this corresponds to a map $\Lambda^3_1\to C$, we can lift it to a map $\Delta^3\to C$.
-        Thus we can construct the commutative square
+        Thus we have a commutative square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 X\times\Omega\Sigma X \arrow[r] \arrow[d] \arrow[dr, "j"] & * \arrow[d, "i_0"] \\
                 * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
-        and this induces a map $\Delta^1\star\left(\Delta^1\times\Delta^1\right)\to C$ corresponding to a diagram
+        and this induces a universal map $\Delta^1\star\left(\Delta^1\times\Delta^1\right)\to C$ corresponding to a diagram
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 X\times\Omega\Sigma X \arrow[dr, near end, "\alpha", shorten >=-0.5em] \arrow [drrr] \arrow [dash, dddrrr, shorten >= 2.6cm] \arrow [dddrrr, near end, "j", shorten <= 2.3cm] & & \\
@@ -171,7 +171,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 X\times\Omega\Sigma X \arrow [dr, "\alpha"] \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
-                & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [dd, "i_0"] & \\
+                & \Omega\Sigma X \arrow [rr, crossing over] & &[1em] * \arrow [dd, "i_0"] & \\
                 X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
                 & * \arrow [from=uu, crossing over] \arrow [rr, "i_1"] & & \Sigma X &
             \end{tikzcd}
@@ -414,7 +414,7 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
     This can be seen using \cite[Remark 6.5.4.7]{HTT}.
 \end{remark}
 Our goal now is to prove that the comparison map is an equivalence whenever $X$ is a $0$-connected pointed object.
-We will prove this only in $\spaces$, however this case is already enough to derive the result for general topoi (see \cref{rem:genTopoiComparisonMapEq}).
+We will prove this only in $\Fun(A,\spaces)$, however this case is already enough to derive the result for general topoi (see \cref{rem:genTopoiComparisonMapEq}).
 
 The main idea is to show that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ becomes increasingly connected and vanishes as $n\to\infty$.
 For this proof we need some stability properties of connectedness.
@@ -469,7 +469,7 @@ With these we can deduce the following statements:
     \end{proof}
 \end{corollary}
 \begin{prop}[James Splitting for Presheaf Categories]\label{prop:jamesSplittingPresheaf} %ref Proposition 4.18 
-    Let $A$ be an \inftycat/ and let $X$ be a pointed and $0$-connected object in the \inftytop/ $\Fun(A,\spaces)$.
+    Let $A$ be a small \inftycat/ and let $X$ be a pointed and $0$-connected object in the \inftytop/ $\Fun(A,\spaces)$.
     Then the comparison morphism 
     \begin{equation*}
         c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
