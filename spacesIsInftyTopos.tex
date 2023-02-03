@@ -445,7 +445,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         The proof will follow \cite[Theorem 1.2]{may1990weak}.
 
         We can assume $f$ to be an inclusion such that $f(X_i^°)=f(X)\cap Y_i^°$ and $f(X_i)=f(X)\cap Y_i$ for $i\in\set{1,2}$ by applying \cref{lem:replaceByEmbedding} and replacing it with $\widetilde{f}$.
-        The assumptions on the map $g$ from \cref{lem:replaceByEmbedding} together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homtopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
+        The assumptions on the map $g$ from \cref{lem:replaceByEmbedding} together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homotopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
         
         By the definition of a weak equivalence of pairs, it suffices to show that under the given assumptions the statement of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpyConst} holds for all $n\geq 0$.
     
@@ -601,7 +601,7 @@ The relationship of locality of quasifibrations and descent also goes the other 
 \begin{remark}\label{rmk:locOfQuasifibDescent}
     Once we have established descent in $\Top$ in full generality (\cref{cor:spacesIsInftyTop}) we obtain a stronger version of \cref{cor:locOfQuasifib} which is called ``Locality of Quasifibrations'':
     
-    Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover such that for every pair of indices $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
+    Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover of $Y$ such that for every pair of indices $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
     Then if $f^{-1}(U_i)\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
 
     One can conclude this by using that the homotopy colimit of such a cover is the space itself (see \cite[Proposition 4.6 (c)]{hypercovers}):
@@ -844,8 +844,8 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         are both ordinary pullbacks with both vertical maps quasifibrations, they are homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
     \end{proof}
 \end{prop}
-\addcontentsline{toc}{subsection}{Descent for Homoptopy Coproducts}
-\subsection*{Descent for Homoptopy Coproducts}
+\addcontentsline{toc}{subsection}{Descent for Homotopy Coproducts}
+\subsection*{Descent for Homotopy Coproducts}
 Lastly, we need to prove descent for homotopy coproducts.
 For readability purposes, we will abuse notation a little:
 We will always work with seemingly fixed diagrams throughout the proofs without replacing them before computing their homotopy limits/colimits.

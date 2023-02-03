@@ -22,7 +22,7 @@
 \usepackage{enumitem}
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 \addbibresource{sources.bib}
-\usepackage{hyperref}
+\usepackage[pdfencoding=auto, psdextra]{hyperref}
 \usepackage{cleveref}
 \usepackage{subfiles}
 
@@ -121,9 +121,9 @@
 
 
 \begin{document}
+    \pagenumbering{gobble}
     \includepdf{cover.pdf}
     \cleardoubleoddstandardpage
-    \pagenumbering{gobble}
     \thispagestyle{empty}
     \begin{abstract}\noindent
       The main goal of this thesis is to prove that the \inftytop/ of spaces $\spaces$, which we take to be the the simplicial localization of the category of topological spaces at the weak equivalences $\N(\Top)[W^{-1}]$, is an \inftytop/ in the sense of Charles Rezk.
