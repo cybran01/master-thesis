@@ -1,7 +1,10 @@
-In this section we will give a proof on the May Recognition Theorem in the abstract setting of an \inftytop/.
-The presentation of loop spaces here is due to \cite{segal_cat_and_cohom}.
-This theorem allows one to recognize which pointed spaces are (equivalent to) loop spaces.
+A pointed connected object $X$ (see \cref{def:catOfPtdConnObj}) in an \inftytop/ is \emph{deloopable} if there exists a pointed object $A$ such that $X\simeq\Omega A$. %TODO introduce loop spacehere and not only in  james splitting thm
+
+In this section we will give a proof of the fact that a pointed connected object $X$ is deloopable if and only if it admits additional algebraic structure, which we assemble into a \emph{group object} (see \cref{def:grpObj}). 
+The idea and presentation of the proof given here is due to \cite{segal_cat_and_cohom}.
 We will see that descent plays a major role in this.
+
+A generalization characterizing $n$-fold loop spaces for $n\geq 1$ was proven in \cite{may2006geometry} and is called the \emph{May Recognition Theorem}.
 \begin{definition}[(Augmented) Simplicial Objects]
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
@@ -27,7 +30,7 @@ We will see that descent plays a major role in this.
     Then we call $U$ a \emph{groupoid object of $C$}.
     We let $\Gpd(C)$ denote the full subcategory of $\Fun(\N(\Delta)^{\op},C)$ consisting of groupoid objects.
 \end{definition}
-\begin{definition}[Group Object]
+\begin{definition}[Group Object]\label{def:grpObj}
     Let $C$ be an \inftycat/ and let $U$ be a groupoid object.
     If $U_0\cong *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
 \end{definition}
@@ -98,7 +101,7 @@ We will need the following proposition which provides an alternative characteriz
         This follows directly from the equivalent characterization of an effective groupoid from \cref{prop:grpdEffectiveIfPullback}.
     \end{proof}
 \end{corollary}
-The following proposition is at the heart of the proof of the May Recognition Theorem. 
+The following proposition is at the heart of our proof. 
 The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
 \begin{prop}\label{prop:groupoidObjInToposAreEffective}
     Let $C$ be an \inftytop/.
@@ -174,7 +177,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
 \begin{remark}
     Since terminal objects are essentially unique, choosing different terminal objects induces equivalent models of \inftycats/ of pointed objects.
 \end{remark}
-\begin{definition}
+\begin{definition}\label{def:catOfPtdConnObj}
     Let $C$ be an \inftycat/ with small limits. 
     Then let $\Conn(C_*)\subset C_*$ be the full subcategory of effective epimorphisms.
     We call $\Conn(C_*)$ the \emph{\inftycat/ of pointed connected objects}.
@@ -183,16 +186,17 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     We will later introduce notions of higher connectedness. 
     It follows from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}, hence we call these objects connected.
 \end{remark}
-\begin{corollary}[May Recognition Theorem]\label{prop:mayRecognitionTheoremGroup}
+\begin{corollary}[Delooping of Pointed Connected Objects]\label{prop:mayRecognitionTheoremGroup}
     Let $C$ be an \inftytop/. 
     Then there is an equivalence of \inftycats/ $\Grp(C)\simeq\Conn(C_*)$.
     \begin{proof}
         This follows immediately from \cref{prop:mayRecognitionTheoremGroupoid} and the definition of group objects.
     \end{proof}
 \end{corollary}
-\addcontentsline{toc}{subsection}{The May Recognition Theorem in $\spaces$}
-\subsection*{The May Recognition Theorem in $\spaces$}
-We now want to check that our formulation of the May Recognition Theorem really gives the expected formulation in $\Top$.
+\addcontentsline{toc}{subsection}{Delooping of Pointed Connected Objects in $\spaces$}
+\subsection*{Delooping of Pointed Connected Objects in $\spaces$}
+We now want to check that pointed connected objects in a general \inftytop/ coincide with pointed connected spaces in the \inftytop/ $\spaces$.
+Thus we recover the statement of the May Recognition Theorem for $n=1$, which says that a pointed connected space is equivalent to a loop space if and only if it admits the structure of a group object in $\Top$. 
 \begin{definition}
     Let $C$ be an \inftytop/.
     With the convention that the $(-2)$-truncated maps are the equivalences, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-truncated} for $k\geq -1$ if the diagonal map $X\to X\times_YX$ is $(k-1)$-truncated.

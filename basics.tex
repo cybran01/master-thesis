@@ -1,37 +1,65 @@
-In this section we would like to fix the general notation on \inftycats/ and model categories used throughout the rest of the text and remind the reader of some concepts which we will be important later on.
+In this section we would like to fix the general notation on \inftycats/ and model categories used throughout the rest of the text and remind the reader of some concepts which will be important later on.
 Some familiarity with \inftycats/ and Kan-complexes is assumed, in particular familiarity with limits/colimits in \inftycats/.
 We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts).
 We will not give proofs for any statements in this section; we will however point to the relevant literature.
-\begin{definition}[Simplex Category]
+\begin{definition}
+    For every $n\in\Nat$, let $[n]$ denote the linearly ordered set $\set{0<\ldots<n}\subset\Nat$ and let $[-1]=\emptyset$, which we also consider to be linearly ordered.
+\end{definition}
+\begin{definition}
+    Let $X,Y$ be linearly ordered sets and $f\colon X\to Y$ a function of the underlying sets.
+    Then we call $f$ \emph{nondecreasing} if for all $a,b\in X$ with $a\leq b$, we have $f(a)\leq f(b)$.
+\end{definition}
+\begin{definition}[(Augmented) Simplex Category]
     Let $\Delta$ be the category with
     \begin{itemize}
-        \item objects the categories $[n]=\{0\to1\to\ldots\to n\}\subset\Nat$ for all $n\in\Nat$
-        \item morphisms functors between these categories (which are precisely the monotone increasing functions).
+        \item objects the linearly ordered sets $[n]$ for all $n\in\Nat$
+        \item morphisms the \emph{nondecreasing} functions
     \end{itemize}
     We call this category the \emph{simplex category $\Delta$}.
-\end{definition}
-\begin{definition}[Augmented Simplex Category]
-    Let $\Delta_+$ be the category with
+
+    Similarly, let $\Delta_+$ be the category with
     \begin{itemize}
-        \item objects the categories $[n]$ for all $n\in\Nat\cup\set{-1}$ where $[-1]=\emptyset$ is the empty category
-        \item morphisms functors between these categories (which again are precisely the monotone increasing functions).
+        \item objects the linearly ordered sets for all $n\in\Nat\cup\set{-1}$ 
+        \item morphisms again the \emph{nondecreasing} functions
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
 \end{definition}
 \begin{definition}[Simplicial Set]
     We set $\sSet=\Fun(\Delta^{\op},\Set)$ to be the \emph{category of simplicial sets}.
+    Given a simplicial set $X\in\sSet$, we denote evaluation at an object $[n]\in\Delta$ by $X_n$.
+
+    Note that for any given nonempty finite linearly ordered set $A$ with $n\in\Nat$ elements, there exists a unique nondecreasing bijection to $[n]$.
+    We write $X(A)$ for the evaluation $X_n$ under this canonical identification. 
 \end{definition}
+\begin{remark}
+    Any linearly ordered set $X$ can be viewed as a category by setting
+    \begin{equation*}
+        \hom_{X}(a,b)=\begin{cases}
+            * & a\leq b\\
+            \emptyset & otherwise
+        \end{cases}
+    \end{equation*}
+    for $a,b\in X$.
+    When viewing linearly ordered sets $X,Y$ as categories in this way, the nondecreasing functions $f\colon X\to Y$ correspond precisely to functors.
+
+    This gives fully faithful inclusions $\Delta\subset\Cat$ and $\Delta_+\subset\Cat$, where $\Cat$ denotes the category of small categories.
+\end{remark}
 \begin{definition}[Nerve of an Ordinary Category]
-    Let $\Cat$ denote the category of small categories and let $i:\Delta\xhookrightarrow{}\Cat$ be the inclusion as a full subcategory.
-    For a small category $C$, we set composition $\N(C)=\hom_{\Cat}(-,C)\circ i^{\op}$.
-    Since this construction is functorial in $C$, we get a functor $\N\colon\Cat\to\sSet$. 
-    We then call $\N(C)$ the \emph{nerve of the category $C$}.
+    Let
+    \begin{align*}
+        Y\colon\Cat&\to\Fun(\Cat^{\op},\Set)\\
+        C&\mapsto\hom_{\Cat}(-,C)
+    \end{align*}
+    denote the \emph{Yoneda embedding}.
+
+    Then composing the Yoneda embedding with the functor $\Fun(\Cat^{\op},\Set)\to\sSet$ induced by the inclusion $\Delta\subset\Cat$ from the previous remark gives a functor $N\colon\Cat\to\sSet$ called the \emph{nerve functor}.
+    For a given small category $C$ we refer to the simplicial set $\N(C)$ as the \emph{nerve of the category $C$}.
 \end{definition}
 \begin{lemma}[Homotopy Category]
     The nerve functor $\N\colon\Cat\to\sSet$ is fully faithful and has a left adjoint $\ho\colon\sSet\to\Cat$ which we call the \emph{homotopy category} of a simplicial set.
-    \begin{proof}[Reference]
+    \begin{reference}
         \cite[Proposition 1.2.2.1]{kerodon}
-    \end{proof}
+    \end{reference}
 \end{lemma}
 \begin{definition}[Simplicial Category]
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
@@ -46,7 +74,7 @@ We will not give proofs for any statements in this section; we will however poin
     \begin{equation*}
         \Hom_C(-,Y^K)\cong\Fun(K,\Hom_C(-,Y))\;.
     \end{equation*}
-    Note that due to the functoriality of the right side, these extend to functors $-\otimes -:C\times\sSet\to C$ and $-^-:C\times\sSet^{\op}\to C$.
+    Note that due to the functoriality of the right side, these extend to functors $(-)\otimes(-):C\times\sSet\to C$ and $(-)^{(-)}:C\times\sSet^{\op}\to C$.
 \end{definition}
 %TODO perhaps define RLP/LLP
 \begin{definition}[Weak Factorization System]
