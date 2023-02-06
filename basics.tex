@@ -13,20 +13,20 @@ We will not give proofs for any statements in this section; we will however poin
     Let $\Delta$ be the category with
     \begin{itemize}
         \item objects the linearly ordered sets $[n]$ for all $n\in\Nat$
-        \item morphisms the \emph{nondecreasing} functions
+        \item morphisms the \emph{nondecreasing} functions.
     \end{itemize}
     We call this category the \emph{simplex category $\Delta$}.
 
     Similarly, let $\Delta_+$ be the category with
     \begin{itemize}
         \item objects the linearly ordered sets for all $n\in\Nat\cup\set{-1}$ 
-        \item morphisms again the \emph{nondecreasing} functions
+        \item morphisms again the \emph{nondecreasing} functions.
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
 \end{definition}
 \begin{definition}[Simplicial Set]
     We set $\sSet=\Fun(\Delta^{\op},\Set)$ to be the \emph{category of simplicial sets}.
-    Given a simplicial set $X\in\sSet$, we denote evaluation at an object $[n]\in\Delta$ by $X_n$.
+    Given a simplicial set $X\in\sSet$ and an object $[n]\in\Delta$ we denote evaluation by $X([n])=X_n$.
 
     Note that for any given nonempty finite linearly ordered set $A$ with $n\in\Nat$ elements, there exists a unique nondecreasing bijection to $[n]$.
     We write $X(A)$ for the evaluation $X_n$ under this canonical identification. 
@@ -42,9 +42,9 @@ We will not give proofs for any statements in this section; we will however poin
     for $a,b\in X$.
     When viewing linearly ordered sets $X,Y$ as categories in this way, the nondecreasing functions $f\colon X\to Y$ correspond precisely to functors.
 
-    This gives fully faithful inclusions $\Delta\subset\Cat$ and $\Delta_+\subset\Cat$, where $\Cat$ denotes the category of small categories.
+    This gives fully faithful inclusions $\Delta\subset\Cat$ and $\Delta_+\subset\Cat$, where $\Cat$ denotes the \emph{category of small categories}.
 \end{remark}
-\begin{definition}[Nerve of an Ordinary Category]
+\begin{definition}[Nerve of an Ordinary Category] %smallness problematic when applied to sSet and Top?
     Let
     \begin{align*}
         Y\colon\Cat&\to\Fun(\Cat^{\op},\Set)\\
@@ -52,8 +52,23 @@ We will not give proofs for any statements in this section; we will however poin
     \end{align*}
     denote the \emph{Yoneda embedding}.
 
-    Then composing the Yoneda embedding with the functor $\Fun(\Cat^{\op},\Set)\to\sSet$ induced by the inclusion $\Delta\subset\Cat$ from the previous remark gives a functor $N\colon\Cat\to\sSet$ called the \emph{nerve functor}.
+    Then composing the Yoneda embedding with the functor $\Fun(\Cat^{\op},\Set)\to\sSet$ induced by the inclusion $\Delta\subset\Cat$ from the previous remark gives a functor $\N\colon\Cat\to\sSet$ called the \emph{nerve functor}.
     For a given small category $C$ we refer to the simplicial set $\N(C)$ as the \emph{nerve of the category $C$}.
+\end{definition}
+\begin{definition}[Standard Simplex]
+    For every $n\in\Nat$ we write $\N([n])=\Delta^n$ and refer to $\Delta^n$ as \emph{the standard $n$-simplex}.
+    Similarly, for any nonempty finite linearly ordered set $A$ we write $\N(A)=\Delta^A$.
+
+    We also define 
+    \begin{equation*}
+        \partial\Delta^n=\bigcup\limits_{A\subsetneq[n]}\Delta^A\subset\Delta^n
+    \end{equation*}
+    to be the \emph{boundary of $\Delta^n$} and 
+    \begin{equation*}
+        \Lambda_k^n=\bigcup\limits_{k\in A\subsetneq[n]}\Delta^A\subset\Delta^n
+    \end{equation*}
+    to be the \emph{$k$-th horn of $\Delta^n$} for $0\leq k\leq n$.
+    (The unions are the degreewise unions in $\Set$.) %TODO is this true?
 \end{definition}
 \begin{lemma}[Homotopy Category]
     The nerve functor $\N\colon\Cat\to\sSet$ is fully faithful and has a left adjoint $\ho\colon\sSet\to\Cat$ which we call the \emph{homotopy category} of a simplicial set.
@@ -63,28 +78,51 @@ We will not give proofs for any statements in this section; we will however poin
 \end{lemma}
 \begin{definition}[Simplicial Category]
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
-    Let $\Cat_{\Delta}$ denote the \emph{category of small categories enriched over $\sSet$} with morphisms $\sSet$-enriched functors.
+    For a simplicial category $C$, we let $\Hom_C(-,-)\colon C^{\op}\times C\to\sSet$ denote the enriched $\Hom$-functor.
+   
+    Let $\Cat_{\Delta}$ denote the \emph{category of small simplicial categories} with morphisms the \emph{$\sSet$-enriched functors}.%TODO maybe explain what that is/cite
     
-    We call a simplicial category $C$ \emph{tensored} if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
+    We call a simplicial category $C$ \emph{tensored over $\sSet$} if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
     \begin{equation*}
         \Hom_C(X\otimes K,-)\cong\Fun(K,\Hom_C(X,-))\;.
     \end{equation*}
 
-    We call a simplicial category $C$ \emph{powered} if for each $Y\in C$ and $K\in\sSet$ there is an object $Y^K$ such that there is a natural isomorphism
+    We call a simplicial category $C$ \emph{powered over $\sSet$} if for each $Y\in C$ and $K\in\sSet$ there is an object $Y^K$ such that there is a natural isomorphism
     \begin{equation*}
         \Hom_C(-,Y^K)\cong\Fun(K,\Hom_C(-,Y))\;.
     \end{equation*}
     Note that due to the functoriality of the right side, these extend to functors $(-)\otimes(-):C\times\sSet\to C$ and $(-)^{(-)}:C\times\sSet^{\op}\to C$.
 \end{definition}
-%TODO perhaps define RLP/LLP
+\begin{definition}[LLP/RLP]
+    Let $C$ be a category and let $S$ be a class of maps in $C$.
+    We say that a morphism $f\colon A\to B$ has the \emph{left lifting property (LLP) with respect to $S$} if for every map $g\colon X\to Y\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ that make the square
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            A \arrow[r,"\lambda"] \arrow[d, "f"] & X \arrow[d, "g"] \\
+            B \arrow[ur, dashed, "\exists"] \arrow[r, "\mu"] & Y
+        \end{tikzcd}
+    \end{center}
+    commute, there exists a map $B\to X$ as indicated making the diagram commute.
+
+    Dually, we say that a morphism $g\colon X\to Y$ has the \emph{right lifting property (RLP) with respect to $S$} if for every map $f\colon A\to B\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ that make the square
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            A \arrow[r,"\lambda"] \arrow[d, "f"] & X \arrow[d, "g"] \\
+            B \arrow[ur, dashed, "\exists"] \arrow[r, "\mu"] & Y
+        \end{tikzcd}
+    \end{center}
+    commute, there exists a map $B\to X$ as indicated making the diagram commute.
+
+    We denote the class of maps having the LLP with respect to $S$ with $l(S)$, and the class of maps having the RLP with respect to $S$ with $r(S)$.
+\end{definition}
 \begin{definition}[Weak Factorization System]
     Let $C$ be a category and let $\Map(C)$ denote the class of all maps of $C$.
     Let $L,R\subset\Map(C)$ be subclasses.
     If 
     \begin{itemize}
-        \item every morphism $f$ in $C$ can be factorized as $f=p\circ i$ with $i\in L$, $p\in R$
-        \item $L$ consists precisely of the morphisms having the left lifting property against $R$
-        \item $R$ consists precisely of the morphisms having the right lifting property against $L$
+        \item every morphism $f$ in $C$ can be factorized as $f=p\circ i$ with $i\in L$ and $p\in R$
+        \item $L=l(R)$
+        \item $R=r(L)$
     \end{itemize}
     then the pair $(L,R)$ is a \emph{weak factorization system on $C$}.
 \end{definition}
@@ -97,15 +135,56 @@ We will not give proofs for any statements in this section; we will however poin
         \item $(\Cof\cap\W,\Fib)$ is a weak factorization system.
         \item $(\Cof,\Fib\cap\W)$ is a weak factorization system.
     \end{itemize}
-    We say that $C$ together with $(\Cof,\Fib,\W)$ is a \emph{combinatorial model category} if $C$ is locally presentable and the model structure is cofibrantly generated.
+\end{definition}
+\begin{definition}[$\kappa$-compact Object]
+    Let $C$ be a category, $X\in C$ an object and $\kappa$ a regular cardinal.
+    We say that $C$ is \emph{$\kappa$-compact} if the functor $\hom_C(X,-)\colon C\to\Set$ preserves all $\kappa$-filtered colimits. %TODO introduce kappa filtered colim, see cisinsky Proposition 2.1.9
+\end{definition}
+\begin{definition}[Locally Presentable Category] %TODO http://www.ub.edu/topologia/seminars/Locally_presentable.pdf
+    Let $C$ be a category.
+    We call $C$ \emph{locally presentable} if it has small colimits and there exists a regular cardinal $\kappa$ such that
+    \begin{itemize}
+        \item the isomorphism classes of $\kappa$-compact objects form a set
+        \item every object in $C$ is a $\kappa$-filtered colimit of $\kappa$-compact objects.
+    \end{itemize}
+\end{definition}
+\begin{definition}[Saturated Class]
+    Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
+    Then we call $I$ \emph{saturated} if it is closed under retracts, pushouts and transfinite composition. %TODO perhaps find way to avoid transfinite composition
+\end{definition}
+\begin{thm}[Small Object Argument]
+    Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
+    If there exists a regular cardinal $\kappa$ such that for any map $f\colon A\to B\in I$ the functor
+    \begin{equation*}
+        \hom_C(A,-)\colon C\to\Set
+    \end{equation*}
+    commutes with colimits indexed by $\kappa$-filtered well ordered sets, then we say that \emph{$I$ admits the small object argument}.
+    
+    In this case $(l(r(I)),r(I))$ is a weak factorization system and $l(r(I))$ is the smallest (with respect to inclusion) saturated class containing $I$.
+\end{thm}
+\begin{reference}
+    \cite*[Proposition 2.1.9]{cisinski_2019}
+\end{reference}
+\begin{definition}[Cofibrantly Generated Model Structure]
+    Let $C$ be a model category with $\Cof,\Fib$ and $\W$ the cofibrations, fibrations and weak equivalences respectively.
+    Then we say that $C$ is \emph{cofibrantly generated} if there exist small sets of morphisms $I,J$ such that
+    \begin{itemize}
+        \item $I$ and $J$ admit the small object argument
+        \item $(\Cof,\Fib\cap\W)=(l(r(I)),r(I))$
+        \item $(\Cof\cap\W,\Fib)=(l(r(J)),r(J))$.
+    \end{itemize} 
+\end{definition}
+\begin{definition}[Combinatorial Model Category]
+    We say that a model category $C$ is a \emph{combinatorial model category} if $C$ is locally presentable and the model structure is cofibrantly generated.
 \end{definition}
 We will need the standard model structure on $\sSet$, the Quillen model structure. 
 Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
-\begin{prop}[Quillen Model Structure on $\sSet$]
+\begin{thm}[Quillen Model Structure on $\sSet$] %TODO probably best to just prove all model cat stuff about \sSet here already
     There is a unique model structure on $\sSet$ where 
     \begin{itemize}
-        \item the cofibrations are the maps having the left lifting property against the maps $\set{\partial\Delta^n\xhookrightarrow{}\Delta^n\mid n\in\Nat}$, which are exactly the monomorphisms.
-        \item the fibrations are the maps having the right lifting property against the maps $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n, n\in\Nat}$.
+        \item the cofibrations are the monomorphisms, which also admit the following description: 
+        They are the smallest saturated class of maps containing the inclusions $\set{\partial\Delta^n\xhookrightarrow{}\Delta^n\mid n\in\Nat}$.
+        \item the fibrations are the maps having the right lifting property with respect to the inclusions $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n, n\in\Nat}$ and are called \emph{Kan-fibrations}.
     \end{itemize}
     The fibrant objects are the \emph{Kan-complexes}.
     The weak equivalences are the maps which are weak equivalences in $\Top$ after geometric realization.
@@ -114,7 +193,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
     \begin{reference}
         \cite[Theorem 3.1.8 and Theorem 3.1.29]{cisinski_2019} and \cite[Chap. II, \S 3, Theorem 1]{Quillen1967}
     \end{reference}
-\end{prop}
+\end{thm}
 \begin{definition}[Simplicial Model Category]
     A \emph{simplicial model category} is a simplicial category $C$ that is 
     \begin{itemize}
@@ -159,16 +238,22 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
     \end{itemize}
     so we obtain a functor $\C[-]\colon\Delta\to\Cat_{\Delta}$.
 \end{construction}
-\begin{definition}[Homotopy Coherent Nerve]
-    For a simplicial category $A$ we define the \emph{simplicial nerve (or homotopy coherent nerve) $\Nhc(A)$ of $A$} as $\Nhc(A)=\Hom_{\Cat_{\Delta}}(\C[-],A)$; 
-    Thus we obtain a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
+\begin{definition}[Homotopy Coherent Nerve] %smallness problematic when applied to sSet?
+    Let
+    \begin{align*}
+        Y\colon\Cat_{\Delta}&\to\Fun(\Cat_{\Delta}^{\op},\Set)\\
+        C&\mapsto\hom_{\Cat}(-,C)
+    \end{align*}
+    denote the \emph{Yoneda embedding}.
+    Then composing the Yoneda embedding with the functor $\Fun(\Cat_{\Delta}^{\op},\Set)\to\sSet$ induced by the map $C[-]$ from the previous construction gives a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
+    For a given small simplicial category $A$ we refer to $\Nhc(A)$ as the \emph{simplicial nerve} or \emph{homotopy coherent nerve of $A$}.
 \end{definition}
-For completeness sake we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.
-\begin{prop}[Joyal Model Structure on $\sSet$]
+For completeness we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.
+\begin{thm}[Joyal Model Structure on $\sSet$]
     The following two classes of maps endow $\sSet$ with a unique model structure:
     \begin{itemize}
         \item Cofibrations are the monomorphisms.
-        \item The weak equivalences are the maps $A\to B$ such that for every \inftycat/ $C$ the induced map $\ho(\Fun(B,C))\to\ho(\Fun(A,C))$ is a categorical equivalence.
+        \item The weak equivalences are the maps $A\to B$ such that for every \inftycat/ $C$ the induced map $\ho(\Fun(B,C))\to\ho(\Fun(A,C))$ is an equivalence of ordinary categories.
     \end{itemize}
     The fibrant objects of this model structure are the \inftycats/.
     We refer to the weak equivalences of this model structure as \emph{weak categorical equivalences}.
@@ -177,13 +262,13 @@ For completeness sake we will also describe the Joyal model structure on $\sSet$
     \begin{reference}
         \cite[Definition 3.3.7 and Theorem 3.6.8]{cisinski_2019}
     \end{reference}
-\end{prop}
+\end{thm}
 \begin{prop}
     Let $F\colon C\to D$ be a map between \inftycats/.
     Then the following are equivalent:
     \begin{itemize}
         \item $F$ is a weak categorical equivalence (thus an equivalence of \inftycats/)
-        \item $F$ is fully faithful and essentially surjective
+        \item $F$ is fully faithful and essentially surjective %TODO not defined yet
         \item There exists a map $G\colon D\to C$ and invertible natural transformations $FG\simeq \id_D$ and $GF\simeq \id_C$.
     \end{itemize}
     \begin{reference}
@@ -199,7 +284,7 @@ For completeness sake we will also describe the Joyal model structure on $\sSet$
 \end{prop}
 \begin{corollary}
     Let $M$ be a simplicial model category.
-    Then the simplicial set $\Nhc(M^°)$ where $M^°$ denotes the restriction to cofibrant-fibrant objects is an \inftycat/.
+    Then the simplicial set $\Nhc(M^°)$ where $M^°$ denotes the restriction to the full subcategory of cofibrant-fibrant objects is an \inftycat/.
     \begin{proof}
         The axioms of a simplicial model category imply that for every pair of objects $X,Y\in M^°$ the simplicial set $\Hom_{M^°}(X,Y)$ is a Kan-complex.
     \end{proof}
@@ -266,7 +351,7 @@ For completeness sake we will also describe the Joyal model structure on $\sSet$
     Dually if $C$ is cocomplete, then there exists a functor $F\colon C\to D$ that is left Kan-extended from $C_0$.
     
     Furthermore, in both cases there is a fully faithful functor $\Fun(C_0,D)\to\Fun(C,D)$ that is right/left adjoint to the restriction functor and given by computing right/left Kan-extensions respectively.
-    \begin{reference}
+    \begin{reference}%TODO Proposition 6.4.9 in cisinski
         The existence and adjointness for left Kan-extensions is a corollary of \cite[Corollary 7.3.6.4]{kerodon} (and the dual of this proves the statement for right Kan-extensions).
         The full faithfulness is implied by \cite[Corollary 7.3.1.16]{kerodon} since it is shown that counit/unit of the adjunction is an equivalence.
     \end{reference}
