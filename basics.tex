@@ -176,7 +176,7 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition}
 \begin{definition}[Combinatorial Model Category]
     We say that a model category $C$ is a \emph{combinatorial model category} if $C$ is locally presentable and the model structure is cofibrantly generated.
-\end{definition}
+\end{definition} %TODO maybe also put here that Top is not locally presentable
 We will need the standard model structure on $\sSet$, the Quillen model structure. 
 Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
 \begin{thm}[Quillen Model Structure on $\sSet$] %TODO probably best to just prove all model cat stuff about \sSet here already
@@ -208,7 +208,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
     
     We say that a simplicial model category is a \emph{combinatorial simplicial model category} if its underlying model category is a combinatorial model category.
 \end{definition}
-\begin{construction}%[{\cite[Notation 2.4.3.1]{kerodon}}] TODO decide
+\begin{construction}[{\cite[Notation 2.4.3.1]{kerodon}}]
     For $[n]\in\Delta$ we define a simplicial category $\C[n]$ as follows:
     \begin{itemize}
         \item the objects of $\C[n]$ are the elements of the set $\set{0,\ldots,n}$
@@ -252,18 +252,67 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
 \begin{thm}[Joyal Model Structure on $\sSet$]
     The following two classes of maps endow $\sSet$ with a unique model structure:
     \begin{itemize}
-        \item Cofibrations are the monomorphisms.
+        \item The cofibrations are the monomorphisms.
         \item The weak equivalences are the maps $A\to B$ such that for every \inftycat/ $C$ the induced map $\ho(\Fun(B,C))\to\ho(\Fun(A,C))$ is an equivalence of ordinary categories.
     \end{itemize}
-    The fibrant objects of this model structure are the \inftycats/.
+    The fibrant objects of this model structure are called \inftycats/ and are precisely the simplicial sets whose map to the point has the RLP with respect to $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0< k< n, n\in\Nat}$.
     We refer to the weak equivalences of this model structure as \emph{weak categorical equivalences}.
     We refer to weak categorical equivalences whose domain and target are both \inftycats/ as \emph{equivalences of \inftycats/}.
     We call this model structure the \emph{Joyal Model Structure on $\sSet$}.
     \begin{reference}
-        \cite[Definition 3.3.7 and Theorem 3.6.8]{cisinski_2019}
+        \cite[Definition 3.3.7, Theorem 3.6.8 and Theorem 3.6.1]{cisinski_2019}
     \end{reference}
 \end{thm}
-\begin{prop}
+\begin{definition}[Equivalences in an \inftycat/]
+    Let $C$ be an \inftycat/ and $f\colon x\to y\in C_1$ a map.
+    Then we say that $f$ is an \emph{equivalence} if there exists a map $g\colon y\to x\in C_1$ and $2$-simplices of the form
+    \begin{center}
+        \begin{tikzcd} [sep = 3em]
+            & x \ar[dr,"f"]&\\
+            y \ar[ur,"g"] \ar[rr,"\id_y"]&  & y
+        \end{tikzcd}
+        \begin{tikzcd} [sep = 3em]
+            & y \ar[dr,"g"]&\\
+            x \ar[ur,"f"] \ar[rr,"\id_x"]&  & x
+        \end{tikzcd}\;.
+    \end{center}
+    We say that objects $x,y\in C_0$ are \emph{equivalent} if there exists an equivalence $f\colon x\to y$.
+\end{definition}
+\begin{definition}[Natural Transformations]
+    Let $f,g\colon C\to D$ be maps between \inftycats/.
+    Then a \emph{natural transformation from $f$ to $g$} is a map if simplicial sets $h\colon C\times\Delta^1\to D\in\Fun(C,D)_1$ such that $h|_{C\times\set{0}}=f$ and $h|_{C\times\set{1}}=g$.
+    
+    We say that a natural transformation is \emph{invertible} if for all $c\in C_0$ the map $h|_{\set{c}\times\Delta^1}\in D_1$ is an equivalence.
+\end{definition}
+\begin{definition}[Essentially Surjective]
+    Let $F\colon C\to D$ be a map between \inftycats/.
+    Then we call $F$ \emph{essentially surjective} if for all $d\in D_0$ there exists a $c\in C_0$ such that $d$ and $f(c)$ are equivalent in $D$.
+\end{definition}
+\begin{thm}[Mapping Space]
+    Let $C$ be an \inftycat/ and let $x,y\in C_0$ and let $\Map_C(x,y)$ denote the pullback 
+    \begin{center}
+        \begin{tikzcd} [sep = 3em]
+            \Map_C(x,y) \ar[d] \ar[r] & \Fun(\Delta^1,C) \ar[d, "{(\ev_0,\ev_1)}"] \\
+            \Delta^0 \ar[r, "{(x,y)}"] & C\times C
+        \end{tikzcd}
+    \end{center}
+    which we refer to as the \emph{mapping space from $x$ to $y$}.
+    By \cite[116]{cisinski_2019} this space is a Kan-complex.
+\end{thm}
+\begin{definition}[Fully Faithful]
+    Let $F\colon C\to D$ be a map between \inftycats/.
+    Then call $F$ \emph{fully faithful} if for all $x,y\in C_0$ the map $\Map_C(x,y)\to\Map_D(f(x),f(y))$ induced by the commutative cube
+    \begin{center}
+        \begin{tikzcd} [sep = 1em]
+            \Map_C(x,y) \arrow [dr] \arrow [rr] \arrow [dd] & & \Fun(\Delta^1,C) \arrow [dr, "F\circ -"] \arrow [dd] \\
+            & \Map_D(f(x),f(y)) \arrow [rr, crossing over] \arrow [dd] & &[1em] \Fun(\Delta^1,D) \arrow [dd] & \\
+            \Delta^0 \arrow [dr] \arrow [rr, near start, "{(x,y)}"] & & C\times C \arrow [dr,"{(F,F)}"] \\
+            & \Delta^0 \arrow [from=uu, crossing over] \arrow [rr, "{(f(x),f(y))}"] & & D\times D
+        \end{tikzcd}
+    \end{center}
+    is a weak equivalence of Kan-complexes.
+\end{definition}
+\begin{thm}
     Let $F\colon C\to D$ be a map between \inftycats/.
     Then the following are equivalent:
     \begin{itemize}
@@ -274,7 +323,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     \begin{reference}
         \cite[Corollary 3.6.6 and Theorem 3.9.7]{cisinski_2019}
     \end{reference}
-\end{prop}
+\end{thm}
 \begin{prop}
     Let $A$ be a simplicial category such that for every pair of objects $X,Y\in A$ the simplicial set $\Hom_A(X,Y)$ is a Kan-complex.
     Then $\Nhc(A)$ is an \inftycat/.
@@ -313,6 +362,20 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     
     For a simplicial set $X$, we further define $X^{\lhd}=\Delta^0\star X$ and $X^{\rhd}=X\star\Delta^0$.
 \end{definition}
+\begin{definition}[(Co)Slice] %TODO Construction 4.3.5.1
+    Let $f\colon K\to C$ be a map of simplicial sets.
+    Setting 
+    \begin{equation*}
+        \left(C_{/f}\right)_n=\set{\sigma\colon \Delta^n\star K\to X \mid \sigma|_K=f}
+    \end{equation*}
+    defines a simplicial set $C_{/f}$ which we refer to as the \emph{slice simplicial set of $C$ over $f$}.
+
+    Dually, setting 
+    \begin{equation*}
+        \left(C_{f/}\right)_n=\set{\sigma\colon K\star \Delta^n \to X \mid \sigma|_K=f}
+    \end{equation*}
+    defines a simplicial set $C_{f/}$ which we refer to as the \emph{coslice simplicial set of $C$ over $f$}.
+\end{definition}
 \begin{construction}[(Co)Slice Contraction]%TODO kerodon 4.3.5.12.
     Let $f\colon X\to Y$ be a morphism of simplicial sets.
     Then let $c\colon Y_{/f}\star X\to Y$ be defined as follows:
@@ -324,35 +387,62 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
               We then set $c(\sigma)=\Delta^n\cong\Delta^p\star\Delta^q\xrightarrow{\id_{\Delta^p}\star\sigma^-}\Delta^p\star X\xrightarrow{\overline{f}} Y$.
     \end{itemize}
     We call $c$ the \emph{slice contraction morphism}.
-    The analogous construction $c\colon c\colon X\star Y_{f/}\to Y$ is called the \emph{coslice contraction morphism}.
+    The analogous construction $c\colon X\star Y_{f/}\to Y$ is called the \emph{coslice contraction morphism}.
 \end{construction}
-\begin{definition} %kerodon Definition 7.3.2.1
-    Let $F\colon C\to D$ be a functor between \inftycats/ and let $C_0\subset C$ be a full subcategory.
-    Then $F$ is \emph{right Kan-extended from $C_0$} if for all objects $c\in C$ the diagram
+\begin{definition}[Adjoint]
+    Let $F\colon C\to D$ and  $G\colon D\to C$ be functors between \inftycats/.
+    Then we say that \emph{$F$ is left adjoint to $G$} or alternatively, that \emph{$G$ is right adjoint to $F$}
+    if there exist natural transformations $\varepsilon\colon FG\to \id_D$ and $\eta\colon\id_C\to GF$ (called \emph{counit} and \emph{unit} respectively) and $2$-simplices 
+    \begin{center}
+        \begin{tikzcd} [sep = 3em]
+            & FGF \ar[dr,"\varepsilon F"]&\\
+            F \ar[ur,"F\eta"] \ar[rr,"\id_F"]&  & F
+        \end{tikzcd}
+        \begin{tikzcd} [sep = 3em]
+            & GFG \ar[dr,"G\varepsilon"]&\\
+            G \ar[ur,"\eta G"] \ar[rr,"\id_G"]&  & G
+        \end{tikzcd}
+    \end{center}
+    in $\Fun(C,D)$ and $\Fun(D,C)$ respectively.
+\end{definition}
+\begin{remark}
+    Adjoints are ``essentially unique'' in the sense of \cite[Proposition 6.1.9]{cisinski_2019}.
+\end{remark}
+\begin{definition}[Kan-Extension]
+    Let $u\colon A\to B$ be a functor between \inftycats/ and let $C$ be an \inftycat/.
+    
+    Then if the functor $u^*\colon\Fun(B,C)\to\Fun(A,C)$ has a right adjoint $u_*\colon\Fun(A,C)\to\Fun(B,C)$, we say that \emph{$u_*$ is the right Kan-extension of $u$ in $C$}.
+    For a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{right Kan extension of $f$ along $u$} if $g$ is equivalent to $u_*(f)$.
+
+    Dually, if $u^*$ has a left adjoint $u_!\colon\Fun(A,C)\to\Fun(B,C)$, we say that \emph{$u_!$ is the left Kan-extension of $u$ in $C$}.
+    For a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{left Kan extension of $f$ along $u$} if $g$ is equivalent to $u_!(f)$.
+\end{definition}
+We will only deal with Kan-extensions where $u$ is an inclusion and $C$ is complete and cocomplete.
+In this case, we can give a more explicit description.
+\begin{definition}[Pointwise Kan-Extension] %kerodon Definition 7.3.2.1
+    Let $F\colon C\to D$ be a functor between \inftycats/ and let $i\colon C_0\subset C$ be a full subcategory.
+    Then $F$ is a \emph{pointwise right Kan-extension along $i$} if for all objects $c\in C$ the diagram
     \begin{equation*}
-        \left(C_{c/}\times_C C_0\right)^{\lhd}\to \Delta^0\star C_{c/}\xrightarrow{c} C\to D
+        \left(C_{c/}\times_C C_0\right)^{\lhd}\to \Delta^0\star C_{c/}\xrightarrow{c} C\xrightarrow{F} D
     \end{equation*}
     where the map $c\colon\Delta^0\star C_{c/}\to C$ is the coslice contraction map, is a limit cone.
 
-    Dually, $F$ is \emph{left Kan-extended from $C_0$} if for all objects $c\in C$ the diagram
+    Dually, $F$ is a \emph{pointwise left Kan-extension along $i$} if for all objects $c\in C$ the diagram
     \begin{equation*}
-        \left(C_{/c}\times_C C_0\right)^{\rhd}\to C_{/c}\star\Delta^0 \xrightarrow{c} C\to D
+        \left(C_{/c}\times_C C_0\right)^{\rhd}\to C_{/c}\star\Delta^0 \xrightarrow{c} C\xrightarrow{F} D
     \end{equation*}
     where the map $c\colon C_{/c}\star\Delta^0\to C$ is the slice contraction map, is a colimit cone.
 \end{definition}
-\begin{remark}
-    There is also a notion of Kan-extensions along general functors. 
-    We will not need this, but it can be found in \cite[\S 7.3.1]{kerodon}.
-\end{remark}
-\begin{prop}\label{prop:exKanExt}
-    Let $C$ be an \inftycat/, $C_0\subset C$ a full subcategory and $F\colon C_0\to D$ a functor between \inftycats/.
-    If $D$ is complete, then there exists a functor $F\colon C\to D$ that is right Kan-extended from $C_0$.
-
-    Dually if $C$ is cocomplete, then there exists a functor $F\colon C\to D$ that is left Kan-extended from $C_0$.
+\begin{prop}[Existence of Pointwise Kan-Extensions]\label{prop:exKanExt}
+    Let $C,D$ be \inftycats/ and $i\colon C_0\subset C$ a full subcategory.
     
-    Furthermore, in both cases there is a fully faithful functor $\Fun(C_0,D)\to\Fun(C,D)$ that is right/left adjoint to the restriction functor and given by computing right/left Kan-extensions respectively.
-    \begin{reference}%TODO Proposition 6.4.9 in cisinski
-        The existence and adjointness for left Kan-extensions is a corollary of \cite[Corollary 7.3.6.4]{kerodon} (and the dual of this proves the statement for right Kan-extensions).
-        The full faithfulness is implied by \cite[Corollary 7.3.1.16]{kerodon} since it is shown that counit/unit of the adjunction is an equivalence.
+    If $D$ is complete, then there exists a right Kan-extension $i_*\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
+
+    Dually if $D$ is cocomplete, then there exists a left Kan-extension $i_!\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
+
+    Furthermore, the functors $i_*$ and $i_!$ are fully faithful.
+    \begin{reference}
+        The existence and computation of the Kan-extensions via the pointwise description is shown by \cite[Proposition 6.4.9]{cisinski_2019} (and its dual).
+        The full faithfulness is implied by \cite[Corollary 7.3.1.16]{kerodon} where it is shown that counit/unit of the adjunction is an equivalence. 
     \end{reference}
 \end{prop}
