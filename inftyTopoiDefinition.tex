@@ -1,13 +1,13 @@
 Before giving a proper definition of universality and descent, we need to introduce local presentability for \inftycats/.
-Since this we be the least interesting for our purposes, we will give a very pragmatic introduction.
+Since this will be the least interesting for our purposes, we will give a very brief introduction.
 \begin{definition}\label{def:locallyPresentable}
     An \inftycat/ $C$ is \emph{locally presentable} if there exists a combinatorial simplicial model category $A$ and an equivalence of \inftycats/ $\Nhc(A^°)\to C$.
 \end{definition}
 \begin{corollary}
     A locally presentable \inftycat/ $C$ has small colimits and small limits.
-    \begin{proof}
-        These are computed as homotopy colimits/limits in some combinatorial simplicial model category $A$ where they exist.
-    \end{proof}
+    \begin{reference}
+        \cite[Corollary 4.2.4.8]{HTT}
+    \end{reference}
 \end{corollary}
 \begin{corollary}
     The \inftycat/ of spaces $\spaces$ is locally presentable.
@@ -15,7 +15,7 @@ Since this we be the least interesting for our purposes, we will give a very pra
         This follows directly by \cref{prop:homotopyHypothesis} and \cref{cor:htpyCoherentNerveIsLoc}.
     \end{proof}
 \end{corollary}
-Note that $\Top$ as an ordinary category is not locally presentable.
+Note that $\Top$ as an ordinary category is not locally presentable. %TODO why
 An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in \cite[Theorem 5.5.1.1 and Proposition A.3.7.6]{HTT}.
 
 Next we introduce cartesian transformations which allow us to encode universality and descent concisely.
@@ -33,13 +33,13 @@ Next we introduce cartesian transformations which allow us to encode universalit
 \end{definition}
 \begin{definition}[Universality]
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set.
-    We say that \emph{$C$ has $K$-shaped universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is a colimit cone.
+    We say that \emph{$C$ has $K$-shaped universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is a also a colimit cone.
     
     We say that \emph{$C$ has universal colimits} if $C$ has $K$-shaped universal colimits for every small simplicial set $K$.
 \end{definition}
 \begin{definition}[Descent]
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set.
-    We say that \emph{$C$ has $K$-shaped descent} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is cartesian.
+    We say that \emph{$C$ has $K$-shaped descent} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is also cartesian.
     
     We say that \emph{$C$ has descent} if $C$ has $K$-shaped descent for every small simplicial set $K$.
 \end{definition}
@@ -73,17 +73,17 @@ This is the content of the next two lemmas and will be used later to prove that 
 
 We will require the following proposition for the proof.
 \begin{prop}\label{prop:colimitDecompositionPushouts}
-    Let $C$ be a cocomplete \inftycat/ and let $p\colon K\to C$ be a map of simplicial sets, where $K$ is the pushout of a diagram
+    Let $C$ be a cocomplete \inftycat/, let $K$ be a simplicial set given by a pushout
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             K_0 \arrow[r] \arrow[d, hook] & K_2 \arrow[d, hook] \\
             K_1 \arrow[r] & K
         \end{tikzcd}
     \end{center}
-    where $K_0\xhookrightarrow{} K_1$ is a monomorphism.
+    where $K_0\xhookrightarrow{} K_1$ is a monomorphism, and let $p\colon K\to C$ be a map of simplicial sets.
 
-    Let $X$ be a colimit of $K_0\to K\to C$, $Y$ a colimit of $K_1\to K\to C$ and $Z$ a colimit of $K_2\to K\to C$.
-    Then colimits of $p$ can be identified with pushouts $K_1\cup_{K_0}K_2$ in $C$.
+    Set $X_i$ to be the colimit of $K_i\to K\to C$ for $i\in\set{0,1,2}$.
+    Then the induced cone $\overline{p}\colon K^{\rhd}\to C$ given by $\overline{p}|_K=p$ and universal maps to the conepoint $\overline{p}(\infty)=X_1\cup_{X_0}X_2$ is a colimit cone in $C$.
     \begin{reference}
         \cite[Proposition 4.4.2.2]{HTT}
     \end{reference}
@@ -99,18 +99,18 @@ We will require the following proposition for the proof.
         Let $\dim K=n+1$. 
         Then by the skeletal filtration
         \begin{equation*}
-            K=K^{n+1}=K^n\coprod\limits_{\bigcup\limits_S \partial\Delta^{n+1}}\bigcup_S \Delta^{n+1}
+            K=K^{n+1}=K^n\coprod\limits_{\coprod\limits_S \partial\Delta^{n+1}}\left(\coprod_S \Delta^{n+1}\right)
         \end{equation*}
         where $S$ is the set of non-degenerate simplices of dimension $n+1$.
-        For ease of notation, we set $X_{0}=\bigcup\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\bigcup\limits_S \Delta^{n+1}$.
+        For ease of notation, we set $X_{0}=\coprod\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\coprod\limits_S \Delta^{n+1}$.
 
         Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ or $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoint of $q_i$ to be the colimit, and the conepoint of $p_i$ to be the pullback 
         \begin{center}
             \begin{tikzpicture}
                 \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
                 {
-                  p_i(\infty) & q(\infty)\\
-                  q_i(\infty) & p(\infty)\\};
+                  p_i(\infty) & p(\infty)\\
+                  q_i(\infty) & q(\infty)\\};
                 \path[-stealth]
     
                 (m-1-1) edge (m-1-2)
@@ -124,8 +124,8 @@ We will require the following proposition for the proof.
         By the induction hypothesis we thus have that $p_0$ and $p_1$ are colimit cones.
 
         Since $\Delta^{n+1}$ has a terminal object, colimits over $\Delta^{n+1}$ can be computed by evaluating the terminal object.
-        Let the family $(x_s)_{s\in S}$ be the images of the terminal objects of the components in $X_2=\bigcup\limits_{s\in S} \Delta^{n+1}$ under the map $X_2\to K$.
-        Then we have $q_2(\infty)\cong\bigcup\limits_{s\in S} q(x_s)$ as colimits commute.
+        Let the family $(x_s)_{s\in S}$ be the images of the terminal objects of the components in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$ under the map $X_2\to K$.
+        Then we have $q_2(\infty)\cong\coprod\limits_{s\in S} q(x_s)$ as colimits commute.
         So for every $s\in S$ the left square in the diagram
         \begin{center}
             \begin{tikzpicture}
@@ -144,7 +144,7 @@ We will require the following proposition for the proof.
                 (m-1-3) edge (m-2-3);
             \end{tikzpicture}
         \end{center}
-        is a pullback by the pasting law, thus by universality for coproducts $p_2(\infty)\cong\bigcup\limits_{s\in S} p(x_s)$ and in particular $p_2$ is a colimit cone.
+        is a pullback by the pasting law, thus by universality for coproducts $p_2(\infty)\cong\coprod\limits_{s\in S} p(x_s)$ and in particular $p_2$ is a colimit cone.
         
         By \cref{prop:colimitDecompositionPushouts} we know that 
         \begin{center}
