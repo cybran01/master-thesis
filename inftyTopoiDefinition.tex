@@ -72,7 +72,7 @@ In order to prove that a given \inftycat/ has universality and descent we only n
 This is the content of the next two lemmas and will be used later to prove that $\spaces$ is an \inftytop/.
 
 We will require the following proposition for the proof.
-\begin{prop}\label{prop:colimitDecompositionPushouts}
+\begin{prop}\label{prop:colimitDecompositionPushouts} %TODO CatLR Proposition 7.3.16 (applied to C^{\op}) gives more general condintions, Remark 6.2.7 for we preseve colim, Proposition 3.7.4 CatLR + Corollary 3.9.8 CatLR for wce and L\subset\N(\Nat)
     Let $C$ be a cocomplete \inftycat/, let $K$ be a simplicial set given by a pushout
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -82,8 +82,8 @@ We will require the following proposition for the proof.
     \end{center}
     where $K_0\xhookrightarrow{} K_1$ is a monomorphism, and let $p\colon K\to C$ be a map of simplicial sets.
 
-    Set $X_i$ to be the colimit of $K_i\to K\to C$ for $i\in\set{0,1,2}$.
-    Then the induced cone $\overline{p}\colon K^{\rhd}\to C$ given by $\overline{p}|_K=p$ and universal maps to the conepoint $\overline{p}(\infty)=X_1\cup_{X_0}X_2$ is a colimit cone in $C$.
+    For $i\in\set{0,1,2}$, set $X_i$ to be the colimit of $K_i\to K\to C$ in $C$.
+    Then the induced diagram $\overline{p}\colon K^{\rhd}\to C$ given by $\overline{p}|_K=p$ and universal maps to the conepoint $\overline{p}(\infty)=X_1\cup_{X_0}X_2$ is a colimit cone in $C$.
     \begin{reference}
         \cite[Proposition 4.4.2.2]{HTT}
     \end{reference}
@@ -106,47 +106,45 @@ We will require the following proposition for the proof.
 
         Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ or $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoint of $q_i$ to be the colimit, and the conepoint of $p_i$ to be the pullback 
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                  p_i(\infty) & p(\infty)\\
-                  q_i(\infty) & q(\infty)\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2);
-            \end{tikzpicture}\;.
+            \begin{tikzcd} [sep = 4em]
+                p_i(\infty) \arrow[r] \arrow[d] & p(\infty) \arrow[d]\\
+                q_i(\infty) \arrow[r] & q(\infty)
+            \end{tikzcd}\;.
         \end{center}
-        Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$ which are cartesian by the pasting law.
+        Then $\alpha$ induces natural transformations $\alpha_i\colon p_i\to q_i$.
+        We claim these natural transformations are also cartesian:
 
-        By the induction hypothesis we thus have that $p_0$ and $p_1$ are colimit cones.
+        Let $f\colon x\to y$ be a map in $X_i^{\rhd}$. 
+        If $f$ is in $X_i$, the claim follows immediately from the fact that $\alpha$ is cartesian, hence we assume $y=\infty$.
 
-        Since $\Delta^{n+1}$ has a terminal object, colimits over $\Delta^{n+1}$ can be computed by evaluating the terminal object.
-        Let the family $(x_s)_{s\in S}$ be the images of the terminal objects of the components in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$ under the map $X_2\to K$.
-        Then we have $q_2(\infty)\cong\coprod\limits_{s\in S} q(x_s)$ as colimits commute.
-        So for every $s\in S$ the left square in the diagram
+        In this case the outer and right square of the diagram
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                    p(x_s) & p_2(\infty) & p(\infty)\\
-                    q(x_s) & q_2(\infty) & q(\infty)\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2)
-                (m-1-2) edge (m-1-3)
-                (m-2-2) edge (m-2-3)
-                (m-1-3) edge (m-2-3);
-            \end{tikzpicture}
+            \begin{tikzcd} [sep = 4em]
+                p_i(x) \arrow[r] \arrow[d] & p_i(\infty) \arrow[r] \arrow[d] & p(\infty) \arrow[d] \\
+                q_i(x) \arrow[r] & q_i(\infty) \arrow[r] & q(\infty)
+            \end{tikzcd}
         \end{center}
-        is a pullback by the pasting law, thus by universality for coproducts $p_2(\infty)\cong\coprod\limits_{s\in S} p(x_s)$ and in particular $p_2$ is a colimit cone.
+        are pullbacks, hence by the pasting law the left square is a pullback as well.
+        This proves our claim.
+
+        By the induction hypothesis we therefore know that $p_0$ and $p_1$ are colimit cones. 
+        We claim that $p_2$ is also a colimit cone:
         
-        By \cref{prop:colimitDecompositionPushouts} we know that 
+        Since $\Delta^{n+1}$ has a terminal object, colimits over $\Delta^{n+1}$ can be computed by evaluating the terminal object.
+        Let the family $(*_s)_{s\in S}$ be the family of terminal objects of the components in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$.
+        Then we have $q_2(\infty)\cong\coprod\limits_{s\in S} q_2(*_s)$. %TODO cref to amended prop
+
+        Since for all $s\in S$ the square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                p_2(*_s) \arrow[r] \arrow[d] & p_2(\infty) \arrow[d]\\
+                q_2(*_s) \arrow[r] & q_2(\infty)\cong\coprod\limits_{s\in S} q_2(*_s)
+            \end{tikzcd}\;.
+        \end{center}
+        is a pullback since $\alpha_2$ is cartesian, by universality for coproducts it follows that $p_2(\infty)\cong\coprod\limits_{s\in S} p_2(*_s)$.
+        This shows that $p_2$ is a colimit cone, proving the claim.
+        
+        Now by \cref{prop:colimitDecompositionPushouts} we know that 
         \begin{center}
             \begin{tikzpicture}
                 \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
@@ -176,13 +174,13 @@ We will require the following proposition for the proof.
         Again by \cref{prop:colimitDecompositionPushouts} it follows that $p$ is a colimit cone.
 
         It now remains to show that statement for general $K$.
-        Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category via the ordering $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (with all higher simplices degenerate).
+        Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category via the ordering $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (with all higher simplices degenerate). %TODO use def of partially ordered
         It can be shown that the inclusion $L\subset\N(\Nat)$ is a weak categorical equivalence.
 
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation, let $q$ be a colimit cone and let $\left(K^n\right)_{n\in\Nat}$ denote the skeletal filtration of $K$.
         We can compute colimits of any diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex $n\in\Nat$ is the colimit of $K^n\to C$ and all higher simplices are given by chains of the canonical maps. 
 
-        Since $L\subset\N(\Nat)$ is a weak categorical equivalence (which preserve and reflect (co)limits), we can also compute the colimit of the induced diagram $L\to C$. %TODO maybe more detail, colimits can be computed as colimits over \N(\Nat) and skeletal filtration
+        Since $L\subset\N(\Nat)$ is a weak categorical equivalence (which preserve and reflect (co)limits), we can also compute the colimit of the induced diagram $L\to C$.
 
         So let $F_q\colon L^{\rhd}\to C$ be the diagram induced by taking colimits of the skeleta as described above.
         Let $F_p\colon L^{\rhd}\to C$ be given by taking pullbacks
@@ -202,8 +200,8 @@ We will require the following proposition for the proof.
         \end{center}
         which induce a cartesian natural transformation $\gamma\colon F_p\to F_q\in\Fun(L^{\rhd},C)_1$.
         Since $L$ is $1$-dimensional, $F_p$ is a colimit cone by universality for finite dimensional diagrams.
-        By universality for finite dimensional $K$ we also have that $F_p(n)$ is the colimit of $p|_{K^n}$ for every $n\in\Nat$.
-        This proves that $p$ is a colimit cone and thus the proposition.
+        Universality for finite dimensional diagrams also implies that $F_p(n)$ is the colimit of $p|_{K^n}$ for every $n\in\Nat$, hence $F_p(\infty)$ is a colimit of $p|_K$. %TODO cite
+        This proves that $p$ is a colimit cone and thus the proposition. 
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:descentIffDescentPoAndCoprod}
@@ -217,28 +215,27 @@ We will require the following proposition for the proof.
         So let $\dim K=n+1$.
         Then by the skeletal filtration        
         \begin{equation*}
-            K=K^{n+1}=K^n\coprod\limits_{\bigcup\limits_S \partial\Delta^{n+1}}\bigcup_S \Delta^{n+1}
+            K=K^{n+1}=K^n\coprod\limits_{\coprod\limits_S \partial\Delta^{n+1}}\left(\coprod_S \Delta^{n+1}\right)
         \end{equation*}
         where $S$ is the set of non-degenerate simplices of dimension $n+1$.
-        For ease of notation, we again set $X_{0}=\bigcup\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\bigcup\limits_S \Delta^{n+1}$.
+        For ease of notation, we again set $X_{0}=\coprod\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\coprod\limits_S \Delta^{n+1}$.
         
         Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ and $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoints to be the colimits.
-        Then $\alpha$ induces maps $\alpha_i\colon p_i\to q_i$.
-        By the induction hypothesis we obtain that $\alpha_0$ and $\alpha_1$ are cartesian.
+        Then $\alpha$ induces natural transformations $\alpha_i\colon p_i\to q_i$.
+        By the induction hypothesis we know that $\alpha_0$ and $\alpha_1$ are cartesian.
+        We claim that the natural transformation $\alpha_2$ is cartesian as well: 
 
-        The map $\alpha_2$ is cartesian as well: 
-        Since $\Delta^{n+1}$ has a terminal object, a colimit of a diagram indexed over $\Delta^{n+1}$ can be computed by evaluating the final vertex. 
-        Let the family $(x_s^i)_{i\in\set{0,\ldots,n+1},s\in S}$ be family of images consisting of the $i$-th vertex of the components in $X_2=\bigcup\limits_{s\in S} \Delta^{n+1}$ under the map $X_2\to K$.
-        We have $q_2(\infty)\cong\bigcup\limits_{s\in S} q(x_s^{n+1})$ and $p_2(\infty)\cong\bigcup\limits_{s\in S} p(x_s^{n+1})$.
+        For $i\in\set{0,\ldots,n+1}$ and $s\in S$ let $i_s\in X_2$ denote the $i$-th vertex of the $s$-th component in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$.
+        Since the objects $(n+1)_s$ are terminal in their component $\Delta^{n+1}$, we have $q_2(\infty)\cong\coprod\limits_{s\in S} q_2((n+1)_s)$ as well as $p_2(\infty)\cong\coprod\limits_{s\in S} p_2((n+1)_s)$. %TODO cite
         For each $s\in S$ and $i\in\set{0,\ldots,n+1}$ the outer square of the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                p_2(x_s^i) \arrow[r] \arrow[d] & p_2(x_s^{n+1}) \arrow[r] \arrow[d] & p_2(\infty) \arrow[d] \\
-                q_2(x_s^i) \arrow[r] & q_2(x_s^{n+1}) \arrow[r] & q_2(\infty)\\
+                p_2(i_s) \arrow[r] \arrow[d] & p_2((i+1)_s) \arrow[r] \arrow[d] & \coprod\limits_{s\in S} p_2((n+1)_s)\cong p_2(\infty) \arrow[d] \\
+                q_2(i_s) \arrow[r] & q_2((i+1)_s) \arrow[r] & \coprod\limits_{s\in S} q_2((n+1)_s)\cong q_2(\infty)
             \end{tikzcd}
         \end{center}
-        is a pullback since the left square is a pullback because $\alpha_2|_{X_2}$ is cartesian and the right square is a pullback by descent for coproducts.
-        Thus $\alpha_2$ is cartesian.
+        is a pullback: The left square is a pullback because $\alpha_2|_{X_2}$ is cartesian and the right square is a pullback by descent for coproducts, so by the pasting law the outer square must be cartesian as well.
+        This proves our claim that $\alpha_2$ is cartesian.
 
         By \cref{prop:colimitDecompositionPushouts} we know that
         \begin{center}
@@ -252,7 +249,7 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         are pushouts.
-        Furthermore, we know that the diagrams 
+        We claim that the diagrams
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p_0(\infty) \arrow[d] \arrow[r] & p_1(\infty) \arrow[d] \\
@@ -272,10 +269,10 @@ We will require the following proposition for the proof.
                 q_0(x) \arrow[r] & q_0(\infty) \arrow[r] & q_i(\infty)\\
             \end{tikzcd}
         \end{center}
-        is a pullback by the pasting law since the outer square is a pullback as $\alpha_i$ is cartesian.
-        By universality, this implies that $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)$ is a colimit of $p_0|_{X_0}$ and thus equivalent to $p_0(\infty)$.
+        is a pullback by the pasting law, since the outer square is a pullback as $\alpha_i$ is cartesian.
+        By universality, this implies that $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)$ is a colimit of $p_0|_{X_0}$ and therefore $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)\cong p_0(\infty)$ which proves our claim.
 
-        Thus the natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd}, C\right)_1$ induced by $\alpha$ and the $\alpha_i$ which we again represent by a cube
+        From this we conclude that the natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd}, C\right)_1$ induced by $\alpha$ and the $\alpha_i$ which we again represent by a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 p_0(\infty) \arrow [dr] \arrow [rr] \arrow [dd] & & p_1(\infty) \arrow [dr] \arrow [dd] \\
@@ -285,26 +282,27 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         is cartesian because $C$ has descent for pushouts.
+        We now show that that $\alpha$ is cartesian:
 
-        Since every object $x\in K_0$ already lies in the image of either $X_1$ or $X_2$, the maps $p(x)\to p(\infty)$ and $q(x)\to q(\infty)$ always factor through $p_1(\infty)$ or $p_2(\infty)$ respectively.
-        Because for $i\in\set{1,2}$ the diagram
+        Since every object $x\in K_0$ lies in the image of either $X_1$ or $X_2$, there is an $i\in\set{1,2}$ and $x_i\in X_i$ such that the maps $p(x)\to p(\infty)$ and $q(x)\to q(\infty)$ factor through $p_i(\infty)$ and $q_i(\infty)$ respectively.
+        This implies that the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                p_i(x) \arrow[r] \arrow[d] & p_i(\infty) \arrow[r] \arrow[d] & p(\infty) \arrow[d] \\
-                q_i(x) \arrow[r] & q_i(\infty) \arrow[r] & q(\infty)\\
+                p_i(x_i)=p(x) \arrow[r] \arrow[d] & p_i(\infty) \arrow[r] \arrow[d] & p(\infty) \arrow[d] \\
+                q_i(x_i)=q(x) \arrow[r] & q_i(\infty) \arrow[r] & q(\infty)\\
             \end{tikzcd}
         \end{center}
-        is a pullback by the pasting lemma due to the above cube and since $\alpha_i$ is cartesian, it follows that $\alpha$ is cartesian.
+        is a pullback by the pasting lemma because the left square is cartesian as $\alpha_i$ is cartesian and the right square is cartesian due as $\beta$ is cartesian.
 
         The case for general $K$ follows from the following argument:
-
-        Let again $L\subset\N(\Nat)$ as in the previous lemma and let $\alpha\colon p\to q$ be a natural transformation between colimit cones $p,q\colon K^{\rhd}\to C$ such that $\alpha|_K$ is cartesian.
-        Let $K^n\subset K$ denote the $n$-th skeleton and let $F_p\colon L^{\rhd}\to C$ an $F_q\colon L^{\rhd}\to C$ be functors that 
+        Let $p,q\colon K^{\rhd}\to C$  be colimit cones and $\alpha\colon p\to q$ be a natural transformation such that $\alpha|_K$ is cartesian.
+        Furthermore, let $L\subset\N(\Nat)$ be defined as in the previous lemma.
+        Let $K^n\subset K$ denote the $n$-th skeleton of $K$ and let $F_p\colon L^{\rhd}\to C$ an $F_q\colon L^{\rhd}\to C$ be functors that 
         \begin{itemize}
             \item for each object $n\in L_0$ are the colimit of $p|_{K^n}$ and $q|_{K^n}$ respectively 
             \item have $p(\infty)$ and $q(\infty)$ as their respective conepoints
         \end{itemize}
-        so in particular, they are colimit cones.
+        so in particular, they are colimit cones. %TODO cite
         By descent for finite dimensions we know that for all $n\in\Nat$ and $x\in K^n$ the outer square of
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -313,75 +311,39 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         is a pullback and hence by the pasting lemma so is the left square.
-        By universality this implies that $q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty)$ is equivalent to $p|_{K^n}(\infty)$ which shows that
+        By universality this implies that $q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty)\cong p|_{K^n}(\infty)$ which shows that
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                  p|_{K^n}(\infty) & p|_{K^{n+1}}(\infty)\\
-                  q|_{K^n}(\infty) & q|_{K^{n+1}}(\infty)\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2);
-            \end{tikzpicture}
+            \begin{tikzcd} [sep = 4em]
+                p|_{K^n}(\infty) \arrow[d] \arrow[r] & p|_{K^{n+1}}(\infty) \arrow[d] \\
+                q|_{K^n}(\infty) \arrow[r] & q|_{K^{n+1}}(\infty)
+            \end{tikzcd}
         \end{center}
         is a pullback, so the transformation $\gamma\colon F_p\to F_q$ induced by $\alpha$ is cartesian when restricted to $L$.
         Since $L$ is $1$-dimensional, again from finite dimensional descent we have that $\gamma$ is cartesian.
         This shows that for all $n\in\Nat$ the square
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                  p|_{K^n}(\infty) & p(\infty)\\
-                  q|_{K^n}(\infty) & q(\infty)\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2);
-            \end{tikzpicture}
+            \begin{tikzcd} [sep = 4em]
+                p|_{K^n}(\infty) \arrow[d] \arrow[r] & p(\infty) \arrow[d] \\
+                q|_{K^n}(\infty) \arrow[r] & q(\infty)
+            \end{tikzcd}
         \end{center}
         is cartesian.
 
-        We want to show that 
+        We claim that $\alpha$ is cartesian, which means showing that
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                  p(x) & p(\infty)\\
-                  q(x) & q(\infty)\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2);
-            \end{tikzpicture}
+            \begin{tikzcd} [sep = 4em]
+                p(x) \arrow[d] \arrow[r] & p(\infty) \arrow[d] \\
+                q(x) \arrow[r] & q(\infty)
+            \end{tikzcd}
         \end{center}
-        is a pullback for all $x\in K_0$. 
-        But every such $x$ already is in some $K^n$, so we obtain a factorization
+        is a pullback for all $x\in K_0$
+        But every such $x$ is already in some $K^n$, so we obtain a factorization
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                    p(x)=p|_{K^n}(x) & p|_{K^n}(\infty) & p(\infty)\\
-                    q(x)=q|_{K^n}(x) & q|_{K^n}(\infty) & q(\infty)\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2)
-                (m-1-2) edge (m-1-3)
-                (m-2-2) edge (m-2-3)
-                (m-1-3) edge (m-2-3);
-            \end{tikzpicture}
+            \begin{tikzcd} [sep = 4em]
+                p(x)=p|_{K^n}(x) \arrow[d] \arrow[r] & p|_{K^n}(\infty) \arrow[d] \arrow[r] & p(\infty) \arrow [d]\\
+                q(x)=q|_{K^n}(x) \arrow[r] & q|_{K^n}(\infty) \arrow[r] & q(\infty)
+            \end{tikzcd}\;.
         \end{center}
-        where the left square is pullback by descent for finite dimensions. 
-        Thus the outer square cartesian, proving the proposition.
+        But we have already proven that both left and right square of this diagram are cartesian, hence the outer square is also cartesian which proves the proposition.
     \end{proof}
 \end{lemma}
