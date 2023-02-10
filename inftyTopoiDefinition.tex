@@ -72,22 +72,42 @@ In order to prove that a given \inftycat/ has universality and descent we only n
 This is the content of the next two lemmas and will be used later to prove that $\spaces$ is an \inftytop/.
 
 We will require the following proposition for the proof.
-\begin{prop}\label{prop:colimitDecompositionPushouts} %TODO CatLR Proposition 7.3.16 (applied to C^{\op}) gives more general condintions, Remark 6.2.7 for we preseve colim, Proposition 3.7.4 CatLR + Corollary 3.9.8 CatLR for wce and L\subset\N(\Nat)
-    Let $C$ be a cocomplete \inftycat/, let $K$ be a simplicial set given by a pushout
-    \begin{center}
-        \begin{tikzcd} [sep = 4em]
-            K_0 \arrow[r] \arrow[d, hook] & K_2 \arrow[d, hook] \\
-            K_1 \arrow[r] & K
-        \end{tikzcd}
-    \end{center}
-    where $K_0\xhookrightarrow{} K_1$ is a monomorphism, and let $p\colon K\to C$ be a map of simplicial sets.
+\begin{prop}\label{prop:colimitDecompositionPushouts} 
+    Let $I$ be a small category, $X\colon I\to\sSet$ a functor and let $K$ denote the colimit of this functor.
+    We assume that one of the following conditions is satisfied:
+    \begin{itemize}
+        \item The category $I$ is discrete, hence $K\cong\coprod\limits_{i\in I}X(i)$.
+        \item We have $\N(I)\cong\Lambda_0^2$ and the map $X(0)\xhookrightarrow{} X(2)$ is a monomorphism, hence $K$ is a pushout \begin{center}
+                \begin{tikzcd} [sep = 4em]
+                    X(0) \arrow[r] \arrow[d, hook] & X(1) \arrow[d, hook] \\
+                    X(2) \arrow[r] & K
+                \end{tikzcd}\;.
+            \end{center}
+        \item The category $I$ is filtered.
+    \end{itemize}
+    Then let $C$ be an cocomplete \inftycat/ and $\Phi\colon Y\to C$ a functor.
+    For all $i\in I$ let $\Phi_i$ denote the induced map $\Phi_i\colon X(i)\to Y\to C$.
 
-    For $i\in\set{0,1,2}$, set $X_i$ to be the colimit of $K_i\to K\to C$ in $C$.
-    Then the induced diagram $\overline{p}\colon K^{\rhd}\to C$ given by $\overline{p}|_K=p$ and universal maps to the conepoint $\overline{p}(\infty)=X_1\cup_{X_0}X_2$ is a colimit cone in $C$.
+    Then the assignment $i\mapsto\colim\limits_{x\in X(i)} \Phi_i(x)$ extends naturally to a functor $\N(I)\to C$ such that there is a canonical invertible map of the form 
+    \begin{equation*}
+        \colim\limits_{y\in Y}\Phi(y)\simeq\colim\limits_{i\in\N(I)}\colim\limits_{x\in X(i)}\Phi_i(x)\;.
+    \end{equation*}
     \begin{reference}
-        \cite[Proposition 4.4.2.2]{HTT}
+        \cite[Proposition 7.3.16]{cisinski_2019} (applied to $C^{\op}$)
     \end{reference}
 \end{prop}
+\begin{lemma}\label{lem:spineInclIsWCE}
+    We view $\Nat$ as a category as in \cref{rmk:linOrderedAsCat}.
+    Let $L\subset\N(\Nat)$ be the simplicial subset given by $L=\bigcup\limits_{i\in\Nat}\Delta^{\set{i,i+1}}$, hence $L$ is the simplicial subset consisting of all vertices and edges joining consecutive vertices.
+    
+    Then $L\subset\N(\Nat)$ is a weak categorical equivalence.
+    \begin{proof}
+        By \cite[Proposition 3.7.4]{cisinski_2019} the inclusions $\Sp^n=\bigcup\limits_{0\leq i<n}\Delta^{\set{n,n+1}}\xhookrightarrow{}\Delta^n$ are weak categorical equivalences.
+        The canonical inclusions of categories $[n]\subset[n+1]$ for all $n\in\Nat$ then induce a map $\colim\limits_{n\in\Nat}\Sp^n\xhookrightarrow{}\colim\limits_{n\in\Nat}\Delta^n$.
+        By \cite[Corollary 3.9.8]{cisinski_2019} weak categorical equivalences are stable under filtered colimits, hence this map is a weak categorical equivalence.
+        We have $\colim\limits_{n\in\Nat}\cong L$ as colimits commute and $\colim\limits_{n\in\Nat}\Delta^n\cong\N(\Nat)$ as the nerve commutes with filtered colimits, so this corresponds to the map $L\subset\N(\Nat)$.
+    \end{proof}
+\end{lemma}
 \begin{lemma}\label{lem:univColimIffUnivPoAndCoprod}
     A \inftycat/ $C$ has universal colimits if and only if it has universal pushouts and universal coproducts.
     \begin{proof}
@@ -116,7 +136,6 @@ We will require the following proposition for the proof.
 
         Let $f\colon x\to y$ be a map in $X_i^{\rhd}$. 
         If $f$ is in $X_i$, the claim follows immediately from the fact that $\alpha$ is cartesian, hence we assume $y=\infty$.
-
         In this case the outer and right square of the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -132,7 +151,7 @@ We will require the following proposition for the proof.
         
         Since $\Delta^{n+1}$ has a terminal object, colimits over $\Delta^{n+1}$ can be computed by evaluating the terminal object.
         Let the family $(*_s)_{s\in S}$ be the family of terminal objects of the components in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$.
-        Then we have $q_2(\infty)\cong\coprod\limits_{s\in S} q_2(*_s)$. %TODO cref to amended prop
+        Then we have $q_2(\infty)\cong\coprod\limits_{s\in S} q_2(*_s)$ by \cref{prop:colimitDecompositionPushouts}.
 
         Since for all $s\in S$ the square
         \begin{center}
@@ -144,20 +163,12 @@ We will require the following proposition for the proof.
         is a pullback since $\alpha_2$ is cartesian, by universality for coproducts it follows that $p_2(\infty)\cong\coprod\limits_{s\in S} p_2(*_s)$.
         This shows that $p_2$ is a colimit cone, proving the claim.
         
-        Now by \cref{prop:colimitDecompositionPushouts} we know that 
+        By \cref{prop:colimitDecompositionPushouts} we know that 
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                  q_0(\infty) & q_1(\infty)\\
-                  q_2(\infty) & q(\infty)\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2);
-            \end{tikzpicture}
+            \begin{tikzcd} [sep = 4em]
+                q_0(\infty) \arrow[r] \arrow[d] & q_1(\infty) \arrow[d] \\
+                q_2(\infty) \arrow[r] & q(\infty)
+            \end{tikzcd}
         \end{center}
         is a pushout square.
         Furthermore, the natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd},C\right)_1$ induced by $\alpha$ and the $\alpha_i$ which we represent by a cube
@@ -172,35 +183,25 @@ We will require the following proposition for the proof.
         is cartesian by the pasting law.
         By universality for pushouts (since the bottom square is pushout) we thus have that the top square is also a pushout.
         Again by \cref{prop:colimitDecompositionPushouts} it follows that $p$ is a colimit cone.
-
         It now remains to show that statement for general $K$.
-        Let $L\subset\N(\Nat)$ (where we view $\Nat$ as a category via the ordering $0\to1\to2\to3\ldots$) be the simplicial subset containing all $0$-simplices and only the $1$-simplices which are between consecutive integers (with all higher simplices degenerate). %TODO use def of partially ordered
-        It can be shown that the inclusion $L\subset\N(\Nat)$ is a weak categorical equivalence.
 
+        Let $L\subset\N(\Nat)$ as in \cref{lem:spineInclIsWCE}.
         Let $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ be a cartesian transformation, let $q$ be a colimit cone and let $\left(K^n\right)_{n\in\Nat}$ denote the skeletal filtration of $K$.
-        We can compute colimits of any diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex $n\in\Nat$ is the colimit of $K^n\to C$ and all higher simplices are given by chains of the canonical maps. 
+        By \cref{prop:colimitDecompositionPushouts} we can compute the colimit of a diagram indexed by $K$ by computing the colimit of the diagram $\N(\Nat)\to C$ that for each $0$-simplex $n\in\Nat$ is the colimit of $K^n\to C$.
+        Since $L\subset\N(\Nat)$ is a weak categorical equivalence (which preserve and reflect (co)limits), it even suffices to compute the colimit of the induced diagram $L\to C$.
 
-        Since $L\subset\N(\Nat)$ is a weak categorical equivalence (which preserve and reflect (co)limits), we can also compute the colimit of the induced diagram $L\to C$.
 
-        So let $F_q\colon L^{\rhd}\to C$ be the diagram induced by taking colimits of the skeleta as described above.
+        For $q\colon K\to C$, let $F_q\colon L^{\rhd}\to C$ be the colimit diagram constructed as described above.
         Let $F_p\colon L^{\rhd}\to C$ be given by taking pullbacks
         \begin{center}
-            \begin{tikzpicture}
-                \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-                {
-                  F_p(n) & F_p(\infty)=p(\infty)\\
-                  F_q(n) & F_q(\infty)=q(\infty)\\};
-                \path[-stealth]
-    
-                (m-1-1) edge (m-1-2)
-                (m-1-1) edge (m-2-1)
-                (m-2-1) edge (m-2-2)
-                (m-1-2) edge (m-2-2);
-            \end{tikzpicture}
+            \begin{tikzcd} [sep = 4em]
+                F_p(n) \arrow[r] \arrow[d] & F_p(\infty)=p(\infty) \arrow[d] \\
+                F_q(n) \arrow[r] & F_q(\infty)=q(\infty)
+            \end{tikzcd}
         \end{center}
         which induce a cartesian natural transformation $\gamma\colon F_p\to F_q\in\Fun(L^{\rhd},C)_1$.
         Since $L$ is $1$-dimensional, $F_p$ is a colimit cone by universality for finite dimensional diagrams.
-        Universality for finite dimensional diagrams also implies that $F_p(n)$ is the colimit of $p|_{K^n}$ for every $n\in\Nat$, hence $F_p(\infty)$ is a colimit of $p|_K$. %TODO cite
+        Universality for finite dimensional diagrams also implies that $F_p(n)$ is the colimit of $p|_{K^n}$ for every $n\in\Nat$, hence $F_p(\infty)=p(\infty)$ is a colimit of $p|_K$ by \cref{prop:colimitDecompositionPushouts}.
         This proves that $p$ is a colimit cone and thus the proposition. 
     \end{proof}
 \end{lemma}
@@ -213,7 +214,7 @@ We will require the following proposition for the proof.
         For $\dim K=-1$ the statement follows since $K=\emptyset$ is the coproduct over the empty indexing category.
 
         So let $\dim K=n+1$.
-        Then by the skeletal filtration        
+        Then by the skeletal filtration
         \begin{equation*}
             K=K^{n+1}=K^n\coprod\limits_{\coprod\limits_S \partial\Delta^{n+1}}\left(\coprod_S \Delta^{n+1}\right)
         \end{equation*}
@@ -226,7 +227,7 @@ We will require the following proposition for the proof.
         We claim that the natural transformation $\alpha_2$ is cartesian as well: 
 
         For $i\in\set{0,\ldots,n+1}$ and $s\in S$ let $i_s\in X_2$ denote the $i$-th vertex of the $s$-th component in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$.
-        Since the objects $(n+1)_s$ are terminal in their component $\Delta^{n+1}$, we have $q_2(\infty)\cong\coprod\limits_{s\in S} q_2((n+1)_s)$ as well as $p_2(\infty)\cong\coprod\limits_{s\in S} p_2((n+1)_s)$. %TODO cite
+        Since the objects $(n+1)_s$ are terminal in their respective component $\Delta^{n+1}$, we have $q_2(\infty)\cong\coprod\limits_{s\in S} q_2((n+1)_s)$ as well as $p_2(\infty)\cong\coprod\limits_{s\in S} p_2((n+1)_s)$ by \cref{prop:colimitDecompositionPushouts}.
         For each $s\in S$ and $i\in\set{0,\ldots,n+1}$ the outer square of the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -237,7 +238,7 @@ We will require the following proposition for the proof.
         is a pullback: The left square is a pullback because $\alpha_2|_{X_2}$ is cartesian and the right square is a pullback by descent for coproducts, so by the pasting law the outer square must be cartesian as well.
         This proves our claim that $\alpha_2$ is cartesian.
 
-        By \cref{prop:colimitDecompositionPushouts} we know that
+        By \cref{prop:colimitDecompositionPushouts} we know that both squares
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p_0(\infty) \arrow[d] \arrow[r] & p_1(\infty) \arrow[d] \\
@@ -272,16 +273,16 @@ We will require the following proposition for the proof.
         is a pullback by the pasting law, since the outer square is a pullback as $\alpha_i$ is cartesian.
         By universality, this implies that $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)$ is a colimit of $p_0|_{X_0}$ and therefore $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)\cong p_0(\infty)$ which proves our claim.
 
-        From this we conclude that the natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd}, C\right)_1$ induced by $\alpha$ and the $\alpha_i$ which we again represent by a cube
+        The natural transformations $\alpha$ and $\alpha_i$ induce a natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd}, C\right)_1$ which we represent by a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 p_0(\infty) \arrow [dr] \arrow [rr] \arrow [dd] & & p_1(\infty) \arrow [dr] \arrow [dd] \\
                 & p_2(\infty) \arrow [rr, crossing over] \arrow [dd] & & p(\infty) \arrow [dd] & \\
                 q_0(\infty) \arrow [dr] \arrow [rr] & & q_1(\infty) \arrow [dr] \\
                 & q_2(\infty) \arrow [from=uu, crossing over] \arrow [rr] & & q(\infty) &
-            \end{tikzcd}
+            \end{tikzcd}\;.
         \end{center}
-        is cartesian because $C$ has descent for pushouts.
+        We know that $\beta$ cartesian because $C$ has descent for pushouts.
         We now show that that $\alpha$ is cartesian:
 
         Since every object $x\in K_0$ lies in the image of either $X_1$ or $X_2$, there is an $i\in\set{1,2}$ and $x_i\in X_i$ such that the maps $p(x)\to p(\infty)$ and $q(x)\to q(\infty)$ factor through $p_i(\infty)$ and $q_i(\infty)$ respectively.
@@ -296,13 +297,13 @@ We will require the following proposition for the proof.
 
         The case for general $K$ follows from the following argument:
         Let $p,q\colon K^{\rhd}\to C$  be colimit cones and $\alpha\colon p\to q$ be a natural transformation such that $\alpha|_K$ is cartesian.
-        Furthermore, let $L\subset\N(\Nat)$ be defined as in the previous lemma.
-        Let $K^n\subset K$ denote the $n$-th skeleton of $K$ and let $F_p\colon L^{\rhd}\to C$ an $F_q\colon L^{\rhd}\to C$ be functors that 
+        Furthermore, let $L\subset\N(\Nat)$ be as in \cref{lem:spineInclIsWCE}.
+        Let $K^n\subset K$ denote the $n$-th skeleton of $K$ and let $F_p\colon L^{\rhd}\to C$ and $F_q\colon L^{\rhd}\to C$ be the functors that 
         \begin{itemize}
-            \item for each object $n\in L_0$ are the colimit of $p|_{K^n}$ and $q|_{K^n}$ respectively 
-            \item have $p(\infty)$ and $q(\infty)$ as their respective conepoints
+            \item for each object $n\in L_0$ are the colimit of $p|_{K^n}$ and $q|_{K^n}$ respectively.
+            \item have $p(\infty)$ and $q(\infty)$ as their respective conepoints.
         \end{itemize}
-        so in particular, they are colimit cones. %TODO cite
+        In particular by \cref{prop:colimitDecompositionPushouts}, they are colimit cones.
         By descent for finite dimensions we know that for all $n\in\Nat$ and $x\in K^n$ the outer square of
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -319,7 +320,7 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         is a pullback, so the transformation $\gamma\colon F_p\to F_q$ induced by $\alpha$ is cartesian when restricted to $L$.
-        Since $L$ is $1$-dimensional, again from finite dimensional descent we have that $\gamma$ is cartesian.
+        Since $L$ is $1$-dimensional, finite dimensional descent implies that $\gamma$ is cartesian.
         This shows that for all $n\in\Nat$ the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -337,13 +338,13 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         is a pullback for all $x\in K_0$
-        But every such $x$ is already in some $K^n$, so we obtain a factorization
+        But every such $x$ is already in some $K^n$, which gives a factorization
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p(x)=p|_{K^n}(x) \arrow[d] \arrow[r] & p|_{K^n}(\infty) \arrow[d] \arrow[r] & p(\infty) \arrow [d]\\
                 q(x)=q|_{K^n}(x) \arrow[r] & q|_{K^n}(\infty) \arrow[r] & q(\infty)
             \end{tikzcd}\;.
         \end{center}
-        But we have already proven that both left and right square of this diagram are cartesian, hence the outer square is also cartesian which proves the proposition.
+        Since we have already proven that both left and right square of this diagram are cartesian, the outer square is also cartesian which proves the proposition.
     \end{proof}
 \end{lemma}

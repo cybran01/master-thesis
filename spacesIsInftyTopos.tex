@@ -1,7 +1,7 @@
 In this section we will prove that our \inftycat/ of spaces $\spaces$ is an \inftytop/.
 We will keep our proofs topological; for a different approach using simplicial sets see e.g. \cite[\S 6]{HTT}.
 In order to transfer reasoning back and forth from the model category $\Top$ and the \inftycat/ $\spaces$ we need the following lemma.
-\begin{lemma}\label{lem:replaceWithStrictDiagram} %TODO is the statement even true in this generality?
+\begin{thm}\label{lem:replaceWithStrictDiagram} %TODO is the statement even true in this generality?
     Let $J$ be an ordinary category and let $M$ be a model category.
     Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition
     \begin{equation*}
@@ -11,9 +11,9 @@ In order to transfer reasoning back and forth from the model category $\Top$ and
 
     Furthermore, the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in its arguments.
     \begin{reference}
-        \cite[Proposition 1.3.4.25]{higher_algebra}
+        \cite[Proposition 1.3.4.25]{higher_algebra} %TODO Remark 1.3.4.16 HA
     \end{reference}
-\end{lemma}
+\end{thm}
 Since both coproducts and pushouts in \inftycats/ are indexed by nerves of ordinary categories, we are able to work in the underlying model category $\Top$ by the following corollary:
 \begin{corollary}\label{cor:sufficientToProveInModCat}
     Let $M$ be a model category with weak equivalences $W$. 
@@ -31,7 +31,22 @@ We will use the interaction of the \Strom/ model structure and the Quillen model
 Note that whenever referring to $\Top$ as a model category, we implicitly mean the Quillen model structure. 
 Cofibrations and fibrations of the \Strom/ model structure in diagrams are tagged by the letter ``h''.
 The most important (and quite non-trivial) part of the interaction between Quillen and \Strom/ model structure on $\Top$ is the following proposition.
-\begin{prop}\label{prop:poAlongHCofibIsHtpyPo}
+\begin{prop}\label{prop:poOfWeIsWe}
+    Let 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            C' \arrow[d,"\sim"] & A' \arrow[>->, r, "h"] \arrow[>->,l] \arrow[d,"\sim"] & B' \arrow[d,"\sim"]\\
+            C & A \arrow[>->, r, "h"] \arrow[l] & B \\
+        \end{tikzcd}
+    \end{center}
+    be a commutative square in $\Top$ such that the indicated maps are weak equivalences and h-cofibrations respectively.
+
+    Then the induced map of pushouts $C'\cup_{A'}B'\xrightarrow{\sim} C\cup_AB$ is a weak equivalence.
+    \begin{reference}
+        \cite[Proposition 1.1]{hcolim_bar}
+    \end{reference}
+\end{prop}
+\begin{corollary}\label{prop:poAlongHCofibIsHtpyPo}
     A pushout along an h-cofibration is a homotopy pushout.
     \begin{proof}
         Let
@@ -49,16 +64,27 @@ The most important (and quite non-trivial) part of the interaction between Quill
                 C & A \arrow[>->, r, "h"] \arrow[l] & B \\
             \end{tikzcd}\;.
         \end{center}
-        By \cite[Proposition 1.1]{hcolim_bar} we have that the map induced by the pushouts $C'\cup_AB\to C\cup_AB$ is again a weak equivalence.
-        But since $C'\cup_AB$ is a homotopy pushout (since it is a pushout along a cofibration), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.
+        By \cref{prop:poOfWeIsWe} we have that the map induced by the pushouts $C'\cup_AB\to C\cup_AB$ is again a weak equivalence.
+        But since $C'\cup_AB$ is a homotopy pushout (it is a pushout along a cofibration and $\Top$ is left proper), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.
     \end{proof}
-\end{prop}
+\end{corollary}
 \addcontentsline{toc}{subsection}{Universality}
 \subsection*{Universality}
-Using the preceding proposition and the fact that pullbacks of h-cofibrations along h-fibrations are again h-cofibrations, we first prove universality for pushouts.
+Using the preceding corollary and the fact that pullbacks of h-cofibrations along h-fibrations are again h-cofibrations, we first prove universality for pushouts.
 \begin{prop}\label{lem:topUniversalPo}
     The model category $\Top$ has universality for homotopy pushouts.
     \begin{proof}
+        Let 
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                A' \arrow [dr] \arrow [rr] \arrow [dd] & & B' \arrow [dr] \arrow [dd] \\
+                & C' \arrow [rr, crossing over] \arrow [dd] & & D' \arrow [dd] & \\
+                A \arrow [dr] \arrow [rr] & & C \arrow [dr] \\
+                & C \arrow [from=uu, crossing over] \arrow [rr] & & D
+            \end{tikzcd}
+        \end{center}
+        be a commutative cube where the bottom face is a homotopy pushout and the vertical faces are homotopy pullbacks.
+        
         By factoring the map $D'\xrightarrow{\sim}\overline{D}\xtwoheadrightarrow{h} D$ into a weak equivalence followed by an h-fibration (which is also a fibration) and pulling back successively, we obtain the diagram
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
