@@ -124,7 +124,27 @@ We will not give proofs for any statements in this section; we will however poin
         \item $L=l(R)$
         \item $R=r(L)$
     \end{itemize}
-    then the pair $(L,R)$ is a \emph{weak factorization system on $C$}.
+    then the pair $(L,R)$ is a \emph{weak factorization system (WFS) on $C$}.
+\end{definition}
+\begin{definition}[Functorial WFS]
+    Let $C$ be a category and let $(L,R)$ be a weak factorization system on $C$.
+    Let $i,p\colon\Fun\left([2],C\right)\to\Fun\left([1],C\right)$ be induced by the maps
+    \begin{align*}
+        [1]&\to[2]\\
+        i&\mapsto i
+    \end{align*}
+    \begin{align*}
+        [1]&\to[2]\\
+        i&\mapsto i+1
+    \end{align*}
+    respectively.
+
+    Then we call $(L,R)$ \emph{functorial} if there exists a functor $\Gamma\colon\Fun\left([1],C\right)\to\Fun\left([2],C\right)$ such that
+    \begin{itemize}
+        \item for all maps $f$ in $C$, $(i\circ\Gamma)(f)\in L$
+        \item for all maps $f$ in $C$, $(p\circ\Gamma)(f)\in R$
+        \item and $\Gamma$ is a section of the canonical functor $\Fun\left([2],C\right)\to\Fun\left([1],C\right)$ induced by composition.
+    \end{itemize}
 \end{definition}
 \begin{definition}[Model Category]
     Let $C$ be a complete and cocomplete category and let $\Map(C)$ denote the class of all maps of $C$.
@@ -136,7 +156,7 @@ We will not give proofs for any statements in this section; we will however poin
         \item $(\Cof,\Fib\cap\W)$ is a weak factorization system.
     \end{itemize}
 \end{definition}
-\begin{definition}[$\kappa$-compact Object]
+\begin{definition}[$\kappa$-Compact Object]
     Let $C$ be a category, $X\in C$ an object and $\kappa$ a regular cardinal.
     We say that $C$ is \emph{$\kappa$-compact} if the functor $\hom_C(X,-)\colon C\to\Set$ preserves all $\kappa$-filtered colimits. %TODO introduce kappa filtered colim, see cisinsky Proposition 2.1.9
 \end{definition}
@@ -145,25 +165,32 @@ We will not give proofs for any statements in this section; we will however poin
     We call $C$ \emph{locally presentable} if it has small colimits and there exists a regular cardinal $\kappa$ such that
     \begin{itemize}
         \item the isomorphism classes of $\kappa$-compact objects form a set
-        \item every object in $C$ is a $\kappa$-filtered colimit of $\kappa$-compact objects.
+        \item and every object in $C$ is a $\kappa$-filtered colimit of $\kappa$-compact objects.
     \end{itemize}
+\end{definition}
+\begin{definition}[$\lambda$-Sequence] %hovey model cats Definition 2.1.1
+    Let $C$ be a category with small colimits and $\lambda$ an ordinal.
+    A \emph{$\lambda$-sequence} is a functor $X\colon\lambda\to C$ (where we view $\lambda$ as a category via \cref{rmk:linOrderedAsCat}) that preserves colimits.
+
+    We call the induced morphism $X_0\to\colim\limits_{\beta<\lambda} X(\beta)$ the \emph{transfinite composition of $X$}.
 \end{definition}
 \begin{definition}[Saturated Class]
     Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
     Then we call $I$ \emph{saturated} if it is closed under retracts, pushouts and transfinite composition. %TODO perhaps find way to avoid transfinite composition
 \end{definition}
-\begin{thm}[Small Object Argument]
-    Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
-    If there exists a regular cardinal $\kappa$ such that for any map $f\colon A\to B\in I$ the functor
-    \begin{equation*}
-        \hom_C(A,-)\colon C\to\Set
-    \end{equation*}
-    commutes with colimits indexed by $\kappa$-filtered well ordered sets, then we say that \emph{$I$ admits the small object argument}.
+\begin{definition}[Relative $\kappa$-Small]
+    Let $C$ be a category with small colimits, let $S$ be a class of morphisms in $C$ and let $\kappa$ be a cardinal.
     
-    In this case $(l(r(I)),r(I))$ is a weak factorization system and $l(r(I))$ is the smallest (with respect to inclusion) saturated class containing $I$.
+    We say that an object $A\in C$ is \emph{$\kappa$-small relative to $S$} if the functor $\hom_C(A,-)\colon C\to\Set$ preserves colimits indexed by $\lambda$-sequences $X$ such that $\lambda$ is a $\kappa$-filtered ordinal and $X(\beta)\to X(\beta+1)$ is in $D$ for $\beta+1<\lambda$.
+\end{definition}
+\begin{thm}[Small Object Argument] %TODO Proposition 10.5.16 Model Categories and Their Localizations 
+    Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
+    If there exists a cardinal $\kappa$ such that the domains of all morphisms in $I$ are $\kappa$-small relative to transfinite compositions of pushouts of maps in $I$, we say that \emph{$I$ admits the small object argument}.
+    
+    In this case $(l(r(I)),r(I))$ is a functorial weak factorization system and $l(r(I))$ is the smallest (with respect to inclusion) saturated class containing $I$.
 \end{thm}
 \begin{reference}
-    \cite*[Proposition 2.1.9]{cisinski_2019}
+    \cite[Theorem 2.1.14]{hovey2007model} and \cite[Proposition 2.1.5]{cisinski_2019}
 \end{reference}
 \begin{definition}[Cofibrantly Generated Model Structure]
     Let $C$ be a model category with $\Cof,\Fib$ and $\W$ the cofibrations, fibrations and weak equivalences respectively.
@@ -183,7 +210,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
     There is a unique model structure on $\sSet$ where 
     \begin{itemize}
         \item the cofibrations are the monomorphisms, which also admit the following description: 
-        They are the smallest saturated class of maps containing the inclusions $\set{\partial\Delta^n\xhookrightarrow{}\Delta^n\mid n\in\Nat}$.
+        They are the smallest (with respect to inclusion) saturated class of maps containing the inclusions $\set{\partial\Delta^n\xhookrightarrow{}\Delta^n\mid n\in\Nat}$.
         \item the fibrations are the maps having the right lifting property with respect to the inclusions $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n, n\in\Nat}$ and are called \emph{Kan-fibrations}.
     \end{itemize}
     The fibrant objects are the \emph{Kan-complexes}.
@@ -263,7 +290,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
         \cite[Definition 3.3.7, Theorem 3.6.8 and Theorem 3.6.1]{cisinski_2019}
     \end{reference}
 \end{thm}
-\begin{definition}[Equivalences in an \inftycat/]
+\begin{definition}[Equivalences in an \inftyCat/]
     Let $C$ be an \inftycat/ and $f\colon x\to y\in C_1$ a map.
     Then we say that $f$ is an \emph{equivalence} if there exists a map $g\colon y\to x\in C_1$ and $2$-simplices of the form
     \begin{center}
@@ -288,7 +315,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     Let $F\colon C\to D$ be a map between \inftycats/.
     Then we call $F$ \emph{essentially surjective} if for all $d\in D_0$ there exists a $c\in C_0$ such that $d$ and $f(c)$ are equivalent in $D$.
 \end{definition}
-\begin{thm}[Mapping Space]
+\begin{definition}[Mapping Space]\label{def:mappingSpace}
     Let $C$ be an \inftycat/ and let $x,y\in C_0$ and let $\Map_C(x,y)$ denote the pullback 
     \begin{center}
         \begin{tikzcd} [sep = 3em]
@@ -297,8 +324,11 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
         \end{tikzcd}
     \end{center}
     which we refer to as the \emph{mapping space from $x$ to $y$}.
-    By \cite[116]{cisinski_2019} this space is a Kan-complex.
-\end{thm}
+\end{definition}
+\begin{remark}\label{rmk:functorialMappingSpace}
+    By \cite[116]{cisinski_2019} this space is always a Kan-complex.
+    By \cite[248]{cisinski_2019} for every (locally small) \inftycat/ $C$, there is an essentially unique functor $\hom_C(-,-)\colon C^{\op}\times C\to\spaces$, where $\spaces$ is the (yet to be defined) \inftycat/ of spaces, such that for all objects $x,y\in C_0$ we have a canonical equivalence $\Hom_C(x,y)\cong\Map_C(x,y)$ in $\spaces$ (the objects $\spaces_0$ can be identified with Kan-complexes, see \cref{cor:htpyCoherentNerveIsLoc}).
+\end{remark}
 \begin{definition}[Fully Faithful]
     Let $F\colon C\to D$ be a map between \inftycats/.
     Then call $F$ \emph{fully faithful} if for all $x,y\in C_0$ the map $\Map_C(x,y)\to\Map_D(f(x),f(y))$ induced by the commutative cube
@@ -389,9 +419,9 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     We call $c$ the \emph{slice contraction morphism}.
     The analogous construction $c\colon X\star Y_{f/}\to Y$ is called the \emph{coslice contraction morphism}.
 \end{construction}
-\begin{definition}[Adjoint]
-    Let $F\colon C\to D$ and  $G\colon D\to C$ be functors between \inftycats/.
-    Then we say that \emph{$F$ is left adjoint to $G$} or alternatively, that \emph{$G$ is right adjoint to $F$}
+\begin{definition}[Adjoints]
+    Let $F\colon C\to D$ and $G\colon D\to C$ be functors between \inftycats/.
+    Then we say that \emph{$F$ is left adjoint to $G$} or equivalently, that \emph{$G$ is right adjoint to $F$}
     if there exist natural transformations $\varepsilon\colon FG\to \id_D$ and $\eta\colon\id_C\to GF$ (called \emph{counit} and \emph{unit} respectively) and $2$-simplices 
     \begin{center}
         \begin{tikzcd} [sep = 3em]
@@ -405,8 +435,12 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     \end{center}
     in $\Fun(C,D)$ and $\Fun(D,C)$ respectively.
 \end{definition}
-\begin{remark}
-    Adjoints are ``essentially unique'' in the sense of \cite[Proposition 6.1.9]{cisinski_2019}.
+\begin{remark}\label{rmk:homAdjunction}
+    By \cite[Theorem 6.1.23]{cisinski_2019} there is another equivalent characterization of adjoints via the functorial version of the mapping space functor (see \cref{rmk:functorialMappingSpace}):
+    
+    A functor $F\colon C\to D$ is left adjoint to a functor $G\colon D\to C$ if and only if there exists an invertible natural transformation $c\colon (C^{\op}\times D)\times\Delta^1 \to\spaces$ (where $\spaces$ is the yet to be defined \inftycat/ of spaces) between the functors $\hom_D(F(-),-)\cong\hom_C(-,G(-))$.
+
+    Adjoints are also ``essentially unique'' in the sense of \cite[Proposition 6.1.9]{cisinski_2019}.
 \end{remark}
 \begin{definition}[Kan-Extension]
     Let $u\colon A\to B$ be a functor between \inftycats/ and let $C$ be an \inftycat/.
@@ -443,6 +477,8 @@ In this case, we can give a more explicit description.
     Furthermore, the functors $i_*$ and $i_!$ are fully faithful.
     \begin{reference}
         The existence and computation of the Kan-extensions via the pointwise description is shown by \cite[Proposition 6.4.9]{cisinski_2019} (and its dual).
-        The full faithfulness is implied by \cite[Corollary 7.3.1.16]{kerodon} where it is shown that counit/unit of the adjunction is an equivalence. 
+        
+        For the full faithfulness, it is implied by \cite[Corollary 7.3.1.16]{kerodon} that counit/unit respectively of the adjunction is an equivalence.
+        One can then use \cref{rmk:homAdjunction} to prove that this implies full faithfulness by essentially the same argument as in ordinary category theory.
     \end{reference}
 \end{prop}
