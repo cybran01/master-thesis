@@ -97,7 +97,7 @@ We will require the following proposition for the proof.
     \end{reference}
 \end{prop}
 \begin{lemma}\label{lem:spineInclIsWCE}
-    We view $\Nat$ as a category as in \cref{rmk:linOrderedAsCat}.
+    We view the linearly ordered set $\Nat$ as a category as in \cref{rmk:linOrderedAsCat}.
     Let $L\subset\N(\Nat)$ be the simplicial subset given by $L=\bigcup\limits_{i\in\Nat}\Delta^{\set{i,i+1}}$, hence $L$ is the simplicial subset consisting of all vertices and edges joining consecutive vertices.
     
     Then $L\subset\N(\Nat)$ is a weak categorical equivalence.
@@ -105,7 +105,7 @@ We will require the following proposition for the proof.
         By \cite[Proposition 3.7.4]{cisinski_2019} the inclusions $\Sp^n=\bigcup\limits_{0\leq i<n}\Delta^{\set{n,n+1}}\xhookrightarrow{}\Delta^n$ are weak categorical equivalences.
         The canonical inclusions of categories $[n]\subset[n+1]$ for all $n\in\Nat$ then induce a map $\colim\limits_{n\in\Nat}\Sp^n\xhookrightarrow{}\colim\limits_{n\in\Nat}\Delta^n$.
         By \cite[Corollary 3.9.8]{cisinski_2019} weak categorical equivalences are stable under filtered colimits, hence this map is a weak categorical equivalence.
-        We have $\colim\limits_{n\in\Nat}\cong L$ as colimits commute and $\colim\limits_{n\in\Nat}\Delta^n\cong\N(\Nat)$ as the nerve commutes with filtered colimits, so this corresponds to the map $L\subset\N(\Nat)$.
+        We have $\colim\limits_{n\in\Nat}\Sp^n\cong L$ as colimits commute and $\colim\limits_{n\in\Nat}\Delta^n\cong\N(\Nat)$ as the nerve commutes with filtered colimits, so this corresponds to the map $L\subset\N(\Nat)$.
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:univColimIffUnivPoAndCoprod}

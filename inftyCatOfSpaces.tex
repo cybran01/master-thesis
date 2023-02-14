@@ -36,7 +36,7 @@ The \Strom/ model structure will be important later on; its interaction with the
     Then we say $i$ fulfills the \emph{homotopy extension property (HEP)} or $i$ is a \emph{Hurewicz cofibration}.
     If the image $i(A)$ is closed, we call $i$ a \emph{closed Hurewicz cofibration}.
 \end{definition}
-\begin{remark}
+\begin{remark}\label{rmk:hurewiczCofibIsIncl}
     A Hurewicz cofibration is always an inclusion, see \cite[Proposition 4H.1]{hatcher2002algebraic}.
 \end{remark}
 %TODO w.e., htpy eq
@@ -49,7 +49,8 @@ When speaking of cofibrations, fibrations or weak equivalences between topologic
     \end{itemize}
     We call this model structure the \emph{Quillen Model Structure on $\Top$}.
     
-    The cofibrations are the smallest saturated class containing the maps $S^{n-1}\xhookrightarrow{}D^n$ for $n\in\Nat$ (where $S^{-1}=\emptyset$). %TODO confirm; add statement about small object argument
+    The cofibrations are the smallest saturated class containing the maps $S^{n-1}\xhookrightarrow{}D^n$ for $n\in\Nat$ (where $S^{-1}=\emptyset$) and the trivial cofibrations are the smallest saturated class containing the maps $D^n\xhookrightarrow{(\id_{D^n},0)}D^n\times I$.
+    In particular, this model structure is cofibrantly generated.
     \begin{reference}
         \cite[Chap. II, \S 3, Theorem 1]{Quillen1967} and \cite{hirschhorn_quillen}
     \end{reference}

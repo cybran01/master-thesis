@@ -1,30 +1,97 @@
 In this section we will prove that our \inftycat/ of spaces $\spaces$ is an \inftytop/.
 We will keep our proofs topological; for a different approach using simplicial sets see e.g. \cite[\S 6]{HTT}.
-In order to transfer reasoning back and forth from the model category $\Top$ and the \inftycat/ $\spaces$ we need the following lemma.
-\begin{thm}\label{lem:replaceWithStrictDiagram} %TODO is the statement even true in this generality? https://math.mit.edu/~psh/notes/modcattop.pdf
-    Let $J$ be an ordinary category and let $M$ be a model category.
-    Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition
+In order to transfer reasoning back and forth from the model category $\Top$ and the \inftycat/ $\spaces$ we need the following theorem. %TODO maybe say something about that we compute colimits and limits via drieved functors, hence the extra steps %TODO define inj/proj model str
+\begin{thm}\label{thm:locCommutesWithHom} 
+    Let $J$ be an ordinary small category and let $M$ be a cofibrantly generated model category with weak equivalences $W$.
+    Let $\overline{W}\subset\Fun(\N(J),\N(M))$ denote the simplicial subset consisting of all objects and whose maps are the natural transformations that are objectwise weak equivalences in $C$.
+    
+    Then there is a natural equivalence of \inftycats/
     \begin{equation*}
-        \Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}]) %TODO is this correct?
+        \Fun(\N(J),\N(M))\left[\overline{W}^{-1}\right]\to\Fun(\N(J),\N(M)[W^{-1}])\;.
     \end{equation*} 
-    they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
-
-    Furthermore, the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is natural in its arguments.
     \begin{reference}
-        \cite[Proposition 1.3.4.25]{higher_algebra} %TODO Remark 1.3.4.16 HA
+        \cite[Theorem 7.9.8]{cisinski_2019} (since for cofibrantly generated model categories the WFS $(\Cof,\Fib\cap W)$ is functorial, $\N(M)$ fulfills the requirements by \cite[Example 7.9.6]{cisinski_2019})
     \end{reference}
 \end{thm}
-Since both coproducts and pushouts in \inftycats/ are indexed by nerves of ordinary categories, we are able to work in the underlying model category $\Top$ by the following corollary:
+Since both coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerves of direct/inverse categories, we are able to work in the underlying model category $\Top$ by the following corollaries: %TODO rewrite/delete this
+\begin{corollary}\label{cor:replaceWithStrictDiagram}
+    Let $J$ be a small category and let $M$ be a cofibrantly generated model category with weak equivalences $W$.
+    Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition
+    \begin{equation*}
+        \Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])
+    \end{equation*} 
+    they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
+    \begin{proof}
+        By \cref{thm:locCommutesWithHom}, \cref{thm:eqCharEqOfInftycats} and \cref{prop:simpLocEssSurj} the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is essentially surjective.
+        Since the nerve functor is fully faithful by \cref{lem:nerveFF}, this proves the corollary.
+    \end{proof}
+\end{corollary}
+%TODO  \cite[Definition 5.1.1]{hovey2007model} for direct/inverse category
+\begin{thm}\label{thm:exProjInjModelStr}
+    Let $C$ be a model category and $D$ be a small category.
+
+    If $D$ is a direct category, then the projective model structure on $\Fun(D,C)$ exists. 
+    Furthermore, the functor $\colim\colon\Fun(D,C)_{proj}\to C$ is left Quillen with respect to the constant functor.
+
+    If $D$ is a inverse model category, then the injective model structure on $\Fun(D,C)$ exists.
+    Furthermore, the functor $\lim\colon\Fun(D,C)_{inj}\to C$ is right Quillen with respect to the constant functor.
+    \begin{reference}
+        \cite[Theorem 5.1.3]{hovey2007model} and \cite[Corollary 5.1.6]{hovey2007model}
+    \end{reference}
+\end{thm}
+\begin{lemma}\label{lem:htpyLimAndColimAgree}
+    Let $M$ be a cofibrantly generated model category and let $J$ be a small category.
+    
+    If $J$ is a direct category, then a diagram $X\colon J^{\rhd}\to M$ is a homotopy colimit diagram if and only if the induced map $\N(J)^{\rhd}\cong\N(J^{\rhd})\to\N(M)[W^{-1}]$ is a colimit diagram.
+
+    Dually, if $J$ is an inverse category, then a diagram $X\colon J^{\lhd}\to M$ is a homotopy limit diagram if and only if the induced map $\N(J)^{\lhd}\cong\N(J^{\lhd})\to\N(M)[W^{-1}]$ is a limit diagram.
+    \begin{proof}
+        We will only prove the case of (homotopy) colimits, since the case for limits follows by duality.
+
+        We have an adjunction of \inftycats/ given by 
+        \begin{equation*}
+            \colim\colon\Fun(\N(J),\N(M)[W^{-1}])\rightleftarrows\N(M)[W^{-1}]\mkern+3mu:\mkern-3mu c
+        \end{equation*}
+        where $c$ is the constant functor.
+
+        By \cite[Remark 6.1.5]{cisinski_2019}, this induces an adjunction of ordinary categories
+        \begin{equation*}
+            \ho(\Fun(\N(J),\N(M)[W^{-1}]))\rightleftarrows\ho(\N(M)[W^{-1}])\;.
+        \end{equation*}
+        Let $\Ho(C)$ denote the homotopy category for a model category $C$. 
+        Since $\Ho(C)$ is a model of the (ordinary) localization of $C$ by the weak equivalences, there is a canonical equivalence $\Ho(C)\cong\ho(\N(C)[W^{-1}])$ since both fulfill the same universal property. %TODO \ho(N(M)[W^{-1}])\cong M[W^{-1}]
+        
+        Thus $\ho(\N(M)[W^{-1}])\cong\Ho(M)$ and using \cref{thm:locCommutesWithHom} we also have $\ho(\Fun(\N(J),\N(M)[W^{-1}]))\cong\Ho(\Fun(J,M)_{proj})$.
+        This yields an adjunction
+        \begin{equation*}
+            \Ho(\Fun(J,M)_{proj})\rightleftarrows\Ho(M)\mkern+3mu:\mkern-3mu c
+        \end{equation*}
+        where the functor from right to left is the constant functor.
+
+        This means that the functor from left to right is (equivalent to) a left derived functor of the $\colim$-functor since the latter exists by \cref{thm:exProjInjModelStr} and adjoints are essentially unique.
+
+        Hence given a diagram $X\colon J^{\rhd}\to M$, the colimit of the induced map $\N(J)\to\N(M)[W^{-1}]$ in $\ho(\N(M)[W^{-1}])\cong\Ho(M)$ is isomorphic to the homotopy colimit of $X|_J$ computed via the derived colimit functor in $\Ho(M)\cong\ho(\N(M)[W^{-1}])$.
+        Since objects are equivalent in $\N(M)[W^{-1}]$ if and only if they are isomorphic in $\ho(\N(M)[W^{-1}])$, this proves the lemma. %TODO perhaps cite?
+    \end{proof}
+\end{lemma}
 \begin{corollary}\label{cor:sufficientToProveInModCat}
-    Let $M$ be a model category with weak equivalences $W$. 
+    Let $M$ be a cofibrantly generated model category with weak equivalences $W$. 
     Then $\N(M)[W^{-1}]$ has universal colimits if and only if $M$ has universal homotopy pushouts and universal homotopy coproducts as a model category.
     
     If further $\N(M)[W^{-1}]$ has universal colimits, then $M$ has descent if and only if it has descent for homotopy pushouts and homotopy coproducts as a model category.
     \begin{proof}
-        A diagram $\N(J)^{\rhd}\to\N(M)[W^{-1}]$ is a colimit cone if and only if some equivalent replacement $J^{\rhd}\to M$ as in \cref{lem:replaceWithStrictDiagram} is a homotopy colimit cone in $M$.
-        Given a diagram $J^{\rhd}\to M$, is a homotopy colimit cone if and only if $\N(J)^{\rhd}\to\N(M)[W^{-1}]$ is a colimit cone.
-        The analogous statement is also true for limits and homotopy limits.
-        Thus the proposition follows from \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} respectively.
+        First note that the indexing categories of pushouts $\bullet\xleftarrow{}\bullet\xrightarrow{}\bullet$ and small coproducts are a direct categories, and the indexing category for pullbacks $\bullet\xrightarrow{}\bullet\xleftarrow{}\bullet$ is an inverse category.
+        By \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} we only need to check universality and descent for pushouts and small coproducts.
+        So let $I$ be either the indexing category for pushouts $\bullet\xleftarrow{}\bullet\xrightarrow{}\bullet$ or a small discrete category.
+
+        Then given a natural transformation $\alpha\colon\N(I)^{\rhd}\times\Delta^1\to\N(M)[W^{-1}]$, we can replace $\alpha$ by an equivalent natural transformation represented by a functor $\overline{\alpha}\times[1]\colon I^{\rhd}\to M$ via \cref{cor:replaceWithStrictDiagram}.
+        Then by \cref{lem:htpyLimAndColimAgree}
+        \begin{itemize}
+            \item for a map $f\colon i\to j\in I^{\rhd}$ (which we can identify with $f\colon\Delta^1\to\N(I)^{\rhd}$), the induced square $\Delta^1\times\Delta^1\xrightarrow{\alpha(f,\id_{\Delta^1})}\N(M)[W^{-1}]$ is a pullback square if and only if the square $[1]\times[1]\xrightarrow{\overline{\alpha}(f,\id_{[1]})}M$ is a homotopy pullback
+            \item $\alpha_0$ is a colimit cone if and only if $\overline{\alpha}_0$ is a homotopy colimit cone
+            \item $\alpha_1$ is a colimit cone if and only if $\overline{\alpha}_1$ is a homotopy colimit cone
+        \end{itemize}
+        which proves this corollary.
     \end{proof}
 \end{corollary}
 We will use the interaction of the \Strom/ model structure and the Quillen model structure to prove universality and descent in $\Top$.
@@ -35,7 +102,7 @@ The most important (and quite non-trivial) part of the interaction between Quill
     Let 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            C' \arrow[d,"\sim"] & A' \arrow[>->, r, "h"] \arrow[>->,l] \arrow[d,"\sim"] & B' \arrow[d,"\sim"]\\
+            C' \arrow[d,"\sim"] & A' \arrow[>->, r, "h"] \arrow[l] \arrow[d,"\sim"] & B' \arrow[d,"\sim"]\\
             C & A \arrow[>->, r, "h"] \arrow[l] & B \\
         \end{tikzcd}
     \end{center}
@@ -46,6 +113,7 @@ The most important (and quite non-trivial) part of the interaction between Quill
         \cite[Proposition 1.1]{hcolim_bar}
     \end{reference}
 \end{prop}
+This preceding proposition has the following useful consequence.
 \begin{corollary}\label{prop:poAlongHCofibIsHtpyPo}
     A pushout along an h-cofibration is a homotopy pushout.
     \begin{proof}
@@ -70,7 +138,13 @@ The most important (and quite non-trivial) part of the interaction between Quill
 \end{corollary}
 \addcontentsline{toc}{subsection}{Universality}
 \subsection*{Universality}
-Using the preceding corollary and the fact that pullbacks of h-cofibrations along h-fibrations are again h-cofibrations, we first prove universality for pushouts.
+Using the preceding corollary and the following theorem, we first prove universality for pushouts.
+\begin{thm}\label{thm:pbOfHcofibIsHcofib}
+    A pullback of an h-cofibration along an h-fibration is again an h-cofibration.
+    \begin{reference}
+        \cite[Theorem 12]{note_on_cofibs_2}
+    \end{reference}
+\end{thm}
 \begin{prop}\label{lem:topUniversalPo}
     The model category $\Top$ has universality for homotopy pushouts.
     \begin{proof}
@@ -97,7 +171,7 @@ Using the preceding corollary and the fact that pullbacks of h-cofibrations alon
             \end{tikzcd}
         \end{center}
         where $\overline{A}=A\times_{D}\overline{D}$, $\overline{B}=B\times_{D}\overline{D}$ and $\overline{C}=C\times_{D}\overline{D}$.
-        Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D'\xrightarrow{\sim}\overline{D}$ is a weak equivalence, all vertical maps in the upper cube are weak equivalences.
+        Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D'\xrightarrow{\sim}\overline{D}$ is a weak equivalence, all vertical maps in the upper cube of the above diagram are weak equivalences.
         Thus it is sufficient to show that the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -116,57 +190,84 @@ Using the preceding corollary and the fact that pullbacks of h-cofibrations alon
                 C \arrow[rr] & & D
             \end{tikzcd}
         \end{center}
-        where the small square is a homotopy pushout as it is a pushout along an h-cofibration by \cref{prop:poAlongHCofibIsHtpyPo} so $\widehat{B}\cup_A\widehat{C}\to D$ is a weak equivalence.
-        Pulling back the small square along the h-fibration $\overline{D}\xtwoheadrightarrow{h} D$ gives the square
+        where the small square is a homotopy pushout as it is a pushout along an h-cofibration by \cref{prop:poAlongHCofibIsHtpyPo}, so $\widehat{B}\cup_A\widehat{C}\to D$ is a weak equivalence.
+        Since h-cofibrations are inclusions by \cref{rmk:hurewiczCofibIsIncl}, we have $\widehat{B}\cap\widehat{C}=A$ as subspaces of $\widehat{B}\cup_A\widehat{C}$ by the explicit construction of pushouts.
+
+        Let $q\colon\left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}\xtwoheadrightarrow{h}\widehat{B}\cup_A\widehat{C}$ denote the pullback of $\overline{D}\xtwoheadrightarrow{h} D$ along $\widehat{B}\cup_A\widehat{C}\xrightarrow{\sim} D$.
+        Pulling back the square 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{A} \arrow[>->, r, "h"] \arrow[>->, d, "h"] & \widehat{B}\times_{D}\overline{D} \arrow[>->, d, "h"] \\
-                \widehat{C}\times_{D}\overline{D} \arrow[>->, r, "h"] & \left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}\\
+                \widehat{B}\cap\widehat{C}=A \arrow[>->, r, "h"] \arrow[>->, d, "h"] & \widehat{B}\arrow[>->, d, "h"] \\
+                \widehat{C} \arrow[>->, r, "h"] & \widehat{B}\cup_A\widehat{C} \\
             \end{tikzcd}
         \end{center}
-        where the horizontal maps are h-cofibrations since pullbacks of h-cofibrations along h-fibrations are again h-cofibrations by \cite[Theorem 12]{note_on_cofibs_2}.
-        
-        Let $q\colon\left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}\xtwoheadrightarrow{h}\widehat{B}\cup_A\widehat{C}$ denote the pullback of $\overline{D}\xtwoheadrightarrow{h} D$ along  $\widehat{B}\cup_A\widehat{C}\to D$.
-        Since h-cofibrations are in particular closed embeddings we have $\widehat{B}\times_{D}\overline{D}\cong q^{-1}(\widehat{B})$, $\widehat{C}\times_{D}\overline{D}\cong q^{-1}(\widehat{C})$ and $\overline{A}\cong q^{-1}(A)\cong q^{-1}(\widehat{B})\cap q^{-1}(\widehat{C})$.
-        As $q^{-1}(\widehat{B})$ and $q^{-1}(\widehat{C})$ are closed, this implies by point set topology that the square is an ordinary pushout.
+        along $q$ by the pasting law for pullbacks gives the cube
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                \overline{A} \arrow [>->,dr,"h"] \arrow [>->,rr,"h"] \arrow [->>,dd,"h"] & & \widehat{B}\times_{D}\overline{D} \arrow [>->,dr,"h"] \arrow [->>,dd,near start,"h"] \\
+                & \widehat{C}\times_{D}\overline{D} \arrow [>->,rr, crossing over, near start, "h"] & &[-1em] \left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D} \arrow [->>,dd,"h"',"q"] & \\
+                A=\widehat{B}\cap\widehat{C} \arrow [>->,dr,"h"] \arrow [>->,rr,near end,"h"] & & \widehat{B} \arrow [>->,dr,"h"] \\
+                & \widehat{C} \arrow [->>,from=uu, crossing over,near start,"h"] \arrow [>->,rr,"h"] & & \widehat{B}\cup_A\widehat{C}
+            \end{tikzcd}
+        \end{center}
+        where the top horizontal maps are h-cofibrations since pullbacks of h-cofibrations along h-fibrations are again h-cofibrations by \cref{thm:pbOfHcofibIsHcofib}.
+        We now claim that the top square of this cube is a pushout.
 
-        Thus it is a pushout along an h-cofibration, hence by \cref{prop:poAlongHCofibIsHtpyPo} a homotopy pushout.
-        By right properness of $\Top$ the square is equivalent to 
+        First note that the pullback of a given map $f\colon X\to B$ along an inclusion $A\xhookrightarrow{} B$ can be identified with the map $f^{-1}(A)\xrightarrow{f|_{f^{-1}(A)}}A$ where $f^{-1}(A)$ is equipped with the subspace topology of $X$. 
+        
+        Hence we have $\widehat{B}\times_{D}\overline{D}\cong q^{-1}(\widehat{B})$, $\widehat{C}\times_{D}\overline{D}\cong q^{-1}(\widehat{C})$ and $\overline{A}\cong q^{-1}(A)\cong q^{-1}(\widehat{B})\cap q^{-1}(\widehat{C})$ as subspaces of $\left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}$.
+        Since h-cofibrations are in particular closed inclusions by \cref{rmk:hurewiczCofibIsIncl}, $q^{-1}(\widehat{B})$ and $q^{-1}(\widehat{C})$ form a closed cover of $\left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}$.
+        
+        By point-set topology, given a space $X$ with closed cover $X_1,X_2\subset X$ one recovers $X_1\cup_{X_1\cap X_2}X_2\cong X$ as the pushout.
+        Hence $q^{-1}(\widehat{B})\cup_{q^{-1}(A)}q^{-1}(\widehat{C})\cong\left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D}$ and thus the top square of the cube is an ordinary pushout, proving our claim.
+
+        As the top square of the cube is a pushout along an h-cofibration, it is a homotopy pushout by \cref{prop:poAlongHCofibIsHtpyPo}.
+        Since $\Top$ is right proper, the indicated maps in the diagram 
+        \begin{center}
+            \begin{tikzcd} [sep = 3em]
+                \overline{A} \arrow[>->, r, "h"] \arrow[>->, d, "h"] & \widehat{B}\times_{D}\overline{D} \arrow[r, "\sim"] \arrow[>->, d, "h"] & \overline{B} \arrow[dd] \\
+                \widehat{C}\times_{D}\overline{D} \arrow[>->, r, "h"] \arrow[d, "\sim"] & \left(\widehat{B}\cup_A\widehat{C}\right)\times_{D}\overline{D} \arrow[dr, "\sim"] & \\
+                \overline{C} \arrow[rr] & & \overline{D}
+            \end{tikzcd}
+        \end{center}
+        are weak equivalences as they are pullbacks of weak equivalences along fibrations.
+        
+        Thus
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{A} \arrow[r] \arrow[d] & \overline{B} \arrow[d] \\
                 \overline{C} \arrow[r] & \overline{D} \\
             \end{tikzcd}
         \end{center}
-        which proves the proposition.
+        is also a homotopy pushout, which proves the proposition.
     \end{proof}
 \end{prop}
 \begin{lemma}\label{lem:topUniversalCoproduct}
     The model category $\Top$ has universal homotopy coproducts.
     \begin{proof}
-        	Let $\left(X_i\right)_{i\in I}$ and $\left(Y_i\right)_{i\in I}$ be collections of topological spaces with $I$ small. 
-            In a model category the homotopy coproduct of such a family is given by the ordinary coproduct of cofibrant replacements $\bigcup\limits_{i\in I}\widehat{X_i}$ for each of the $X_i$.
-            However, since in $\Top$ weak equivalences are closed under coproducts, the ordinary coproduct $\bigcup\limits_{i\in I}X_i$ is already a homotopy coproduct.
+        	Let $\left(X_i\right)_{i\in I}$ and $\left(Y_i\right)_{i\in I}$ be collections of topological spaces with $I$ a small set. 
+            In a model category the homotopy coproduct of such a family is given by the ordinary coproduct of cofibrant replacements $\coprod\limits_{i\in I}\widehat{X_i}$ for each of the $X_i$.
+            However, since in $\Top$ weak equivalences are closed under coproducts, the ordinary coproduct $\coprod\limits_{i\in I}X_i$ is already a homotopy coproduct.
 
-            Let $f\colon Y\to\bigcup\limits_{i\in I}X_i$ be a map and let $\left(Y_i\to X_i\right)_{i\in I}$ and $\left(Y_i\to Y\right)_{i\in I}$ be families of maps such that for all $k\in I$ we have a commutative square
+            Let $f\colon Y\to\coprod\limits_{i\in I}X_i$ be a map and let $\left(Y_i\to X_i\right)_{i\in I}$ and $\left(Y_i\to Y\right)_{i\in I}$ be families of maps such that for all $k\in I$ we have a commutative square
             \begin{center}
                 \begin{tikzcd} [sep = 4em]
                     Y_k \arrow [r] \arrow [d] & Y \arrow [d]\\
-                    X_k \arrow [r] & \bigcup\limits_{i\in I} X_i
+                    X_k \arrow [r] & \coprod\limits_{i\in I} X_i
                 \end{tikzcd}
             \end{center}
             that is a homotopy pullback.
 
-            Note that every inclusion map $X_k\to\bigcup\limits_{i\in I} X_i$ is already a fibration as can be checked by its lifting properties.
+            Note that every inclusion map $X_k\to\coprod\limits_{i\in I} X_i$ is already a fibration as can be checked by its lifting properties.
             Therefore, the ordinary pullback
             \begin{center}
                 \begin{tikzcd} [sep = 1 cm]
-                    Y\times_{\bigcup\limits_{i\in I} X_i}X_k \arrow [->>,r] \arrow [d] & Y \arrow [d]\\
-                    X_k \arrow [->>,r] & \bigcup\limits_{i\in I} X_i
+                    Y\times_{\coprod\limits_{i\in I} X_i}X_k \arrow [->>,r] \arrow [d] & Y \arrow [d]\\
+                    X_k \arrow [->>,r] & \coprod\limits_{i\in I} X_i
                 \end{tikzcd}
             \end{center}
-            is a homotopy pullback and so $Y_k\to Y\times_{\bigcup\limits_{i\in I} X_i}X_k$ is a weak equivalence.
-            Since the canonical map $\bigcup\limits_{k\in I}\left(Y\times_{\bigcup\limits_{i\in I} X_i}X_k\right)\cong Y$ is a homeomorphism in $\Top$, $\bigcup\limits_{i\in I}Y_i\to Y$ is a weak equivalence.
+            is a homotopy pullback and so $Y_k\to Y\times_{\coprod\limits_{i\in I} X_i}X_k$ is a weak equivalence.
+            Since the canonical map $\coprod\limits_{k\in I}\left(Y\times_{\coprod\limits_{i\in I} X_i}X_k\right)\cong Y$ is a homeomorphism in $\Top$, $\coprod\limits_{i\in I}Y_i\to Y$ is a weak equivalence.
             This proves that $Y$ is a homotopy coproduct.
     \end{proof}
 \end{lemma}
@@ -175,7 +276,7 @@ It remains to show that it also has descent.
 \addcontentsline{toc}{subsection}{Descent for Homotopy Pushouts}
 \subsection*{Descent for Homotopy Pushouts}
 Proving descent will be more involved then the proof of universality.
-The main theorem we use to achieve this will be \cref{prop:descentForPairs}. 
+The main theorem we use to achieve this will be \cref{prop:descentForPairs}, where we use a subdivision argument from \cite{may1990weak} to show a version of descent for homotopy pushouts for pairs of spaces. %TODO write better maybe
 There are two routes that lead from this theorem to descent for pushouts:
 One can either give a direct proof via decomposition of mapping cylinders (see \cref{prop:topDescentPo}) or it can be used to prove a weak version of the locality of quasifibrations (see \cref{cor:locOfQuasifib}).
 
@@ -191,7 +292,7 @@ As a first step we will fix some notation related to pairs and triples of spaces
     A \emph{homotopy of maps of pairs} $f,g\colon(X_1,A_1)\to (X_2,A_2)$ is a map $h\colon(X_1\times I,A_1\times I)\to (X_2,A_2)$ such that $h_0=f$ and $h_1=g$.
 
     Similarly, we define maps of triples:
-    Let $\Top^{(3)}$ denote the category of \emph{triples of topological spaces} $(X,A,B)$ with $B\subset A\subset X$ subspaces and maps $f\colon(X_1,A_1,B_1)\to (X_2,A_2,B_2)$ being continuous maps $f\colon X_1\to X_2$ such that $\im f(A_1)\subset A_2$ and $\im f(B_1)\subset B_2$.
+    Let $\Top^{(3)}$ denote the category of \emph{triples of topological spaces} $(X,A,B)$ with $B\subset A\subset X$ subspaces and maps $f\colon(X_1,A_1,B_1)\to (X_2,A_2,B_2)$ being continuous maps $f\colon X_1\to X_2$ such that $f(A_1)\subset A_2$ and $f(B_1)\subset B_2$.
     We refer to these maps as \emph{maps of triples}.
     
     We define $(X,A,B)\times I$ to mean $(X\times I,A\times I, B\times I)$.
@@ -256,7 +357,7 @@ There is a canonical group structure on these sets for $n\geq 2$ (that is even a
     For a map $f\colon(X,A)\to (Y,B)$ the inclusion $\im\left(\pi_0(A)\to\pi_0(X)\right)\subset\pi_0(f)^{-1}\im\left(\pi_0(B)\to\pi_0(Y)\right)$ always holds.
     Having an equality means that for all $x\in X$ such that there is a path from $f(x)$ to some element in $B$, there also exists a path from $x$ to some element of $A$.
     This is equivalent to saying that if the homotopy fiber of $A\hookrightarrow X$ at $x\in X$ is empty, then so is the homotopy fiber of $B\hookrightarrow Y$ at $f(x)$.
-    This is because the homotopy fiber of a map at a point is empty if and only if the point is in a connected component that does not intersect the image of the map.
+    This is because the homotopy fiber of a map at a point is empty if and only if the point is in a path-connected component that does not intersect the image of the map.
 \end{remark}
 We will need the following lemma to translate our statements to the language of pairs of maps and back.
 \begin{lemma}\label{lem:weOfaPairsIsHtpyPb}
@@ -287,7 +388,7 @@ We will need the following lemma to translate our statements to the language of 
         where $P_{x_0}X$ and $P_{y_0}Y$ are the path mapping spaces of the maps $x_0\colon *\to X$ and  $y_0\colon *\to Y$ respectively.
         We can identify $F_{x_0}$ with the subspace of $P_{x_0}X$ of paths that start at $x_0$ and end at a point in $A$ (and analogously for $G_{y_0}$).
         Let $\alpha\colon F_{x_0}\to G_{f(x_0)}, \gamma\mapsto f\gamma$ denote the induced map between fibers.
-        Proving \ref{itm:htpyPb} is equivalent to showing that this map is a weak equivalence.
+        Proving \ref{itm:htpyPb} is equivalent to showing that this map is a weak equivalence for all $x_0\in X$.
 
         If $F_{x_0}\neq\emptyset$ we have that for every point $z\in F_{x_0}$ and $n\geq 1$ the induced maps $\pi_n(X,A,z(1))\to \pi_{n-1}(F_{z(1)},\const_{z(1)})$ and $\pi_n(Y,B,f(z(1)))\to \pi_{n-1}(G_{\alpha(z)(1)},\const_{\alpha(z)(1)})$ are isomorphisms by \cite[Theorem 5.1.8]{lectures_htpy_thy}.
         The map $\Lambda\colon F_{x_0}\to F_{z(1)}, \gamma\mapsto \overline{z}*\gamma$ is a homotopy equivalence with homotopy inverse $\Lambda^{-1}\colon F_{z(1)}\to F_{x_0}, \gamma\mapsto z*\gamma$, hence it induces an isomorphism $\pi_{n-1}(F_{x_0},z)\to\pi_{n-1}(F_{z(1)},\overline{z}*z)$.
@@ -306,7 +407,7 @@ We will need the following lemma to translate our statements to the language of 
         which with \cref{rmk:emptyFiber} for the case $F_{x_0}=\emptyset$ proves that \ref{itm:weOfPairs} and \ref{itm:htpyPb} are equivalent.
     \end{proof}
 \end{lemma}
-The next lemma is a variant of what is commonly referred to as the ``compression criterion''.
+The next lemma is a variant of what is commonly referred to as the ``compression criterion'' (see e.g. \cite[343]{hatcher2002algebraic}).
 \begin{lemma}\label{lem:compressionVariation}
     Let $n\geq 1$, $e\colon(I^{n+1},\set{1}\times I^n)\to (X,A)$, $*=(1,0,\ldots,0)\in\set{1}\times\partial I^n$ and $a=e(*)$. 
     Then $e|_{J^n}\colon(J^n,\set{1}\times\partial I^n,*)\to(X,A,a)$ represents the equivalence class of the constant map in $\pi_n(X,A,a)$.
@@ -424,7 +525,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
     Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
     Then there exists an excisive triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ and maps of triads $\widetilde{f}\colon(X;X_1,X_2)\to(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$, $j\colon(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})\to(Y;Y_1,Y_2)$ factoring $j\widetilde{f}=f$ such that
     \begin{itemize}
-        \item $\widetilde{f}$ is an inclusion and $j$ is a weak equivalence 
+        \item $\widetilde{f}$ is an inclusion and $j$ is a weak equivalence in $\Top$
         \item $\widetilde{f}(X_i^°)=\widetilde{f}(X)\cap \widetilde{Y_i}^°$ and $\widetilde{f}(X_i)=\widetilde{f}(X)\cap \widetilde{Y_i}$ for $i\in\set{1,2}$
         \item $j$ induces a weak equivalence of pairs $(\widetilde{Y_i},\widetilde{Y_1}\cap \widetilde{Y_2})\to(Y_i,Y_1\cap Y_2)$ for $i\in\set{1,2}$
         \item and $j$ induces a weak equivalence of pairs $(\widetilde{Y},\widetilde{Y_i})\to(Y,Y_i)$ for $i\in\set{1,2}$.

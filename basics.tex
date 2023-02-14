@@ -70,7 +70,7 @@ We will not give proofs for any statements in this section; we will however poin
     to be the \emph{$k$-th horn of $\Delta^n$} for $0\leq k\leq n$.
     (The unions are the degreewise unions in $\Set$.) %TODO is this true?
 \end{definition}
-\begin{lemma}[Homotopy Category]
+\begin{lemma}[Homotopy Category]\label{lem:nerveFF}
     The nerve functor $\N\colon\Cat\to\sSet$ is fully faithful and has a left adjoint $\ho\colon\sSet\to\Cat$ which we call the \emph{homotopy category} of a simplicial set.
     \begin{reference}
         \cite[Proposition 1.2.2.1]{kerodon}
@@ -327,7 +327,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
 \end{definition}
 \begin{remark}\label{rmk:functorialMappingSpace}
     By \cite[116]{cisinski_2019} this space is always a Kan-complex.
-    By \cite[248]{cisinski_2019} for every (locally small) \inftycat/ $C$, there is an essentially unique functor $\hom_C(-,-)\colon C^{\op}\times C\to\spaces$, where $\spaces$ is the (yet to be defined) \inftycat/ of spaces, such that for all objects $x,y\in C_0$ we have a canonical equivalence $\Hom_C(x,y)\cong\Map_C(x,y)$ in $\spaces$ (the objects $\spaces_0$ can be identified with Kan-complexes, see \cref{cor:htpyCoherentNerveIsLoc}).
+    By \cite[248]{cisinski_2019} for every (locally small) \inftycat/ $C$, there is an essentially unique $\hom$-functor $\hom_C(-,-)\colon C^{\op}\times C\to\spaces$, where $\spaces$ is the (yet to be defined) \inftycat/ of spaces, such that for all objects $x,y\in C_0$ we have a canonical equivalence $\hom_C(x,y)\cong\Map_C(x,y)$ in $\spaces$ (the objects $\spaces_0$ can be identified with Kan-complexes, see \cref{cor:htpyCoherentNerveIsLoc}). %TODO maybe say what is essentially unique
 \end{remark}
 \begin{definition}[Fully Faithful]
     Let $F\colon C\to D$ be a map between \inftycats/.
@@ -342,7 +342,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     \end{center}
     is a weak equivalence of Kan-complexes.
 \end{definition}
-\begin{thm}
+\begin{thm}\label{thm:eqCharEqOfInftycats}
     Let $F\colon C\to D$ be a map between \inftycats/.
     Then the following are equivalent:
     \begin{itemize}
