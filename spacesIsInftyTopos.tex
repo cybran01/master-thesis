@@ -133,7 +133,7 @@ This preceding proposition has the following useful consequence.
             \end{tikzcd}\;.
         \end{center}
         By \cref{prop:poOfWeIsWe} we have that the map induced by the pushouts $C'\cup_AB\to C\cup_AB$ is again a weak equivalence.
-        But since $C'\cup_AB$ is a homotopy pushout (it is a pushout along a cofibration and $\Top$ is left proper), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.
+        But since $C'\cup_AB$ is a homotopy pushout (it is a pushout along a cofibration and $\Top$ is left proper), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.%TODO cite left proper
     \end{proof}
 \end{corollary}
 \addcontentsline{toc}{subsection}{Universality}
@@ -252,22 +252,26 @@ Using the preceding corollary and the following theorem, we first prove universa
             Let $f\colon Y\to\coprod\limits_{i\in I}X_i$ be a map and let $\left(Y_i\to X_i\right)_{i\in I}$ and $\left(Y_i\to Y\right)_{i\in I}$ be families of maps such that for all $k\in I$ we have a commutative square
             \begin{center}
                 \begin{tikzcd} [sep = 4em]
-                    Y_k \arrow [r] \arrow [d] & Y \arrow [d]\\
-                    X_k \arrow [r] & \coprod\limits_{i\in I} X_i
+                    Y_k \arrow [r] \arrow [d] & Y \arrow [d, "f"]\\
+                    X_k \arrow [r,hook] & \coprod\limits_{i\in I} X_i
                 \end{tikzcd}
             \end{center}
             that is a homotopy pullback.
 
-            Note that every inclusion map $X_k\to\coprod\limits_{i\in I} X_i$ is already a fibration as can be checked by its lifting properties.
+            Note that every inclusion map $X_k\xhookrightarrow{}\coprod\limits_{i\in I} X_i$ is already a fibration as can be checked by its lifting properties.
             Therefore, the ordinary pullback
             \begin{center}
                 \begin{tikzcd} [sep = 1 cm]
-                    Y\times_{\coprod\limits_{i\in I} X_i}X_k \arrow [->>,r] \arrow [d] & Y \arrow [d]\\
-                    X_k \arrow [->>,r] & \coprod\limits_{i\in I} X_i
+                    f^{-1}(X_k) \arrow [->>,hook,r] \arrow [d, "f|_{f^{-1}(X_k)}"'] & Y \arrow [d, "f"]\\
+                    X_k \arrow [->>,hook,r] & \coprod\limits_{i\in I} X_i
                 \end{tikzcd}
             \end{center}
-            is a homotopy pullback and so $Y_k\to Y\times_{\coprod\limits_{i\in I} X_i}X_k$ is a weak equivalence.
-            Since the canonical map $\coprod\limits_{k\in I}\left(Y\times_{\coprod\limits_{i\in I} X_i}X_k\right)\cong Y$ is a homeomorphism in $\Top$, $\coprod\limits_{i\in I}Y_i\to Y$ is a weak equivalence.
+            is a homotopy pullback since $\Top$ is right proper, and so $Y_k\to f^{-1}(X_k)$ is a weak equivalence.
+            We have $Y=f^{-1}\left(\dot{\bigcup\limits_{k\in I}} X_k\right)=\dot{\bigcup\limits_{k\in I}}f^{-1}(X_k)$ since preimages commute with unions and preserve disjointness.
+            Since $X_k\subset\coprod\limits_{i\in I} X_i$ is open for all $k\in I$, $f^{-1}(X_k)\subset Y$ is open for all $k\in I$ as well. 
+            By point-set topology it now follows that $Y\cong\coprod\limits_{k\in I}f^{-1}(X_k)$.
+            
+            Hence $\coprod\limits_{i\in I}Y_i\to Y$ is a weak equivalence, again because weak equivalences are closed under coproducts in $\Top$.
             This proves that $Y$ is a homotopy coproduct.
     \end{proof}
 \end{lemma}
@@ -437,7 +441,17 @@ The next proposition is the most important part of the proof of \cref{prop:desce
     \begin{enumerate}[label={(\roman*)}]
         \item For every $a\in A$ the map $\pi_n(X,A,a)\to \pi_n(Y,B,f(a))$ is injective and $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(a))$ is surjective.
             If $n=0$, replace the injectivity statement by $\pi_0(f)^{-1}\im\left(\pi_0(B)\to\pi_0(Y)\right)=\im\left(\pi_0(A)\to\pi_0(X)\right)$. \label{itm:injAndSurjOfHtpyGrps}
-        \item Given maps $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$, $g(J^n,\set{1}\times\partial I^n)\to(X,A)$ and a homotopy $h\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ from $e|_{J^n}$ to $fg$, there exists a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ and homotopy $H\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ from $e$ to $fG$ such that $H|_{J^n\times I}=h$ and $G|_{J^n}=g$. \label{itm:liftingMapsAndHtpy}
+        \item Given maps $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$, $g\colon(J^n,\set{1}\times\partial I^n)\to(X,A)$ and a homotopy $h\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ from $e|_{J^n}$ to $fg$, there exists a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ and homotopy $H\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ from $e$ to $fG$ such that $H|_{J^n\times I}=h$ and $G|_{J^n}=g$. \label{itm:liftingMapsAndHtpy} 
+        \begin{center}
+            \begin{adjustbox}{width=\linewidth}
+                \tikzcdset{every label/.append style = {font = \fontsize{11pt}{11pt}\selectfont}}
+                \begin{tikzcd} [column sep = -1em]
+                    &|[xshift=-1.5em, yshift=1.5em]| (X,A) \ar[rrr, "f"] &&&|[xshift=2.5em, yshift=1.5em]| (Y,B)\\
+                    (J^n,\set{1}\times\partial I^n) \ar[dr, hook] \ar[rr, near end, "i_1"] \ar[ru, "g"] && (J^n,\set{1}\times\partial I^n)\times I \ar[dr, hook] \ar[urr, "h"] && (J^n,\set{1}\times\partial I^n) \ar[ll,"i_0"', shorten <=0.5em] \ar[dr, hook] \ar[u, "e|_{J^n}"']\\
+                    & (I^{n+1},\set{1}\times I^n) \ar[rr, "i_1"] \ar[uu, crossing over, near end, dashed, "\exists G"'] && (I^{n+1},\set{1}\times I^n)\times I \ar[uur, shift left=0.5em, near start, dashed, shorten >=-0.1em, shorten <=-1em,"\exists H"'] && (I^{n+1},\set{1}\times I^n) \ar[ll,"i_0"'] \ar[luu, "e"']\\
+                \end{tikzcd}
+            \end{adjustbox}        
+        \end{center}
         \item The statement of \ref{itm:liftingMapsAndHtpy} holds with the additional assumption that $e|_{J^n}=fg$ and $h$ is the constant homotopy. \label{itm:liftingMapsAndHtpyConst}
     \end{enumerate}
     \begin{proof}
@@ -650,7 +664,7 @@ We are now ready to give a proof of descent for pushouts.
             \end{tikzcd}
         \end{center}
         where $\overline{X}=\M^{[0,2)}(f_{\overline{A}\overline{B}})\cup_{\overline{A}\times\left(0,2\right)}\M^{[0,2)}(f_{\overline{A}\overline{C}})$ and $X=\M^{[0,2)}(f_{AB})\cup_{A\times(0,2)}\M^{[0,2)}(f_{AC})$ are the ordinary pushouts, are equivalent to the starting cube:
-        The equivalence of the top square follows the fact that the map $\overline{X}\to\overline{D}$ in the diagram 
+        The equivalence of the top square follows from the fact that the map $\overline{X}\to\overline{D}$ in the commutative diagram 
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A} \arrow [dr] \arrow [rr] \arrow [from=dd, "\sim"] & & \overline{B} \arrow [dr] \arrow [from=dd, near end, "\sim"] \\
@@ -661,7 +675,7 @@ We are now ready to give a proof of descent for pushouts.
                 & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [from=uu, hook, crossing over, near end, "\sim"] \arrow [rr, hook] & & \overline{X} \\
             \end{tikzcd}
         \end{center}
-        is a weak equivalence since pushouts along h-cofibrations are homotopy pushouts. 
+        is a weak equivalence since pushouts along h-cofibrations are homotopy pushouts by \cref{prop:poAlongHCofibIsHtpyPo}. 
         The analogous argument shows equivalence of the bottom squares.
 
         The equivalences of left squares and front squares follow from
@@ -688,9 +702,9 @@ We are now ready to give a proof of descent for pushouts.
 \end{prop}
 \addcontentsline{toc}{subsection}{Descent and Quasifibrations}
 \subsection*{Descent and Quasifibrations}
-We will now give an alternative proof of descent for pushouts using the notion of quasifibrations.
+We will now give an alternative proof of descent for homotopy pushouts using the notion of quasifibrations.
 \begin{definition}[Quasifibration]
-    Let $M$ be a model category and $f\colon X\to Y$ be a map.
+    Let $M$ be a model category and $f\colon X\to Y$ a map.
     Then we call $f$ a \emph{quasifibration} if for every map $*\to Y$ (where $*$ is a terminal object) the ordinary pullback square
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -700,9 +714,26 @@ We will now give an alternative proof of descent for pushouts using the notion o
     \end{center}
     is a homotopy pullback.
 \end{definition}
+\begin{remark}
+    Let 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            A \arrow[r] \arrow[d, "q"'] & X \arrow[d, "p"] \\
+            B \arrow[r, "f"] & Y\\
+        \end{tikzcd}
+    \end{center}
+    be an ordinary pullback square in $\Top$ with $p$ and $q$ quasifibrations.
+    Then this square is a homotopy pullback:
+    
+    By the pasting law for ordinary pullbacks, the ordinary fiber of $q$ at $b\in B$ is also the ordinary fiber of $p$ at $f(b)\in Y$.
+    But since these are ordinary fibers are already homotopy fibers, this means that the homotopy fibers are in particular weakly equivalent.
+    By the fiberwise characterization of homotopy pullbacks this implies that the given square is a homotopy pullback.
+
+    However, quasifibrations are not generally stable under pullbacks (see e.g. \cite[Example 2.7.6]{cubical_htpy_theory}).
+\end{remark}
 The following weak version of the locality of quasifibrations (\cref{cor:locOfQuasifib}) is sufficient to prove descent for pushouts.
 \begin{corollary}[Weak Locality of Quasifibrations]\label{cor:locOfQuasifib}
-    Let $f\colon X\to Y$ be a map and $U_1, U_2\subset Y$ be open such that $f^{-1}(U_1)\to U_1$, $f^{-1}(U_2)\to U_2$ and $f^{-1}(U_1)\cap f^{-1}(U_2)=f^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
+    Let $f\colon X\to Y$ be a map and $U_1, U_2\subset Y$ be an open cover such that $f^{-1}(U_1)\to U_1$, $f^{-1}(U_2)\to U_2$ and $f^{-1}(U_1)\cap f^{-1}(U_2)=f^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
     Then $f$ is a quasifibration.
     \begin{proof}
         For $i\in\set{1,2}$ the squares 
@@ -735,24 +766,25 @@ The relationship of locality of quasifibrations and descent also goes the other 
     Because all squares
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            f^{-1}(U_j) \arrow [r, hook] \arrow [d] & f^{-1}(U_i) \arrow [d]\\
+            f^{-1}(U_j) \arrow [r, hook] \arrow [d, "f|_{f^{-1}(U_j)}"'] & f^{-1}(U_i) \arrow [d, "f|_{f^{-1}(U_i)}"]\\
             U_j\arrow [r, hook] & U_i
         \end{tikzcd}
     \end{center}
-    are homotopy pullbacks, the ordinary pullback squares 
+    are homotopy pullbacks and $X\simeq\hcolim\limits_{i\in I}(f^{-1}(U_i))$ as well as $Y\simeq\hcolim\limits_{i\in I}(U_i)$, the ordinary pullback squares 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            f^{-1}(U_i) \arrow [r, hook] \arrow [d] & X=\hcolim\limits_{i\in I}(f^{-1}(U_i)) \arrow [d]\\
-            U_i \arrow [r, hook] & Y=\hcolim\limits_{i\in I}(U_i)
+            f^{-1}(U_i) \arrow [r, hook] \arrow [d,, "f|_{f^{-1}(U_i)}"'] & X \arrow [d, "f"]\\
+            U_i \arrow [r, hook] & Y
         \end{tikzcd}
     \end{center}
-    are homotopy pullbacks by descent and the proposition follows since $(U_i)_{i\in I}$ is a cover of $Y$.
+    are homotopy pullbacks by descent.
+    Since every point $y\in Y$ is contained in some $U_i$, the ordinary fibers of $f$ are homotopy fibers by the pasting law for homotopy pullbacks. 
 
     A direct proof of the locality of quasifibrations can be found in \cite[Theorem A.1.2]{aguilar2002algebraic}.
 \end{remark}
 The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQuasifib} is applicable.
 \begin{lemma}\label{lem:reductionStepDescent}
-    If for all cubes in the model category $\Top$
+    Suppose that for all cubes in the model category $\Top$
     \begin{center}
         \begin{tikzcd} [sep = .5 cm]
             \overline{A} \arrow [dr] \arrow [rr] \arrow [->>,dd] & & \overline{B} \arrow [dr] \arrow[->>,dd] \\
@@ -767,9 +799,10 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         \item bottom and top square homotopy pushouts 
         \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are fibrations
     \end{itemize}
-    the front and right squares are homotopy pullbacks, then $\Top$ has descent for homotopy pushouts.
+    the front and right squares are homotopy pullbacks.
+    Then $\Top$ has descent for homotopy pushouts.
     \begin{proof}
-        Starting from a cube 
+        We will prove that every cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
@@ -778,7 +811,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
                 & C \arrow [from=uu, crossing over] \arrow [rr] & & D &
             \end{tikzcd}
         \end{center}
-        where the back and left square are homotopy pullbacks and top and bottom are homotopy pushouts, we show that we can construct a cube of the required form such that all faces are equivalent to the corresponding faces of the starting cube.
+        where the back and left square are homotopy pullbacks and top and bottom square are homotopy pushouts, can be reduced to a cube of the required form in the sense that all faces are equivalent to the corresponding faces of the starting cube.
         
         We first factor the maps $A\xtailrightarrow{}\hat{C}\xtwoheadrightarrow[]{\sim} C$ and $B'\xrightarrow{\sim}\overline{B}\xtwoheadrightarrow{} B$ to obtain the diagram
         \begin{center}
@@ -810,7 +843,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
                 C & \hat{C} \arrow[->>]{l}{}[swap]{\sim} & A \arrow[>->,l, ""] \arrow[r] & B 
             \end{tikzcd}
         \end{center}
-        where $X\to X\cup_{A'}\overline{A}$ is a weak equivalence as its a pushout of a weak equivalence along a cofibration.
+        and note that $X\to X\cup_{A'}\overline{A}$ is a weak equivalence because $\Top$ is left proepr and $X\to X\cup_{A'}\overline{A}$ is a pushout of a weak equivalence along a cofibration.
         By the pasting law we have that
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -854,14 +887,14 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         \end{center}
         by taking pushouts.
         Since these are pushouts along cofibrations, they are already homotopy pushouts. 
-        Following the construction of this cube, we see that all faces are equivalent to their corresponding faces of the starting cube which proves the proposition.
+        Following the construction of this cube, we see that all faces are equivalent to their corresponding faces of the starting cube which proves the lemma.
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:mapOfCylIsQuasiFib}
     Let 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X \arrow[d, "p"] \arrow[r, "f"] & Y \arrow[d, "q"] \\
+            X \arrow[d, "p"'] \arrow[r, "f"] & Y \arrow[d, "q"] \\
             A \arrow[r, "g"] & B \\
         \end{tikzcd}
     \end{center}
@@ -872,21 +905,21 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         For convenience we will only prove the case $I=[0,1]$ since the other cases follow by the analogous argument.
         The proof is essentially \cite[Lemma 5.10.6]{cubical_htpy_theory}.
 
-        Let $\hat{b}\in\M(g)$. 
-        Then either $\hat{b}=(\hat{a},\hat{t})\in A\times(0,1]\subset\M(g)$ or $\hat{b}\in B\subset\M(g)$.
+        Let $b_0\in\M(g)$. 
+        Then either $b_0=(a_0,t_0)\in A\times(0,1]\subset\M(g)$ or $b_0\in B\subset\M(g)$.
         In the first case, we have a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X \arrow[r, hook, "{x\mapsto (x,\hat{t})}"] \arrow[d, "p"] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[d, "q"] \\
-                A \arrow[r, hook, "{a\mapsto (a,\hat{t})}"] & \M(g) \arrow[r, "\sim"] & B \\
+                X \arrow[r, hook, "{x\mapsto (x,t_0)}"] \arrow[d, "p"'] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[d, "q"] \\
+                A \arrow[r, hook, "{a\mapsto (a,t_0)}"] & \M(g) \arrow[r, "\sim"] & B \\
             \end{tikzcd}
         \end{center}
         where the outer square is the starting square and in particular homotopy pullback, so by the pasting law the left square is homotopy pullback as well.
         Since the left square is also an ordinary pullback, in the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & X \arrow[r, hook, "{x\mapsto (x,\hat{t})}"] \arrow[d, "p"] & \M(f) \arrow[d] \\
-                * \arrow[r, "\hat{b}"] & A \arrow[r, hook, "{a\mapsto (a,\hat{t})}"] & \M(g) \\
+                F \arrow[r] \arrow[d] & X \arrow[r, hook, "{x\mapsto (x,t_0)}"] \arrow[d, "p"] & \M(f) \arrow[d] \\
+                * \arrow[r, "b_0"] & A \arrow[r, hook, "{a\mapsto (a,t_0)}"] & \M(g) \\
             \end{tikzcd}
         \end{center}
         the left square is homotopy pullback since its the pullback of a quasifibration.
@@ -896,18 +929,18 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 F \arrow[r] \arrow[d] & Y \arrow[r, hook, "\sim"] \arrow[d, "q"] & \M(f) \arrow[d] \\
-                * \arrow[r, "\hat{b}"] & B \arrow[r, hook, "\sim"] & \M(g) \\
+                * \arrow[r, "b_0"] & B \arrow[r, hook, "\sim"] & \M(g) \\
             \end{tikzcd}
         \end{center}
-        where the indicated maps are weak equivalences since they are right inverse to the contraction maps $\M(f)\to Y$ and $\M(g)\to B$ respectively, which are weak equivalences themselves.
-        Since the right square is pullback and homotopy pullback and the left side is as well, this means that the fiber $F$ is already a homotopy fiber which proves the proposition.
+        where the indicated maps are weak equivalences (they are right inverses to the contraction maps).
+        Since the right square is pullback and homotopy pullback and the left side is as well, this means that the fiber $F$ is already a homotopy fiber which proves the lemma.
     \end{proof}
 \end{lemma}
 This finishes the preparation and we will now prove descent for pushouts via locality of quasifibrations.
 \begin{prop}\label{lem:topDescentPoAlt}
     The model category $\Top$ has descent for homotopy pushouts. 
     \begin{proof}
-        By \cref{lem:reductionStepDescent} it is sufficient to prove that for all cubes 
+        By \cref{lem:reductionStepDescent} it is sufficient to prove that for a given cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A} \arrow [dr] \arrow [rr] \arrow [->>,dd] & & \overline{B} \arrow [dr] \arrow[->>]{dd}[near start]{} \\
@@ -922,16 +955,16 @@ This finishes the preparation and we will now prove descent for pushouts via loc
             \item bottom and top square are homotopy pushouts
             \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are fibrations
         \end{itemize}
-        the front and right squares are homotopy pullbacks.
+        then the front and right squares are homotopy pullbacks.
 
         By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations.
         So we can form the cube 
         \begin{center}
             \begin{tikzcd} [sep = .75 cm]
                 \overline{A} \arrow [>->, dr, "h"] \arrow [>->, rr, "h"] \arrow [->>,dd] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow[dd] \\
-                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start,  "h"] & &[-2.5em] \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow [dd] & \\
+                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start,  "h"] & &[-3.5em] \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow [dd, "p"] & \\
                 A \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] & & \M(f_{AB}) \arrow [>->, dr, "h"] \\
-                & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & &[-2.5em] \M(f_{AC})\cup_A\M(f_{AB}) &
+                & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \M(f_{AC})\cup_A\M(f_{AB}) &
             \end{tikzcd}
         \end{center}
         where the indicated maps are h-cofibrations as they are either inclusions into the mapping cylinder or pushouts of such.
@@ -960,12 +993,12 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         Finally, since the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[r] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
-                \M(f_{AC}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+                \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[r, hook] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
+                \M(f_{AC}) \arrow[r, hook] & \M(f_{AC})\cup_A\M(f_{AB}) \\
             \end{tikzcd}
             \begin{tikzcd} [sep = 4em]
-                \M(f_{\overline{A}\overline{B}}) \arrow[d] \arrow[r] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
-                \M(f_{AB}) \arrow[r] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+                \M(f_{\overline{A}\overline{B}}) \arrow[d] \arrow[r, hook] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
+                \M(f_{AB}) \arrow[r, hook] & \M(f_{AC})\cup_A\M(f_{AB}) \\
             \end{tikzcd}
         \end{center}
         are both ordinary pullbacks with both vertical maps quasifibrations, they are homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
@@ -988,10 +1021,10 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
     \begin{center}
         \begin{tikzcd} [sep = 1 cm]
             \emptyset \arrow [r] \arrow [d] & X \arrow [d]\\
-            Y \arrow [r] & X\cup^h Y
+            Y \arrow [r] & X\coprod^h Y
         \end{tikzcd}
     \end{center}
-    (where $\emptyset$ is the initial object and $X\cup^h Y$ a homotopy coproduct) is a homotopy pullback.
+    (where $\emptyset$ is the initial object and $X\coprod^h Y$ a homotopy coproduct) is a homotopy pullback.
 \end{definition}
 \begin{lemma}\label{lem:binCoprodDisjoint}
     Binary homotopy coproducts in the model category $\Top$ are disjoint.
@@ -1000,34 +1033,34 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 \emptyset \arrow [r] \arrow [d] & X \arrow [d]\\
-                Y \arrow [r] & X\cup Y
+                Y \arrow [r] & X\coprod Y
             \end{tikzcd}
         \end{center}
         are already homotopy pullbacks.
-        As in the proof for universality of coproducts in $\Top$ \cref{lem:topUniversalCoproduct}, we note that the map $X\to X\cup Y$ is a fibration.
+        As in the proof for universality of coproducts in $\Top$ \cref{lem:topUniversalCoproduct}, we note that the map $X\to X\coprod Y$ is a fibration.
         Since the square is an ordinary pullback, this already implies that it is a homotopy pullback.
     \end{proof}
 \end{lemma}
 \begin{corollary}\label{cor:genCoproductComponentPb}
     Let $M$ be a model category with universal homotopy coproducts and disjoint binary homotopy coproducts.
-    Let $\left(X_i\right)_{i\in I}$ be a small family of objects and let $\bigcup\limits_{i\in I}^h X_i$ be its homotopy coproduct.
+    Let $\left(X_i\right)_{i\in I}$ be a small family of objects and let $\coprod\limits_{i\in I}^h X_i$ be its homotopy coproduct.
     Then
     \begin{center}
         \begin{tikzcd} [sep = 1 cm]
             X_k \arrow [r] \arrow [d] & X_k \arrow [d]\\
-            X_k \arrow [r] & \bigcup\limits_{i\in I}^h X_i
+            X_k \arrow [r] & \coprod\limits_{i\in I}^h X_i
         \end{tikzcd}
     \end{center}
     is a homotopy pullback square and for $k\neq j$
     \begin{center}
         \begin{tikzcd} [sep = 1 cm]
             \emptyset \arrow [r] \arrow [d] & X_j \arrow [d]\\
-            X_k \arrow [r] & \bigcup\limits_{i\in I}^h X_i
+            X_k \arrow [r] & \coprod\limits_{i\in I}^h X_i
         \end{tikzcd}
     \end{center}
     is a homotopy pullback square.
     \begin{proof}
-        For ease of notation, set $Y_k=\bigcup\limits_{i\in I\setminus{\set{k}}}^hX_i$.
+        For ease of notation, set $Y_k=\coprod\limits_{i\in I\setminus{\set{k}}}^hX_i$.
 
         We first consider the case $k\neq j$.
         We define $P_k$ and $P_{kj}$ to be the homotopy pullbacks 
@@ -1035,25 +1068,26 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
             \begin{tikzcd} [sep = 1 cm]
                 P_{kj} \arrow [r] \arrow [d] & X_j \arrow [d]\\
                 P_{k} \arrow [d] \arrow [r] & Y_k \arrow [d]\\
-                X_k \arrow [r] & Y_k\cup^h X_k\simeq\bigcup\limits_{i\in I}^h X_i
+                X_k \arrow [r] & Y_k\coprod^h X_k\simeq\coprod\limits_{i\in I}^h X_i
             \end{tikzcd}
         \end{center}
         and by disjointness of binary homotopy coproducts we have $P_k\simeq\emptyset$.
-        Since $\emptyset$ is the homotopy coproduct over the empty indexing set, by universality for homotopy coproducts the existence of a map $A\to\emptyset$ already implies that $A$ is also a homotopy coproduct over the empty indexing set.
-        This proves that $P_{kj}\simeq\emptyset$.
+
+        Since $P_k\simeq\emptyset$, we know $P_k$ is a homotopy coproduct over the empty indexing set. 
+        Universality for homotopy coproducts applied to the map $P_{kj}\to P_k\simeq\emptyset$ (considered as a natural transformation in $\Fun(\emptyset^{\rhd},M)=\Fun(\set{*},M)$) then proves that $P_{kj}\simeq\emptyset$.
 
         Next we prove the case $k=j$.
         We need to show that
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 X_k \arrow [r] \arrow [d] & X_k \arrow [d]\\
-                X_k \arrow [r] & X_k\cup^h Y_k
+                X_k \arrow [r] & X_k\coprod^h Y_k
             \end{tikzcd}
         \end{center}
         is a homotopy pullback square.
-        By universality of homotopy coproducts we have that $\left(X_k\times_{X_k\cup^h Y_k}^h X_k\right)\cup^h\left(X_k\times_{X_k\cup^h Y_k}^hY_k\right)\simeq X_k$.
-        But by disjointness of homotopy coproducts we also have $X_k\times_{X_k\cup^h Y_k}^hY_k\simeq\emptyset$.
-        Since $\left(X_k\times_{X_k\cup^h Y_k}^h X_k\right)\cup^h\emptyset\simeq\left(X_k\times_{X_k\cup^h Y_k}^hX_k\right)$, we get $X_k\times_{X_k\cup^h Y_k}^hX_k\simeq X_k$ which completes the proof.
+        By universality of homotopy coproducts we have that $\left(X_k\times_{X_k\coprod^h Y_k}^h X_k\right)\coprod^h\left(X_k\times_{X_k\coprod^h Y_k}^hY_k\right)\simeq X_k$.
+        But by disjointness of homotopy coproducts we also have $X_k\times_{X_k\coprod^h Y_k}^hY_k\simeq\emptyset$.
+        Since $\left(X_k\times_{X_k\coprod^h Y_k}^h X_k\right)\coprod^h\emptyset\simeq\left(X_k\times_{X_k\coprod^h Y_k}^hX_k\right)$, we get $X_k\times_{X_k\coprod^h Y_k}^hX_k\simeq X_k$ which completes the proof.
     \end{proof}
 \end{corollary}
 \begin{corollary}\label{cor:disjointImpliesDescent}
@@ -1064,8 +1098,8 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         We have to prove that 
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
-                X_k \arrow [r] \arrow [d] & \bigcup\limits_{i\in I}^hX_i \arrow [d, "\bigcup\limits_{i\in I}f_i"]\\
-                Y_k \arrow [r] & \bigcup\limits_{i\in I}^hY_i
+                X_k \arrow [r] \arrow [d] & \coprod\limits_{i\in I}^hX_i \arrow [d, "\coprod\limits_{i\in I}f_i"]\\
+                Y_k \arrow [r] & \coprod\limits_{i\in I}^hY_i
             \end{tikzcd}
         \end{center}
         is a homotopy pullback for all $k\in I$.
@@ -1074,24 +1108,24 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 P_{kj} \arrow [r] \arrow [dd] & X_j \arrow [d]\\
-                & \bigcup\limits_{i\in I}^hX_i \arrow [d]\\
-                Y_k \arrow [r] & \bigcup\limits_{i\in I}^hY_i
+                & \coprod\limits_{i\in I}^hX_i \arrow [d]\\
+                Y_k \arrow [r] & \coprod\limits_{i\in I}^hY_i
             \end{tikzcd}
         \end{center}
-        and since $X_j\to\bigcup\limits_{i\in I}X_i\to\bigcup\limits_{i\in I}Y_i$ is equal to $X_j\to Y_j\to\bigcup\limits_{i\in I}Y_i$, we can also compute $P_{kj}$ as the successive homotopy pullback
+        and since $X_j\to\coprod\limits_{i\in I}X_i\to\coprod\limits_{i\in I}Y_i$ is equal to $X_j\to Y_j\to\coprod\limits_{i\in I}Y_i$, we can also compute $P_{kj}$ as the successive homotopy pullback
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 P_{kj} \arrow [r] \arrow [d] & X_j \arrow [d]\\
-                Y_k\times_{\bigcup\limits_{i\in I}^hY_i}^h Y_j \arrow [d] \arrow [r] & Y_j \arrow [d]\\
-                Y_k \arrow [r] & \bigcup\limits_{i\in I}^hY_i
+                Y_k\times_{\coprod\limits_{i\in I}^hY_i}^h Y_j \arrow [d] \arrow [r] & Y_j \arrow [d]\\
+                Y_k \arrow [r] & \coprod\limits_{i\in I}^hY_i
             \end{tikzcd}
         \end{center}
         by the pasting law for homotopy pullbacks.
 
-        By \cref{cor:genCoproductComponentPb} we have that $Y_k\times_{\bigcup\limits_{i\in I}Y_i}^h Y_j\simeq\emptyset$ for $k\neq j$ and $Y_k\times_{\bigcup\limits_{i\in I}Y_i}^h Y_k\simeq Y_k$ for $k=j$.
+        By \cref{cor:genCoproductComponentPb} we have that $Y_k\times_{\coprod\limits_{i\in I}Y_i}^h Y_j\simeq\emptyset$ for $k\neq j$ and $Y_k\times_{\coprod\limits_{i\in I}Y_i}^h Y_k\simeq Y_k$ for $k=j$.
         This in particular shows that $P_{kj}\simeq\emptyset$ for $j\neq k$ (again by universality of homotopy coproducts for the empty indexing set) and $P_{kk}\simeq X_k$.
-        By universality of homotopy coproducts we have that $\bigcup\limits_{j\in I}^hP_{kj}\simeq\bigcup\limits_{j\in I}^h\left(Y_k\times_{\bigcup\limits_{i\in I}^hY_i}^hX_j\right)\simeq Y_k\times_{\bigcup\limits_{i\in I}^hY_i}^h\left(\bigcup\limits_{j\in I}^hX_j\right)$ is a weak equivalence.
-        But since $P_{kj}\simeq\emptyset$ for $j\neq k$ and $P_{kk}\simeq X_k$ we obtain $\bigcup\limits_{j\in I}P_{kj}\simeq X_k$ and this proves the proposition.
+        By universality of homotopy coproducts we have that $\coprod\limits_{j\in I}^hP_{kj}\simeq\coprod\limits_{j\in I}^h\left(Y_k\times_{\coprod\limits_{i\in I}^hY_i}^hX_j\right)\simeq Y_k\times_{\coprod\limits_{i\in I}^hY_i}^h\left(\coprod\limits_{j\in I}^hX_j\right)$ is a weak equivalence.
+        But since $P_{kj}\simeq\emptyset$ for $j\neq k$ and $P_{kk}\simeq X_k$ we obtain $\coprod\limits_{j\in I}P_{kj}\simeq X_k$ and this proves the corollary.
     \end{proof}
 \end{corollary}
 \begin{remark}
@@ -1110,16 +1144,16 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
     Since homotopy coproducts can be computed by the ordinary coproducts in $\Top$, in the setting of \cref{cor:disjointImpliesDescent} the square
     \begin{center}
         \begin{tikzcd} [sep = 1 cm]
-            X_k \arrow [r] \arrow [d] & \bigcup\limits_{i\in I}X_i \arrow [d, "\bigcup\limits_{i\in I}f_i"]\\
-            Y_k \arrow [r] & \bigcup\limits_{i\in I}Y_i
+            X_k \arrow [r] \arrow [d] & \coprod\limits_{i\in I}X_i \arrow [d, "\coprod\limits_{i\in I}f_i"]\\
+            Y_k \arrow [r] & \coprod\limits_{i\in I}Y_i
         \end{tikzcd}
     \end{center}
-    is a pullback square as can be checked by point set topology and since the map $Y_k\to\bigcup\limits_{i\in I}Y_i$ is a fibration, it is already a homotopy pullback which proves the proposition.
+    is a pullback square as can be checked by point set topology and since the map $Y_k\to\coprod\limits_{i\in I}Y_i$ is a fibration, it is already a homotopy pullback which proves the proposition.
 \end{remark}
 \begin{corollary}\label{cor:spacesIsInftyTop}
     The \inftycat/ of spaces $\spaces$ is an \inftytop/.
     \begin{proof}
         We know $\spaces$ is locally presentable from \cref{cor:spacesIsLocPres}.
-        \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} prove that $\spaces$ has universal colimits, and \cref{prop:topDescentPo} together with \cref{cor:topDescentCoproduct} then prove that it has descent.
+        \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} prove that $\spaces$ has universal colimits, and \cref{prop:topDescentPo}/\cref{lem:topDescentPoAlt} together with \cref{cor:topDescentCoproduct} then prove that it has descent.
     \end{proof}
 \end{corollary}
