@@ -1,37 +1,30 @@
-A pointed connected object $X$ (see \cref{def:catOfPtdConnObj}) in an \inftytop/ is \emph{deloopable} if there exists a pointed object $A$ such that $X\simeq\Omega A$. %TODO introduce loop spacehere and not only in  james splitting thm
+A pointed connected object $X$ (see \cref{def:catOfPtdConnObj}) in an \inftytop/ is \emph{deloopable} if there exists a pointed object $A$ such that $X\simeq\Omega A$ (as pointed objects). %TODO introduce loop spacehere and not only in  james splitting thm
 
-In this section we will give a proof of the fact that a pointed connected object $X$ is deloopable if and only if it admits additional algebraic structure, which we assemble into a \emph{group object} (see \cref{def:grpObj}). 
+In this section we will give a proof of the fact that a pointed connected object $X$ is deloopable if and only if it admits additional algebraic structure, which we assemble into a \emph{group object} (see \cref{def:grpObj}). %TODO mention stasheff
 The idea and presentation of the proof given here is due to \cite{segal_cat_and_cohom}.
 We will see that descent plays a major role in this.
 
-A generalization characterizing $n$-fold loop spaces for $n\geq 1$ was proven in \cite{may2006geometry} and is called the \emph{May Recognition Theorem}.
+A generalization characterizing higher loop spaces was proven in \cite{may2006geometry} and is called the \emph{May Recognition Theorem}.
 \begin{definition}[(Augmented) Simplicial Objects]
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
     We call a map $U^+\colon\N(\Delta_+)^{\op}\to C$ an \emph{augmented simplicial object of the \inftycat/ $C$}.
 \end{definition}
 \begin{definition}[Groupoid Object]
-    Let $C$ be an \inftycat/ and let $U$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup S'$ with $S\cap S'$ consisting of a single element $\set{s}$ the square
+    Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup S'$ with $S\cap S'$ consisting of a single element $\set{s}$ the square
     \begin{center}
-        \begin{tikzpicture}
-            \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-            {
-              U_n & U(S)\\
-              U(S') &  U(\set{s})\\};
-            \path[-stealth]
-
-            (m-1-1) edge (m-1-2)
-            (m-1-1) edge (m-2-1)
-            (m-2-1) edge (m-2-2)
-            (m-1-2) edge (m-2-2);
-        \end{tikzpicture}
+        \begin{tikzcd}[sep = 4em]
+            U_n \ar[r] \ar[d] & U(S) \ar[d]\\
+            U(S') \ar[r] &  U(\set{s})
+        \end{tikzcd}
     \end{center}
     is a pullback square in $C$.
+
     Then we call $U$ a \emph{groupoid object of $C$}.
     We let $\Gpd(C)$ denote the full subcategory of $\Fun(\N(\Delta)^{\op},C)$ consisting of groupoid objects.
 \end{definition}
 \begin{definition}[Group Object]\label{def:grpObj}
-    Let $C$ be an \inftycat/ and let $U$ be a groupoid object.
+    Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a groupoid object.
     If $U_0\cong *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
 \end{definition}
 \begin{definition}[\Cech/ Nerve]
@@ -41,7 +34,7 @@ A generalization characterizing $n$-fold loop spaces for $n\geq 1$ was proven in
     An object $U^+\in\Fun(\N(\Delta_+)^{\op},C)_0$ in the essential image of $\CN$ is called a \emph{\Cech/ nerve}.
 \end{definition}
 \begin{remark}
-    Computing the \Cech/ nerve for a map $f\colon x\to y$ explicitly, one can see that up to equivalence it is given by
+    Computing the \Cech/ nerve for a map $f\colon x\to y$ explicitly via \cref{def:ptwiseKanExt}, one can see that up to equivalence it is given by
     \begin{center}
         \begin{tikzcd}
             & \CN(f)_3 & \CN(f)_2 & \CN(f)_1 & \CN(f)_0 & \CN(f)_{-1} \\ 
@@ -61,30 +54,22 @@ A generalization characterizing $n$-fold loop spaces for $n\geq 1$ was proven in
     The remaining maps of $\Delta_+$ are however compositions of the shown face and degeneracy maps, which determines the $1$-skeleton; for all higher simplices we make choices via the universal property of the iterated pullbacks, which all yield equivalent objects $\CN(f)$.
 \end{remark}
 \begin{definition}[Effective Groupoid Object]
-    Let $C$ be an \inftycat/ with small colimits and let $U$ be a groupoid object.
+    Let $C$ be an \inftycat/ with small colimits and let $U\colon\N(\Delta)^{\op}\to C$ be a groupoid object.
     Then we call $U$ \emph{effective} if the diagram 
-    \begin{center}
-        \begin{tikzpicture}
-            \matrix (m) [matrix of math nodes,row sep=3em,column sep=4em,minimum width=2em]
-            {
-            U_1 & U_0\\
-            U_0 & \colim U\\};
-            \path[-stealth]
-
-            (m-1-1) edge (m-1-2)
-            (m-1-1) edge (m-2-1)
-            (m-2-1) edge (m-2-2)
-            (m-1-2) edge (m-2-2);
-        \end{tikzpicture}
+    \begin{center} %TODO add face maps!
+        \begin{tikzcd}[sep = 4em]
+            U_1 \ar[r,"\delta_0^1"] \ar[d,"\delta_1^1"] & U_0 \ar[d]\\
+            U_0 \ar[r] & \colim\limits_{\N(\Delta)^{\op}} U
+        \end{tikzcd}
     \end{center}
     is a pullback square.
 \end{definition}
 We will need the following proposition which provides an alternative characterization of a \Cech/ nerve.
 \begin{prop}\label{prop:grpdEffectiveIfPullback} 
-    Let $U^+$ be an augmented simplicial object in an \inftycat/ $C$.
+    Let $C$ be an \inftycat/ and $U^+\colon\N(\Delta_+)^{\op}\to C$ an augmented simplicial object.
     Then it is a \Cech/ nerve if and only if $U^+|_{\N(\Delta)^{\op}}$ is a groupoid object and the square
     \begin{center}
-        \begin{tikzcd} [sep = 4em]
+        \begin{tikzcd} [sep = 4em] %TODO introduce formalism of face and degeneracy maps, best in def if simplex cat
             U_1^+ \arrow[r, "\delta_0^1"] \arrow[d, "\delta_1^1"'] & U_0^+ \arrow[d] \\
             U_0^+ \arrow[r] & U_{-1}^+ \\
         \end{tikzcd}
@@ -96,48 +81,75 @@ We will need the following proposition which provides an alternative characteriz
 \end{prop}
 \begin{corollary}\label{cor:groupoidEffectiveIffColimCechNerve}
     Let $C$ be an \inftycat/ with small colimits. 
-    Then a groupoid object $U$ is effective if and only if its colimit cone $\N(\Delta)^{\op}\star\Delta^0\cong\N(\Delta_+)^{\op}\to C$ is a \Cech/ nerve.
+    Then a groupoid object $U\colon\N(\Delta)^{\op}\to C$ is effective if and only if its induced colimit cone $\N(\Delta)^{\op}\star\Delta^0\cong\N(\Delta_+)^{\op}\to C$ is a \Cech/ nerve.
     \begin{proof}
         This follows directly from the equivalent characterization of an effective groupoid from \cref{prop:grpdEffectiveIfPullback}.
     \end{proof}
 \end{corollary}
-The following proposition is at the heart of our proof. 
-The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
-\begin{prop}\label{prop:groupoidObjInToposAreEffective}
-    Let $C$ be an \inftytop/.
-    Then every groupoid object $U$ is effective.
-    \begin{proof}
-        Let $\alpha\colon\N\left(\Delta_+\right)\to\N\left(\Delta\right)$ be the map induced by the functor sending a morphism $f\colon [m]\to[n]\in\Map(\Delta_+)$ to 
+The following proposition allows us to construct colimit diagrams out of simplicial objects by shifting the degrees.
+\begin{prop}\label{prop:shiftIsColimDiam}
+    Let $C$ be an \inftycat/ and $U\colon\N(\Delta)^{\op}\to C$ a simplicial object.
+    Let $F\colon\Delta_+\to\Delta$ denote the functor sending 
+    \begin{itemize}
+        \item objects $[n]\in\Delta_+$ to $F([n])=[n+1]$
+        \item morphisms $f\colon [m]\to[n]$ of $\Delta_+$ to 
         \begin{align*}
-            \alpha(f)\colon [m+1]&\to[n+1]\\
+            F(f)\colon [m+1]&\to[n+1]\\
             i&\mapsto
             \begin{cases}
                 f(i) & 0\leq i\leq m\\
                 n+1 & i=m+1\;.
             \end{cases}
         \end{align*}
-        Then $\overline{U}\coloneqq U\circ\alpha^{\op}$ is an augmented simplicial object with $U_{n+1}=\overline{U}_n$.
-        Let $f\colon [m]\to[n]\in\Map(\Delta)$ be some map. Then the diagram
+        
+        Then the augmented simplicial object $\overline{U}=U\circ\N(F)^{\op}$ is a colimit diagram.
+    \end{itemize}
+    \begin{reference}
+        \cite[Lemma 6.1.3.17 (1)]{HTT}
+    \end{reference}
+\end{prop}
+The following proposition is at the heart of our proof. 
+The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
+\begin{prop}\label{prop:groupoidObjInToposAreEffective}
+    Let $C$ be an \inftytop/.
+    Then every groupoid object $U\colon\N(\Delta)^{\op}\to C$ is effective.
+    \begin{proof}
+        Let $\overline{U}$ be defined as in \cref{prop:shiftIsColimDiam}.
+        Then $\overline{U}$ is an augmented simplicial object with $U_{n+1}=\overline{U}_n$.
+        We claim that the natural transformation $\overline{U}|_{\N(\Delta)^{\op}}\to U$ induced by the inclusions $[n]\subset[n+1]$ is cartesian.
+        
+        Let $f\colon [m]\to[n]$ be a map in $\Delta$. 
+        Then the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"\overline{U}(f)"'] & U_n \arrow[d, "U(f)"] \\
-                \overline{U}_m=U_{m+1} \arrow[r] \arrow[d] & U_m \arrow[d] \\
-                U_{\set{m,m+1}} \arrow[r] & U_{\set{m}}
+                \overline{U}_m=U_{m+1} \arrow[r] \arrow[d,"{\overline{U}\left(\set{m}\subset[m+1]\right)}"'] & U_m \arrow[d,"{U\left(\set{m}\subset[m+1]\right)}"] \\
+                \overline{U}(\set{m})=U_{\set{m,m+1}} \arrow[r] & U_{\set{m}}
             \end{tikzcd}
         \end{center}
         where the horizontal maps are given by the inclusions $[n]\xhookrightarrow{}[n+1]$, is commutative. 
-        As the outer and lower square are pullbacks because $U$ is a groupoid object, the upper square is a pullback by the pasting law.
+        The bottom square is a pullback since $U$ is a groupoid object.
+        The outer square is equivalent to
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"{\overline{U}\left(\set{f(n)}\subset[n]\right)}"'] & U_n \arrow[d, "{U\left(\set{f(n)}\subset[n]\right)}"] \\
+                \overline{U}({m})=U_{\set{f(m),n+1}} \arrow[r] & U_{\set{f(n)}}
+            \end{tikzcd}
+        \end{center}
+        under the canonical identifications, thus it is also a pullback square since $U$ is a groupoid object.
+        
+        As the outer and bottom square are pullbacks, the upper square is a pullback by the pasting law.
         Thus the natural transformation $\overline{U}|_{\N(\Delta)^{\op}}\to U$ induced by the inclusions $[n]\xhookrightarrow{}[n+1]$ is cartesian.
 
         Descent now implies that 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{U}_0 \arrow[r] \arrow[d] & \colim\overline{U}|_{\N(\Delta)^{\op}} \arrow[d] \\
-                U_0 \arrow[r] & \colim U \\
+                \overline{U}_0 \arrow[r] \arrow[d] & \colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}} \arrow[d] \\
+                U_0 \arrow[r] & \colim\limits_{\N(\Delta)^{\op}} U \\
             \end{tikzcd}
         \end{center}
         is a pullback diagram.
-        Since by e.g. \cite[Lemma 6.1.3.17]{HTT} we have that $\colim\overline{U}|_{\N(\Delta)^{\op}}\cong\overline{U}_{-1} = U_0$ and $\overline{U}_0=U_1$ this proves the proposition.
+        Since by \cref{prop:shiftIsColimDiam} we have that $\colim\overline{U}|_{\N(\Delta)^{\op}}\cong\overline{U}_{-1} = U_0$ and $\overline{U}_0=U_1$ this proves the proposition.
     \end{proof}
 \end{prop}
 \begin{definition}[Effective Epimorphism]
@@ -160,7 +172,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     \begin{proof}
         Both functors are pointwise Kan-extensions along fully faithful functors:
         The functor $F$ is a left Kan-extension along $\N(\Delta)^{\op}\subset\N(\Delta_+)^{\op}$, and $G$ a right Kan-extension along $\Delta^1\subset\N(\Delta_+)^{\op}$.
-        Thus they are both fully faithful.
+        Thus they are both fully faithful by \cref{prop:exKanExt}.
 
         First, let $U$ be an element in the essential image of $G$. 
         Then by definition of an effective epimorphism it is already a colimit diagram, and since $U|_{\N(\Delta)^{\op}}$ is a groupoid, it is in the essential image of $F$.
@@ -178,13 +190,12 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     Since terminal objects are essentially unique, choosing different terminal objects induces equivalent models of \inftycats/ of pointed objects.
 \end{remark}
 \begin{definition}\label{def:catOfPtdConnObj}
-    Let $C$ be an \inftycat/ with small limits. 
-    Then let $\Conn(C_*)\subset C_*$ be the full subcategory of effective epimorphisms.
+    Let $C$ be an \inftycat/ with small limits and let $\Conn(C_*)\subset C_*$ be the full subcategory of effective epimorphisms.
     We call $\Conn(C_*)$ the \emph{\inftycat/ of pointed connected objects}.
 \end{definition}
 \begin{remark}
     We will later introduce notions of higher connectedness. 
-    It follows from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}, hence we call these objects connected.
+    It will follow from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}, hence we call these objects connected.
 \end{remark}
 \begin{corollary}[Delooping of Pointed Connected Objects]\label{prop:mayRecognitionTheoremGroup}
     Let $C$ be an \inftytop/. 
@@ -203,12 +214,12 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
     
     We consider an object $X$ to be \emph{$k$-truncated} if the map $X\to *$ is $k$-truncated.
 \end{definition}
-\begin{remark}
+\begin{remark} %TODO rewrite properly
     Note that in $\spaces$ this definition agrees with the following:
-    \begin{definition*}
-        A map of topological spaces $f\colon X\to Y$ is $k$-truncated if and only if for all its homotopy fibers $F$, $x\in F$ and $n>k$ we have $\pi_n(F,x)\cong 0$.
-        We set $(-2)$-truncated to mean that it is non-empty and contractible, and $(-1)$-truncated to mean that it is non-empty or contractible.
-    \end{definition*}
+
+    A map of topological spaces $f\colon X\to Y$ is $k$-truncated if and only if for all its homotopy fibers $F$, $x\in F$ and $n>k$ we have $\pi_n(F,x)\cong 0$.
+    We set $(-2)$-truncated to mean that it is non-empty and contractible, and $(-1)$-truncated to mean that it is non-empty or contractible.
+    
     This is because for a pullback square in $\spaces$ 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -226,17 +237,34 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
     Let $C$ be an \inftytop/ and let $\Disc(C)\subset C$ be the full subcategory of $0$-truncated objects.
     We call $\Disc(C)$ the \emph{\inftycat/ of discrete objects of $C$}.
 \end{definition}
+\begin{prop}\label{prop:inclOfSetIsFF}
+    There is a canonical fully faithful functor $i\colon\N(\Set)\to\spaces$ whose essential image consists precisely of $\Disc(\spaces)$.
+    Furthermore, this functor $i$ has $\pi_0\colon\spaces\to\N(\Set)$ (induced by the path-connected component functor $\pi_0\colon\Top\to\Set$) as a left adjoint.
+    \begin{reference}
+        \cite[Proposition 7.8.3]{cisinski_2019}
+    \end{reference}
+\end{prop}
+\begin{prop}\label{prop:testEffEpiInDisc}
+    Let $C$ be an \inftytop/ and let $\tau\colon C\to\Disc(C)$ be a left adjoint to the inclusion $\Disc(C)\subset C$.
+    Then a map $f$ in $C$ is an effective epimorphism if and only if $\tau(f)$ is an effective epimorphism in the ordinary category $\ho(\Disc(C))$ (via \cref{rmk:boardmanVogt}).
+    \begin{reference}
+        \cite[Proposition 7.2.1.14]{HTT}
+    \end{reference}
+\end{prop}
+\begin{remark}
+    It follows from \cite[Lemma 5.5.6.15]{HTT}, \cite[Proposition 2.3.4.18]{HTT} and \cite[Proposition 2.3.4.5]{HTT} that $\Disc(C)\to\N(\ho(\Disc(C)))$ is in fact an isomorphism.
+\end{remark}
 \begin{prop}\label{prop:effInSpaceIffSurj}
     A map $f\colon x\to y$ in $\spaces$ is an effective epimorphism if and only if it induces a surjection on connected components.
     \begin{proof}
-        First, by \cite[Proposition 7.8.3]{cisinski_2019} there is a fully faithful functor $i\colon\N(\Set)\to\spaces$ whose essential image consists precisely of the discrete objects and has $\pi_0\colon\spaces\to\N(\Set)$ as a left adjoint.
-        By \cite[Proposition 7.2.1.14]{HTT} the statement of the lemma is thus equivalent to checking whether $\pi_0(f)$ is an effective epimorphism in $\Set$.
-        In $\Set$ the effective epimorphisms are exactly the surjective morphisms, so we have that a map $f$ in $\spaces$ is an effective epimorphism precisely if $\pi_0(f)$ is surjective.
+        First, by \cref{prop:inclOfSetIsFF} there is a fully faithful functor $i\colon\N(\Set)\to\spaces$ whose essential image consists precisely of the discrete objects and has $\pi_0\colon\spaces\to\N(\Set)$ as a left adjoint.
+        By \cref{prop:testEffEpiInDisc} the statement of the lemma is thus equivalent to checking whether $\pi_0(f)$ is an effective epimorphism in $\Set$.
+        In $\Set$, computation shows that the effective epimorphisms are exactly the surjective morphisms, hence a map $f$ in $\spaces$ is an effective epimorphism precisely if $\pi_0(f)$ is surjective.
     \end{proof}
 \end{prop}
 \begin{corollary}
     Let $x\colon*\to X\in\spaces_1$ be a map.
-    Then $x$ is an effective epimorphism if and only if $X$ is connected as a topological space.
+    Then $x$ is an effective epimorphism if and only if $X$ is path-connected as a topological space.
     \begin{proof}
         This follows from \cref{prop:effInSpaceIffSurj} and the fact that $*$ has exactly one connected component.
     \end{proof}
@@ -264,8 +292,8 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
         \item the map induced by a degeneracy map $s_k^n$ is injecting the constant loop $c_x$ at the $k$-th position.
     \end{itemize}
     We can thus view the map $\Conn(\spaces)\to\Grp(\spaces)$ as being a canonically enriched version of the loop space functor.
-    The statement of \cref{prop:mayRecognitionTheoremGroup} therefore allows us to recognize whether a pointed connected space $X$ is deloopable:
+    The statement of \cref{prop:mayRecognitionTheoremGroup} therefore allows us to recognize whether a pointed connected space $*\to X$ is deloopable:
 
-    It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta^{\op}\right)\to\spaces$ with $U_1=X$ (hence $U_n\simeq X\times\ldots\times X$ with $X$ appearing $n$ times).
+    It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta\right)^{\op}\to\spaces$ such that the unique constant map $[1]\to[0]$ in $\Delta$ is sent to the map $*\to X\in \spaces_1$ by $U$ (hence $U_n\simeq X\times\ldots\times X$ with $X$ appearing $n$ times).
     The delooping is then given by taking the colimit of this diagram and taking the canonical map $A\colon*\to\colim U$ to be a pointed space, as this fulfills $\Omega A\simeq X$.
 \end{remark}

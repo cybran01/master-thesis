@@ -6,7 +6,7 @@ We will not give proofs for any statements in this section; we will however poin
     For every $n\in\Nat$, let $[n]$ denote the linearly ordered set $\set{0<\ldots<n}\subset\Nat$ and let $[-1]=\emptyset$, which we also consider to be linearly ordered.
 \end{definition}
 \begin{definition}
-    Let $X,Y$ be linearly ordered sets and $f\colon X\to Y$ a function of the underlying sets.
+    Let $X,Y$ be partially ordered sets and $f\colon X\to Y$ a function of the underlying sets.
     Then we call $f$ \emph{nondecreasing} if for all $a,b\in X$ with $a\leq b$, we have $f(a)\leq f(b)$.
 \end{definition}
 \begin{definition}[(Augmented) Simplex Category]
@@ -32,7 +32,7 @@ We will not give proofs for any statements in this section; we will however poin
     We write $X(A)$ for the evaluation $X_n$ under this canonical identification. 
 \end{definition}
 \begin{remark}\label{rmk:linOrderedAsCat}
-    Any linearly ordered set $X$ can be viewed as a category by setting
+    Any partially ordered set $X$ can be viewed as a category by setting
     \begin{equation*}
         \hom_{X}(a,b)=\begin{cases}
             * & a\leq b\\
@@ -40,7 +40,7 @@ We will not give proofs for any statements in this section; we will however poin
         \end{cases}
     \end{equation*}
     for $a,b\in X$.
-    When viewing linearly ordered sets $X,Y$ as categories in this way, the nondecreasing functions $f\colon X\to Y$ correspond precisely to functors.
+    When viewing partially ordered sets $X,Y$ as categories in this way, the nondecreasing functions $f\colon X\to Y$ correspond precisely to functors.
 
     This gives fully faithful inclusions $\Delta\subset\Cat$ and $\Delta_+\subset\Cat$, where $\Cat$ denotes the \emph{category of small categories}.
 \end{remark}
@@ -76,6 +76,11 @@ We will not give proofs for any statements in this section; we will however poin
         \cite[Proposition 1.2.2.1]{kerodon}
     \end{reference}
 \end{lemma}
+\begin{remark}[The Boardmann-Vogt construction]\label{rmk:boardmanVogt}
+    For an \inftycat/ $C$ there is a explicit construction of $\ho(C)$ due to Boardman and Vogt (see e.g. \cite[Theorem 1.6.6]{cisinski_2019} for details).
+    We will later introduce a simplicial set $\Map_C(x,y)$ representing maps between objects $x,y\in C_0$ (see \cref{def:mappingSpace}).
+    The sets of maps $\hom_{\ho(C)}(x,y)$ is then a quotient of $\Map_C(x,y)_0$, hence we can send a map $f\colon\Delta^1\to C\in\Map_C(x,y)_0$ to its class $[f]\in\hom_{\ho(C)}(x,y)$.
+\end{remark}
 \begin{definition}[Simplicial Category]
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
     For a simplicial category $C$, we let $\Hom_C(-,-)\colon C^{\op}\times C\to\sSet$ denote the enriched $\Hom$-functor.
@@ -453,7 +458,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
 \end{definition}
 We will only deal with Kan-extensions where $u$ is an inclusion and $C$ is complete and cocomplete.
 In this case, we can give a more explicit description.
-\begin{definition}[Pointwise Kan-Extension] %kerodon Definition 7.3.2.1
+\begin{definition}[Pointwise Kan-Extension]\label{def:ptwiseKanExt} %kerodon Definition 7.3.2.1
     Let $F\colon C\to D$ be a functor between \inftycats/ and let $i\colon C_0\subset C$ be a full subcategory.
     Then $F$ is a \emph{pointwise right Kan-extension along $i$} if for all objects $c\in C$ the diagram
     \begin{equation*}

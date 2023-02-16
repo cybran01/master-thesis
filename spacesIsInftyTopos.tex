@@ -962,7 +962,7 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         \begin{center}
             \begin{tikzcd} [sep = .75 cm]
                 \overline{A} \arrow [>->, dr, "h"] \arrow [>->, rr, "h"] \arrow [->>,dd] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow[dd] \\
-                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start,  "h"] & &[-3.5em] \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow [dd, "p"] & \\
+                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over,  "h"] & &[-3.5em] \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow [dd, "p"] & \\
                 A \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] & & \M(f_{AB}) \arrow [>->, dr, "h"] \\
                 & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \M(f_{AC})\cup_A\M(f_{AB}) &
             \end{tikzcd}
@@ -993,12 +993,12 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         Finally, since the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[r, hook] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
-                \M(f_{AC}) \arrow[r, hook] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+                \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[>->,r, "h"] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d,"p"] \\
+                \M(f_{AC}) \arrow[>->,r, "h"] & \M(f_{AC})\cup_A\M(f_{AB}) \\
             \end{tikzcd}
             \begin{tikzcd} [sep = 4em]
-                \M(f_{\overline{A}\overline{B}}) \arrow[d] \arrow[r, hook] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d] \\
-                \M(f_{AB}) \arrow[r, hook] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+                \M(f_{\overline{A}\overline{B}}) \arrow[d] \arrow[>->,r, "h"] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d,"p"] \\
+                \M(f_{AB}) \arrow[>->,r, "h"] & \M(f_{AC})\cup_A\M(f_{AB}) \\
             \end{tikzcd}
         \end{center}
         are both ordinary pullbacks with both vertical maps quasifibrations, they are homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
