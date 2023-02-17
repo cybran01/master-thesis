@@ -11,11 +11,11 @@ A generalization characterizing higher loop spaces was proven in \cite{may2006ge
     We call a map $U^+\colon\N(\Delta_+)^{\op}\to C$ an \emph{augmented simplicial object of the \inftycat/ $C$}.
 \end{definition}
 \begin{definition}[Groupoid Object]
-    Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup S'$ with $S\cap S'$ consisting of a single element $\set{s}$ the square
+    Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup T$ with $S\cap T=\set{s}$ consisting of a single element, the square (see \cref{def:simpSet})
     \begin{center}
         \begin{tikzcd}[sep = 4em]
-            U_n \ar[r] \ar[d] & U(S) \ar[d]\\
-            U(S') \ar[r] &  U(\set{s})
+            U_n \ar[r] \ar[d] & U_S \ar[d]\\
+            U_T \ar[r] &  U_{\set{s}}
         \end{tikzcd}
     \end{center}
     is a pullback square in $C$.
@@ -124,7 +124,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
             \begin{tikzcd} [sep = 4em]
                 \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"\overline{U}(f)"'] & U_n \arrow[d, "U(f)"] \\
                 \overline{U}_m=U_{m+1} \arrow[r] \arrow[d,"{\overline{U}\left(\set{m}\subset[m+1]\right)}"'] & U_m \arrow[d,"{U\left(\set{m}\subset[m+1]\right)}"] \\
-                \overline{U}(\set{m})=U_{\set{m,m+1}} \arrow[r] & U_{\set{m}}
+                \overline{U}_{\set{m}}=U_{\set{m,m+1}} \arrow[r] & U_{\set{m}}
             \end{tikzcd}
         \end{center}
         where the horizontal maps are given by the inclusions $[n]\xhookrightarrow{}[n+1]$, is commutative. 
@@ -133,7 +133,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"{\overline{U}\left(\set{f(n)}\subset[n]\right)}"'] & U_n \arrow[d, "{U\left(\set{f(n)}\subset[n]\right)}"] \\
-                \overline{U}({m})=U_{\set{f(m),n+1}} \arrow[r] & U_{\set{f(n)}}
+                \overline{U}_{\set{f(m)}}=U_{\set{f(m),n+1}} \arrow[r] & U_{\set{f(n)}}
             \end{tikzcd}
         \end{center}
         under the canonical identifications, thus it is also a pullback square since $U$ is a groupoid object.
@@ -214,24 +214,33 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
     
     We consider an object $X$ to be \emph{$k$-truncated} if the map $X\to *$ is $k$-truncated.
 \end{definition}
-\begin{remark} %TODO rewrite properly
-    Note that in $\spaces$ this definition agrees with the following:
+\begin{remark}
+    There is ``another'' definition of truncatedness in $\Top$:
 
-    A map of topological spaces $f\colon X\to Y$ is $k$-truncated if and only if for all its homotopy fibers $F$, $x\in F$ and $n>k$ we have $\pi_n(F,x)\cong 0$.
-    We set $(-2)$-truncated to mean that it is non-empty and contractible, and $(-1)$-truncated to mean that it is non-empty or contractible.
+    A space $X$ in $\Top$ is 
+    \begin{itemize}
+        \item \emph{topologically $(-2)$-truncated} if it is contractible 
+        \item \emph{topologically $n$-truncated} for $n\in\Nat\cup\set{-1}$ if for all $x\in X$ and $k>n$, we have $\pi_k(X,x)\cong 0$.
+    \end{itemize}
+    A map $f\colon X\to Y$ in $\Top$ is \emph{topologically $n$-truncated} for $n\in\Nat\cup\set{-2,-1}$ if all its homotopy fibers are $n$-truncated.
     
-    This is because for a pullback square in $\spaces$ 
-    \begin{center}
-        \begin{tikzcd} [sep = 4em]
-            X\times_{Y} X \arrow[r, "g"] \arrow[d, "g"] & X \arrow[d, "f"] \\
-            X \arrow[r, "f"] & Y \\
-        \end{tikzcd}
-    \end{center}
-    by the fiberwise characterization of homotopy pullbacks we have that $g$ is $k$-truncated if and only if $f$ is $k$-truncated.
-    
-    Furthermore, a map $f\colon X\to Y$ equipped with a section $s\colon Y\to X$ is $n$-truncted if and only if the section $s$ is $(n-1)$-truncated (as can be proven by inspection of the long exact sequences of homotopy groups).
-    
-    Since $X\to X\times_YX$ is the canonical section of $X\times_{Y} X\to Y$, this allows us to recursively reduce to the case of $f\colon X\to Y$ being $(-2)$-truncated, which in both definitions means that it is an equivalence.
+    This definition agrees with the definition of truncatedness in $\spaces$:
+    \begin{itemize}
+        \item A topologically $(-2)$-truncated map is precisely a weak equivalence in $\Top$, hence $(-2)$-truncated in $\spaces$.
+        \item For $n\geq -1$, the pullback square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X\times_{Y} X \arrow[r, "g"] \arrow[d, "g"] & X \arrow[d, "f"] \\
+                X \arrow[r, "f"] & Y \\
+            \end{tikzcd}
+        \end{center}
+        in $\spaces$ shows that $f$ is $n$-truncated if and only if $g$ is $n$-truncated by the fiberwise characterization of homotopy pullbacks. %TODO cref this fiberwise characterization
+        (Note that a map is $(-1)$-truncated if and only if its homotopy fibers are contractible or empty.)
+        Furthermore, the universal map $s\colon X\to X\times_Y X$ is a section of $g$ in $\spaces$.
+        Inspection of the long exact sequences of homotopy groups shows that $g$ is topologically $n$-truncted if and only if the section $s$ is topologically $(n-1)$-truncated.
+
+        This allows us to recursively reduce to the case of $f\colon X\to Y$ being $(-2)$-truncated, in which we have already seen that both definitions coincide.
+    \end{itemize}
 \end{remark}
 \begin{definition}
     Let $C$ be an \inftytop/ and let $\Disc(C)\subset C$ be the full subcategory of $0$-truncated objects.

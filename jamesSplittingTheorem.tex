@@ -380,30 +380,40 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
     If $f$ is connected for all $k\in\Nat$, then we say that $f$ is \emph{$\infty$-connected}.
     We consider an object $X$ to be \emph{$k$-connected} if the map $X\to *$ is $k$-connected.
 \end{definition}
-\begin{remark} %TODO rewrite properly
-    Note that in $\spaces$ this definition agrees with the following:
-    \begin{definition*}
-        A map of topological spaces $f\colon X\to Y$ is $k$-connected if and only if for all its homotopy fibers $F$, all $x\in F$ and $n\leq k$ we have $\pi_n(F,x)\cong 0$.
-        We say that every space is $(-2)$-connected and that a space is $(-1)$-connected if it is inhabited.
-    \end{definition*}
-    This is because for a pullback square in $\spaces$ 
-    \begin{center}
-        \begin{tikzcd} [sep = 4em]
-            X\times_{Y} X \arrow[r, "g"] \arrow[d, "g"] & X \arrow[d, "f"] \\
-            X \arrow[r, "f"] & Y \\
-        \end{tikzcd}
-    \end{center}
-    $g$ is $k$-connected if and only if $f$ is $k$-connected since
+\begin{remark}
+    There is ``another'' definition of connectedness in $\Top$:
+
+    A space $X$ in $\Top$ is 
     \begin{itemize}
-        \item for $k=-2$ there is nothing to prove
-        \item for $k\geq -1$ the homotopy fiber is inhabited for all chosen basepoints and thus $f$ is an effective epimorphism (see \cref{prop:effInSpaceIffSurj}).
-            Since homotopy fibers are essentially constant on connected components, this allows us to prove that $f$ is $k$-connected if $g$ is $k$-connected from the fiberwise characterization of homotopy pullbacks.
-            The other implication does not need $f$ to be an effective epimorphism and follows directly from the fiberwise characterization of homotopy pullbacks. 
+        \item \emph{topologically $(-1)$-connected} if $X\neq\emptyset$
+        \item \emph{topologically $n$-connected} for $n\in\Nat$ if $X\neq\emptyset$ and for all $x\in X$ and $k\leq n$, we have $\pi_k(X,x)\cong 0$
     \end{itemize}
-    
-    Furthermore, a map $f\colon X\to Y$ equipped with a section $s\colon Y\to X$ is $n$-connected if and only if the section $s$ is $(n-1)$-connected (as can be proven by inspection of the long exact sequences of homotopy groups).
-    
-    Since $X\to X\times_YX$ is the canonical section of $X\times_{Y} X\to Y$, this allows us to recursively reduce to the case of $f\colon X\to Y$ being $(-2)$-connected, which in both definitions means that it is an arbitrary map.
+    with the convention that all spaces are \emph{topologically $(-2)$-connected}.
+    A map $f\colon X\to Y$ in $\Top$ is \emph{topologically $n$-conneced} for $n\in\Nat\cup\set{-2,-1}$ if all its homotopy fibers are $n$-connected. 
+    %(For authors this definition means a topologically $(n+1)$-conneced map.) %TODO maybe mention that some authors use different definition; for them, this map is (n+1)-connected
+
+    This definition agrees with the definition of connectedness in $\spaces$:
+    \begin{itemize}
+        \item For $n=-2$ there is nothing to prove.
+        \item For $n\geq -1$ all homotopy fibers of $f$ are nonempty, hence $f$ is an effective epimorphism (see \cref{prop:effInSpaceIffSurj}).
+            Furthermore, given the pullback square
+            \begin{center}
+                \begin{tikzcd} [sep = 4em]
+                    X\times_{Y} X \arrow[r, "g"] \arrow[d, "g"] & X \arrow[d, "f"] \\
+                    X \arrow[r, "f"] & Y \\
+                \end{tikzcd}
+            \end{center}
+            in $\spaces$, we claim the map $g$ is topologically $n$-connected if and only if $f$ is topologically $n$-connected:
+            
+            From the fiberwise characterization of homotopy pullbacks, it follows directly that if $f$ is topologically $n$-connected, $g$ is as well.%TODO cref fiberwise char
+
+            Since homotopy fibers are essentially constant on path-connected components and $f$ is an effective epimorphism, the fiberwise characterization of homotopy pullbacks also shows that $f$ is topologically $n$-connected if $g$ is topologically $n$-connected.
+
+            Furthermore, the universal map $s\colon X\to X\times_{Y} X$ is a section of $g$ in $\spaces$.
+            By inspection of the long exact sequences of homotopy groups, $g$ is topologically $n$-connected if and only if the section $s$ is topologically $(n-1)$-connected.
+
+            This allows us to recursively reduce to the case of $f\colon X\to Y$ being topologically $(-2)$-connected, in which we have already seen that both definitions coincide.
+    \end{itemize}
 \end{remark}
 \begin{definition}
     We say that an \inftytop/ $C$ is \emph{hypercomplete} if every $\infty$-connected map is an equivalence.

@@ -520,7 +520,7 @@ The next proposition is the most important part of the proof of \cref{prop:desce
     \end{proof}
 \end{prop}
 For convenience we fix notation for some variations of the mapping cylinder construction.
-\begin{definition}[Mapping Cylinder]
+\begin{definition}[Mapping Cylinder] %TODO give construction as a pushout, give double mapping cylinder
     Let $f\colon A\to B$ be a map of topological spaces and let $I=[0,1]$.
     Then we let
     \begin{equation*}
@@ -641,7 +641,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 \end{prop}
 This concludes the technical preliminaries. 
 We are now ready to give a proof of descent for pushouts.
-\begin{prop}\label{prop:topDescentPo}
+\begin{prop}\label{prop:topDescentPo} %TODO the maps for how to glue the double mapping cylinders are not clear
     The model category $\Top$ has descent for homotopy pushouts. 
     \begin{proof}
         We start with a cube
@@ -695,7 +695,7 @@ We are now ready to give a proof of descent for pushouts.
             \end{tikzcd}
         \end{center}
         respectively. 
-        The equivalences of the back squares and front squares follows from the analogous argument.
+        The equivalences of the back squares and front squares follow from the analogous argument.
 
         Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are pullback squares since $f_{\overline{X}X}$ is a map of excisive triads $f_{\overline{X}X}\colon(\overline{X};\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}}))\to(X;\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC}))$.
     \end{proof}
@@ -783,7 +783,7 @@ The relationship of locality of quasifibrations and descent also goes the other 
     A direct proof of the locality of quasifibrations can be found in \cite[Theorem A.1.2]{aguilar2002algebraic}.
 \end{remark}
 The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQuasifib} is applicable.
-\begin{lemma}\label{lem:reductionStepDescent}
+\begin{lemma}\label{lem:reductionStepDescent} %TODO it seems this can be shortened
     Suppose that for all cubes in the model category $\Top$
     \begin{center}
         \begin{tikzcd} [sep = .5 cm]
@@ -797,7 +797,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
     \begin{itemize}
         \item left and back face are homotopy pullbacks
         \item bottom and top square homotopy pushouts 
-        \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are fibrations
+        \item the maps $\overline{A}\xtwoheadrightarrow{} A$, $\overline{B}\xtwoheadrightarrow{} B$ and $\overline{C}\xtwoheadrightarrow{} C$ are fibrations
     \end{itemize}
     the front and right squares are homotopy pullbacks.
     Then $\Top$ has descent for homotopy pushouts.
@@ -813,19 +813,16 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         \end{center}
         where the back and left square are homotopy pullbacks and top and bottom square are homotopy pushouts, can be reduced to a cube of the required form in the sense that all faces are equivalent to the corresponding faces of the starting cube.
         
-        We first factor the maps $A\xtailrightarrow{}\hat{C}\xtwoheadrightarrow[]{\sim} C$ and $B'\xrightarrow{\sim}\overline{B}\xtwoheadrightarrow{} B$ to obtain the diagram
+        We first factor the map $B'\to B$ into a weak equivalence followed by a fibration $B'\xrightarrow{\sim}\overline{B}\xtwoheadrightarrow{} B$. 
+        We then set $\overline{A}=A\times_{B}\overline{B}$ and obtain the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                C^{\prime} \arrow[dd] & \hat{C}\times_CC' \arrow[->>]{l}[swap]{\sim} \arrow[dd] & A^{\prime} \arrow[l] \arrow[r] \arrow[d, "\sim"] & B^{\prime} \arrow[d, "\sim"] \\
-                && \overline{A} \arrow [->>,d, ""] \arrow[r] & \overline{B} \arrow[->>,d, ""] \\
-                C & \hat{C} \arrow[->>]{l}{}[swap]{\sim} & A \arrow[>->,l, ""] \arrow[r] & B 
+                C' \arrow[dd] & A^{\prime} \arrow[l] \arrow[r] \arrow[d, "\sim"] & B^{\prime} \arrow[d, "\sim"] \\
+                & \overline{A} \arrow [->>,d] \arrow[r] & \overline{B} \arrow[->>,d, ""] \\
+                C & A \arrow[>->,l] \arrow[r] & B 
             \end{tikzcd}
         \end{center}
-        where 
-        \begin{itemize}
-            \item $\overline{A}=A\times_{B}\overline{B}$
-            \item $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks.
-        \end{itemize}
+        $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks. 
         Next we factor the map $A'\xtailrightarrow{}X\xrightarrow{\sim}\hat{C}\times_CC'$. 
         Note that the diagram 
         \begin{center}
@@ -843,7 +840,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
                 C & \hat{C} \arrow[->>]{l}{}[swap]{\sim} & A \arrow[>->,l, ""] \arrow[r] & B 
             \end{tikzcd}
         \end{center}
-        and note that $X\to X\cup_{A'}\overline{A}$ is a weak equivalence because $\Top$ is left proepr and $X\to X\cup_{A'}\overline{A}$ is a pushout of a weak equivalence along a cofibration.
+        and note that $X\to X\cup_{A'}\overline{A}$ is a weak equivalence because $\Top$ is left proper and $X\to X\cup_{A'}\overline{A}$ is a pushout of a weak equivalence along a cofibration.
         By the pasting law we have that
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -953,9 +950,9 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         \begin{itemize}
             \item left and back face are homotopy pullbacks
             \item bottom and top square are homotopy pushouts
-            \item the maps $\overline{A}\to A$, $\overline{B}\to B$ and $\overline{C}\to C$ are fibrations
+            \item the maps $\overline{A}\xtwoheadrightarrow{} A$, $\overline{B}\xtwoheadrightarrow{} B$ and $\overline{C}\xtwoheadrightarrow{} C$ are fibrations
         \end{itemize}
-        then the front and right squares are homotopy pullbacks.
+        the front and right squares are also homotopy pullbacks.
 
         By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations.
         So we can form the cube 

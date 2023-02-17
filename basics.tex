@@ -1,6 +1,6 @@
 In this section we would like to fix the general notation on \inftycats/ and model categories used throughout the rest of the text and remind the reader of some concepts which will be important later on.
 Some familiarity with \inftycats/ and Kan-complexes is assumed, in particular familiarity with limits/colimits in \inftycats/.
-We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts).
+We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts). %TODO say that we take these to be defined via derived functors
 We will not give proofs for any statements in this section; we will however point to the relevant literature.
 \begin{definition}
     For every $n\in\Nat$, let $[n]$ denote the linearly ordered set $\set{0<\ldots<n}\subset\Nat$ and let $[-1]=\emptyset$, which we also consider to be linearly ordered.
@@ -24,12 +24,12 @@ We will not give proofs for any statements in this section; we will however poin
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
 \end{definition}
-\begin{definition}[Simplicial Set]
+\begin{definition}[Simplicial Set]\label{def:simpSet}
     We set $\sSet=\Fun(\Delta^{\op},\Set)$ to be the \emph{category of simplicial sets}.
     Given a simplicial set $X\in\sSet$ and an object $[n]\in\Delta$ we denote evaluation by $X([n])=X_n$.
 
     Note that for any given nonempty finite linearly ordered set $A$ with $n\in\Nat$ elements, there exists a unique nondecreasing bijection to $[n]$.
-    We write $X(A)$ for the evaluation $X_n$ under this canonical identification. 
+    We write $X_A$ for the evaluation $X_n$ under this canonical identification. 
 \end{definition}
 \begin{remark}\label{rmk:linOrderedAsCat}
     Any partially ordered set $X$ can be viewed as a category by setting
