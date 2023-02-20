@@ -76,7 +76,7 @@ We will not give proofs for any statements in this section; we will however poin
         \cite[Proposition 1.2.2.1]{kerodon}
     \end{reference}
 \end{lemma}
-\begin{remark}[The Boardmann-Vogt construction]\label{rmk:boardmanVogt}
+\begin{remark}[The Boardmann-Vogt Construction]\label{rmk:boardmanVogt}
     For an \inftycat/ $C$ there is a explicit construction of $\ho(C)$ due to Boardman and Vogt (see e.g. \cite[Theorem 1.6.6]{cisinski_2019} for details).
     We will later introduce a simplicial set $\Map_C(x,y)$ representing maps between objects $x,y\in C_0$ (see \cref{def:mappingSpace}).
     The sets of maps $\hom_{\ho(C)}(x,y)$ is then a quotient of $\Map_C(x,y)_0$, hence we can send a map $f\colon\Delta^1\to C\in\Map_C(x,y)_0$ to its class $[f]\in\hom_{\ho(C)}(x,y)$.
@@ -100,23 +100,23 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition}
 \begin{definition}[LLP/RLP]
     Let $C$ be a category and let $S$ be a class of maps in $C$.
-    We say that a morphism $f\colon A\to B$ has the \emph{left lifting property (LLP) with respect to $S$} if for every map $g\colon X\to Y\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ that make the square
+    We say that a morphism $f\colon A\to B$ has the \emph{left lifting property (LLP) with respect to $S$} if for every map $g\colon X\to Y\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ such that the square
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             A \arrow[r,"\lambda"] \arrow[d, "f"] & X \arrow[d, "g"] \\
             B \arrow[ur, dashed, "\exists"] \arrow[r, "\mu"] & Y
         \end{tikzcd}
     \end{center}
-    commute, there exists a map $B\to X$ as indicated making the diagram commute.
+    commutes, there exists a map $B\to X$ as indicated making the diagram commute.
 
-    Dually, we say that a morphism $g\colon X\to Y$ has the \emph{right lifting property (RLP) with respect to $S$} if for every map $f\colon A\to B\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ that make the square
+    Dually, we say that a morphism $g\colon X\to Y$ has the \emph{right lifting property (RLP) with respect to $S$} if for every map $f\colon A\to B\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ such that the square
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             A \arrow[r,"\lambda"] \arrow[d, "f"] & X \arrow[d, "g"] \\
             B \arrow[ur, dashed, "\exists"] \arrow[r, "\mu"] & Y
         \end{tikzcd}
     \end{center}
-    commute, there exists a map $B\to X$ as indicated making the diagram commute.
+    commutes, there exists a map $B\to X$ as indicated making the diagram commute.
 
     We denote the class of maps having the LLP with respect to $S$ with $l(S)$, and the class of maps having the RLP with respect to $S$ with $r(S)$.
 \end{definition}

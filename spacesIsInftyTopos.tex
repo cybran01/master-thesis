@@ -27,6 +27,7 @@ Since both coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerve
     \end{proof}
 \end{corollary}
 %TODO  \cite[Definition 5.1.1]{hovey2007model} for direct/inverse category
+%TODO inj/proj model structure def
 \begin{thm}\label{thm:exProjInjModelStr}
     Let $C$ be a model category and $D$ be a small category.
 
@@ -84,7 +85,7 @@ Since both coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerve
         By \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} we only need to check universality and descent for pushouts and small coproducts.
         So let $I$ be either the indexing category for pushouts $\bullet\xleftarrow{}\bullet\xrightarrow{}\bullet$ or a small discrete category.
 
-        Then given a natural transformation $\alpha\colon\N(I)^{\rhd}\times\Delta^1\to\N(M)[W^{-1}]$, we can replace $\alpha$ by an equivalent natural transformation represented by a functor $\overline{\alpha}\times[1]\colon I^{\rhd}\to M$ via \cref{cor:replaceWithStrictDiagram}.
+        Then given a natural transformation $\alpha\colon\N(I)^{\rhd}\times\Delta^1\to\N(M)[W^{-1}]$, we can replace $\alpha$ by an equivalent natural transformation represented by a functor $\overline{\alpha}\colon I^{\rhd}\times[1]\to M$ via \cref{cor:replaceWithStrictDiagram}.
         Then by \cref{lem:htpyLimAndColimAgree}
         \begin{itemize}
             \item for a map $f\colon i\to j\in I^{\rhd}$ (which we can identify with $f\colon\Delta^1\to\N(I)^{\rhd}$), the induced square $\Delta^1\times\Delta^1\xrightarrow{\alpha(f,\id_{\Delta^1})}\N(M)[W^{-1}]$ is a pullback square if and only if the square $[1]\times[1]\xrightarrow{\overline{\alpha}(f,\id_{[1]})}M$ is a homotopy pullback
@@ -520,11 +521,11 @@ The next proposition is the most important part of the proof of \cref{prop:desce
     \end{proof}
 \end{prop}
 For convenience we fix notation for some variations of the mapping cylinder construction.
-\begin{definition}[Mapping Cylinder] %TODO give construction as a pushout, give double mapping cylinder
+\begin{definition}[Mapping Cylinder]
     Let $f\colon A\to B$ be a map of topological spaces and let $I=[0,1]$.
     Then we let
     \begin{equation*}
-        \M(f)\coloneqq\faktor{\left(A\times I\right)\cup B}{(a,0)\sim f(a)}
+        \M(f)=\newfaktor{\left(A\times I\right)\amalg B}{(a,0)\sim f(a)}
     \end{equation*}
     denote the \emph{mapping cylinder of $f$}.
 
@@ -532,8 +533,78 @@ For convenience we fix notation for some variations of the mapping cylinder cons
     The analogous construction with $I=[0,x]$ will be referred to as a \emph{closed mapping cylinder of $f$} and denoted $\M^{[0,x]}(f)$;
     the construction with half open intervalls $I=[0,x)$ will be referred to as an \emph{open mapping cylinder of $f$} and denoted $\M^{[0,x)}(f)$.
 \end{definition}
-\begin{remark}
-    Note that the inclusion $A\xrightarrow{(\id_A,1)}\M(f)$ is a h-cofibration (see e.g. \cite[Theorem 2]{note_on_cofibs_1}).
+\begin{remark}\label{rmk:inclIntoMappingCylIsHCofib}
+    Note that a mapping cylinder $\M^I(f)$ (with $f\colon A\to B$ and $I=[0,x]$ or $I=[0,x)$ for $x>0$) is a model of the pushout 
+    \begin{center}
+        \begin{tikzcd}
+            A\times\set{0} \ar[r,"f"] \ar[>->,d, "h"] & B \ar[>->,d, "h"]\\
+            A\times I \ar[r] & \M^I(f)
+        \end{tikzcd}\;.
+    \end{center}
+    The inclusion $A\times\set{1}\xhookrightarrow{}\M(f)$ is also an h-cofibration by \cite[Theorem 2]{note_on_cofibs_1}.
+\end{remark}
+\begin{definition}[Double Mapping Cylinder]\label{def:doubleMappingCylinder}
+    Let $f\colon A\to B$ and $b\colon A\to C$ be maps of topological spaces and let $I=[0,2]$.
+    Then we let
+    \begin{equation*} %TODO perhaps make sure that \D(f,g) is more in the middle
+        \D(f,g)=\newfaktor{\left(A\times I\right)\amalg B\amalg C}{\stackbox{$(a,0)\sim f(a)$\\$(a,2)\sim g(a)$}}[-1]
+    \end{equation*}
+    denote the \emph{double mapping cylinder of $f,g$}.
+\end{definition}
+\begin{remark}\label{rmk:doubleMappingCylinderAlt}
+    Of course one could also define the double mapping cylinder for intervalls other then $I=[0,2]$, but we will not need this.
+
+    Similarly to the mapping cylinder, the double mapping cylinder of maps $f\colon A\to B$ and $b\colon A\to C$ is a model of the pushout
+    \begin{center}
+        \begin{tikzcd}
+            A\times\set{0,2} \ar[r,"f\amalg g"] \ar[d, hook] & B\amalg C \ar[d, hook]\\
+            A\times [0,2] \ar[r] & \D(f,g)
+        \end{tikzcd}\;.
+    \end{center}
+    It can also be constructed by glueing closed or open mapping cylinders of $f$ and $g$ as follows:
+
+    For closed mapping cylinders, the commutative square
+    \begin{center}
+        \begin{tikzcd}
+            A\times\set{1} \ar[>->,r, "h"] \ar[>->,d,"h"] & \M(f) \ar[>->,d,"h"]\\
+            \M(g) \ar[>->,r, "h"] & \D(f,g)
+        \end{tikzcd}
+    \end{center}
+    where 
+    \begin{itemize}
+        \item the map $\M(f)\to\D(f,g)$ is the universal map induced by $B\xhookrightarrow{}B\amalg C$ and $A\times[0,1]\xhookrightarrow{}A\times[0,2]$
+        \item the map $\M(g)\to\D(f,g)$ is the universal map induced by $C\xhookrightarrow{}B\amalg C$ and 
+        \begin{align*}
+            A\times[0,1]&\to A\times[0,2]\\
+            (a,t)&\mapsto(a,2-t)
+        \end{align*}
+    \end{itemize}
+    is a pushout (thus also a homotopy pushout by \cref{prop:poAlongHCofibIsHtpyPo}). 
+    Since the top and left map of the square are h-cofibrations by \cref{rmk:inclIntoMappingCylIsHCofib}, the maps $\M(f)\xtailrightarrow{h}\D(f,g)$ and $\M(g)\xtailrightarrow{h}\D(f,g)$ are also h-cofibrations.
+
+    Similarly for open mapping cylinders, the commutative square
+    \begin{center}
+        \begin{tikzcd}
+            A\times(0,2) \ar[r,hook] \ar[d,hook] & \M^{[0,2)}(f) \ar[d,hook]\\
+            \M^{[0,2)}(g) \ar[r,hook] & \D(f,g)
+        \end{tikzcd}
+    \end{center}
+    where 
+    \begin{itemize}
+        \item the map $A\times(0,2)\to\M^{[0,2)}(g)$ is the map
+        \begin{align*}
+            A\times(0,2)&\to\M^{[0,2)}(g)\\
+            (a,t)&\mapsto(a,2-t)
+        \end{align*}
+        \item the map $\M^{[0,2)}(f)\to\D(f,g)$ is the universal map induced by $B\xhookrightarrow{}B\amalg C$ and $A\times[0,2)\xhookrightarrow{}A\times[0,2]$
+        \item the map $\M^{[0,2)}(g)\to\D(f,g)$ is the universal map induced by $C\xhookrightarrow{}B\amalg C$ and 
+        \begin{align*}
+            A\times[0,2)&\to A\times[0,2]\\
+            (a,t)&\mapsto(a,2-t)
+        \end{align*}
+    \end{itemize}
+    is a pushout.
+    This follows from point-set topology because $\M^{[0,2)}(f),\M^{[0,2)}(g)\subset\D(f,g)$ form an open cover and $\M^{[0,2)}(f)\cap\M^{[0,2)}(g)=A\times(0,2)\subset\D(f,g)$.
 \end{remark}
 \begin{lemma}\label{lem:replaceByEmbedding}
     Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
@@ -566,15 +637,15 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         Hence, for all $i\in\set{1,2}$ the indicated maps in the commutative squares
         \begin{center} 
             \begin{tikzcd} [sep = 4em]
-                \widetilde{Y_i} \arrow [r, "j|_{\widetilde{Y_i}}", "\simeq"'] \arrow [d, hook] & Y_i \arrow [d, hook]\\
-                \widetilde{Y} \arrow [r, "j", "\simeq"'] & Y
+                \widetilde{Y_i} \arrow [r, "j|_{\widetilde{Y_i}}", "\sim"'] \arrow [d, hook] & Y_i \arrow [d, hook]\\
+                \widetilde{Y} \arrow [r, "j", "\sim"'] & Y
             \end{tikzcd}
             \begin{tikzcd} [sep = 4em]
-                \widetilde{Y_1}\cap\widetilde{Y_2} \arrow [r, "j|_{\widetilde{Y_1}\cap\widetilde{Y_2}}", "\simeq"'] \arrow [d, hook] & Y_1\cap Y_2 \arrow [d, hook]\\
-                \widetilde{Y_i} \arrow [r, "j|_{\widetilde{Y_i}}", "\simeq"'] & Y_i
+                \widetilde{Y_1}\cap\widetilde{Y_2} \arrow [r, "j|_{\widetilde{Y_1}\cap\widetilde{Y_2}}", "\sim"'] \arrow [d, hook] & Y_1\cap Y_2 \arrow [d, hook]\\
+                \widetilde{Y_i} \arrow [r, "j|_{\widetilde{Y_i}}", "\sim"'] & Y_i
             \end{tikzcd}
         \end{center} 
-        are homotopy equivalences (hence weak equivalences).
+        are weak equivalences (in fact even homotopy equivalences).
         Therefore, the proposition follows by \cref{lem:weOfaPairsIsHtpyPb}.
     \end{proof}
 \end{lemma}
@@ -654,25 +725,26 @@ We are now ready to give a proof of descent for pushouts.
             \end{tikzcd}
         \end{center}
         where bottom and top square homotopy pushouts and left and back face are homotopy pullbacks.
-        Then all side faces of the induced cube 
+        Then all side faces of the induced cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A}\times\left(0,2\right) \arrow [dr, hook] \arrow [rr, hook] \arrow [dd] & & \M^{[0,2)}(f_{\overline{A}\overline{B}}) \arrow [dr, hook] \arrow[dd] \\
-                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [rr, crossing over, hook] & &[2em] \overline{X} \arrow [dd] & \\
+                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [rr, crossing over, hook] & & \D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}}) \arrow [dd, "f"] & \\
                 A\times(0,2) \arrow [dr, hook] \arrow [rr, hook] & & \M^{[0,2)}(f_{AB}) \arrow [dr, hook] \\
-                & \M^{[0,2)}(f_{AC}) \arrow [from=uu,crossing over] \arrow [rr, hook] & & X
+                & \M^{[0,2)}(f_{AC}) \arrow [from=uu,crossing over] \arrow [rr, hook] & & \D(f_{AB},f_{AC})
             \end{tikzcd}
         \end{center}
-        where $\overline{X}=\M^{[0,2)}(f_{\overline{A}\overline{B}})\cup_{\overline{A}\times\left(0,2\right)}\M^{[0,2)}(f_{\overline{A}\overline{C}})$ and $X=\M^{[0,2)}(f_{AB})\cup_{A\times(0,2)}\M^{[0,2)}(f_{AC})$ are the ordinary pushouts, are equivalent to the starting cube:
-        The equivalence of the top square follows from the fact that the map $\overline{X}\to\overline{D}$ in the commutative diagram 
+        where top and bottom face are as in \cref{rmk:doubleMappingCylinderAlt} and in particular ordinary pushouts, are equivalent to the starting cube:
+        
+        The equivalence of the top square follows from the fact that the map $\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}})\to\overline{D}$ in the commutative diagram (see again \cref{rmk:doubleMappingCylinderAlt} for square in the middle)
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A} \arrow [dr] \arrow [rr] \arrow [from=dd, "\sim"] & & \overline{B} \arrow [dr] \arrow [from=dd, near end, "\sim"] \\
-                & \overline{C} \arrow [rr, crossing over] & &[2em] \overline{D} \arrow [from=dd] & \\
+                & \overline{C} \arrow [rr, crossing over] & & \overline{D} \arrow [from=dd] & \\
                 \overline{A}\times\set{1} \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] \arrow [dd, hook, "\sim"] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow [dd, hook, near end, "\sim"] \\
-                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start, "h"] \arrow [to=uu, crossing over, near end, "\sim"] & & \overline{X} \arrow [equals, dd, "\sim"] \\
+                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over, near start, "h"] \arrow [to=uu, crossing over, near end, "\sim"] & & \D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}}) \arrow [equals, dd, "\sim"] \\
                 \overline{A}\times\left(0,2\right) \arrow [dr, hook] \arrow [rr, hook] & & \M^{[0,2)}(f_{\overline{A}\overline{B}}) \arrow [dr, hook] \\
-                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [from=uu, hook, crossing over, near end, "\sim"] \arrow [rr, hook] & & \overline{X} \\
+                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [from=uu, hook, crossing over, near end, "\sim"] \arrow [rr, hook] & & \D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}}) \\
             \end{tikzcd}
         \end{center}
         is a weak equivalence since pushouts along h-cofibrations are homotopy pushouts by \cref{prop:poAlongHCofibIsHtpyPo}. 
@@ -682,22 +754,26 @@ We are now ready to give a proof of descent for pushouts.
         \begin{center}
             \begin{tikzcd} [sep = .2 cm]
                 \overline{A}\times\left(0,2\right) \arrow [dr, hook] \arrow [rr, "\sim"] \arrow [dd] & & \overline{A} \arrow [dr] \arrow[dd] \\
-                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [rr, crossing over, "\sim"] & &[2.5em] \overline{C} \arrow [dd] & \\
+                & \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [rr, crossing over, "\sim"] & &[3.25em] \overline{C} \arrow [dd] & \\
                 A\times(0,2) \arrow [dr, hook] \arrow [rr, near start, "\sim"] & & A \arrow [dr] \\
-                & \M^{[0,2)}(f_{AC}) \arrow [from=uu,crossing over] \arrow [rr, "\sim"] & &[2.5em] C
+                & \M^{[0,2)}(f_{AC}) \arrow [from=uu,crossing over] \arrow [rr, "\sim"] & & C
             \end{tikzcd}
-            and 
+        \end{center}
+        \begin{center}
+            and
+        \end{center}
+        \begin{center}
             \begin{tikzcd} [sep = .4 cm]
-                \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [dr, "\sim"] \arrow [rr, hook] \arrow [dd] & & \overline{X} \arrow [dr, "\sim"] \arrow[dd] \\
-                & \overline{C} \arrow [rr, crossing over] & &[2em] \overline{D} \arrow [dd] & \\
-                \M^{[0,2)}(f_{AC}) \arrow [dr, "\sim"] \arrow [rr, hook] & & X \arrow [dr, "\sim"] \\
-                & C \arrow [from=uu,crossing over] \arrow [rr] & &[2em] D
+                \M^{[0,2)}(f_{\overline{A}\overline{C}}) \arrow [dr, "\sim"] \arrow [rr, hook] \arrow [dd] & & \D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}}) \arrow [dr, "\sim"] \arrow[dd, near start, "f"] \\
+                & \overline{C} \arrow [rr, crossing over] & &\overline{D} \arrow [dd] & \\
+                \M^{[0,2)}(f_{AC}) \arrow [dr, "\sim"] \arrow [rr, hook] & & \D(f_{AB},f_{AC}) \arrow [dr, "\sim"] \\
+                & C \arrow [from=uu,crossing over] \arrow [rr] & & D
             \end{tikzcd}
         \end{center}
         respectively. 
         The equivalences of the back squares and front squares follow from the analogous argument.
 
-        Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are pullback squares since $f_{\overline{X}X}$ is a map of excisive triads $f_{\overline{X}X}\colon(\overline{X};\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}}))\to(X;\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC}))$.
+        Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are homotopy pullback squares since the map $f\colon\left(\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}});\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}})\right)\to\left(\D(f_{AB},f_{AC});\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC})\right)$ is a map of excisive triads. %TODO reference
     \end{proof}
 \end{prop}
 \addcontentsline{toc}{subsection}{Descent and Quasifibrations}
@@ -714,7 +790,7 @@ We will now give an alternative proof of descent for homotopy pushouts using the
     \end{center}
     is a homotopy pullback.
 \end{definition}
-\begin{remark}
+\begin{remark}\label{rmk:parallelQuasifibsInPb}
     Let 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -812,78 +888,61 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
             \end{tikzcd}
         \end{center}
         where the back and left square are homotopy pullbacks and top and bottom square are homotopy pushouts, can be reduced to a cube of the required form in the sense that all faces are equivalent to the corresponding faces of the starting cube.
-        
-        We first factor the map $B'\to B$ into a weak equivalence followed by a fibration $B'\xrightarrow{\sim}\overline{B}\xtwoheadrightarrow{} B$. 
-        We then set $\overline{A}=A\times_{B}\overline{B}$ and obtain the diagram
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                C' \arrow[dd] & A^{\prime} \arrow[l] \arrow[r] \arrow[d, "\sim"] & B^{\prime} \arrow[d, "\sim"] \\
-                & \overline{A} \arrow [->>,d] \arrow[r] & \overline{B} \arrow[->>,d, ""] \\
-                C & A \arrow[>->,l] \arrow[r] & B 
-            \end{tikzcd}
-        \end{center}
-        $A'\to \overline{A}$ is a weak equivalence since $B'\to\overline{B}$ is one by the pasting law for homotopy pullbacks. 
-        Next we factor the map $A'\xtailrightarrow{}X\xrightarrow{\sim}\hat{C}\times_CC'$. 
-        Note that the diagram 
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                X \arrow[r, "\sim"] \arrow[d] & C' \arrow[d] \\
-                \hat{C} \arrow[->>]{r}{\sim}[swap]{} & C \\
-            \end{tikzcd}
-        \end{center}
-        is a homotopy pullback square.
-        We form the diagram
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                C^{\prime} \arrow[dd] & X \arrow{l}[swap]{\sim} \arrow[d, "\sim"] & A^{\prime} \arrow[>->,l, ""] \arrow[r] \arrow[d, "\sim"] & B^{\prime} \arrow[d, "\sim"] \\
-                & X\cup_{A'}\overline{A} \arrow[d] & \overline{A} \arrow[>->,l, ""] \arrow [->>,d, ""] \arrow[r] & \overline{B} \arrow[->>,d, ""] \\
-                C & \hat{C} \arrow[->>]{l}{}[swap]{\sim} & A \arrow[>->,l, ""] \arrow[r] & B 
-            \end{tikzcd}
-        \end{center}
-        and note that $X\to X\cup_{A'}\overline{A}$ is a weak equivalence because $\Top$ is left proper and $X\to X\cup_{A'}\overline{A}$ is a pushout of a weak equivalence along a cofibration.
-        By the pasting law we have that
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                A' \arrow[>->,r, ""] \arrow[d] & X \arrow[d] \\
-                A \arrow[>->,r, ""] & \hat{C} \\
-            \end{tikzcd}
-        \end{center}
-        is a homotopy pullback and since this square is equivalent to the square
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                \overline{A} \arrow[>->,r, ""] \arrow[->>,d, ""] & X\cup_{A'}\overline{A} \arrow[d] \\
-                A \arrow[>->,r, ""] & \hat{C} \\
-            \end{tikzcd}
-        \end{center}
-        we know that both are homotopy pullbacks.
-        Finally, we factor the map $X\cup_{A'}\overline{A}\xtailrightarrow[]{\sim}\overline{C}\xtwoheadrightarrow{}\hat{C}$.
-        Then 
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                \overline{A} \arrow[>->,r, ""] \arrow[->>,d, ""] & \overline{C} \arrow[->>,d, ""] \\
-                A \arrow[>->,r, ""] & \hat{C} \\
-            \end{tikzcd}
-        \end{center}
-        is again a homotopy pullback square.
 
+        Starting with the diagram
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                C^{\prime} \arrow[d] & A^{\prime} \arrow[l] \arrow[r] \arrow[d] & B^{\prime} \arrow[d] \\
+                C  & A \arrow[r] \arrow[l] & B \\
+            \end{tikzcd}
+        \end{center}
+        we factor the maps $A^{\prime}\to A$ and $C^{\prime}\to C$ into trivial cofibrations followed by fibrations to obtain
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                C^{\prime} \arrow[>->,d,"\sim"] & A^{\prime} \arrow[l] \arrow[r] \arrow[>->,d,"\sim"] & B^{\prime} \arrow[dd] \\
+                \overline{C} \arrow[->>,d] & \overline{A} \arrow[->>,d] \arrow[l,dashed] & \\
+                C  & A \arrow[r] \arrow[l] & B \\
+            \end{tikzcd}
+        \end{center}
+        where the dashed arrow exists by the lifting properties.
+
+        Next we factor the maps $A^{\prime}\to B^{\prime}$ and $A\to B$ into cofibrations followed by trivial fibrations and obtain 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                C^{\prime} \arrow[>->,d,"\sim"] & A^{\prime} \arrow[l] \arrow[>->,r] \arrow[>->,d,"\sim"] & \widehat{B^{\prime}} \arrow[dd,dashed] \arrow[->>,r,"\sim"] & B^{\prime} \arrow[dd] \\
+                \overline{C} \arrow[->>,d] & \overline{A} \arrow[->>,d] \arrow[l] & \\
+                C  & A \arrow[r] \arrow[l] \arrow[>->,r] & \widehat{B} \arrow[->>,r,"\sim"] & B \\
+            \end{tikzcd}
+        \end{center}
+        where the dashed arrow exists again by the lifting properties.
+
+        Lastly, we factor $\widehat{B^{\prime}}\to\widehat{B}$ into a trivial cofibration followed by a fibration and get
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                C^{\prime} \arrow[>->,d,"\sim"] & A^{\prime} \arrow[l] \arrow[>->,r] \arrow[>->,d,"\sim"] & \widehat{B^{\prime}} \arrow[>->,d,"\sim"] \arrow[->>,r,"\sim"] & B^{\prime} \arrow[dd] \\
+                \overline{C} \arrow[->>,d] & \overline{A} \arrow[->>,d] \arrow[l] \arrow[r, dashed] & \overline{B} \arrow[->>,d]\\
+                C  & A \arrow[r] \arrow[l] \arrow[>->,r] & \widehat{B} \arrow[->>,r,"\sim"] & B \\
+            \end{tikzcd}
+        \end{center} 
+        where yet again the dashed arrow exists by the lifting properties.
         Thus we have obtained a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{C} \arrow[->>,d, ""] & \overline{A} \arrow[>->,l, ""] \arrow[r] \arrow[->>,d, ""] & \overline{B} \arrow[->>,d, ""] \\
-                \hat{C} & A \arrow[>->,l, ""] \arrow[r] & B \\
+                \overline{C} \arrow[->>,d] & \overline{A} \arrow[l] \arrow[>->,r] \arrow[->>,d] & \overline{B} \arrow[->>,d] \\
+                C & A \arrow[l] \arrow[>->,r] & \widehat{B} \\
             \end{tikzcd}
         \end{center}
         and we can form the cube 
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                \overline{A} \arrow[>->,dr, ""] \arrow [rr] \arrow [->>,dd,""] & & \overline{B} \arrow [>->,dr,""] \arrow[->>]{dd}[near start]{} \\
-                & \overline{C} \arrow [rr, crossing over] & &[-1em] \overline{C}\cup_{\overline{A}}\overline{B} \arrow [dd] & \\
-                A \arrow[>->,dr, ""] \arrow [rr] & & B \arrow [>->,dr,""] \\
-                & \hat{C} \arrow[->>, from=uu, crossing over]{}[near start]{} \arrow [rr] & &[-1em] \hat{C}\cup_A B &
+                \overline{A} \arrow[dr] \arrow [>->,rr] \arrow [->>,dd] & & \overline{B} \arrow [dr] \arrow[->>,dd]\\
+                & \overline{C} \arrow [>->,rr, crossing over] & &[-1em] \overline{C}\cup_{\overline{A}}\overline{B} \arrow [dd] & \\
+                A \arrow[dr] \arrow [>->,rr] & & \widehat{B} \arrow [dr] \\
+                & C \arrow[->>, from=uu, crossing over] \arrow [>->,rr] & &[-1em] C\cup_A\widehat{B} &
             \end{tikzcd}
         \end{center}
         by taking pushouts.
-        Since these are pushouts along cofibrations, they are already homotopy pushouts. 
+        Since these are pushouts along cofibrations, they are already homotopy pushouts since $\Top$ is left proper. %TODO cite 
         Following the construction of this cube, we see that all faces are equivalent to their corresponding faces of the starting cube which proves the lemma.
     \end{proof}
 \end{lemma}
@@ -896,7 +955,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         \end{tikzcd}
     \end{center}
     be a homotopy pullback such that $p$ and $q$ are quasifibrations.
-    Then the induced map $\M(f)\to\M(g)$ between mapping cylinders is also a quasifibration.
+    Then the induced map $\Gamma\colon\M(f)\to\M(g)$ between mapping cylinders is also a quasifibration.
     The same holds true for closed and open mapping cylinders.
     \begin{proof}
         For convenience we will only prove the case $I=[0,1]$ since the other cases follow by the analogous argument.
@@ -907,30 +966,34 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         In the first case, we have a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X \arrow[r, hook, "{x\mapsto (x,t_0)}"] \arrow[d, "p"'] & \M(f) \arrow[r, "\sim"] \arrow[d] & Y \arrow[d, "q"] \\
-                A \arrow[r, hook, "{a\mapsto (a,t_0)}"] & \M(g) \arrow[r, "\sim"] & B \\
+                X\times\set{t_0} \arrow[r, hook] \arrow[d, "p"'] & \M(f) \arrow[r, "\sim"] \arrow[d, "\Gamma"] & Y \arrow[d, "q"] \\
+                A\times\set{t_0} \arrow[r, hook] & \M(g) \arrow[r, "\sim"] & B \\
             \end{tikzcd}
         \end{center}
         where the outer square is the starting square and in particular homotopy pullback, so by the pasting law the left square is homotopy pullback as well.
-        Since the left square is also an ordinary pullback, in the diagram
+        The left square is also an ordinary pullback since $X\times\set{t_0}=\Gamma^{-1}(A\times\set{t_0})$.
+        We claim that the ordinary fiber $F$ of $p$ at the point $(a_0,t_0)$ is a homotopy fiber of $\Gamma$:
+        
+        By the pasting law for ordinary pullbacks, the composite square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & X \arrow[r, hook, "{x\mapsto (x,t_0)}"] \arrow[d, "p"] & \M(f) \arrow[d] \\
-                * \arrow[r, "b_0"] & A \arrow[r, hook, "{a\mapsto (a,t_0)}"] & \M(g) \\
+                F \arrow[r] \arrow[d] & X\times\set{t_0} \arrow[r, hook] \arrow[d, "p"] & \M(f) \arrow[d, "\Gamma"] \\
+                * \arrow[r, "{(a_0,t_0)}"] & A\times\set{t_0} \arrow[r, hook] & \M(g) \\
             \end{tikzcd}
         \end{center}
-        the left square is homotopy pullback since its the pullback of a quasifibration.
-        Thus the outer square is a homotopy pullback which proves that the fiber $F$ is a homotopy fiber.
+        is a pullback. 
+        The left square is a homotopy pullback since $p$ is a quasifibration and we have already proven that the right square is a homotopy pullback, hence by the pasting law for homotopy pullbacks the composite square is a homotopy pullback. 
+        This proves that the fiber $F$ is a homotopy fiber.
 
         In the second case we have the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                F \arrow[r] \arrow[d] & Y \arrow[r, hook, "\sim"] \arrow[d, "q"] & \M(f) \arrow[d] \\
+                F \arrow[r] \arrow[d] & Y \arrow[r, hook, "\sim"] \arrow[d, "q"] & \M(f) \arrow[d, "\Gamma"] \\
                 * \arrow[r, "b_0"] & B \arrow[r, hook, "\sim"] & \M(g) \\
             \end{tikzcd}
         \end{center}
         where the indicated maps are weak equivalences (they are right inverses to the contraction maps).
-        Since the right square is pullback and homotopy pullback and the left side is as well, this means that the fiber $F$ is already a homotopy fiber which proves the lemma.
+        Since the right square is pullback (since $Y=\Gamma^{-1}(B)$) and homotopy pullback and the left side is as well, this means that the fiber $F$ is already a homotopy fiber which proves the lemma.
     \end{proof}
 \end{lemma}
 This finishes the preparation and we will now prove descent for pushouts via locality of quasifibrations.
@@ -955,23 +1018,21 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         the front and right squares are also homotopy pullbacks.
 
         By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations.
-        So we can form the cube 
+        Using \cref{rmk:doubleMappingCylinderAlt}, we obtain a cube
         \begin{center}
             \begin{tikzcd} [sep = .75 cm]
                 \overline{A} \arrow [>->, dr, "h"] \arrow [>->, rr, "h"] \arrow [->>,dd] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow[dd] \\
-                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over,  "h"] & &[-3.5em] \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow [dd, "p"] & \\
+                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over,  "h"] & &[-1.5em] \D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}}) \arrow [dd, "p"] & \\
                 A \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] & & \M(f_{AB}) \arrow [>->, dr, "h"] \\
-                & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \M(f_{AC})\cup_A\M(f_{AB}) &
+                & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \D(f_{AB},f_{AC}) &
             \end{tikzcd}
         \end{center}
-        where the indicated maps are h-cofibrations as they are either inclusions into the mapping cylinder or pushouts of such.
-        All faces are again equivalent to the corresponding faces of the original cube since top and bottom squares are homotopy pushouts by \cref{prop:poAlongHCofibIsHtpyPo}.
+        whose faces are again equivalent to the corresponding faces of the original cube since top and bottom squares are homotopy pushouts by \cref{prop:poAlongHCofibIsHtpyPo}.
         
-        Next we prove that the map $p\colon\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\to\M(f_{AC})\cup_A\M(f_{AB})$ is a quasifibration.
-        By \cref{cor:locOfQuasifib} we need to find open sets $U_1,U_2\subset\M(f_{AC})\cup_A\M(f_{AB})$ covering $\M(f_{AC})\cup_A\M(f_{AB})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
-        We note that $\M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}})\cong\M^{[0,2)}(f_{\overline{A}\overline{C}})\cup_{\overline{A}\times(0,2)}\M^{[0,2)}(f_{\overline{A}\overline{B}})$ and $\M(f_{AC})\cup_A\M(f_{AB})\cong\M^{[0,2)}(f_{AC})\cup_{A\times (0,2)}\M^{[0,2)}(f_{AB})$.
+        Next we prove that the map $p\colon\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}})\to\D(f_{AB},f_{AC})$ is a quasifibration.
+        By \cref{cor:locOfQuasifib} we need to find an open cover $U_1,U_2\subset\D(f_{AB},f_{AC})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
 
-        We take $U_1=\M^{[0,2)}(f_{AC})$ and $U_2=\M^{[0,2)}(f_{AB})$. 
+        We take $U_1=\M^{[0,2)}(f_{AC})$ and $U_2=\M^{[0,2)}(f_{AB})$ as in \cref{rmk:doubleMappingCylinderAlt}.
         Then $p^{-1}(U_1)=\M^{[0,2)}(f_{\overline{A}\overline{C}})$, $p^{-1}(U_2)=\M^{[0,2)}(f_{\overline{A}\overline{B}})$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$.
         It follows $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
         \begin{center}
@@ -990,15 +1051,15 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         Finally, since the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[>->,r, "h"] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d,"p"] \\
-                \M(f_{AC}) \arrow[>->,r, "h"] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+                \M(f_{\overline{A}\overline{C}}) \arrow[d] \arrow[>->,r, "h"] & \D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}}) \arrow[d,"p"] \\
+                \M(f_{AC}) \arrow[>->,r, "h"] & \D(f_{AB},f_{AC}) \\
             \end{tikzcd}
             \begin{tikzcd} [sep = 4em]
-                \M(f_{\overline{A}\overline{B}}) \arrow[d] \arrow[>->,r, "h"] & \M(f_{\overline{A}\overline{C}})\cup_{\overline{A}}\M(f_{\overline{A}\overline{B}}) \arrow[d,"p"] \\
-                \M(f_{AB}) \arrow[>->,r, "h"] & \M(f_{AC})\cup_A\M(f_{AB}) \\
+                \M(f_{\overline{A}\overline{B}}) \arrow[d] \arrow[>->,r, "h"] & \D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}}) \arrow[d,"p"] \\
+                \M(f_{AB}) \arrow[>->,r, "h"] & \D(f_{AB},f_{AC}) \\
             \end{tikzcd}
         \end{center}
-        are both ordinary pullbacks with both vertical maps quasifibrations, they are homotopy pullbacks by the fiberwise characterization of homotopy pullbacks. 
+        are both ordinary pullbacks (as $p^{-1}\left(\M(f_{AC})\right)=\M(f_{\overline{A}\overline{C}})$ and $p^{-1}\left(\M(f_{AB})\right)=\M(f_{\overline{A}\overline{B}})$ respectively) and both vertical maps are quasifibrations, they are homotopy pullbacks by \cref{rmk:parallelQuasifibsInPb}.
     \end{proof}
 \end{prop}
 \addcontentsline{toc}{subsection}{Descent for Homotopy Coproducts}

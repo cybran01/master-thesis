@@ -73,6 +73,7 @@
 \DeclareMathOperator{\N}{N}
 \DeclareMathOperator{\Sp}{Sp}
 \DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\D}{D}
 \DeclareMathOperator{\Nhc}{N^{hc}}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\Map}{Map}
@@ -110,6 +111,18 @@
     \stackengine{0pt}{\twoheadrightarrow}{\scriptstyle#2}{O}{c}{F}{F}{S}%
   }{\scriptstyle#1}{U}{c}{F}{F}{S}%
 }}}
+
+\DeclareDocumentCommand{\newfaktor}{s m O{0.5} m O{-0.5}}{% \newfaktor[*]{#2}[#3]{#4}[#5] -> #2/#4
+  \setbox0=\hbox{\ensuremath{#2}}% Store numerator
+  \setbox1=\hbox{\ensuremath{\diagup}}% Store slash /
+  \setbox2=\hbox{\ensuremath{#4}}% Store denominator
+  \raisebox{#3\ht1}{\usebox0}% Numerator
+  \mkern-5mu\ifthenelse{\equal{#1}{\BooleanTrue}}% Slash /
+    {\diagup}% regular \faktor slash
+    {\rotatebox{-44}{\rule[#5\ht2]{0.4pt}{-#5\ht2+#3\ht0+\ht0}}}% tilted rule as a slash
+  \mkern-4mu%
+  \raisebox{#5\ht2}{\usebox2}% Denominator
+}
 
 \makeatletter
 \newcounter{blankpages}
