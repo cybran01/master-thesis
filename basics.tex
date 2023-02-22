@@ -181,7 +181,7 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition}
 \begin{definition}[Saturated Class]
     Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
-    Then we call $I$ \emph{saturated} if it is closed under retracts, pushouts and transfinite composition. %TODO perhaps find way to avoid transfinite composition
+    Then we say that $I$ is \emph{saturated} if it is closed under retracts, pushouts and transfinite composition. %TODO perhaps find way to avoid transfinite composition
 \end{definition}
 \begin{definition}[Relative $\kappa$-Small]
     Let $C$ be a category with small colimits, let $S$ be a class of morphisms in $C$ and let $\kappa$ be a cardinal.
@@ -209,6 +209,41 @@ We will not give proofs for any statements in this section; we will however poin
 \begin{definition}[Combinatorial Model Category]
     We say that a model category $C$ is a \emph{combinatorial model category} if $C$ is locally presentable and the model structure is cofibrantly generated.
 \end{definition} %TODO maybe also put here that Top is not locally presentable
+\begin{definition}[Properness] %TODO maybe diagrams
+    Let $M$ be a model category.
+    If the pushout of weak equivalences along cofibrations are again weak equivalences, we say that $M$ is \emph{left proper}.
+    If the pullback of weak equivalences along fibrations are again weak equivalences, we say that $M$ is \emph{right proper}.
+    If $M$ is left proper as well as left proper, then we say that $M$ is \emph{proper}.
+\end{definition}
+\begin{prop}
+    Let $M$ be a model category.
+    If $M$ is left proper, then a pushout along a cofibration is a homotopy pushout.
+    Dually, if $M$ is right proper a pullback along a fibration is a homotopy pullback.
+    \begin{reference}
+        \cite[Proposition A.2.4.4]{HTT} (and its dual)
+    \end{reference}
+\end{prop}
+%TODO stress importance & mention 1-categorical case
+\begin{prop}[Pasting Law]
+    Let $M$ be a model category and 
+    \begin{center}
+        \begin{tikzcd} [sep = 3em]
+            X \ar[d] \ar[r] & Y \ar[d] \ar[r] & Z \ar[d]\\
+            A \ar[r] & B \ar[r] & C
+        \end{tikzcd}
+    \end{center}
+    a commutative diagram in $M$.
+
+    Then if the right square is a homotopy pullback, then the outer square is a homotopy pullback if and only if the left square is a homotopy pullback.
+
+    Dually, if the left square is a homotopy pushout, then the outer square is a homotopy pushout if and only if the right square is a homotopy pushout.
+
+    We refer to these statements as the \emph{pasting law} for pullbacks and pushouts respectively.
+    \begin{reference}
+        \cite[Proposition 8]{models_of_htpy_limits} (and its dual)
+    \end{reference}
+\end{prop}
+%TODO maybe equivalences of squares here (reference?) (is this really relevant, since it is closely related to how htpy pb/po are defined)
 We will need the standard model structure on $\sSet$, the Quillen model structure. 
 Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
 \begin{thm}[Quillen Model Structure on $\sSet$] %TODO probably best to just prove all model cat stuff about \sSet here already

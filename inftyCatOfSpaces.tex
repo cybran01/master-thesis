@@ -49,8 +49,8 @@ When speaking of cofibrations, fibrations or weak equivalences between topologic
     \end{itemize}
     We call this model structure the \emph{Quillen Model Structure on $\Top$}.
     
-    The cofibrations are the smallest saturated class containing the maps $S^{n-1}\xhookrightarrow{}D^n$ for $n\in\Nat$ (where $S^{-1}=\emptyset$) and the trivial cofibrations are the smallest saturated class containing the maps $D^n\xhookrightarrow{(\id_{D^n},0)}D^n\times I$.
-    In particular, this model structure is cofibrantly generated.
+    The cofibrations are the smallest saturated class containing the maps $S^{n-1}\xhookrightarrow{}D^n$ for $n\in\Nat$ (where $S^{-1}=\emptyset$) and the trivial cofibrations are the smallest saturated class containing the maps $D^n\times\set{0}\xhookrightarrow{}D^n\times I$ for $n\in\Nat$.
+    In particular, this model structure is cofibrantly generated with respect to these classes.
     \begin{reference}
         \cite[Chap. II, \S 3, Theorem 1]{Quillen1967} and \cite{hirschhorn_quillen}
     \end{reference}
@@ -71,11 +71,42 @@ The other model structure on $\Top$ we will need is given by the following.
 \begin{remark}
     Since every h-fibration is also a fibration in the Quillen model structure and every homotopy equivalence is a weak equivalence, every cofibration of the Quillen model structure is an h-cofibration.
 \end{remark}
-\begin{remark}[Properness]
-    The Quillen model structures on $\sSet$ and $\Top$ are both proper (meaning left and right proper).
-    The same is true for the \Strom/ model structure, since all objects in this model category are cofibrant and fibrant.
-    Hence, whenever computing homotopy pushouts/pullbacks, it will suffice to only replace one map by a cofibration/fibration.
+\begin{remark}[Properness] 
+    A model category whose object are all cofibrant is left proper (see \cite[Proposition A.2.4.2]{HTT}).
+    Dually, a model category whose object are all fibrant is right proper.
+    
+    This implies that $\Top$ with the \Strom/ model structure is proper, $\sSet$ is left proper and $\Top$ with the Quillen model structure is right proper.
+    In fact, all of the aforementioned model are proper:
+
+    Left properness of $\Top$ with the Quillen model structure is proven in \cite[Theorem 13.1.10]{hirschhorn2003model} and right properness of $\sSet$ is proven in \cite[Theorem 13.1.13]{hirschhorn2003model}.
+    Hence, whenever computing homotopy pushouts/pullbacks in these model categories, it will always suffice to only replace one map by a cofibration/fibration.
 \end{remark}
+\begin{prop}[Fiberwise Characterization of Homotopy Pullbacks]
+    Let 
+    \begin{center}
+        \begin{tikzcd}[sep = 4em]
+            A \ar[d, "q"'] \ar[r] & X \ar[d, "p"] \\
+            B \ar[r, "f"] & Y
+        \end{tikzcd}
+    \end{center}
+    be a commutative square in $\Top$. 
+    Then the square is a homotopy pullback square if and only if for every $b\in B$, the induced map between the homotopy fiber $F_b$ of $q$ at $b$ and the homotopy fiber $G_f(b)$ of $p$ at $p(b)$ is a weak equivalence.
+
+    More explicitly, by picking factorizations of $p$ and $q$ into trivial cofibrations followed by fibrations, we obtain a commutative diagram
+    \begin{center}
+        \begin{tikzcd}[sep = 4em]
+            A \ar[>->,d,"\sim"'] \ar[r] & X \ar[>->,d,"\sim"] \\
+            \overline{A} \ar[->>,d, "\overline{q}"'] \ar[r,dashed] & \overline{X} \ar[->>,d,"\overline{p}"] \\
+            B \ar[r, "f"] & Y
+        \end{tikzcd}
+    \end{center}
+    where the dashed arrow exists by the lifting properties.
+    Then the starting square (which is the outer square) is a homotopy pullback if and only if for every $b\in B$ the induced map $F_b\simeq\set{b}\times_B\overline{A}\to\set{f(b)}\times_Y\overline{X}\simeq G_{f(b)}$ is a weak equivalence.
+    (The choice of factorizations and lift does not matter.)
+    \begin{reference}
+        \cite[Proposition 3.3.18]{cubical_htpy_theory}
+    \end{reference}
+\end{prop}
 \begin{thm}[Quillen Equivalence of Quillen Model Structures]\label{prop:quillenEqSSetTop}
     The functors
     \begin{equation*}

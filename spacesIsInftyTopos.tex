@@ -780,15 +780,15 @@ We are now ready to give a proof of descent for pushouts.
 \subsection*{Descent and Quasifibrations}
 We will now give an alternative proof of descent for homotopy pushouts using the notion of quasifibrations.
 \begin{definition}[Quasifibration]
-    Let $M$ be a model category and $f\colon X\to Y$ a map.
-    Then we call $f$ a \emph{quasifibration} if for every map $*\to Y$ (where $*$ is a terminal object) the ordinary pullback square
+    Let $f\colon X\to Y$ a map in $\Top$.
+    Then we call $f$ a \emph{quasifibration} if for every map $y\in Y$ the ordinary pullback square
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             F \arrow[r] \arrow[d] & X \arrow[d, "f"] \\
-            * \arrow[r] & Y\\
+            * \arrow[r, "y"] & Y\\
         \end{tikzcd}
     \end{center}
-    is a homotopy pullback.
+    is a homotopy pullback (hence if the ordinary fiber is a homotopy fiber).
 \end{definition}
 \begin{remark}\label{rmk:parallelQuasifibsInPb}
     Let 
