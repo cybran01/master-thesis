@@ -1,6 +1,6 @@
-A pointed connected object $X$ (see \cref{def:catOfPtdConnObj}) in an \inftytop/ is \emph{deloopable} if there exists a pointed object $A$ such that $X\simeq\Omega A$ (as pointed objects). %TODO introduce loop spacehere and not only in  james splitting thm
+A pointed object $X$ in an \inftytop/ is \emph{deloopable} if there exists a pointed connected object $A$ such that $X\simeq\Omega A$ (as pointed objects). %TODO maybe introduce loop space here and not only in james splitting thm
 
-In this section we will give a proof of the fact that a pointed connected object $X$ is deloopable if and only if it admits additional algebraic structure, which we assemble into a \emph{group object} (see \cref{def:grpObj}). %TODO mention stasheff
+In this section we will give a proof of the fact that a pointed object $X$ is deloopable if and only if it admits additional algebraic structure, which we assemble into a \emph{group object} (see \cref{def:grpObj}). %TODO mention stasheff
 The idea and presentation of the proof given here is due to \cite{segal_cat_and_cohom}.
 We will see that descent plays a major role in this.
 
@@ -197,17 +197,17 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     We will later introduce notions of higher connectedness. 
     It will follow from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}, which is why we call these objects connected.
 \end{remark}
-\begin{corollary}[Delooping of Pointed Connected Objects]\label{prop:mayRecognitionTheoremGroup}
+\begin{corollary}[Delooping of Pointed Objects]\label{prop:mayRecognitionTheoremGroup}
     Let $C$ be an \inftytop/. 
     Then the equivalence of \inftycats/ from \cref{prop:mayRecognitionTheoremGroupoid} restricts to an equivalence $\Grp(C)\simeq\Conn(C_*)$.
     \begin{proof}
         This follows immediately from the definition of group objects.
     \end{proof}
 \end{corollary}
-\addcontentsline{toc}{subsection}{Delooping of Pointed Connected Objects in $\spaces$}
-\subsection*{Delooping of Pointed Connected Objects in $\spaces$}
+\addcontentsline{toc}{subsection}{Delooping of Pointed Objects in $\spaces$}
+\subsection*{Delooping of Pointed Objects in $\spaces$}
 We now want to check that pointed connected objects in a general \inftytop/ coincide with pointed connected spaces in the \inftytop/ $\spaces$.
-Thus we recover the statement of the May Recognition Theorem for $n=1$, which says that a pointed connected space is equivalent to a loop space if and only if it admits the structure of a group object in $\Top$. 
+Thus we recover the statement of the May Recognition Theorem for $n=1$, which says that a pointed space is equivalent to a loop space if and only if it admits the structure of a group object in $\Top$. %TODO do i mean a loop space of a conn obj?
 \begin{definition}
     Let $C$ be an \inftytop/.
     With the convention that the $(-2)$-truncated maps are the equivalences, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-truncated} for $k\geq -1$ if the diagonal map $X\to X\times_YX$ is $(k-1)$-truncated.
@@ -272,14 +272,14 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
     \end{proof}
 \end{prop}
 \begin{corollary}
-    Let $x\colon*\to X\in\spaces_1$ be a map.
+    Let $x\colon*\to X\in\left(\spaces_*\right)_0$ be a map.
     Then $x$ is an effective epimorphism if and only if $X$ is path-connected as a topological space.
     \begin{proof}
         This follows from \cref{prop:effInSpaceIffSurj} and the fact that $*$ has exactly one connected component.
     \end{proof}
 \end{corollary}
 \begin{remark}
-    By the definition of loop spaces and explicit computation, the \Cech/ nerve of an effective map $x\colon*\to X$ in $\Top$ (meaning $X$ is a pointed connected space) is given by
+    By the definition of loop spaces and explicit computation, the \Cech/ nerve of a map $x\colon*\to X$ in $\Top$ is given by
     \begin{center}
         \begin{tikzcd}
             & \CN(x)_3 & \CN(x)_2 & \CN(x)_1 & \CN(x)_0 &  \CN(x)_{-1} \\ 
@@ -300,9 +300,15 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
         \end{itemize}
         \item the map induced by a degeneracy map $s_k^n$ is injecting the constant loop $c_x$ at the $k$-th position.
     \end{itemize}
-    We can thus view the map $\Conn(\spaces_*)\to\Grp(\spaces)$ as being a canonically enriched version of the loop space functor.
-    The statement of \cref{prop:mayRecognitionTheoremGroup} therefore allows us to recognize whether a pointed connected space $*\to X$ is deloopable:
+    We can thus view the map $\CN\colon S_*\to\Fun(\N(\Delta_+)^{\op},\spaces)$ as being a canonically enriched version of the loop space functor. %TODO is \C a map $\spaces_*\to\Grp(\spaces)$?
+    The statement of \cref{prop:mayRecognitionTheoremGroup} therefore allows us to recognize whether a pointed space $*\to X$ is deloopable:
 
-    It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta\right)^{\op}\to\spaces$ such that the unique constant map $[1]\to[0]$ in $\Delta$ is sent to the map $*\to X\in \spaces_1$ by $U$ (hence $U_n\simeq X\times\ldots\times X$ with $X$ appearing $n$ times).
-    The delooping is then given by taking the colimit of this diagram and taking the canonical map $A\colon*\to\colim U$ to be a pointed space, as this fulfills $\Omega A\simeq X$.
+    It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta\right)^{\op}\to\spaces$ such that 
+    \begin{itemize}
+        \item $U_0\simeq*$
+        \item $U_1\simeq X$
+        \item for $c_{[1]}\colon[1]\to[0]$ the unique constant map in $\Delta$, we have that $U(c_{[1]})$ is equivalent to the map $*\to X$
+    \end{itemize}
+    which in particular for $n\geq1$ implies $U_n\simeq X\times\ldots\times X$ with $X$ appearing $n$ times.
+    The delooping is then given by taking the colimit of this group object, which gives a pointed connected space $A\colon*\to\colim\limits_{\N\left(\Delta\right)^{\op}} U$ that fulfills $\Omega A\simeq X$.
 \end{remark}
