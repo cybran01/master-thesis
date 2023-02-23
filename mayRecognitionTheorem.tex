@@ -4,7 +4,7 @@ In this section we will give a proof of the fact that a pointed connected object
 The idea and presentation of the proof given here is due to \cite{segal_cat_and_cohom}.
 We will see that descent plays a major role in this.
 
-A generalization characterizing higher loop spaces was proven in \cite{may2006geometry} and is called the \emph{May Recognition Theorem}.
+A generalization characterizing higher loop spaces was proven in \cite{may2006geometry} and is called the \emph{May Recognition Theorem}. %TODO see also https://ncatlab.org/nlab/show/delooping#characterization_of_deloopable_objects Stasheff
 \begin{definition}[(Augmented) Simplicial Objects]
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
@@ -195,13 +195,13 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
 \end{definition}
 \begin{remark}
     We will later introduce notions of higher connectedness. 
-    It will follow from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}, hence we call these objects connected.
+    It will follow from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}, which is why we call these objects connected.
 \end{remark}
 \begin{corollary}[Delooping of Pointed Connected Objects]\label{prop:mayRecognitionTheoremGroup}
     Let $C$ be an \inftytop/. 
-    Then there is an equivalence of \inftycats/ $\Grp(C)\simeq\Conn(C_*)$.
+    Then the equivalence of \inftycats/ from \cref{prop:mayRecognitionTheoremGroupoid} restricts to an equivalence $\Grp(C)\simeq\Conn(C_*)$.
     \begin{proof}
-        This follows immediately from \cref{prop:mayRecognitionTheoremGroupoid} and the definition of group objects.
+        This follows immediately from the definition of group objects.
     \end{proof}
 \end{corollary}
 \addcontentsline{toc}{subsection}{Delooping of Pointed Connected Objects in $\spaces$}
@@ -300,7 +300,7 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
         \end{itemize}
         \item the map induced by a degeneracy map $s_k^n$ is injecting the constant loop $c_x$ at the $k$-th position.
     \end{itemize}
-    We can thus view the map $\Conn(\spaces)\to\Grp(\spaces)$ as being a canonically enriched version of the loop space functor.
+    We can thus view the map $\Conn(\spaces_*)\to\Grp(\spaces)$ as being a canonically enriched version of the loop space functor.
     The statement of \cref{prop:mayRecognitionTheoremGroup} therefore allows us to recognize whether a pointed connected space $*\to X$ is deloopable:
 
     It is deloopable if and only if there exists a group object $U\colon\N\left(\Delta\right)^{\op}\to\spaces$ such that the unique constant map $[1]\to[0]$ in $\Delta$ is sent to the map $*\to X\in \spaces_1$ by $U$ (hence $U_n\simeq X\times\ldots\times X$ with $X$ appearing $n$ times).

@@ -72,39 +72,44 @@ The other model structure on $\Top$ we will need is given by the following.
     Since every h-fibration is also a fibration in the Quillen model structure and every homotopy equivalence is a weak equivalence, every cofibration of the Quillen model structure is an h-cofibration.
 \end{remark}
 \begin{remark}[Properness] 
-    A model category whose object are all cofibrant is left proper (see \cite[Proposition A.2.4.2]{HTT}).
-    Dually, a model category whose object are all fibrant is right proper.
+    A model category whose objects are all cofibrant is left proper (see \cite[Proposition A.2.4.2]{HTT}).
+    Dually, a model category whose objects are all fibrant is right proper.
     
     This implies that $\Top$ with the \Strom/ model structure is proper, $\sSet$ is left proper and $\Top$ with the Quillen model structure is right proper.
-    In fact, all of the aforementioned model are proper:
+    But in fact all of the aforementioned model are proper:
 
     Left properness of $\Top$ with the Quillen model structure is proven in \cite[Theorem 13.1.10]{hirschhorn2003model} and right properness of $\sSet$ is proven in \cite[Theorem 13.1.13]{hirschhorn2003model}.
-    Hence, whenever computing homotopy pushouts/pullbacks in these model categories, it will always suffice to only replace one map by a cofibration/fibration.
+    Hence, when computing homotopy pushouts/pullbacks in these model categories, it will always suffice to only replace one map by a cofibration/fibration.
 \end{remark}
-\begin{prop}[Fiberwise Characterization of Homotopy Pullbacks]
+\begin{prop}[Fiberwise Characterization of Homotopy Pullbacks]\label{prop:fiberwiseCharOfHtpyPb}
     Let 
     \begin{center}
         \begin{tikzcd}[sep = 4em]
-            A \ar[d, "q"'] \ar[r] & X \ar[d, "p"] \\
+            A \ar[d, "q"'] \ar[r, "g"] & X \ar[d, "p"] \\
             B \ar[r, "f"] & Y
         \end{tikzcd}
     \end{center}
     be a commutative square in $\Top$. 
-    Then the square is a homotopy pullback square if and only if for every $b\in B$, the induced map between the homotopy fiber $F_b$ of $q$ at $b$ and the homotopy fiber $G_f(b)$ of $p$ at $p(b)$ is a weak equivalence.
-
-    More explicitly, by picking factorizations of $p$ and $q$ into trivial cofibrations followed by fibrations, we obtain a commutative diagram
-    \begin{center}
-        \begin{tikzcd}[sep = 4em]
-            A \ar[>->,d,"\sim"'] \ar[r] & X \ar[>->,d,"\sim"] \\
-            \overline{A} \ar[->>,d, "\overline{q}"'] \ar[r,dashed] & \overline{X} \ar[->>,d,"\overline{p}"] \\
-            B \ar[r, "f"] & Y
+    We model the homotopy fibers for given points $b_0\in B$ and $y_0\in Y$ as the pullback squares
+    \begin{center} 
+        \begin{tikzcd} [sep = 4em]
+            F_{b_0} \arrow [r] \arrow [->>, d, "h"', "\ev_1"] & P_{b_0}B \arrow [->>, d, "h"', "\ev_1"]\\
+            A \arrow [r, "q"] & B
+        \end{tikzcd}
+        \begin{tikzcd} [sep = 4em]
+            G_{y_0} \arrow [r] \arrow [->>, d, "h"', "\ev_1"] & P_{y_0}Y \arrow [->>, d, "h"', "\ev_1"]\\
+            X \arrow [r, "p"] & Y
         \end{tikzcd}
     \end{center}
-    where the dashed arrow exists by the lifting properties.
-    Then the starting square (which is the outer square) is a homotopy pullback if and only if for every $b\in B$ the induced map $F_b\simeq\set{b}\times_B\overline{A}\to\set{f(b)}\times_Y\overline{X}\simeq G_{f(b)}$ is a weak equivalence.
-    (The choice of factorizations and lift does not matter.)
+    where $P_{b_0}X$ and $P_{y_0}Y$ are the path mapping spaces of the maps $b_0\colon *\to B$ and  $y_0\colon *\to Y$ respectively and the indicated maps are h-fibrations. 
+    Then the square is a homotopy pullback square if and only if for every $b_0\in B$, the induced map 
+    \begin{align*}
+        F_{b_0}&\to G_{f(b_0)} \\
+        (a,\gamma)&\mapsto(g(a),f\circ\gamma)
+    \end{align*}
+    is a weak equivalence.
     \begin{reference}
-        \cite[Proposition 3.3.18]{cubical_htpy_theory}
+        See \cite[Proposition 2.2.2]{cubical_htpy_theory} for the fact that the indicated maps of path mapping spaces are h-fibrations and \cite[Proposition 3.3.18]{cubical_htpy_theory} for the fiberwise characterization of homotopy pullbacks.
     \end{reference}
 \end{prop}
 \begin{thm}[Quillen Equivalence of Quillen Model Structures]\label{prop:quillenEqSSetTop}
