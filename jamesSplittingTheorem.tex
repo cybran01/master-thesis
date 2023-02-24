@@ -4,41 +4,33 @@ Our main source is \cite[\S 2.2 and \S 4]{splittings_21}.
 
 We begin by introducing some well known constructions that we will need throughout the rest of this section.
 \begin{definition}
-    Let $C$ be an \inftytop/ and let $X,Y\in \left(C_*\right)_0$ be pointed objects. %TODO perhaps make clear when we need ptd and when not
-    Then we call 
+    Let $C$ be an \inftytop/.
+    Then 
     \begin{itemize}
-        \item the pushout
+        \item for an object $X$ in $C$, we call a pushout
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
                 * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
-        the \emph{suspension of $X$}
-        \item the pullback
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                \Omega Y \arrow[r] \arrow[d] & * \arrow[d] \\
-                * \arrow[r] & Y \\
-            \end{tikzcd}
-        \end{center}
-        the \emph{loop space of $Y$}
-        \item the pushout
+        a \emph{suspension of $X$}.
+        \item for pointed objects $X$ and $Y$ in $C$, we call a pushout
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 * \arrow[r] \arrow[d] & Y \arrow[d] \\
                 X \arrow[r] & X\vee Y \\
             \end{tikzcd}
         \end{center}
-        the \emph{wedge sum of $X$ and $Y$} 
-        \item and the pushout 
+        a \emph{wedge sum of $X$ and $Y$}.
+        \item for pointed objects $X$ and $Y$ in $C$, we call a pushout
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 X\vee Y \arrow[r] \arrow[d] & X\times Y \arrow[d] \\
                 * \arrow[r] & X\wedge Y \\
             \end{tikzcd}
         \end{center}
-        the \emph{smash product of $X$ and $Y$} (where the map $X\vee Y\to X\times Y$ is the canonical map from the universal property induced by the maps $X\vee Y\to X$ and $X\vee Y\to Y$).
+        a \emph{smash product of $X$ and $Y$} (where the map $X\vee Y\to X\times Y$ is a canonical map from the universal property induced by the maps $X\vee Y\to X$ and $X\vee Y\to Y$).
     \end{itemize}
 \end{definition}
 \addcontentsline{toc}{subsection}{The Fundamental James Splitting}
@@ -133,7 +125,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         Thus all vertical squares of the cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                X\times\Omega\Sigma X \arrow [dr, "\alpha"] \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                X\times\Omega\Sigma X \arrow [dr, "\alpha"] \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"'] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
                 & \Omega\Sigma X \arrow [rr, crossing over] & &[1em] * \arrow [dd, "i_0"] & \\
                 X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
                 & * \arrow [from=uu, crossing over] \arrow [rr, "i_1"] & & \Sigma X &
@@ -207,7 +199,7 @@ We will also need to prove some basic facts about wedges and smash products.
     Then there is a pushout square
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"] & Y \arrow[d] \\
+            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"'] & Y \arrow[d] \\
             X \arrow[r] & \Sigma\left(X\wedge Y\right) \\
         \end{tikzcd}
     \end{center}
@@ -245,7 +237,7 @@ We will also need to prove some basic facts about wedges and smash products.
     Then all squares of the diagram         
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"] & Y \arrow[r] \arrow[d] & * \arrow[d] \\
+            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"'] & Y \arrow[r] \arrow[d] & * \arrow[d] \\
             X \arrow[r] \arrow[d] & \Sigma\left(X\wedge Y\right) \arrow[r] \arrow[d] & \Sigma Y\vee\Sigma\left(X\wedge Y\right) \arrow[d]\\
             * \arrow[r] &  \Sigma X\vee\Sigma\left(X\wedge Y\right)\arrow[r] & \Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right) \\
         \end{tikzcd}
@@ -271,7 +263,7 @@ We will also need to prove some basic facts about wedges and smash products.
                 A\vee B \arrow[r] & A\vee B\vee C\\
             \end{tikzcd}
         \end{center}
-        is always a pushout and the wedge sum is commutative.
+        is a pushout because colimits commuate and the wedge sum is commutative.
     \end{proof}
 \end{lemma}
 The following corollary is not needed for our proof, however it is useful and immediate from what we have already shown.
@@ -286,51 +278,82 @@ The following corollary is not needed for our proof, however it is useful and im
     Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then there is a canonical equivalence $\Sigma\left(X\wedge Y\right)\cong X\wedge\Sigma Y$.
     \begin{proof}
+        Let $i_0,i_1\colon *\to\Sigma Y$ be the canonical maps from the definition $\Sigma Y$ as a pushout.
+        These induce maps $j_0,j_1\colon X \to X\vee\Sigma Y$ and $k_0,k_1\colon X\to X\times\Sigma Y$.
         The squares
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X\vee Y \arrow[r] \arrow[d] &  X\vee * \arrow[d] \\
-                X\vee * \arrow[r] & X\vee\Sigma Y\\
+                X\vee Y \arrow[r] \arrow[d] &  X \arrow[d, "j_0"] \\
+                X \arrow[r, "j_1"] & X\vee\Sigma Y\\
             \end{tikzcd}
             \begin{tikzcd} [sep = 4em]
-                X\times Y \arrow[r] \arrow[d] &  X\times * \arrow[d] \\
-                X\times * \arrow[r] & X\times\Sigma Y\\
+                X\times Y \arrow[r] \arrow[d] &  X \arrow[d, "k_0"] \\
+                X \arrow[r, "k_1"] & X\times\Sigma Y\\
             \end{tikzcd}\
         \end{center}
-        are both pushouts; the first one as colimits commute and the second one due to universality.
-        Computing the pushout of the diagram as in \cref{lem:poSqWithFactoringTerminal}
+        are both pushouts; the first one as colimits commute and the second one due to universality applied to the cube
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                X\times Y \arrow [dr] \arrow [rr] \arrow [dd] & & X \arrow [dr, "k_1"] \arrow[dd] \\
+                & X \arrow [rr, crossing over, near start, "k_0"] & &  X\times\Sigma Y \arrow [dd] & \\
+                Y \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_1"] \\
+                & * \arrow [from=uu, crossing over] \arrow [rr, "i_0"] & &\Sigma Y &
+            \end{tikzcd}
+        \end{center}
+        where
+        \begin{itemize}
+            \item the bottom square is a pushout by definition of the suspension
+            \item the back and left square are pullbacks by definition of the product
+            \item the front square is a pullback by the pasting law applied to the diagram
+            \begin{center}
+                \begin{tikzcd} [sep = 4em]
+                    X \arrow[r, "k_0"] \arrow[d] &  X\times\Sigma Y \arrow[d] \arrow[r] & X \arrow[d]\\
+                    * \arrow[r, "i_0"] & \Sigma Y \arrow[r] & *\\
+                \end{tikzcd}
+            \end{center} 
+            where the right and outer square are pullbacks, and the right square is a pullback by the analogous argument.
+        \end{itemize}
+        Computing the pushout of the diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 * & * \arrow[l] \arrow[r] & * \\
-                X\vee * \arrow[d, equal] \arrow[u] & X\vee Y \arrow[l]  \arrow[r] \arrow[d] \arrow[u] & X\vee * \arrow[d, equal] \arrow[u] \\
-                X\times *  & X\times Y \arrow[l] \arrow[r] & X\times * \\
+                X \arrow[d, equal] \arrow[u] & X\vee Y \arrow[l]  \arrow[r] \arrow[d] \arrow[u] & X \arrow[d, equal] \arrow[u] \\
+                X  & X\times Y \arrow[l] \arrow[r] & X \\
             \end{tikzcd}
         \end{center}
-        we get $X\wedge\Sigma Y$ by computing the pushout of the pushouts of the rows and $\Sigma\left(X\wedge Y\right)$ by computing the pushout of the pushouts of the columns, which proves the proposition.
+        as in \cref{lem:poSqWithFactoringTerminal} we get $X\wedge\Sigma Y$ by computing the pushout of the pushouts of the rows and $\Sigma\left(X\wedge Y\right)$ by computing the pushout of the pushouts of the columns, which proves the proposition.
     \end{proof}
 \end{lemma}
 \begin{corollary}[Fundamental James Splitting]\label{cor:fundamentalJamesSplitting}
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
-    Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$.
+    Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$.
     \begin{proof}
         Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the left vertical and top horizontal maps of the big left square (top and bottom left squares combined) are equivalent to the maps of the square in \cref{lem:poOfProductIsSuspension}.
-        Since both are pushout squares, we get an equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$ and the proposition follows from \cref{lem:suspensionCommutesWithSmash}.
+        Since both are pushout squares, we get an equivalence $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$ and the proposition follows from \cref{lem:suspensionCommutesWithSmash}.
     \end{proof}
 \end{corollary}
 \addcontentsline{toc}{subsection}{The James Splitting Theorem in $\text{Fun}(A,\spaces)$}
 \subsection*{The James Splitting Theorem in $\Fun(A,\spaces)$}
 We will now prove the James Splitting Theorem for general \inftytops/.
-By \cref{rem:genTopoiComparisonMapEq} we will see that it suffices to prove this for \inftytops/ of the form $\Fun(A,\spaces)$ by a localization argument.
+By \cref{rem:genTopoiComparisonMapEq} we will see that it suffices to prove this for \inftytops/ of the form $\Fun(A,\spaces)$ where $A$ is a small \inftycat/ by a localization argument.
 
 We will however work in the setting of general \inftytops/ whenever possible; 
 in fact, only the very last step will require us to restrict to $C=\Fun(A,\spaces)$ since we need our \inftytop/ to be hypercomplete, which is not true generally.
-\begin{corollary}[Fundamental James Splitting, iterated]
+\begin{corollary}[Fundamental James Splitting, iterated] %TODO prove assoc and dist of wedge 
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then for all $n\geq 1$ there is a canonical equivalence
     \begin{equation*}
-        \Sigma\Omega\Sigma X \cong\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)
+        \bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\simeq\Sigma\Omega\Sigma X 
     \end{equation*}
-    induced by \cref{cor:fundamentalJamesSplitting}.
+    induced by \cref{cor:fundamentalJamesSplitting} such that the diagram
+    \begin{center}
+        \begin{tikzcd}
+            \bigvee\limits_{i=1}^n\Sigma X^{\wedge i} \ar[r] \ar[dd, hook] & \bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right) \ar[dr,"\simeq"]\\
+            && \Sigma\Omega\Sigma X \\
+            \bigvee\limits_{i=1}^{n+1}\Sigma X^{\wedge i} \ar[r] & \bigvee\limits_{i=1}^{n+1}\Sigma X^{\wedge i}\vee\left(X^{\wedge (n+1)}\wedge\Sigma\Omega\Sigma X\right) \ar[ur,"\simeq"]
+        \end{tikzcd}
+    \end{center}
+    commutes.
     Here $\Sigma X^{\wedge i}$ denotes $\Sigma\left(X\wedge X\wedge\ldots\wedge X\right)$ with $X$ appearing $i$ times.
     \begin{proof}
         This follows inductively from \cref{cor:fundamentalJamesSplitting} and \cref{lem:suspensionCommutesWithSmash}.
@@ -340,9 +363,9 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then the canonical maps 
     \begin{equation*}
-        c_X^n\colon\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\cong}\Sigma\Omega\Sigma X
+        c_X^n\colon\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\simeq}\Sigma\Omega\Sigma X
     \end{equation*}
-    induce a map
+    from the previous corollary induce a map
     \begin{equation*}
         c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
     \end{equation*}
@@ -420,7 +443,7 @@ For this proof we need some stability properties of connectedness.
         \cite[Proposition 4.10]{splittings_21}
     \end{reference}
 \end{prop}
-\begin{prop}[Blakers-Massay Theorem]\label{prop:blakersMassay}
+\begin{thm}[Blakers-Massey Theorem]\label{prop:blakersMassey}
     Let $C$ be an \inftytop/ and let 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -429,11 +452,11 @@ For this proof we need some stability properties of connectedness.
         \end{tikzcd}
     \end{center}
     be a pushout square in $C$.
-    Then if $f$ is $n$-connected and $g$ is $m$-connected, the universal map $A\to B\times_{D}C$ is $(n+m)$-connected.
+    Then if $f$ is $n$-connected and $g$ is $m$-connected, the canonical map $A\to B\times_{D}C$ is $(n+m)$-connected.
     \begin{reference}
-        A very general version for \inftytops/ can be found in \cite[Corollary 4.3.1]{gen_blakers_massey}, but the version used here can also be proven by a reduction to topoi of the form $\Fun(A,\spaces)$ similar to \cref{rem:genTopoiComparisonMapEq} and thus derived from the ordinary Blakers-Massay Theorem in $\Top$.
+        A very general version for \inftytops/ can be found in \cite[Corollary 4.3.1]{gen_blakers_massey}, but the version used here can also be proven by a reduction to topoi of the form $\Fun(A,\spaces)$ similar to \cref{rem:genTopoiComparisonMapEq} and thus derived from the ordinary Blakers-Massey Theorem in $\Top$.
     \end{reference}
-\end{prop}
+\end{thm}
 With these we can deduce the following statements:
 \begin{corollary}\label{cor:connEst}
     Let $C$ be an \inftytop/, $X,Y$ pointed objects in $C$ and $k,l\geq 0$. 
@@ -450,7 +473,7 @@ With these we can deduce the following statements:
 
         \ref{cor:connEstVeeIncl}: Since the map $*\to Y$ is $(l-1)$-connected by \cref{prop:conn} \ref{prop:connSection}, by \cref{prop:conn} \ref{prop:connStableUnderPo} the map $X\to X\vee Y$ is also $(l-1)$-connected.
         
-        \ref{cor:connEstSmash}: By \cref{prop:blakersMassay} and \cref{lem:poOfCollapseMapsIsTrivial} we have that $X\vee Y\to X\times Y$ is  $(k+l)$-connected. 
+        \ref{cor:connEstSmash}: By \cref{prop:blakersMassey} and \cref{lem:poOfCollapseMapsIsTrivial} we have that $X\vee Y\to X\times Y$ is  $(k+l)$-connected. 
         By \cref{prop:conn} \ref{prop:connStableUnderPo} the map $*\to X\wedge Y$ is thus also $(k+l)$-connected and so by \cref{prop:conn} \ref{prop:connSection} the space $X\wedge Y$ is $(k+l+1)$-connected.
 
         \ref{cor:connEstIteratedSmash}: This follows by induction on \ref{cor:connEstSmash}.
@@ -491,6 +514,7 @@ With these we can deduce the following statements:
         As $n$ was arbitrary, $c_X$ is therefore an equivalence.
     \end{proof}
 \end{prop}
+%TODO counterexample S^0 AT Theorem 1.20
 \begin{corollary}[Classical James Splitting]\label{cor:classicalJamesSplitting}
     Let $X$ be a pointed and $0$-connected object in $\spaces$.
     Then     
@@ -503,7 +527,7 @@ With these we can deduce the following statements:
     \end{proof}
 \end{corollary}
 \begin{remark}\label{rem:genTopoiComparisonMapEq}
-    Due to the equivalent characterizations of \inftytops/ in \cite[Definition 6.1.0.6]{HTT} for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
+    Due to the equivalent characterizations of \inftytops/ in \cite[Definition 6.1.0.6]{HTT} for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and a map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
     
     Then if for a pointed object $X$ in $C$ the comparison morphism $c_{i(X)}$ is an equivalence in $Fun(A,\spaces)$, so is $c_X$ in $C$ (see \cite[Lemma 4.17]{splittings_21}).
     If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\Fun(A,\spaces)$ is hypercomplete. 
@@ -511,7 +535,7 @@ With these we can deduce the following statements:
 \end{remark}
 Lastly, we give an application of the James Splitting Theorem.
 \begin{lemma}\label{lem:reducedHomLoopOfSpheres}
-    Let $H_*$ be a reduced homology theory and let $S^n$ with $n>0$ be a model of the pointed sphere.
+    Let $H_*$ be a reduced homology theory and let $S^n$ with $n\geq1$ be a model of the pointed $n$-sphere.
     Then
     \begin{equation*}
         H_k(\Omega S^{n+1})\cong\bigoplus\limits_{i=1}^{\infty}H_k(S^{ni})\;.
@@ -530,12 +554,12 @@ Lastly, we give an application of the James Splitting Theorem.
     \end{proof}
 \end{lemma}
 \begin{corollary}
-    For $H_*$ reduced ordinary homology and $S^n$ with $n>0$ a model of the pointed sphere, we have
+    For $H_*$ reduced ordinary homology and $S^n$ with $n\geq1$ a model of the pointed $n$-sphere, we have
     \begin{equation*}
         H_k(\Omega S^{n+1})\cong
         \begin{cases}
             \mathbb{Z} & k=ni ~for~ i\in\Nat\\
-            0 & else
+            0 & otherwise
         \end{cases}\;.
     \end{equation*}
     \begin{proof}
