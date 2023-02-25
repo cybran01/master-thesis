@@ -33,6 +33,249 @@ We begin by introducing some well known constructions that we will need througho
         a \emph{smash product of $X$ and $Y$} (where the map $X\vee Y\to X\times Y$ is a canonical map from the universal property induced by the maps $X\vee Y\to X$ and $X\vee Y\to Y$).
     \end{itemize}
 \end{definition}
+We now wand to establish some fundamental properties of the wedge sum and smash product.
+It is clear from their definition that both are commutative.
+We will prove that both are associative and that the smash product distributes over the wedge sum.
+\begin{lemma}\label{lem:assocWedge}
+    Let $C$ be an \inftytop/.
+    Then the wedge sum is associative in the sense that for pointed objects $A,B,C$ of $C$ there is a canonical equivalence $(A\vee B)\vee C\simeq A\vee (B\vee C)$.
+    In fact, $(A\vee B)\vee C\simeq(A\vee B)\cup_{B}A\vee C\simeq A\vee (B\vee C)$.
+    \begin{proof}
+        From the horizontal composite square of the diagram 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                & * \arrow[r] \arrow[d] & C \arrow[d] \\
+                * \arrow[r] \arrow[d] & B \arrow[d] \arrow[r] & B\vee C \arrow[d] \\
+                A \arrow[r] & A\vee B \arrow[r] & (A\vee B)\cup_BB\vee C \\
+            \end{tikzcd}
+        \end{center}
+        it follows that $(A\vee B)\cup_BB\vee C\simeq A\vee (B\vee C)$ by the pasting law. 
+        The pasting law applied to the vertical composite square shows that $(A\vee B)\cup_BB\vee C\simeq (A\vee B)\vee C$.
+    \end{proof}
+\end{lemma}
+\begin{lemma}\label{lem:productPreservesPushout}
+    Let $C$ be an \inftytop/, $X$ an object in $C$ and
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            A \arrow[r] \arrow[d] & B \arrow[d] \\
+            C \arrow[r] & D \\
+        \end{tikzcd}
+    \end{center} 
+    and pushout in $C$.
+
+    Then the induced square
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            A\times X \arrow[r] \arrow[d] & B\times X \arrow[d] \\
+            C\times X \arrow[r] & D\times X \\
+        \end{tikzcd}
+    \end{center} 
+    is also a pushout.
+    \begin{proof}
+        The vertical faces of the cube in the diagram
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                A\times X \arrow [dr] \arrow [rr] \arrow [dd] & & B\times X \arrow [dr] \arrow [dd] \\
+                & C\times X \arrow [rr, crossing over] \arrow [dd] & & D\times X \arrow [dd] \arrow[r] &[2em] X \arrow [dd]\\
+                A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+                & C \arrow [from=uu, crossing over] \arrow [rr] & & D \arrow[r] & *
+            \end{tikzcd}
+        \end{center}
+        are all pullbacks by the pasting law.
+        Hence by universality the top square of the cube is a pushout.
+    \end{proof}
+\end{lemma}
+\begin{lemma}\label{lem:smashDist}
+    Let $C$ be an \inftytop/.
+    Then the smash product distributes over the wedge sum in the sense that for pointed objects $X,A,B$ of $C$ there is a canonical equivalence $(A\vee B)\wedge X\simeq (A\wedge X)\vee (B\wedge X)$.
+    \begin{proof}
+        Because colimits commute, the colimit of a diagram indexed by $\Lambda_0^2\times\Lambda_0^2$ can be computed by either taking object-wise pushouts of the first argument and then the pushout of the resulting $\Lambda_0^2$-shaped diagram, or taking object-wise pushouts of the second argument and then taking pushout of the resulting $\Lambda_0^2$-shaped diagram.
+        Hence given the diagram
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                * & * \arrow[l] \arrow[r] & * \\
+                A\vee X \arrow[d] \arrow[u] & X \arrow[l]  \arrow[r] \arrow[d, equal] \arrow[u] & B\vee X \arrow[d] \arrow[u] \\
+                A\times X  & X \arrow[l] \arrow[r] & B\times X \\
+            \end{tikzcd}
+        \end{center}
+        we can compute the colimit row-wise or column-wise:
+
+        Row-wise evaluation gives the pushout 
+        \begin{center}
+            \begin{tikzcd}[sep=4em]
+                (A\vee B)\vee X \ar[r] \ar[d] & (A\vee B)\times X \ar[d]\\
+                * \ar[r] & (A\vee B)\wedge X
+            \end{tikzcd}
+        \end{center}
+        where we use \cref{lem:productPreservesPushout} and the fact that the wedge sum is associative (\cref{lem:assocWedge}) and commutative.
+
+        Column-wise evaluation gives the pushout 
+        \begin{center}
+            \begin{tikzcd}[sep=4em]
+                * \ar[r] \ar[d] & B\wedge X \ar[d]\\
+                A\wedge X \ar[r] & (A\wedge X)\vee (B\wedge X)
+            \end{tikzcd}
+        \end{center}
+        hence $(A\vee B)\wedge X\simeq(A\wedge X)\vee (B\wedge X)$ follows.
+    \end{proof}
+\end{lemma}
+\begin{lemma}\label{lem:pushoutProdSquareIsPushout}
+    Let $C$ be an \inftytop/, $f\colon X\to Y\in C_1$ a morphism and 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            A \arrow[r] \arrow[d] & B \arrow[d] \\
+            C \arrow[r] & D \\
+        \end{tikzcd}
+    \end{center} 
+    a pushout.
+
+    Then the induced square 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            A\times Y\cup_{A\times X} B\times X \arrow[r] \arrow[d] & B\times Y \arrow[d] \\
+            C\times Y\cup_{C\times X} D\times X \arrow[r] & D\times Y
+        \end{tikzcd}
+    \end{center} 
+    is also a pushout.
+    \begin{proof}
+        All vertical faces in the diagram
+        \begin{center}
+            \begin{tikzcd} [sep = .5 cm]
+                A\times X \arrow [dr] \arrow [rr] \arrow [dd] & & B\times X \arrow [dr] \arrow [dd] \\
+                & C\times X \arrow [rr, crossing over]  & & D\times X \arrow [dd] \arrow[r] &[2em] X \arrow [dd, "f"]\\
+                A\times Y \arrow [dr] \arrow [rr] \arrow [dd] & & B\times Y \arrow [dr] \arrow [dd] \\
+                & C\times Y \arrow [rr, crossing over] \arrow [from=uu, crossing over] \arrow [dd] & & D\times Y \arrow [dd] \arrow[r] &[2em] Y \arrow [dd]\\
+                A \arrow [dr] \arrow [rr] & & B \arrow [dr] \\
+                & C \arrow [from=uu, crossing over] \arrow [rr] & & D \arrow[r] & *
+            \end{tikzcd}
+        \end{center}
+        are pullbacks by the pasting law.
+        Hence by universality the middle and top square of the stacked cube are also pushouts.
+
+        Now taking pushouts of the back and front square of the upper cube induces the square 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A\times Y\cup_{A\times X} B\times X \arrow[r] \arrow[d] & B\times Y \arrow[d] \\
+                C\times Y\cup_{C\times X} D\times X \arrow[r] & D\times Y
+            \end{tikzcd}\;.
+        \end{center} 
+
+        The pushout square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A\times X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{0}"] & B\times X \arrow[d] \\
+                C\times Y \arrow[r] & C\times Y\cup_{A\times X}B\times X
+            \end{tikzcd}
+        \end{center} 
+        can be written as a composite square in two ways:
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A\times X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{1}"] & B\times X \arrow[d] \\
+                C\times X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{2}"]& D\times X \arrow[d] \\
+                C\times Y \arrow[r] & C\times Y\cup_{A\times X}B\times X
+            \end{tikzcd}
+            \begin{tikzcd} [sep = 4em]
+                A\times X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{3}"] & B\times X \arrow[d] \\
+                A\times Y \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{4}"] & B\times Y \arrow[d] \\
+                C\times Y \arrow[r] & C\times Y\cup_{A\times X}B\times X
+            \end{tikzcd}
+        \end{center} 
+        The square $\Circled{1}$ is a pushout, thus by the pasting law $C\times Y\cup_{A\times X}B\times X\simeq C\times Y\cup_{C\times X} D\times X$.
+
+        Using this identification and taking the pushout of $\Circled{3}$ we obtain 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A\times X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{3'}"] & B\times X \arrow[d] \\
+                A\times Y \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{4'}"] & A\times Y\cup_{A\times X} B\times X \arrow[d] \\
+                C\times Y \arrow[r] & C\times Y\cup_{C\times X} D\times X
+            \end{tikzcd}
+        \end{center}
+        where the outer square is still equivalent to $\Circled{0}$.
+        Thus by the pasting law $\Circled{4'}$ is a pushout.
+
+        Since the composite square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A\times Y \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{4'}"] & A\times Y\cup_{A\times X} B\times X \arrow[d] \arrow[r] & \arrow[d] B\times Y\\
+                C\times Y \arrow[r] & C\times Y\cup_{C\times X} D\times X \arrow[r] & D\times Y
+            \end{tikzcd}
+        \end{center}
+        is also a pushout, by the pasting law the right square is a pushout which proves the lemma.
+    \end{proof}
+\end{lemma}
+\begin{lemma}\label{lem:assocSmash}
+    Let $C$ be an \inftytop/.
+    Then the smash product is associative in the sense that for pointed objects $A,B,C$ of $C$ there is a canonical equivalence $(A\wedge B)\wedge C\simeq A\wedge (B\wedge C)$.
+    \begin{proof}
+        We apply \cref{lem:pushoutProdSquareIsPushout} to the pushout
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A\vee B \arrow[r] \arrow[d] & A\times B \arrow[d] \\
+                * \arrow[r] & A\wedge B \\
+            \end{tikzcd}
+        \end{center} 
+        and the canonical map $*\to C$ to obtain a pushout square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \left((A\vee B)\times C\right)\cup_{(A\vee B)\times *} \left((A\times B)\times *\right) \arrow[r] \arrow[d] & (A\times B)\times C \arrow[d] \\
+                *\times C\cup_{*\times *} \left((A\wedge B)\times *\right) \arrow[r] & (A\wedge B)\times C
+            \end{tikzcd}
+        \end{center}
+        which we identify with
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \left((A\vee B)\times C\right)\cup_{A\vee B} A\times B \arrow[r] \arrow[d] & (A\times B)\times C \arrow[d] \\
+                (A\wedge B)\vee C \arrow[r] & (A\wedge B)\times C
+            \end{tikzcd}\;.
+        \end{center}
+        Then the composite square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \left((A\vee B)\times C\right)\cup_{A\vee B} A\times B \arrow[r] \arrow[d] & (A\times B)\times C \arrow[d] \\
+                (A\wedge B)\vee C \arrow[r] \arrow[d] & (A\wedge B)\times C \arrow[d] \\
+                * \arrow[r] & (A\wedge B)\wedge C 
+            \end{tikzcd}
+        \end{center}
+        is a pushout by the pasting law.
+
+        The analogous construction starting with 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                B\vee C \arrow[r] \arrow[d] & B\times C \arrow[d] \\
+                * \arrow[r] & B\wedge C \\
+            \end{tikzcd}
+        \end{center} 
+        and the canonical map $*\to A$ gives a pushout square
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                \left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C \arrow[r] \arrow[d] & A\times(B\times C) \arrow[d] \\
+                * \arrow[r] & A\wedge (B\wedge C)
+            \end{tikzcd}\;.
+        \end{center}
+        We will now show that there is a canonical equivalence $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C\simeq \left((A\vee B)\times C\right)\cup_{A\vee B} A\times B$:
+
+        Using \cref{lem:productPreservesPushout} the row-wise colimit of 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                A\times B & A \arrow[l] \arrow[r] & A\times C \\
+                B \arrow[d] \arrow[u] & * \arrow[l] \arrow[r] \arrow[d] \arrow[u] & C \arrow[d] \arrow[u] \\
+                B  & B \arrow[l] \arrow[r] & B\times C \\
+            \end{tikzcd}
+        \end{center}
+        evaluates to $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C$ and the column-wise colimit evaluates to $\left((A\vee B)\times C\right)\cup_{A\vee B}A\times B$ which proves the canonical equivalence.
+
+        Since the maps $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C\to A\times (B\times C)$ and $\left((A\vee B)\times C\right)\cup_{A\vee B} A\times B\to (A\times B)\times C$ are universal maps, the top square of the cube
+        \begin{center}
+            \begin{tikzcd}[column sep=-2.5em]
+                \left((A\vee B)\times C\right)\cup_{A\vee B} A\times B \arrow [dr,"\simeq"] \arrow [rr] \arrow [dd] & & (A\times B)\times C \arrow [dr,"\simeq"] \arrow [dd] \\
+                & \left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C \arrow [rr, crossing over] \arrow [dd] & &[5.5em] A\times (B\times C) \arrow [dd]\\
+                * \arrow [dr,"\simeq"] \arrow [rr] & & (A\wedge B)\wedge C \arrow [dr] \\
+                & * \arrow [from=uu, crossing over] \arrow [rr] & & A\wedge (B\wedge C)
+            \end{tikzcd}
+        \end{center}
+        commutes and thus the induced map $(A\wedge B)\wedge C\to A\wedge(B\wedge C)$ of the pushout squares is an equivalence.
+    \end{proof}
+\end{lemma}
 \addcontentsline{toc}{subsection}{The Fundamental James Splitting}
 \subsection*{The Fundamental James Splitting}
 As a first step, we will show that there is a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ for an arbitrary pointed object $X$.
@@ -181,17 +424,17 @@ We will also need to prove some basic facts about wedges and smash products.
     \end{center}
     is a pushout.
     \begin{proof}
-        We want to show that the square $\textcircled{\raisebox{-0.9pt}{4}}$ in the diagram
+        We want to show that the square $\Circled{4}$ in the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                * \arrow[r] \arrow[d] \ar[dr,phantom,"\textcircled{\raisebox{-0.9pt}{1}}"] & Y \arrow[r] \arrow[d] \ar[dr,phantom,"\textcircled{\raisebox{-0.9pt}{2}}"] & * \arrow[d] \\
-                X \arrow[r] \arrow[d] \ar[dr,phantom,"\textcircled{\raisebox{-0.9pt}{3}}"] & X\vee Y \arrow[r] \arrow[d] \ar[dr,phantom,"\textcircled{\raisebox{-0.9pt}{4}}"] & X \arrow[d]\\
+                * \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{1}"] & Y \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{2}"] & * \arrow[d] \\
+                X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{3}"] & X\vee Y \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{4}"] & X \arrow[d]\\
                 * \arrow[r] & Y \arrow[r] & * \\
             \end{tikzcd}
         \end{center}
         is a pushout.
-        Since $\textcircled{\raisebox{-0.9pt}{1}}$ and the composite square $\textcircled{\raisebox{-0.9pt}{1}}+\textcircled{\raisebox{-0.9pt}{2}}$ are pushouts, $\textcircled{\raisebox{-0.9pt}{2}}$ is a pushout by the pasting law.
-        But since $\textcircled{\raisebox{-0.9pt}{2}}$ and the composite square $\textcircled{\raisebox{-0.9pt}{2}}+\textcircled{\raisebox{-0.9pt}{4}}$ are pushouts, by the pasting law we have that $\textcircled{\raisebox{-0.9pt}{4}}$ is a pushout.
+        Since $\Circled{1}$ and the composite square $\Circled{1}+\Circled{2}$ are pushouts, $\Circled{2}$ is a pushout by the pasting law.
+        But since $\Circled{2}$ and the composite square $\Circled{2}+\Circled{4}$ are pushouts, by the pasting law we have that $\Circled{4}$ is a pushout.
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:poSqWithFactoringTerminal}
@@ -205,7 +448,7 @@ We will also need to prove some basic facts about wedges and smash products.
     \end{center}
     such that the unlabeled morphisms factor through the terminal object.
     \begin{proof}
-        Because colimits commute, the colimit of the diagram 
+        We compute the colimit of the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 * & * \arrow[l] \arrow[r] & * \\
@@ -213,7 +456,7 @@ We will also need to prove some basic facts about wedges and smash products.
                 X  & X\times Y \arrow[l] \arrow[r] & Y \\
             \end{tikzcd}
         \end{center}
-        indexed by $\Lambda_0^2\times\Lambda_0^2$ can be computed by either taking pushouts of the rows and then the pushout of the resulting $\Lambda_0^2$-shaped diagram, or taking pushouts of the columns and then taking pushout of the resulting $\Lambda_0^2$-shaped diagram.
+        first row-wise and and then column-wise.
         
         Taking pushouts of the rows results in the diagram $*\xleftarrow{}*\rightarrow X\cup_{X\times Y} Y$ where we use \cref{lem:poOfCollapseMapsIsTrivial} and taking pushouts of the columns results in the diagram $*\xleftarrow{}X\wedge Y\rightarrow *$. 
         Since the pushout of the latter diagram is $\Sigma\left(X\wedge Y\right)$ and the pushout of the first diagram must be equivalent to this, we have $X\cup_{X\times Y} Y\simeq\Sigma\left(X\wedge Y\right)$.
@@ -228,7 +471,7 @@ We will also need to prove some basic facts about wedges and smash products.
             \begin{tikzcd}[sep = 3em]
                 & \Sigma\left(X\wedge Y\right) & \\
                 Y \ar[rr] \ar[ur]& & * \ar[ul]
-            \end{tikzcd}
+            \end{tikzcd}\;.
         \end{center}
     \end{proof}
 \end{lemma}
@@ -256,14 +499,7 @@ We will also need to prove some basic facts about wedges and smash products.
         because $Y\to\Sigma\left(X\wedge Y\right)$ factors through $*$ (again by \cref{lem:poSqWithFactoringTerminal}).
         The analogous argument also shows that the bottom left square is a pushout.
 
-        The bottom right square is a pushout since for pointed objects $A,B,C\in \left(C_*\right)_0$ the square
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                B \arrow[r] \arrow[d] &  B\vee C \arrow[d] \\
-                A\vee B \arrow[r] & A\vee B\vee C\\
-            \end{tikzcd}
-        \end{center}
-        is a pushout because colimits commuate and the wedge sum is commutative.
+        The bottom right square is a pushout by \cref{lem:assocWedge} and the fact that the wedge sum is commutative.
     \end{proof}
 \end{lemma}
 The following corollary is not needed for our proof, however it is useful and immediate from what we have already shown.
@@ -291,28 +527,7 @@ The following corollary is not needed for our proof, however it is useful and im
                 X \arrow[r, "k_1"] & X\times\Sigma Y\\
             \end{tikzcd}\
         \end{center}
-        are both pushouts; the first one as colimits commute and the second one due to universality applied to the cube
-        \begin{center}
-            \begin{tikzcd} [sep = .5 cm]
-                X\times Y \arrow [dr] \arrow [rr] \arrow [dd] & & X \arrow [dr, "k_1"] \arrow[dd] \\
-                & X \arrow [rr, crossing over, near start, "k_0"] & &  X\times\Sigma Y \arrow [dd] & \\
-                Y \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_1"] \\
-                & * \arrow [from=uu, crossing over] \arrow [rr, "i_0"] & &\Sigma Y &
-            \end{tikzcd}
-        \end{center}
-        where
-        \begin{itemize}
-            \item the bottom square is a pushout by definition of the suspension
-            \item the back and left square are pullbacks by definition of the product
-            \item the front square is a pullback by the pasting law applied to the diagram
-            \begin{center}
-                \begin{tikzcd} [sep = 4em]
-                    X \arrow[r, "k_0"] \arrow[d] &  X\times\Sigma Y \arrow[d] \arrow[r] & X \arrow[d]\\
-                    * \arrow[r, "i_0"] & \Sigma Y \arrow[r] & *\\
-                \end{tikzcd}
-            \end{center} 
-            where the right and outer square are pullbacks, and the right square is a pullback by the analogous argument.
-        \end{itemize}
+        are both pushouts; the first one as colimits commute and the second one by \cref{lem:productPreservesPushout}.
         Computing the pushout of the diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -339,13 +554,13 @@ By \cref{rem:genTopoiComparisonMapEq} we will see that it suffices to prove this
 
 We will however work in the setting of general \inftytops/ whenever possible; 
 in fact, only the very last step will require us to restrict to $C=\Fun(A,\spaces)$ since we need our \inftytop/ to be hypercomplete, which is not true generally.
-\begin{corollary}[Fundamental James Splitting, iterated] %TODO prove assoc and dist of wedge 
+\begin{corollary}[Fundamental James Splitting, iterated] 
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then for all $n\geq 1$ there is a canonical equivalence
     \begin{equation*}
         \bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\simeq\Sigma\Omega\Sigma X 
     \end{equation*}
-    induced by \cref{cor:fundamentalJamesSplitting} such that the diagram
+    induced by \cref{cor:fundamentalJamesSplitting}, and these are compatible in the sense that the diagram
     \begin{center}
         \begin{tikzcd}
             \bigvee\limits_{i=1}^n\Sigma X^{\wedge i} \ar[r] \ar[dd, hook] & \bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right) \ar[dr,"\simeq"]\\
@@ -356,12 +571,30 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
     commutes.
     Here $\Sigma X^{\wedge i}$ denotes $\Sigma\left(X\wedge X\wedge\ldots\wedge X\right)$ with $X$ appearing $i$ times.
     \begin{proof}
-        This follows inductively from \cref{cor:fundamentalJamesSplitting} and \cref{lem:suspensionCommutesWithSmash}.
+        This follows by an inductive argument:
+        Given 
+        \begin{equation*}
+            \Sigma\Omega\Sigma X\simeq\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)
+        \end{equation*}
+        we obtain 
+        \begin{equation*}
+            \Sigma\Omega\Sigma X\simeq\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\left(\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)\right)\right) 
+        \end{equation*}
+        by the Fundamental James Splitting \cref{cor:fundamentalJamesSplitting}.
+        Using the distributivity and associativity of the smash product (\cref{lem:smashDist} and \cref{lem:assocSmash}) we get
+        \begin{equation*}
+            \bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\left(\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)\right)\right)\simeq\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma X\right)\vee\left(X^{\wedge (n+1)}\wedge\Sigma\Omega\Sigma X\right)\;.
+        \end{equation*}
+        Lastly using \cref{lem:suspensionCommutesWithSmash} we have $\left(X^{\wedge n}\wedge\Sigma X\right)\simeq \Sigma X^{\wedge (n+1)}$ and conclude
+        \begin{equation*}
+            \Sigma\Omega\Sigma X\simeq\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\Sigma X^{\wedge (n+1)} \vee\left(X^{\wedge (n+1)}\wedge\Sigma\Omega\Sigma X\right)\simeq\bigvee\limits_{i=1}^{n+1}\Sigma X^{\wedge i}\vee\left(X^{\wedge (n+1)}\wedge\Sigma\Omega\Sigma X\right)\;.
+        \end{equation*}
+        The commutativity of the diagram now follows by construction.
     \end{proof}
 \end{corollary}
 \begin{definition}
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
-    Then the canonical maps 
+    Then the canonical compatible maps 
     \begin{equation*}
         c_X^n\colon\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\simeq}\Sigma\Omega\Sigma X
     \end{equation*}
@@ -514,7 +747,7 @@ With these we can deduce the following statements:
         As $n$ was arbitrary, $c_X$ is therefore an equivalence.
     \end{proof}
 \end{prop}
-%TODO counterexample S^0 AT Theorem 1.20
+%TODO counterexample S^0 AT Theorem 1.20, https://math.stackexchange.com/questions/3623113/infinite-wedge-sum, HEP Warning 2.13.
 \begin{corollary}[Classical James Splitting]\label{cor:classicalJamesSplitting}
     Let $X$ be a pointed and $0$-connected object in $\spaces$.
     Then     
@@ -541,7 +774,7 @@ Lastly, we give an application of the James Splitting Theorem.
         H_k(\Omega S^{n+1})\cong\bigoplus\limits_{i=1}^{\infty}H_k(S^{ni})\;.
     \end{equation*}
     \begin{proof}
-        Note that for $n>0$ the sphere is $0$-connected.
+        Note that for $n\geq1$ the sphere is $0$-connected.
         Thus by \cref{cor:classicalJamesSplitting} we have an isomorphism 
         \begin{equation*}
             H_{k+1}\left(\bigvee\limits_{i=1}^{\infty}\Sigma \left(S^n\right)^{\wedge i}\right)\cong H_{k+1}\left(\Sigma\Omega\Sigma S^n\right)\;.
