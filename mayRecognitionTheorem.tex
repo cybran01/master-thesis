@@ -58,7 +58,7 @@ A generalization characterizing higher loop spaces was proven in \cite{may2006ge
     Then we call $U$ \emph{effective} if the diagram 
     \begin{center} %TODO add face maps!
         \begin{tikzcd}[sep = 4em]
-            U_1 \ar[r,"\delta_0^1"] \ar[d,"\delta_1^1"] & U_0 \ar[d]\\
+            U_1 \ar[r,"\delta_0^1"] \ar[d,"\delta_1^1"'] & U_0 \ar[d]\\
             U_0 \ar[r] & \colim\limits_{\N(\Delta)^{\op}} U
         \end{tikzcd}
     \end{center}
@@ -181,10 +181,12 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
         Then by \cref{prop:groupoidObjInToposAreEffective} and \cref{cor:groupoidEffectiveIffColimCechNerve} we know that it is a \Cech/ nerve and therefore by definition in the essential image of $G$.
     \end{proof}
 \end{prop}
-\begin{definition}
+\begin{definition}[Pointed Objects]
     Let $C$ be an \inftycat/ with a terminal object.
     Then write $C_*\subset\Fun(\Delta^1,C)$ for the full subcategory of maps with domain a fixed terminal object $*\in C_0$.
     We call $C_*$ the \emph{\inftycat/ of pointed objects}, and we call an object $X$ in $C_*$ a \emph{pointed object in $C$}.
+
+    We refer to maps in $C_*$ as \emph{pointed maps} and to equivalences in $C_*$ as \emph{equivalences of pointed objects}.
 \end{definition}
 \begin{remark}
     Since terminal objects are essentially unique, choosing different terminal objects induces equivalent models of \inftycats/ of pointed objects.
@@ -339,7 +341,7 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
     \begin{proof}
         First, by \cref{prop:inclOfSetIsFF} there is a fully faithful functor $i\colon\N(\Set)\to\spaces$ whose essential image consists precisely of the discrete objects and has $\pi_0\colon\spaces\to\N(\Set)$ as a left adjoint.
         By \cref{prop:testEffEpiInDisc} the statement of the lemma is thus equivalent to checking whether $\pi_0(f)$ is an effective epimorphism in $\Set$.
-        In $\Set$, computation shows that the effective epimorphisms are exactly the surjective morphisms, hence a map $f$ in $\spaces$ is an effective epimorphism precisely if $\pi_0(f)$ is surjective.
+        In $\Set$, computation shows that the effective epimorphisms are exactly the surjective morphisms, hence a map $f$ in $\spaces$ is an effective epimorphism precisely if $\pi_0(f)$ is surjective. %TODO rezk top and htpy top Example 1.14
     \end{proof}
 \end{prop}
 \begin{corollary}

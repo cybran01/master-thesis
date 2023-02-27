@@ -14,7 +14,8 @@ We begin by introducing some well known constructions that we will need througho
                 * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
-        a \emph{suspension of $X$}.
+        a \emph{suspension of $X$}. 
+        Note that since both canonical maps $X\to *\to \Sigma X$ are equivalent, when $X$ is pointed then so is $\Sigma X$ via the map $*\to X\to\Sigma X$. %TODO do i need this?
         \item for pointed objects $X$ and $Y$ in $C$, we call a pushout
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -33,13 +34,13 @@ We begin by introducing some well known constructions that we will need througho
         a \emph{smash product of $X$ and $Y$} (where the map $X\vee Y\to X\times Y$ is a canonical map from the universal property induced by the maps $X\vee Y\to X$ and $X\vee Y\to Y$).
     \end{itemize}
 \end{definition}
-We now wand to establish some fundamental properties of the wedge sum and smash product.
+We now want to establish some fundamental properties of the wedge sum and smash product.
 It is clear from their definition that both are commutative.
 We will prove that both are associative and that the smash product distributes over the wedge sum.
 \begin{lemma}\label{lem:assocWedge}
     Let $C$ be an \inftytop/.
-    Then the wedge sum is associative in the sense that for pointed objects $A,B,C$ of $C$ there is a canonical equivalence $(A\vee B)\vee C\simeq A\vee (B\vee C)$.
-    In fact, $(A\vee B)\vee C\simeq(A\vee B)\cup_{B}A\vee C\simeq A\vee (B\vee C)$.
+    Then the wedge sum is associative in the sense that for pointed objects $A,B,C$ of $C$ there is a canonical equivalence $(A\vee B)\vee C\simeq A\vee (B\vee C)$ of pointed objects.
+    In fact, $(A\vee B)\vee C\simeq(A\vee B)\cup_{B}A\vee C\simeq A\vee (B\vee C)$ as pointed objects.
     \begin{proof}
         From the horizontal composite square of the diagram 
         \begin{center}
@@ -87,7 +88,7 @@ We will prove that both are associative and that the smash product distributes o
 \end{lemma}
 \begin{lemma}\label{lem:smashDist}
     Let $C$ be an \inftytop/.
-    Then the smash product distributes over the wedge sum in the sense that for pointed objects $X,A,B$ of $C$ there is a canonical equivalence $(A\vee B)\wedge X\simeq (A\wedge X)\vee (B\wedge X)$.
+    Then the smash product distributes over the wedge sum in the sense that for pointed objects $X,A,B$ of $C$ there is a canonical equivalence $(A\vee B)\wedge X\simeq (A\wedge X)\vee (B\wedge X)$ of pointed objects.
     \begin{proof}
         Because colimits commute, the colimit of a diagram indexed by $\Lambda_0^2\times\Lambda_0^2$ can be computed by either taking object-wise pushouts of the first argument and then the pushout of the resulting $\Lambda_0^2$-shaped diagram, or taking object-wise pushouts of the second argument and then taking pushout of the resulting $\Lambda_0^2$-shaped diagram.
         Hence given the diagram
@@ -205,7 +206,7 @@ We will prove that both are associative and that the smash product distributes o
 \end{lemma}
 \begin{lemma}\label{lem:assocSmash}
     Let $C$ be an \inftytop/.
-    Then the smash product is associative in the sense that for pointed objects $A,B,C$ of $C$ there is a canonical equivalence $(A\wedge B)\wedge C\simeq A\wedge (B\wedge C)$.
+    Then the smash product is associative in the sense that for pointed objects $A,B,C$ of $C$ there is a canonical equivalence $(A\wedge B)\wedge C\simeq A\wedge (B\wedge C)$ of pointed objects.
     \begin{proof}
         We apply \cref{lem:pushoutProdSquareIsPushout} to the pushout
         \begin{center}
@@ -252,14 +253,14 @@ We will prove that both are associative and that the smash product distributes o
                 * \arrow[r] & A\wedge (B\wedge C)
             \end{tikzcd}\;.
         \end{center}
-        We will now show that there is a canonical equivalence $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C\simeq \left((A\vee B)\times C\right)\cup_{A\vee B} A\times B$:
+        There is a canonical equivalence $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C\simeq \left((A\vee B)\times C\right)\cup_{A\vee B} A\times B$:
 
         Using \cref{lem:productPreservesPushout} the row-wise colimit of 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 A\times B & A \arrow[l] \arrow[r] & A\times C \\
-                B \arrow[d] \arrow[u] & * \arrow[l] \arrow[r] \arrow[d] \arrow[u] & C \arrow[d] \arrow[u] \\
-                B  & B \arrow[l] \arrow[r] & B\times C \\
+                B \arrow[d, equals] \arrow[u] & * \arrow[l] \arrow[r] \arrow[d] \arrow[u] & C \arrow[d] \arrow[u] \\
+                B  & B \arrow[l, equals] \arrow[r] & B\times C \\
             \end{tikzcd}
         \end{center}
         evaluates to $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C$ and the column-wise colimit evaluates to $\left((A\vee B)\times C\right)\cup_{A\vee B}A\times B$ which proves the canonical equivalence.
@@ -278,7 +279,7 @@ We will prove that both are associative and that the smash product distributes o
 \end{lemma}
 \addcontentsline{toc}{subsection}{The Fundamental James Splitting}
 \subsection*{The Fundamental James Splitting}
-As a first step, we will show that there is a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ for an arbitrary pointed object $X$.
+As a first step, we will show that for pointed objects $X$ there is a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ of pointed objects.
 This is called the \emph{Fundamental James Splitting}.
 
 The next lemma is a key ingredient of the proof of the Fundamental James Splitting.
@@ -300,7 +301,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
                 * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
-        shows that $i_0$ and $i_1$ are equivalent maps in $C$ (meaning identical in $\ho(C)$), since $X\to *\xrightarrow{i_0}\Sigma X$ and $X\to *\xrightarrow{i_1}\Sigma X$ are identical in $\ho(C)$ by construction and the canonical point $x\colon*\to X$ is a right inverse to $X\to *$.
+        shows that $i_0$ and $i_1$ are equivalent maps in $C$, since $X\to *\xrightarrow{i_0}\Sigma X$ and $X\to *\xrightarrow{i_1}\Sigma X$ are equivalent by construction and the canonical point $x\colon*\to X$ is a section of $X\to *$.
         Thus we get that the squares
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -313,7 +314,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
             \end{tikzcd}
         \end{center}
         are pullback squares.
-        Now we pick a product together with projections to obtain a pullback square 
+        We pick a product together with projections to obtain a pullback square 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\pi_1"] & \Omega\Sigma X \arrow[d] \\
@@ -329,12 +330,12 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
                 & * \arrow [from=uu,crossing over] \arrow [rr, "i_1"] & & \Sigma X &
             \end{tikzcd}
         \end{center}
-        where the three vertical squares are pullback, and the bottom square is a pushout.
+        where the three vertical squares are pullbacks, and the bottom square is a pushout.
 
         Now let $\Fun(\Delta^1\times\Delta^1,C)_{pb}\subset\Fun(\Delta^1\times\Delta^1,C)$ denote the full subcategory of pullback squares.
         Then the functor $\lim\colon\Fun(\Lambda_0^2,C)\to\Fun(\Delta^1\times\Delta^1,C)_{pb}$ is an equivalence of \inftycats/ since it is essentially surjective by definition and fully faithful since it is a right Kan-extension along the inclusion $\Lambda_0^2\subset\Delta^1\times\Delta^1$.
 
-        The previous diagram gives a natural transformation $\alpha\in\Fun(\Lambda_2^2,C)_1$ where $\alpha_0$ and $\alpha_1 $ are the restrictions of the back square and the front square to $\Lambda_2^2$ respectively.
+        The previous diagram corresponds to a natural transformation $\alpha\in\Fun(\Lambda_2^2,C)_1$ where $\alpha_0$ and $\alpha_1 $ are the restrictions of the back square and the front square to $\Lambda_2^2$ respectively.
         The induced natural transformation $\overline{\alpha}=\lim(\alpha)$ is a map between pullback squares, and since back and front square in the above diagram were already pullbacks, they are equivalent to $\overline{\alpha}_0$ and $\overline{\alpha}_1$ respectively.
         The map $\overline{\alpha}$ together with the equivalences of pullback squares thus induces a cube
         \begin{center}
@@ -389,7 +390,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         \end{tikzcd}
     \end{center}
     is a pushout.
-    But $\Omega\Sigma X\times \Sigma X$ is not generally contractible. 
+    But $\Sigma X \times \Omega\Sigma X$ is not generally contractible. 
 \end{remark}
 \begin{corollary}\label{lem:poOfProductIsSuspension}
     Let $C$ be an \inftytop/ and let $X\in \left(C_*\right)_0$ be a pointed object. 
@@ -512,7 +513,7 @@ The following corollary is not needed for our proof, however it is useful and im
 \end{corollary}
 \begin{lemma}\label{lem:suspensionCommutesWithSmash}
     Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
-    Then there is a canonical equivalence $\Sigma\left(X\wedge Y\right)\cong X\wedge\Sigma Y$.
+    Then there is a canonical equivalence $\Sigma\left(X\wedge Y\right)\cong X\wedge\Sigma Y$ of pointed objects.
     \begin{proof}
         Let $i_0,i_1\colon *\to\Sigma Y$ be the canonical maps from the definition $\Sigma Y$ as a pushout.
         These induce maps $j_0,j_1\colon X \to X\vee\Sigma Y$ and $k_0,k_1\colon X\to X\times\Sigma Y$.
@@ -541,16 +542,23 @@ The following corollary is not needed for our proof, however it is useful and im
 \end{lemma}
 \begin{corollary}[Fundamental James Splitting]\label{cor:fundamentalJamesSplitting}
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
-    Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$.
+    Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ of pointed objects.
     \begin{proof}
-        Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the left vertical and top horizontal maps of the big left square (top and bottom left squares combined) are equivalent to the maps of the square in \cref{lem:poOfProductIsSuspension}.
-        Since both are pushout squares, we get an equivalence $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$ and the proposition follows from \cref{lem:suspensionCommutesWithSmash}.
+        Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the big left square (top and bottom left squares combined) is equivalent to the square 
+        \begin{center}
+            \begin{tikzcd} [sep = 4em]
+                X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d] & \Omega\Sigma X \arrow[d] \\
+                * \arrow[r] & \Sigma\Omega\Sigma X \\
+            \end{tikzcd}
+        \end{center}
+        of \cref{lem:poOfProductIsSuspension}.
+        Since both are pushout squares, we get an equivalence of pointed objects $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\Sigma\left(X\wedge\Omega\Sigma X\right)$ and the proposition follows from \cref{lem:suspensionCommutesWithSmash}.
     \end{proof}
 \end{corollary}
 \addcontentsline{toc}{subsection}{The James Splitting Theorem in $\text{Fun}(A,\spaces)$}
 \subsection*{The James Splitting Theorem in $\Fun(A,\spaces)$}
 We will now prove the James Splitting Theorem for general \inftytops/.
-By \cref{rem:genTopoiComparisonMapEq} we will see that it suffices to prove this for \inftytops/ of the form $\Fun(A,\spaces)$ where $A$ is a small \inftycat/ by a localization argument.
+By \cref{lem:genTopoiComparisonMapEq} we will see that it suffices to prove this for \inftytops/ of the form $\Fun(A,\spaces)$ where $A$ is a small \inftycat/ by a localization argument.
 
 We will however work in the setting of general \inftytops/ whenever possible; 
 in fact, only the very last step will require us to restrict to $C=\Fun(A,\spaces)$ since we need our \inftytop/ to be hypercomplete, which is not true generally.
@@ -560,7 +568,7 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
     \begin{equation*}
         \bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\simeq\Sigma\Omega\Sigma X 
     \end{equation*}
-    induced by \cref{cor:fundamentalJamesSplitting}, and these are compatible in the sense that the diagram
+    of pointed objects induced by \cref{cor:fundamentalJamesSplitting}, and these are compatible in the sense that the diagram
     \begin{center}
         \begin{tikzcd}
             \bigvee\limits_{i=1}^n\Sigma X^{\wedge i} \ar[r] \ar[dd, hook] & \bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right) \ar[dr,"\simeq"]\\
@@ -592,7 +600,7 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
         The commutativity of the diagram now follows by construction.
     \end{proof}
 \end{corollary}
-\begin{definition}
+\begin{definition}\label{def:jamesSplittingMap}
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then the canonical compatible maps 
     \begin{equation*}
@@ -602,7 +610,7 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
     \begin{equation*}
         c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
     \end{equation*}
-    which we refer to as the \emph{comparison map}.
+    of pointed objects which we refer to as the \emph{comparison map}.
 \end{definition}
 \begin{definition}\label{def:connected}
     Let $C$ be an \inftytop/.
@@ -652,13 +660,13 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
 \begin{definition}
     We say that an \inftytop/ $C$ is \emph{hypercomplete} if every $\infty$-connected map is an equivalence.
 \end{definition}
-\begin{remark}
+\begin{remark}\label{rmk:spacesHypercomplete}
     Every equivalence is $\infty$-connected, however the converse is not true for general \inftytops/.
     For every small \inftycat/ $A$, $\Fun(A,\spaces)$ is an \inftytop/ that is hypercomplete.
     This can be seen using \cite[Remark 6.5.4.7]{HTT}.
 \end{remark}
 Our goal now is to prove that the comparison map is an equivalence whenever $X$ is a $0$-connected pointed object.
-We will prove this only in $\Fun(A,\spaces)$, however this case is already enough to derive the result for general topoi (see \cref{rem:genTopoiComparisonMapEq}).
+We will prove this only in $\Fun(A,\spaces)$, however this case is already enough to derive the result for general topoi (see \cref{lem:genTopoiComparisonMapEq}).
 
 The main idea is to show that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ becomes increasingly connected and vanishes as $n\to\infty$.
 For this proof we need some stability properties of connectedness.
@@ -687,7 +695,8 @@ For this proof we need some stability properties of connectedness.
     be a pushout square in $C$.
     Then if $f$ is $n$-connected and $g$ is $m$-connected, the canonical map $A\to B\times_{D}C$ is $(n+m)$-connected.
     \begin{reference}
-        A very general version for \inftytops/ can be found in \cite[Corollary 4.3.1]{gen_blakers_massey}, but the version used here can also be proven by a reduction to topoi of the form $\Fun(A,\spaces)$ similar to \cref{rem:genTopoiComparisonMapEq} and thus derived from the ordinary Blakers-Massey Theorem in $\Top$.
+        A very general version for \inftytops/ can be found in \cite[Corollary 4.3.1]{gen_blakers_massey}, but the version used here can also be proven by a reduction to topoi of the form $\Fun(A,\spaces)$ similar to \cref{lem:genTopoiComparisonMapEq} and thus derived from the ordinary Blakers-Massey Theorem in $\Top$.
+        The argument for the latter can be found in \cite[Proposition 8.16]{toposes_and_htpy_toposes}.
     \end{reference}
 \end{thm}
 With these we can deduce the following statements:
@@ -714,11 +723,11 @@ With these we can deduce the following statements:
 \end{corollary}
 \begin{prop}[James Splitting for Presheaf Categories]\label{prop:jamesSplittingPresheaf} %ref Proposition 4.18 
     Let $A$ be a small \inftycat/ and let $X$ be a pointed and $0$-connected object in the \inftytop/ $\Fun(A,\spaces)$.
-    Then the comparison morphism 
+    Then the comparison map 
     \begin{equation*}
         c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
     \end{equation*}
-    is an equivalence. 
+    is an equivalence of pointed objects. 
     \begin{proof}
         Since $\Fun(A,\spaces)$ is hypercomplete it suffices to prove that $c_X$ is $\infty$-connected.
 
@@ -747,25 +756,56 @@ With these we can deduce the following statements:
         As $n$ was arbitrary, $c_X$ is therefore an equivalence.
     \end{proof}
 \end{prop}
-%TODO counterexample S^0 AT Theorem 1.20, https://math.stackexchange.com/questions/3623113/infinite-wedge-sum, HEP Warning 2.13.
 \begin{corollary}[Classical James Splitting]\label{cor:classicalJamesSplitting}
     Let $X$ be a pointed and $0$-connected object in $\spaces$.
     Then     
     \begin{equation*}
         c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
     \end{equation*}
-    is an equivalence. 
+    is an equivalence of pointed objects. 
     \begin{proof}
         This is \cref{prop:jamesSplittingPresheaf} with $A=\Delta^0$.
     \end{proof}
 \end{corollary}
-\begin{remark}\label{rem:genTopoiComparisonMapEq}
-    Due to the equivalent characterizations of \inftytops/ in \cite[Definition 6.1.0.6]{HTT} for every \inftytop/ $C$ there exists a small \inftycat/ $A$ and a map $f\colon\Fun(A,\spaces)\to C$ that preserves finite limits and has a fully faithful right adjoint $i$.
-    
-    Then if for a pointed object $X$ in $C$ the comparison morphism $c_{i(X)}$ is an equivalence in $Fun(A,\spaces)$, so is $c_X$ in $C$ (see \cite[Lemma 4.17]{splittings_21}).
-    If $X$ is $0$-connected then so is $i(X)$, so it suffices to prove that it $c_{i(X)}$ is $\infty$-connected since $\Fun(A,\spaces)$ is hypercomplete. 
-    But we have proven this in \cref{prop:jamesSplittingPresheaf}, so it is true for all \inftytops/.
+\begin{remark}
+    The connectedness assumption on $X$ cannot be dropped. 
+    Taking $X=S^0$ in $\spaces$ as an example, we have that $c_{S^0}$ simplifies to the map
+    \begin{equation*}
+        \bigvee\limits_{i=1}^n S^1\to\bigvee\limits_{\Z}\Sigma\Omega S^1
+    \end{equation*}
+    corresponding to the inclusion $\Nat_{\geq1}\subset\Z$ on components (see \cite[Warning 2.13]{splittings_21}).
 \end{remark}
+\begin{thm}\label{thm:charTopoiByAdj}
+    Let $C$ be an \inftytop/.
+    Then there exists a small \inftycat/ $A$ and an adjunction
+    \begin{equation*}
+        L\colon\Fun(A,\spaces)\rightleftarrows C\mkern+3mu:\mkern-3mu i
+    \end{equation*}
+    such that the left adjoint $L$ preserves finite limits and the right adjoint $i$ is fully faithful.
+
+    Furthermore, given $-2\leq m\leq\infty$ and an $m$-connected morphism $f\colon x\to y$ in $C$, there exists an $m$-connected morphism $g\colon i(x)\to y'$ in $\Fun(A,\spaces)$ such that $L(g)$ is equivalent to $f$ in $\Fun(\Delta^1,C)$.
+    \begin{reference}
+        \cite[Theorem 6.1.0.6 (1) and (2)]{HTT} for the adjunction and \cite[Remark 6.5.1.15]{HTT} for connectedness statement
+    \end{reference}
+\end{thm}
+\begin{corollary}[James Splitting for \inftyTops/]\label{lem:genTopoiComparisonMapEq}
+    Let $C$ be an \inftytop/ and $X$ be a pointed and $0$-connected object in $C$.
+    Then the canonical map 
+    \begin{equation*}
+        c_X\colon\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X
+    \end{equation*}
+    from \cref{def:jamesSplittingMap} is an equivalence of pointed objects.
+    \begin{proof}
+        Let $L$ and $i$ be the induced adjoint functors from \cref{thm:charTopoiByAdj} and let $X$ be a pointed $0$-connected object in $C$ (in particular, by \cref{prop:conn} \ref{prop:connSection} $*\to C$ is $(-1)$-connected).
+        As both functors $L$ and $i$ preserve finite limits and thus preserve terminal objects, they descend to the categories of pointed objects.
+        
+        Again using \cref{thm:charTopoiByAdj} we can pick a map $*\to Y$ in $\Fun(A,\spaces)$ that is $(-1)$-connected such that $L(Y)$ is equivalent to $X$ as pointed spaces.
+        The space $Y$ is $0$-connected (again by \cref{prop:conn} \ref{prop:connSection}), thus the map $c_Y$ in $\Fun(A,\spaces)$ is an equivalence by \cref{prop:jamesSplittingPresheaf}.
+        
+        Note that since $L$ preserves colimits and finite limits, it preserve all colimits/limits appearing in $c_Y$, thus $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
+        But since $L(Y)\simeq X$, this means that $c_{L(Y)}\simeq c_X$ in $C_*$ which proves that $c_X$ is an equivalence in $C_*$.
+    \end{proof}
+\end{corollary}
 Lastly, we give an application of the James Splitting Theorem.
 \begin{lemma}\label{lem:reducedHomLoopOfSpheres}
     Let $H_*$ be a reduced homology theory and let $S^n$ with $n\geq1$ be a model of the pointed $n$-sphere.

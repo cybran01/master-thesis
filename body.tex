@@ -63,11 +63,14 @@
 \def\inftytop/{$\infty$-topos}
 \newcommand{\inftytops}{}
 \def\inftytops/{$\infty$-topoi}
+\newcommand{\inftyTops}{}
+\def\inftyTops/{$\infty$-Topoi}
 \newcommand{\Cech}{}
 \def\Cech/{\v{C}ech}
 \newcommand{\Strom}{}
 \def\Strom/{Str{\o}m}
 
+\DeclareMathOperator{\Z}{\mathbb{Z}}
 \DeclareMathOperator{\R}{R}
 \DeclareMathOperator{\C}{C}
 \DeclareMathOperator{\CN}{\text{\v{C}}}
@@ -113,16 +116,16 @@
   }{\scriptstyle#1}{U}{c}{F}{F}{S}%
 }}}
 
-\DeclareDocumentCommand{\newfaktor}{s m O{0.5} m O{-0.5}}{% \newfaktor[*]{#2}[#3]{#4}[#5] -> #2/#4
-  \setbox0=\hbox{\ensuremath{#2}}% Store numerator
-  \setbox1=\hbox{\ensuremath{\diagup}}% Store slash /
-  \setbox2=\hbox{\ensuremath{#4}}% Store denominator
-  \raisebox{#3\ht1}{\usebox0}% Numerator
-  \mkern-5mu\ifthenelse{\equal{#1}{\BooleanTrue}}% Slash /
-    {\diagup}% regular \faktor slash
-    {\rotatebox{-44}{\rule[#5\ht2]{0.4pt}{-#5\ht2+#3\ht0+\ht0}}}% tilted rule as a slash
+\DeclareDocumentCommand{\newfaktor}{s m O{0.5} m O{-0.5}}{% 
+  \setbox0=\hbox{\ensuremath{#2}}% 
+  \setbox1=\hbox{\ensuremath{\diagup}}%
+  \setbox2=\hbox{\ensuremath{#4}}%
+  \raisebox{#3\ht1}{\usebox0}% 
+  \mkern-5mu\ifthenelse{\equal{#1}{\BooleanTrue}}%
+    {\diagup}% 
+    {\rotatebox{-44}{\rule[#5\ht2]{0.4pt}{-#5\ht2+#3\ht0+\ht0}}}% 
   \mkern-4mu%
-  \raisebox{#5\ht2}{\usebox2}% Denominator
+  \raisebox{#5\ht2}{\usebox2}%
 }
 
 \makeatletter
