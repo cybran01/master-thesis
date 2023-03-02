@@ -1,10 +1,11 @@
-A pointed object $X$ in an \inftytop/ is \emph{deloopable} if there exists a pointed connected object $A$ such that $X\simeq\Omega A$ (as pointed objects). %TODO maybe introduce loop space here and not only in james splitting thm
+A pointed object $X$ in an \inftytop/ is \emph{deloopable} if there exists a pointed connected object $A$ such that $X\simeq\Omega A$ (as pointed objects).
 
-In this section we will give a proof of the fact that a pointed object $X$ is deloopable if and only if it admits additional algebraic structure, which we assemble into a \emph{group object} (see \cref{def:grpObj}). %TODO mention stasheff
+In this section we will give a proof of the fact that a pointed object $X$ is deloopable if and only if it admits additional algebraic structure, which we assemble into a \emph{group object} (see \cref{def:grpObj}).
+This phenomenon was also studied by Stasheff in \cite{stasheff_hspaces} in the language of H-spaces.
 The idea and presentation of the proof given here is due to \cite{segal_cat_and_cohom}.
 We will see that descent plays a major role in this.
 
-A generalization characterizing higher loop spaces was proven in \cite{may2006geometry} and is called the \emph{May Recognition Theorem}. %TODO see also https://ncatlab.org/nlab/show/delooping#characterization_of_deloopable_objects Stasheff
+A generalization characterizing higher loop spaces was proven in \cite{may2006geometry} and is called the \emph{May Recognition Theorem}.
 \begin{definition}[(Augmented) Simplicial Objects]
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
@@ -236,7 +237,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     \begin{itemize}
         \item $U_0\simeq*$
         \item $U_1\simeq X$
-        \item for $c_{[1]}\colon[1]\to[0]$ the unique constant map in $\Delta$, we have that $U(c_{[1]})$ is equivalent to the map $x\colon*\to X$
+        \item for $c_{[1]}\colon[1]\to[0]$ the unique constant map in $\Delta$, we have that $U(c_{[1]})$ is equivalent to the map $x\colon*\to X$.
     \end{itemize}
     (This implies in particular $U_n\simeq X\times\ldots\times X$ for $n\geq1$ with $X$ appearing $n$ times.)
 
@@ -280,7 +281,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
 \addcontentsline{toc}{subsection}{Delooping of Pointed Objects in $\spaces$}
 \subsection*{Delooping of Pointed Objects in $\spaces$}
 We now want to check that pointed connected objects in a general \inftytop/ coincide with pointed connected spaces in the \inftytop/ $\spaces$.
-Thus we recover the statement of the May Recognition Theorem for $n=1$, which says that a pointed space is equivalent to a loop space of a pointed connected object if and only if it admits the structure of a group object in $\Top$. %TODO do i mean a loop space of a conn obj?
+Thus we recover the statement of the May Recognition Theorem for $n=1$, which says that a pointed space is equivalent to a loop space of a pointed connected object if and only if it admits the structure of a group object in $\Top$. 
 \begin{definition}
     Let $C$ be an \inftytop/.
     With the convention that the $(-2)$-truncated maps are the equivalences, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-truncated} for $k\geq -1$ if the diagonal map $X\to X\times_YX$ is $(k-1)$-truncated.
@@ -307,7 +308,7 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
                 X \arrow[r, "f"] & Y \\
             \end{tikzcd}
         \end{center}
-        in $\spaces$ shows that $f$ is $n$-truncated if and only if $g$ is $n$-truncated by the fiberwise characterization of homotopy pullbacks. %TODO cref this fiberwise characterization
+        in $\spaces$ shows that $f$ is $n$-truncated if and only if $g$ is $n$-truncated by the fiberwise characterization of homotopy pullbacks \cref{prop:fiberwiseCharOfHtpyPb}.
         (Note that a map is $(-1)$-truncated if and only if its homotopy fibers are contractible or empty.)
         Furthermore, the universal map $s\colon X\to X\times_Y X$ is a section of $g$ in $\spaces$.
         Inspection of the long exact sequences of homotopy groups shows that $g$ is topologically $n$-truncted if and only if the section $s$ is topologically $(n-1)$-truncated.

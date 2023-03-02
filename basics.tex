@@ -224,10 +224,10 @@ We will not give proofs for any statements in this section; we will however poin
     \end{reference}
 \end{prop}
 %TODO stress importance & mention 1-categorical case
-\begin{prop}[Pasting Law]
+\begin{prop}[Pasting Law for Model Categories]\label{prop:pastingLaw}
     Let $M$ be a model category and 
     \begin{center}
-        \begin{tikzcd} [sep = 3em]
+        \begin{tikzcd} [sep = 4em]
             X \ar[d] \ar[r] & Y \ar[d] \ar[r] & Z \ar[d]\\
             A \ar[r] & B \ar[r] & C
         \end{tikzcd}
@@ -238,9 +238,29 @@ We will not give proofs for any statements in this section; we will however poin
 
     Dually, if the left square is a homotopy pushout, then the outer square is a homotopy pushout if and only if the right square is a homotopy pushout.
 
-    We refer to these statements as the \emph{pasting law} for pullbacks and pushouts respectively.
+    We refer to these statements as the \emph{pasting law} for homotopy pullbacks and pushouts respectively.
     \begin{reference}
         \cite[Proposition 8]{models_of_htpy_limits} (and its dual)
+    \end{reference}
+\end{prop}
+The following is the analogous statement for \inftycats/.
+\begin{prop}[Pasting Law for \inftyCats/]
+    Let $C$ be an \inftycat/ and 
+    \begin{center}
+        \begin{tikzcd} [sep = 4em]
+            X \ar[d] \ar[r] & Y \ar[d] \ar[r] & Z \ar[d]\\
+            A \ar[r] & B \ar[r] & C
+        \end{tikzcd}
+    \end{center}
+    a $\Delta^2\times\Delta^1$-shaped diagram in $C$.
+
+    Then if the right square is a pullback, then the outer square is a pullback if and only if the left square is a pullback.
+
+    Dually, if the left square is a pushout, then the outer square is a pushout if and only if the right square is a pushout.
+
+    We refer to these statements as the \emph{pasting law} for pullbacks and pushouts respectively.
+    \begin{reference}
+        \cite[Proposition 7.6.3.16]{kerodon}
     \end{reference}
 \end{prop}
 %TODO maybe equivalences of squares here (reference?) (is this really relevant, since it is closely related to how htpy pb/po are defined)
@@ -387,7 +407,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     Then the following are equivalent:
     \begin{itemize}
         \item $F$ is a weak categorical equivalence (thus an equivalence of \inftycats/)
-        \item $F$ is fully faithful and essentially surjective %TODO not defined yet
+        \item $F$ is fully faithful and essentially surjective
         \item There exists a map $G\colon D\to C$ and invertible natural transformations $FG\simeq \id_D$ and $GF\simeq \id_C$.
     \end{itemize}
     \begin{reference}
@@ -446,7 +466,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     \end{equation*}
     defines a simplicial set $C_{f/}$ which we refer to as the \emph{coslice simplicial set of $C$ over $f$}.
 \end{definition}
-\begin{construction}[(Co)Slice Contraction]%TODO kerodon 4.3.5.12.
+\begin{construction}[(Co)Slice Contraction] %TODO kerodon 4.3.5.12.
     Let $f\colon X\to Y$ be a morphism of simplicial sets.
     Then let $c\colon Y_{/f}\star X\to Y$ be defined as follows:
     \begin{itemize}

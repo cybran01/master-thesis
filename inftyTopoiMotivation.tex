@@ -55,38 +55,8 @@ For a given point $b\in B$ we can then form a cube
     \end{tikzcd}
 \end{center}
 where the top face consists of the fibers over $b$ of the fibrations to $B$.
-By the pasting law we know that the side faces are all homotopy pullbacks.
+By the pasting law for homotopy pullbacks (see \cref{prop:pastingLaw}) we know that the side faces are all homotopy pullbacks.
 Thus we can apply Mathers Second Cube Theorem which shows that the homotopy fiber $F$ is the homotopy pushout of the homotopy fibers of $X_i\xtwoheadrightarrow{} B$ for $i\in\set{0,1,2}$.
-% We may view this situation as the fibration $X\xtwoheadrightarrow{} B$ being ``glued together'' by the fibrations $X_1\xtwoheadrightarrow{} B$ and $X_2\xtwoheadrightarrow{} B$ which are compatible along the intersection.
-% Now let $b\colon*\to B$ be a point. 
-% Pulling the square back along this point gives a diagram
-% \begin{center}
-%     \begin{tikzcd} [column sep = 1em, row sep = 3em]
-%         F_{0} \arrow[>->, rr] \arrow [>->, d] && F_1 \arrow [>->, d] & X_{0} \arrow[>->, rr] \arrow [>->, d] && X_1 \arrow [>->, d]\\
-%         F_2 \arrow[>->, rr] & {} \arrow [->>, d] & F & X_2 \arrow[>->, rr] & {} \arrow [->>, d] & X\\
-%         & * \arrow[rrr, "b"] & & & B &
-%     \end{tikzcd}
-% \end{center}
-% where we omit the maps $F_i\to X_i$ for $i\in\set{0,1,2}$ and $F\to X$ for clarity.
-% Since the right square is a homotopy pushout, we also want the map of homotopy fibers to be a homotopy pushout as this is true in $\Top$.
-
-% Asking for this to be true implies a more general statement:
-% Let $f\colon A\to B$ be a map and $a\colon *\to A$ be a point.
-% Then by pulling back we get a diagram 
-% \begin{center}
-%     \begin{tikzcd} [column sep = 1em, row sep = 3em]
-%         F_{0} \arrow[>->, rr] \arrow [>->, d] && F_1 \arrow [>->, d] & Y_{0} \arrow[>->, rr] \arrow [>->, d] && Y_1 \arrow [>->, d] & X_{0} \arrow[>->, rr] \arrow [>->, d] && X_1 \arrow [>->, d]\\
-%         F_2 \arrow[>->, rr] & {} \arrow [->>, d] & F & Y_2 \arrow[>->, rr] & {} \arrow [->>, d] & Y & X_2 \arrow[>->, rr] & {} \arrow [->>, d] & X\\
-%         & * \arrow[rrr, "a"] & & & A \arrow[rrr, "f"] & & & B &
-%     \end{tikzcd}
-% \end{center}
-% and $F$ is the homotopy fiber of $X\twoheadrightarrow B$ at $f(a)$ and $Y\twoheadrightarrow A$ at $a$.
-% Then the the middle square is a homotopy pushout:
-% Note that the pushout $Y_1\cup_{Y_0}Y_2$ is a homotopy pushout. 
-% By replacing the canonical map $Y_1\cup_{Y_0}Y_2\to A$ with a fibration via a factorization $Y_1\cup_{Y_0}Y_2\xtailrightarrow{\sim}\overline{Y}\twoheadrightarrow A$ (note that $\overline{Y}$ is also a homotopy pushout) and the canonical map $Y_1\cup_{Y_0}Y_2\to Y$ by a lift $\alpha\colon\overline{Y}\to Y$, we know that $F$ is also a homotopy fiber of $\overline{Y}\twoheadrightarrow A$.
-% But this means that $\alpha$ induces weak equivalences between all homotopy fibers of the fibrations $\overline{Y}\twoheadrightarrow A$ and $Y\twoheadrightarrow A$, hence $\alpha$ is a weak equivalence (e.g. by the long exact sequence of homotopy groups) and therefore $Y$ is a homotopy pushout.
-
-% Using the pasting lemma, asking for the middle square to be a homotopy pushout gives the following statement: 
 We can also ask for this to be true not only for pushouts but for general small colimits; 
 this also  holds in $\Top$ as well, but it turns it that is suffices to check it for pushouts and small coproducts as we will see in \cref{lem:univColimIffUnivPoAndCoprod}.
 This more general property is then called ``universality''.

@@ -72,7 +72,7 @@ Since both coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerve
         This means that the functor from left to right is (equivalent to) a left derived functor of the $\colim$-functor since the latter exists by \cref{thm:exProjInjModelStr} and adjoints are essentially unique.
 
         Hence given a diagram $X\colon J^{\rhd}\to M$, the colimit of the induced map $\N(J)\to\N(M)[W^{-1}]$ in $\ho(\N(M)[W^{-1}])\cong\Ho(M)$ is isomorphic to the homotopy colimit of $X|_J$ computed via the derived colimit functor in $\Ho(M)\cong\ho(\N(M)[W^{-1}])$.
-        Since objects are equivalent in $\N(M)[W^{-1}]$ if and only if they are isomorphic in $\ho(\N(M)[W^{-1}])$, this proves the lemma. %TODO perhaps cite?
+        Since objects are equivalent in $\N(M)[W^{-1}]$ if and only if they are isomorphic in $\ho(\N(M)[W^{-1}])$ (see \cref{rmk:boardmanVogt}), this proves the lemma. %TODO is this really clear that is follows from that?
     \end{proof}
 \end{lemma}
 \begin{corollary}\label{cor:sufficientToProveInModCat}
@@ -823,7 +823,7 @@ The following weak version of the locality of quasifibrations (\cref{cor:locOfQu
                 X \arrow [r] & Y
             \end{tikzcd}
         \end{center} 
-        are ordinary pullback squares.
+        are ordinary pullback squares since they are restrictions of maps along inclusions.
         Using \cref{lem:weOfaPairsIsHtpyPb} the given assumptions imply that the first square is a homotopy pullback since top and bottom map are quasifibrations.
         Thus $f$ is a map of excisive triads $(X;f^{-1}(U_1),f^{-1}(U_2))\to(Y;U_1,U_2)$ such that $f|_{f^{-1}(U_i)}\colon(f^{-1}(U_i),f^{-1}(U_1)\cap f^{-1}(U_2))\to (U_i,U_1\cap U_2)$ are weak equivalences for $i\in\set{1,2}$.
 
@@ -846,7 +846,7 @@ The relationship of locality of quasifibrations and descent also goes the other 
             U_j\arrow [r, hook] & U_i
         \end{tikzcd}
     \end{center}
-    are homotopy pullbacks and $X\simeq\hcolim\limits_{i\in I}(f^{-1}(U_i))$ as well as $Y\simeq\hcolim\limits_{i\in I}(U_i)$, the ordinary pullback squares 
+    are homotopy pullbacks by \cref{rmk:parallelQuasifibsInPb} and $X\simeq\hcolim\limits_{i\in I}(f^{-1}(U_i))$ as well as $Y\simeq\hcolim\limits_{i\in I}(U_i)$, the ordinary pullback squares 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             f^{-1}(U_i) \arrow [r, hook] \arrow [d,, "f|_{f^{-1}(U_i)}"'] & X \arrow [d, "f"]\\
@@ -859,7 +859,7 @@ The relationship of locality of quasifibrations and descent also goes the other 
     A direct proof of the locality of quasifibrations can be found in \cite[Theorem A.1.2]{aguilar2002algebraic}.
 \end{remark}
 The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQuasifib} is applicable.
-\begin{lemma}\label{lem:reductionStepDescent} %TODO it seems this can be shortened
+\begin{lemma}\label{lem:reductionStepDescent}
     Suppose that for all cubes in the model category $\Top$
     \begin{center}
         \begin{tikzcd} [sep = .5 cm]
@@ -869,13 +869,13 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
             & C \arrow [->>,from=uu,crossing over] \arrow [rr] & & D &
         \end{tikzcd}
     \end{center}
-    where 
+    where
     \begin{itemize}
         \item left and back face are homotopy pullbacks
         \item bottom and top square homotopy pushouts 
         \item the maps $\overline{A}\xtwoheadrightarrow{} A$, $\overline{B}\xtwoheadrightarrow{} B$ and $\overline{C}\xtwoheadrightarrow{} C$ are fibrations
     \end{itemize}
-    the front and right squares are homotopy pullbacks.
+    we have that the the front and right squares are homotopy pullbacks.
     Then $\Top$ has descent for homotopy pushouts.
     \begin{proof}
         We will prove that every cube
@@ -942,7 +942,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
             \end{tikzcd}
         \end{center}
         by taking pushouts.
-        Since these are pushouts along cofibrations, they are already homotopy pushouts since $\Top$ is left proper. %TODO cite 
+        Since these are pushouts along cofibrations, they are already homotopy pushouts since $\Top$ is left proper.
         Following the construction of this cube, we see that all faces are equivalent to their corresponding faces of the starting cube which proves the lemma.
     \end{proof}
 \end{lemma}
@@ -992,7 +992,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
                 * \arrow[r, "b_0"] & B \arrow[r, hook, "\sim"] & \M(g) \\
             \end{tikzcd}
         \end{center}
-        where the indicated maps are weak equivalences (they are right inverses to the contraction maps).
+        where the indicated maps are weak equivalences (in fact they are homotopy equivalences).
         Since the right square is pullback (since $Y=\Gamma^{-1}(B)$) and homotopy pullback and the left side is as well, this means that the fiber $F$ is already a homotopy fiber which proves the lemma.
     \end{proof}
 \end{lemma}
@@ -1015,7 +1015,7 @@ This finishes the preparation and we will now prove descent for pushouts via loc
             \item bottom and top square are homotopy pushouts
             \item the maps $\overline{A}\xtwoheadrightarrow{} A$, $\overline{B}\xtwoheadrightarrow{} B$ and $\overline{C}\xtwoheadrightarrow{} C$ are fibrations
         \end{itemize}
-        the front and right squares are also homotopy pullbacks.
+        we have that the front and right squares are also homotopy pullbacks.
 
         By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations.
         Using \cref{rmk:doubleMappingCylinderAlt}, we obtain a cube

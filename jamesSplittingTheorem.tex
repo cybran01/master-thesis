@@ -1,5 +1,5 @@
 In this section we will give a proof of the classical James Splitting Theorem \cite{james_splitting_original} for general \inftytops/.
-The classical James Splitting Theorem in $\spaces$ states that for connected pointed objects $X$, there is a canonical equivalence $\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X$.
+The classical James Splitting Theorem in $\spaces$ states that for connected pointed objects $X$, there is a canonical equivalence $\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X$ of pointed objects.
 Our main source is \cite[\S 2.2 and \S 4]{splittings_21}.
 
 We begin by introducing some well known constructions that we will need throughout the rest of this section.
@@ -40,18 +40,18 @@ We will prove that both are associative and that the smash product distributes o
 \begin{lemma}\label{lem:assocWedge}
     Let $C$ be an \inftytop/.
     Then the wedge sum is associative in the sense that for pointed objects $A,B,C$ of $C$ there is a canonical equivalence $(A\vee B)\vee C\simeq A\vee (B\vee C)$ of pointed objects.
-    In fact, $(A\vee B)\vee C\simeq(A\vee B)\cup_{B}A\vee C\simeq A\vee (B\vee C)$ as pointed objects.
+    In fact, $(A\vee B)\vee C\simeq(A\vee B)\cup_{B}(B\vee C)\simeq A\vee (B\vee C)$ as pointed objects.
     \begin{proof}
         From the horizontal composite square of the diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 & * \arrow[r] \arrow[d] & C \arrow[d] \\
                 * \arrow[r] \arrow[d] & B \arrow[d] \arrow[r] & B\vee C \arrow[d] \\
-                A \arrow[r] & A\vee B \arrow[r] & (A\vee B)\cup_BB\vee C \\
+                A \arrow[r] & A\vee B \arrow[r] & (A\vee B)\cup_B(B\vee C) \\
             \end{tikzcd}
         \end{center}
-        it follows that $(A\vee B)\cup_BB\vee C\simeq A\vee (B\vee C)$ by the pasting law. 
-        The pasting law applied to the vertical composite square shows that $(A\vee B)\cup_BB\vee C\simeq (A\vee B)\vee C$.
+        it follows that $(A\vee B)\cup_B(B\vee C)\simeq A\vee (B\vee C)$ by the pasting law. 
+        The pasting law applied to the vertical composite square shows that $(A\vee B)\cup_B(B\vee C)\simeq (A\vee B)\vee C$.
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:productPreservesPushout}
@@ -255,7 +255,7 @@ We will prove that both are associative and that the smash product distributes o
         \end{center}
         There is a canonical equivalence $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C\simeq \left((A\vee B)\times C\right)\cup_{A\vee B} A\times B$:
 
-        Using \cref{lem:productPreservesPushout} the row-wise colimit of 
+        Using \cref{lem:productPreservesPushout}, the row-wise colimit of 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 A\times B & A \arrow[l] \arrow[r] & A\times C \\
@@ -279,7 +279,7 @@ We will prove that both are associative and that the smash product distributes o
 \end{lemma}
 \addcontentsline{toc}{subsection}{The Fundamental James Splitting}
 \subsection*{The Fundamental James Splitting}
-As a first step, we will show that for pointed objects $X$ there is a canonical equivalence $\Sigma\Omega\Sigma X\cong\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ of pointed objects.
+As a first step to proving the James Splitting Theorem, we will show that for pointed objects $X$ there is a canonical equivalence $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ of pointed objects.
 This is called the \emph{Fundamental James Splitting}.
 
 The next lemma is a key ingredient of the proof of the Fundamental James Splitting.
@@ -335,9 +335,9 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         Now let $\Fun(\Delta^1\times\Delta^1,C)_{pb}\subset\Fun(\Delta^1\times\Delta^1,C)$ denote the full subcategory of pullback squares.
         Then the functor $\lim\colon\Fun(\Lambda_0^2,C)\to\Fun(\Delta^1\times\Delta^1,C)_{pb}$ is an equivalence of \inftycats/ since it is essentially surjective by definition and fully faithful since it is a right Kan-extension along the inclusion $\Lambda_0^2\subset\Delta^1\times\Delta^1$.
 
-        The previous diagram corresponds to a natural transformation $\alpha\in\Fun(\Lambda_2^2,C)_1$ where $\alpha_0$ and $\alpha_1 $ are the restrictions of the back square and the front square to $\Lambda_2^2$ respectively.
-        The induced natural transformation $\overline{\alpha}=\lim(\alpha)$ is a map between pullback squares, and since back and front square in the above diagram were already pullbacks, they are equivalent to $\overline{\alpha}_0$ and $\overline{\alpha}_1$ respectively.
-        The map $\overline{\alpha}$ together with the equivalences of pullback squares thus induces a cube
+        The previous diagram corresponds to a natural transformation $\lambda\in\Fun(\Lambda_2^2,C)_1$ where $\lambda_1$ and $\lambda_1 $ are the restrictions of the back square and the front square to $\Lambda_2^2$ respectively.
+        The induced natural transformation $\overline{\lambda}=\lim(\lambda)$ is a map between pullback squares, and since back and front square in the above diagram were already pullbacks, they are equivalent to $\overline{\lambda}_0$ and $\overline{\lambda}_1$ respectively.
+        The map $\overline{\lambda}$ together with the equivalences of pullback squares thus induces a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 X\times\Omega\Sigma X \arrow [dr, "\alpha"] \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
@@ -364,7 +364,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
             \end{tikzcd}
         \end{center}
         which shows that it is also a pullback.
-        Since the right square in this diagram is a pullback by assumption, the pasting law for pullbacks implies that the left square is also a pullback.
+        Since the right square in this diagram is a pullback, the pasting law for pullbacks implies that the left square is also a pullback.
 
         Thus all vertical squares of the cube
         \begin{center}
@@ -375,7 +375,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
                 & * \arrow [from=uu, crossing over] \arrow [rr, "i_1"] & & \Sigma X &
             \end{tikzcd}
         \end{center}
-        are pullbacks and since the bottom square is a pushout by assumption, hence by universality the top square is pushout which finishes the proof.
+        are pullbacks and since the bottom square is a pushout by assumption, by universality the top square is pushout which finishes the proof.
     \end{proof}
 \end{lemma}
 \begin{remark}\label{rmk:mapNotProj}
@@ -563,7 +563,7 @@ By \cref{lem:genTopoiComparisonMapEq} we will see that it suffices to prove this
 We will however work in the setting of general \inftytops/ whenever possible; 
 in fact, only the very last step will require us to restrict to $C=\Fun(A,\spaces)$ since we need our \inftytop/ to be hypercomplete, which is not true generally.
 \begin{corollary}[Fundamental James Splitting, iterated] 
-    Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
+    Let $C$ be an \inftytop/, let $X$ be a pointed object in $C$ and for $i\geq 1$ let $\Sigma X^{\wedge i}$ denote $\Sigma\left(X\wedge X\wedge\ldots\wedge X\right)$ with $X$ appearing $i$ times.
     Then for all $n\geq 1$ there is a canonical equivalence
     \begin{equation*}
         \bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\simeq\Sigma\Omega\Sigma X 
@@ -577,7 +577,6 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
         \end{tikzcd}
     \end{center}
     commutes.
-    Here $\Sigma X^{\wedge i}$ denotes $\Sigma\left(X\wedge X\wedge\ldots\wedge X\right)$ with $X$ appearing $i$ times.
     \begin{proof}
         This follows by an inductive argument:
         Given 
@@ -647,7 +646,7 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
             \end{center}
             in $\spaces$, we claim the map $g$ is topologically $n$-connected if and only if $f$ is topologically $n$-connected:
             
-            From the fiberwise characterization of homotopy pullbacks, it follows directly that if $f$ is topologically $n$-connected, $g$ is as well.%TODO cref fiberwise char
+            From the fiberwise characterization of homotopy pullbacks \cref{prop:fiberwiseCharOfHtpyPb}, it follows directly that if $f$ is topologically $n$-connected, $g$ is as well.
 
             Since homotopy fibers are essentially constant on path-connected components and $f$ is an effective epimorphism, the fiberwise characterization of homotopy pullbacks also shows that $f$ is topologically $n$-connected if $g$ is topologically $n$-connected.
 
@@ -768,12 +767,21 @@ With these we can deduce the following statements:
     \end{proof}
 \end{corollary}
 \begin{remark}
-    The connectedness assumption on $X$ cannot be dropped. 
-    Taking $X=S^0$ in $\spaces$ as an example, we have that $c_{S^0}$ simplifies to the map
+    The connectedness assumption on $X$ cannot be dropped.
+    Setting $X=S^0$ in $\spaces$, the equivalence $\Sigma X\vee (X\wedge \Sigma\Omega\Sigma X)\simeq\Sigma\Omega\Sigma X$ from \cref{cor:fundamentalJamesSplitting} can be identified with
     \begin{equation*}
-        \bigvee\limits_{i=1}^n S^1\to\bigvee\limits_{\Z}\Sigma\Omega S^1
+        S^1\vee \bigvee\limits_{\Z\setminus\set{1}}S^1\xrightarrow{\simeq}\bigvee\limits_{\Z}S^1
+    \end{equation*}
+    as $\Sigma\Omega\Sigma S^0\simeq\bigvee\limits_{\Z}S^1$.
+    This can be used to show that $c_{S^0}$ is equivalent to the map
+    \begin{equation*}
+        \bigvee\limits_{i=1}^{\infty} S^1\to\bigvee\limits_{\Z} S^1
     \end{equation*}
     corresponding to the inclusion $\Nat_{\geq1}\subset\Z$ on components (see \cite[Warning 2.13]{splittings_21}).
+    This map is not an equivalence:
+
+    By \cite[Proposition 1A.2]{hatcher2002algebraic} we have that $\pi_1\left(\bigvee\limits_{i=1}^{\infty} S^1\right)$ and $\pi_1\left(\bigvee\limits_{\Z} S^1\right)$ are both free groups with generators the canonical loops corresponding to their components.
+    Since the loops of generators corresponding to non-positive components of $\pi_1\left(\bigvee\limits_{\Z} S^1\right)$ are not in the image of the induced map $\pi_1(c_{S^0})\colon\pi_1\left(\bigvee\limits_{i=1}^{\infty} S^1\right)\to\pi_1\left(\bigvee\limits_{\Z} S^1\right)$, this means the map $\pi_1(c_{S^0})$ is not surjective.
 \end{remark}
 \begin{thm}\label{thm:charTopoiByAdj}
     Let $C$ be an \inftytop/.
@@ -785,7 +793,7 @@ With these we can deduce the following statements:
 
     Furthermore, given $-2\leq m\leq\infty$ and an $m$-connected morphism $f\colon x\to y$ in $C$, there exists an $m$-connected morphism $g\colon i(x)\to y'$ in $\Fun(A,\spaces)$ such that $L(g)$ is equivalent to $f$ in $\Fun(\Delta^1,C)$.
     \begin{reference}
-        \cite[Theorem 6.1.0.6 (1) and (2)]{HTT} for the adjunction and \cite[Remark 6.5.1.15]{HTT} for connectedness statement
+        \cite[Theorem 6.1.0.6 (1) and (2)]{HTT} for the adjunction and \cite[Remark 6.5.1.15]{HTT} for connectedness statement.
     \end{reference}
 \end{thm}
 \begin{corollary}[James Splitting for \inftyTops/]\label{lem:genTopoiComparisonMapEq}
