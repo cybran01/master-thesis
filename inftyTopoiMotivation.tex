@@ -1,17 +1,17 @@
 In this section, we want to motivate the definition of an \inftytop/.
-Our starting point is the fact that the \inftycat/ of spaces $\spaces$ has the following properties:
+Our starting point is the fact that the \inftycat/ of spaces $\spaces$ has the following properties (which we will prove later):
 \begin{itemize} 
     \item It is ``locally presentable''.
     \item It has ``universal colimits'' (also just called ``universality'').
     \item It has ``descent''.
 \end{itemize}
-Giving precise meaning to all of these conditions will be done throughout \cref{sec:inftyTopDef} and proving that $\spaces$ fulfills them will be the goal of \cref{sec:spacesIsInftyTop}.
+Giving precise meaning to all of these conditions will be done throughout \cref{sec:inftyTopDef} and proving them for $\spaces$ will be the goal of \cref{sec:spacesIsInftyTop}.
 We will call an \inftycat/ $C$ an \inftytop/ if it also fulfills these conditions.
 
-These conditions are key ingredients for many theorems classically proven in $\Top$ and thus allow for them to be generalized to \inftytops/.
-Among these theorems are the characterization of deloopable pointed connected objects and the James Splitting Theorem which we will prove in \cref{sec:deloopingPtdConn} and \label{jamesSplittingTheorem} respectively.
+These conditions are key ingredients for many theorems classically proven in $\Top$ and thus allow these theorems to be generalized to \inftytops/.
+Among these theorems are the characterization of deloopable pointed objects and the James Splitting Theorem which we will prove in \cref{sec:deloopingPtdConn} and \cref{sec:jamesSplittingTheorem} respectively.
 
-There are different equivalent characterizations of an \inftytop/; 
+There are different equivalent characterizations of \inftytops/; 
 for an overview and proof of some of these equivalent characterizations, see \cite[\S 6.1]{HTT}.
 Our characterization corresponds to \cite[Theorem 6.1.0.6 (2)]{HTT} and is attributed to Charles Rezk in \cite[\S 6.1.3]{HTT}.
 
@@ -20,7 +20,7 @@ First, the condition that an \inftycat/ is locally presentable means that it is 
 We will deal with this condition in a very pragmatic way (see \cref{def:locallyPresentable}).
 
 The other two conditions are somewhat related to each other as we will see when proving them for $\spaces$.
-They are both supposed to ensure homotopy fibers of maps behave nicely under various glueings.
+They are both ensure that homotopy fibers of maps behave nicely under various glueings.
 
 To motivate universal colimits, let us restrict to the case of pushouts.
 For a cube 
@@ -71,7 +71,7 @@ When given a diagram
 \end{center}
 where the vertical maps have equivalent homotopy fibers, then the induced map of homotopy pushouts $X\to B$ should have equivalent fibers as well.
 ``Having equivalent fibers'' is supposed to mean that the induced maps between fibers of the vertical maps are weak equivalences.
-By the fiberwise characterization of homotopy pullbacks this is equivalent to saying that in a cube 
+By the fiberwise characterization of homotopy pullbacks \cref{prop:fiberwiseCharOfHtpyPb} this is equivalent to saying that in a cube 
 \begin{center}
     \begin{tikzcd} [sep = .5 cm]
         X_{0} \arrow [dr] \arrow [rr] \arrow [dd] & & X_1 \arrow [dr] \arrow [dd] \\
@@ -82,5 +82,5 @@ By the fiberwise characterization of homotopy pullbacks this is equivalent to sa
 \end{center}
 where the left and rear faces are homotopy pullbacks and the top and bottom faces are homotopy pushouts, the front and right faces are homotopy pullbacks as well.
 This property will be called ``descent for pushouts'' and is also known as Mathers First Cube Theorem in $\Top$ (\cite[Theorem 18]{mather_1976}).
-Again a natural generalization to consider is to replace pushouts by arbitrary small diagrams, and this property will later be called ``descent''.
-It will again turn out that we can reduce to showing descent for only pushouts and small coproducts, which we will see in \cref{lem:descentIffDescentPoAndCoprod}.
+Again a natural generalization to consider is replacing pushouts by arbitrary small diagrams, and this property will later be called ``descent''.
+It will again turn out that we can reduce to showing descent for only pushouts and small coproducts, as we will see in \cref{lem:descentIffDescentPoAndCoprod}.

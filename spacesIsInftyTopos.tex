@@ -1,28 +1,27 @@
-In this section we will prove that our \inftycat/ of spaces $\spaces$ is an \inftytop/.
+In this section we will prove that the \inftycat/ of spaces $\spaces$ defined in \cref{def:inftyCatOfSpaces} is an \inftytop/.
 We will keep our proofs topological; for a different approach using simplicial sets see e.g. \cite[\S 6]{HTT}.
 In order to transfer reasoning back and forth from the model category $\Top$ and the \inftycat/ $\spaces$ we need the following theorem. %TODO maybe say something about that we compute colimits and limits via drieved functors, hence the extra steps %TODO define inj/proj model str
 \begin{thm}\label{thm:locCommutesWithHom} 
-    Let $J$ be an ordinary small category and let $M$ be a cofibrantly generated model category with weak equivalences $W$.
-    Let $\overline{W}\subset\Fun(\N(J),\N(M))$ denote the simplicial subset consisting of all objects and whose maps are the natural transformations that are objectwise weak equivalences in $C$.
+    Let $J$ be an ordinary small category and let $M$ be a model category with weak equivalences $W$.
+    Let $\overline{W}\subset\Fun(\N(J),\N(M))$ denote the $1$-dimensional simplicial subset spanned by the natural transformations that are objectwise weak equivalences in $C$.
     
     Then there is a natural equivalence of \inftycats/
     \begin{equation*}
         \Fun(\N(J),\N(M))\left[\overline{W}^{-1}\right]\to\Fun(\N(J),\N(M)[W^{-1}])\;.
     \end{equation*} 
     \begin{reference}
-        \cite[Theorem 7.9.8]{cisinski_2019} (since for cofibrantly generated model categories the WFS $(\Cof,\Fib\cap W)$ is functorial, $\N(M)$ fulfills the requirements by \cite[Example 7.9.6]{cisinski_2019})
+        \cite[Remark 7.9.7 and Theorem 7.9.8]{cisinski_2019}
     \end{reference}
 \end{thm}
-Since both coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerves of direct/inverse categories, we are able to work in the underlying model category $\Top$ by the following corollaries: %TODO rewrite/delete this
 \begin{corollary}\label{cor:replaceWithStrictDiagram}
-    Let $J$ be a small category and let $M$ be a cofibrantly generated model category with weak equivalences $W$.
+    Let $J$ be a small category and let $M$ be a model category with weak equivalences $W$.
     Then a diagram $\N(J)\to\N(M)[W^{-1}]$ can be replaced with a diagram $J\to M$ that is equivalent in the sense that under the composition
     \begin{equation*}
         \Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])
     \end{equation*} 
     they are equivalent as objects of the \inftycat/ $\Fun(\N(J),\N(M)[W^{-1}])$.
     \begin{proof}
-        By \cref{thm:locCommutesWithHom}, \cref{thm:eqCharEqOfInftycats} and \cref{prop:simpLocEssSurj} the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is essentially surjective.
+        By \cref{thm:locCommutesWithHom}, \cref{thm:eqCharEqOfInftycats} and \cref{prop:simpLocEssSurj}, the map $\Fun(\N(J),\N(M))\to\Fun(\N(J),\N(M)[W^{-1}])$ is essentially surjective.
         Since the nerve functor is fully faithful by \cref{lem:nerveFF}, this proves the corollary.
     \end{proof}
 \end{corollary}
@@ -37,17 +36,17 @@ Since both coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerve
     If $D$ is a inverse model category, then the injective model structure on $\Fun(D,C)$ exists.
     Furthermore, the functor $\lim\colon\Fun(D,C)_{inj}\to C$ is right Quillen with respect to the constant functor.
     \begin{reference}
-        \cite[Theorem 5.1.3]{hovey2007model} and \cite[Corollary 5.1.6]{hovey2007model}
+        \cite[Theorem 5.1.3 and Corollary 5.1.6]{hovey2007model}
     \end{reference}
 \end{thm}
 \begin{lemma}\label{lem:htpyLimAndColimAgree}
-    Let $M$ be a cofibrantly generated model category and let $J$ be a small category.
+    Let $M$ be a model category and let $J$ be a small category.
     
     If $J$ is a direct category, then a diagram $X\colon J^{\rhd}\to M$ is a homotopy colimit diagram if and only if the induced map $\N(J)^{\rhd}\cong\N(J^{\rhd})\to\N(M)[W^{-1}]$ is a colimit diagram.
 
     Dually, if $J$ is an inverse category, then a diagram $X\colon J^{\lhd}\to M$ is a homotopy limit diagram if and only if the induced map $\N(J)^{\lhd}\cong\N(J^{\lhd})\to\N(M)[W^{-1}]$ is a limit diagram.
     \begin{proof}
-        We will only prove the case of (homotopy) colimits, since the case for limits follows by duality.
+        We will only prove the case of (homotopy) colimits over direct categories $J$, since the case for limits follows by duality.
 
         We have an adjunction of \inftycats/ given by 
         \begin{equation*}
@@ -67,16 +66,17 @@ Since both coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerve
         \begin{equation*}
             \Ho(\Fun(J,M)_{proj})\rightleftarrows\Ho(M)\mkern+3mu:\mkern-3mu c
         \end{equation*}
-        where the functor from right to left is the constant functor.
+        where the functor from right to left is the constant functor and the projective model structure exists by \cref{thm:exProjInjModelStr}.
 
-        This means that the functor from left to right is (equivalent to) a left derived functor of the $\colim$-functor since the latter exists by \cref{thm:exProjInjModelStr} and adjoints are essentially unique.
+        This means that the functor from left to right is (equivalent to) a left derived functor of the $\colim$-functor.
 
         Hence given a diagram $X\colon J^{\rhd}\to M$, the colimit of the induced map $\N(J)\to\N(M)[W^{-1}]$ in $\ho(\N(M)[W^{-1}])\cong\Ho(M)$ is isomorphic to the homotopy colimit of $X|_J$ computed via the derived colimit functor in $\Ho(M)\cong\ho(\N(M)[W^{-1}])$.
         Since objects are equivalent in $\N(M)[W^{-1}]$ if and only if they are isomorphic in $\ho(\N(M)[W^{-1}])$ (see \cref{rmk:boardmanVogt}), this proves the lemma. %TODO is this really clear that is follows from that?
     \end{proof}
 \end{lemma}
+Since coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerves of direct/inverse categories, we are able to work in the underlying model category by the following corollary.
 \begin{corollary}\label{cor:sufficientToProveInModCat}
-    Let $M$ be a cofibrantly generated model category with weak equivalences $W$. 
+    Let $M$ be a model category with weak equivalences $W$. 
     Then $\N(M)[W^{-1}]$ has universal colimits if and only if $M$ has universal homotopy pushouts and universal homotopy coproducts as a model category.
     
     If further $\N(M)[W^{-1}]$ has universal colimits, then $M$ has descent if and only if it has descent for homotopy pushouts and homotopy coproducts as a model category.

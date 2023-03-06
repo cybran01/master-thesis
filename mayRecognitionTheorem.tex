@@ -12,7 +12,7 @@ A generalization characterizing higher loop spaces was proven in \cite{may2006ge
     We call a map $U^+\colon\N(\Delta_+)^{\op}\to C$ an \emph{augmented simplicial object of the \inftycat/ $C$}.
 \end{definition}
 \begin{definition}[Groupoid Object]
-    Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup T$ with $S\cap T=\set{s}$ consisting of a single element, the square (see \cref{def:simpSet})
+    Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup T$ with $S\cap T=\set{s}$ consisting of a single element, the square (see \cref{def:simpSet})  %TODO change, this does not make sence since its not an sSet
     \begin{center}
         \begin{tikzcd}[sep = 4em]
             U_n \ar[r] \ar[d] & U_S \ar[d]\\
@@ -124,7 +124,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"\overline{U}(f)"'] & U_n \arrow[d, "U(f)"] \\
-                \overline{U}_m=U_{m+1} \arrow[r] \arrow[d,"{\overline{U}\left(\set{m}\subset[m+1]\right)}"'] & U_m \arrow[d,"{U\left(\set{m}\subset[m+1]\right)}"] \\
+                \overline{U}_m=U_{m+1} \arrow[r] \arrow[d,"{\overline{U}\left(\set{m}\subset[m]\right)}"'] & U_m \arrow[d,"{U\left(\set{m}\subset[m]\right)}"] \\
                 \overline{U}_{\set{m}}=U_{\set{m,m+1}} \arrow[r] & U_{\set{m}}
             \end{tikzcd}
         \end{center}

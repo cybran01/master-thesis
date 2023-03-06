@@ -1,4 +1,4 @@
-In this section we would like to fix the general notation on \inftycats/ and model categories used throughout the rest of the text and remind the reader of some concepts which will be important later on.
+In this section we will fix general notation on \inftycats/ and model categories used throughout the rest of the text and remind the reader of some concepts which will be important later on.
 Some familiarity with \inftycats/ and Kan-complexes is assumed, in particular familiarity with limits/colimits in \inftycats/.
 We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts). %TODO say that we take these to be defined via derived functors
 We will not give proofs for any statements in this section; we will however point to the relevant literature.
@@ -12,14 +12,14 @@ We will not give proofs for any statements in this section; we will however poin
 \begin{definition}[(Augmented) Simplex Category]
     Let $\Delta$ be the category with
     \begin{itemize}
-        \item objects the linearly ordered sets $[n]$ for all $n\in\Nat$
+        \item objects the linearly ordered sets $[n]$ for $n\in\Nat$
         \item morphisms the \emph{nondecreasing} functions.
     \end{itemize}
     We call this category the \emph{simplex category $\Delta$}.
 
     Similarly, let $\Delta_+$ be the category with
     \begin{itemize}
-        \item objects the linearly ordered sets for all $n\in\Nat\cup\set{-1}$ 
+        \item objects the linearly ordered sets for $n\in\Nat\cup\set{-1}$ 
         \item morphisms again the \emph{nondecreasing} functions.
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
@@ -42,15 +42,10 @@ We will not give proofs for any statements in this section; we will however poin
     for $a,b\in X$.
     When viewing partially ordered sets $X,Y$ as categories in this way, the nondecreasing functions $f\colon X\to Y$ correspond precisely to functors.
 
-    This gives fully faithful inclusions $\Delta\subset\Cat$ and $\Delta_+\subset\Cat$, where $\Cat$ denotes the \emph{category of small categories}.
+    This gives fully faithful inclusions $\Delta\subset\Cat$ and $\Delta_+\subset\Cat$, where $\Cat$ denotes the \emph{category of (small) categories}.
 \end{remark}
-\begin{definition}[Nerve of an Ordinary Category] %smallness problematic when applied to sSet and Top?
-    Let
-    \begin{align*}
-        Y\colon\Cat&\to\Fun(\Cat^{\op},\Set)\\
-        C&\mapsto\hom_{\Cat}(-,C)
-    \end{align*}
-    denote the \emph{Yoneda embedding}.
+\begin{definition}[Nerve of an Ordinary Category] %smallness problematic when applied to sSet and Top? (did i solve it already?)
+    Let $Y_{\Cat}\colon\Cat\to\Fun(\Cat^{\op},\Set)$ denote the \emph{Yoneda embedding}.
 
     Then composing the Yoneda embedding with the functor $\Fun(\Cat^{\op},\Set)\to\sSet$ induced by the inclusion $\Delta\subset\Cat$ from the previous remark gives a functor $\N\colon\Cat\to\sSet$ called the \emph{nerve functor}.
     For a given small category $C$ we refer to the simplicial set $\N(C)$ as the \emph{nerve of the category $C$}.
@@ -68,7 +63,7 @@ We will not give proofs for any statements in this section; we will however poin
         \Lambda_k^n=\bigcup\limits_{k\in A\subsetneq[n]}\Delta^A\subset\Delta^n
     \end{equation*}
     to be the \emph{$k$-th horn of $\Delta^n$} for $0\leq k\leq n$.
-    (The unions are the degreewise unions in $\Set$.) %TODO is this true?
+    (The unions are the degreewise unions in $\Set$.)
 \end{definition}
 \begin{lemma}[Homotopy Category]\label{lem:nerveFF}
     The nerve functor $\N\colon\Cat\to\sSet$ is fully faithful and has a left adjoint $\ho\colon\sSet\to\Cat$ which we call the \emph{homotopy category} of a simplicial set.
@@ -76,23 +71,18 @@ We will not give proofs for any statements in this section; we will however poin
         \cite[Proposition 1.2.2.1]{kerodon}
     \end{reference}
 \end{lemma}
-\begin{remark}[The Boardmann-Vogt Construction]\label{rmk:boardmanVogt}
-    For an \inftycat/ $C$ there is a explicit construction of $\ho(C)$ due to Boardman and Vogt (see e.g. \cite[Theorem 1.6.6]{cisinski_2019} for details).
-    We will later introduce a simplicial set $\Map_C(x,y)$ representing maps between objects $x,y\in C_0$ (see \cref{def:mappingSpace}).
-    The sets of maps $\hom_{\ho(C)}(x,y)$ is then a quotient of $\Map_C(x,y)_0$, hence we can send a map $f\colon\Delta^1\to C\in\Map_C(x,y)_0$ to its class $[f]\in\hom_{\ho(C)}(x,y)$.
-\end{remark}
 \begin{definition}[Simplicial Category]
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
     For a simplicial category $C$, we let $\Hom_C(-,-)\colon C^{\op}\times C\to\sSet$ denote the enriched $\Hom$-functor.
    
-    Let $\Cat_{\Delta}$ denote the \emph{category of small simplicial categories} with morphisms the \emph{$\sSet$-enriched functors}.%TODO maybe explain what that is/cite
+    Let $\Cat_{\Delta}$ denote the \emph{category of (small) simplicial categories} with morphisms the \emph{$\sSet$-enriched functors}.%TODO maybe explain what that is/cite
     
-    We call a simplicial category $C$ \emph{tensored over $\sSet$} if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
+    We say that a simplicial category $C$ is \emph{tensored over $\sSet$} if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
     \begin{equation*}
         \Hom_C(X\otimes K,-)\cong\Fun(K,\Hom_C(X,-))\;.
     \end{equation*}
 
-    We call a simplicial category $C$ \emph{powered over $\sSet$} if for each $Y\in C$ and $K\in\sSet$ there is an object $Y^K$ such that there is a natural isomorphism
+    We say that a simplicial category $C$ is \emph{powered over $\sSet$} if for each $Y\in C$ and $K\in\sSet$ there is an object $Y^K$ such that there is a natural isomorphism
     \begin{equation*}
         \Hom_C(-,Y^K)\cong\Fun(K,\Hom_C(-,Y))\;.
     \end{equation*}
@@ -165,7 +155,7 @@ We will not give proofs for any statements in this section; we will however poin
     Let $C$ be a category, $X\in C$ an object and $\kappa$ a regular cardinal.
     We say that $C$ is \emph{$\kappa$-compact} if the functor $\hom_C(X,-)\colon C\to\Set$ preserves all $\kappa$-filtered colimits. %TODO introduce kappa filtered colim, see cisinsky Proposition 2.1.9
 \end{definition}
-\begin{definition}[Locally Presentable Category] %TODO http://www.ub.edu/topologia/seminars/Locally_presentable.pdf
+\begin{definition}[Locally Presentable Category] %TODO Locally presentable and accessible categories def 1.17
     Let $C$ be a category.
     We call $C$ \emph{locally presentable} if it has small colimits and there exists a regular cardinal $\kappa$ such that
     \begin{itemize}
@@ -181,13 +171,19 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition}
 \begin{definition}[Saturated Class]
     Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
-    Then we say that $I$ is \emph{saturated} if it is closed under retracts, pushouts and transfinite composition. %TODO perhaps find way to avoid transfinite composition
+    Then we say that $I$ is \emph{saturated} if it is closed under retracts, pushouts and transfinite composition.
 \end{definition}
 \begin{definition}[Relative $\kappa$-Small]
     Let $C$ be a category with small colimits, let $S$ be a class of morphisms in $C$ and let $\kappa$ be a cardinal.
     
-    We say that an object $A\in C$ is \emph{$\kappa$-small relative to $S$} if the functor $\hom_C(A,-)\colon C\to\Set$ preserves colimits indexed by $\lambda$-sequences $X$ such that $\lambda$ is a $\kappa$-filtered ordinal and $X(\beta)\to X(\beta+1)$ is in $D$ for $\beta+1<\lambda$.
+    We say that an object $A\in C$ is \emph{$\kappa$-small relative to $S$} if colimits indexed by $\lambda$-sequences $X$ such that 
+    \begin{itemize}
+        \item $\lambda$ is a $\kappa$-filtered ordinal (note that by \cref{rmk:linOrderedAsCat} we can view ordinals as categories)
+        \item $X(\beta)\to X(\beta+1)$ is in $S$ for $\beta+1<\lambda$
+    \end{itemize}
+    are preserved by the functor $\hom_C(A,-)\colon C\to\Set$.
 \end{definition}
+%TODO stress importance
 \begin{thm}[Small Object Argument] %TODO Proposition 10.5.16 Model Categories and Their Localizations 
     Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
     If there exists a cardinal $\kappa$ such that the domains of all morphisms in $I$ are $\kappa$-small relative to transfinite compositions of pushouts of maps in $I$, we say that \emph{$I$ admits the small object argument}.
@@ -199,7 +195,7 @@ We will not give proofs for any statements in this section; we will however poin
 \end{reference}
 \begin{definition}[Cofibrantly Generated Model Structure]
     Let $C$ be a model category with $\Cof,\Fib$ and $\W$ the cofibrations, fibrations and weak equivalences respectively.
-    Then we say that $C$ is \emph{cofibrantly generated} if there exist small sets of morphisms $I,J$ such that
+    Then we say that $C$ is \emph{cofibrantly generated} if there exist sets of morphisms $I,J$ such that
     \begin{itemize}
         \item $I$ and $J$ admit the small object argument
         \item $(\Cof,\Fib\cap\W)=(l(r(I)),r(I))$
@@ -211,8 +207,10 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition} %TODO maybe also put here that Top is not locally presentable
 \begin{definition}[Properness] %TODO maybe diagrams
     Let $M$ be a model category.
-    If the pushout of weak equivalences along cofibrations are again weak equivalences, we say that $M$ is \emph{left proper}.
-    If the pullback of weak equivalences along fibrations are again weak equivalences, we say that $M$ is \emph{right proper}.
+    If pushouts of weak equivalences along cofibrations are again weak equivalences, we say that $M$ is \emph{left proper}.
+    
+    If pullbacks of weak equivalences along fibrations are again weak equivalences, we say that $M$ is \emph{right proper}.
+    
     If $M$ is left proper as well as left proper, then we say that $M$ is \emph{proper}.
 \end{definition}
 \begin{prop}
@@ -223,7 +221,7 @@ We will not give proofs for any statements in this section; we will however poin
         \cite[Proposition A.2.4.4]{HTT} (and its dual)
     \end{reference}
 \end{prop}
-%TODO stress importance & mention 1-categorical case
+The following proposition (and its analogue for \inftycats/) will be used frequently.
 \begin{prop}[Pasting Law for Model Categories]\label{prop:pastingLaw}
     Let $M$ be a model category and 
     \begin{center}
@@ -284,7 +282,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
 \begin{definition}[Simplicial Model Category]
     A \emph{simplicial model category} is a simplicial category $C$ that is 
     \begin{itemize}
-        \item tensored and powered
+        \item tensored and powered over $\sSet$
         \item equipped with a model structure
     \end{itemize} 
     such that for a cofibration $i:A\rightarrowtail B$ and a fibration $p:X\twoheadrightarrow Y$ in the model structure the induced map of simplicial sets
@@ -295,7 +293,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
     
     We say that a simplicial model category is a \emph{combinatorial simplicial model category} if its underlying model category is a combinatorial model category.
 \end{definition}
-\begin{construction}[{\cite[Notation 2.4.3.1]{kerodon}}]
+\begin{construction}
     For $[n]\in\Delta$ we define a simplicial category $\C[n]$ as follows:
     \begin{itemize}
         \item the objects of $\C[n]$ are the elements of the set $\set{0,\ldots,n}$
@@ -324,16 +322,15 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
             \end{align*}
     \end{itemize}
     so we obtain a functor $\C[-]\colon\Delta\to\Cat_{\Delta}$.
+    \begin{reference}
+        \cite[Notation 2.4.3.1]{kerodon}
+    \end{reference}
 \end{construction}
 \begin{definition}[Homotopy Coherent Nerve] %smallness problematic when applied to sSet?
-    Let
-    \begin{align*}
-        Y\colon\Cat_{\Delta}&\to\Fun(\Cat_{\Delta}^{\op},\Set)\\
-        C&\mapsto\hom_{\Cat}(-,C)
-    \end{align*}
-    denote the \emph{Yoneda embedding}.
-    Then composing the Yoneda embedding with the functor $\Fun(\Cat_{\Delta}^{\op},\Set)\to\sSet$ induced by the map $C[-]$ from the previous construction gives a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
-    For a given small simplicial category $A$ we refer to $\Nhc(A)$ as the \emph{simplicial nerve} or \emph{homotopy coherent nerve of $A$}.
+    Let $Y_{\Cat_{\Delta}}\colon\Cat_{\Delta}\to\Fun(\Cat_{\Delta}^{\op},\Set)$ denote the \emph{Yoneda embedding}.
+    
+    Then composing the Yoneda embedding with the functor $\Fun(\Cat_{\Delta}^{\op},\Set)\to\sSet$ induced by the functor $C[-]$ from the previous construction gives a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
+    For a given (small) simplicial category $A$ we refer to $\Nhc(A)$ as the \emph{simplicial nerve} or \emph{homotopy coherent nerve of $A$}.
 \end{definition}
 For completeness we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.
 \begin{thm}[Joyal Model Structure on $\sSet$]
@@ -342,7 +339,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
         \item The cofibrations are the monomorphisms.
         \item The weak equivalences are the maps $A\to B$ such that for every \inftycat/ $C$ the induced map $\ho(\Fun(B,C))\to\ho(\Fun(A,C))$ is an equivalence of ordinary categories.
     \end{itemize}
-    The fibrant objects of this model structure are called \inftycats/ and are precisely the simplicial sets whose map to the point has the RLP with respect to $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0< k< n, n\in\Nat}$.
+    The fibrant objects of this model structure are called \inftycats/ and are precisely the simplicial sets whose map to the point has the right lifting property with respect to $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0< k< n, n\in\Nat}$.
     We refer to the weak equivalences of this model structure as \emph{weak categorical equivalences}.
     We refer to weak categorical equivalences whose domain and target are both \inftycats/ as \emph{equivalences of \inftycats/}.
     We call this model structure the \emph{Joyal Model Structure on $\sSet$}.
@@ -352,7 +349,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
 \end{thm}
 \begin{definition}[Equivalences in an \inftyCat/]
     Let $C$ be an \inftycat/ and $f\colon x\to y\in C_1$ a map.
-    Then we say that $f$ is an \emph{equivalence} if there exists a map $g\colon y\to x\in C_1$ and $2$-simplices of the form
+    Then we say that $f$ is an \emph{equivalence} or $f$ is \emph{invertible} if there exists a map $g\colon y\to x\in C_1$ and $2$-simplices of the form
     \begin{center}
         \begin{tikzcd} [sep = 3em]
             & x \ar[dr,"f"]&\\
@@ -361,19 +358,23 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
         \begin{tikzcd} [sep = 3em]
             & y \ar[dr,"g"]&\\
             x \ar[ur,"f"] \ar[rr,"\id_x"]&  & x
-        \end{tikzcd}\;.
+        \end{tikzcd}
     \end{center}
+    where $\id_y$ and $\id_x$ denote the degenerate $1$-simplices at $y$ and $x$ respectively.
     We say that objects $x,y\in C_0$ are \emph{equivalent} if there exists an equivalence $f\colon x\to y$.
 \end{definition}
 \begin{definition}[Natural Transformations]
-    Let $f,g\colon C\to D$ be maps between \inftycats/.
-    Then a \emph{natural transformation from $f$ to $g$} is a map if simplicial sets $h\colon C\times\Delta^1\to D\in\Fun(C,D)_1$ such that $h|_{C\times\set{0}}=f$ and $h|_{C\times\set{1}}=g$.
+    Let $C$ be a simplicial set, $D$ an \inftycat/ and $f,g\colon C\to D$ maps.
+    Then a \emph{natural transformation from $f$ to $g$} is a map of simplicial sets $h\colon C\times\Delta^1\to D\in\Fun(C,D)_1$ such that $h|_{C\times\set{0}}=f$ and $h|_{C\times\set{1}}=g$.
     
     We say that a natural transformation is \emph{invertible} if for all $c\in C_0$ the map $h|_{\set{c}\times\Delta^1}\in D_1$ is an equivalence.
 \end{definition}
+\begin{remark}
+    By \cite[Corollary 3.5.12]{cisinski_2019} a natural transformation as in the previous definition is invertible if and only of it is invertible as a map in the \inftycat/ $\Fun(C,D)$.
+\end{remark}
 \begin{definition}[Essentially Surjective]
     Let $F\colon C\to D$ be a map between \inftycats/.
-    Then we call $F$ \emph{essentially surjective} if for all $d\in D_0$ there exists a $c\in C_0$ such that $d$ and $f(c)$ are equivalent in $D$.
+    Then we say that $F$ is \emph{essentially surjective} if for all $d\in D_0$ there exists a $c\in C_0$ such that $d$ and $F(c)$ are equivalent in $D$.
 \end{definition}
 \begin{definition}[Mapping Space]\label{def:mappingSpace}
     Let $C$ be an \inftycat/ and let $x,y\in C_0$ and let $\Map_C(x,y)$ denote the pullback 
@@ -385,25 +386,26 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     \end{center}
     which we refer to as the \emph{mapping space from $x$ to $y$}.
 \end{definition}
-\begin{remark}\label{rmk:functorialMappingSpace}
-    By \cite[116]{cisinski_2019} this space is always a Kan-complex.
-    By \cite[248]{cisinski_2019} for every (locally small) \inftycat/ $C$, there is an essentially unique $\hom$-functor $\hom_C(-,-)\colon C^{\op}\times C\to\spaces$, where $\spaces$ is the (yet to be defined) \inftycat/ of spaces, such that for all objects $x,y\in C_0$ we have a canonical equivalence $\hom_C(x,y)\cong\Map_C(x,y)$ in $\spaces$ (the objects $\spaces_0$ can be identified with Kan-complexes, see \cref{cor:htpyCoherentNerveIsLoc}). %TODO maybe say what is essentially unique
+\begin{remark}[The Boardmann-Vogt Construction]\label{rmk:boardmanVogt}
+    For an \inftycat/ $C$ there is a explicit construction of $\ho(C)$ (see \cref{lem:nerveFF}) due to Boardman and Vogt (\cite[Theorem 1.6.6]{cisinski_2019} for details).
+    In this construction the set of maps $\hom_{\ho(C)}(x,y)$ is a quotient of $\Map_C(x,y)_0$, hence we have a canonical map $\Map_C(x,y)_0\to\hom_{\ho(C)}(x,y)$ sending a map $f\colon\Delta^1\to C\in\Map_C(x,y)_0$ to its class $[f]\in\hom_{\ho(C)}(x,y)$.
+    In fact, a map $f$ is invertible in $C$ if and only if $[f]$ is an isomorphism in $\ho(C)$.
 \end{remark}
 \begin{definition}[Fully Faithful]
     Let $F\colon C\to D$ be a map between \inftycats/.
-    Then call $F$ \emph{fully faithful} if for all $x,y\in C_0$ the map $\Map_C(x,y)\to\Map_D(f(x),f(y))$ induced by the commutative cube
+    Then call $F$ \emph{fully faithful} if for all $x,y\in C_0$ the map $\Map_C(x,y)\to\Map_D(F(x),F(y))$ induced by the commutative cube
     \begin{center}
         \begin{tikzcd} [sep = 1em]
             \Map_C(x,y) \arrow [dr] \arrow [rr] \arrow [dd] & & \Fun(\Delta^1,C) \arrow [dr, "F\circ -"] \arrow [dd] \\
-            & \Map_D(f(x),f(y)) \arrow [rr, crossing over] \arrow [dd] & &[1em] \Fun(\Delta^1,D) \arrow [dd] & \\
+            & \Map_D(F(x),F(y)) \arrow [rr, crossing over] \arrow [dd] & &[1.5em] \Fun(\Delta^1,D) \arrow [dd] & \\
             \Delta^0 \arrow [dr] \arrow [rr, near start, "{(x,y)}"] & & C\times C \arrow [dr,"{(F,F)}"] \\
-            & \Delta^0 \arrow [from=uu, crossing over] \arrow [rr, "{(f(x),f(y))}"] & & D\times D
+            & \Delta^0 \arrow [from=uu, crossing over] \arrow [rr, "{(F(x),F(y))}"] & & D\times D
         \end{tikzcd}
     \end{center}
     is a weak equivalence of Kan-complexes.
 \end{definition}
 \begin{thm}\label{thm:eqCharEqOfInftycats}
-    Let $F\colon C\to D$ be a map between \inftycats/.
+    Let $F\colon C\to D$ be a functor between \inftycats/.
     Then the following are equivalent:
     \begin{itemize}
         \item $F$ is a weak categorical equivalence (thus an equivalence of \inftycats/)
@@ -451,6 +453,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     The join is functorial in both arguments.
     
     For a simplicial set $X$, we further define $X^{\lhd}=\Delta^0\star X$ and $X^{\rhd}=X\star\Delta^0$.
+    We label the canonical points $-\infty\colon\Delta^0\to X^{\lhd}$ and $\infty\colon\Delta^0\to X^{\rhd}$ respectively.
 \end{definition}
 \begin{definition}[(Co)Slice] %TODO Construction 4.3.5.1
     Let $f\colon K\to C$ be a map of simplicial sets.
@@ -464,9 +467,9 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     \begin{equation*}
         \left(C_{f/}\right)_n=\set{\sigma\colon K\star \Delta^n \to X \mid \sigma|_K=f}
     \end{equation*}
-    defines a simplicial set $C_{f/}$ which we refer to as the \emph{coslice simplicial set of $C$ over $f$}.
+    defines a simplicial set $C_{f/}$ which we refer to as the \emph{coslice simplicial set of $C$ under $f$}.
 \end{definition}
-\begin{construction}[(Co)Slice Contraction] %TODO kerodon 4.3.5.12.
+\begin{construction}[(Co)Slice Contraction]
     Let $f\colon X\to Y$ be a morphism of simplicial sets.
     Then let $c\colon Y_{/f}\star X\to Y$ be defined as follows:
     \begin{itemize}
@@ -478,6 +481,9 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     \end{itemize}
     We call $c$ the \emph{slice contraction morphism}.
     The analogous construction $c\colon X\star Y_{f/}\to Y$ is called the \emph{coslice contraction morphism}.
+    \begin{reference}
+        \cite[Construction 4.3.5.12]{kerodon}
+    \end{reference}
 \end{construction}
 \begin{definition}[Adjoints]
     Let $F\colon C\to D$ and $G\colon D\to C$ be functors between \inftycats/.
@@ -496,9 +502,10 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     in $\Fun(C,D)$ and $\Fun(D,C)$ respectively.
 \end{definition}
 \begin{remark}\label{rmk:homAdjunction}
-    By \cite[Theorem 6.1.23]{cisinski_2019} there is another equivalent characterization of adjoints via the functorial version of the mapping space functor (see \cref{rmk:functorialMappingSpace}):
+    By \cite[248]{cisinski_2019} for every (locally small) \inftycat/ $C$, there is an essentially unique $\hom$-functor $\hom_C(-,-)\colon C^{\op}\times C\to\spaces$, where $\spaces$ is the (yet to be defined) \inftycat/ of spaces, such that for all objects $x,y\in C_0$ we have a canonical equivalence $\hom_C(x,y)\simeq\Map_C(x,y)$ in $\spaces$ (the objects $\spaces_0$ can be identified with Kan-complexes, see \cref{cor:htpyCoherentNerveIsLoc} and $\Map_C(x,y)$ is always a Kan-complex by \cite[116]{cisinski_2019}).
+    By \cite[Theorem 6.1.23]{cisinski_2019} this gives another equivalent characterization of adjoints:
     
-    A functor $F\colon C\to D$ is left adjoint to a functor $G\colon D\to C$ if and only if there exists an invertible natural transformation $c\colon (C^{\op}\times D)\times\Delta^1 \to\spaces$ (where $\spaces$ is the yet to be defined \inftycat/ of spaces) between the functors $\hom_D(F(-),-)\cong\hom_C(-,G(-))$.
+    A functor $F\colon C\to D$ is left adjoint to a functor $G\colon D\to C$ if and only if there exists an invertible natural transformation $c\colon (C^{\op}\times D)\times\Delta^1 \to\spaces$ between the functors $\hom_D(F(-),-)\simeq\hom_C(-,G(-))$.
 
     Adjoints are also ``essentially unique'' in the sense of \cite[Proposition 6.1.9]{cisinski_2019}.
 \end{remark}

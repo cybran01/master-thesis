@@ -1,5 +1,7 @@
-Before giving a proper definition of universality and descent, we need to introduce local presentability for \inftycats/.
-Since this will be the least interesting for our purposes, we will give a very brief introduction.
+In this section we will introduce the notions of local presentability, universality and descent for \inftycats/ as announced in \cref{sec:motivationInftyTopoi}.
+We will introduce local presentability first, but since this will be the least interesting property for our purposes, we will give a very brief introduction.
+
+After this we will define universality and descent via cartesian natural transformations and prove that checking universality and descent for a given \inftycat/ requires only checking the property for pushouts and coproducts.
 \begin{definition}\label{def:locallyPresentable}
     An \inftycat/ $C$ is \emph{locally presentable} if there exists a combinatorial simplicial model category $A$ and an equivalence of \inftycats/ $\Nhc(A^°)\to C$.
 \end{definition}
@@ -105,7 +107,7 @@ We will require the following proposition for the proof.
         By \cite[Proposition 3.7.4]{cisinski_2019} the inclusions $\Sp^n=\bigcup\limits_{0\leq i<n}\Delta^{\set{n,n+1}}\xhookrightarrow{}\Delta^n$ are weak categorical equivalences.
         The canonical inclusions of categories $[n]\subset[n+1]$ for all $n\in\Nat$ then induce a map $\colim\limits_{n\in\Nat}\Sp^n\xhookrightarrow{}\colim\limits_{n\in\Nat}\Delta^n$.
         By \cite[Corollary 3.9.8]{cisinski_2019} weak categorical equivalences are stable under filtered colimits, hence this map is a weak categorical equivalence.
-        We have $\colim\limits_{n\in\Nat}\Sp^n\cong L$ as colimits commute and $\colim\limits_{n\in\Nat}\Delta^n\cong\N(\Nat)$ as the nerve commutes with filtered colimits, so this corresponds to the map $L\subset\N(\Nat)$.
+        We have $\colim\limits_{n\in\Nat}\Sp^n\cong L$ as colimits commute and $\colim\limits_{n\in\Nat}\Delta^n\cong\N(\Nat)$ as the nerve commutes with filtered colimits (\cite[Corollary 1.3.12]{cisinski_2019}), so this corresponds to the map $L\subset\N(\Nat)$.
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:univColimIffUnivPoAndCoprod}
