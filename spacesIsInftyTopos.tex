@@ -1,9 +1,12 @@
 In this section we will prove that the \inftycat/ of spaces $\spaces$ defined in \cref{def:inftyCatOfSpaces} is an \inftytop/.
+Since we have already shown that $\spaces$ is locally presentable in \cref{cor:spacesIsLocPres}, it remains to show universality and descent.
 We will keep our proofs topological; for a different approach using simplicial sets see e.g. \cite[\S 6]{HTT}.
-In order to transfer reasoning back and forth from the model category $\Top$ and the \inftycat/ $\spaces$ we need the following theorem. %TODO maybe say something about that we compute colimits and limits via drieved functors, hence the extra steps %TODO define inj/proj model str
+
+In order to transfer reasoning back and forth between the model category $\Top$ and the \inftycat/ $\spaces$ we first prove some technical preliminaries showing that homotopy limits/colimits in model categories correspond to limits/colimits its simplicial localization at the weak equivalences.
+The cases of pushouts, pullbacks and coproducts are especially important by \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod}.
 \begin{thm}\label{thm:locCommutesWithHom} 
     Let $J$ be an ordinary small category and let $M$ be a model category with weak equivalences $W$.
-    Let $\overline{W}\subset\Fun(\N(J),\N(M))$ denote the $1$-dimensional simplicial subset spanned by the natural transformations that are objectwise weak equivalences in $C$.
+    Let $\overline{W}\subset\Fun(\N(J),\N(M))$ denote the $1$-dimensional simplicial subset spanned by the natural transformations that are objectwise weak equivalences.
     
     Then there is a natural equivalence of \inftycats/
     \begin{equation*}
@@ -25,8 +28,30 @@ In order to transfer reasoning back and forth from the model category $\Top$ and
         Since the nerve functor is fully faithful by \cref{lem:nerveFF}, this proves the corollary.
     \end{proof}
 \end{corollary}
-%TODO  \cite[Definition 5.1.1]{hovey2007model} for direct/inverse category
-%TODO inj/proj model structure def
+\begin{definition}[Direct/Inverse Category]
+    Let $C$ be a small category.
+    Then we call $C$ a \emph{direct category} if there exists an ordinal $\lambda$ and a functor $F\colon C\to\lambda$ (where we view $\lambda$ as a category by \cref{rmk:linOrderedAsCat}) such that $F$ sends non-identity maps in $C$ to non-identity maps in $\lambda$.
+    
+    Dually, we call $C$ an \emph{inverse category} if $C^{\op}$ is a direct category.
+\end{definition}
+\begin{definition}[Injective/Projective Model Structure]
+    Let $M$ be a model category and $C$ be a small category.
+    Then if there exists a model structure on $\Fun(C,M)$ whose
+    \begin{itemize}
+        \item weak equivalences are the objectwise weak equivalences 
+        \item fibrations are the objectwise fibrations
+    \end{itemize}
+    we call this model structure the \emph{projective model structure on $\Fun(C,M)$} and denote the model category as $\Fun(C,M)_{proj}$.
+
+    Dually, if there exists a model structure on $\Fun(C,M)$ whose
+    \begin{itemize}
+        \item weak equivalences are the objectwise weak equivalences 
+        \item cofibrations are the objectwise cofibrations
+    \end{itemize}
+    we call this model structure the \emph{injective model structure on $\Fun(C,M)$} and denote the model category as $\Fun(C,M)_{inj}$.
+
+    Note that the model structures are already uniquely determined by this data, provided they exist.
+\end{definition}
 \begin{thm}\label{thm:exProjInjModelStr}
     Let $C$ be a model category and $D$ be a small category.
 
@@ -81,7 +106,7 @@ Since coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerves of 
     
     If further $\N(M)[W^{-1}]$ has universal colimits, then $M$ has descent if and only if it has descent for homotopy pushouts and homotopy coproducts as a model category.
     \begin{proof}
-        First note that the indexing categories of pushouts $\bullet\xleftarrow{}\bullet\xrightarrow{}\bullet$ and small coproducts are a direct categories, and the indexing category for pullbacks $\bullet\xrightarrow{}\bullet\xleftarrow{}\bullet$ is an inverse category.
+        First note that the indexing categories of pushouts $\bullet\xleftarrow{}\bullet\xrightarrow{}\bullet$ and small coproducts are a direct categories (the latter is inverse as well), and the indexing category for pullbacks $\bullet\xrightarrow{}\bullet\xleftarrow{}\bullet$ is an inverse category.
         By \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} we only need to check universality and descent for pushouts and small coproducts.
         So let $I$ be either the indexing category for pushouts $\bullet\xleftarrow{}\bullet\xrightarrow{}\bullet$ or a small discrete category.
 
@@ -139,7 +164,7 @@ This preceding proposition has the following useful consequence.
 \end{corollary}
 \addcontentsline{toc}{subsection}{Universality}
 \subsection*{Universality}
-Using the preceding corollary and the following theorem, we first prove universality for pushouts.
+Using \cref{prop:poAlongHCofibIsHtpyPo} and the following theorem, we first prove universality for pushouts.
 \begin{thm}\label{thm:pbOfHcofibIsHcofib}
     A pullback of an h-cofibration along an h-fibration is again an h-cofibration.
     \begin{reference}
@@ -160,7 +185,7 @@ Using the preceding corollary and the following theorem, we first prove universa
         \end{center}
         be a commutative cube where the bottom face is a homotopy pushout and the vertical faces are homotopy pullbacks.
         
-        By factoring the map $D'\xrightarrow{\sim}\overline{D}\xtwoheadrightarrow{h} D$ into a weak equivalence followed by an h-fibration (which is also a fibration) and pulling back successively, we obtain the diagram
+        By factoring the map $D'\to D$ into a weak equivalence followed by an h-fibration $D'\xrightarrow{\sim}\overline{D}\xtwoheadrightarrow{h} D$ (which is always possible since we can factor any map into a trivial h-cofibration followed by an h-fibration by \cref{thm:stromModelStructure}) and pulling back successively, we obtain the diagram
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 A^{\prime} \arrow [dr] \arrow [rr] \arrow [dd] & & B^{\prime} \arrow [dr] \arrow [dd] \\
@@ -182,7 +207,7 @@ Using the preceding corollary and the following theorem, we first prove universa
         \end{center}
         is a homotopy pushout.
 
-        We factor the maps $A\xtailrightarrow{h}\widehat{B}\xrightarrow{\sim} B$ and $A\xtailrightarrow{h}\widehat{C}\xrightarrow{\sim} C$ into an h-cofibration followed by a weak equivalence.
+        We factor the maps $A\to B$ and $A\to C$ into into h-cofibrations followed by a weak equivalences $A\xtailrightarrow{h}\widehat{B}\xrightarrow{\sim} B$ and $A\xtailrightarrow{h}\widehat{C}\xrightarrow{\sim} C$ respectively (which is again possible by \cref{thm:stromModelStructure}).
         We obtain a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -212,7 +237,7 @@ Using the preceding corollary and the following theorem, we first prove universa
             \end{tikzcd}
         \end{center}
         where the top horizontal maps are h-cofibrations since pullbacks of h-cofibrations along h-fibrations are again h-cofibrations by \cref{thm:pbOfHcofibIsHcofib}.
-        We now claim that the top square of this cube is a pushout.
+        We now claim that the top square of this cube is an ordinary pushout.
 
         First note that the pullback of a given map $f\colon X\to B$ along an inclusion $A\xhookrightarrow{} B$ can be identified with the map $f^{-1}(A)\xrightarrow{f|_{f^{-1}(A)}}A$ where $f^{-1}(A)$ is equipped with the subspace topology of $X$. 
         
@@ -294,20 +319,22 @@ As a first step we will fix some notation related to pairs and triples of spaces
     We refer to these maps as \emph{maps of pairs}.
     
     We define $(X,A)\times I$ to mean $(X\times I,A\times I)$.
-    A \emph{homotopy of maps of pairs} $f,g\colon(X_1,A_1)\to (X_2,A_2)$ is a map $h\colon(X_1\times I,A_1\times I)\to (X_2,A_2)$ such that $h_0=f$ and $h_1=g$.
+    A \emph{homotopy of maps of pairs} $f,g\colon(X_1,A_1)\to (X_2,A_2)$ is a map $h\colon(X_1,A_1)\times I\to (X_2,A_2)$ such that $h_0=f$ and $h_1=g$.
 
     Similarly, we define maps of triples:
     Let $\Top^{(3)}$ denote the category of \emph{triples of topological spaces} $(X,A,B)$ with $B\subset A\subset X$ subspaces and maps $f\colon(X_1,A_1,B_1)\to (X_2,A_2,B_2)$ being continuous maps $f\colon X_1\to X_2$ such that $f(A_1)\subset A_2$ and $f(B_1)\subset B_2$.
     We refer to these maps as \emph{maps of triples}.
     
     We define $(X,A,B)\times I$ to mean $(X\times I,A\times I, B\times I)$.
-    A \emph{homotopy of maps of triples} $f,g\colon(X_1,A_1,B_1)\to (X_2,A_2,B_2)$ is a map $h\colon(X_1\times I,A_1\times I,B_1\times I)\to (X_2,A_2,B_2)$ such that $h_0=f$ and $h_1=g$.
+    A \emph{homotopy of maps of triples} $f,g\colon(X_1,A_1,B_1)\to (X_2,A_2,B_2)$ is a map $h\colon(X_1,A_1,B_1)\times I\to (X_2,A_2,B_2)$ such that $h_0=f$ and $h_1=g$.
 \end{definition}
 \begin{definition}[Triad]
-    A triple of spaces $(X;X_1,X_2)$ is called a \emph{triad} if $X_1\subset X$ and $X_2\subset X$ are subspaces of $X$.
+    Let $X$ be a topological space and $X_1,X_2\subset X$ be subspaces.
+    Then we call $(X;X_1,X_2)$ a \emph{triad of topological spaces}.
     A triad $(X;X_1,X_2)$ is called \emph{excisive} if $X_1^°\cup X_2^°=X$.
 
-    A map of triads $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ is a continuous map $f\colon X\to Y$ such that $f(X_1)\subset Y_1$ and $f(X_2)\subset Y_2$.
+    A \emph{map of triads} $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ is a continuous map $f\colon X\to Y$ such that $f(X_1)\subset Y_1$ and $f(X_2)\subset Y_2$.
+    (Note that this definition is distinct from (maps of) triples of topological spaces.)
 \end{definition}
 \begin{lemma}[Relative HEP]\label{lem:rHEP}
     Let $(X;X_1,X_2)$ be a triad such that $X_1\cap X_2\to X_2$ and $X_1\cup X_2\to X$ are h-cofibrations. 
@@ -334,7 +361,7 @@ As a first step we will fix some notation related to pairs and triples of spaces
     \end{align*}
     to be the \emph{concatenation of homotopies $H_1, H_2$}.
 
-    Furthermore, for a homotopy $H\colon X\times I\to Y$ we define $\overline{H}(x,t)=H(x,1-t)$ to be the \emph{reverse homotopy of $H$} and for a map $f\colon X\to Y$ we define $\const_f\colon X\times I\to Y$ to be the constant homotopy.
+    Furthermore, for a homotopy $H\colon X\times I\to Y$ we define $\overline{H}(x,t)=H(x,1-t)$ to be the \emph{reverse homotopy of $H$} and for a map $f\colon X\to Y$ we define $\const_f\colon X\times I\to Y$ to be the constant homotopy $X\times I\to X\xrightarrow{f}Y$.
     
     Note that these definitions also preserve homotopies/maps of pairs and triples.
 \end{definition}
@@ -345,8 +372,8 @@ As a first step we will fix some notation related to pairs and triples of spaces
     Note that this is also true for homotopies of pairs and triples.
 \end{remark}
 We next fix a model for the homotopy groups/sets of pairs.
-Since we will use a subdivision argument, the model as maps of triples from $(I^n,\partial I^n,J^{n-1})$ is most convenient.
-\begin{definition}
+For us the model as maps of triples from $(I^n,\partial I^n,J^{n-1})$ is most convenient.
+\begin{definition} %TODO maybe define also for (J^n,\set{1}\times I,*)
     For a pair of spaces $(X,A)$, $a\in A$ and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
 \end{definition}
 There is a canonical group structure on these sets for $n\geq 2$ (that is even abelian for $n\geq 3$).
@@ -364,7 +391,7 @@ There is a canonical group structure on these sets for $n\geq 2$ (that is even a
     This is equivalent to saying that if the homotopy fiber of $A\hookrightarrow X$ at $x\in X$ is empty, then so is the homotopy fiber of $B\hookrightarrow Y$ at $f(x)$.
     This is because the homotopy fiber of a map at a point is empty if and only if the point is in a path-connected component that does not intersect the image of the map.
 \end{remark}
-We will need the following lemma to translate our statements to the language of pairs of maps and back.
+We will need the following lemma to translate our statements about homotopy pullbacks to the language of pairs of maps and back.
 \begin{lemma}\label{lem:weOfaPairsIsHtpyPb}
     Let $f\colon(X,A)\to (Y,B)$ be a map.
     Then the following are equivalent:
@@ -417,22 +444,22 @@ The next lemma is a variant of what is commonly referred to as the ``compression
     Let $n\geq 1$, $e\colon(I^{n+1},\set{1}\times I^n)\to (X,A)$, $*=(1,0,\ldots,0)\in\set{1}\times\partial I^n$ and $a=e(*)$. 
     Then $e|_{J^n}\colon(J^n,\set{1}\times\partial I^n,*)\to(X,A,a)$ represents the equivalence class of the constant map in $\pi_n(X,A,a)$.
     \begin{proof}
-        Fix a homeomorphism $I^n\cong J^n$ which restricts to a homeomorphism $\partial I^n\cong \partial J^n$.
+        Fix a homeomorphism $\alpha\colon J^n\cong I^n$ such that $\alpha|_{\set{1}\times I^n}=\id_{I^n}$.
         Then the square  
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                J^n\times\partial I\cup\partial J^n\times I \arrow [r] \arrow [>->, d, "h"] & I^{n+1} \arrow [->>, d, "h","\simeq"']\\
+                J^n\times\partial I\cup\partial J^n\times I \arrow [r, "f"] \arrow [>->, d, "h"] & I^{n+1} \arrow [->>, d, "h","\simeq"']\\
                 J^n\times I \arrow[ur, dashed, "\exists H"] \arrow[r,"\simeq"] & *
             \end{tikzcd}
         \end{center}
-        where the top horizontal map on
+        where the top horizontal map $f$ is given by
         \begin{itemize}
-            \item $J^n\times\set{0}$ is the inclusion $J^n\hookrightarrow I^{n+1}$
-            \item $J^n\times\set{1}$ is the inclusion $J^n\cong\set{1}\times I^n\hookrightarrow I^{n+1}$
-            \item on $\partial J^n \times I$ is the map $\partial J^n \times I=\set{1}\times\partial I^n\times I\to\set{1}\times\partial I^n \hookrightarrow I^{n+1}$
+            \item the inclusion $J^n\hookrightarrow I^{n+1}$ on $J^n\times\set{0}$ 
+            \item the inclusion $J^n\cong\set{1}\times I^n\hookrightarrow I^{n+1}$ on $J^n\times\set{1}$ 
+            \item the map $\partial J^n \times I=\left(\set{1}\times\partial I^n\right)\times I\to\set{1}\times\partial I^n \hookrightarrow I^{n+1}$ on $\partial J^n \times I$ 
         \end{itemize}
         admits a lift $H$. 
-        As $H$ is constant on $\partial J^n\times I$, this lift gives a homotopy $\widetilde{H}=eH\colon(J^n,\set{1}\times \partial I^n,*)\times I\to (X,A,a)$  that is constant on $\partial J^n\times I$ from $e|_{J^n}$ to some map $\widetilde{H}_1=f$ with $\im f\subset A$.
+        This gives a homotopy $\widetilde{H}=e\circ H\colon(J^n,\set{1}\times \partial I^n,*)\times I\to (X,A,a)$ from $e|_{J^n}$ to some map $\widetilde{H}_1=f$ with $\im f\subset A$, and $\widetilde{H}$ is constant on $\partial J^n\times I$ .
         Since $\im f\subset A$ and $J^n$ is contractible with respect to $*$, $f$ represents $\const_a$ which proves the proposition. 
     \end{proof}
 \end{lemma}

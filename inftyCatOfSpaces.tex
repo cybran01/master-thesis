@@ -26,10 +26,10 @@ The \Strom/ model structure will be important later on; its interaction with the
 \begin{definition}[Hurewicz Cofibration]
     Let $i\colon A\to B$ be a map such that for all spaces $X$ and maps $A\times I\to X$, $B\to X$ that make the diagram below commute, there exists a map $B\times I\to X$ such that
     \begin{center}
-        \begin{tikzcd} [sep = 4em]
-            A \arrow[r,"\id_A\times\set{0}"] \arrow[d, "i"'] & A\times I \arrow[d, "i\times\id_I"] \arrow[ddr, bend left] & \\
+        \begin{tikzcd} [sep = 1.5em]
+            A \arrow[r,"\id_A\times\set{0}"] \arrow[d, "i"'] &[2.5em] A\times I \arrow[d, "i\times\id_I"] \arrow[ddr, bend left] & \\[2.5em]
             B \arrow[r,"\id_B\times\set{0}"] \arrow[drr, bend right] & B\times I \arrow[dr, dashed, "\exists"] & \\
-            &&|[xshift=-3em, yshift=-3em]|X
+            && X
         \end{tikzcd}
     \end{center}
     commutes.
@@ -56,7 +56,7 @@ When speaking of cofibrations, fibrations or weak equivalences between topologic
     \end{reference}
 \end{thm}
 The other model structure on $\Top$ we will need is given by the following.
-\begin{thm}[\Strom/ Model Structure on $\Top$]
+\begin{thm}[\Strom/ Model Structure on $\Top$]\label{thm:stromModelStructure}
     The following three classes of maps endow $\Top$ with a model structure:
     \begin{itemize}
         \item Cofibrations are the closed Hurewicz cofibrations, which we will refer to as \emph{h-cofibrations}.
