@@ -84,7 +84,7 @@ The cases of pushouts, pullbacks and coproducts are especially important by \cre
             \ho(\Fun(\N(J),\N(M)[W^{-1}]))\rightleftarrows\ho(\N(M)[W^{-1}])\;.
         \end{equation*}
         Let $\Ho(C)$ denote the homotopy category for a model category $C$. 
-        Since $\Ho(C)$ is a model of the (ordinary) localization of $C$ by the weak equivalences, there is a canonical equivalence $\Ho(C)\cong\ho(\N(C)[W^{-1}])$ since both fulfill the same universal property. %TODO \ho(N(M)[W^{-1}])\cong M[W^{-1}]
+        Since $\Ho(C)$ is a model of the (ordinary) localization of $C$ by the weak equivalences, there is a canonical equivalence $\Ho(C)\cong\ho(\N(C)[W^{-1}])$ since both fulfill the same universal property.
         
         Thus $\ho(\N(M)[W^{-1}])\cong\Ho(M)$ and using \cref{thm:locCommutesWithHom} we also have $\ho(\Fun(\N(J),\N(M)[W^{-1}]))\cong\Ho(\Fun(J,M)_{proj})$.
         This yields an adjunction
@@ -96,7 +96,7 @@ The cases of pushouts, pullbacks and coproducts are especially important by \cre
         This means that the functor from left to right is (equivalent to) a left derived functor of the $\colim$-functor.
 
         Hence given a diagram $X\colon J^{\rhd}\to M$, the colimit of the induced map $\N(J)\to\N(M)[W^{-1}]$ in $\ho(\N(M)[W^{-1}])\cong\Ho(M)$ is isomorphic to the homotopy colimit of $X|_J$ computed via the derived colimit functor in $\Ho(M)\cong\ho(\N(M)[W^{-1}])$.
-        Since objects are equivalent in $\N(M)[W^{-1}]$ if and only if they are isomorphic in $\ho(\N(M)[W^{-1}])$ (see \cref{rmk:boardmanVogt}), this proves the lemma. %TODO is this really clear that is follows from that?
+        Since objects are equivalent in $\N(M)[W^{-1}]$ if and only if they are isomorphic in $\ho(\N(M)[W^{-1}])$ (see \cref{rmk:boardmanVogt}), this proves the lemma. 
     \end{proof}
 \end{lemma}
 Since coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerves of direct/inverse categories, we are able to work in the underlying model category by the following corollary.
@@ -159,7 +159,7 @@ This preceding proposition has the following useful consequence.
             \end{tikzcd}\;.
         \end{center}
         By \cref{prop:poOfWeIsWe} we have that the map induced by the pushouts $C'\cup_AB\to C\cup_AB$ is again a weak equivalence.
-        But since $C'\cup_AB$ is a homotopy pushout (it is a pushout along a cofibration and $\Top$ is left proper), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.%TODO cite left proper
+        But since $C'\cup_AB$ is a homotopy pushout (it is a pushout along a cofibration and $\Top$ is left proper), $C\cup_AB$ is thus also a homotopy pushout which proves the proposition.
     \end{proof}
 \end{corollary}
 \addcontentsline{toc}{subsection}{Universality}
@@ -306,7 +306,7 @@ It remains to show that it also has descent.
 \addcontentsline{toc}{subsection}{Descent for Homotopy Pushouts}
 \subsection*{Descent for Homotopy Pushouts}
 Proving descent will be more involved then the proof of universality.
-The main theorem we use to achieve this will be \cref{prop:descentForPairs}, where we use a subdivision argument from \cite{may1990weak} to show a version of descent for homotopy pushouts for pairs of spaces. %TODO write better maybe
+The main theorem we use to achieve this will be \cref{prop:descentForPairs}, where we use a subdivision argument from \cite{may1990weak} to show a version of descent for pairs of spaces.
 There are two routes that lead from this theorem to descent for pushouts:
 One can either give a direct proof via decomposition of mapping cylinders (see \cref{prop:topDescentPo}) or it can be used to prove a weak version of the locality of quasifibrations (see \cref{cor:locOfQuasifib}).
 
@@ -676,10 +676,9 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         Therefore, the proposition follows by \cref{lem:weOfaPairsIsHtpyPb}.
     \end{proof}
 \end{lemma}
-%TODO mention lebesgue number lemma
 \begin{prop}\label{prop:descentForPairs}
     Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
-    Then, if the maps $f|_{X_i}\colon(X_i,X_1\cap X_2)\to(Y_i,Y_1\cap Y_2)$ are weak equivalences of pairs for $i\in\set{1,2}$, the maps $f\colon(X,X_i)\to(Y,Y_i)$ are weak equivalences of pairs for $i\in\set{1,2}$ as well.
+    Then, if the maps $f|_{X_i}\colon(X_i,X_1\cap X_2)\to(Y_i,Y_1\cap Y_2)$ are weak equivalences of pairs for $i\in\set{1,2}$, the maps $f_i\colon(X,X_i)\to(Y,Y_i)$ are weak equivalences of pairs for $i\in\set{1,2}$ as well.
     \begin{proof}
         The proof will follow \cite[Theorem 1.2]{may1990weak}.
 
@@ -688,44 +687,151 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         
         By the definition of a weak equivalence of pairs, it suffices to show that under the given assumptions the statement of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpyConst} holds for all $n\geq 0$.
     
-        So let $g\colon(J^n,\set{1}\times\partial I^n)\to(X,X_i)$ and $e\colon(I^{n+1},\set{1}\times I^n)\to(Y,Y_i)$ be given such that $e|_{J^n}=g$.
+        So fix an $i\in\set{1,2}$ and let $g\colon(J^n,\set{1}\times\partial I^n)\to(X,X_i)$ and $e\colon(I^{n+1},\set{1}\times I^n)\to(Y,Y_i)$ be given such that $e|_{J^n}=f_ig$.
         As $J^n\subset I^{n+1}$ are both compact metric spaces, we can find a Lebesgue number $\delta$ for the cover $Y_1^°,Y_2^°\subset Y$ and the map $e$.
         We pick a cubical subdivision $\mathcal{C}$ of $I^{n+1}$ such that the diameter of every cube is smaller than $\delta$.
-        This ensures that for every cubical cell $c\in\mathcal{C}$ there is an $i\in\set{1,2}$ such that $e(c)\subset Y_i^°$.
+        This ensures that for every cubical cell $c\in\mathcal{C}$ there is a $j\in\set{1,2}$ such that $e(c)\subset Y_j^°$.
         Note that this cubical subdivision gives a CW-structure on $I^{n+1}$ such that $J^n\subset I^{n+1}$ is a subcomplex.
 
         We identify $I^{n+1}=I\times I^n$.
         The cubical subdivision $\mathcal{C}$ gives a cubical subdivision $\mathcal{D}$ of $I^n$ and a partition of $I$ into subintervalls of equal length $I_r=[v_r,v_{r+1}]\subset I$ with $0=v_0<v_1<\ldots<v_s=1$.
-        Let $\Gamma^m$ denote the collection of cells of the CW-structure on $I^n$ with dimension $m\in\set{0,\ldots,n}$ who are not contained in $\partial I^n$, and define $\Gamma^{-1}=\emptyset$.
+        Let $\Gamma^m$ denote the collection of cells of dimension $m\in\set{0,\ldots,n}$ of the CW-structure on $I^n$ induced by $\mathcal{D}$ which are not contained in $\partial I^n$, and define $\Gamma^{-1}=\emptyset$.
         
-        Then for $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n+1}$ let $L_r^m=\left([0,v_r]\times I^n\right)\cup J^n\cup\bigcup\limits_{K\in\Gamma^{m-1}}\left(I_r\times K\right)\subset I^{n+1}$.
-        We also note that $L_r^{n+1}=\left([0,v_{r+1}]\times I^n\right)\cup J^n=L_{r+1}^0$ and $L_s^{n+1}=I^{n+1}$.
+        Then for $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n+1}$ let
+        \begin{equation*}
+            L_r^m=\left([0,v_r]\times I^n\right)\cup J^n\cup\bigcup\limits_{K\in\Gamma^{m-1}}\left(I_r\times K\right)\subset I^{n+1}\;.
+        \end{equation*}
+        We also note that $L_r^{n+1}=\left([0,v_{r+1}]\times I^n\right)\cup J^n=L_{r+1}^0$ and $L_{s-1}^{n+1}=I^{n+1}$.
 
-        We will use a nested induction argument, where the outer induction step extends maps given on $L_r^{n+1}$ to $L_{r+1}^{n+1}$ for $r\in\set{0\ldots,s-2}$ and for fixed $r\in\set{0,\ldots,s-1}$ the inner induction extends maps on $L_r^m$ for $m\in\set{0,\ldots,n}$ over all cells of the form $I_r\times K$ with $K\in\Gamma^m$, hence to $L_r^{m+1}$.
-        
+        We will use a nested induction argument to construct the desired map $G$ and homotopy $H$ of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpyConst} as extensions of $g$ and the constant homotopy $h$ respectively, where 
+        \begin{itemize}
+            \item given a fixed $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$, the inner induction step extends them from $L_r^m$ to $L_r^{m+1}$, hence it extends them over all cells of the form $I_r\times K$ with $K\in\Gamma^m$
+            \item and given a fixed $r\in\set{0,\ldots,s-2}$, the outer induction step extends them from $L_r^{n+1}$ to $L_{r+1}^{n+1}$.
+        \end{itemize}
+        As an example, provided $n=1$ and $s=3$, the inner and outer induction correspond to horizontal and vertical arrows respectively in the following diagram:
+        \begin{center}
+            \begin{tikzpicture}[scale = .7, opacity = .7]
+                \newcommand\xshift{5}
+                \newcommand\yshift{0}
+                \newcommand\step{\size/3*0}
+                \newcommand\size{3}
+
+                \draw (0,\size+\yshift) -- (\size,\size+\yshift);
+                \draw (0,0+\yshift) -- (0,\size+\yshift);
+                \draw (0,0+\yshift) -- (\size,0+\yshift);
+                \node[opacity = 1, align = center] at (1.5,-.5+\yshift) {$L_{\pgfmathparse{\step}\pgfmathprintnumber{\pgfmathresult}}^0=J^1$};
+
+                \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5,\size/2+\yshift) -- (\size+1.5,\size/2+\yshift);
+
+                \draw[color = blue] (0+\xshift*1+\step,\size/3+\yshift) -- (1+\xshift*1+\step,\size/3+\yshift);
+                \draw[color = blue] (0+\xshift*1+\step,\size/3*2+\yshift) -- (1+\xshift*1+\step,2*\size/3+\yshift);
+                \draw (0+\xshift*1,\size+\yshift) -- (\size+\xshift*1,\size+\yshift);
+                \draw (0+\xshift*1,0+\yshift) -- (0+\xshift*1,\size+\yshift);
+                \draw (0+\xshift*1,0+\yshift) -- (\size+\xshift*1,0+\yshift);
+                \node[opacity = 1, align = center] at (1.5+\xshift*1,-.5+\yshift) {$L_{\pgfmathparse{\step}\pgfmathprintnumber{\pgfmathresult}}^1$};
+
+                \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5+\xshift*1,\size/2+\yshift) -- (\size+1.5+\xshift*1,\size/2+\yshift);
+
+                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*0+\yshift) rectangle (1+\xshift*2+\step,\size/3*1+\yshift);
+                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*1+\yshift) rectangle (1+\xshift*2+\step,\size/3*2+\yshift);
+                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*2+\yshift) rectangle (1+\xshift*2+\step,\size/3*3+\yshift);
+                \draw[color = blue] (0+\xshift*2+\step,\size/3*1+\yshift) -- (1+\xshift*2+\step,\size/3*1+\yshift);
+                \draw[color = blue] (0+\xshift*2+\step,\size/3*2+\yshift) -- (1+\xshift*2+\step,\size/3*2+\yshift);
+                \draw (0+\xshift*2,\size+\yshift) -- (\size+\xshift*2,\size+\yshift);
+                \draw (0+\xshift*2,0+\yshift) -- (0+\xshift*2,\size+\yshift);
+                \draw (0+\xshift*2,0+\yshift) -- (\size+\xshift*2,0+\yshift);
+                \node[opacity = 1, align = center] at (1.5+\xshift*2,-.5+\yshift) {$L_{\pgfmathparse{\step}\pgfmathprintnumber{\pgfmathresult}}^2=L_1^0$};
+
+                \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (3*\xshift-\size/2,\size/2+\yshift) to[bend left] (3*\xshift-\size/2,\size/2-4.25+0.2);
+                \renewcommand\yshift{-4.25}
+                \renewcommand\step{\size/3*1}
+
+                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*0,0+\yshift) rectangle (\step+\xshift*0,\size+\yshift);
+                \draw (0,\size+\yshift) -- (\size,\size+\yshift);
+                \draw (0,0+\yshift) -- (0,\size+\yshift);
+                \draw (0,0+\yshift) -- (\size,0+\yshift);
+                \node[opacity = 1, align = center] at (1.5,-.5+\yshift) {$L_{\pgfmathparse{\step}\pgfmathprintnumber{\pgfmathresult}}^0$};
+
+                \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5,\size/2+\yshift) -- (\size+1.5,\size/2+\yshift);
+
+                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*1,0+\yshift) rectangle (\step+\xshift*1,\size+\yshift);
+                \draw[color = blue] (0+\xshift*1+\step,\size/3+\yshift) -- (1+\xshift*1+\step,\size/3+\yshift);
+                \draw[color = blue] (0+\xshift*1+\step,\size/3*2+\yshift) -- (1+\xshift*1+\step,2*\size/3+\yshift);
+                \draw (0+\xshift*1,\size+\yshift) -- (\size+\xshift*1,\size+\yshift);
+                \draw (0+\xshift*1,0+\yshift) -- (0+\xshift*1,\size+\yshift);
+                \draw (0+\xshift*1,0+\yshift) -- (\size+\xshift*1,0+\yshift);
+                \node[opacity = 1, align = center] at (1.5+\xshift*1,-.5+\yshift) {$L_{\pgfmathparse{\step}\pgfmathprintnumber{\pgfmathresult}}^1$};
+
+                \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5+\xshift*1,\size/2+\yshift) -- (\size+1.5+\xshift*1,\size/2+\yshift);
+
+                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*2,0+\yshift) rectangle (\step+\xshift*2,\size+\yshift);
+                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*0+\yshift) rectangle (1+\xshift*2+\step,\size/3*1+\yshift);
+                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*1+\yshift) rectangle (1+\xshift*2+\step,\size/3*2+\yshift);
+                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*2+\yshift) rectangle (1+\xshift*2+\step,\size/3*3+\yshift);
+                \draw[color = blue] (0+\xshift*2+\step,\size/3*1+\yshift) -- (1+\xshift*2+\step,\size/3*1+\yshift);
+                \draw[color = blue] (0+\xshift*2+\step,\size/3*2+\yshift) -- (1+\xshift*2+\step,\size/3*2+\yshift);
+                \draw (0+\xshift*2,\size+\yshift) -- (\size+\xshift*2,\size+\yshift);
+                \draw (0+\xshift*2,0+\yshift) -- (0+\xshift*2,\size+\yshift);
+                \draw (0+\xshift*2,0+\yshift) -- (\size+\xshift*2,0+\yshift);
+                \node[opacity = 1, align = center] at (1.5+\xshift*2,-.5+\yshift) {$L_{\pgfmathparse{\step}\pgfmathprintnumber{\pgfmathresult}}^2=L_2^0$};
+
+                \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (3*\xshift-\size/2,\size/2+\yshift) to[bend left] (3*\xshift-\size/2,\size/2-8.5-0.2);
+                \renewcommand\yshift{-4.25*2}
+                \renewcommand\step{\size/3*2}
+
+                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*0,0+\yshift) rectangle (\step+\xshift*0,\size+\yshift);
+                \draw (0,\size+\yshift) -- (\size,\size+\yshift);
+                \draw (0,0+\yshift) -- (0,\size+\yshift);
+                \draw (0,0+\yshift) -- (\size,0+\yshift);
+                \node[opacity = 1, align = center] at (1.5,-.5+\yshift) {$L_{\pgfmathparse{\step}\pgfmathprintnumber{\pgfmathresult}}^0$};
+
+                \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5,\size/2+\yshift) -- (\size+1.5,\size/2+\yshift);
+
+                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*1,0+\yshift) rectangle (\step+\xshift*1,\size+\yshift);
+                \draw[color = blue] (0+\xshift*1+\step,\size/3+\yshift) -- (1+\xshift*1+\step,\size/3+\yshift);
+                \draw[color = blue] (0+\xshift*1+\step,\size/3*2+\yshift) -- (1+\xshift*1+\step,2*\size/3+\yshift);
+                \draw (0+\xshift*1,\size+\yshift) -- (\size+\xshift*1,\size+\yshift);
+                \draw (0+\xshift*1,0+\yshift) -- (0+\xshift*1,\size+\yshift);
+                \draw (0+\xshift*1,0+\yshift) -- (\size+\xshift*1,0+\yshift);
+                \node[opacity = 1, align = center] at (1.5+\xshift*1,-.5+\yshift) {$L_{\pgfmathparse{\step}\pgfmathprintnumber{\pgfmathresult}}^1$};
+
+                \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5+\xshift*1,\size/2+\yshift) -- (\size+1.5+\xshift*1,\size/2+\yshift);
+
+                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*2,0+\yshift) rectangle (\step+\xshift*2,\size+\yshift);
+                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*0+\yshift) rectangle (1+\xshift*2+\step,\size/3*1+\yshift);
+                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*1+\yshift) rectangle (1+\xshift*2+\step,\size/3*2+\yshift);
+                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*2+\yshift) rectangle (1+\xshift*2+\step,\size/3*3+\yshift);
+                \draw[color = blue] (0+\xshift*2+\step,\size/3*1+\yshift) -- (1+\xshift*2+\step,\size/3*1+\yshift);
+                \draw[color = blue] (0+\xshift*2+\step,\size/3*2+\yshift) -- (1+\xshift*2+\step,\size/3*2+\yshift);
+                \draw (0+\xshift*2,\size+\yshift) -- (\size+\xshift*2,\size+\yshift);
+                \draw (0+\xshift*2,0+\yshift) -- (0+\xshift*2,\size+\yshift);
+                \draw (0+\xshift*2,0+\yshift) -- (\size+\xshift*2,0+\yshift);
+                \node[opacity = 1, align = center] at (1.5+\xshift*2,-.5+\yshift) {$L_{\pgfmathparse{\step}\pgfmathprintnumber{\pgfmathresult}}^2=I^2$};
+            \end{tikzpicture}
+        \end{center}
         The desired maps $G$ and $H$ will be constructed such that for all cells $K\in\Gamma^m$ and $r\in\set{0,\ldots,s-1}$
         \begin{itemize}
             \item if $e(I_r\times K)\subset Y_j^°$ then $G(I_r\times K)\subset X_j$ and $H(I_r\times K\times I)\subset Y_j$ for the same $j\in\set{1,2}$
             \item if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ then $G(\set{v_{r+1}}\times K)\subset X_1\cap X_2$ and $H(\set{v_{r+1}}\times K\times I)\subset Y_1\cap Y_2$.
         \end{itemize}
         We will refer to these conditions as the \emph{patching conditions}.
-        Note that for a cubical cell $c\in\mathcal{C}$ 
+        Note that for a cubical cell $c\in\mathcal{C}$ that is contained in $J^n$
         \begin{itemize}
-            \item if $e(c)\subset Y_j^°$ then $fg(c\cap J^n)\subset f(X)\cap Y_j=f(X_j^°)$ and thus $g(c\cap J^n)\subset X_j^°$ since $f$ is an inclusion
-            \item if $e(c)\subset Y_1\cap Y_2$ then $fg(c\cap J^n)\subset f(X)\cap Y_1\cap Y_2=f(X_1\cap X_2)$ and thus $g(c\cap J^n)\subset X_1\cap X_2$
+            \item if $e(c)\subset Y_j^°$ then $e(c)=fg(c)\subset f(X)\cap Y_j^°=f(X_j^°)$ and thus $g(c)\subset X_j^°\subset X_j$ since $f$ is an inclusion
+            \item if $e(c)\subset Y_1\cap Y_2$ then $e(c)=fg(c)\subset f(X)\cap Y_1\cap Y_2=f(X_1\cap X_2)$ as $f$ is an inclusion and thus $g(c)\subset X_1\cap X_2$
         \end{itemize}
-        and therefore any cell contained in $J^n$ fulfills the patching conditions.
+        and thus the patching conditions are in particular fulfilled for cells of the shape $I_r\times d$ where $d$ is a cell in $\partial I^n$.
         
-        So for the induction step with given $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$, by the induction hypothesis we have maps $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ extending $g$ and the constant homotopy at $fg=e|_{J^n}$ respectively such that $H$ is a homotopy from $e|_{L_r^m}$ to $fG$ that also fulfill the patching conditions.
+        So for the induction step with given $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$, by the induction hypothesis we have maps $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ fulfilling the patching conditions and extending $g$ and the constant homotopy at $f_ig=e|_{J^n}$ respectively, such that $H$ is a homotopy from $e|_{L_r^m}$ to $f_iG$.
 
         We now pick a $K\in\Gamma^m$ and proceed via a case distinction:
         First if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ and $e(I_r\times K)\subset Y_j^°$ is contained in exactly one of the $Y_j^°$, we have that $G$ and $H$ restrict to maps $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\to(X_j,X_1\cap X_2)$ and $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\times I\to(X_j,X_1\cap X_2)$ respectively, which can be identified with maps $g'\colon(J^m, \set{1}\times\partial{I^m})\to(X_j,X_1\cap X_2)$ and $h'\colon (J^m, \set{1}\times\partial{I^m})\times I\to(X_j,X_1\cap X_2)$.
         
-        Together with $e|_{I_r\times K}\cong e'\colon(I^{m+1},\set{1}\times I^m)\to(Y_j,Y_1\cap Y_2)$ and the equivalence of pairs $f\colon(X_j,X_1\cap X_2)\to(Y_j,Y_1\cap Y_2)$ these fulfill the conditions of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpy}. 
+        Together with $e|_{I_r\times K}\cong e'\colon(I^{m+1},\set{1}\times I^m)\to(Y_j,Y_1\cap Y_2)$ and the weak equivalence of pairs $f|_{X_j}\colon(X_j,X_1\cap X_2)\to(Y_j,Y_1\cap Y_2)$ these fulfill the conditions of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpy}. 
         So by \cref{prop:eqCharInjSurj} there exist extensions $G'_K$ and $H'_K$ which we can then identify with maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ fulfilling the desired properties.
 
         In the remaining cases either $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$ or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$.
-        We can pick a deformation retract $F\colon I_r\times K\times I\to I_r\times K$ of $I_r\times\partial K\cup\set{v_r}\times K$ by \cref{rmk:cwInclIsHCofib} and set $G'_K=GF_1$ and $H'_K=eF*HF_1$ which considered as maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ respectively fulfill the desired properties.
+        We pick a deformation retract $F\colon (I_r\times K)\times I\to I_r\times K$ of $I_r\times\partial K\cup\set{v_r}\times K$ by \cref{rmk:cwInclIsHCofib} and set $G'_K=GF_1$ and $H'_K=eF*HF_1$ which considered as maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ respectively fulfill the desired properties.
 
         Now note that since we work ourselves upwards from the dimensions, the constructed extensions $G'_K$ and $H'_K$ are always compatible along the boundaries of $I_r\times K$, and thus we can glue them together to obtain extensions to $L_r^m\cup\bigcup\limits_{K\in\Gamma^m}I^r\times K=L_r^{m+1}$.
         Hence, we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively.
@@ -733,7 +839,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 
         It only remains to check that the final extensions $G$ and $H$ are maps of pairs $(I^{n+1},\set{1}\times I^n)\to(X,X_i)$ and $(I^{n+1},\set{1}\times I^n)\times I\to(Y,Y_i)$ respectively.
         Let $K\in\Gamma^n$ and note that $\bigcup\limits_{K\in\Gamma^n}\set{1}\times K=\set{1}\times I^n$.
-        Since $e(\set{1}\times I^n)\subset Y_i$, we always have $e(I_{s-1}\times K)\subset Y_i^°$ or $e(\set{1}\times K)\subset Y_1\cap Y_2$ and both cases imply $G(\set{1}\times K)\subset X_i$ and $H(\set{1}\times K\times I)\subset X_i$ by the patching conditions.
+        Since $e(\set{1}\times I^n)\subset Y_i$, we always have $e(I_{s-1}\times K)\subset Y_i^°$ or $e(\set{1}\times K)\subset Y_1\cap Y_2$ and both cases imply $G(\set{1}\times K)\subset X_i$ and $H(\set{1}\times K\times I)\subset Y_i$ by the patching conditions.
         Thus we have proven the proposition.
     \end{proof}
 \end{prop}
@@ -761,7 +867,7 @@ We are now ready to give a proof of descent for pushouts.
                 & \M^{[0,2)}(f_{AC}) \arrow [from=uu,crossing over] \arrow [rr, hook] & & \D(f_{AB},f_{AC})
             \end{tikzcd}
         \end{center}
-        where top and bottom face are as in \cref{rmk:doubleMappingCylinderAlt} and in particular ordinary pushouts, are equivalent to the starting cube:
+        where top and bottom face are as in \cref{rmk:doubleMappingCylinderAlt} and in particular ordinary pushouts, are equivalent to the starting cube: %TODO  perhaps mention here already that $f$ is a map of excisive triads
         
         The equivalence of the top square follows from the fact that the map $\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}})\to\overline{D}$ in the commutative diagram (see again \cref{rmk:doubleMappingCylinderAlt} for square in the middle)
         \begin{center}
@@ -800,7 +906,7 @@ We are now ready to give a proof of descent for pushouts.
         respectively. 
         The equivalences of the back squares and front squares follow from the analogous argument.
 
-        Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are homotopy pullback squares since the map $f\colon\left(\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}});\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}})\right)\to\left(\D(f_{AB},f_{AC});\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC})\right)$ is a map of excisive triads. %TODO reference
+        Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are homotopy pullback squares since the map $f\colon\left(\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}});\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}})\right)\to\left(\D(f_{AB},f_{AC});\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC})\right)$ is a map of excisive triads.
     \end{proof}
 \end{prop}
 \addcontentsline{toc}{subsection}{Descent and Quasifibrations}

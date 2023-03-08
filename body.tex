@@ -17,6 +17,7 @@
 \usepackage{tikz}
 \usetikzlibrary{matrix}
 \usetikzlibrary{arrows}
+\usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{cd}
 \usepackage[automark, headsepline]{scrlayer-scrpage}
 \ihead{\leftmark}
@@ -47,9 +48,7 @@
 
 \newenvironment{reference}{\renewcommand{\qedsymbol}{}\begin{proof}[Reference]}{\end{proof}}
 
-\newcommand{\Kan}{\textrm{Kan}} %TODO better font
 \newcommand{\spaces}{\mathcal{S}}
-\newcommand{\spacesPtd}{\mathcal{S_*}}
 \newcommand{\Nat}{\mathbb{N}}
 \newcommand{\id}{\text{id}}
 \newcommand{\set}[1]{\left\lbrace#1\right\rbrace}
@@ -168,7 +167,7 @@
     \tableofcontents
     \cleardoubleoddstandardpage
     \startpagenumbering
-    \section{Preliminaries and Notation}%TODO add some intermittent text to explain why we are introducing things, perhaps introduce different notions on limit (especially via kan ext)
+    \section{Preliminaries and Notation}
     \subfile{basics.tex}
     \cleardoubleoddstandardpage
     \section{The $\infty$-Category of Spaces $\spaces$}

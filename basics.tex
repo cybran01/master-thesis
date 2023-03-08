@@ -1,6 +1,6 @@
 In this section we will fix general notation on \inftycats/ and model categories used throughout the rest of the text and remind the reader of some concepts which will be important later on.
 Some familiarity with \inftycats/ and Kan-complexes is assumed, in particular familiarity with limits/colimits in \inftycats/.
-We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts). %TODO say that we take these to be defined via derived functors
+We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts). 
 We will not give proofs for any statements in this section; we will however point to the relevant literature.
 \begin{definition}
     For every $n\in\Nat$, let $[n]$ denote the linearly ordered set $\set{0<\ldots<n}\subset\Nat$ and let $[-1]=\emptyset$, which we also consider to be linearly ordered.
@@ -75,7 +75,7 @@ We will not give proofs for any statements in this section; we will however poin
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
     For a simplicial category $C$, we let $\Hom_C(-,-)\colon C^{\op}\times C\to\sSet$ denote the enriched $\Hom$-functor.
    
-    Let $\Cat_{\Delta}$ denote the \emph{category of (small) simplicial categories} with morphisms the \emph{$\sSet$-enriched functors}.%TODO maybe explain what that is/cite
+    Let $\Cat_{\Delta}$ denote the \emph{category of (small) simplicial categories} with morphisms the \emph{$\sSet$-enriched functors}.
     
     We say that a simplicial category $C$ is \emph{tensored over $\sSet$} if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
     \begin{equation*}
@@ -153,9 +153,9 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition}
 \begin{definition}[$\kappa$-Compact Object]
     Let $C$ be a category, $X\in C$ an object and $\kappa$ a regular cardinal.
-    We say that $C$ is \emph{$\kappa$-compact} if the functor $\hom_C(X,-)\colon C\to\Set$ preserves all $\kappa$-filtered colimits. %TODO introduce kappa filtered colim, see cisinsky Proposition 2.1.9
+    We say that $C$ is \emph{$\kappa$-compact} if the functor $\hom_C(X,-)\colon C\to\Set$ preserves all $\kappa$-filtered colimits.
 \end{definition}
-\begin{definition}[Locally Presentable Category] %TODO Locally presentable and accessible categories def 1.17
+\begin{definition}[Locally Presentable Category] %"Locally presentable and accessible categories" def 1.17
     Let $C$ be a category.
     We call $C$ \emph{locally presentable} if it has small colimits and there exists a regular cardinal $\kappa$ such that
     \begin{itemize}
@@ -184,7 +184,7 @@ We will not give proofs for any statements in this section; we will however poin
     are preserved by the functor $\hom_C(A,-)\colon C\to\Set$.
 \end{definition}
 %TODO stress importance
-\begin{thm}[Small Object Argument] %TODO Proposition 10.5.16 Model Categories and Their Localizations 
+\begin{thm}[Small Object Argument] %Proposition 10.5.16 Model Categories and Their Localizations 
     Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
     If there exists a cardinal $\kappa$ such that the domains of all morphisms in $I$ are $\kappa$-small relative to transfinite compositions of pushouts of maps in $I$, we say that \emph{$I$ admits the small object argument}.
     
@@ -261,10 +261,9 @@ The following is the analogous statement for \inftycats/.
         \cite[Proposition 7.6.3.16]{kerodon}
     \end{reference}
 \end{prop}
-%TODO maybe equivalences of squares here (reference?) (is this really relevant, since it is closely related to how htpy pb/po are defined)
 We will need the standard model structure on $\sSet$, the Quillen model structure. 
 Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
-\begin{thm}[Quillen Model Structure on $\sSet$] %TODO probably best to just prove all model cat stuff about \sSet here already
+\begin{thm}[Quillen Model Structure on $\sSet$]
     There is a unique model structure on $\sSet$ where 
     \begin{itemize}
         \item the cofibrations are the monomorphisms, which also admit the following description: 
@@ -455,7 +454,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     For a simplicial set $X$, we further define $X^{\lhd}=\Delta^0\star X$ and $X^{\rhd}=X\star\Delta^0$.
     We label the canonical points $-\infty\colon\Delta^0\to X^{\lhd}$ and $\infty\colon\Delta^0\to X^{\rhd}$ respectively.
 \end{definition}
-\begin{definition}[(Co)Slice] %TODO Construction 4.3.5.1
+\begin{definition}[(Co)Slice] %kerodon Construction 4.3.5.1
     Let $f\colon K\to C$ be a map of simplicial sets.
     Setting 
     \begin{equation*}
