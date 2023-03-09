@@ -606,8 +606,10 @@ For convenience we fix notation for some variations of the mapping cylinder cons
             (a,t)&\mapsto(a,2-t)
         \end{align*}
     \end{itemize}
-    is a pushout (thus also a homotopy pushout by \cref{prop:poAlongHCofibIsHtpyPo}). 
-    Since the top and left map of the square are h-cofibrations by \cref{rmk:inclIntoMappingCylIsHCofib}, the maps $\M(f)\xtailrightarrow{h}\D(f,g)$ and $\M(g)\xtailrightarrow{h}\D(f,g)$ are also h-cofibrations.
+    is a pushout. 
+    This follows from point-set topology because $\M(f),\M(g)\subset\D(f,g)$ form a closed cover and $\M(f)\cap\M(g)=A\times\set{1}\subset\D(f,g)$.
+    Thus it is also a homotopy pushout by \cref{prop:poAlongHCofibIsHtpyPo}. 
+    The maps $\M(f)\xtailrightarrow{h}\D(f,g)$ and $\M(g)\xtailrightarrow{h}\D(f,g)$ are h-cofibrations since the top and left map of the square are h-cofibrations by \cref{rmk:inclIntoMappingCylIsHCofib}.
 
     Similarly for open mapping cylinders, the commutative square
     \begin{center}
@@ -695,7 +697,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 
         We identify $I^{n+1}=I\times I^n$.
         The cubical subdivision $\mathcal{C}$ gives a cubical subdivision $\mathcal{D}$ of $I^n$ and a partition of $I$ into subintervalls of equal length $I_r=[v_r,v_{r+1}]\subset I$ with $0=v_0<v_1<\ldots<v_s=1$.
-        Let $\Gamma^m$ denote the collection of cells of dimension $m\in\set{0,\ldots,n}$ of the CW-structure on $I^n$ induced by $\mathcal{D}$ which are not contained in $\partial I^n$, and define $\Gamma^{-1}=\emptyset$.
+        For $m\in\set{0,\ldots,n}$, let $\Gamma^m$ denote the collection of cells of dimension $m$ of the CW-structure on $I^n$ induced by $\mathcal{D}$ which are not contained in $\partial I^n$, and define $\Gamma^{-1}=\emptyset$.
         
         Then for $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n+1}$ let
         \begin{equation*}
@@ -818,24 +820,26 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         Note that for a cubical cell $c\in\mathcal{C}$ that is contained in $J^n$
         \begin{itemize}
             \item if $e(c)\subset Y_j^°$ then $e(c)=fg(c)\subset f(X)\cap Y_j^°=f(X_j^°)$ and thus $g(c)\subset X_j^°\subset X_j$ since $f$ is an inclusion
-            \item if $e(c)\subset Y_1\cap Y_2$ then $e(c)=fg(c)\subset f(X)\cap Y_1\cap Y_2=f(X_1\cap X_2)$ as $f$ is an inclusion and thus $g(c)\subset X_1\cap X_2$
+            \item if $e(c)\subset Y_1\cap Y_2$ then $e(c)=fg(c)\subset f(X)\cap Y_1\cap Y_2=f(X_1\cap X_2)$ and $g(c)\subset X_1\cap X_2$ since $f$ is an inclusion
         \end{itemize}
         and thus the patching conditions are in particular fulfilled for cells of the shape $I_r\times d$ where $d$ is a cell in $\partial I^n$.
         
-        So for the induction step with given $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$, by the induction hypothesis we have maps $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ fulfilling the patching conditions and extending $g$ and the constant homotopy at $f_ig=e|_{J^n}$ respectively, such that $H$ is a homotopy from $e|_{L_r^m}$ to $f_iG$.
+        So for the inner induction step with given $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$, by the induction hypothesis we have maps $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ fulfilling the patching conditions and extending $g$ and the constant homotopy at $f_ig=e|_{J^n}$ respectively, such that $H$ is a homotopy from $e|_{L_r^m}$ to $f_iG$.
 
         We now pick a $K\in\Gamma^m$ and proceed via a case distinction:
-        First if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ and $e(I_r\times K)\subset Y_j^°$ is contained in exactly one of the $Y_j^°$, we have that $G$ and $H$ restrict to maps $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\to(X_j,X_1\cap X_2)$ and $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\times I\to(X_j,X_1\cap X_2)$ respectively, which can be identified with maps $g'\colon(J^m, \set{1}\times\partial{I^m})\to(X_j,X_1\cap X_2)$ and $h'\colon (J^m, \set{1}\times\partial{I^m})\times I\to(X_j,X_1\cap X_2)$.
+        \begin{itemize}
+            \item First, if $e(\set{v_{r+1}}\times K)\subset Y_1\cap Y_2$ and $e(I_r\times K)\subset Y_j^°$ is contained in exactly one of the $Y_j^°$, we have that $G$ and $H$ restrict to maps $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\to(X_j,X_1\cap X_2)$ and $(I_r\times\partial K\cup\set{v_r}\times K, \set{v_{r+1}}\times\partial K)\times I\to(X_j,X_1\cap X_2)$ respectively by the patching conditions, which can be identified with maps $g'\colon(J^m, \set{1}\times\partial{I^m})\to(X_j,X_1\cap X_2)$ and $h'\colon (J^m, \set{1}\times\partial{I^m})\times I\to(X_j,X_1\cap X_2)$.
         
-        Together with $e|_{I_r\times K}\cong e'\colon(I^{m+1},\set{1}\times I^m)\to(Y_j,Y_1\cap Y_2)$ and the weak equivalence of pairs $f|_{X_j}\colon(X_j,X_1\cap X_2)\to(Y_j,Y_1\cap Y_2)$ these fulfill the conditions of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpy}. 
-        So by \cref{prop:eqCharInjSurj} there exist extensions $G'_K$ and $H'_K$ which we can then identify with maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ fulfilling the desired properties.
-
-        In the remaining cases either $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$ or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$.
-        We pick a deformation retract $F\colon (I_r\times K)\times I\to I_r\times K$ of $I_r\times\partial K\cup\set{v_r}\times K$ by \cref{rmk:cwInclIsHCofib} and set $G'_K=GF_1$ and $H'_K=eF*HF_1$ which considered as maps $(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$ respectively fulfill the desired properties.
-
-        Now note that since we work ourselves upwards from the dimensions, the constructed extensions $G'_K$ and $H'_K$ are always compatible along the boundaries of $I_r\times K$, and thus we can glue them together to obtain extensions to $L_r^m\cup\bigcup\limits_{K\in\Gamma^m}I^r\times K=L_r^{m+1}$.
-        Hence, we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively.
-        (For the latter one also needs that $L_r^{m+1}\times I\cong\left(L_r^m\times I\right)\cup\bigcup\limits_{K\in\Gamma^m}\left(I^r\times K\times I\right)$, which follows from that fact that since all spaces here are hausdorff and compact, continuous bijections are already homeomorphisms).
+                    Together with $e|_{I_r\times K}\cong e'\colon(I^{m+1},\set{1}\times I^m)\to(Y_j,Y_1\cap Y_2)$ and the weak equivalence of pairs $f|_{X_j}\colon(X_j,X_1\cap X_2)\to(Y_j,Y_1\cap Y_2)$ these fulfill the conditions of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpy}. 
+                    So by \cref{prop:eqCharInjSurj} there exist extensions which we can then identify with maps $G'_K\colon(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $H'_K\colon(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$.
+                    Note that $G'_K$ and $H'_K$ fulfill the patching conditions.
+            \item In the remaining cases either $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$ or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$.
+                    We pick a deformation retract $F\colon (I_r\times K)\times I\to I_r\times K$ of $J_K^m= I_r\times\partial K\cup\set{v_r}\times K$ (hence $F_1\colon I_r\times K\to J_K^m$) and set $G'_K=G|_{J_K^m}\circ F_1$ and $H'_K=(e|_{I_r\times K}\bullet F)*(H|_{J_K^m}\bullet F_1)$.
+                    Note that $G'_K$ and $H'_K$ fulfill the patching conditions since $G$ and $H$ fulfill them by induction hypothesis.
+        \end{itemize}
+        Now note that since we work ourselves upwards from the dimensions, the constructed extensions $G'_K$ and $H'_K$ are always compatible along boundaries of $I_r\times K$, and thus we can glue them together to obtain extensions to $L_r^m\cup\bigcup\limits_{K\in\Gamma^m}I^r\times K=L_r^{m+1}$.
+        Hence we get extensions of $G\colon L_r^m\to X$ and $H\colon L_r^m\times I\to Y$ to $L_r^{m+1}$ and $L_r^{m+1}\times I$ respectively (the latter also uses that $L_r^{m+1}\times I\cong\left(L_r^m\times I\right)\cup\bigcup\limits_{K\in\Gamma^m}\left(I_r\times K\times I\right)$).
+        These extensions fulfill the patching conditions since $G'_K$ and $H'_K$ fulfill them by construction.
 
         It only remains to check that the final extensions $G$ and $H$ are maps of pairs $(I^{n+1},\set{1}\times I^n)\to(X,X_i)$ and $(I^{n+1},\set{1}\times I^n)\times I\to(Y,Y_i)$ respectively.
         Let $K\in\Gamma^n$ and note that $\bigcup\limits_{K\in\Gamma^n}\set{1}\times K=\set{1}\times I^n$.
@@ -845,7 +849,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 \end{prop}
 This concludes the technical preliminaries. 
 We are now ready to give a proof of descent for pushouts.
-\begin{prop}\label{prop:topDescentPo} %TODO the maps for how to glue the double mapping cylinders are not clear
+\begin{prop}\label{prop:topDescentPo}
     The model category $\Top$ has descent for homotopy pushouts. 
     \begin{proof}
         We start with a cube
@@ -858,7 +862,7 @@ We are now ready to give a proof of descent for pushouts.
             \end{tikzcd}
         \end{center}
         where bottom and top square homotopy pushouts and left and back face are homotopy pullbacks.
-        Then all side faces of the induced cube
+        The pushouts of open/closed mapping cylinders of \cref{rmk:doubleMappingCylinderAlt} induce a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A}\times\left(0,2\right) \arrow [dr, hook] \arrow [rr, hook] \arrow [dd] & & \M^{[0,2)}(f_{\overline{A}\overline{B}}) \arrow [dr, hook] \arrow[dd] \\
@@ -867,7 +871,8 @@ We are now ready to give a proof of descent for pushouts.
                 & \M^{[0,2)}(f_{AC}) \arrow [from=uu,crossing over] \arrow [rr, hook] & & \D(f_{AB},f_{AC})
             \end{tikzcd}
         \end{center}
-        where top and bottom face are as in \cref{rmk:doubleMappingCylinderAlt} and in particular ordinary pushouts, are equivalent to the starting cube: %TODO  perhaps mention here already that $f$ is a map of excisive triads
+        where $f\colon\left(\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}});\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}})\right)\to\left(\D(f_{AB},f_{AC});\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC})\right)$ is a map of excisive triads.
+        We claim all faces of this cube are equivalent to the starting cube:
         
         The equivalence of the top square follows from the fact that the map $\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}})\to\overline{D}$ in the commutative diagram (see again \cref{rmk:doubleMappingCylinderAlt} for square in the middle)
         \begin{center}
@@ -906,7 +911,7 @@ We are now ready to give a proof of descent for pushouts.
         respectively. 
         The equivalences of the back squares and front squares follow from the analogous argument.
 
-        Thus \cref{prop:descentForPairs} and \cref{lem:weOfaPairsIsHtpyPb} prove that front and right square are homotopy pullback squares since the map $f\colon\left(\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}});\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}})\right)\to\left(\D(f_{AB},f_{AC});\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC})\right)$ is a map of excisive triads.
+        Thus by \cref{lem:weOfaPairsIsHtpyPb} the map of triads $f\colon\left(\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}});\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}})\right)\to\left(\D(f_{AB},f_{AC});\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC})\right)$ fulfills the assumptions of \cref{prop:descentForPairs} and again by \cref{lem:weOfaPairsIsHtpyPb} we conclude that front and right square are homotopy pullback squares.
     \end{proof}
 \end{prop}
 \addcontentsline{toc}{subsection}{Descent and Quasifibrations}
@@ -921,7 +926,7 @@ We will now give an alternative proof of descent for homotopy pushouts using the
             * \arrow[r, "y"] & Y\\
         \end{tikzcd}
     \end{center}
-    is a homotopy pullback (hence if the ordinary fiber is a homotopy fiber).
+    is a homotopy pullback (hence the ordinary fiber is a homotopy fiber).
 \end{definition}
 \begin{remark}\label{rmk:parallelQuasifibsInPb}
     Let 
@@ -936,7 +941,7 @@ We will now give an alternative proof of descent for homotopy pushouts using the
     
     By the pasting law for ordinary pullbacks, the ordinary fiber of $q$ at $b\in B$ is also the ordinary fiber of $p$ at $f(b)\in Y$.
     But since these are ordinary fibers are already homotopy fibers, this means that the homotopy fibers are in particular weakly equivalent.
-    By the fiberwise characterization of homotopy pullbacks this implies that the given square is a homotopy pullback.
+    By the fiberwise characterization of homotopy pullbacks \cref{prop:fiberwiseCharOfHtpyPb} this implies that the given square is a homotopy pullback.
 
     However, quasifibrations are not generally stable under pullbacks (see e.g. \cite[Example 2.7.6]{cubical_htpy_theory}).
 \end{remark}
@@ -957,11 +962,11 @@ The following weak version of the locality of quasifibrations (\cref{cor:locOfQu
             \end{tikzcd}
         \end{center} 
         are ordinary pullback squares since they are restrictions of maps along inclusions.
-        Using \cref{lem:weOfaPairsIsHtpyPb} the given assumptions imply that the first square is a homotopy pullback since top and bottom map are quasifibrations.
-        Thus $f$ is a map of excisive triads $(X;f^{-1}(U_1),f^{-1}(U_2))\to(Y;U_1,U_2)$ such that $f|_{f^{-1}(U_i)}\colon(f^{-1}(U_i),f^{-1}(U_1)\cap f^{-1}(U_2))\to (U_i,U_1\cap U_2)$ are weak equivalences for $i\in\set{1,2}$.
+        Using \cref{rmk:parallelQuasifibsInPb} the given assumptions imply that the first square is a homotopy pullback since top and bottom map are quasifibrations.
+        Thus $f$ is a map of excisive triads $(X;f^{-1}(U_1),f^{-1}(U_2))\to(Y;U_1,U_2)$ such that $f|_{f^{-1}(U_i)}\colon(f^{-1}(U_i),f^{-1}(U_1)\cap f^{-1}(U_2))\to (U_i,U_1\cap U_2)$ are weak equivalences for $i\in\set{1,2}$ by \cref{lem:weOfaPairsIsHtpyPb}.
 
         Now \cref{prop:descentForPairs} implies that the second square is also homotopy pullback.
-        The proposition now follows since every point $y\in Y$ lies in some $U_i$, hence the ordinary fiber of $f\colon X\to Y$ is the homotopy fiber by the pasting law.
+        The proposition now follows since every point $y\in Y$ lies in some $U_i$, hence the ordinary fiber of $f\colon X\to Y$ is the homotopy fiber by the pasting law for ordinary pullbacks.
     \end{proof}
 \end{corollary}
 The relationship of locality of quasifibrations and descent also goes the other way as the next remark shows.
@@ -971,7 +976,7 @@ The relationship of locality of quasifibrations and descent also goes the other 
     Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover of $Y$ such that for every pair of indices $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
     Then if $f^{-1}(U_i)\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
 
-    One can conclude this by using that the homotopy colimit of such a cover is the space itself (see \cite[Proposition 4.6 (c)]{hypercovers}):
+    One can prove this by using that the homotopy colimit of such a cover is the space itself (see \cite[Proposition 4.6 (c)]{hypercovers}):
     Because all squares
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -1103,7 +1108,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
                 A\times\set{t_0} \arrow[r, hook] & \M(g) \arrow[r, "\sim"] & B \\
             \end{tikzcd}
         \end{center}
-        where the outer square is the starting square and in particular homotopy pullback, so by the pasting law the left square is homotopy pullback as well.
+        where the outer square is the starting square and in particular a homotopy pullback, so by the pasting law the left square is a homotopy pullback as well.
         The left square is also an ordinary pullback since $X\times\set{t_0}=\Gamma^{-1}(A\times\set{t_0})$.
         We claim that the ordinary fiber $F$ of $p$ at the point $(a_0,t_0)$ is a homotopy fiber of $\Gamma$:
         
@@ -1125,8 +1130,8 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
                 * \arrow[r, "b_0"] & B \arrow[r, hook, "\sim"] & \M(g) \\
             \end{tikzcd}
         \end{center}
-        where the indicated maps are weak equivalences (in fact they are homotopy equivalences).
-        Since the right square is pullback (since $Y=\Gamma^{-1}(B)$) and homotopy pullback and the left side is as well, this means that the fiber $F$ is already a homotopy fiber which proves the lemma.
+        where $F$ again is the ordinary fiber.
+        Since the right square is pullback (since $Y=\Gamma^{-1}(B)$) and homotopy pullback and the left side is as well (since $q$ is a quasifibration), this means that the fiber $F$ is already a homotopy fiber which proves the lemma.
     \end{proof}
 \end{lemma}
 This finishes the preparation and we will now prove descent for pushouts via locality of quasifibrations.
@@ -1151,22 +1156,22 @@ This finishes the preparation and we will now prove descent for pushouts via loc
         we have that the front and right squares are also homotopy pullbacks.
 
         By \cref{lem:mapOfCylIsQuasiFib} we know that the induced maps $\M(f_{\overline{A}\overline{C}})\to\M(f_{AC})$ and $\M(f_{\overline{A}\overline{B}})\to\M(f_{AB})$ are quasifibrations.
-        Using \cref{rmk:doubleMappingCylinderAlt}, we obtain a cube
+        The pushout of closed mapping cylinders in \cref{rmk:doubleMappingCylinderAlt} induces a cube
         \begin{center}
             \begin{tikzcd} [sep = .75 cm]
-                \overline{A} \arrow [>->, dr, "h"] \arrow [>->, rr, "h"] \arrow [->>,dd] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow[dd] \\
-                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over,  "h"] & &[-1.5em] \D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}}) \arrow [dd, "p"] & \\
-                A \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] & & \M(f_{AB}) \arrow [>->, dr, "h"] \\
+                \overline{A}\times\set{1} \arrow [>->, dr, "h"] \arrow [>->, rr, "h"] \arrow [->>,dd] & & \M(f_{\overline{A}\overline{B}}) \arrow [>->, dr, "h"] \arrow[dd] \\
+                & \M(f_{\overline{A}\overline{C}}) \arrow [>->, rr, crossing over,  "h"] & &[-1em] \D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}}) \arrow [dd, "p"] & \\
+                A\times\set{1} \arrow [>->, dr, "h"] \arrow [>->, rr, near start, "h"] & & \M(f_{AB}) \arrow [>->, dr, "h"] \\
                 & \M(f_{AC}) \arrow [from=uu,crossing over] \arrow [>->, rr, "h"] & & \D(f_{AB},f_{AC}) &
             \end{tikzcd}
         \end{center}
-        whose faces are again equivalent to the corresponding faces of the original cube since top and bottom squares are homotopy pushouts by \cref{prop:poAlongHCofibIsHtpyPo}.
+        whose faces are again equivalent to the corresponding faces of the original cube (this follows from the analogous argument in \cref{prop:topDescentPo}).
         
         Next we prove that the map $p\colon\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}})\to\D(f_{AB},f_{AC})$ is a quasifibration.
         By \cref{cor:locOfQuasifib} we need to find an open cover $U_1,U_2\subset\D(f_{AB},f_{AC})$ such that the induced maps $p^{-1}(U_1)\to U_1$, $p^{-1}(U_2)\to U_2$ and $p^{-1}(U_1\cap U_2)\to U_1\cap U_2$ are quasifibrations.
 
-        We take $U_1=\M^{[0,2)}(f_{AC})$ and $U_2=\M^{[0,2)}(f_{AB})$ as in \cref{rmk:doubleMappingCylinderAlt}.
-        Then $p^{-1}(U_1)=\M^{[0,2)}(f_{\overline{A}\overline{C}})$, $p^{-1}(U_2)=\M^{[0,2)}(f_{\overline{A}\overline{B}})$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)$.
+        We take $U_1=\M^{[0,2)}(f_{AC})\subset\D(f_{AB},f_{AC})$ and $U_2=\M^{[0,2)}(f_{AB})\subset\D(f_{AB},f_{AC})$ as in \cref{rmk:doubleMappingCylinderAlt}.
+        Then $p^{-1}(U_1)=\M^{[0,2)}(f_{\overline{A}\overline{C}})\subset\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}})$, $p^{-1}(U_2)=\M^{[0,2)}(f_{\overline{A}\overline{B}})\subset\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}})$ and $p^{-1}(U_1\cap U_2)=\overline{A}\times (0,2)\subset\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}})$.
         It follows $p^{-1}(U_1)\to U_1$ and $p^{-1}(U_2)\to U_2$ are quasifibrations by \cref{lem:mapOfCylIsQuasiFib} since they are both maps of open mapping cylinders induced by the squares 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -1192,7 +1197,7 @@ This finishes the preparation and we will now prove descent for pushouts via loc
                 \M(f_{AB}) \arrow[>->,r, "h"] & \D(f_{AB},f_{AC}) \\
             \end{tikzcd}
         \end{center}
-        are both ordinary pullbacks (as $p^{-1}\left(\M(f_{AC})\right)=\M(f_{\overline{A}\overline{C}})$ and $p^{-1}\left(\M(f_{AB})\right)=\M(f_{\overline{A}\overline{B}})$ respectively) and both vertical maps are quasifibrations, they are homotopy pullbacks by \cref{rmk:parallelQuasifibsInPb}.
+        are both ordinary pullbacks since h-cofibrations are inclusions and $p^{-1}\left(\M(f_{AC})\right)=\M(f_{\overline{A}\overline{C}})$ and $p^{-1}\left(\M(f_{AB})\right)=\M(f_{\overline{A}\overline{B}})$ respectively, they are homotopy pullbacks by \cref{rmk:parallelQuasifibsInPb}.
     \end{proof}
 \end{prop}
 \addcontentsline{toc}{subsection}{Descent for Homotopy Coproducts}
@@ -1289,7 +1294,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         We have to prove that 
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
-                X_k \arrow [r] \arrow [d] & \coprod\limits_{i\in I}^hX_i \arrow [d, "\coprod\limits_{i\in I}f_i"]\\
+                X_k \arrow [r] \arrow [d] & \coprod\limits_{i\in I}^hX_i \arrow [d, "\coprod\limits_{i\in I}^hf_i"]\\
                 Y_k \arrow [r] & \coprod\limits_{i\in I}^hY_i
             \end{tikzcd}
         \end{center}
@@ -1303,7 +1308,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
                 Y_k \arrow [r] & \coprod\limits_{i\in I}^hY_i
             \end{tikzcd}
         \end{center}
-        and since $X_j\to\coprod\limits_{i\in I}X_i\to\coprod\limits_{i\in I}Y_i$ is equal to $X_j\to Y_j\to\coprod\limits_{i\in I}Y_i$, we can also compute $P_{kj}$ as the successive homotopy pullback
+        and since $X_j\to\coprod\limits_{i\in I}^hX_i\to\coprod\limits_{i\in I}^hY_i$ is equal to $X_j\to Y_j\to\coprod\limits_{i\in I}^hY_i$, we can also compute $P_{kj}$ as the successive homotopy pullback
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 P_{kj} \arrow [r] \arrow [d] & X_j \arrow [d]\\
@@ -1313,9 +1318,9 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         \end{center}
         by the pasting law for homotopy pullbacks.
 
-        By \cref{cor:genCoproductComponentPb} we have that $Y_k\times_{\coprod\limits_{i\in I}Y_i}^h Y_j\simeq\emptyset$ for $k\neq j$ and $Y_k\times_{\coprod\limits_{i\in I}Y_i}^h Y_k\simeq Y_k$ for $k=j$.
+        By \cref{cor:genCoproductComponentPb} we have that $Y_k\times_{\coprod\limits_{i\in I}^hY_i}^h Y_j\simeq\emptyset$ for $k\neq j$ and $Y_k\times_{\coprod\limits_{i\in I}^hY_i}^h Y_k\simeq Y_k$ for $k=j$.
         This in particular shows that $P_{kj}\simeq\emptyset$ for $j\neq k$ (again by universality of homotopy coproducts for the empty indexing set) and $P_{kk}\simeq X_k$.
-        By universality of homotopy coproducts we have that $\coprod\limits_{j\in I}^hP_{kj}\simeq\coprod\limits_{j\in I}^h\left(Y_k\times_{\coprod\limits_{i\in I}^hY_i}^hX_j\right)\simeq Y_k\times_{\coprod\limits_{i\in I}^hY_i}^h\left(\coprod\limits_{j\in I}^hX_j\right)$ is a weak equivalence.
+        By universality of homotopy coproducts $\coprod\limits_{j\in I}^hP_{kj}\simeq\coprod\limits_{j\in I}^h\left(Y_k\times_{\coprod\limits_{i\in I}^hY_i}^hX_j\right)\simeq Y_k\times_{\coprod\limits_{i\in I}^hY_i}^h\left(\coprod\limits_{j\in I}^hX_j\right)$ is a weak equivalence.
         But since $P_{kj}\simeq\emptyset$ for $j\neq k$ and $P_{kk}\simeq X_k$ we obtain $\coprod\limits_{j\in I}P_{kj}\simeq X_k$ and this proves the corollary.
     \end{proof}
 \end{corollary}
@@ -1341,6 +1346,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
     \end{center}
     is a pullback square as can be checked by point set topology and since the map $Y_k\to\coprod\limits_{i\in I}Y_i$ is a fibration, it is already a homotopy pullback which proves the proposition.
 \end{remark}
+Now all that remains for our proof that $\spaces$ is an \inftytop/ is to assemble the parts. 
 \begin{corollary}\label{cor:spacesIsInftyTop}
     The \inftycat/ of spaces $\spaces$ is an \inftytop/.
     \begin{proof}

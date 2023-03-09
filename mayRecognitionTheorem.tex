@@ -10,9 +10,13 @@ A generalization characterizing higher loop spaces was proven in \cite{may2006ge
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
     We call a map $U^+\colon\N(\Delta_+)^{\op}\to C$ an \emph{augmented simplicial object of the \inftycat/ $C$}.
+
+    For any nonempty finite linearly ordered set $J$ we always have a canonical nondecreasing bijection $J\cong[n]$ for some $n\in\Nat$.
+    Analogous to the definition of simplicial sets (\cref{def:simpSet}), given a simplicial object $U$ we will write $U_J$ for the evaluation $U_n$ under this canonical identification. 
+    We also use the analogous convention for augmented simplicial objects.
 \end{definition}
 \begin{definition}[Groupoid Object]
-    Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup T$ with $S\cap T=\set{s}$ consisting of a single element, the square (see \cref{def:simpSet})  %TODO change, this does not make sense since its not an sSet
+    Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup T$ with $S\cap T=\set{s}$ consisting of a single element, the square 
     \begin{center}
         \begin{tikzcd}[sep = 4em]
             U_n \ar[r] \ar[d] & U_S \ar[d]\\
