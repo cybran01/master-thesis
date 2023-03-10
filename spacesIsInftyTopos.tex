@@ -348,6 +348,8 @@ As a first step we will fix some notation related to pairs and triples of spaces
     Let $J^n=\set{0}\times I^n\cup I\times\partial I^n\subset\partial I^{n+1}\subset I^{n+1}$.
     The triads $(I^{n+1};J^n,\set{1}\times I^n)$ fulfill the requirements of \cref{lem:rHEP} for all $n\geq 0$.
     This is because all the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are cofibrations and thus also h-cofibrations.
+    
+    The inclusion $J^n\subset I^{n+1}$ is an h-cofibration as well as a homotopy equivalence (since both spaces are contractible), hence by \cite[Corollary 0.20]{hatcher2002algebraic} $J^n$ is a (strong) deformation retract of $I^{n+1}$.
 \end{remark}
 \begin{definition}
     Let $H_1,H_2\colon X\times I\to Y$ be homotopies such that $(H_1)_1=(H_2)_0$.
@@ -373,7 +375,7 @@ As a first step we will fix some notation related to pairs and triples of spaces
 \end{remark}
 We next fix a model for the homotopy groups/sets of pairs.
 For us the model as maps of triples from $(I^n,\partial I^n,J^{n-1})$ is most convenient.
-\begin{definition} %TODO maybe define also for (J^n,\set{1}\times I,*)
+\begin{definition} %TODO maybe define also for (J^n,\set{1}\times \partial I^n,*), (I^n,\set{1}\times \partial I^n,*)
     For a pair of spaces $(X,A)$, $a\in A$ and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
 \end{definition}
 There is a canonical group structure on these sets for $n\geq 2$ (that is even abelian for $n\geq 3$).
@@ -440,27 +442,84 @@ We will need the following lemma to translate our statements about homotopy pull
     \end{proof}
 \end{lemma}
 The next lemma is a variant of what is commonly referred to as the ``compression criterion'' (see e.g. \cite[343]{hatcher2002algebraic}).
-\begin{lemma}\label{lem:compressionVariation}
+\begin{lemma}\label{lem:compressionVariation} %TODO proof read!
     Let $n\geq 1$, $e\colon(I^{n+1},\set{1}\times I^n)\to (X,A)$, $*=(1,0,\ldots,0)\in\set{1}\times\partial I^n$ and $a=e(*)$. 
     Then $e|_{J^n}\colon(J^n,\set{1}\times\partial I^n,*)\to(X,A,a)$ represents the equivalence class of the constant map in $\pi_n(X,A,a)$.
     \begin{proof}
-        Fix a homeomorphism $\alpha\colon J^n\cong I^n$ such that $\alpha|_{\set{1}\times I^n}=\id_{I^n}$.
-        Then the square  
+        We can pick a map $F\colon I^{n+1}\cong I\times I^n\to I^{n+1}$ such that for all $t_0\in I$, the restriction $F_{t_0}=F|_{\set{t_0}\times I^n}$ is a homeomorphism onto its image $J_{t_0}^n=\set{t_0}\times I^n\cup[t_0,1]\times\partial I^n$ such that $F|_{\set{t_0}\times\partial I^n}(t_0,x)=(1,x)$.
         \begin{center}
-            \begin{tikzcd} [sep = 4em]
-                J^n\times\partial I\cup\partial J^n\times I \arrow [r, "f"] \arrow [>->, d, "h"] & I^{n+1} \arrow [->>, d, "h","\simeq"']\\
-                J^n\times I \arrow[ur, dashed, "\exists H"] \arrow[r,"\simeq"] & *
-            \end{tikzcd}
+            \begin{tikzpicture}[scale = 2, opacity = .7]
+                \newcommand\diagx{.71}
+                \newcommand\diagy{.71}
+                \newcommand\lenMult{.71}
+                \newcommand\relHeight{.7}
+                \newcommand\xshift{0}
+
+                \draw (0+\xshift,0) -- (0+\xshift,1);
+                \draw (0+\xshift,0) -- (1+\xshift,0);
+                \draw (1+\xshift,0) -- (1+\xshift,1);
+                \draw (0+\xshift,1) -- (1+\xshift,1);
+
+                \draw (0+\xshift,0) -- (-\diagx*\lenMult+\xshift,\diagy*\lenMult);
+                \draw (0+\xshift,1) -- (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+                \draw[dashed] (1+\xshift,0) -- (1-\diagx*\lenMult+\xshift,\diagy*\lenMult);
+                \draw (1+\xshift,1) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+
+                \draw (-\diagx*\lenMult+\xshift,\diagy*\lenMult) -- (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+                \draw[dashed] (-\diagx*\lenMult+\xshift,\diagy*\lenMult) -- (1-\diagx*\lenMult+\xshift,\diagy*\lenMult);
+                \draw[dashed] (1-\diagx*\lenMult+\xshift,\diagy*\lenMult) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+                \draw (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+
+                \draw[line width = 1pt, fill opacity = .25, fill = blue, draw = red] (0+\xshift,1-\relHeight) -- (1+\xshift,1-\relHeight) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) --(-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) -- cycle;
+
+                \renewcommand\xshift{3}
+
+                \draw (0+\xshift,0) -- (0+\xshift,1);
+                \draw (0+\xshift,0) -- (1+\xshift,0);
+                \draw (1+\xshift,0) -- (1+\xshift,1);
+                \draw (0+\xshift,1) -- (1+\xshift,1);
+
+                \draw (0+\xshift,0) -- (-\diagx*\lenMult+\xshift,\diagy*\lenMult);
+                \draw (0+\xshift,1) -- (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+                \draw[dashed] (1+\xshift,0) -- (1-\diagx*\lenMult+\xshift,\diagy*\lenMult);
+                \draw (1+\xshift,1) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+
+                \draw (-\diagx*\lenMult+\xshift,\diagy*\lenMult) -- (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+                \draw[dashed] (-\diagx*\lenMult+\xshift,\diagy*\lenMult) -- (1-\diagx*\lenMult+\xshift,\diagy*\lenMult);
+                \draw[dashed] (1-\diagx*\lenMult+\xshift,\diagy*\lenMult) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+                \draw (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult);
+
+                \draw[opacity = .2, fill = blue, draw = none] (0+\xshift,1) -- (1+\xshift,1) -- (1+\xshift,1-\relHeight) -- (0+\xshift,1-\relHeight) -- cycle;
+                \draw[opacity = .2, fill = blue, draw = none] (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) -- (0+\xshift,1) -- (0+\xshift,1-\relHeight) -- (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) -- cycle;
+                \draw[opacity = .2, fill = blue, draw = none] (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) -- (-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) -- cycle;
+                \draw[opacity = .2, fill = blue, draw = none] (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) -- (1+\xshift,1) -- (1+\xshift,1-\relHeight) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) -- cycle;
+                \draw[line width = .1, opacity = .25, fill = blue, draw = blue] (0+\xshift,1-\relHeight) -- (1+\xshift,1-\relHeight) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) --(-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) -- cycle;
+                \draw[line width = 1pt, draw = red] (0+\xshift,1) -- (1+\xshift,1) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) --(-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) -- cycle;
+
+                \draw[->] (1.2,0.75) -- (1.3+1,0.75) node [above,midway]{$F_{t_0}$};
+                \node[opacity = 1, align = center] at (1.35,1-\relHeight+0.1) {\small$\set{t_0}\times I$};
+                \node[opacity = 1, align = center] at (1.2+\xshift,1-\relHeight+0.3) {\small$J_{t_0}^n$};
+            \end{tikzpicture}
         \end{center}
-        where the top horizontal map $f$ is given by
-        \begin{itemize}
-            \item the inclusion $J^n\hookrightarrow I^{n+1}$ on $J^n\times\set{0}$ 
-            \item the inclusion $J^n\cong\set{1}\times I^n\hookrightarrow I^{n+1}$ on $J^n\times\set{1}$ 
-            \item the map $\partial J^n \times I=\left(\set{1}\times\partial I^n\right)\times I\to\set{1}\times\partial I^n \hookrightarrow I^{n+1}$ on $\partial J^n \times I$ 
-        \end{itemize}
-        admits a lift $H$. 
-        This gives a homotopy $\widetilde{H}=e\circ H\colon(J^n,\set{1}\times \partial I^n,*)\times I\to (X,A,a)$ from $e|_{J^n}$ to some map $\widetilde{H}_1=f$ with $\im f\subset A$, and $\widetilde{H}$ is constant on $\partial J^n\times I$ .
-        Since $\im f\subset A$ and $J^n$ is contractible with respect to $*$, $f$ represents $\const_a$ which proves the proposition. 
+        Then $e\circ F\colon I\times I^n\to X$ is a homotopy $\rel \partial I^n$ from $e|_{J^n}\circ F_0$ to $e|_{\set{1}\times I^n}\circ F_1$. 
+        Since the image of the latter is contained in $A$, by the compression criterion $e|_{J^n}\circ F_0$ and hence $e|_{J^n}$ represent the equivalence class of the constant map.
+        % Fix a homeomorphism $\alpha\colon J^n\cong I^n$ such that $\alpha|_{\set{1}\times I^n}=\id_{I^n}$.
+        % Then the square  
+        % \begin{center}
+        %     \begin{tikzcd} [sep = 4em]
+        %         J^n\times\partial I\cup\partial J^n\times I \arrow [r, "f"] \arrow [>->, d, "h"] & I^{n+1} \arrow [->>, d, "h","\simeq"']\\
+        %         J^n\times I \arrow[ur, dashed, "\exists H"] \arrow[r,"\simeq"] & *
+        %     \end{tikzcd}
+        % \end{center}
+        % where the top horizontal map $f$ is given by
+        % \begin{itemize}
+        %     \item the inclusion $J^n\hookrightarrow I^{n+1}$ on $J^n\times\set{0}$ 
+        %     \item the inclusion $J^n\cong\set{1}\times I^n\hookrightarrow I^{n+1}$ on $J^n\times\set{1}$ 
+        %     \item the map $\partial J^n \times I=\left(\set{1}\times\partial I^n\right)\times I\to\set{1}\times\partial I^n \hookrightarrow I^{n+1}$ on $\partial J^n \times I$ 
+        % \end{itemize}
+        % admits a lift $H$. 
+        % This gives a homotopy $\widetilde{H}=e\circ H\colon(J^n,\set{1}\times \partial I^n,*)\times I\to (X,A,a)$ from $e|_{J^n}$ to some map $\widetilde{H}_1=f$ with $\im f\subset A$, and $\widetilde{H}$ is constant on $\partial J^n\times I$ .
+        % Since $\im f\subset A$ and $J^n$ is contractible with respect to $*$, $f$ represents $\const_a$ which proves the proposition. 
     \end{proof}
 \end{lemma}
 The next proposition is the most important part of the proof of \cref{prop:descentForPairs} from which we will derive descent for pushouts.
@@ -734,9 +793,9 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 
                 \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5+\xshift*1,\size/2+\yshift) -- (\size+1.5+\xshift*1,\size/2+\yshift);
 
-                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*0+\yshift) rectangle (1+\xshift*2+\step,\size/3*1+\yshift);
-                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*1+\yshift) rectangle (1+\xshift*2+\step,\size/3*2+\yshift);
-                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*2+\yshift) rectangle (1+\xshift*2+\step,\size/3*3+\yshift);
+                \draw[fill = red, color = red, opacity=0.4, draw = none] (0+\xshift*2+\step,\size/3*0+\yshift) rectangle (1+\xshift*2+\step,\size/3*1+\yshift);
+                \draw[fill = red, color = red, opacity=0.4, draw = none] (0+\xshift*2+\step,\size/3*1+\yshift) rectangle (1+\xshift*2+\step,\size/3*2+\yshift);
+                \draw[fill = red, color = red, opacity=0.4, draw = none] (0+\xshift*2+\step,\size/3*2+\yshift) rectangle (1+\xshift*2+\step,\size/3*3+\yshift);
                 \draw[color = blue] (0+\xshift*2+\step,\size/3*1+\yshift) -- (1+\xshift*2+\step,\size/3*1+\yshift);
                 \draw[color = blue] (0+\xshift*2+\step,\size/3*2+\yshift) -- (1+\xshift*2+\step,\size/3*2+\yshift);
                 \draw (0+\xshift*2,\size+\yshift) -- (\size+\xshift*2,\size+\yshift);
@@ -748,7 +807,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
                 \renewcommand\yshift{-4.25}
                 \renewcommand\step{\size/3*1}
 
-                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*0,0+\yshift) rectangle (\step+\xshift*0,\size+\yshift);
+                \draw[fill = black, color = black, opacity=0.4, draw = none] (0+\xshift*0,0+\yshift) rectangle (\step+\xshift*0,\size+\yshift);
                 \draw (0,\size+\yshift) -- (\size,\size+\yshift);
                 \draw (0,0+\yshift) -- (0,\size+\yshift);
                 \draw (0,0+\yshift) -- (\size,0+\yshift);
@@ -756,7 +815,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 
                 \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5,\size/2+\yshift) -- (\size+1.5,\size/2+\yshift);
 
-                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*1,0+\yshift) rectangle (\step+\xshift*1,\size+\yshift);
+                \draw[fill = black, color = black, opacity=0.4, draw = none] (0+\xshift*1,0+\yshift) rectangle (\step+\xshift*1,\size+\yshift);
                 \draw[color = blue] (0+\xshift*1+\step,\size/3+\yshift) -- (1+\xshift*1+\step,\size/3+\yshift);
                 \draw[color = blue] (0+\xshift*1+\step,\size/3*2+\yshift) -- (1+\xshift*1+\step,2*\size/3+\yshift);
                 \draw (0+\xshift*1,\size+\yshift) -- (\size+\xshift*1,\size+\yshift);
@@ -766,10 +825,10 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 
                 \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5+\xshift*1,\size/2+\yshift) -- (\size+1.5+\xshift*1,\size/2+\yshift);
 
-                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*2,0+\yshift) rectangle (\step+\xshift*2,\size+\yshift);
-                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*0+\yshift) rectangle (1+\xshift*2+\step,\size/3*1+\yshift);
-                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*1+\yshift) rectangle (1+\xshift*2+\step,\size/3*2+\yshift);
-                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*2+\yshift) rectangle (1+\xshift*2+\step,\size/3*3+\yshift);
+                \draw[fill = black, color = black, opacity=0.4, draw = none] (0+\xshift*2,0+\yshift) rectangle (\step+\xshift*2,\size+\yshift);
+                \draw[fill = red, color = red, opacity=0.4, draw = none] (0+\xshift*2+\step,\size/3*0+\yshift) rectangle (1+\xshift*2+\step,\size/3*1+\yshift);
+                \draw[fill = red, color = red, opacity=0.4, draw = none] (0+\xshift*2+\step,\size/3*1+\yshift) rectangle (1+\xshift*2+\step,\size/3*2+\yshift);
+                \draw[fill = red, color = red, opacity=0.4, draw = none] (0+\xshift*2+\step,\size/3*2+\yshift) rectangle (1+\xshift*2+\step,\size/3*3+\yshift);
                 \draw[color = blue] (0+\xshift*2+\step,\size/3*1+\yshift) -- (1+\xshift*2+\step,\size/3*1+\yshift);
                 \draw[color = blue] (0+\xshift*2+\step,\size/3*2+\yshift) -- (1+\xshift*2+\step,\size/3*2+\yshift);
                 \draw (0+\xshift*2,\size+\yshift) -- (\size+\xshift*2,\size+\yshift);
@@ -781,7 +840,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
                 \renewcommand\yshift{-4.25*2}
                 \renewcommand\step{\size/3*2}
 
-                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*0,0+\yshift) rectangle (\step+\xshift*0,\size+\yshift);
+                \draw[fill = black, color = black, opacity=0.4, draw = none] (0+\xshift*0,0+\yshift) rectangle (\step+\xshift*0,\size+\yshift);
                 \draw (0,\size+\yshift) -- (\size,\size+\yshift);
                 \draw (0,0+\yshift) -- (0,\size+\yshift);
                 \draw (0,0+\yshift) -- (\size,0+\yshift);
@@ -789,7 +848,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 
                 \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5,\size/2+\yshift) -- (\size+1.5,\size/2+\yshift);
 
-                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*1,0+\yshift) rectangle (\step+\xshift*1,\size+\yshift);
+                \draw[fill = black, color = black, opacity=0.4, draw = none] (0+\xshift*1,0+\yshift) rectangle (\step+\xshift*1,\size+\yshift);
                 \draw[color = blue] (0+\xshift*1+\step,\size/3+\yshift) -- (1+\xshift*1+\step,\size/3+\yshift);
                 \draw[color = blue] (0+\xshift*1+\step,\size/3*2+\yshift) -- (1+\xshift*1+\step,2*\size/3+\yshift);
                 \draw (0+\xshift*1,\size+\yshift) -- (\size+\xshift*1,\size+\yshift);
@@ -799,10 +858,10 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 
                 \draw[->, decorate, decoration={zigzag, segment length=4, amplitude=.9,post=lineto,post length=2pt}] (\size+0.5+\xshift*1,\size/2+\yshift) -- (\size+1.5+\xshift*1,\size/2+\yshift);
 
-                \draw[fill = black, color = black, opacity=0.4] (0+\xshift*2,0+\yshift) rectangle (\step+\xshift*2,\size+\yshift);
-                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*0+\yshift) rectangle (1+\xshift*2+\step,\size/3*1+\yshift);
-                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*1+\yshift) rectangle (1+\xshift*2+\step,\size/3*2+\yshift);
-                \draw[fill = red, color = red, opacity=0.4] (0+\xshift*2+\step,\size/3*2+\yshift) rectangle (1+\xshift*2+\step,\size/3*3+\yshift);
+                \draw[fill = black, color = black, opacity=0.4, draw = none] (0+\xshift*2,0+\yshift) rectangle (\step+\xshift*2,\size+\yshift);
+                \draw[fill = red, color = red, opacity=0.4, draw = none] (0+\xshift*2+\step,\size/3*0+\yshift) rectangle (1+\xshift*2+\step,\size/3*1+\yshift);
+                \draw[fill = red, color = red, opacity=0.4, draw = none] (0+\xshift*2+\step,\size/3*1+\yshift) rectangle (1+\xshift*2+\step,\size/3*2+\yshift);
+                \draw[fill = red, color = red, opacity=0.4, draw = none] (0+\xshift*2+\step,\size/3*2+\yshift) rectangle (1+\xshift*2+\step,\size/3*3+\yshift);
                 \draw[color = blue] (0+\xshift*2+\step,\size/3*1+\yshift) -- (1+\xshift*2+\step,\size/3*1+\yshift);
                 \draw[color = blue] (0+\xshift*2+\step,\size/3*2+\yshift) -- (1+\xshift*2+\step,\size/3*2+\yshift);
                 \draw (0+\xshift*2,\size+\yshift) -- (\size+\xshift*2,\size+\yshift);
@@ -833,8 +892,8 @@ For convenience we fix notation for some variations of the mapping cylinder cons
                     Together with $e|_{I_r\times K}\cong e'\colon(I^{m+1},\set{1}\times I^m)\to(Y_j,Y_1\cap Y_2)$ and the weak equivalence of pairs $f|_{X_j}\colon(X_j,X_1\cap X_2)\to(Y_j,Y_1\cap Y_2)$ these fulfill the conditions of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpy}. 
                     So by \cref{prop:eqCharInjSurj} there exist extensions which we can then identify with maps $G'_K\colon(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $H'_K\colon(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$.
                     Note that $G'_K$ and $H'_K$ fulfill the patching conditions.
-            \item In the remaining cases either $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$ or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$.
-                    We pick a deformation retract $F\colon (I_r\times K)\times I\to I_r\times K$ of $J_K^m= I_r\times\partial K\cup\set{v_r}\times K$ (hence $F_1\colon I_r\times K\to J_K^m$) and set $G'_K=G|_{J_K^m}\circ F_1$ and $H'_K=(e|_{I_r\times K}\bullet F)*(H|_{J_K^m}\bullet F_1)$.
+            \item In the remaining cases either $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$ or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$. %TODO maybe be more explicit with the cases here
+                    By \cref{rmk:cwInclIsHCofib} we can pick a deformation retract $F\colon (I_r\times K)\times I\to I_r\times K$ of $J_K^m= I_r\times\partial K\cup\set{v_r}\times K$ (hence $F_1\colon I_r\times K\to J_K^m$) and we set $G'_K=G|_{J_K^m}\circ F_1$ and $H'_K=(e|_{I_r\times K}\bullet F)*(H|_{J_K^m}\bullet F_1)$.
                     Note that $G'_K$ and $H'_K$ fulfill the patching conditions since $G$ and $H$ fulfill them by induction hypothesis.
         \end{itemize}
         Now note that since we work ourselves upwards from the dimensions, the constructed extensions $G'_K$ and $H'_K$ are always compatible along boundaries of $I_r\times K$, and thus we can glue them together to obtain extensions to $L_r^m\cup\bigcup\limits_{K\in\Gamma^m}I^r\times K=L_r^{m+1}$.
