@@ -375,9 +375,10 @@ As a first step we will fix some notation related to pairs and triples of spaces
 \end{remark}
 We next fix a model for the homotopy groups/sets of pairs.
 For us the model as maps of triples from $(I^n,\partial I^n,J^{n-1})$ is most convenient.
-\begin{definition} %TODO maybe define also for (J^n,\set{1}\times \partial I^n,*), (I^n,\set{1}\times \partial I^n,*)
+\begin{definition}[Homotopy Groups/Sets of Pairs]
     For a pair of spaces $(X,A)$, $a\in A$ and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
 \end{definition}
+We will however also use $(J^n,\set{1}\times\partial I^n,*)$ with $*=(1,0,\ldots,0)$ and $(I^n,\partial I^n,(0,\ldots,0))$ as equivalent models whenever convenient.
 There is a canonical group structure on these sets for $n\geq 2$ (that is even abelian for $n\geq 3$).
 \begin{definition}[Weak Equivalence of Pairs]\label{def:weOfPairs}
     Let $f\colon(X,A)\to (Y,B)$ be a map such that 
@@ -442,11 +443,21 @@ We will need the following lemma to translate our statements about homotopy pull
     \end{proof}
 \end{lemma}
 The next lemma is a variant of what is commonly referred to as the ``compression criterion'' (see e.g. \cite[343]{hatcher2002algebraic}).
-\begin{lemma}\label{lem:compressionVariation} %TODO proof read!
+\begin{lemma}\label{lem:compressionVariation}
     Let $n\geq 1$, $e\colon(I^{n+1},\set{1}\times I^n)\to (X,A)$, $*=(1,0,\ldots,0)\in\set{1}\times\partial I^n$ and $a=e(*)$. 
     Then $e|_{J^n}\colon(J^n,\set{1}\times\partial I^n,*)\to(X,A,a)$ represents the equivalence class of the constant map in $\pi_n(X,A,a)$.
     \begin{proof}
-        We can pick a map $F\colon I^{n+1}\cong I\times I^n\to I^{n+1}$ such that for all $t_0\in I$, the restriction $F_{t_0}=F|_{\set{t_0}\times I^n}$ is a homeomorphism onto its image $J_{t_0}^n=\set{t_0}\times I^n\cup[t_0,1]\times\partial I^n$ such that $F|_{\set{t_0}\times\partial I^n}(t_0,x)=(1,x)$.
+        First pick a homeomorphism $\alpha\colon I^n\cong J^n$ such that $\alpha|_{\partial I^n}(x)=(1,x)\in J^n$.
+        Then we can pick a map $F\colon I^{n+1}\cong I\times I^n\to I^{n+1}$ such that 
+        \begin{itemize}
+            \item $F|_{\set{0}\times I^n}(0,x)=\alpha$
+            \item $F|_{\set{1}\times I^n}=\id_{\set{1}\times I^n}$
+            \item $F|_{I\times \partial I^n}(t,x)=(1,x)\in I^{n+1}$
+        \end{itemize}
+        because this data determines a map $\partial I^{n+1}\to I^{n+1}$ that can be lifted along the cofibration $\partial I^{n+1}\xtailrightarrow{}I^{n+1}$ since $I^{n+1}$ is contractible.
+
+        An explicit construction is also possible:
+        As indicated below, one can pick $F$ such that for all $t_0\in I$, the map $F|_{\set{t_0}\times I^n}$ is a homeomorphism onto $J_{t_0}^n=\set{t_0}\times I^n\cup[t_0,1]\times\partial I^n$ and such that $F|_{\set{t_0}\times\partial I^n}(t_0,x)=(1,x)$.
         \begin{center}
             \begin{tikzpicture}[scale = 2, opacity = .7]
                 \newcommand\diagx{.71}
@@ -496,13 +507,13 @@ The next lemma is a variant of what is commonly referred to as the ``compression
                 \draw[line width = .1, opacity = .25, fill = blue, draw = blue] (0+\xshift,1-\relHeight) -- (1+\xshift,1-\relHeight) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) --(-\diagx*\lenMult+\xshift,1+\diagy*\lenMult-\relHeight) -- cycle;
                 \draw[line width = 1pt, draw = red] (0+\xshift,1) -- (1+\xshift,1) -- (1-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) --(-\diagx*\lenMult+\xshift,1+\diagy*\lenMult) -- cycle;
 
-                \draw[->] (1.2,0.75) -- (1.3+1,0.75) node [above,midway]{$F_{t_0}$};
-                \node[opacity = 1, align = center] at (1.35,1-\relHeight+0.1) {\small$\set{t_0}\times I$};
+                \draw[->, opacity = 1] (1.2,0.75) -- (1.3+1,0.75) node [above,midway]{$F|_{\set{t_0}\times I^n}$};
+                \node[opacity = 1, align = center] at (1.4,1-\relHeight+0.1) {\small$\set{t_0}\times I^n$};
                 \node[opacity = 1, align = center] at (1.2+\xshift,1-\relHeight+0.3) {\small$J_{t_0}^n$};
             \end{tikzpicture}
         \end{center}
         Then $e\circ F\colon I\times I^n\to X$ is a homotopy $\rel \partial I^n$ from $e|_{J^n}\circ F_0$ to $e|_{\set{1}\times I^n}\circ F_1$. 
-        Since the image of the latter is contained in $A$, by the compression criterion $e|_{J^n}\circ F_0$ and hence $e|_{J^n}$ represent the equivalence class of the constant map.
+        Since the image of the latter is contained in $A$, by the compression criterion $e|_{J^n}\circ F_0$ and hence $e|_{J^n}$ represent the equivalence class of the constant map in $\pi_n(X,A,a)$.
         % Fix a homeomorphism $\alpha\colon J^n\cong I^n$ such that $\alpha|_{\set{1}\times I^n}=\id_{I^n}$.
         % Then the square  
         % \begin{center}
@@ -573,11 +584,11 @@ The next proposition is the most important part of the proof of \cref{prop:desce
         By \cref{rmk:choiceOfConstantHtpy} can now pick a homotopy $N\colon(I^1,\partial I^1,J^0)\times I\to(Y,B,f(g))$ from $fG'*(\overline{fG'}*e)$ to $e$. 
         Setting $G=G'*\lambda$ and $H=\overline{N}*M$ then gives the desired maps.
 
-        For $n\geq 1$, we fix a homotopy equivalence of triples $(I^n,\partial I^n, J^{n-1})\simeq (J^n,\set{1}\times\partial I^n,*)$ where $*=(1,0,\ldots,0)\in I^{n+1}$.
+        For $n\geq 1$, we fix a homotopy equivalence of triples $(I^n,\partial I^n, J^{n-1})\simeq (J^n,\set{1}\times\partial I^n,*)$ where $*=(1,0,\ldots,0)$.
         Given maps $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$ and $g(J^n,\set{1}\times\partial I^n)\to(X,A)$ with $e|_{J^n}=fg$, setting $a=g(*)$ we can view $g$ as an element of $\pi_n(X,A,a)$ via the aforementioned homotopy equivalence of triples.
         Then $fg$ is homotopic to the constant map in $\pi_n(Y,B,f(a))$ by \cref{lem:compressionVariation}.
 
-        By injectivity, we thus get a homotopy $j\colon(J^n,\set{1}\times\partial I^n)\times I\to(X,A,a)$ from $g$ to $\const_a$.
+        By the injectivity statement in \ref{itm:injAndSurjOfHtpyGrps}, we thus get a homotopy $j\colon(J^n,\set{1}\times\partial I^n,*)\times I\to(X,A,a)$ from $g$ to $\const_a$.
         Next we apply relative homotopy extension to the triad $(I^{n+1};J^n,\set{1}\times I^n)$ to extend the homotopy $fj$ to a homotopy $K\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $K_0=e$.
         Since $K_1|_{J^n}=\const_{f(a)}$, it is a map $K_1\colon(I^{n+1},\partial I^{n+1},J^n)\to(Y,B,f(a))$ and represents an element in $\pi_{n+1}(Y,B,f(a))$.
         
@@ -623,11 +634,11 @@ For convenience we fix notation for some variations of the mapping cylinder cons
     Note that a mapping cylinder $\M^I(f)$ (with $f\colon A\to B$ and $I=[0,x]$ or $I=[0,x)$ for $x>0$) is a model of the pushout 
     \begin{center}
         \begin{tikzcd}
-            A\times\set{0} \ar[r,"f"] \ar[>->,d, "h"] & B \ar[>->,d, "h"]\\
+            A\times\set{0} \ar[r,"f"] \ar[d,hook] & B \ar[d,hook]\\
             A\times I \ar[r] & \M^I(f)
         \end{tikzcd}\;.
     \end{center}
-    The inclusion $A\times\set{1}\xhookrightarrow{}\M(f)$ is also an h-cofibration by \cite[Theorem 2]{note_on_cofibs_1}.
+    If $I=[0,1]$, both inclusions are h-cofibrations and inclusion $A\times\set{1}\xhookrightarrow{}\M(f)$ is also an h-cofibration by \cite[Theorem 2]{note_on_cofibs_1}.
 \end{remark}
 \begin{definition}[Double Mapping Cylinder]\label{def:doubleMappingCylinder}
     Let $f\colon A\to B$ and $b\colon A\to C$ be maps of topological spaces and let $I=[0,2]$.
@@ -679,6 +690,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
     \end{center}
     where 
     \begin{itemize}
+        \item the map $A\times(0,2)\to\M^{[0,2)}(f)$ is the canonical inclusion
         \item the map $A\times(0,2)\to\M^{[0,2)}(g)$ is the map
         \begin{align*}
             A\times(0,2)&\to\M^{[0,2)}(g)\\
@@ -1046,7 +1058,7 @@ The relationship of locality of quasifibrations and descent also goes the other 
     are homotopy pullbacks by \cref{rmk:parallelQuasifibsInPb} and $X\simeq\hcolim\limits_{i\in I}(f^{-1}(U_i))$ as well as $Y\simeq\hcolim\limits_{i\in I}(U_i)$, the ordinary pullback squares 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            f^{-1}(U_i) \arrow [r, hook] \arrow [d,, "f|_{f^{-1}(U_i)}"'] & X \arrow [d, "f"]\\
+            f^{-1}(U_i) \arrow [r, hook] \arrow [d, "f|_{f^{-1}(U_i)}"'] & X \arrow [d, "f"]\\
             U_i \arrow [r, hook] & Y
         \end{tikzcd}
     \end{center}

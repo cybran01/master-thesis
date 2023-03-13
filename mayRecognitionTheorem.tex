@@ -10,6 +10,8 @@ A generalization characterizing higher loop spaces was proven in \cite{may2006ge
     Let $C$ be an \inftycat/. 
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
     We call a map $U^+\colon\N(\Delta_+)^{\op}\to C$ an \emph{augmented simplicial object of the \inftycat/ $C$}.
+    
+    Given an (augmented) simplicial object 
 
     For any nonempty finite linearly ordered set $J$ we always have a canonical nondecreasing bijection $J\cong[n]$ for some $n\in\Nat$.
     Analogous to the definition of simplicial sets (\cref{def:simpSet}), given a simplicial object $U$ we will write $U_J$ for the evaluation $U_n$ under this canonical identification. 
@@ -31,12 +33,16 @@ A generalization characterizing higher loop spaces was proven in \cite{may2006ge
 \begin{definition}[Group Object]\label{def:grpObj}
     Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a groupoid object.
     If $U_0\cong *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
+    We let $\Grp(C)$ denote the full subcategory of $\Fun(\N(\Delta)^{\op},C)$ consisting of group objects.
 \end{definition}
+The \Cech/ nerve construction is a way to associate a groupoid object to a given map (see \cref{prop:grpdEffectiveIfPullback}).
 \begin{definition}[\Cech/ Nerve]
-    Let $C$ be an \inftycat/ with small limits and let $\Delta^1\subset\N(\Delta_+)^{\op}$ be the inclusion corresponding to the full subcategory $[0]\to[-1]$.
+    Let $C$ be an \inftycat/ with finite limits and let $\Delta^1\subset\N(\Delta_+)^{\op}$ be the inclusion corresponding to the full subcategory $[0]\to[-1]$.
     
     Then by \cref{prop:exKanExt} there exists a functor $\CN\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
     An object $U^+\in\Fun(\N(\Delta_+)^{\op},C)_0$ in the essential image of $\CN$ is called a \emph{\Cech/ nerve}.
+
+    Note that 
 \end{definition}
 \begin{remark}\label{rmk:cechNerveExplicit}
     Computing the \Cech/ nerve for a map $f\colon x\to y$ explicitly via \cref{def:ptwiseKanExt}, one can see that up to equivalence it is given by
@@ -56,26 +62,26 @@ A generalization characterizing higher loop spaces was proven in \cite{may2006ge
         \item the arrows going from right to left are the maps induced by the degeneracy maps and are diagonal maps. 
     \end{itemize}
     Here we have only shown a selection of the $1$-skeleton of $\CN(f)$.
-    The remaining maps of $\Delta_+$ are however compositions of the shown face and degeneracy maps, which determines the $1$-skeleton; for all higher simplices we make choices via the universal property of the iterated pullbacks, which all yield equivalent objects $\CN(f)$.
+    The remaining maps and higher simplices are also determined by the universal property of the iterated pullbacks.
 \end{remark}
 \begin{definition}[Effective Groupoid Object]
     Let $C$ be an \inftycat/ with small colimits and let $U\colon\N(\Delta)^{\op}\to C$ be a groupoid object.
     Then we call $U$ \emph{effective} if the diagram 
-    \begin{center} %TODO add/explain face maps!
+    \begin{center} 
         \begin{tikzcd}[sep = 4em]
-            U_1 \ar[r,"\delta_0^1"] \ar[d,"\delta_1^1"'] & U_0 \ar[d]\\
+            U_1 \ar[r,"U(d_0^1)"] \ar[d,"U(d_1^1)"'] & U_0 \ar[d]\\
             U_0 \ar[r] & \colim\limits_{\N(\Delta)^{\op}} U
         \end{tikzcd}
     \end{center}
     is a pullback square.
 \end{definition}
-We will need the following proposition which provides an alternative characterization of a \Cech/ nerve.
+The following proposition provides an alternative characterization of a \Cech/ nerve.
 \begin{prop}\label{prop:grpdEffectiveIfPullback} 
-    Let $C$ be an \inftycat/ and $U^+\colon\N(\Delta_+)^{\op}\to C$ an augmented simplicial object.
+    Let $C$ be an \inftycat/ with finite limits and $U^+\colon\N(\Delta_+)^{\op}\to C$ an augmented simplicial object.
     Then it is a \Cech/ nerve if and only if $U^+|_{\N(\Delta)^{\op}}$ is a groupoid object and the square
     \begin{center}
-        \begin{tikzcd} [sep = 4em] %TODO introduce formalism of face and degeneracy maps, best in def if simplex cat
-            U_1^+ \arrow[r, "\delta_0^1"] \arrow[d, "\delta_1^1"'] & U_0^+ \arrow[d] \\
+        \begin{tikzcd} [sep = 4em] 
+            U_1^+ \arrow[r, "U(d_0^1)"] \arrow[d, "U(d_1^1)"'] & U_0^+ \arrow[d] \\
             U_0^+ \arrow[r] & U_{-1}^+ \\
         \end{tikzcd}
     \end{center}
@@ -85,7 +91,7 @@ We will need the following proposition which provides an alternative characteriz
     \end{reference}
 \end{prop}
 \begin{corollary}\label{cor:groupoidEffectiveIffColimCechNerve}
-    Let $C$ be an \inftycat/ with small colimits. 
+    Let $C$ be an \inftycat/ with finite limits and small colimits. 
     Then a groupoid object $U\colon\N(\Delta)^{\op}\to C$ is effective if and only if its induced colimit cone $\N(\Delta)^{\op}\star\Delta^0\cong\N(\Delta_+)^{\op}\to C$ is a \Cech/ nerve.
     \begin{proof}
         This follows directly from the equivalent characterization of an effective groupoid from \cref{prop:grpdEffectiveIfPullback}.
@@ -113,8 +119,8 @@ The following proposition allows us to construct colimit diagrams out of simplic
         \cite[Lemma 6.1.3.17 (1)]{HTT}
     \end{reference}
 \end{prop}
-The following proposition is at the heart of our proof. 
-The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
+The following proposition is at the heart of our proof of the delooping of pointed objects. 
+The proof follows \cite[29-30]{toposes_and_htpy_toposes}.
 \begin{prop}\label{prop:groupoidObjInToposAreEffective}
     Let $C$ be an \inftytop/.
     Then every groupoid object $U\colon\N(\Delta)^{\op}\to C$ is effective.
@@ -149,16 +155,16 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
         Descent now implies that 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{U}_0 \arrow[r] \arrow[d] & \colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}} \arrow[d] \\
+                \overline{U}_0 \arrow[r] \arrow[d,"U(d_1^1)"'] & \colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}} \arrow[d] \\
                 U_0 \arrow[r] & \colim\limits_{\N(\Delta)^{\op}} U \\
             \end{tikzcd}
         \end{center}
         is a pullback diagram.
-        Since by \cref{prop:shiftIsColimDiam} we have that $\colim\overline{U}|_{\N(\Delta)^{\op}}\cong\overline{U}_{-1} = U_0$ and $\overline{U}_0=U_1$ this proves the proposition.
+        By \cref{prop:shiftIsColimDiam} we have that $\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}\cong\overline{U}_{-1} = U_0$, $\overline{U}_0=U_1$ and thus that $\overline{U}_{0}\to\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}$ corresponds to $U(d_0^1)$ which proves the proposition.
     \end{proof}
 \end{prop}
 \begin{definition}[Effective Epimorphism]
-    Let $C$ be an \inftycat/ with small limits and let $f\in C_1$ be a map.
+    Let $C$ be an \inftycat/ with finite limits and let $f\in C_1$ be a map.
     We say that $f$ is an \emph{effective epimorphism} if the \Cech/ nerve $\CN(f)$ is a colimit diagram.
 \end{definition}
 \begin{prop}\label{prop:mayRecognitionTheoremGroupoid}
@@ -175,29 +181,32 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     
     Thus they induce an equivalence of \inftycats/ $\Gpd(C)\simeq\Fun(\Delta^1,C)_{\text{eff}}$.
     \begin{proof}
-        Both functors are pointwise Kan-extensions along fully faithful functors:
-        The functor $F$ is a left Kan-extension along $\N(\Delta)^{\op}\subset\N(\Delta_+)^{\op}$, and $G$ a right Kan-extension along $\Delta^1\subset\N(\Delta_+)^{\op}$.
-        Thus they are both fully faithful by \cref{prop:exKanExt}.
+        The functors $\colim\colon\Fun(\N(\Delta)^{\op},C)\to\Fun(\N(\Delta_+)^{\op},C)$ and $\CN\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ are both pointwise Kan-extensions along fully faithful functors:
+        The first is a left Kan-extension along $\N(\Delta)^{\op}\subset\N(\Delta_+)^{\op}$, and the latter a right Kan-extension along $\Delta^1\subset\N(\Delta_+)^{\op}$.
+        Thus they are both fully faithful by \cref{prop:exKanExt} and hence $F$ and $G$ are as well.
+        It remains to show that they have the same essential image.
 
         First, let $U$ be an element in the essential image of $G$. 
         Then by definition of an effective epimorphism it is already a colimit diagram, and since $U|_{\N(\Delta)^{\op}}$ is a groupoid, it is in the essential image of $F$.
 
         Now let $V$ be an element in the essential image of $F$. 
-        Then by \cref{prop:groupoidObjInToposAreEffective} and \cref{cor:groupoidEffectiveIffColimCechNerve} we know that it is a \Cech/ nerve and therefore by definition in the essential image of $G$.
+        Then by \cref{prop:groupoidObjInToposAreEffective} and \cref{cor:groupoidEffectiveIffColimCechNerve} we know that it is a \Cech/ nerve and since $\CN(f)|_{\Delta^1}\simeq f$ it is in the essential image of $G$.
     \end{proof}
 \end{prop}
+The above proposition is a more general version of the delooping of pointed objects.
+We can restrict it appropriately to obtain the version for pointed objects.
 \begin{definition}[Pointed Objects]
     Let $C$ be an \inftycat/ with a terminal object.
     Then write $C_*\subset\Fun(\Delta^1,C)$ for the full subcategory of maps with domain a fixed terminal object $*\in C_0$.
-    We call $C_*$ the \emph{\inftycat/ of pointed objects}, and we call an object $X$ in $C_*$ a \emph{pointed object in $C$}.
+    We call $C_*$ the \emph{\inftycat/ of pointed objects}, and we call an object $*\to X$ in $C_*$ a \emph{pointed object in $C$}.
 
-    We refer to maps in $C_*$ as \emph{pointed maps} and to equivalences in $C_*$ as \emph{equivalences of pointed objects}.
+    We refer to maps in $C_*$ as \emph{maps of pointed objects}.
 \end{definition}
 \begin{remark}
     Since terminal objects are essentially unique, choosing different terminal objects induces equivalent models of \inftycats/ of pointed objects.
 \end{remark}
 \begin{definition}\label{def:catOfPtdConnObj}
-    Let $C$ be an \inftycat/ with small limits and let $\Conn(C_*)\subset C_*$ be the full subcategory of effective epimorphisms.
+    Let $C$ be an \inftycat/ with finite limits and let $\Conn(C_*)\subset C_*$ be the full subcategory of effective epimorphisms.
     We call $\Conn(C_*)$ the \emph{\inftycat/ of pointed connected objects}.
 \end{definition}
 \begin{remark}
@@ -241,7 +250,7 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
     \begin{itemize}
         \item $U_0\simeq*$
         \item $U_1\simeq X$
-        \item for $c_{[1]}\colon[1]\to[0]$ the unique constant map in $\Delta$, we have that $U(c_{[1]})$ is equivalent to the map $x\colon*\to X$.
+        \item for $s_0^0\colon[1]\to[0]$ the unique constant map in $\Delta$, we have that $U(s_0^0)$ is equivalent to the map $x\colon*\to X$.
     \end{itemize}
     (This implies in particular $U_n\simeq X\times\ldots\times X$ for $n\geq1$ with $X$ appearing $n$ times.)
 
@@ -279,12 +288,12 @@ The proof follows \cite[pp. 29-30]{toposes_and_htpy_toposes}.
             \item $d_n^n$ is $(\gamma_1,\ldots,\gamma_{n-1},\gamma_n)\mapsto(\gamma_1,\ldots,\gamma_{n-1})$
             \item $d_k^n$ for $0<k<n$ is $(\gamma_1,\ldots,\gamma_k,\gamma_{k+1},\ldots,\gamma_n)\mapsto(\gamma_1,\ldots,\gamma_k*\gamma_{k+1},\ldots,\gamma_n)$ where $*$ denotes concatenation of loops
         \end{itemize}
-        \item the map induced by a degeneracy map $s_k^n$ is injecting the constant loop $c_x$ at the $k$-th position.
+        \item the map induced by a degeneracy map $s_k^n$ is injecting the constant loop $c_{x_0}$ at the $k$-th position.
     \end{itemize}
 \end{remark}
 \addcontentsline{toc}{subsection}{Delooping of Pointed Objects in $\spaces$}
 \subsection*{Delooping of Pointed Objects in $\spaces$}
-We now want to check that pointed connected objects in a general \inftytop/ coincide with pointed connected spaces in the \inftytop/ $\spaces$.
+We now want to check that the notion of pointed connected objects of general \inftytops/ coincides with pointed connected spaces in the \inftytop/ $\spaces$.
 Thus we recover the statement of the May Recognition Theorem for $n=1$, which says that a pointed space is equivalent to a loop space of a pointed connected object if and only if it admits the structure of a group object in $\Top$. 
 \begin{definition}
     Let $C$ be an \inftytop/.
@@ -350,8 +359,8 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
     \end{proof}
 \end{prop}
 \begin{corollary}
-    Let $x\colon*\to X\in\left(\spaces_*\right)_0$ be a map.
-    Then $x$ is an effective epimorphism if and only if $X$ is path-connected as a topological space.
+    Let $*\to X$ be a pointed space in $\spaces$.
+    Then it is an effective epimorphism if and only if $X$ is path-connected as a topological space.
     \begin{proof}
         This follows from \cref{prop:effInSpaceIffSurj} and the fact that $*$ has exactly one connected component.
     \end{proof}

@@ -6,25 +6,27 @@ We will not give proofs for any statements in this section; we will however poin
     For every $n\in\Nat$, let $[n]$ denote the linearly ordered set $\set{0<\ldots<n}\subset\Nat$ and let $[-1]=\emptyset$, which we also consider to be linearly ordered.
 \end{definition}
 \begin{definition}
-    Let $X,Y$ be partially ordered sets and $f\colon X\to Y$ a function of the underlying sets.
+    Let $X,Y$ be partially ordered sets and $f\colon X\to Y$ a map of the underlying sets.
     Then we call $f$ \emph{nondecreasing} if for all $a,b\in X$ with $a\leq b$, we have $f(a)\leq f(b)$.
 \end{definition}
 \begin{definition}[(Augmented) Simplex Category]
     Let $\Delta$ be the category with
     \begin{itemize}
         \item objects the linearly ordered sets $[n]$ for $n\in\Nat$
-        \item morphisms the \emph{nondecreasing} functions.
+        \item morphisms the \emph{nondecreasing} maps.
     \end{itemize}
     We call this category the \emph{simplex category $\Delta$}.
 
     Similarly, let $\Delta_+$ be the category with
     \begin{itemize}
         \item objects the linearly ordered sets for $n\in\Nat\cup\set{-1}$ 
-        \item morphisms again the \emph{nondecreasing} functions.
+        \item morphisms again the \emph{nondecreasing} maps.
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
+
+    Furthermore, for $0\leq i\leq n$ we call the unique nondecreasing injective map $d_i^n\colon[n-1]\to[n]$ such that $i\notin\im d_i^n$ the \emph{$i$-th face map in dimension $n$}, and for $-1\leq i\leq n$ we call the unique nondecreasing surjective map $s_i^n\colon[n+1]\to[n]$ such that $s_i^n(i)=s_i^n(i+1)$ the \emph{$i$-th degeneracy map in dimension $n$}.
 \end{definition}
-\begin{definition}[Simplicial Set]\label{def:simpSet} %TODO maybe add here degeneracy/face maps for simpsets?
+\begin{definition}[Simplicial Set]\label{def:simpSet}
     We set $\sSet=\Fun(\Delta^{\op},\Set)$ to be the \emph{category of simplicial sets}.
     Given a simplicial set $X\in\sSet$ and an object $[n]\in\Delta$ we denote evaluation by $X([n])=X_n$.
 
@@ -123,21 +125,12 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition}
 \begin{definition}[Functorial WFS]
     Let $C$ be a category and let $(L,R)$ be a weak factorization system on $C$.
-    Let $i,p\colon\Fun\left([2],C\right)\to\Fun\left([1],C\right)$ be induced by the maps
-    \begin{align*}
-        [1]&\to[2]\\
-        i&\mapsto i
-    \end{align*}
-    \begin{align*}
-        [1]&\to[2]\\
-        i&\mapsto i+1
-    \end{align*}
-    respectively.
+    Let $i,p\colon\Fun\left([2],C\right)\to\Fun\left([1],C\right)$ be induced by the maps $d_2^2,d_0^2\colon [1]\to[2]$ respectively.
 
     Then we call $(L,R)$ \emph{functorial} if there exists a functor $\Gamma\colon\Fun\left([1],C\right)\to\Fun\left([2],C\right)$ such that
     \begin{itemize}
-        \item for all maps $f$ in $C$, $(i\circ\Gamma)(f)\in L$
-        \item for all maps $f$ in $C$, $(p\circ\Gamma)(f)\in R$
+        \item for all maps $f$ in $C$ we have $(i\circ\Gamma)(f)\in L$
+        \item for all maps $f$ in $C$ we have $(p\circ\Gamma)(f)\in R$
         \item and $\Gamma$ is a section of the canonical functor $\Fun\left([2],C\right)\to\Fun\left([1],C\right)$ induced by composition.
     \end{itemize}
 \end{definition}
@@ -207,9 +200,9 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition} %TODO maybe also put here that Top is not locally presentable
 \begin{definition}[Properness] %TODO maybe diagrams
     Let $M$ be a model category.
-    If pushouts of weak equivalences along cofibrations are again weak equivalences, we say that $M$ is \emph{left proper}.
+    We say that $M$ is \emph{left proper} if pushouts of weak equivalences along cofibrations are again weak equivalences.
     
-    If pullbacks of weak equivalences along fibrations are again weak equivalences, we say that $M$ is \emph{right proper}.
+    We say that $M$ is \emph{right proper} if pullbacks of weak equivalences along fibrations are again weak equivalences.
     
     If $M$ is left proper as well as left proper, then we say that $M$ is \emph{proper}.
 \end{definition}
@@ -458,15 +451,17 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     Let $f\colon K\to C$ be a map of simplicial sets.
     Setting 
     \begin{equation*}
-        \left(C_{/f}\right)_n=\set{\sigma\colon \Delta^n\star K\to X \mid \sigma|_K=f}
+        \left(C_{/f}\right)_n=\set{\sigma\colon \Delta^n\star K\to C \mid \sigma|_K=f}
     \end{equation*}
     defines a simplicial set $C_{/f}$ which we refer to as the \emph{slice simplicial set of $C$ over $f$}.
 
     Dually, setting 
     \begin{equation*}
-        \left(C_{f/}\right)_n=\set{\sigma\colon K\star \Delta^n \to X \mid \sigma|_K=f}
+        \left(C_{f/}\right)_n=\set{\sigma\colon K\star \Delta^n \to C \mid \sigma|_K=f}
     \end{equation*}
     defines a simplicial set $C_{f/}$ which we refer to as the \emph{coslice simplicial set of $C$ under $f$}.
+
+    Note that there are canonical maps $C_{/f}\to C$ and $C_{f/}\to C$, which we refer to as the \emph{slice projection} and \emph{coslice projection} respectively.
 \end{definition}
 \begin{construction}[(Co)Slice Contraction]
     Let $f\colon X\to Y$ be a morphism of simplicial sets.
@@ -536,15 +531,15 @@ In this case, we can give a more explicit description.
 \begin{prop}[Existence of Pointwise Kan-Extensions]\label{prop:exKanExt}
     Let $C,D$ be \inftycats/ and $i\colon C_0\subset C$ a full subcategory.
     
-    If $D$ is complete, then there exists a right Kan-extension $i_*\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
+    If $D$ admits $\left(C_{c/}\times_C C_0\right)$-shaped limits, then there exists a right Kan-extension $i_*\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
+    Furthermore, the counit in the adjunction is an equivalence hence $i_*$ is fully faithful.
 
-    Dually if $D$ is cocomplete, then there exists a left Kan-extension $i_!\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
-
-    Furthermore, the functors $i_*$ and $i_!$ are fully faithful.
+    Dually if $D$  $\left(C_{c/}\times_C C_0\right)$-shaped colimits, then there exists a left Kan-extension $i_!\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
+    Furthermore, the unit in the adjunction is an equivalence hence $i_!$ is fully faithful..
     \begin{reference}
         The existence and computation of the Kan-extensions via the pointwise description is shown by \cite[Proposition 6.4.9]{cisinski_2019} (and its dual).
         
         For the full faithfulness, it is implied by \cite[Corollary 7.3.1.16]{kerodon} that counit/unit respectively of the adjunction is an equivalence.
-        One can then use \cref{rmk:homAdjunction} to prove that this implies full faithfulness by essentially the same argument as in ordinary category theory.
+        One can then use \cref{rmk:homAdjunction} to prove that this is equivalent to full faithfulness by essentially the same argument as in ordinary category theory.
     \end{reference}
 \end{prop}

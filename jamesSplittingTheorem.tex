@@ -266,7 +266,7 @@ We will prove that both are associative and that the smash product distributes o
         evaluates to $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C$ and the column-wise colimit evaluates to $\left((A\vee B)\times C\right)\cup_{A\vee B}A\times B$ which proves the canonical equivalence.
 
         Since the maps $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C\to A\times (B\times C)$ and $\left((A\vee B)\times C\right)\cup_{A\vee B} A\times B\to (A\times B)\times C$ are universal maps, the top square of the cube
-        \begin{center}
+        \begin{center} %TODO be more clean here with saying what commutes when
             \begin{tikzcd}[column sep=-2.5em]
                 \left((A\vee B)\times C\right)\cup_{A\vee B} A\times B \arrow [dr,"\simeq"] \arrow [rr] \arrow [dd] & & (A\times B)\times C \arrow [dr,"\simeq"] \arrow [dd] \\
                 & \left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C \arrow [rr, crossing over] \arrow [dd] & &[5.5em] A\times (B\times C) \arrow [dd]\\
@@ -479,7 +479,7 @@ We will also need to prove some basic facts about wedges and smash products.
 \begin{lemma}\label{lem:allSqArePo}
     Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then all squares of the diagram         
-    \begin{center}
+    \begin{center} %TODO maybe also work with \Circled{}
         \begin{tikzcd} [sep = 4em]
             X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"'] & Y \arrow[r] \arrow[d] & * \arrow[d] \\
             X \arrow[r] \arrow[d] & \Sigma\left(X\wedge Y\right) \arrow[r] \arrow[d] & \Sigma Y\vee\Sigma\left(X\wedge Y\right) \arrow[d]\\
