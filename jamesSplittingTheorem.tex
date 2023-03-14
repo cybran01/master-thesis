@@ -263,24 +263,25 @@ We will prove that both are associative and that the smash product distributes o
                 B  & B \arrow[l, equals] \arrow[r] & B\times C \\
             \end{tikzcd}
         \end{center}
-        evaluates to $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C$ and the column-wise colimit evaluates to $\left((A\vee B)\times C\right)\cup_{A\vee B}A\times B$ which proves the canonical equivalence.
+        evaluates to $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C$ and since the column-wise colimit evaluates to $\left((A\vee B)\times C\right)\cup_{A\vee B}A\times B$, they are canonically equivalent.
 
-        Since the maps $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C\to A\times (B\times C)$ and $\left((A\vee B)\times C\right)\cup_{A\vee B} A\times B\to (A\times B)\times C$ are universal maps, the top square of the cube
-        \begin{center} %TODO be more clean here with saying what commutes when
+        The maps $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C\to A\times (B\times C)$ and $\left((A\vee B)\times C\right)\cup_{A\vee B} A\times B\to (A\times B)\times C$ are universal maps, hence the top square of the diagram
+        \begin{center}
             \begin{tikzcd}[column sep=-2.5em]
                 \left((A\vee B)\times C\right)\cup_{A\vee B} A\times B \arrow [dr,"\simeq"] \arrow [rr] \arrow [dd] & & (A\times B)\times C \arrow [dr,"\simeq"] \arrow [dd] \\
                 & \left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C \arrow [rr, crossing over] \arrow [dd] & &[5.5em] A\times (B\times C) \arrow [dd]\\
-                * \arrow [dr,"\simeq"] \arrow [rr] & & (A\wedge B)\wedge C \arrow [dr] \\
+                * \arrow [dr,"\simeq"] \arrow [rr] & & (A\wedge B)\wedge C \arrow [dr, dashed, "\simeq"] \\
                 & * \arrow [from=uu, crossing over] \arrow [rr] & & A\wedge (B\wedge C)
             \end{tikzcd}
         \end{center}
-        commutes and thus the induced map $(A\wedge B)\wedge C\to A\wedge(B\wedge C)$ of the pushout squares is an equivalence.
+        commutes.
+        Thus the indicated universal map $(A\wedge B)\wedge C\to A\wedge(B\wedge C)$ is an equivalence of pointed objects.
     \end{proof}
 \end{lemma}
 \addcontentsline{toc}{subsection}{The Fundamental James Splitting}
 \subsection*{The Fundamental James Splitting}
 As a first step to proving the James Splitting Theorem, we will show that for pointed objects $X$ there is a canonical equivalence $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ of pointed objects.
-This is called the \emph{Fundamental James Splitting}.
+This is called the \emph{Fundamental James Splitting} (see \cite[Theorem 2.10]{splittings_21}).
 
 The next lemma is a key ingredient of the proof of the Fundamental James Splitting.
 There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
@@ -289,43 +290,45 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
     Then there exists a pushout square  
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\alpha"] & \Omega\Sigma X \arrow[d] \\
+            X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\alpha"'] & \Omega\Sigma X \arrow[d] \\
             \Omega\Sigma X \arrow[r] & * \\
         \end{tikzcd}\;.
     \end{center}
     \begin{proof}
-        The definition of $\Sigma X$
+        Let 
         \begin{center}
-            \begin{tikzcd} [sep = 4em]
+            $\begin{tikzcd} [sep = 4em, baseline=1.5em]
                 X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
                 * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
-        \end{center}
-        shows that $i_0$ and $i_1$ are equivalent maps in $C$, since $X\to *\xrightarrow{i_0}\Sigma X$ and $X\to *\xrightarrow{i_1}\Sigma X$ are equivalent by construction and the canonical point $x\colon*\to X$ is a section of $X\to *$.
-        Thus we get that the squares
-        \begin{center}
-            \begin{tikzcd} [sep = 4em]
+            \text{~~~and~~}
+            \begin{tikzcd} [sep = 4em, baseline=1.5em]
                 \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
                 * \arrow[r, "i_0"] & \Sigma X \\
-            \end{tikzcd}
+            \end{tikzcd}$
+        \end{center}
+        be the suspension of $X$ and loop space of $*\xrightarrow{i_0}\Sigma X$ respectively.
+        The definition of $\Sigma X$ shows that $i_0$ and $i_1$ are equivalent maps in $C$, since $X\to *\xrightarrow{i_0}\Sigma X$ and $X\to *\xrightarrow{i_1}\Sigma X$ are equivalent by construction and the canonical point $x\colon*\to X$ is a section of $X\to *$.
+        Thus we get that
+        \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
                 * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
-        are pullback squares.
+        is also a pullback square.
         We pick a product together with projections to obtain a pullback square 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\pi_1"] & \Omega\Sigma X \arrow[d] \\
+                X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\pi_1"'] & \Omega\Sigma X \arrow[d] \\
                 X \arrow[r] & * \\
             \end{tikzcd}
         \end{center}
         and assemble these pullback squares into a diagram
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
-                & \Omega\Sigma X \arrow [rr, crossing over] & & * \arrow [dd, "i_0"] & \\
+                X\times\Omega\Sigma X \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"'] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                & \Omega\Sigma X \arrow [rr, crossing over] & &[1em] * \arrow [dd, "i_0"] & \\
                 X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
                 & * \arrow [from=uu,crossing over] \arrow [rr, "i_1"] & & \Sigma X &
             \end{tikzcd}
@@ -340,7 +343,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         The map $\overline{\lambda}$ together with the equivalences of pullback squares thus induces a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
-                X\times\Omega\Sigma X \arrow [dr, "\alpha"] \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
+                X\times\Omega\Sigma X \arrow [dr, "\alpha"] \arrow [rr, "\pi_2"] \arrow [dd, "\pi_1"'] & & \Omega\Sigma X \arrow [dr] \arrow[dd] \\
                 & \Omega\Sigma X \arrow [rr, crossing over] & &[1em] * \arrow [dd, "i_0"] & \\
                 X \arrow [dr] \arrow [rr] & & * \arrow [dr, "i_0"] \\
                 & * \arrow [from=uu, crossing over] \arrow [rr, "i_1"] & & \Sigma X &
@@ -351,15 +354,15 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         The outer square of the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X\times\Omega\Sigma X \arrow[d, "\pi_1"] \arrow[r, "\pi_2"] & \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
+                X\times\Omega\Sigma X \arrow[d, "\pi_1"'] \arrow[r, "\pi_2"] & \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
                 X \arrow[r] & * \arrow[r, "i_0"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
         is a pullback since both squares are pullbacks by assumption.
-        Furthermore, the outer square of this diagram is equivalent to the outer square of the diagram
+        Furthermore, the outer square of the above diagram is equivalent to the outer square of the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X\times\Omega\Sigma X \arrow[d, "\pi_1"] \arrow[r, "\alpha"] & \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
+                X\times\Omega\Sigma X \arrow[d, "\pi_1"'] \arrow[r, "\alpha"] & \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
                 X \arrow[r] & * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
@@ -380,12 +383,12 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
 \end{lemma}
 \begin{remark}\label{rmk:mapNotProj}
     The map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ can in general not be identified with the projection $\pi_2$.
-    We are not able to choose the map $\alpha$ freely since the higher simplices must be compatible along the ``diagonal'' of our cube (which our map $\alpha$ fulfills by construction, since it is a universal map).
+    It is not sufficient to choose the map $\alpha$ such that the squares of the cube commute, since the higher simplices must also be compatible (our map $\alpha$ fulfills this by construction since it is a universal map).
 
     If we assume $\alpha=\pi_2$ then by universality we have that 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X\times \Omega\Sigma X \arrow[r,"\pi_2"] \arrow[d, "\pi_2"] & \Omega\Sigma X \arrow[d] \\
+            X\times \Omega\Sigma X \arrow[r,"\pi_2"] \arrow[d, "\pi_2"'] & \Omega\Sigma X \arrow[d] \\
             \Omega\Sigma X \arrow[r] & \Sigma X \times \Omega\Sigma X\\
         \end{tikzcd}
     \end{center}
@@ -406,7 +409,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         This follows from \cref{lem:existenceOfPoSq} and the pasting lemma applied to 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\alpha"] & \Omega\Sigma X \arrow[d] \\
+                X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d, "\alpha"'] & \Omega\Sigma X \arrow[d] \\
                 \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d] \\
                 * \arrow[r] & \Sigma\Omega\Sigma X \\
             \end{tikzcd}\;.

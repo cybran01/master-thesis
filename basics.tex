@@ -24,7 +24,7 @@ We will not give proofs for any statements in this section; we will however poin
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
 
-    Furthermore, for $0\leq i\leq n$ we call the unique nondecreasing injective map $d_i^n\colon[n-1]\to[n]$ such that $i\notin\im d_i^n$ the \emph{$i$-th face map in dimension $n$}, and for $-1\leq i\leq n$ we call the unique nondecreasing surjective map $s_i^n\colon[n+1]\to[n]$ such that $s_i^n(i)=s_i^n(i+1)$ the \emph{$i$-th degeneracy map in dimension $n$}.
+    Furthermore, for $0\leq i\leq n$ we call the unique nondecreasing injective map $d_i^n\colon[n-1]\to[n]$ with $i\notin\im d_i^n$ the \emph{$i$-th face map in dimension $n$}, and for $-1\leq i\leq n$ we call the unique nondecreasing surjective map $s_i^n\colon[n+1]\to[n]$ with $s_i^n(i)=s_i^n(i+1)$ the \emph{$i$-th degeneracy map in dimension $n$}.
 \end{definition}
 \begin{definition}[Simplicial Set]\label{def:simpSet}
     We set $\sSet=\Fun(\Delta^{\op},\Set)$ to be the \emph{category of simplicial sets}.
@@ -402,7 +402,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     \begin{itemize}
         \item $F$ is a weak categorical equivalence (thus an equivalence of \inftycats/)
         \item $F$ is fully faithful and essentially surjective
-        \item There exists a map $G\colon D\to C$ and invertible natural transformations $FG\simeq \id_D$ and $GF\simeq \id_C$.
+        \item There exists a map $G\colon D\to C$ and invertible natural transformations $FG\simeq \id_D$ and $GF\simeq \id_C$ in $\Fun(D,D)$ and $\Fun(C,C)$ respectively.
     \end{itemize}
     \begin{reference}
         \cite[Corollary 3.6.6 and Theorem 3.9.7]{cisinski_2019}
@@ -482,7 +482,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
 \begin{definition}[Adjoints]
     Let $F\colon C\to D$ and $G\colon D\to C$ be functors between \inftycats/.
     Then we say that \emph{$F$ is left adjoint to $G$} or equivalently, that \emph{$G$ is right adjoint to $F$}
-    if there exist natural transformations $\varepsilon\colon FG\to \id_D$ and $\eta\colon\id_C\to GF$ (called \emph{counit} and \emph{unit} respectively) and $2$-simplices 
+    if there exist natural transformations $\varepsilon\colon FG\to \id_D$ and $\eta\colon\id_C\to GF$ and $2$-simplices 
     \begin{center}
         \begin{tikzcd} [sep = 3em]
             & FGF \ar[dr,"\varepsilon F"]&\\
@@ -494,15 +494,25 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
         \end{tikzcd}
     \end{center}
     in $\Fun(C,D)$ and $\Fun(D,C)$ respectively.
+    We refer to the maps $\varepsilon$ and $\eta$ as \emph{counit} and \emph{unit} respectively.
 \end{definition}
-\begin{remark}\label{rmk:homAdjunction}
-    By \cite[248]{cisinski_2019} for every (locally small) \inftycat/ $C$, there is an essentially unique $\hom$-functor $\hom_C(-,-)\colon C^{\op}\times C\to\spaces$, where $\spaces$ is the (yet to be defined) \inftycat/ of spaces, such that for all objects $x,y\in C_0$ we have a canonical equivalence $\hom_C(x,y)\simeq\Map_C(x,y)$ in $\spaces$ (the objects $\spaces_0$ can be identified with Kan-complexes, see \cref{cor:htpyCoherentNerveIsLoc} and $\Map_C(x,y)$ is always a Kan-complex by \cite[116]{cisinski_2019}).
-    By \cite[Theorem 6.1.23]{cisinski_2019} this gives another equivalent characterization of adjoints:
+\begin{remark}%\label{rmk:homAdjunction}
+    % By \cite[248]{cisinski_2019} for every (locally small) \inftycat/ $C$, there is an essentially unique $\hom$-functor $\hom_C(-,-)\colon C^{\op}\times C\to\spaces$, where $\spaces$ is the (yet to be defined) \inftycat/ of spaces, such that for all objects $x,y\in C_0$ we have a canonical equivalence $\hom_C(x,y)\simeq\Map_C(x,y)$ in $\spaces$ (the objects $\spaces_0$ can be identified with Kan-complexes, see \cref{cor:htpyCoherentNerveIsLoc} and $\Map_C(x,y)$ is always a Kan-complex by \cite[116]{cisinski_2019}).
+    % By \cite[Theorem 6.1.23]{cisinski_2019} this gives another equivalent characterization of adjoints:
     
-    A functor $F\colon C\to D$ is left adjoint to a functor $G\colon D\to C$ if and only if there exists an invertible natural transformation $c\colon (C^{\op}\times D)\times\Delta^1 \to\spaces$ between the functors $\hom_D(F(-),-)\simeq\hom_C(-,G(-))$.
-
-    Adjoints are also ``essentially unique'' in the sense of \cite[Proposition 6.1.9]{cisinski_2019}.
+    % A functor $F\colon C\to D$ is left adjoint to a functor $G\colon D\to C$ if and only if there exists an invertible natural transformation $c\colon (C^{\op}\times D)\times\Delta^1 \to\spaces$ between the functors $\hom_D(F(-),-)\simeq\hom_C(-,G(-))$.
+    %
+    Adjoints are ``essentially unique'' in the sense of \cite[Proposition 6.1.9]{cisinski_2019}.
 \end{remark}
+\begin{corollary}\label{cor:CoUnitInvertibleFF}
+    Let $F\colon C\rightleftarrows D\mkern+3mu:\mkern-3mu G$ be a pair of adjoint functors between \inftycats/.
+    Then $G$ is fully faithful if and only if the adjunction counit $\varepsilon\colon FG\to \id_D$ is invertible.
+
+    Dually, $F$ is fully faithful if and only if the adjunction unit $\eta\colon\id_C\to GF$ is invertible.
+    \begin{reference}
+        \cite[Corollary 6.2.2.13]{kerodon} (and its dual)
+    \end{reference}
+\end{corollary}
 \begin{definition}[Kan-Extension]
     Let $u\colon A\to B$ be a functor between \inftycats/ and let $C$ be an \inftycat/.
     
@@ -531,15 +541,12 @@ In this case, we can give a more explicit description.
 \begin{prop}[Existence of Pointwise Kan-Extensions]\label{prop:exKanExt}
     Let $C,D$ be \inftycats/ and $i\colon C_0\subset C$ a full subcategory.
     
-    If $D$ admits $\left(C_{c/}\times_C C_0\right)$-shaped limits, then there exists a right Kan-extension $i_*\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
-    Furthermore, the counit in the adjunction is an equivalence hence $i_*$ is fully faithful.
+    If $D$ admits $\left(C_{c/}\times_C C_0\right)$-shaped limits, then there exists a fully faithful right Kan-extension $i_*\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
 
-    Dually if $D$  $\left(C_{c/}\times_C C_0\right)$-shaped colimits, then there exists a left Kan-extension $i_!\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
-    Furthermore, the unit in the adjunction is an equivalence hence $i_!$ is fully faithful..
+    Dually if $D$  $\left(C_{c/}\times_C C_0\right)$-shaped colimits, then there exists a fully faithful left Kan-extension $i_!\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
     \begin{reference}
         The existence and computation of the Kan-extensions via the pointwise description is shown by \cite[Proposition 6.4.9]{cisinski_2019} (and its dual).
         
         For the full faithfulness, it is implied by \cite[Corollary 7.3.1.16]{kerodon} that counit/unit respectively of the adjunction is an equivalence.
-        One can then use \cref{rmk:homAdjunction} to prove that this is equivalent to full faithfulness by essentially the same argument as in ordinary category theory.
     \end{reference}
 \end{prop}
