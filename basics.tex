@@ -353,7 +353,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
         \end{tikzcd}
     \end{center}
     where $\id_y$ and $\id_x$ denote the degenerate $1$-simplices at $y$ and $x$ respectively.
-    We say that objects $x,y\in C_0$ are \emph{equivalent} if there exists an equivalence $f\colon x\to y$.
+    We say that objects $x,y\in C_0$ are \emph{equivalent} and denote this as $x\simeq y$, if there exists an equivalence $f\colon x\to y$.
 \end{definition}
 \begin{definition}[Natural Transformations]
     Let $C$ be a simplicial set, $D$ an \inftycat/ and $f,g\colon C\to D$ maps.
@@ -364,9 +364,11 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
 \begin{remark}
     By \cite[Corollary 3.5.12]{cisinski_2019} a natural transformation as in the previous definition is invertible if and only of it is invertible as a map in the \inftycat/ $\Fun(C,D)$.
 \end{remark}
-\begin{definition}[Essentially Surjective]
+\begin{definition}[Essential Image]
     Let $F\colon C\to D$ be a map between \inftycats/.
-    Then we say that $F$ is \emph{essentially surjective} if for all $d\in D_0$ there exists a $c\in C_0$ such that $d$ and $F(c)$ are equivalent in $D$.
+    Then the \emph{essential image} of $F$ is the full subcategory $\essim F\subset D$ spanned by the objects $d\in D_0$ for which there exist $c\in C_0$ such that $F(c)\simeq d$.
+
+    If $\essim F=D$ we say that $F$ is \emph{essentially surjective}.
 \end{definition}
 \begin{definition}[Mapping Space]\label{def:mappingSpace}
     Let $C$ be an \inftycat/ and let $x,y\in C_0$ and let $\Map_C(x,y)$ denote the pullback 
@@ -400,8 +402,8 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     Let $F\colon C\to D$ be a functor between \inftycats/.
     Then the following are equivalent:
     \begin{itemize}
-        \item $F$ is a weak categorical equivalence (thus an equivalence of \inftycats/)
-        \item $F$ is fully faithful and essentially surjective
+        \item $F$ is a weak categorical equivalence (thus an equivalence of \inftycats/).
+        \item $F$ is fully faithful and essentially surjective.
         \item There exists a map $G\colon D\to C$ and invertible natural transformations $FG\simeq \id_D$ and $GF\simeq \id_C$ in $\Fun(D,D)$ and $\Fun(C,C)$ respectively.
     \end{itemize}
     \begin{reference}

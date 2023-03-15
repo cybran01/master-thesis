@@ -153,16 +153,16 @@ We will require the following proposition for the proof.
         
         Since $\Delta^{n+1}$ has a terminal object, colimits over $\Delta^{n+1}$ can be computed by evaluating the terminal object.
         Let the family $(*_s)_{s\in S}$ be the family of terminal objects of the components in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$.
-        Then we have $q_2(\infty)\cong\coprod\limits_{s\in S} q_2(*_s)$ by \cref{prop:colimitDecompositionPushouts}.
+        Then we have $q_2(\infty)\simeq\coprod\limits_{s\in S} q_2(*_s)$ by \cref{prop:colimitDecompositionPushouts}.
 
         Since for all $s\in S$ the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p_2(*_s) \arrow[r] \arrow[d] & p_2(\infty) \arrow[d]\\
-                q_2(*_s) \arrow[r] & q_2(\infty)\cong\coprod\limits_{s\in S} q_2(*_s)
+                q_2(*_s) \arrow[r] & q_2(\infty)\simeq\coprod\limits_{s\in S} q_2(*_s)
             \end{tikzcd}\;.
         \end{center}
-        is a pullback since $\alpha_2$ is cartesian, by universality for coproducts it follows that $p_2(\infty)\cong\coprod\limits_{s\in S} p_2(*_s)$.
+        is a pullback since $\alpha_2$ is cartesian, by universality for coproducts it follows that $p_2(\infty)\simeq\coprod\limits_{s\in S} p_2(*_s)$.
         This shows that $p_2$ is a colimit cone, proving the claim.
         
         By \cref{prop:colimitDecompositionPushouts} we know that 
@@ -229,12 +229,12 @@ We will require the following proposition for the proof.
         We claim that the natural transformation $\alpha_2$ is cartesian as well: 
 
         For $i\in\set{0,\ldots,n+1}$ and $s\in S$ let $i_s\in X_2$ denote the $i$-th vertex of the $s$-th component in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$.
-        Since the objects $(n+1)_s$ are terminal in their respective component $\Delta^{n+1}$, we have $q_2(\infty)\cong\coprod\limits_{s\in S} q_2((n+1)_s)$ as well as $p_2(\infty)\cong\coprod\limits_{s\in S} p_2((n+1)_s)$ by \cref{prop:colimitDecompositionPushouts}.
+        Since the objects $(n+1)_s$ are terminal in their respective component $\Delta^{n+1}$, we have $q_2(\infty)\simeq\coprod\limits_{s\in S} q_2((n+1)_s)$ as well as $p_2(\infty)\simeq\coprod\limits_{s\in S} p_2((n+1)_s)$ by \cref{prop:colimitDecompositionPushouts}.
         For each $s\in S$ and $i\in\set{0,\ldots,n+1}$ the outer square of the diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                p_2(i_s) \arrow[r] \arrow[d] & p_2((i+1)_s) \arrow[r] \arrow[d] & \coprod\limits_{s\in S} p_2((n+1)_s)\cong p_2(\infty) \arrow[d] \\
-                q_2(i_s) \arrow[r] & q_2((i+1)_s) \arrow[r] & \coprod\limits_{s\in S} q_2((n+1)_s)\cong q_2(\infty)
+                p_2(i_s) \arrow[r] \arrow[d] & p_2((i+1)_s) \arrow[r] \arrow[d] & \coprod\limits_{s\in S} p_2((n+1)_s)\simeq p_2(\infty) \arrow[d] \\
+                q_2(i_s) \arrow[r] & q_2((i+1)_s) \arrow[r] & \coprod\limits_{s\in S} q_2((n+1)_s)\simeq q_2(\infty)
             \end{tikzcd}
         \end{center}
         is a pullback: The left square is a pullback because $\alpha_2|_{X_2}$ is cartesian and the right square is a pullback by descent for coproducts, so by the pasting law the outer square must be cartesian as well.
@@ -273,7 +273,7 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         is a pullback by the pasting law, since the outer square is a pullback as $\alpha_i$ is cartesian.
-        By universality, this implies that $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)$ is a colimit of $p_0|_{X_0}$ and therefore $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)\cong p_0(\infty)$ which proves our claim.
+        By universality, this implies that $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)$ is a colimit of $p_0|_{X_0}$ and therefore $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)\simeq p_0(\infty)$ which proves our claim.
 
         The natural transformations $\alpha$ and $\alpha_i$ induce a natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd}, C\right)_1$ which we represent by a cube
         \begin{center}
@@ -314,7 +314,7 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         is a pullback and hence by the pasting lemma so is the left square.
-        By universality this implies that $q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty)\cong p|_{K^n}(\infty)$ which shows that
+        By universality this implies that $q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty)\simeq p|_{K^n}(\infty)$ which shows that
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p|_{K^n}(\infty) \arrow[d] \arrow[r] & p|_{K^{n+1}}(\infty) \arrow[d] \\

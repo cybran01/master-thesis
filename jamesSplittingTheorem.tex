@@ -383,7 +383,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
 \end{lemma}
 \begin{remark}\label{rmk:mapNotProj}
     The map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ can in general not be identified with the projection $\pi_2$.
-    It is not sufficient to choose the map $\alpha$ such that the squares of the cube commute, since the higher simplices must also be compatible (our map $\alpha$ fulfills this by construction since it is a universal map).
+    It is not sufficient to choose the map $\alpha$ such that only the squares of the cube commute, since the higher simplices of the cube must also be compatible (our map $\alpha$ fulfills this by construction since it is a universal map).
 
     If we assume $\alpha=\pi_2$ then by universality we have that 
     \begin{center}
@@ -482,41 +482,40 @@ We will also need to prove some basic facts about wedges and smash products.
 \begin{lemma}\label{lem:allSqArePo}
     Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then all squares of the diagram         
-    \begin{center} %TODO maybe also work with \Circled{}
+    \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"'] & Y \arrow[r] \arrow[d] & * \arrow[d] \\
-            X \arrow[r] \arrow[d] & \Sigma\left(X\wedge Y\right) \arrow[r] \arrow[d] & \Sigma Y\vee\Sigma\left(X\wedge Y\right) \arrow[d]\\
+            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"'] \ar[dr,phantom,"\Circled{1}"] & Y \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{2}"] & * \arrow[d] \\
+            X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{3}"] & \Sigma\left(X\wedge Y\right) \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{4}"] & \Sigma Y\vee\Sigma\left(X\wedge Y\right) \arrow[d]\\
             * \arrow[r] &  \Sigma X\vee\Sigma\left(X\wedge Y\right)\arrow[r] & \Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right) \\
         \end{tikzcd}
     \end{center}
     are pushouts.
     \begin{proof}
-        By \cref{lem:poSqWithFactoringTerminal} the top left square is a pushout square.
-        The top right square is a pushout by the pasting law applied to
+        By \cref{lem:poSqWithFactoringTerminal} the square $\Circled{1}$ is a pushout square.
+        The square $\Circled{3}$ is a pushout by the pasting law applied to
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                Y \arrow[r] \arrow[d] & * \arrow[d] \\
-                * \arrow[r] \arrow[d] & \Sigma Y \arrow[d] \\
-                \Sigma\left(X\wedge Y\right) \arrow[r] & \Sigma Y\vee\Sigma\left(X\wedge Y\right) \\
-            \end{tikzcd}\
+                X \arrow[r] \arrow[d] & * \arrow[d] \arrow[r] & \Sigma\left(X\wedge Y\right) \arrow[d]\\
+                * \arrow[r] & \Sigma X \arrow[r] & \Sigma X\vee\Sigma\left(X\wedge Y\right)
+            \end{tikzcd}
         \end{center}
-        because $Y\to\Sigma\left(X\wedge Y\right)$ factors through $*$ (again by \cref{lem:poSqWithFactoringTerminal}).
-        The analogous argument also shows that the bottom left square is a pushout.
+        because $X\to\Sigma\left(X\wedge Y\right)$ factors through $*$ (again by \cref{lem:poSqWithFactoringTerminal}).
+        The analogous argument also shows that $\Circled{2}$ square is a pushout.
 
-        The bottom right square is a pushout by \cref{lem:assocWedge} and the fact that the wedge sum is commutative.
+        The square $\Circled{4}$ is a pushout by \cref{lem:assocWedge} and the fact that the wedge sum is commutative.
     \end{proof}
 \end{lemma}
 The following corollary is not needed for our proof, however it is useful and immediate from what we have already shown.
 \begin{corollary}
     Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
-    Then we have $\Sigma\left(X\times Y\right)\cong\Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right)$.
+    Then we have a canonical equivalence $\Sigma\left(X\times Y\right)\simeq\Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right)$ of pointed objects.
     \begin{proof}
         The outer square of \cref{lem:allSqArePo} proves this immediately. 
     \end{proof}
 \end{corollary}
 \begin{lemma}\label{lem:suspensionCommutesWithSmash}
     Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
-    Then there is a canonical equivalence $\Sigma\left(X\wedge Y\right)\cong X\wedge\Sigma Y$ of pointed objects.
+    Then there is a canonical equivalence $\Sigma\left(X\wedge Y\right)\simeq X\wedge\Sigma Y$ of pointed objects.
     \begin{proof}
         Let $i_0,i_1\colon *\to\Sigma Y$ be the canonical maps from the definition $\Sigma Y$ as a pushout.
         These induce maps $j_0,j_1\colon X \to X\vee\Sigma Y$ and $k_0,k_1\colon X\to X\times\Sigma Y$.
@@ -532,7 +531,7 @@ The following corollary is not needed for our proof, however it is useful and im
             \end{tikzcd}\
         \end{center}
         are both pushouts; the first one as colimits commute and the second one by \cref{lem:productPreservesPushout}.
-        Computing the pushout of the diagram 
+        Computing the colimit of the diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 * & * \arrow[l] \arrow[r] & * \\
@@ -540,14 +539,14 @@ The following corollary is not needed for our proof, however it is useful and im
                 X  & X\times Y \arrow[l] \arrow[r] & X \\
             \end{tikzcd}
         \end{center}
-        as in \cref{lem:poSqWithFactoringTerminal} we get $X\wedge\Sigma Y$ by computing the pushout of the pushouts of the rows and $\Sigma\left(X\wedge Y\right)$ by computing the pushout of the pushouts of the columns, which proves the proposition.
+        as in \cref{lem:poSqWithFactoringTerminal}, we get $X\wedge\Sigma Y$ by computing it row-wise and $\Sigma\left(X\wedge Y\right)$ by computing it column-wise, which proves the proposition.
     \end{proof}
 \end{lemma}
 \begin{corollary}[Fundamental James Splitting]\label{cor:fundamentalJamesSplitting}
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ of pointed objects.
     \begin{proof}
-        Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the big left square (top and bottom left squares combined) is equivalent to the square 
+        Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the big left square ($\Circled{1}+\Circled{3}$ of \cref{lem:allSqArePo} combined) is equivalent to the square 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d] & \Omega\Sigma X \arrow[d] \\
@@ -564,7 +563,7 @@ We will now prove the James Splitting Theorem for general \inftytops/.
 By \cref{lem:genTopoiComparisonMapEq} we will see that it suffices to prove this for \inftytops/ of the form $\Fun(A,\spaces)$ where $A$ is a small \inftycat/ by a localization argument.
 
 We will however work in the setting of general \inftytops/ whenever possible; 
-in fact, only the very last step will require us to restrict to $C=\Fun(A,\spaces)$ since we need our \inftytop/ to be hypercomplete, which is not true generally.
+in fact, only the very last step will require us to restrict to $C=\Fun(A,\spaces)$ since it needs the \inftytop/ to be hypercomplete (see \cref{def:hypercomplete}), which \inftytops/ generally are not.
 \begin{corollary}[Fundamental James Splitting, iterated] 
     Let $C$ be an \inftytop/, let $X$ be a pointed object in $C$ and for $i\geq 1$ let $\Sigma X^{\wedge i}$ denote $\Sigma\left(X\wedge X\wedge\ldots\wedge X\right)$ with $X$ appearing $i$ times.
     Then for all $n\geq 1$ there is a canonical equivalence
@@ -602,7 +601,7 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
         The commutativity of the diagram now follows by construction.
     \end{proof}
 \end{corollary}
-\begin{definition}\label{def:jamesSplittingMap}
+\begin{definition}[Comparison Map]\label{def:jamesSplittingMap}
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then the canonical compatible maps 
     \begin{equation*}
@@ -614,6 +613,9 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
     \end{equation*}
     of pointed objects which we refer to as the \emph{comparison map}.
 \end{definition}
+Our proof of the James Splitting Theorem requires us to introduce higher connectedness of maps. 
+We will give a recursive definition of connectedness of maps similar to the definition of truncatedness (see \cref{def:truncatedMap}).
+Also note that in view of \cref{prop:conn} \ref{prop:connSection}, the previously introduced notion of a pointed connected object (see \cref{def:catOfPtdConnObj}) agrees with the definition of a $0$-connected object that is pointed.
 \begin{definition}\label{def:connected}
     Let $C$ be an \inftytop/.
     With the convention that every map is $(-2)$-connected, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-connected} for $k\geq -1$ if
@@ -633,8 +635,11 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
         \item \emph{topologically $n$-connected} for $n\in\Nat$ if $X\neq\emptyset$ and for all $x\in X$ and $k\leq n$, we have $\pi_k(X,x)\cong 0$
     \end{itemize}
     with the convention that all spaces are \emph{topologically $(-2)$-connected}.
-    A map $f\colon X\to Y$ in $\Top$ is \emph{topologically $n$-conneced} for $n\in\Nat\cup\set{-2,-1}$ if all its homotopy fibers are $n$-connected. 
-    %(For authors this definition means a topologically $(n+1)$-conneced map.) %TODO maybe mention that some authors use different definition; for them, this map is (n+1)-connected
+    A map $f\colon X\to Y$ in $\Top$ is \emph{topologically $n$-connected} for $n\in\Nat\cup\set{-2,-1}$ if all its homotopy fibers are $n$-connected. 
+    (Some authors however take this to be the definition of a topologically $(n+1)$-connected map.)
+    
+    We also say that a map is \emph{topologically $\infty$-connected} is it is topologically $n$-connected for all $n\in\Nat\cup\set{-2,-1}$.
+    (Since this means that all its homotopy fibers are contractible, the topologically $\infty$-connected maps are precisely the weak equivalences.)
 
     This definition agrees with the definition of connectedness in $\spaces$:
     \begin{itemize}
@@ -659,7 +664,7 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
             This allows us to recursively reduce to the case of $f\colon X\to Y$ being topologically $(-2)$-connected, in which we have already seen that both definitions coincide.
     \end{itemize}
 \end{remark}
-\begin{definition}
+\begin{definition}[Hypercompleteness]\label{def:hypercomplete}
     We say that an \inftytop/ $C$ is \emph{hypercomplete} if every $\infty$-connected map is an equivalence.
 \end{definition}
 \begin{remark}\label{rmk:spacesHypercomplete}
@@ -667,8 +672,9 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
     For every small \inftycat/ $A$, $\Fun(A,\spaces)$ is an \inftytop/ that is hypercomplete.
     This can be seen using \cite[Remark 6.5.4.7]{HTT}.
 \end{remark}
-Our goal now is to prove that the comparison map is an equivalence whenever $X$ is a $0$-connected pointed object.
-We will prove this only in $\Fun(A,\spaces)$, however this case is already enough to derive the result for general topoi (see \cref{lem:genTopoiComparisonMapEq}).
+Our goal now is to prove that the comparison map is $\infty$-connected whenever $X$ is a $0$-connected pointed object.
+By the previous remark, this will imply the James Splitting Theorem in the \inftytops/ $\Fun(A,\spaces)$ for small \inftycats/ $A$.
+However this case is already enough to derive the James Splitting Theorem for general topoi (see \cref{lem:genTopoiComparisonMapEq}).
 
 The main idea is to show that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ becomes increasingly connected and vanishes as $n\to\infty$.
 For this proof we need some stability properties of connectedness.
@@ -698,7 +704,7 @@ For this proof we need some stability properties of connectedness.
     Then if $f$ is $n$-connected and $g$ is $m$-connected, the canonical map $A\to B\times_{D}C$ is $(n+m)$-connected.
     \begin{reference}
         A very general version for \inftytops/ can be found in \cite[Corollary 4.3.1]{gen_blakers_massey}, but the version used here can also be proven by a reduction to topoi of the form $\Fun(A,\spaces)$ similar to \cref{lem:genTopoiComparisonMapEq} and thus derived from the ordinary Blakers-Massey Theorem in $\Top$.
-        The argument for the latter can be found in \cite[Proposition 8.16]{toposes_and_htpy_toposes}.
+        A proof of the latter can be found in \cite[Proposition 8.16]{toposes_and_htpy_toposes}.
     \end{reference}
 \end{thm}
 With these we can deduce the following statements:
@@ -736,7 +742,7 @@ With these we can deduce the following statements:
         First for each $n\in\Nat_{\geq 1}$ we have $2$-simplices in $\Fun(A,\spaces)$
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \bigvee\limits_{i=1}^{n}\Sigma X^{\wedge i} \arrow[r] \arrow[dr] & \bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i} \arrow[d, "c_X"] \\
+                \bigvee\limits_{i=1}^{n}\Sigma X^{\wedge i} \arrow[r] \arrow[dr, "c_X^n"'] & \bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i} \arrow[d, "c_X"] \\
                 & \Sigma\Omega\Sigma X \\
             \end{tikzcd}
         \end{center}
@@ -747,15 +753,15 @@ With these we can deduce the following statements:
 
         So the map 
         \begin{equation*}
-            c_X^n\colon\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\cong}\Sigma\Omega\Sigma X
+            c_X^n\colon\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\left(X^{\wedge n}\wedge\Sigma\Omega\Sigma X\right)\xrightarrow{\simeq}\Sigma\Omega\Sigma X
         \end{equation*}
         corresponding to the diagonal map of the above triangle is $n$-connected by \cref{cor:connEst} \ref{cor:connEstVeeIncl}.
 
-        Since by \cref{cor:connEst} \ref{cor:connEstIteratedSmash} and \cref{cor:connEst} \ref{cor:connEstSmash} every object of the filtered colimit $\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}$ is at least $(n+1)$-connected, by \cref{prop:conn} \ref{prop:connStableFilteredColim} it is itself $(n+1)$-connected.
-        So by \cref{cor:connEst} \ref{cor:connEstVeeIncl} we have that the horizontal map of the triangle $\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}\cong\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}$ is $n$-connected.
+        Since by \cref{cor:connEst} \ref{cor:connEstSuspension} and \cref{cor:connEst} \ref{cor:connEstIteratedSmash} every object of the filtered colimit $\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}$ is at least $(n+1)$-connected, by \cref{prop:conn} \ref{prop:connStableFilteredColim} it is itself $(n+1)$-connected.
+        So by \cref{cor:connEst} \ref{cor:connEstVeeIncl} we have that the horizontal map $\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}\simeq\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}$ of the above triangle is $n$-connected.
 
         As the diagonal as well as the horizontal map of the triangle above are $n$-connected, from \cref{prop:conn} \ref{prop:connRightCancel} it follows that $c_X$ is $n$-connected. 
-        As $n$ was arbitrary, $c_X$ is therefore an equivalence.
+        As $n$ was arbitrary, $c_X$ is therefore an equivalence by hypercompleteness of $\Fun(A,\spaces)$.
     \end{proof}
 \end{prop}
 \begin{corollary}[Classical James Splitting]\label{cor:classicalJamesSplitting}
@@ -783,9 +789,11 @@ With these we can deduce the following statements:
     corresponding to the inclusion $\Nat_{\geq1}\subset\Z$ on components (see \cite[Warning 2.13]{splittings_21}).
     This map is not an equivalence:
 
-    By \cite[Proposition 1A.2]{hatcher2002algebraic} we have that $\pi_1\left(\bigvee\limits_{i=1}^{\infty} S^1\right)$ and $\pi_1\left(\bigvee\limits_{\Z} S^1\right)$ are both free groups with generators the canonical loops corresponding to their components.
-    Since the loops of generators corresponding to non-positive components of $\pi_1\left(\bigvee\limits_{\Z} S^1\right)$ are not in the image of the induced map $\pi_1(c_{S^0})\colon\pi_1\left(\bigvee\limits_{i=1}^{\infty} S^1\right)\to\pi_1\left(\bigvee\limits_{\Z} S^1\right)$, this means the map $\pi_1(c_{S^0})$ is not surjective.
+    The groups $\pi_1\left(\bigvee\limits_{i=1}^{\infty} S^1\right)$ and $\pi_1\left(\bigvee\limits_{\Z} S^1\right)$ are both free groups with generators the canonical loops corresponding to their components (see e.g. \cite[Proposition 1A.2]{hatcher2002algebraic}).
+    Since the loops of generators corresponding to non-positive components of $\bigvee\limits_{\Z} S^1$ are not in the image of the induced map $\pi_1(c_{S^0})\colon\pi_1\left(\bigvee\limits_{i=1}^{\infty} S^1\right)\to\pi_1\left(\bigvee\limits_{\Z} S^1\right)$, the map $\pi_1(c_{S^0})$ is not surjective.
 \end{remark}
+We will now show that \cref{prop:jamesSplittingPresheaf} implies the James Splitting Theorem for general \inftytops/.
+The next theorem is the main tool we use to achieve this and is part of a different equivalent characterization of \inftytops/ given by \cite[Theorem 6.1.0.6]{HTT}.
 \begin{thm}\label{thm:charTopoiByAdj}
     Let $C$ be an \inftytop/.
     Then there exists a small \inftycat/ $A$ and an adjunction
@@ -813,16 +821,16 @@ With these we can deduce the following statements:
         Again using \cref{thm:charTopoiByAdj} we can pick a map $*\to Y$ in $\Fun(A,\spaces)$ that is $(-1)$-connected such that $L(Y)$ is equivalent to $X$ as pointed spaces.
         The space $Y$ is $0$-connected (again by \cref{prop:conn} \ref{prop:connSection}), thus the map $c_Y$ in $\Fun(A,\spaces)$ is an equivalence by \cref{prop:jamesSplittingPresheaf}.
         
-        Note that since $L$ preserves colimits and finite limits, it preserve all colimits/limits appearing in $c_Y$, thus $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
+        Note that since $L$ preserves colimits and finite limits, it preserve all colimits/limits appearing in $c_Y$, hence $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
         But since $L(Y)\simeq X$, this means that $c_{L(Y)}\simeq c_X$ in $C_*$ which proves that $c_X$ is an equivalence in $C_*$.
     \end{proof}
 \end{corollary}
-Lastly, we give an application of the James Splitting Theorem.
+Lastly, we give an application of the James Splitting Theorem in $\spaces$.
 \begin{lemma}\label{lem:reducedHomLoopOfSpheres}
     Let $H_*$ be a reduced homology theory and let $S^n$ with $n\geq1$ be a model of the pointed $n$-sphere.
     Then
     \begin{equation*}
-        H_k(\Omega S^{n+1})\cong\bigoplus\limits_{i=1}^{\infty}H_k(S^{ni})\;.
+        \bigoplus\limits_{i=1}^{\infty}H_k(S^{ni})\cong H_k(\Omega S^{n+1})\;.
     \end{equation*}
     \begin{proof}
         Note that for $n\geq1$ the sphere is $0$-connected.
@@ -843,8 +851,8 @@ Lastly, we give an application of the James Splitting Theorem.
         H_k(\Omega S^{n+1})\cong
         \begin{cases}
             \mathbb{Z} & k=ni ~for~ i\in\Nat\\
-            0 & otherwise
-        \end{cases}\;.
+            0 & otherwise.
+        \end{cases}
     \end{equation*}
     \begin{proof}
         This follows from \cref{lem:reducedHomLoopOfSpheres} and the reduced ordinary homology of the spheres.

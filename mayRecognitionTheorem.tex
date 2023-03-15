@@ -32,7 +32,7 @@ A generalization characterizing higher loop spaces was proven in \cite{may2006ge
 \end{definition}
 \begin{definition}[Group Object]\label{def:grpObj}
     Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a groupoid object.
-    If $U_0\cong *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
+    If $U_0\simeq *$ where $*$ is a terminal object of $C$, then we call $U$ a \emph{group object of $C$}.
     We let $\Grp(C)$ denote the full subcategory of $\Fun(\N(\Delta)^{\op},C)$ consisting of group objects.
 \end{definition}
 The \Cech/ nerve construction is a way to associate a groupoid object to a given map (see \cref{prop:grpdEffectiveIfPullback}).
@@ -160,7 +160,7 @@ The proof follows \cite[29-30]{toposes_and_htpy_toposes}.
             \end{tikzcd}
         \end{center}
         is a pullback diagram.
-        By \cref{prop:shiftIsColimDiam} we have that $\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}\cong\overline{U}_{-1} = U_0$, $\overline{U}_0=U_1$ and thus that $\overline{U}_{0}\to\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}$ corresponds to $U(d_0^1)$ which proves the proposition.
+        By \cref{prop:shiftIsColimDiam} we have that $\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}\simeq\overline{U}_{-1} = U_0$, $\overline{U}_0=U_1$ and thus that $\overline{U}_{0}\to\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}$ corresponds to $U(d_0^1)$ which proves the proposition.
     \end{proof}
 \end{prop}
 \begin{definition}[Effective Epimorphism]
@@ -210,7 +210,7 @@ We can restrict it appropriately to obtain the version for pointed objects.
     We call $\Conn(C_*)$ the \emph{\inftycat/ of pointed connected objects}.
 \end{definition}
 \begin{remark}
-    We will later introduce notions of higher connectedness. 
+    We will later (see \cref{def:connected}) introduce notions of higher connectedness. 
     It will follow from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}, which is why we call these objects connected.
 \end{remark}
 \begin{corollary}[Delooping of Pointed Objects]\label{prop:mayRecognitionTheoremGroup}
@@ -295,7 +295,7 @@ We can restrict it appropriately to obtain the version for pointed objects.
 \subsection*{Delooping of Pointed Objects in $\spaces$}
 We now want to check that the notion of pointed connected objects of general \inftytops/ coincides with pointed connected spaces in the \inftytop/ $\spaces$.
 Thus we recover the statement of the May Recognition Theorem for $n=1$, which says that a pointed space is equivalent to a loop space of a pointed connected object if and only if it admits the structure of a group object in $\Top$. 
-\begin{definition}
+\begin{definition}\label{def:truncatedMap}
     Let $C$ be an \inftytop/.
     With the convention that the $(-2)$-truncated maps are the equivalences, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-truncated} for $k\geq -1$ if the diagonal map $X\to X\times_YX$ is $(k-1)$-truncated.
     
