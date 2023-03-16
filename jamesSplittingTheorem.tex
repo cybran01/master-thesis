@@ -793,7 +793,7 @@ With these we can deduce the following statements:
     Since the loops of generators corresponding to non-positive components of $\bigvee\limits_{\Z} S^1$ are not in the image of the induced map $\pi_1(c_{S^0})\colon\pi_1\left(\bigvee\limits_{i=1}^{\infty} S^1\right)\to\pi_1\left(\bigvee\limits_{\Z} S^1\right)$, the map $\pi_1(c_{S^0})$ is not surjective.
 \end{remark}
 We will now show that \cref{prop:jamesSplittingPresheaf} implies the James Splitting Theorem for general \inftytops/.
-The next theorem is the main tool we use to achieve this and is part of a different equivalent characterization of \inftytops/ given by \cite[Theorem 6.1.0.6]{HTT}.
+The next theorem is the main tool we use to achieve this and is part of an equivalent characterization of \inftytops/ (see \cite[Theorem 6.1.0.6]{HTT}).
 \begin{thm}\label{thm:charTopoiByAdj}
     Let $C$ be an \inftytop/.
     Then there exists a small \inftycat/ $A$ and an adjunction
@@ -801,12 +801,26 @@ The next theorem is the main tool we use to achieve this and is part of a differ
         L\colon\Fun(A,\spaces)\rightleftarrows C\mkern+3mu:\mkern-3mu i
     \end{equation*}
     such that the left adjoint $L$ preserves finite limits and the right adjoint $i$ is fully faithful.
-
-    Furthermore, given $-2\leq m\leq\infty$ and an $m$-connected morphism $f\colon x\to y$ in $C$, there exists an $m$-connected morphism $g\colon i(x)\to y'$ in $\Fun(A,\spaces)$ such that $L(g)$ is equivalent to $f$ in $\Fun(\Delta^1,C)$.
+    %
+    % Furthermore, given $-2\leq m<\infty$ and an $m$-connected morphism $f\colon x\to y$ in $C$, there exists an $m$-connected morphism $g\colon i(x)\to y'$ in $\Fun(A,\spaces)$ such that $L(g)$ is equivalent to $f$ in $\Fun(\Delta^1,C)$.
     \begin{reference}
-        \cite[Theorem 6.1.0.6 (1) and (2)]{HTT} for the adjunction and \cite[Remark 6.5.1.15]{HTT} for connectedness statement.
+        \cite[Theorem 6.1.0.6 (1) and (2)]{HTT} %for the adjunction and \cite[Remark 6.5.1.15]{HTT} for connectedness statement.
     \end{reference}
 \end{thm}
+Furthermore we need to be able to transfer statements about connectedness of maps between the \inftytops/ $\Fun(A,\spaces)$ and $C$ of the previous theorem.
+To do this we need the next proposition.
+\begin{prop}\label{prop:factorConnTrunc}
+    Let $C$ be an \inftytop/ and $-2\leq m<\infty$.
+    Then we can factor every map $f\colon x\to y$ in $C$ into an $m$-connected map $i\colon x\to y'$ and an $m$-truncated map $p\colon y'\to y$.
+    
+    Additionally, a map that is $m$-connected as well as $m$-truncated is an equivalence.
+    \begin{reference}
+        By \cite[\S 6.5.1 and Example 5.2.8.16]{HTT} the $m$-connected and $m$-truncated maps form a factorization system (see \cite[Definition 5.2.8.8]{HTT}).
+        In particular, an $m$-connected and $m$-truncated map is an equivalence by the lifting properties of a factorization system.
+
+        A construction of this factorization system for model topoi can be found in \cite[Proposition 8.5]{toposes_and_htpy_toposes}.
+    \end{reference}
+\end{prop}
 \begin{corollary}[James Splitting for \inftyTops/]\label{lem:genTopoiComparisonMapEq}
     Let $C$ be an \inftytop/ and $X$ be a pointed and $0$-connected object in $C$.
     Then the canonical map 
@@ -815,13 +829,17 @@ The next theorem is the main tool we use to achieve this and is part of a differ
     \end{equation*}
     from \cref{def:jamesSplittingMap} is an equivalence of pointed objects.
     \begin{proof}
-        Let $L$ and $i$ be the induced adjoint functors from \cref{thm:charTopoiByAdj} and let $X$ be a pointed $0$-connected object in $C$ (in particular, by \cref{prop:conn} \ref{prop:connSection} $*\to C$ is $(-1)$-connected).
+        Let $L$ and $i$ be the induced adjoint functors from \cref{thm:charTopoiByAdj} and let $X$ be a pointed $0$-connected object in $C$.
+        Thus by \cref{prop:conn} \ref{prop:connSection} the map $x\colon*\to X$ is $(-1)$-connected.
         As both functors $L$ and $i$ preserve finite limits and thus preserve terminal objects, they descend to the categories of pointed objects.
-        
-        Again using \cref{thm:charTopoiByAdj} we can pick a map $*\to Y$ in $\Fun(A,\spaces)$ that is $(-1)$-connected such that $L(Y)$ is equivalent to $X$ as pointed spaces.
-        The space $Y$ is $0$-connected (again by \cref{prop:conn} \ref{prop:connSection}), thus the map $c_Y$ in $\Fun(A,\spaces)$ is an equivalence by \cref{prop:jamesSplittingPresheaf}.
-        
-        Note that since $L$ preserves colimits and finite limits, it preserve all colimits/limits appearing in $c_Y$, hence $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
+
+        We factor the map $i(x)\colon*\simeq i(*)\to i(X)$ in $\Fun(A,\spaces)$ into a $(-1)$-connected map $y\colon*\to Y$ followed by a $(-1)$-truncated map $g\colon Y\to i(X)$ via \cref{prop:factorConnTrunc}.
+        As $i$ is fully faithful the counit of the adjunction is an equivalence, hence $L(g)\circ L(y)\simeq L(i(x))\simeq x$ in $\Fun(\Delta^1,C)$.
+        Note that since $L$ preserves colimits and finite limits, it preserves connected- and truncatedness of maps.
+        Thus the map $L(y)$ is $(-1)$-connected (in particular, $L(Y)$ is a $0$-connected object), and by \cref{prop:conn} \ref{prop:connRightCancel} the map $L(g)$ is thus $(-1)$-connected as well as $(-1)$-truncated, hence an equivalence.
+        This shows that $X$ and $L(Y)$ are equivalent as pointed objects.
+
+        Since $L$ preserves colimits and finite limits, it preserves all colimits/limits appearing in $c_Y$, hence $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
         But since $L(Y)\simeq X$, this means that $c_{L(Y)}\simeq c_X$ in $C_*$ which proves that $c_X$ is an equivalence in $C_*$.
     \end{proof}
 \end{corollary}
