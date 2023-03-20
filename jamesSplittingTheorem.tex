@@ -674,7 +674,7 @@ Also note that in view of \cref{prop:conn} \ref{prop:connSection}, the previousl
 \end{remark}
 Our goal now is to prove that the comparison map is $\infty$-connected whenever $X$ is a $0$-connected pointed object.
 By the previous remark, this will imply the James Splitting Theorem in the \inftytops/ $\Fun(A,\spaces)$ for small \inftycats/ $A$.
-However this case is already enough to derive the James Splitting Theorem for general topoi (see \cref{lem:genTopoiComparisonMapEq}).
+However this case is sufficient to derive the James Splitting Theorem for general \inftytops/ (see \cref{lem:genTopoiComparisonMapEq}).
 
 The main idea is to show that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ becomes increasingly connected and vanishes as $n\to\infty$.
 For this proof we need some stability properties of connectedness.
@@ -807,20 +807,55 @@ The next theorem is the main tool we use to achieve this and is part of an equiv
         \cite[Theorem 6.1.0.6 (1) and (2)]{HTT} %for the adjunction and \cite[Remark 6.5.1.15]{HTT} for connectedness statement.
     \end{reference}
 \end{thm}
-Furthermore we need to be able to transfer statements about connectedness of maps between the \inftytops/ $\Fun(A,\spaces)$ and $C$ of the previous theorem.
-To do this we need the next proposition.
-\begin{prop}\label{prop:factorConnTrunc} %TODO maybe explicitly describe factorization system via epi/mono factorization as in leeds lectures
-    Let $C$ be an \inftytop/ and $-2\leq m<\infty$.
-    Then we can factor every map $f\colon x\to y$ in $C$ into an $m$-connected map $i\colon x\to y'$ and an $m$-truncated map $p\colon y'\to y$.
-    
-    Additionally, a map that is $m$-connected as well as $m$-truncated is an equivalence.
-    \begin{reference}
-        By \cite[\S 6.5.1 and Example 5.2.8.16]{HTT} the $m$-connected and $m$-truncated maps form a factorization system (see \cite[Definition 5.2.8.8]{HTT}).
-        In particular, an $m$-connected and $m$-truncated map is an equivalence by the lifting properties of a factorization system.
+Furthermore we need to be able to transfer statements about pointed connected objects between the \inftytops/ $\Fun(A,\spaces)$ and $C$ of the previous theorem.
+We will do this using the next proposition.
+\begin{prop}[Epi/Mono Factorization]\label{prop:factorConnTrunc}
+    Let $C$ be an \inftytop/.
+    Then we can factor every map $f\colon X\to Y$ in $C$ into a $(-1)$-connected map followed by a $(-1)$-truncated map.
 
-        A construction of this factorization system for model topoi can be found in \cite[Proposition 8.5]{toposes_and_htpy_toposes}.
-    \end{reference}
+    Furthermore, a map that is both $(-1)$-connected and $(-1)$-truncated is an equivalence.
+    \begin{proof} 
+        The proof follows \cite[21]{leeds_lectures}.
+
+        Let $U=\CN(f)|_{\N(\Delta)^{\op}}$ be the restriction of the \Cech/ nerve of $f$, let $E=\colim\limits_{\N(\Delta)^{\op}}U$ and let $U^+\colon\N(\Delta_+)^{\op}\to C$ denote the corresponding colimit diagram.
+        Then we obtain a canonical factorization $X\to E\to Y$ of $f$ where $X\to E$ is an effective epimorphism by \cref{prop:grpdEffectiveIfPullback} and \cref{prop:mayRecognitionTheoremGroupoid}.
+        We claim that $E\to Y$ is $(-1)$-truncated:
+
+        We need to show that the diagonal map $E\to E\times_YE$ is an equivalence, but for this it suffices to show that one of the projections $E\times_YE\to E$ is an equivalence.
+        By universality we thus only need to show that the projection $E\times_YU_n\to U_n$ is an equivalence for all $n\geq 0$.
+        By induction and using \cref{rmk:cechNerveExplicit} we see that we only need to prove the case $n=0$, hence that the projection $E\times_Y A\to A$ is an equivalence.
+
+        Setting $V=U^+\times_Y A\colon\N(\Delta_+)^{\op}\to C$ (which is again a colimit diagram by universality), we note that $V|_{\N(\Delta)^{\op}}\simeq (U\circ\N(F)^{\op})|_{\N(\Delta)^{\op}}$ using the map $F\colon\Delta_+\to\Delta$ from \cref{prop:shiftIsColimDiam}.
+        Then \cref{prop:shiftIsColimDiam} implies that $E\times_Y A\simeq V_{-1}\simeq\colim\limits_{\N(\Delta)^{\op}}V|_{\N(\Delta)^{\op}}\simeq(U\circ\N(F)^{\op})_{-1}= U_0\simeq A$.
+        Since this map $E\times_YA\to A$ is the canonical projection the claim follows.
+        
+        Lastly we prove that a map $f\colon X\to Y$ that is both $(-1)$-connected and $(-1)$-truncated is an equivalence. 
+        The proof follows \cite[Lemma 6.2.3.16]{HTT}.
+
+        Since $f$ is $(-1)$-truncated, the projections in the pullback diagram
+        \begin{center}
+            \begin{tikzcd}[sep = 4em]
+                X\times_YX \ar[r, "\pi_1", "\simeq"'] \ar[d, "\pi_2"', "\simeq"] & X \ar[d, "f"] \\
+                X \ar[r, "f"] & Y
+            \end{tikzcd}
+        \end{center}
+        are equivalences. 
+        This pullback diagram induces a natural transformation $\alpha\colon\CN(\pi_1)\to\CN(f)$ which can be shown to be cartesian using \cref{rmk:cechNerveExplicit} and the pasting law.
+        For all $n\geq 1$ the map $\alpha_n$ is a pullback of $\pi_2\simeq\alpha_0$, thus $\alpha|_{\N(\Delta)^{\op}}$ is an equivalence.
+        As $f$ is an effective epimorphism and $\alpha$ is cartesian, $\CN(\pi_1)$ is also a colimit diagram by universality and thus $\alpha_{-1}$ is an equivalence.
+        Since $\alpha_{-1}\simeq f$ the claim follows.
+    \end{proof}
 \end{prop}
+\begin{remark}
+    The statement of \cref{prop:factorConnTrunc} generalizes to all $-2\leq m<\infty$:
+
+    By \cite[\S 6.5.1 and Example 5.2.8.16]{HTT} the $m$-connected and $m$-truncated maps form a factorization system (see \cite[Definition 5.2.8.8]{HTT}).
+    In particular, an $m$-connected and $m$-truncated map is an equivalence by the lifting properties of a factorization system.
+    A construction of this factorization system for model topoi can be found in \cite[Proposition 8.5]{toposes_and_htpy_toposes}.
+
+    The name Epi/Mono factorization derives from the fact that $(-1)$-truncated morphisms are also refered to as \emph{monomorphisms} and $(-1)$-connected maps are precisely the effective epimorphisms.
+    It is analogous to the factorization of maps into epimorphisms and monomorphisms in $\Set$ over the image.
+\end{remark}
 \begin{corollary}[James Splitting for \inftyTops/]\label{lem:genTopoiComparisonMapEq}
     Let $C$ be an \inftytop/ and $X$ be a pointed and $0$-connected object in $C$.
     Then the canonical map 
@@ -834,9 +869,9 @@ To do this we need the next proposition.
         As both functors $L$ and $i$ preserve finite limits and thus preserve terminal objects, they descend to the categories of pointed objects.
 
         We factor the map $i(x)\colon*\simeq i(*)\to i(X)$ in $\Fun(A,\spaces)$ into a $(-1)$-connected map $y\colon*\to Y$ followed by a $(-1)$-truncated map $g\colon Y\to i(X)$ via \cref{prop:factorConnTrunc}.
-        As $i$ is fully faithful the counit of the adjunction is an equivalence, hence $L(g)\circ L(y)\simeq L(i(x))\simeq x$ in $\Fun(\Delta^1,C)$.
+        As $i$ is fully faithful, the counit of the adjunction is an equivalence, hence $L(g)\circ L(y)\simeq L(i(x))\simeq x$ in $\Fun(\Delta^1,C)$.
         Note that since $L$ preserves colimits and finite limits, it preserves connected- and truncatedness of maps.
-        Thus the map $L(y)$ is $(-1)$-connected (in particular, $L(Y)$ is a $0$-connected object), and by \cref{prop:conn} \ref{prop:connRightCancel} the map $L(g)$ is thus $(-1)$-connected as well as $(-1)$-truncated, hence an equivalence.
+        Thus the map $L(y)$ is $(-1)$-connected (in particular, $L(Y)$ is a $0$-connected object), and by \cref{prop:conn} \ref{prop:connRightCancel} the map $L(g)$ is thus $(-1)$-connected as well as $(-1)$-truncated, hence an equivalence by \cref{prop:factorConnTrunc}.
         This shows that $X$ and $L(Y)$ are equivalent as pointed objects.
 
         Since $L$ preserves colimits and finite limits, it preserves all colimits/limits appearing in $c_Y$, hence $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
