@@ -48,12 +48,12 @@ Next we introduce cartesian transformations which allow us to encode universalit
 \begin{remark}
     We want to describe universality and descent explicitly for pushouts ($\Lambda^2_0$-shaped diagrams), because these will be important cases as \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} will show.
     A natural transformation $\alpha\colon\left(\Lambda_0^2\right)^{\rhd}\times\Delta^1\cong\Delta^1\times\Delta^1\times\Delta^1\to C$ is a cube
-    \begin{center} %TODO why restrict? these are objects, just evaluate them
+    \begin{center}
         \begin{tikzcd} [sep = .5 cm]
-            \alpha|_{\set{0,0,0}} \arrow [dr] \arrow [rr] \arrow [dd] & & \alpha|_{\set{0,1,0}} \arrow [dr] \arrow [dd] \\
-            & \alpha|_{\set{1,0,0}} \arrow [rr, crossing over] \arrow [dd] & & \alpha|_{\set{1,1,0}} \arrow [dd] & \\
-            \alpha|_{\set{0,0,1}} \arrow [dr] \arrow [rr] & & \alpha|_{\set{0,1,1}} \arrow [dr] \\
-            & \alpha|_{\set{1,0,1}} \arrow [from=uu, crossing over] \arrow [rr] & & \alpha|_{\set{1,1,1}}
+            \alpha(0,0,0) \arrow [dr] \arrow [rr] \arrow [dd] & & \alpha(0,1,0) \arrow [dr] \arrow [dd] \\
+            & \alpha(1,0,0) \arrow [rr, crossing over] \arrow [dd] & & \alpha(1,1,0) \arrow [dd] & \\
+            \alpha(0,0,1) \arrow [dr] \arrow [rr] & & \alpha(0,1,1) \arrow [dr] \\
+            & \alpha(1,0,1) \arrow [from=uu, crossing over] \arrow [rr] & & \alpha(1,1,1)
         \end{tikzcd}\;.
     \end{center}
     Universality for pushouts means that whenever the vertical faces are pullbacks and the bottom face is a pushout, then the top face is a pushout.

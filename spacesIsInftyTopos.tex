@@ -374,7 +374,7 @@ As a first step we will fix some notation related to pairs and triples of spaces
     Note that this is also true for homotopies of pairs and triples.
 \end{remark}
 We next fix a model for the homotopy groups/sets of pairs.
-For us the model as maps of triples from $(I^n,\partial I^n,J^{n-1})$ is most convenient.
+For us the model as maps of triples from $(I^n,\partial I^n,J^{n-1})$ is the most convenient.
 \begin{definition}[Homotopy Groups/Sets of Pairs]
     For a pair of spaces $(X,A)$, $a\in A$ and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
 \end{definition}
@@ -390,7 +390,7 @@ There is a canonical group structure on these sets for $n\geq 2$ (that is even a
 \end{definition}
 \begin{remark}\label{rmk:emptyFiber}
     For a map $f\colon(X,A)\to (Y,B)$ the inclusion $\im\left(\pi_0(A)\to\pi_0(X)\right)\subset\pi_0(f)^{-1}\im\left(\pi_0(B)\to\pi_0(Y)\right)$ always holds.
-    Having an equality means that for all $x\in X$ such that there is a path from $f(x)$ to some element in $B$, there also exists a path from $x$ to some element of $A$.
+    Having equality means that for all $x\in X$ such that there is a path from $f(x)$ to some element in $B$, there also exists a path from $x$ to some element of $A$.
     This is equivalent to saying that if the homotopy fiber of $A\hookrightarrow X$ at $x\in X$ is empty, then so is the homotopy fiber of $B\hookrightarrow Y$ at $f(x)$.
     This is because the homotopy fiber of a map at a point is empty if and only if the point is in a path-connected component that does not intersect the image of the map.
 \end{remark}
@@ -558,26 +558,26 @@ The next proposition is the most important part of the proof of \cref{prop:desce
         \ref{itm:liftingMapsAndHtpyConst} implies \ref{itm:injAndSurjOfHtpyGrps}:
 
         We first prove the injectivity statement for $n=0$. 
-        By \cref{rmk:emptyFiber} we need to show that when given $x\in X$ and path $f(x)$ to some element of $B$, there exists a path from $x$ to some element of $A$.
+        By \cref{rmk:emptyFiber} we need to show that when given an $x\in X$ and a path $f(x)$ to some element of $B$, there exists a path from $x$ to some element of $A$.
 
         So let $g=x$ and $e$ be a path from $f(x)$ to $b\in B$.
         Then by \ref{itm:liftingMapsAndHtpyConst} there is a map $G\colon (I,\set{1})\to(X,A)$ such that $G(0)=x=g$.
         This is the desired path.
 
-        We next prove that for $n\geq 1$, \ref{itm:liftingMapsAndHtpyConst} implies injectivity of $\pi_n(X,A,a)\to \pi_n(Y,B,f(b))$.
-        Given $[\lambda],[\mu]\in\pi_n(X,A,a)$ such that $\pi_n(f)([\lambda])=\pi_n(f)([\mu])$, we have a homotopy $\widetilde{h}\colon(I^n,\partial I^n,J^{n-1})\times I\to (Y,B,b)$ from $f\lambda$ to $f\mu$.
+        We next prove that for $n\geq 1$, \ref{itm:liftingMapsAndHtpyConst} implies injectivity of $\pi_n(X,A,a)\to \pi_n(Y,B,f(a))$.
+        Given $[\lambda],[\mu]\in\pi_n(X,A,a)$ such that $\pi_n(f)([\lambda])=\pi_n(f)([\mu])$, we have a homotopy $\widetilde{h}\colon(I^n,\partial I^n,J^{n-1})\times I\to (Y,B,f(a))$ from $f\lambda$ to $f\mu$.
         Set $e=\widetilde{h}$ and using $J^n=J^{n-1}\times I\cup I^n\times\partial I$ define $g$ to be $\lambda$ on $I^n\times\set{0}$, $\mu$ on $I^n\times\set{1}$ and $\const_a$ on $J^{n-1}\times I$.
         Then $e|_{J^n}=fg$ and so by \ref{itm:liftingMapsAndHtpyConst} we get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ with $G|_{J^n}=g$. 
         Thus $G$ is a homotopy $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ from $\lambda$ to $\mu$, hence $[\lambda]=[\mu]$ in $\pi_n(X,A,a)$.
 
-        Lastly we show that for $n\geq 0$, \ref{itm:liftingMapsAndHtpyConst} implies surjectivity of $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(b))$.
-        Let $[\lambda]\in\pi_n(Y,B,f(a))$ and set $e=\lambda$ and $g=\const_a$. 
+        Lastly we show that for $n\geq 0$, \ref{itm:liftingMapsAndHtpyConst} implies surjectivity of $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(a))$.
+        Let $[\lambda]\in\pi_{n+1}(Y,B,f(a))$ and set $e=\lambda$ and $g=\const_a$. 
         Then we get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ and homotopy $H\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ from $e$ to $fG$ such that $H|_{J^n\times I}$ is $\const_{f(a)}$ and $G|_{J^n}=\const_a$.
         Thus $G$ is a map $(I^{n+1},\partial I^{n+1},J^n)\to (X,A,a)$ and $H$ is a homotopy $(I^{n+1},\partial I^{n+1},J^n)\times I\to(Y,B,f(a))$ from $\lambda$ to $fG$ which shows $[\lambda]=[fG]$ in $\pi_{n+1}(Y,B,f(a))$.
 
         \ref{itm:injAndSurjOfHtpyGrps} implies \ref{itm:liftingMapsAndHtpyConst}:
 
-        For $n=0$ we view $e$ as a path from $f(g)$ to some element of $b\in B$, so by \cref{rmk:emptyFiber} we can choose a path $G'\colon I\to X$ which goes from $g$ to some element $a\in A$.
+        For $n=0$ the map $e$ is a path from $f(g)$ to some element of $b\in B$, so by \cref{rmk:emptyFiber} we can choose a path $G'\colon I\to X$ which goes from $g$ to some element $a\in A$.
         Since $\pi_1(f)\colon\pi_1(X,A,a)\to\pi_1(Y,B,f(a))$ is surjective we can pick a map $\lambda\colon(I^1,\partial I^1,J^0)\to(X,A,a)$ and a homotopy $L\colon(I^1,\partial I^1,J^0)\times I\to(Y,B,f(a))$ from $\overline{fG'}*e$ to $f\lambda$.
         
         Concatenating the constant homotopy at $fG'$, we obtain a homotopy $M\colon(I^1,\partial I^1,J^0)\times I\to (Y,B,f(g))$ from $fG'*(\overline{fG'}*e)$ to $fG'*f\lambda=f(G'*\lambda)$.
@@ -585,11 +585,11 @@ The next proposition is the most important part of the proof of \cref{prop:desce
         Setting $G=G'*\lambda$ and $H=\overline{N}*M$ then gives the desired maps.
 
         For $n\geq 1$, we fix a homotopy equivalence of triples $(I^n,\partial I^n, J^{n-1})\simeq (J^n,\set{1}\times\partial I^n,*)$ where $*=(1,0,\ldots,0)$.
-        Given maps $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$ and $g(J^n,\set{1}\times\partial I^n)\to(X,A)$ with $e|_{J^n}=fg$, setting $a=g(*)$ we can view $g$ as an element of $\pi_n(X,A,a)$ via the aforementioned homotopy equivalence of triples.
+        Given maps $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$ and $g\colon(J^n,\set{1}\times\partial I^n)\to(X,A)$ with $e|_{J^n}=fg$, setting $a=g(*)$ we can view $g$ as an element of $\pi_n(X,A,a)$ via the aforementioned homotopy equivalence of triples.
         Then $fg$ is homotopic to the constant map in $\pi_n(Y,B,f(a))$ by \cref{lem:compressionVariation}.
 
         By the injectivity statement in \ref{itm:injAndSurjOfHtpyGrps}, we thus get a homotopy $j\colon(J^n,\set{1}\times\partial I^n,*)\times I\to(X,A,a)$ from $g$ to $\const_a$.
-        Next we apply relative homotopy extension to the triad $(I^{n+1};J^n,\set{1}\times I^n)$ to extend the homotopy $fj$ to a homotopy $K\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $K_0=e$.
+        We apply relative homotopy extension to the triad $(I^{n+1};J^n,\set{1}\times I^n)$, extending the homotopy $fj$ to a homotopy $K\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $K_0=e$.
         Since $K_1|_{J^n}=\const_{f(a)}$, it is a map $K_1\colon(I^{n+1},\partial I^{n+1},J^n)\to(Y,B,f(a))$ and represents an element in $\pi_{n+1}(Y,B,f(a))$.
         
         By surjectivity of $\pi_{n+1}(f)$ we then get a map $J_1\colon(I^{n+1},\partial I^{n+1},J^n)\to(X,A,a)$ and a homotopy of triples $L\colon(I^{n+1},\partial I^{n+1},J^n)\times I\to(Y,B,f(a))$ from $K_1$ to $fJ_1$.
@@ -604,13 +604,13 @@ The next proposition is the most important part of the proof of \cref{prop:desce
         
         \ref{itm:liftingMapsAndHtpyConst} implies \ref{itm:liftingMapsAndHtpy}:
 
-        Let $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$, $g(J^n,\set{1}\times\partial I^n)\to(X,A)$ and $h\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ be a homotopy from $e|_{J^n}$ to $fg$.
+        Let $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$, $g\colon(J^n,\set{1}\times\partial I^n)\to(X,A)$ and $h\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ be a homotopy from $e|_{J^n}$ to $fg$.
         By relative homotopy extension applied to the triad $(I^{n+1};J^n,\set{1}\times I^n)$, there exists a homotopy $j\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ extending $h$ such that $j_0=e$.
         
         Since $j_1|_{J^n}=fg$ we can apply \ref{itm:liftingMapsAndHtpyConst} to get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ such that $G|_{J^n}=g$ and a homotopy $k\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ such that $k|_{J^n\times I}$ is the constant homotopy of $j_1|_{J^n}=fg$. 
         Then by \cref{rmk:choiceOfConstantHtpy} we can pick a homotopy $L\colon(J^n\times I,\set{1}\times\partial I^n\times I)\times I\to (Y,B)$ from $h*\const_{fg}$ to $h$ such that $L|_{J^n\times\set{0}\times I}=\const_{e|_{J^n}}$ and $L|_{J^n\times\set{1}\times I}=\const_{fg}$.
         
-        We now apply relative homotopy extension to the triad $(I^{n+1}\times I;J^{n+1},\set{1}\times I^n\times I)$, noting that $J^{n+1}=J^n\times I\cup I^{n+1}\times\partial I$, to extend the homotopy given by the union of $L$ on $J^n\times I\times I$, $e$ on $I^{n+1}\times\set{0}\times I$ and $fG$ on $I^{n+1}\times\set{1}\times I$ to a homotopy $\widetilde{L}\colon(I^{n+1}\times I,\set{1}\times I^n\times I)\times I\to(Y,B)$ such that $\widetilde{L}_0=j*k$.
+        We now apply relative homotopy extension to the triad $(I^{n+1}\times I;J^{n+1},\set{1}\times I^n\times I)$, noting that $J^{n+1}=J^n\times I\cup I^{n+1}\times\partial I$, to extend the homotopy given by the union of $L$ on $J^n\times I\times I$, $\const_e$ on $I^{n+1}\times\set{0}\times I$ and $\const_{fG}$ on $I^{n+1}\times\set{1}\times I$ to a homotopy $\widetilde{L}\colon(I^{n+1}\times I,\set{1}\times I^n\times I)\times I\to(Y,B)$ such that $\widetilde{L}_0=j*k$.
         Setting $H=\widetilde{L}_1$ gives the desired homotopy.
 
 
@@ -651,7 +651,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
 \begin{remark}\label{rmk:doubleMappingCylinderAlt}
     Of course one could also define the double mapping cylinder for intervalls other then $I=[0,2]$, but we will not need this.
 
-    Similarly to the mapping cylinder, the double mapping cylinder of maps $f\colon A\to B$ and $b\colon A\to C$ is a model of the pushout
+    Similarly to the mapping cylinder, the double mapping cylinder of maps $f\colon A\to B$ and $g\colon A\to C$ is a model of the pushout
     \begin{center}
         \begin{tikzcd}
             A\times\set{0,2} \ar[r,"f\amalg g"] \ar[d, hook] & B\amalg C \ar[d, hook]\\
@@ -704,11 +704,12 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         \end{align*}
     \end{itemize}
     is a pushout.
-    This follows from point-set topology because $\M^{[0,2)}(f),\M^{[0,2)}(g)\subset\D(f,g)$ form an open cover and $\M^{[0,2)}(f)\cap\M^{[0,2)}(g)=A\times(0,2)\subset\D(f,g)$.
+    This similarly follows from point-set topology because $\M^{[0,2)}(f),\M^{[0,2)}(g)\subset\D(f,g)$ form an open cover and $\M^{[0,2)}(f)\cap\M^{[0,2)}(g)=A\times(0,2)\subset\D(f,g)$.
 \end{remark}
+The following technical lemma will allow us to reduce to the case of an inclusion in \cref{prop:descentForPairs}.
 \begin{lemma}\label{lem:replaceByEmbedding}
     Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
-    Then there exists an excisive triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ and maps of triads $\widetilde{f}\colon(X;X_1,X_2)\to(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$, $j\colon(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})\to(Y;Y_1,Y_2)$ factoring $j\widetilde{f}=f$ such that
+    Then there exists an excisive triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ and maps of triads $\widetilde{f}\colon(X;X_1,X_2)\to(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$, $j\colon(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})\to(Y;Y_1,Y_2)$ factoring $f=j\widetilde{f}$ such that
     \begin{itemize}
         \item $\widetilde{f}$ is an inclusion and $j$ is a weak equivalence in $\Top$
         \item $\widetilde{f}(X_i^°)=\widetilde{f}(X)\cap \widetilde{Y_i}^°$ and $\widetilde{f}(X_i)=\widetilde{f}(X)\cap \widetilde{Y_i}$ for $i\in\set{1,2}$
@@ -718,7 +719,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
     \begin{proof}
         Let $\widetilde{Y}=\M(f)$ be the mapping cylinder of $f$.
         We set $\widetilde{Y_i}=\M(f|_{X_i})\cup f^{-1}(Y_i)\times\left(0,\frac{1}{2}\right)$ where we consider $f|_{X_i}$ to be a map $X_i\to Y_i$.
-        Then the triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ together with the choices of $\widetilde{f}\colon X\to \widetilde{Y}$ as the inclusion into the mapping cylinder and as $g\colon\widetilde{Y}\to Y$ the contraction map give a factorization of $f$.
+        Then the triad $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ together with $\widetilde{f}\colon X\to \widetilde{Y}$ as the canonical inclusion into the mapping cylinder and $g\colon\widetilde{Y}\to Y$ the contraction map give a factorization of $f$.
         This also immediately gives $\widetilde{f}(X_i)=\widetilde{f}(X)\cap \widetilde{Y_i}$.
         
         We first show that $(\widetilde{Y};\widetilde{Y_1},\widetilde{Y_2})$ is excisive:
@@ -726,13 +727,16 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         Since $X_i^°\times(0,1]$ is open and contained in $\widetilde{Y_i}$, we have $x\in \widetilde{Y_i}^°$.
         
         If $x\in Y\subset\M(f)$, then $x\in Y_i^°\subset\M(f)$ for some $i\in\set{1,2}$.
-        In this case $x$ is contained in the open set $\widetilde{f}^{-1}(Y_i^°)\times (0,\frac{1}{2})\cup Y_i^°\subset\widetilde{Y_i}$, hence $x\in \widetilde{Y_i}^°$.
+        In this case $x$ is contained in the open set $f^{-1}(Y_i^°)\times \left(0,\frac{1}{2}\right)\cup Y_i^°\subset\widetilde{Y_i}$, hence $x\in \widetilde{Y_i}^°$. 
+        This proves the claim.
 
         We now show $\widetilde{f}(X_i^°)=\widetilde{f}(X)\cap \widetilde{Y_i}^°$: 
-        Since $X_i^°\times(\frac{1}{2},1]=Y_i^°\cap X\times(\frac{1}{2},1]$, we have $\widetilde{f}(X_i^°)\supset \widetilde{f}(X)\cap \widetilde{Y_i}^°$.
-        The other inclusion follows from the definition of $\widetilde{Y_i}$.
+        First note $\left(X\times(\frac{1}{2},1]\right)\cap\widetilde{Y_i}^°\supset X_i^°\times(\frac{1}{2},1]$.
+        Given $x\in\left(X\times(\frac{1}{2},1]\right)\cap\widetilde{Y_i}^°$, there exists an open neighborhood of $x$ of the form $U\times V\subset \widetilde{Y}_i$, with $U$ open in $X_i$ and $V$ open in $(\frac{1}{2},1]$.
+        This proves $\left(X\times(\frac{1}{2},1]\right)\cap\widetilde{Y_i}^°\subset X_i^°\times(\frac{1}{2},1]$.
+        Now intersecting both sides of $\left(X\times(\frac{1}{2},1]\right)\cap\widetilde{Y_i}^°= X_i^°\times(\frac{1}{2},1]$ with $\widetilde{f}(X)=X\times\set{1}$ proves the claim.
 
-        The remaining assumptions on $j$ follow from the following observation: 
+        The remaining assertions on $j$ follow from the following observation: 
         The canonical deformation retraction of $\M(f)$ to $Y$ restricts to a deformation retraction from $\widetilde{Y_1}$ to $Y_1$, $\widetilde{Y_2}$ to $Y_2$ and $\widetilde{Y_1}\cap\widetilde{Y_2}$ to $Y_1\cap Y_2$.
         Hence, for all $i\in\set{1,2}$ the indicated maps in the commutative squares
         \begin{center} 
@@ -756,7 +760,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
         The proof will follow \cite[Theorem 1.2]{may1990weak}.
 
         We can assume $f$ to be an inclusion such that $f(X_i^°)=f(X)\cap Y_i^°$ and $f(X_i)=f(X)\cap Y_i$ for $i\in\set{1,2}$ by applying \cref{lem:replaceByEmbedding} and replacing it with $\widetilde{f}$.
-        The assumptions on the map $g$ from \cref{lem:replaceByEmbedding} together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homotopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
+        The assumptions on the map $j$ from \cref{lem:replaceByEmbedding} together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homotopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
         
         By the definition of a weak equivalence of pairs, it suffices to show that under the given assumptions the statement of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpyConst} holds for all $n\geq 0$.
     

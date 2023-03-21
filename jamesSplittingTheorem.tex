@@ -840,9 +840,18 @@ We will do this using the next proposition.
             \end{tikzcd}
         \end{center}
         are equivalences. 
-        This pullback diagram induces a natural transformation $\alpha\colon\CN(\pi_1)\to\CN(f)$ which can be shown to be cartesian using \cref{rmk:cechNerveExplicit} and the pasting law.
-        For all $n\geq 1$ the map $\alpha_n$ is a pullback of $\pi_2\simeq\alpha_0$, thus $\alpha|_{\N(\Delta)^{\op}}$ is an equivalence.
-        As $f$ is an effective epimorphism and $\alpha$ is cartesian, $\CN(\pi_1)$ is also a colimit diagram by universality and thus $\alpha_{-1}$ is an equivalence.
+        This pullback diagram induces a natural transformation $\alpha\colon\CN(\pi_1)\to\CN(f)$.
+        For all $n\geq 1$ using \cref{rmk:cechNerveExplicit} and the pasting law, we obtain the left square of the diagram
+        \begin{center}
+            \begin{tikzcd}[sep = 4em]
+                X\times_Y(X\times_Y\ldots\times_YX)\simeq\CN(\pi_1)_n \ar[r, "{(\pi_1,\pi_2)}"] \ar[d, "\alpha_n\simeq{(\pi_2,\ldots,\pi_{n+2})}"'] & X\times_YX\simeq\CN(f)_0 \ar[d, "\alpha_0\simeq\pi_2",  "\simeq"'] \ar[r, "\pi_1"] & X \ar[d, "f"]\\
+                X\times_Y\ldots\times_YX\simeq \CN(f)_n \ar[r, "\pi_1"] & X\simeq\CN(\pi_1)_0 \ar[r, "f"] & Y
+            \end{tikzcd}
+        \end{center}
+        is a pullback square, which shows that for $n\geq0$ the maps $\alpha_n$ are equivalences.
+        Thus $\alpha|_{\N(\Delta)^{\op}}$ is an invertible natural transformation.
+        As $f$ is an effective epimorphism, $\pi_1$ is as well by \cref{prop:conn} \ref{prop:connStableUnderPb}.
+        Hence both $\CN(\pi_1)$ and $\CN(\pi_1)$ are colimit diagrams and thus $\alpha_{-1}$ is an equivalence.
         Since $\alpha_{-1}\simeq f$ the claim follows.
     \end{proof}
 \end{prop}
@@ -854,7 +863,7 @@ We will do this using the next proposition.
     A construction of this factorization system for model topoi can be found in \cite[Proposition 8.5]{toposes_and_htpy_toposes}.
 
     The name Epi/Mono factorization derives from the fact that $(-1)$-truncated morphisms are also refered to as \emph{monomorphisms} and $(-1)$-connected maps are precisely the effective epimorphisms.
-    It is analogous to the factorization of maps into epimorphisms and monomorphisms in $\Set$ over the image.
+    It is analogous to the factorization of a map into epimorphism follows by a monomorphism in $\Set$ over the image.
 \end{remark}
 \begin{corollary}[James Splitting for \inftyTops/]\label{lem:genTopoiComparisonMapEq}
     Let $C$ be an \inftytop/ and $X$ be a pointed and $0$-connected object in $C$.
