@@ -624,7 +624,7 @@ Also note that in view of \cref{prop:conn} \ref{prop:connSection}, the previousl
         \item the diagonal map $X\to X\times_YX$ is $(k-1)$-connected.
     \end{itemize} 
     If $f$ is connected for all $k\in\Nat$, then we say that $f$ is \emph{$\infty$-connected}.
-    We consider an object $X$ to be \emph{$k$-connected} if the map $X\to *$ is $k$-connected.
+    We consider an object $X$ to be \emph{$k$-connected} for $0\leq k\leq\infty$ if the map $X\to *$ is $k$-connected.
 \end{definition}
 \begin{remark}
     There is ``another'' definition of connectedness in $\Top$:
@@ -633,14 +633,12 @@ Also note that in view of \cref{prop:conn} \ref{prop:connSection}, the previousl
     \begin{itemize}
         \item \emph{topologically $(-1)$-connected} if $X\neq\emptyset$
         \item \emph{topologically $n$-connected} for $n\in\Nat$ if $X\neq\emptyset$ and for all $x\in X$ and $k\leq n$, we have $\pi_k(X,x)\cong 0$
+        \item \emph{topologically $\infty$-connected} if it is a weak equivalence (hence $n$-connected for all $n\in\Nat\cup\set{-1}$)
     \end{itemize}
     with the convention that all spaces are \emph{topologically $(-2)$-connected}.
-    A map $f\colon X\to Y$ in $\Top$ is \emph{topologically $n$-connected} for $n\in\Nat\cup\set{-2,-1}$ if all its homotopy fibers are $n$-connected. 
+    A map $f\colon X\to Y$ in $\Top$ is \emph{topologically $n$-connected} for $-2\leq n\leq\infty$ if all its homotopy fibers are $n$-connected. 
     (Some authors however take this to be the definition of a topologically $(n+1)$-connected map.)
     
-    We also say that a map is \emph{topologically $\infty$-connected} is it is topologically $n$-connected for all $n\in\Nat\cup\set{-2,-1}$.
-    (Since this means that all its homotopy fibers are contractible, the topologically $\infty$-connected maps are precisely the weak equivalences.)
-
     This definition agrees with the definition of connectedness in $\spaces$:
     \begin{itemize}
         \item For $n=-2$ there is nothing to prove.
@@ -693,7 +691,7 @@ For this proof we need some stability properties of connectedness.
     \end{reference}
 \end{prop}
 \begin{thm}[Blakers-Massey Theorem]\label{prop:blakersMassey}
-    Let $C$ be an \inftytop/ and let 
+    Let $C$ be an \inftytop/, $m,n\geq-2$ such that $m+n\geq-2$ and let 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             A \arrow[r, "g"] \arrow[d, "f"] &  C \arrow[d] \\
@@ -704,18 +702,18 @@ For this proof we need some stability properties of connectedness.
     Then if $f$ is $n$-connected and $g$ is $m$-connected, the canonical map $A\to B\times_{D}C$ is $(n+m)$-connected.
     \begin{reference}
         A very general version for \inftytops/ can be found in \cite[Corollary 4.3.1]{gen_blakers_massey}, but the version used here can also be proven by a reduction to topoi of the form $\Fun(A,\spaces)$ similar to \cref{lem:genTopoiComparisonMapEq} and thus derived from the ordinary Blakers-Massey Theorem in $\Top$.
-        A proof of the latter can be found in \cite[Proposition 8.16]{toposes_and_htpy_toposes}.
+        A proof this way can be found in \cite[Proposition 8.16]{toposes_and_htpy_toposes}.
     \end{reference}
 \end{thm}
 With these we can deduce the following statements:
-\begin{corollary}\label{cor:connEst}
-    Let $C$ be an \inftytop/, $X,Y$ pointed objects in $C$ and $k,l\geq 0$. 
+\begin{corollary}\label{cor:connEst} %TODO perhaps cite Proposition 4.12 splittings
+    Let $C$ be an \inftytop/, $X,Y$ pointed objects in $C$ and $k,l\geq-1$.
     If $X$ is $k$-connected and $Y$ is $l$-connected, then
     \begin{enumerate}[label={(\roman*)}]
         \item the suspension $\Sigma X$ is $(k+1)$-connected. \label{cor:connEstSuspension}
         \item the canonical map $X\to X\vee Y$ is $(l-1)$-connected. \label{cor:connEstVeeIncl}
         \item the smash product $X\wedge Y$ is $(k + l + 1)$-connected. \label{cor:connEstSmash}
-        \item for every $n\geq 0$, the smash product $X^{\wedge n}$ is $(n(k+1)-1)$-connected. \label{cor:connEstIteratedSmash}
+        \item for every $n\geq 1$, the smash product $X^{\wedge n}$ is $(n(k+1)-1)$-connected. \label{cor:connEstIteratedSmash}
     \end{enumerate}
     \begin{proof}
         \ref{cor:connEstSuspension}: Since $X$ is $k$-connected by \cref{prop:conn} \ref{prop:connStableUnderPo} the pushout of the map $X\to *$ which is a map $*\to \Sigma X$ is $k$-connected.
@@ -729,7 +727,7 @@ With these we can deduce the following statements:
         \ref{cor:connEstIteratedSmash}: This follows by induction on \ref{cor:connEstSmash}.
     \end{proof}
 \end{corollary}
-\begin{prop}[James Splitting for Presheaf Categories]\label{prop:jamesSplittingPresheaf} %ref Proposition 4.18 
+\begin{prop}[James Splitting for Presheaf Categories]\label{prop:jamesSplittingPresheaf}
     Let $A$ be a small \inftycat/ and let $X$ be a pointed and $0$-connected object in the \inftytop/ $\Fun(A,\spaces)$.
     Then the comparison map 
     \begin{equation*}
@@ -737,6 +735,8 @@ With these we can deduce the following statements:
     \end{equation*}
     is an equivalence of pointed objects. 
     \begin{proof}
+        The proof follows \cite[Proposition 4.18]{splittings_21}.
+        
         Since $\Fun(A,\spaces)$ is hypercomplete it suffices to prove that $c_X$ is $\infty$-connected.
 
         First for each $n\in\Nat_{\geq 1}$ we have $2$-simplices in $\Fun(A,\spaces)$
@@ -801,10 +801,8 @@ The next theorem is the main tool we use to achieve this and is part of an equiv
         L\colon\Fun(A,\spaces)\rightleftarrows C\mkern+3mu:\mkern-3mu i
     \end{equation*}
     such that the left adjoint $L$ preserves finite limits and the right adjoint $i$ is fully faithful.
-    %
-    % Furthermore, given $-2\leq m<\infty$ and an $m$-connected morphism $f\colon x\to y$ in $C$, there exists an $m$-connected morphism $g\colon i(x)\to y'$ in $\Fun(A,\spaces)$ such that $L(g)$ is equivalent to $f$ in $\Fun(\Delta^1,C)$.
     \begin{reference}
-        \cite[Theorem 6.1.0.6 (1) and (2)]{HTT} %for the adjunction and \cite[Remark 6.5.1.15]{HTT} for connectedness statement.
+        \cite[Theorem 6.1.0.6 (1) and (2)]{HTT}
     \end{reference}
 \end{thm}
 Furthermore we need to be able to transfer statements about pointed connected objects between the \inftytops/ $\Fun(A,\spaces)$ and $C$ of the previous theorem.
@@ -862,7 +860,7 @@ We will do this using the next proposition.
     In particular, an $m$-connected and $m$-truncated map is an equivalence by the lifting properties of a factorization system.
     A construction of this factorization system for model topoi can be found in \cite[Proposition 8.5]{toposes_and_htpy_toposes}.
 
-    The name Epi/Mono factorization derives from the fact that $(-1)$-truncated morphisms are also refered to as \emph{monomorphisms} and $(-1)$-connected maps are precisely the effective epimorphisms.
+    The name Epi/Mono factorization derives from the fact that $(-1)$-truncated morphisms are also referred to as \emph{monomorphisms} and $(-1)$-connected maps are precisely the effective epimorphisms.
     It is analogous to the factorization of a map into epimorphism follows by a monomorphism in $\Set$ over the image.
 \end{remark}
 \begin{corollary}[James Splitting for \inftyTops/]\label{lem:genTopoiComparisonMapEq}
@@ -880,11 +878,11 @@ We will do this using the next proposition.
         We factor the map $i(x)\colon*\simeq i(*)\to i(X)$ in $\Fun(A,\spaces)$ into a $(-1)$-connected map $y\colon*\to Y$ followed by a $(-1)$-truncated map $g\colon Y\to i(X)$ via \cref{prop:factorConnTrunc}.
         As $i$ is fully faithful, the counit of the adjunction is an equivalence, hence $L(g)\circ L(y)\simeq L(i(x))\simeq x$ in $\Fun(\Delta^1,C)$.
         Note that since $L$ preserves colimits and finite limits, it preserves connected- and truncatedness of maps.
-        Thus the map $L(y)$ is $(-1)$-connected (in particular, $L(Y)$ is a $0$-connected object), and by \cref{prop:conn} \ref{prop:connRightCancel} the map $L(g)$ is thus $(-1)$-connected as well as $(-1)$-truncated, hence an equivalence by \cref{prop:factorConnTrunc}.
+        Thus the map $L(y)$ is $(-1)$-connected (in particular, $L(Y)$ is a $0$-connected object), and by \cref{prop:conn} \ref{prop:connRightCancel} the map $L(g)$ is $(-1)$-connected as well as $(-1)$-truncated, hence an equivalence by \cref{prop:factorConnTrunc}.
         This shows that $X$ and $L(Y)$ are equivalent as pointed objects.
 
         Since $L$ preserves colimits and finite limits, it preserves all colimits/limits appearing in $c_Y$, hence $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
-        But since $L(Y)\simeq X$, this means that $c_{L(Y)}\simeq c_X$ in $C_*$ which proves that $c_X$ is an equivalence in $C_*$.
+        But since $L(Y)\simeq X$ in $C_*$, this means that $c_{L(Y)}\simeq c_X$ in $C_*$ which proves that $c_X$ is an equivalence in $C_*$.
     \end{proof}
 \end{corollary}
 Lastly, we give an application of the James Splitting Theorem in $\spaces$.

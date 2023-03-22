@@ -514,23 +514,6 @@ The next lemma is a variant of what is commonly referred to as the ``compression
         \end{center}
         Then $e\circ F\colon I\times I^n\to X$ is a homotopy $\rel \partial I^n$ from $e|_{J^n}\circ F_0$ to $e|_{\set{1}\times I^n}\circ F_1$. 
         Since the image of the latter is contained in $A$, by the compression criterion $e|_{J^n}\circ F_0$ and hence $e|_{J^n}$ represent the equivalence class of the constant map in $\pi_n(X,A,a)$.
-        % Fix a homeomorphism $\alpha\colon J^n\cong I^n$ such that $\alpha|_{\set{1}\times I^n}=\id_{I^n}$.
-        % Then the square  
-        % \begin{center}
-        %     \begin{tikzcd} [sep = 4em]
-        %         J^n\times\partial I\cup\partial J^n\times I \arrow [r, "f"] \arrow [>->, d, "h"] & I^{n+1} \arrow [->>, d, "h","\simeq"']\\
-        %         J^n\times I \arrow[ur, dashed, "\exists H"] \arrow[r,"\simeq"] & *
-        %     \end{tikzcd}
-        % \end{center}
-        % where the top horizontal map $f$ is given by
-        % \begin{itemize}
-        %     \item the inclusion $J^n\hookrightarrow I^{n+1}$ on $J^n\times\set{0}$ 
-        %     \item the inclusion $J^n\cong\set{1}\times I^n\hookrightarrow I^{n+1}$ on $J^n\times\set{1}$ 
-        %     \item the map $\partial J^n \times I=\left(\set{1}\times\partial I^n\right)\times I\to\set{1}\times\partial I^n \hookrightarrow I^{n+1}$ on $\partial J^n \times I$ 
-        % \end{itemize}
-        % admits a lift $H$. 
-        % This gives a homotopy $\widetilde{H}=e\circ H\colon(J^n,\set{1}\times \partial I^n,*)\times I\to (X,A,a)$ from $e|_{J^n}$ to some map $\widetilde{H}_1=f$ with $\im f\subset A$, and $\widetilde{H}$ is constant on $\partial J^n\times I$ .
-        % Since $\im f\subset A$ and $J^n$ is contractible with respect to $*$, $f$ represents $\const_a$ which proves the proposition. 
     \end{proof}
 \end{lemma}
 The next proposition is the most important part of the proof of \cref{prop:descentForPairs} from which we will derive descent for pushouts.
@@ -759,7 +742,7 @@ The following technical lemma will allow us to reduce to the case of an inclusio
     \begin{proof}
         The proof will follow \cite[Theorem 1.2]{may1990weak}.
 
-        We can assume $f$ to be an inclusion such that $f(X_i^°)=f(X)\cap Y_i^°$ and $f(X_i)=f(X)\cap Y_i$ for $i\in\set{1,2}$ by applying \cref{lem:replaceByEmbedding} and replacing it with $\widetilde{f}$.
+        We can assume $f$ to be an inclusion such that $f(X_i^°)=f(X)\cap Y_i^°$ and $f(X_i)=f(X)\cap Y_i$ for $i\in\set{1,2}$ by applying \cref{lem:replaceByEmbedding} and replacing $f$ with $\widetilde{f}$.
         The assumptions on the map $j$ from \cref{lem:replaceByEmbedding} together with \cref{lem:weOfaPairsIsHtpyPb} and the pasting law for homotopy pullbacks show that proving the statement of this proposition for $\widetilde{f}$ also proves it for $f$.
         
         By the definition of a weak equivalence of pairs, it suffices to show that under the given assumptions the statement of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpyConst} holds for all $n\geq 0$.
@@ -768,10 +751,10 @@ The following technical lemma will allow us to reduce to the case of an inclusio
         As $J^n\subset I^{n+1}$ are both compact metric spaces, we can find a Lebesgue number $\delta$ for the cover $Y_1^°,Y_2^°\subset Y$ and the map $e$.
         We pick a cubical subdivision $\mathcal{C}$ of $I^{n+1}$ such that the diameter of every cube is smaller than $\delta$.
         This ensures that for every cubical cell $c\in\mathcal{C}$ there is a $j\in\set{1,2}$ such that $e(c)\subset Y_j^°$.
-        Note that this cubical subdivision gives a CW-structure on $I^{n+1}$ such that $J^n\subset I^{n+1}$ is a subcomplex.
+        Note that this cubical subdivision induces CW-structures on $J^n$ and $I^{n+1}$ such that $J^n\subset I^{n+1}$ is a subcomplex.
 
         We identify $I^{n+1}=I\times I^n$.
-        The cubical subdivision $\mathcal{C}$ gives a cubical subdivision $\mathcal{D}$ of $I^n$ and a partition of $I$ into subintervalls of equal length $I_r=[v_r,v_{r+1}]\subset I$ with $0=v_0<v_1<\ldots<v_s=1$.
+        The cubical subdivision $\mathcal{C}$ induces a cubical subdivision $\mathcal{D}$ of $I^n$ and a partition of $I$ into subintervalls of equal length $I_r=[v_r,v_{r+1}]\subset I$ with $0=v_0<v_1<\ldots<v_s=1$.
         For $m\in\set{0,\ldots,n}$, let $\Gamma^m$ denote the collection of cells of dimension $m$ of the CW-structure on $I^n$ induced by $\mathcal{D}$ which are not contained in $\partial I^n$, and define $\Gamma^{-1}=\emptyset$.
         
         Then for $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n+1}$ let
@@ -908,7 +891,11 @@ The following technical lemma will allow us to reduce to the case of an inclusio
                     Together with $e|_{I_r\times K}\cong e'\colon(I^{m+1},\set{1}\times I^m)\to(Y_j,Y_1\cap Y_2)$ and the weak equivalence of pairs $f|_{X_j}\colon(X_j,X_1\cap X_2)\to(Y_j,Y_1\cap Y_2)$ these fulfill the conditions of \cref{prop:eqCharInjSurj} \ref{itm:liftingMapsAndHtpy}. 
                     So by \cref{prop:eqCharInjSurj} there exist extensions which we can then identify with maps $G'_K\colon(I_r\times K,\set{v_{r+1}}\times K)\to(X_j,X_1\cap X_2)$ and $H'_K\colon(I_r\times K,\set{v_{r+1}}\times K)\times I\to(Y_j,Y_1\cap Y_2)$.
                     Note that $G'_K$ and $H'_K$ fulfill the patching conditions.
-            \item In the remaining cases either $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$ or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$. %TODO maybe be more explicit with the cases here
+            \item In the remaining cases either
+                    \begin{itemize}
+                        \item $e(I_r\times K)\subset Y_j^°$ is contained in exactly one of the $Y_j^°$ and $e(\set{v_{r+1}}\times K)\not\subset Y_1\cap Y_2$
+                        \item or $e(I_r\times K)\subset Y_1^°\cap Y_2^°$.
+                    \end{itemize}
                     By \cref{rmk:cwInclIsHCofib} we can pick a deformation retract $F\colon (I_r\times K)\times I\to I_r\times K$ of $J_K^m= I_r\times\partial K\cup\set{v_r}\times K$ (hence $F_1\colon I_r\times K\to J_K^m$) and we set $G'_K=G|_{J_K^m}\circ F_1$ and $H'_K=(e|_{I_r\times K}\bullet F)*(H|_{J_K^m}\bullet F_1)$.
                     Note that $G'_K$ and $H'_K$ fulfill the patching conditions since $G$ and $H$ fulfill them by induction hypothesis.
         \end{itemize}
@@ -937,7 +924,7 @@ We are now ready to give a proof of descent for pushouts.
             \end{tikzcd}
         \end{center}
         where bottom and top square homotopy pushouts and left and back face are homotopy pullbacks.
-        The pushouts of open/closed mapping cylinders of \cref{rmk:doubleMappingCylinderAlt} induce a cube
+        The construction of double mapping cylinders as pushouts of open mapping cylinders from \cref{rmk:doubleMappingCylinderAlt} induces a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A}\times\left(0,2\right) \arrow [dr, hook] \arrow [rr, hook] \arrow [dd] & & \M^{[0,2)}(f_{\overline{A}\overline{B}}) \arrow [dr, hook] \arrow[dd] \\
@@ -946,7 +933,11 @@ We are now ready to give a proof of descent for pushouts.
                 & \M^{[0,2)}(f_{AC}) \arrow [from=uu,crossing over] \arrow [rr, hook] & & \D(f_{AB},f_{AC})
             \end{tikzcd}
         \end{center}
-        where $f\colon\left(\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}});\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}})\right)\to\left(\D(f_{AB},f_{AC});\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC})\right)$ is a map of excisive triads.
+        and hence a map
+        \begin{equation*}
+            f\colon\left(\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}});\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}})\right)\to\left(\D(f_{AB},f_{AC});\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC})\right)
+        \end{equation*}
+        of excisive triads.
         We claim all faces of this cube are equivalent to the starting cube:
         
         The equivalence of the top square follows from the fact that the map $\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}})\to\overline{D}$ in the commutative diagram (see again \cref{rmk:doubleMappingCylinderAlt} for square in the middle)
@@ -984,7 +975,7 @@ We are now ready to give a proof of descent for pushouts.
             \end{tikzcd}
         \end{center}
         respectively. 
-        The equivalences of the back squares and front squares follow from the analogous argument.
+        The equivalences of the back squares and right squares follow from the analogous argument.
 
         Thus by \cref{lem:weOfaPairsIsHtpyPb} the map of triads $f\colon\left(\D(f_{\overline{A}\overline{B}},f_{\overline{A}\overline{C}});\M^{[0,2)}(f_{\overline{A}\overline{B}}),\M^{[0,2)}(f_{\overline{A}\overline{C}})\right)\to\left(\D(f_{AB},f_{AC});\M^{[0,2)}(f_{AB}),\M^{[0,2)}(f_{AC})\right)$ fulfills the assumptions of \cref{prop:descentForPairs} and again by \cref{lem:weOfaPairsIsHtpyPb} we conclude that front and right square are homotopy pullback squares.
     \end{proof}
@@ -1167,9 +1158,9 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
             A \arrow[r, "g"] & B \\
         \end{tikzcd}
     \end{center}
-    be a homotopy pullback such that $p$ and $q$ are quasifibrations.
+    be a homotopy pullback square such that $p$ and $q$ are quasifibrations.
     Then the induced map $\Gamma\colon\M(f)\to\M(g)$ between mapping cylinders is also a quasifibration.
-    The same holds true for closed and open mapping cylinders.
+    The same holds for closed and open mapping cylinders.
     \begin{proof}
         For convenience we will only prove the case $I=[0,1]$ since the other cases follow by the analogous argument.
         The proof is essentially \cite[Lemma 5.10.6]{cubical_htpy_theory}.
@@ -1209,7 +1200,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         Since the right square is pullback (since $Y=\Gamma^{-1}(B)$) and homotopy pullback and the left side is as well (since $q$ is a quasifibration), this means that the fiber $F$ is already a homotopy fiber which proves the lemma.
     \end{proof}
 \end{lemma}
-This finishes the preparation and we will now prove descent for pushouts via locality of quasifibrations.
+This finishes the preparation and we will now prove descent for pushouts via the weak locality of quasifibrations.
 \begin{prop}\label{lem:topDescentPoAlt}
     The model category $\Top$ has descent for homotopy pushouts. 
     \begin{proof}
