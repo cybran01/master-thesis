@@ -1,6 +1,6 @@
 In this section we will give a proof of the classical James Splitting Theorem \cite{james_splitting_original} for general \inftytops/.
 The classical James Splitting Theorem in $\spaces$ states that for connected pointed objects $X$, there is a canonical equivalence $\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}\to\Sigma\Omega\Sigma X$ of pointed objects.
-Our main source is \cite[\S 2.2 and \S 4]{splittings_21}.
+The proof will follow \cite[\S 2.2 and \S 4]{splittings_21}.
 
 We begin by introducing some well known constructions that we will need throughout the rest of this section.
 \begin{definition}
@@ -637,7 +637,7 @@ Also note that in view of \cref{prop:conn} \ref{prop:connSection}, the previousl
     \end{itemize}
     with the convention that all spaces are \emph{topologically $(-2)$-connected}.
     A map $f\colon X\to Y$ in $\Top$ is \emph{topologically $n$-connected} for $-2\leq n\leq\infty$ if all its homotopy fibers are $n$-connected. 
-    (Some authors however take this to be the definition of a topologically $(n+1)$-connected map.)
+    (Some authors take this to be the definition of a topologically $(n+1)$-connected map.)
     
     This definition agrees with the definition of connectedness in $\spaces$:
     \begin{itemize}
@@ -691,7 +691,7 @@ For this proof we need some stability properties of connectedness.
     \end{reference}
 \end{prop}
 \begin{thm}[Blakers-Massey Theorem]\label{prop:blakersMassey}
-    Let $C$ be an \inftytop/, $m,n\geq-2$ such that $m+n\geq-2$ and let 
+    Let $C$ be an \inftytop/, $m,n\geq-1$ and
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             A \arrow[r, "g"] \arrow[d, "f"] &  C \arrow[d] \\
@@ -749,7 +749,8 @@ With these we can deduce the following statements:
         induced by the universal property of $\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}$.
 
         By \cref{cor:connEst} \ref{cor:connEstIteratedSmash} $X^{\wedge n}$ is $(n-1)$-connected.
-        By \cref{prop:conn} \ref{prop:connStableUnderPo} and \cref{prop:conn} \ref{prop:connStableUnderPb} we have that $\Omega\Sigma X$ is $0$-connected, so by \cref{cor:connEst} \ref{cor:connEstSuspension} $\Sigma\Omega\Sigma X$ is $1$-connected and combining this via \cref{cor:connEst} \ref{cor:connEstSmash} shows that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ is $(n+1)$-connected.
+        By \cref{prop:conn} \ref{prop:connStableUnderPo} and \cref{prop:conn} \ref{prop:connStableUnderPb} we have that $\Omega\Sigma X$ is $0$-connected, so by \cref{cor:connEst} \ref{cor:connEstSuspension} $\Sigma\Omega\Sigma X$ is $1$-connected.
+        Combining this via \cref{cor:connEst} \ref{cor:connEstSmash} shows that $X^{\wedge n}\wedge\Sigma\Omega\Sigma X$ is $(n+1)$-connected.
 
         So the map 
         \begin{equation*}
@@ -760,7 +761,7 @@ With these we can deduce the following statements:
         Since by \cref{cor:connEst} \ref{cor:connEstSuspension} and \cref{cor:connEst} \ref{cor:connEstIteratedSmash} every object of the filtered colimit $\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}$ is at least $(n+1)$-connected, by \cref{prop:conn} \ref{prop:connStableFilteredColim} it is itself $(n+1)$-connected.
         So by \cref{cor:connEst} \ref{cor:connEstVeeIncl} we have that the horizontal map $\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}\simeq\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}$ of the above triangle is $n$-connected.
 
-        As the diagonal as well as the horizontal map of the triangle above are $n$-connected, from \cref{prop:conn} \ref{prop:connRightCancel} it follows that $c_X$ is $n$-connected. 
+        As the diagonal as well as the horizontal map of the triangle above are $n$-connected, it follows from \cref{prop:conn} \ref{prop:connRightCancel} that $c_X$ is $n$-connected. 
         As $n$ was arbitrary, $c_X$ is therefore an equivalence by hypercompleteness of $\Fun(A,\spaces)$.
     \end{proof}
 \end{prop}
@@ -813,7 +814,7 @@ We will do this using the next proposition.
 
     Furthermore, a map that is both $(-1)$-connected and $(-1)$-truncated is an equivalence.
     \begin{proof} 
-        The proof follows \cite[21]{leeds_lectures}.
+        The first part of the proof follows \cite[21]{leeds_lectures}.
 
         Let $U=\CN(f)|_{\N(\Delta)^{\op}}$ be the restriction of the \Cech/ nerve of $f$, let $E=\colim\limits_{\N(\Delta)^{\op}}U$ and let $U^+\colon\N(\Delta_+)^{\op}\to C$ denote the corresponding colimit diagram.
         Then we obtain a canonical factorization $X\to E\to Y$ of $f$ where $X\to E$ is an effective epimorphism by \cref{prop:grpdEffectiveIfPullback} and \cref{prop:mayRecognitionTheoremGroupoid}.
@@ -881,7 +882,7 @@ We will do this using the next proposition.
         Thus the map $L(y)$ is $(-1)$-connected (in particular, $L(Y)$ is a $0$-connected object), and by \cref{prop:conn} \ref{prop:connRightCancel} the map $L(g)$ is $(-1)$-connected as well as $(-1)$-truncated, hence an equivalence by \cref{prop:factorConnTrunc}.
         This shows that $X$ and $L(Y)$ are equivalent as pointed objects.
 
-        Since $L$ preserves colimits and finite limits, it preserves all colimits/limits appearing in $c_Y$, hence $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
+        Since $L$ preserves colimits and finite limits, it preserves all colimits and limits appearing in $c_Y$, hence $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
         But since $L(Y)\simeq X$ in $C_*$, this means that $c_{L(Y)}\simeq c_X$ in $C_*$ which proves that $c_X$ is an equivalence in $C_*$.
     \end{proof}
 \end{corollary}

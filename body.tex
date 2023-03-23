@@ -35,12 +35,9 @@
 \theoremstyle{plain}
 
 \newtheorem{definition}{Definition}[section]
-\newtheorem*{definition*}{Definition}
 \newtheorem{prop}[definition]{Proposition}
-\newtheorem{convention}[definition]{Convention}
 \newtheorem{thm}[definition]{Theorem}
 \newtheorem{notation}[definition]{Notation}
-\newtheorem*{prop*}{Proposition}
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{corollary}[definition]{Corollary}
 \newtheorem{remark}[definition]{Remark}
@@ -147,7 +144,7 @@
   \setcounter{blankpages}{0}
 }
 
-
+%TODO make sure we start sections on the LEFT side! (currently on right)
 \begin{document}
     \pagenumbering{gobble}
     \includepdf{cover.pdf}
@@ -162,7 +159,7 @@
       we will give two related proofs of this, both building on a subdivision argument from \cite{may1990weak}.
       The second proof serves to highlight the relationship of descent and locality of quasifibrations.
   
-      \noindent In the second part of this thesis we will see some consequences of universality and descent:
+      \noindent In the second part of this thesis we will highlight some consequences of universality and descent:
       As an application of descent, we will prove the May Recognition Theorem (\cite{may2006geometry}) for $n=1$ in general \inftytops/, which allows one to detect when a pointed object is deloopable.
       Lastly, we will use universality of colimits to prove the James Splitting Theorem for general \inftytops/ as in \cite{splittings_21} and derive the reduced ordinary homology of loop spaces $\Omega S^n$ with $n\geq 2$ in $\spaces$ from it.
     \end{abstract}

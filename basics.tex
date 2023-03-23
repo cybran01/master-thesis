@@ -46,11 +46,10 @@ We will not give proofs for any statements in this section; we will however poin
 
     This gives fully faithful inclusions $\Delta\subset\Cat$ and $\Delta_+\subset\Cat$, where $\Cat$ denotes the \emph{category of (small) categories}.
 \end{remark}
-\begin{definition}[Nerve of an Ordinary Category] %smallness problematic when applied to sSet and Top? (did i solve it already?)
-    Let $Y_{\Cat}\colon\Cat\to\Fun(\Cat^{\op},\Set)$ denote the \emph{Yoneda embedding}.
-
-    Then composing the Yoneda embedding with the functor $\Fun(\Cat^{\op},\Set)\to\sSet$ induced by the inclusion $\Delta\subset\Cat$ from the previous remark gives a functor $\N\colon\Cat\to\sSet$ called the \emph{nerve functor}.
-    For a given small category $C$ we refer to the simplicial set $\N(C)$ as the \emph{nerve of the category $C$}.
+\begin{definition}[Nerve of an Ordinary Category]
+    Let $Y_{\Cat}\colon\Cat\to\Fun(\Cat^{\op},\Set)$ denote the Yoneda embedding.
+    Then composing the Yoneda embedding with the functor $\Fun(\Cat^{\op},\Set)\to\sSet$ induced by the inclusion $\Delta\subset\Cat$ from the previous remark induces a functor $\N\colon\Cat\to\sSet$, which we refer to as the \emph{nerve functor}.
+    For a given (small) category $C$ we refer to the simplicial set $\N(C)$ as the \emph{nerve of the category $C$}.
 \end{definition}
 \begin{definition}[Standard Simplex]
     For every $n\in\Nat$ we write $\N([n])=\Delta^n$ and refer to $\Delta^n$ as \emph{the standard $n$-simplex}.
@@ -214,7 +213,7 @@ We will not give proofs for any statements in this section; we will however poin
         \cite[Proposition A.2.4.4]{HTT} (and its dual)
     \end{reference}
 \end{prop}
-The following proposition (and its analogue for \inftycats/) will be used frequently.
+We will frequently use the following proposition and its analogue for \inftycats/.
 \begin{prop}[Pasting Law for Model Categories]\label{prop:pastingLaw}
     Let $M$ be a model category and 
     \begin{center}
@@ -318,10 +317,9 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
         \cite[Notation 2.4.3.1]{kerodon}
     \end{reference}
 \end{construction}
-\begin{definition}[Homotopy Coherent Nerve] %smallness problematic when applied to sSet?
-    Let $Y_{\Cat_{\Delta}}\colon\Cat_{\Delta}\to\Fun(\Cat_{\Delta}^{\op},\Set)$ denote the \emph{Yoneda embedding}.
-    
-    Then composing the Yoneda embedding with the functor $\Fun(\Cat_{\Delta}^{\op},\Set)\to\sSet$ induced by the functor $C[-]$ from the previous construction gives a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$.
+\begin{definition}[Homotopy Coherent Nerve]
+    Let $Y_{\Cat_{\Delta}}\colon\Cat_{\Delta}\to\Fun(\Cat_{\Delta}^{\op},\Set)$ denote the Yoneda embedding.
+    Then composing the Yoneda embedding with the functor $\Fun(\Cat_{\Delta}^{\op},\Set)\to\sSet$ induced by the functor $C[-]\colon\Delta\to\Cat_{\Delta}$ from the previous construction gives a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$, which we refer to as the \emph{simplicial nerve functor} or the \emph{homotopy coherent nerve functor}.
     For a given (small) simplicial category $A$ we refer to $\Nhc(A)$ as the \emph{simplicial nerve} or \emph{homotopy coherent nerve of $A$}.
 \end{definition}
 For completeness we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.

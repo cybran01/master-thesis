@@ -1387,7 +1387,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         By \cref{cor:genCoproductComponentPb} we have that $Y_k\times_{\coprod\limits_{i\in I}^hY_i}^h Y_j\simeq\emptyset$ for $k\neq j$ and $Y_k\times_{\coprod\limits_{i\in I}^hY_i}^h Y_k\simeq Y_k$ for $k=j$.
         This in particular shows that $P_{kj}\simeq\emptyset$ for $j\neq k$ (again by universality of homotopy coproducts for the empty indexing set) and $P_{kk}\simeq X_k$.
         By universality of homotopy coproducts $\coprod\limits_{j\in I}^hP_{kj}\simeq\coprod\limits_{j\in I}^h\left(Y_k\times_{\coprod\limits_{i\in I}^hY_i}^hX_j\right)\simeq Y_k\times_{\coprod\limits_{i\in I}^hY_i}^h\left(\coprod\limits_{j\in I}^hX_j\right)$ is a weak equivalence.
-        But since $P_{kj}\simeq\emptyset$ for $j\neq k$ and $P_{kk}\simeq X_k$ we obtain $\coprod\limits_{j\in I}P_{kj}\simeq X_k$ and this proves the corollary.
+        But since $P_{kj}\simeq\emptyset$ for $j\neq k$ and $P_{kk}\simeq X_k$ we obtain $\coprod\limits_{j\in I}^hP_{kj}\simeq X_k$ and this proves the corollary.
     \end{proof}
 \end{corollary}
 \begin{remark}
@@ -1416,7 +1416,7 @@ Now all that remains for our proof that $\spaces$ is an \inftytop/ is to assembl
 \begin{corollary}\label{cor:spacesIsInftyTop}
     The \inftycat/ of spaces $\spaces$ is an \inftytop/.
     \begin{proof}
-        We know $\spaces$ is locally presentable from \cref{cor:spacesIsLocPres}.
+        We know $\spaces$ is locally presentable by \cref{cor:spacesIsLocPres}.
         \Cref{cor:sufficientToProveInModCat} together with \cref{lem:topUniversalPo} and \cref{lem:topUniversalCoproduct} prove that $\spaces$ has universal colimits, and \cref{prop:topDescentPo}/\cref{lem:topDescentPoAlt} together with \cref{cor:topDescentCoproduct} then prove that it has descent.
     \end{proof}
 \end{corollary}
