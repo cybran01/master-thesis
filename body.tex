@@ -138,13 +138,21 @@
 \fi \fi }
 \makeatother
 
+\makeatletter
+\def\cleardoubleevenstandardpage{%
+\clearpage
+\if@twoside \ifodd \c@page
+ \stepcounter{blankpages}%
+  \hbox {}\thispagestyle{empty}\newpage \if@twocolumn \hbox {}\thispagestyle{empty}\newpage \fi 
+\fi \fi }
+\makeatother
+
 \def\startpagenumbering{%
   \renewcommand\thepage{\the\numexpr\value{page}-\value{blankpages}\relax}
   \setcounter{page}{1}
-  \setcounter{blankpages}{0}
+  \setcounter{blankpages}{1}
 }
 
-%TODO make sure we start sections on the LEFT side! (currently on right)
 \begin{document}
     \pagenumbering{gobble}
     \includepdf{cover.pdf}
@@ -164,29 +172,28 @@
       Lastly, we will use universality of colimits to prove the James Splitting Theorem for general \inftytops/ as in \cite{splittings_21} and derive the reduced ordinary homology of loop spaces $\Omega S^n$ with $n\geq 2$ in $\spaces$ from it.
     \end{abstract}
     \tableofcontents
-    \cleardoubleoddstandardpage
     \startpagenumbering
     \section{Preliminaries and Notation}
     \subfile{basics.tex}
-    \cleardoubleoddstandardpage
+    \cleardoubleevenstandardpage
     \section{The $\infty$-Category of Spaces $\spaces$}
     \subfile{inftyCatOfSpaces.tex}
-    \cleardoubleoddstandardpage
+    \cleardoubleevenstandardpage
     \section{Motivation for $\infty$-Topoi}\label{sec:motivationInftyTopoi}
     \subfile{inftyTopoiMotivation.tex}
-    \cleardoubleoddstandardpage
+    \cleardoubleevenstandardpage
     \section{Definition of an $\infty$-Topos}\label{sec:inftyTopDef}
     \subfile{inftyTopoiDefinition.tex}
-    \cleardoubleoddstandardpage
+    \cleardoubleevenstandardpage
     \section{$\spaces$ is an $\infty$-Topos}\label{sec:spacesIsInftyTop}
     \subfile{spacesIsInftyTopos.tex}
-    \cleardoubleoddstandardpage
+    \cleardoubleevenstandardpage
     \section{Delooping of Pointed Objects}\label{sec:deloopingPtdConn}
     \subfile{mayRecognitionTheorem.tex}
-    \cleardoubleoddstandardpage
+    \cleardoubleevenstandardpage
     \section{The James Splitting Theorem}\label{sec:jamesSplittingTheorem}
     \subfile{jamesSplittingTheorem.tex}
-    \cleardoubleoddstandardpage
+    \cleardoubleevenstandardpage
     \printbibliography
     \includepdf{declaration.pdf}
 \end{document}
