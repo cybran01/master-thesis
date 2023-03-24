@@ -8,7 +8,7 @@ The \Strom/ model structure will be important later on; its interaction with the
     \begin{proof}
         First we note that the category $\sSet$ together with the Quillen model structure is a combinatorial model category (see e.g. \cite[Remark 7.11.15]{cisinski_2019}).
         
-        The category $\sSet$ is enriched over itself by $\Fun(A,B)_n=\hom_{\sSet}(A\times\Delta^n,B)$ so it is a simplicial category.
+        The category $\sSet$ is enriched over itself by $\Fun(A,B)_n=\hom_{\sSet}(A\times\Delta^n,B)$, thus it is a simplicial category.
         It is thus tensored (via the product) and powered (via $\Fun(-,-)$) over $\sSet$.
         By \cite[Corollary 1.4.5.6, Theorem 3.1.3.1 and Theorem 3.1.3.5]{kerodon} we have that for a cofibration $A\xtailrightarrow{} B$ and a fibration $X\xtwoheadrightarrow{} Y$ the induced map 
         \begin{equation*}
@@ -18,10 +18,10 @@ The \Strom/ model structure will be important later on; its interaction with the
     \end{proof}
 \end{prop}
 \begin{definition}[Serre Fibration]
-    A map $f\colon X\to Y$ is called a \emph{Serre fibration} if has the right lifting property against the maps $\set{D^n\times\set{0}\xhookrightarrow{}D^n\times I\mid n\in\Nat}$.
+    A map $f\colon X\to Y$ is called a \emph{Serre fibration} if it has the right lifting property against the maps $\set{D^n\times\set{0}\xhookrightarrow{}D^n\times I\mid n\in\Nat}$.
 \end{definition}
 \begin{definition}[Hurewicz Fibration]
-    A map $f\colon X\to Y$ is called a \emph{Hurewicz fibration} if has the right lifting property against the maps $\set{X\times\set{0}\xhookrightarrow{}X\times I\mid X\in\Top}$.
+    A map $f\colon X\to Y$ is called a \emph{Hurewicz fibration} if it has the right lifting property against the maps $\set{X\times\set{0}\xhookrightarrow{}X\times I\mid X\in\Top}$.
 \end{definition}
 \begin{definition}[Hurewicz Cofibration]
     Let $i\colon A\to B$ be a map of topological spaces.
@@ -40,7 +40,6 @@ The \Strom/ model structure will be important later on; its interaction with the
 \begin{remark}\label{rmk:hurewiczCofibIsIncl}
     A Hurewicz cofibration is always an inclusion, see \cite[Proposition 4H.1]{hatcher2002algebraic}.
 \end{remark}
-%TODO w.e., htpy eq
 When speaking of cofibrations, fibrations or weak equivalences between topological spaces, we are always referring to the following model structure.
 \begin{thm}[Quillen Model Structure on $\Top$]
     The following classes of maps endow $\Top$ with a model structure:
@@ -66,18 +65,18 @@ The other model structure on $\Top$ we will need is given by the following.
     \end{itemize}
     We call this model structure the \emph{\Strom/ Model Structure on $\Top$}.
     \begin{reference}
-       \cite{Strom1972}%TODO maybe add statement about small object argument failure; (generators too big)
+       \cite{Strom1972} %TODO maybe add statement about small object argument failure; (generators too big)
     \end{reference}
 \end{thm}
 \begin{remark}
-    Since every h-fibration is also a fibration in the Quillen model structure and every homotopy equivalence is a weak equivalence, every cofibration of the Quillen model structure is an h-cofibration. %TODO add that these classes do not agree
+    Since every h-fibration is also a fibration in the Quillen model structure and every homotopy equivalence is a weak equivalence, every cofibration of the Quillen model structure is an h-cofibration. %TODO maybe add that these classes do not agree
 \end{remark}
 \begin{remark}[Properness] 
     A model category whose objects are all cofibrant is left proper (see \cite[Proposition A.2.4.2]{HTT}).
     Dually, a model category whose objects are all fibrant is right proper.
     
     This implies that $\Top$ with the \Strom/ model structure is proper, $\sSet$ is left proper and $\Top$ with the Quillen model structure is right proper.
-    But in fact all of the aforementioned model categories are proper:
+    But in fact all the aforementioned model categories are proper:
 
     Left properness of $\Top$ with the Quillen model structure is proven in \cite[Theorem 13.1.10]{hirschhorn2003model} and right properness of $\sSet$ is proven in \cite[Theorem 13.1.13]{hirschhorn2003model}.
     Hence, when computing homotopy pushouts/pullbacks in these model categories, it will always suffice to only replace one map by a cofibration/fibration.

@@ -17,7 +17,10 @@ After this we will define universality and descent via cartesian natural transfo
         This follows directly by \cref{prop:homotopyHypothesis} and \cref{cor:htpyCoherentNerveIsLoc}.
     \end{proof}
 \end{corollary}
-Note that $\Top$ as an ordinary category is not locally presentable. %TODO why
+Note that $\Top$ as an ordinary category is not locally presentable:
+One can show that all objects of a locally presentable category are small (see e.g. \cite[Proposition 10.4.8]{hirschhorn2003model}).
+However $\Top$ contains objects which are not small, e.g. the Sierpinski space (see \cite[49]{hovey2007model}).
+
 An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in \cite[Theorem 5.5.1.1 and Proposition A.3.7.6]{HTT}.
 
 Next we introduce cartesian transformations which allow us to encode universality and descent concisely.
@@ -35,7 +38,7 @@ Next we introduce cartesian transformations which allow us to encode universalit
 \end{definition}
 \begin{definition}[Universality]
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set.
-    We say that \emph{$C$ has $K$-shaped universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is a also a colimit cone.
+    We say that \emph{$C$ has $K$-shaped universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is also a colimit cone.
     
     We say that \emph{$C$ has universal colimits} if $C$ has $K$-shaped universal colimits for every small simplicial set $K$.
 \end{definition}
@@ -61,14 +64,14 @@ Next we introduce cartesian transformations which allow us to encode universalit
     
     So this definition is exactly the one given in \cref{sec:motivationInftyTopoi}.
 \end{remark}
-\begin{definition}[\infty-Topos]
+\begin{definition}[$\infty$-Topos]
     Let $C$ be an \inftycat/ fulfilling the following properties:
     \begin{itemize}
         \item $C$ is locally presentable.
         \item $C$ has universal colimits.
         \item $C$ has descent.
     \end{itemize}
-    Then we call $C$ an \emph{\infty-topos}.
+    Then we call $C$ an \emph{$\infty$-topos}.
 \end{definition}
 In order to prove that a given \inftycat/ has universality and descent we only need to check it for two types of diagrams: pushouts and small coproducts.
 This is the content of \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} and will be used later to prove that $\spaces$ is an \inftytop/.
@@ -87,7 +90,7 @@ We will require the following proposition for the proof.
             \end{center}
         \item The category $I$ is filtered.
     \end{itemize}
-    Then let $C$ be an cocomplete \inftycat/ and $\Phi\colon Y\to C$ a functor.
+    Then let $C$ be a cocomplete \inftycat/ and $\Phi\colon Y\to C$ a functor.
     For all $i\in I$ let $\Phi_i$ denote the induced map $\Phi_i\colon X(i)\to Y\to C$.
 
     Then the assignment $i\mapsto\colim\limits_{x\in X(i)} \Phi_i(x)$ extends naturally to a functor $\N(I)\to C$ such that there is a canonical invertible map of the form 
@@ -160,7 +163,7 @@ We will require the following proposition for the proof.
             \begin{tikzcd} [sep = 4em]
                 p_2(*_s) \arrow[r] \arrow[d] & p_2(\infty) \arrow[d]\\
                 q_2(*_s) \arrow[r] & q_2(\infty)\simeq\coprod\limits_{s\in S} q_2(*_s)
-            \end{tikzcd}\;.
+            \end{tikzcd}
         \end{center}
         is a pullback since $\alpha_2$ is cartesian, by universality for coproducts it follows that $p_2(\infty)\simeq\coprod\limits_{s\in S} p_2(*_s)$.
         This shows that $p_2$ is a colimit cone, proving the claim.
@@ -285,7 +288,7 @@ We will require the following proposition for the proof.
             \end{tikzcd}\;.
         \end{center}
         We know that $\beta$ cartesian because $C$ has descent for pushouts.
-        We now show that that $\alpha$ is cartesian:
+        We now show that $\alpha$ is cartesian:
 
         Since every object $x\in K_0$ lies in the image of either $X_1$ or $X_2$, there is an $i\in\set{1,2}$ and $x_i\in X_i$ such that the maps $p(x)\to p(\infty)$ and $q(x)\to q(\infty)$ factor through $p_i(\infty)$ and $q_i(\infty)$ respectively.
         This implies that the diagram

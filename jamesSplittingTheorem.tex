@@ -260,7 +260,7 @@ We will prove that both are associative and that the smash product distributes o
             \begin{tikzcd} [sep = 4em]
                 A\times B & A \arrow[l] \arrow[r] & A\times C \\
                 B \arrow[d, equals] \arrow[u] & * \arrow[l] \arrow[r] \arrow[d] \arrow[u] & C \arrow[d] \arrow[u] \\
-                B  & B \arrow[l, equals] \arrow[r] & B\times C \\
+                B & B \arrow[l, equals] \arrow[r] & B\times C \\
             \end{tikzcd}
         \end{center}
         evaluates to $\left(A\times(B\vee C)\right)\cup_{B\vee C} B\times C$ and since the column-wise colimit evaluates to $\left((A\vee B)\times C\right)\cup_{A\vee B}A\times B$, they are canonically equivalent.
@@ -460,7 +460,7 @@ We will also need to prove some basic facts about wedges and smash products.
                 X  & X\times Y \arrow[l] \arrow[r] & Y \\
             \end{tikzcd}
         \end{center}
-        first row-wise and and then column-wise.
+        first row-wise and then column-wise.
         
         Taking pushouts of the rows results in the diagram $*\xleftarrow{}*\rightarrow X\cup_{X\times Y} Y$ where we use \cref{lem:poOfCollapseMapsIsTrivial} and taking pushouts of the columns results in the diagram $*\xleftarrow{}X\wedge Y\rightarrow *$. 
         Since the pushout of the latter diagram is $\Sigma\left(X\wedge Y\right)$ and the pushout of the first diagram must be equivalent to this, we have $X\cup_{X\times Y} Y\simeq\Sigma\left(X\wedge Y\right)$.
@@ -687,7 +687,7 @@ For this proof we need some stability properties of connectedness.
         \item the class of $k$-connected objects is stable under filtered colimits. \label{prop:connStableFilteredColim}
     \end{enumerate}
     \begin{reference}
-        \cite[Proposition 4.10]{splittings_21}
+        \cite[Corollary 6.5.1.17]{HTT} for \ref{prop:connStableUnderPo}, \cite[Proposition 6.5.1.16]{HTT} for \ref{prop:connStableUnderPb} and \ref{prop:connRightCancel}, \cite[Proposition 6.5.1.20]{HTT} for \ref{prop:connSection} and \cite[Corollary 4.11]{splittings_21} for \ref{prop:connStableFilteredColim}.
     \end{reference}
 \end{prop}
 \begin{thm}[Blakers-Massey Theorem]\label{prop:blakersMassey}
@@ -706,7 +706,7 @@ For this proof we need some stability properties of connectedness.
     \end{reference}
 \end{thm}
 With these we can deduce the following statements:
-\begin{corollary}\label{cor:connEst} %TODO perhaps cite Proposition 4.12 splittings
+\begin{corollary}\label{cor:connEst} 
     Let $C$ be an \inftytop/, $X,Y$ pointed objects in $C$ and $k,l\geq-1$.
     If $X$ is $k$-connected and $Y$ is $l$-connected, then
     \begin{enumerate}[label={(\roman*)}]
@@ -821,7 +821,7 @@ We will do this using the next proposition.
         We claim that $E\to Y$ is $(-1)$-truncated:
 
         We need to show that the diagonal map $E\to E\times_YE$ is an equivalence, but for this it suffices to show that one of the projections $E\times_YE\to E$ is an equivalence.
-        By universality we thus only need to show that the projection $E\times_YU_n\to U_n$ is an equivalence for all $n\geq 0$.
+        By universality we only need to show that the projection $E\times_YU_n\to U_n$ is an equivalence for all $n\geq 0$.
         By induction and using \cref{rmk:cechNerveExplicit} we see that we only need to prove the case $n=0$, hence that the projection $E\times_Y A\to A$ is an equivalence.
 
         Setting $V=U^+\times_Y A\colon\N(\Delta_+)^{\op}\to C$ (which is again a colimit diagram by universality), we note that $V|_{\N(\Delta)^{\op}}\simeq (U\circ\N(F)^{\op})|_{\N(\Delta)^{\op}}$ using the map $F\colon\Delta_+\to\Delta$ from \cref{prop:shiftIsColimDiam}.

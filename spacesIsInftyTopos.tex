@@ -58,7 +58,7 @@ The cases of pushouts, pullbacks and coproducts are especially important by \cre
     If $D$ is a direct category, then the projective model structure on $\Fun(D,C)$ exists. 
     Furthermore, the functor $\colim\colon\Fun(D,C)_{proj}\to C$ is left Quillen with respect to the constant functor.
 
-    If $D$ is a inverse model category, then the injective model structure on $\Fun(D,C)$ exists.
+    If $D$ is an inverse model category, then the injective model structure on $\Fun(D,C)$ exists.
     Furthermore, the functor $\lim\colon\Fun(D,C)_{inj}\to C$ is right Quillen with respect to the constant functor.
     \begin{reference}
         \cite[Theorem 5.1.3 and Corollary 5.1.6]{hovey2007model}
@@ -106,7 +106,7 @@ Since coproducts and pushouts/pullbacks in \inftycats/ are indexed by nerves of 
     
     If further $\N(M)[W^{-1}]$ has universal colimits, then $M$ has descent if and only if it has descent for homotopy pushouts and homotopy coproducts as a model category.
     \begin{proof}
-        First note that the indexing categories of pushouts $\bullet\xleftarrow{}\bullet\xrightarrow{}\bullet$ and small coproducts are a direct categories (the latter is inverse as well), and the indexing category for pullbacks $\bullet\xrightarrow{}\bullet\xleftarrow{}\bullet$ is an inverse category.
+        First note that the indexing categories of pushouts $\bullet\xleftarrow{}\bullet\xrightarrow{}\bullet$ and small coproducts are direct categories (the latter is inverse as well), and the indexing category for pullbacks $\bullet\xrightarrow{}\bullet\xleftarrow{}\bullet$ is an inverse category.
         By \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} we only need to check universality and descent for pushouts and small coproducts.
         So let $I$ be either the indexing category for pushouts $\bullet\xleftarrow{}\bullet\xrightarrow{}\bullet$ or a small discrete category.
 
@@ -207,7 +207,7 @@ Using \cref{prop:poAlongHCofibIsHtpyPo} and the following theorem, we first prov
         \end{center}
         is a homotopy pushout.
 
-        We factor the maps $A\to B$ and $A\to C$ into into h-cofibrations followed by a weak equivalences $A\xtailrightarrow{h}\widehat{B}\xrightarrow{\sim} B$ and $A\xtailrightarrow{h}\widehat{C}\xrightarrow{\sim} C$ respectively (which is again possible by \cref{thm:stromModelStructure}).
+        We factor the maps $A\to B$ and $A\to C$ into h-cofibrations followed by weak equivalences $A\xtailrightarrow{h}\widehat{B}\xrightarrow{\sim} B$ and $A\xtailrightarrow{h}\widehat{C}\xrightarrow{\sim} C$ respectively (which is again possible by \cref{thm:stromModelStructure}).
         We obtain a diagram
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -305,7 +305,7 @@ Therefore, by \cref{cor:sufficientToProveInModCat} we know $\spaces$ has univers
 It remains to show that it also has descent.
 \addcontentsline{toc}{subsection}{Descent for Homotopy Pushouts}
 \subsection*{Descent for Homotopy Pushouts}
-Proving descent will be more involved then the proof of universality.
+Proving descent will be more involved than the proof of universality.
 The main theorem we use to achieve this will be \cref{prop:descentForPairs}, where we use a subdivision argument from \cite{may1990weak} to show a version of descent for pairs of spaces.
 There are two routes that lead from this theorem to descent for pushouts:
 One can either give a direct proof via decomposition of mapping cylinders (see \cref{prop:topDescentPo}) or it can be used to prove a weak version of the locality of quasifibrations (see \cref{cor:locOfQuasifib}).
@@ -600,7 +600,7 @@ The next proposition is the most important part of the proof of \cref{prop:desce
         Since \ref{itm:liftingMapsAndHtpy} implies \ref{itm:liftingMapsAndHtpyConst} trivially we have proven the proposition.
     \end{proof}
 \end{prop}
-For convenience we fix notation for some variations of the mapping cylinder construction.
+For convenience, we fix notation for some variations of the mapping cylinder construction.
 \begin{definition}[Mapping Cylinder]
     Let $f\colon A\to B$ be a map of topological spaces and let $I=[0,1]$.
     Then we let
@@ -632,7 +632,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
     the \emph{double mapping cylinder of $f,g$}.
 \end{definition}
 \begin{remark}\label{rmk:doubleMappingCylinderAlt}
-    Of course one could also define the double mapping cylinder for intervalls other then $I=[0,2]$, but we will not need this.
+    Of course one could also define the double mapping cylinder for intervalls other than $I=[0,2]$, but we will not need this.
 
     Similarly to the mapping cylinder, the double mapping cylinder of maps $f\colon A\to B$ and $g\colon A\to C$ is a model of the pushout
     \begin{center}
@@ -641,7 +641,7 @@ For convenience we fix notation for some variations of the mapping cylinder cons
             A\times [0,2] \ar[r] & \D(f,g)
         \end{tikzcd}\;.
     \end{center}
-    It can also be constructed by glueing closed or open mapping cylinders of $f$ and $g$ as follows:
+    It can also be constructed by gluing closed or open mapping cylinders of $f$ and $g$ as follows:
 
     For closed mapping cylinders, the commutative square
     \begin{center}
@@ -1079,7 +1079,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         \item bottom and top square homotopy pushouts 
         \item the maps $\overline{A}\xtwoheadrightarrow{} A$, $\overline{B}\xtwoheadrightarrow{} B$ and $\overline{C}\xtwoheadrightarrow{} C$ are fibrations
     \end{itemize}
-    we have that the the front and right squares are homotopy pullbacks.
+    we have that the front and right squares are homotopy pullbacks.
     Then $\Top$ has descent for homotopy pushouts.
     \begin{proof}
         We will prove that every cube
@@ -1162,7 +1162,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
     Then the induced map $\Gamma\colon\M(f)\to\M(g)$ between mapping cylinders is also a quasifibration.
     The same holds for closed and open mapping cylinders.
     \begin{proof}
-        For convenience we will only prove the case $I=[0,1]$ since the other cases follow by the analogous argument.
+        For convenience, we will only prove the case $I=[0,1]$ since the other cases follow by the analogous argument.
         The proof is essentially \cite[Lemma 5.10.6]{cubical_htpy_theory}.
 
         Let $b_0\in\M(g)$. 

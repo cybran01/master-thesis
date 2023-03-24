@@ -196,7 +196,7 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition}
 \begin{definition}[Combinatorial Model Category]
     We say that a model category $C$ is a \emph{combinatorial model category} if $C$ is locally presentable and the model structure is cofibrantly generated.
-\end{definition} %TODO maybe also put here that Top is not locally presentable
+\end{definition}
 \begin{definition}[Properness] %TODO maybe diagrams
     Let $M$ be a model category.
     We say that $M$ is \emph{left proper} if pushouts of weak equivalences along cofibrations are again weak equivalences.
@@ -322,7 +322,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
     Then composing the Yoneda embedding with the functor $\Fun(\Cat_{\Delta}^{\op},\Set)\to\sSet$ induced by the functor $C[-]\colon\Delta\to\Cat_{\Delta}$ from the previous construction gives a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$, which we refer to as the \emph{simplicial nerve functor} or the \emph{homotopy coherent nerve functor}.
     For a given (small) simplicial category $A$ we refer to $\Nhc(A)$ as the \emph{simplicial nerve} or \emph{homotopy coherent nerve of $A$}.
 \end{definition}
-For completeness we will also describe the Joyal model structure on $\sSet$, as it plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.
+We will also describe the Joyal model structure on $\sSet$ which plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.
 \begin{thm}[Joyal Model Structure on $\sSet$]
     The following two classes of maps endow $\sSet$ with a unique model structure:
     \begin{itemize}
@@ -379,7 +379,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
     which we refer to as the \emph{mapping space from $x$ to $y$}.
 \end{definition}
 \begin{remark}[The Boardmann-Vogt Construction]\label{rmk:boardmanVogt}
-    For an \inftycat/ $C$ there is a explicit construction of $\ho(C)$ (see \cref{lem:nerveFF}) due to Boardman and Vogt (\cite[Theorem 1.6.6]{cisinski_2019} for details).
+    For an \inftycat/ $C$ there is an explicit construction of $\ho(C)$ (see \cref{lem:nerveFF}) due to Boardman and Vogt (\cite[Theorem 1.6.6]{cisinski_2019} for details).
     In this construction the set of maps $\hom_{\ho(C)}(x,y)$ is a quotient of $\Map_C(x,y)_0$, hence we have a canonical map $\Map_C(x,y)_0\to\hom_{\ho(C)}(x,y)$ sending a map $f\colon\Delta^1\to C\in\Map_C(x,y)_0$ to its class $[f]\in\hom_{\ho(C)}(x,y)$.
     In fact, a map $f$ is invertible in $C$ if and only if $[f]$ is an isomorphism in $\ho(C)$.
 \end{remark}
@@ -511,7 +511,7 @@ For completeness we will also describe the Joyal model structure on $\sSet$, as 
 \begin{definition}[Kan-Extension]
     Let $u\colon A\to B$ be a functor between \inftycats/ and let $C$ be an \inftycat/.
     
-    Then if the functor $u^*\colon\Fun(B,C)\to\Fun(A,C)$ has a right adjoint $u_*\colon\Fun(A,C)\to\Fun(B,C)$, we say that \emph{$u_*$ is the right Kan-extension of $u$ in $C$}.
+    If the functor $u^*\colon\Fun(B,C)\to\Fun(A,C)$ has a right adjoint $u_*\colon\Fun(A,C)\to\Fun(B,C)$, we say that \emph{$u_*$ is the right Kan-extension of $u$ in $C$}.
     For a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{right Kan extension of $f$ along $u$} if $g$ is equivalent to $u_*(f)$.
 
     Dually, if $u^*$ has a left adjoint $u_!\colon\Fun(A,C)\to\Fun(B,C)$, we say that \emph{$u_!$ is the left Kan-extension of $u$ in $C$}.
