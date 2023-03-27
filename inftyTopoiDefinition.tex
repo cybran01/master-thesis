@@ -18,8 +18,8 @@ After this we will define universality and descent via cartesian natural transfo
     \end{proof}
 \end{corollary}
 Note that $\Top$ as an ordinary category is not locally presentable:
-One can show that all objects of a locally presentable category are small (see e.g. \cite[Proposition 10.4.8]{hirschhorn2003model}).
-However $\Top$ contains objects which are not small, e.g. the Sierpinski space (see \cite[49]{hovey2007model}).
+One can show that all objects of a locally presentable category must be compact, meaning $\kappa$-compact for some regular cardinal $\kappa$ (see \cite[Remark 1.30 (1)]{access_and_pres_cats}).
+However all compact spaces of $\Top$ are discrete spaces (see \cite[Examples 1.14 (6)]{access_and_pres_cats}).
 
 An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in \cite[Theorem 5.5.1.1 and Proposition A.3.7.6]{HTT}.
 
@@ -36,20 +36,20 @@ Next we introduce cartesian transformations which allow us to encode universalit
     \end{center}
     represented by the map $\Delta^1\times\Delta^1\xrightarrow{\left(u,\id_{\Delta^1}\right)}K\times\Delta^1\xrightarrow{\alpha}C$ is a pullback square in $C$. 
 \end{definition}
-\begin{definition}[Universality]
+\begin{definition}[Universality] 
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set.
-    We say that \emph{$C$ has $K$-shaped universal colimits} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is also a colimit cone.
+    We say that \emph{$C$ has universal colimits for $K$-shaped diagrams} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is also a colimit cone.
     
-    We say that \emph{$C$ has universal colimits} if $C$ has $K$-shaped universal colimits for every small simplicial set $K$.
+    We say that \emph{$C$ has universal colimits} if $C$ has universal colimits for $K$-shaped diagrams for every small simplicial set $K$.
 \end{definition}
-\begin{definition}[Descent]
+\begin{definition}[Descent] 
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set.
-    We say that \emph{$C$ has $K$-shaped descent} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is also cartesian.
+    We say that \emph{$C$ has descent for $K$-shaped diagrams} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is also cartesian.
     
-    We say that \emph{$C$ has descent} if $C$ has $K$-shaped descent for every small simplicial set $K$.
+    We say that \emph{$C$ has descent} if $C$ has descent for $K$-shaped diagrams for every small simplicial set $K$.
 \end{definition}
 \begin{remark}
-    We want to describe universality and descent explicitly for pushouts ($\Lambda^2_0$-shaped diagrams), because these will be important cases as \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} will show.
+    We will now describe universality and descent explicitly for pushouts ($\Lambda^2_0$-shaped diagrams), because these will be important cases as \cref{lem:univColimIffUnivPoAndCoprod} and \cref{lem:descentIffDescentPoAndCoprod} will show.
     A natural transformation $\alpha\colon\left(\Lambda_0^2\right)^{\rhd}\times\Delta^1\cong\Delta^1\times\Delta^1\times\Delta^1\to C$ is a cube
     \begin{center}
         \begin{tikzcd} [sep = .5 cm]
@@ -91,9 +91,9 @@ We will require the following proposition for the proof.
         \item The category $I$ is filtered.
     \end{itemize}
     Then let $C$ be a cocomplete \inftycat/ and $\Phi\colon Y\to C$ a functor.
-    For all $i\in I$ let $\Phi_i$ denote the induced map $\Phi_i\colon X(i)\to Y\to C$.
+    For all $i\in I$, let $\Phi_i$ denote the induced map $\Phi_i\colon X(i)\to Y\to C$.
 
-    Then the assignment $i\mapsto\colim\limits_{x\in X(i)} \Phi_i(x)$ extends naturally to a functor $\N(I)\to C$ such that there is a canonical invertible map of the form 
+    Then the assignment $i\mapsto\colim\limits_{x\in X(i)} \Phi_i(x)$ naturally extends to a functor $\N(I)\to C$ such that there is a canonical invertible map of the form 
     \begin{equation*}
         \colim\limits_{y\in Y}\Phi(y)\simeq\colim\limits_{i\in\N(I)}\colim\limits_{x\in X(i)}\Phi_i(x)\;.
     \end{equation*}
@@ -102,7 +102,7 @@ We will require the following proposition for the proof.
     \end{reference}
 \end{prop}
 \begin{lemma}\label{lem:spineInclIsWCE}
-    We view the linearly ordered set $\Nat$ as a category as in \cref{rmk:linOrderedAsCat}.
+    We view the linearly ordered set $\Nat$ as a category via \cref{rmk:linOrderedAsCat}.
     Let $L\subset\N(\Nat)$ be the simplicial subset given by $L=\bigcup\limits_{i\in\Nat}\Delta^{\set{i,i+1}}$, hence $L$ is the simplicial subset consisting of all vertices and edges joining consecutive vertices.
     
     Then $L\subset\N(\Nat)$ is a weak categorical equivalence.

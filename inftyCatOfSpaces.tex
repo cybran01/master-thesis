@@ -81,7 +81,7 @@ The other model structure on $\Top$ we will need is given by the following.
     Left properness of $\Top$ with the Quillen model structure is proven in \cite[Theorem 13.1.10]{hirschhorn2003model} and right properness of $\sSet$ is proven in \cite[Theorem 13.1.13]{hirschhorn2003model}.
     Hence, when computing homotopy pushouts/pullbacks in these model categories, it will always suffice to only replace one map by a cofibration/fibration.
 \end{remark}
-The following proposition provides a convenient characterization of homotopy pullbacks via the homotopy fibers of parallel maps.
+The following proposition provides a convenient characterization of homotopy pullbacks os spaces via the homotopy fibers of parallel maps.
 \begin{prop}[Fiberwise Characterization of Homotopy Pullbacks]\label{prop:fiberwiseCharOfHtpyPb}
     Let 
     \begin{center}
@@ -91,7 +91,7 @@ The following proposition provides a convenient characterization of homotopy pul
         \end{tikzcd}
     \end{center}
     be a commutative square in $\Top$. 
-    We model the homotopy fibers for given points $b_0\in B$ and $y_0\in Y$ as the pullback squares
+    We model the homotopy fibers of $q$ and $p$ for given points $b_0\in B$ and $y_0\in Y$ as the pullback squares
     \begin{center} 
         \begin{tikzcd} [sep = 4em]
             F_{b_0} \arrow [r] \arrow [->>, d, "h"', "\ev_1"] & P_{b_0}B \arrow [->>, d, "h"', "\ev_1"]\\
@@ -102,7 +102,7 @@ The following proposition provides a convenient characterization of homotopy pul
             X \arrow [r, "p"] & Y
         \end{tikzcd}
     \end{center}
-    where $P_{b_0}X$ and $P_{y_0}Y$ are the path mapping spaces of the maps $b_0\colon *\to B$ and  $y_0\colon *\to Y$ respectively and the indicated maps are h-fibrations. 
+    where $P_{b_0}B$ and $P_{y_0}Y$ are the path mapping spaces of the maps $b_0\colon *\to B$ and  $y_0\colon *\to Y$ respectively and the indicated maps are h-fibrations. 
     Then the square is a homotopy pullback square if and only if for every $b_0\in B$, the induced map of homotopy fibers
     \begin{align*}
         F_{b_0}&\to G_{f(b_0)} \\
@@ -134,7 +134,7 @@ The following proposition provides a convenient characterization of homotopy pul
 \end{thm}
 \begin{remark}
     Note that in the following we implicitly switch to a larger Grothendieck universe to apply $\N(-)$ and $\Nhc(-)$ since $\Top$ and $\sSet$ are not small categories.
-    We can consider these objects as ``large'' simplicial sets and work with them as usual.
+    We consider these objects ``large'' simplicial sets and can work with them as usual.
 \end{remark}
 \begin{corollary}\label{prop:homotopyHypothesis}
     The Quillen equivalence 

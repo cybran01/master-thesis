@@ -3,7 +3,7 @@ Some familiarity with \inftycats/ and Kan-complexes is assumed, in particular fa
 We also assume familiarity with (proper) model categories and the computation of homotopy limits/colimits (in particular homotopy pullbacks/pushouts and homotopy products/coproducts). 
 We will not give proofs for any statements in this section; we will however point to the relevant literature.
 \begin{definition}
-    For every $n\in\Nat$, let $[n]$ denote the linearly ordered set $\set{0<\ldots<n}\subset\Nat$ and let $[-1]=\emptyset$, which we also consider to be linearly ordered.
+    For every $n\in\Nat$, let $[n]$ denote the linearly ordered set $\set{0\leq\ldots\leq n}\subset\Nat$ and let $[-1]=\emptyset$, which we also consider to be linearly ordered.
 \end{definition}
 \begin{definition}
     Let $X,Y$ be partially ordered sets and $f\colon X\to Y$ a map of the underlying sets.
@@ -24,7 +24,11 @@ We will not give proofs for any statements in this section; we will however poin
     \end{itemize}
     We call this category the \emph{augmented simplex category $\Delta_+$}.
 
-    Furthermore, for $0\leq i\leq n$ we call the unique nondecreasing injective map $d_i^n\colon[n-1]\to[n]$ with $i\notin\im d_i^n$ the \emph{$i$-th face map in dimension $n$}, and for $-1\leq i\leq n$ we call the unique nondecreasing surjective map $s_i^n\colon[n+1]\to[n]$ with $s_i^n(i)=s_i^n(i+1)$ the \emph{$i$-th degeneracy map in dimension $n$}.
+    Furthermore, for $0\leq i\leq n$ we call
+    \begin{itemize}
+        \item the unique nondecreasing injective map $d_i^n\colon[n-1]\to[n]$ with $i\notin\im d_i^n$ the \emph{$i$-th face map in dimension $n$}
+        \item and the unique nondecreasing surjective map $s_i^n\colon[n+1]\to[n]$ with $s_i^n(i)=s_i^n(i+1)$ the \emph{$i$-th degeneracy map in dimension $n$}.
+    \end{itemize}
 \end{definition}
 \begin{definition}[Simplicial Set]\label{def:simpSet}
     We set $\sSet=\Fun(\Delta^{\op},\Set)$ to be the \emph{category of simplicial sets}.
@@ -44,12 +48,12 @@ We will not give proofs for any statements in this section; we will however poin
     for $a,b\in X$.
     When viewing partially ordered sets $X,Y$ as categories in this way, the nondecreasing functions $f\colon X\to Y$ correspond precisely to functors.
 
-    This gives fully faithful inclusions $\Delta\subset\Cat$ and $\Delta_+\subset\Cat$, where $\Cat$ denotes the \emph{category of (small) categories}.
+    This gives fully faithful inclusions $\Delta\subset\Cat$ and $\Delta_+\subset\Cat$, where $\Cat$ denotes the \emph{category of small categories}.
 \end{remark}
 \begin{definition}[Nerve of an Ordinary Category]
     Let $Y_{\Cat}\colon\Cat\to\Fun(\Cat^{\op},\Set)$ denote the Yoneda embedding.
     Then composing the Yoneda embedding with the functor $\Fun(\Cat^{\op},\Set)\to\sSet$ induced by the inclusion $\Delta\subset\Cat$ from the previous remark induces a functor $\N\colon\Cat\to\sSet$, which we refer to as the \emph{nerve functor}.
-    For a given (small) category $C$ we refer to the simplicial set $\N(C)$ as the \emph{nerve of the category $C$}.
+    For a given small category $C$ we refer to the simplicial set $\N(C)$ as the \emph{nerve of the category $C$}.
 \end{definition}
 \begin{definition}[Standard Simplex]
     For every $n\in\Nat$ we write $\N([n])=\Delta^n$ and refer to $\Delta^n$ as \emph{the standard $n$-simplex}.
@@ -76,7 +80,7 @@ We will not give proofs for any statements in this section; we will however poin
     We call a category enriched over $\sSet$ a \emph{simplicial category}.
     For a simplicial category $C$, we let $\Hom_C(-,-)\colon C^{\op}\times C\to\sSet$ denote the enriched $\Hom$-functor.
    
-    Let $\Cat_{\Delta}$ denote the \emph{category of (small) simplicial categories} with morphisms the \emph{$\sSet$-enriched functors}.
+    Let $\Cat_{\Delta}$ denote the \emph{category of small simplicial categories} with morphisms the \emph{$\sSet$-enriched functors}.
     
     We say that a simplicial category $C$ is \emph{tensored over $\sSet$} if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
     \begin{equation*}
@@ -120,7 +124,7 @@ We will not give proofs for any statements in this section; we will however poin
         \item $L=l(R)$
         \item $R=r(L)$
     \end{itemize}
-    then the pair $(L,R)$ is a \emph{weak factorization system (WFS) on $C$}.
+    then we call the pair $(L,R)$ a \emph{weak factorization system (WFS) on $C$}.
 \end{definition}
 \begin{definition}[Functorial WFS]
     Let $C$ be a category and let $(L,R)$ be a weak factorization system on $C$.
@@ -130,7 +134,7 @@ We will not give proofs for any statements in this section; we will however poin
     \begin{itemize}
         \item for all maps $f$ in $C$ we have $(i\circ\Gamma)(f)\in L$
         \item for all maps $f$ in $C$ we have $(p\circ\Gamma)(f)\in R$
-        \item and $\Gamma$ is a section of the canonical functor $\Fun\left([2],C\right)\to\Fun\left([1],C\right)$ induced by composition.
+        \item and $\Gamma$ is a section of the canonical composition functor $\Fun\left([2],C\right)\to\Fun\left([1],C\right)$ induced by $d_1^2\colon [1]\to[2]$. 
     \end{itemize}
 \end{definition}
 \begin{definition}[Model Category]
@@ -142,6 +146,12 @@ We will not give proofs for any statements in this section; we will however poin
         \item $(\Cof\cap\W,\Fib)$ is a weak factorization system.
         \item $(\Cof,\Fib\cap\W)$ is a weak factorization system.
     \end{itemize}
+\end{definition}
+\begin{definition}[$\kappa$-Filtered Category]
+    Let $C$ be a category and $\kappa$ a regular cardinal.
+    Then we call $C$ \emph{$\kappa$-filtered} if every functor $F\colon K\to C$, where $K$ is a category whose class of morphisms $\Map(K)$ has cardinality less than $\kappa$, admits an extension to a cone diagram $F^{\rhd}\colon K^{\rhd}\to C$.
+
+    We call a colimit $F^{\rhd}\colon K^{\rhd}\to C$ a \emph{$\kappa$-filtered colimit} if $K$ is $\kappa$-filtered.
 \end{definition}
 \begin{definition}[$\kappa$-Compact Object]
     Let $C$ be a category, $X\in C$ an object and $\kappa$ a regular cardinal.
@@ -165,7 +175,7 @@ We will not give proofs for any statements in this section; we will however poin
     Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
     Then we say that $I$ is \emph{saturated} if it is closed under retracts, pushouts and transfinite composition.
 \end{definition}
-\begin{definition}[Relative $\kappa$-Small]
+\begin{definition}[Relative $\kappa$-Small] %Definition 2.1.3 hovey or Definition 10.4.1 hirschhorn
     Let $C$ be a category with small colimits, let $S$ be a class of morphisms in $C$ and let $\kappa$ be a cardinal.
     
     We say that an object $A\in C$ is \emph{$\kappa$-small relative to $S$} if colimits indexed by $\lambda$-sequences $X$ such that 
@@ -262,6 +272,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
         They are the smallest (with respect to inclusion) saturated class of maps containing the inclusions $\set{\partial\Delta^n\xhookrightarrow{}\Delta^n\mid n\in\Nat}$.
         \item the fibrations are the maps having the right lifting property with respect to the inclusions $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0\leq k\leq n, n\in\Nat}$ and are called \emph{Kan-fibrations}.
     \end{itemize}
+    This model structure is cofibrantly generated with respect to the indicated classes of maps.
     The fibrant objects are the \emph{Kan-complexes}.
     The weak equivalences are the maps which are weak equivalences in $\Top$ after geometric realization.
 
@@ -292,7 +303,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
             \begin{equation*}
                 \Hom_{\C[n]}(i,j)=\N(P_{i,j})
             \end{equation*}
-            where $P_{i,j}$ is the partially ordered set of subsets of $\set{0,\ldots,n}$ which contain both $i$ and $j$ with the relation given by reverse inclusion
+            where $P_{i,j}$ is the partially ordered set of subsets of $\set{0,\ldots,n}$ containing both $i$ and $j$ with the relation given by reverse inclusion
         \item for $i,j,k\in\set{0,\ldots,n}$ the composition is given by applying the nerve $\N(-)$ to the map
         \begin{align*}
                 P_{i,j}\times P_{j,k}&\to P_{i,k}\\
@@ -320,8 +331,22 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
 \begin{definition}[Homotopy Coherent Nerve]
     Let $Y_{\Cat_{\Delta}}\colon\Cat_{\Delta}\to\Fun(\Cat_{\Delta}^{\op},\Set)$ denote the Yoneda embedding.
     Then composing the Yoneda embedding with the functor $\Fun(\Cat_{\Delta}^{\op},\Set)\to\sSet$ induced by the functor $C[-]\colon\Delta\to\Cat_{\Delta}$ from the previous construction gives a functor $\Nhc\colon\Cat_{\Delta}\to\sSet$, which we refer to as the \emph{simplicial nerve functor} or the \emph{homotopy coherent nerve functor}.
-    For a given (small) simplicial category $A$ we refer to $\Nhc(A)$ as the \emph{simplicial nerve} or \emph{homotopy coherent nerve of $A$}.
+    For a given small simplicial category $A$ we refer to $\Nhc(A)$ as the \emph{simplicial nerve} or \emph{homotopy coherent nerve of $A$}.
 \end{definition}
+\begin{prop}
+    Let $A$ be a simplicial category such that for every pair of objects $X,Y\in A$ the simplicial set $\Hom_A(X,Y)$ is a Kan-complex.
+    Then $\Nhc(A)$ is an \inftycat/.
+    \begin{reference}
+        \cite[Theorem 2.4.5.1]{kerodon}
+    \end{reference}
+\end{prop}
+\begin{corollary}
+    Let $M$ be a simplicial model category.
+    Then the simplicial set $\Nhc(M^°)$ where $M^°$ denotes the restriction to the full subcategory of cofibrant-fibrant objects is an \inftycat/.
+    \begin{proof}
+        The axioms of a simplicial model category imply that for every pair of objects $X,Y\in M^°$ the simplicial set $\Hom_{M^°}(X,Y)$ is a Kan-complex.
+    \end{proof}
+\end{corollary}
 We will also describe the Joyal model structure on $\sSet$ which plays a similar role for \inftycats/ as the Quillen model structure does for Kan-complexes.
 \begin{thm}[Joyal Model Structure on $\sSet$]
     The following two classes of maps endow $\sSet$ with a unique model structure:
@@ -330,16 +355,16 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
         \item The weak equivalences are the maps $A\to B$ such that for every \inftycat/ $C$ the induced map $\ho(\Fun(B,C))\to\ho(\Fun(A,C))$ is an equivalence of ordinary categories.
     \end{itemize}
     The fibrant objects of this model structure are called \inftycats/ and are precisely the simplicial sets whose map to the point has the right lifting property with respect to $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0< k< n, n\in\Nat}$.
-    We refer to the weak equivalences of this model structure as \emph{weak categorical equivalences}.
-    We refer to weak categorical equivalences whose domain and target are both \inftycats/ as \emph{equivalences of \inftycats/}.
-    We call this model structure the \emph{Joyal Model Structure on $\sSet$}.
+    We refer to the weak equivalences of this model structure as \emph{weak categorical equivalences}, and to weak categorical equivalences whose domain and target are both \inftycats/ as \emph{equivalences of \inftycats/}.
+    
+    This model structure is called the \emph{Joyal Model Structure on $\sSet$}.
     \begin{reference}
         \cite[Definition 3.3.7, Theorem 3.6.8 and Theorem 3.6.1]{cisinski_2019}
     \end{reference}
 \end{thm}
 \begin{definition}[Equivalences in an \inftyCat/]
     Let $C$ be an \inftycat/ and $f\colon x\to y\in C_1$ a map.
-    Then we say that $f$ is an \emph{equivalence} or $f$ is \emph{invertible} if there exists a map $g\colon y\to x\in C_1$ and $2$-simplices of the form
+    Then we say that \emph{$f$ is an equivalence} or \emph{$f$ is invertible} if there exists a map $g\colon y\to x\in C_1$ and $2$-simplices of the form
     \begin{center}
         \begin{tikzcd} [sep = 3em]
             & x \ar[dr,"f"]&\\
@@ -364,7 +389,7 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
 \end{remark}
 \begin{definition}[Essential Image]
     Let $F\colon C\to D$ be a map between \inftycats/.
-    Then the \emph{essential image} of $F$ is the full subcategory $\essim F\subset D$ spanned by the objects $d\in D_0$ for which there exist $c\in C_0$ such that $F(c)\simeq d$.
+    Then the \emph{essential image of $F$} is the full subcategory $\essim F\subset D$ spanned by the objects $d\in D_0$ for which there exist $c\in C_0$ such that $F(c)\simeq d$.
 
     If $\essim F=D$ we say that $F$ is \emph{essentially surjective}.
 \end{definition}
@@ -385,7 +410,7 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
 \end{remark}
 \begin{definition}[Fully Faithful]
     Let $F\colon C\to D$ be a map between \inftycats/.
-    Then call $F$ \emph{fully faithful} if for all $x,y\in C_0$ the map $\Map_C(x,y)\to\Map_D(F(x),F(y))$ induced by the commutative cube
+    Then we say that $F$ is \emph{fully faithful} if for all $x,y\in C_0$, the map $\Map_C(x,y)\to\Map_D(F(x),F(y))$ induced by the commutative cube
     \begin{center}
         \begin{tikzcd} [sep = 1em]
             \Map_C(x,y) \arrow [dr] \arrow [rr] \arrow [dd] & & \Fun(\Delta^1,C) \arrow [dr, "F\circ -"] \arrow [dd] \\
@@ -408,20 +433,6 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
         \cite[Corollary 3.6.6 and Theorem 3.9.7]{cisinski_2019}
     \end{reference}
 \end{thm}
-\begin{prop}
-    Let $A$ be a simplicial category such that for every pair of objects $X,Y\in A$ the simplicial set $\Hom_A(X,Y)$ is a Kan-complex.
-    Then $\Nhc(A)$ is an \inftycat/.
-    \begin{reference}
-        \cite[Theorem 2.4.5.1]{kerodon}
-    \end{reference}
-\end{prop}
-\begin{corollary}
-    Let $M$ be a simplicial model category.
-    Then the simplicial set $\Nhc(M^°)$ where $M^°$ denotes the restriction to the full subcategory of cofibrant-fibrant objects is an \inftycat/.
-    \begin{proof}
-        The axioms of a simplicial model category imply that for every pair of objects $X,Y\in M^°$ the simplicial set $\Hom_{M^°}(X,Y)$ is a Kan-complex.
-    \end{proof}
-\end{corollary}
 \begin{definition}[Simplicial Localization]
     Let $C$ be a simplicial set and $W\subset C$ be a simplicial subset.
 
@@ -441,7 +452,7 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
     \end{reference}
 \end{lemma}
 \begin{definition}[Join]
-    For simplicial sets $X,Y\in\sSet$ let $X\star Y$ denote the \emph{join} which on simplices is given by $(X\star Y)_n=X_n\cup Y_n\cup\bigcup\limits_{i+j=n-1}X_i\times X_j$.
+    For simplicial sets $X,Y\in\sSet$, let $X\star Y$ denote the \emph{join of $X$ and $Y$} which on simplices is given by $(X\star Y)_n=X_n\cup Y_n\cup\bigcup\limits_{i+j=n-1}X_i\times X_j$.
     The join is functorial in both arguments.
     
     For a simplicial set $X$, we further define $X^{\lhd}=\Delta^0\star X$ and $X^{\rhd}=X\star\Delta^0$.
@@ -520,25 +531,25 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
 We will only deal with Kan-extensions where $u$ is an inclusion and $C$ is complete and cocomplete.
 In this case, we can give a more explicit description.
 \begin{definition}[Pointwise Kan-Extension]\label{def:ptwiseKanExt} %kerodon Definition 7.3.2.1
-    Let $F\colon C\to D$ be a functor between \inftycats/ and let $i\colon C_0\subset C$ be a full subcategory.
+    Let $F\colon C\to D$ be a functor between \inftycats/ and let $i\colon B\subset C$ be a full subcategory.
     Then $F$ is a \emph{pointwise right Kan-extension along $i$} if for all objects $c\in C$ the diagram
     \begin{equation*}
-        \left(C_{c/}\times_C C_0\right)^{\lhd}\to \Delta^0\star C_{c/}\xrightarrow{c} C\xrightarrow{F} D
+        \left(C_{c/}\times_C B\right)^{\lhd}\to \Delta^0\star C_{c/}\xrightarrow{c} C\xrightarrow{F} D
     \end{equation*}
     where the map $c\colon\Delta^0\star C_{c/}\to C$ is the coslice contraction map, is a limit cone.
 
     Dually, $F$ is a \emph{pointwise left Kan-extension along $i$} if for all objects $c\in C$ the diagram
     \begin{equation*}
-        \left(C_{/c}\times_C C_0\right)^{\rhd}\to C_{/c}\star\Delta^0 \xrightarrow{c} C\xrightarrow{F} D
+        \left(C_{/c}\times_C B\right)^{\rhd}\to C_{/c}\star\Delta^0 \xrightarrow{c} C\xrightarrow{F} D
     \end{equation*}
     where the map $c\colon C_{/c}\star\Delta^0\to C$ is the slice contraction map, is a colimit cone.
 \end{definition}
 \begin{prop}[Existence of Pointwise Kan-Extensions]\label{prop:exKanExt}
-    Let $C,D$ be \inftycats/ and $i\colon C_0\subset C$ a full subcategory.
+    Let $C,D$ be \inftycats/ and $i\colon B\subset C$ a full subcategory.
     
-    If $D$ admits $\left(C_{c/}\times_C C_0\right)$-shaped limits, then there exists a fully faithful right Kan-extension $i_*\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
+    If $D$ admits $\left(C_{c/}\times_C B\right)$-shaped limits for all $c\in C_0$, then there exists a fully faithful right Kan-extension $i_*\colon\Fun(B,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon B\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
 
-    Dually if $D$  $\left(C_{c/}\times_C C_0\right)$-shaped colimits, then there exists a fully faithful left Kan-extension $i_!\colon\Fun(C_0,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon C_0\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
+    Dually if $D$ admits $\left(C_{c/}\times_C B\right)$-shaped colimits for all $c\in C_0$, then there exists a fully faithful left Kan-extension $i_!\colon\Fun(B,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon B\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
     \begin{reference}
         The existence and computation of the Kan-extensions via the pointwise description is shown by \cite[Proposition 6.4.9]{cisinski_2019} (and its dual).
         

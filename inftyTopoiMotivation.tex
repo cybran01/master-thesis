@@ -9,7 +9,7 @@ Giving precise meaning to all of these conditions will be done throughout \cref{
 We will call an \inftycat/ $C$ an \inftytop/ if it also fulfills these conditions.
 
 These conditions are key ingredients for many theorems classically proven in $\Top$ and thus allow these theorems to be generalized to \inftytops/.
-Among these theorems are the characterization of deloopable pointed objects and the James Splitting Theorem which we will prove in \cref{sec:deloopingPtdConn} and \cref{sec:jamesSplittingTheorem} respectively.
+Among these theorems are the characterization of deloopable pointed objects and the James Splitting Theorem which we will prove for general \inftytops/ in \cref{sec:deloopingPtdConn} and \cref{sec:jamesSplittingTheorem} respectively.
 
 There are different equivalent characterizations of \inftytops/; 
 for an overview and proof of some of these equivalent characterizations, see \cite[\S 6.1]{HTT}.
@@ -54,9 +54,10 @@ For a given point $b\in B$ we can then form a cube
         & X_2 \arrow [from=uu, crossing over] \arrow [rr] & & X &
     \end{tikzcd}
 \end{center}
-where the top face consists of the fibers over $b$ of the fibrations to $B$.
+where the top face consists of the fibers over $b$ of the corresponding fibrations.
 By the pasting law for homotopy pullbacks (see \cref{prop:pastingLaw}) we know that the side faces are all homotopy pullbacks.
 Thus we can apply Mathers Second Cube Theorem which shows that the homotopy fiber $F$ is the homotopy pushout of the homotopy fibers of $X_i\xtwoheadrightarrow{} B$ for $i\in\set{0,1,2}$.
+
 We can also ask for this to be true not only for pushouts but for general small colimits; 
 this also  holds in $\Top$ as well, but it turns it that is suffices to check it for pushouts and small coproducts as we will see in \cref{lem:univColimIffUnivPoAndCoprod}.
 This more general property is then called ``universality''.
@@ -82,5 +83,6 @@ By the fiberwise characterization of homotopy pullbacks \cref{prop:fiberwiseChar
 \end{center}
 where the left and rear faces are homotopy pullbacks and the top and bottom faces are homotopy pushouts, the front and right faces are homotopy pullbacks as well.
 This property will be called ``descent for pushouts'' and is also known as Mathers First Cube Theorem in $\Top$ (\cite[Theorem 18]{mather_1976}).
+
 Again a natural generalization to consider is replacing pushouts by arbitrary small diagrams, and this property will later be called ``descent''.
 It will again turn out that we can reduce to showing descent for only pushouts and small coproducts, as we will see in \cref{lem:descentIffDescentPoAndCoprod}.
