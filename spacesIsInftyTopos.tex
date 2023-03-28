@@ -197,7 +197,7 @@ Using \cref{prop:poAlongHCofibIsHtpyPo} and the following theorem, we first prov
             \end{tikzcd}
         \end{center}
         where $\overline{A}=A\times_{D}\overline{D}$, $\overline{B}=B\times_{D}\overline{D}$ and $\overline{C}=C\times_{D}\overline{D}$.
-        Since by the pasting lemma for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D'\xrightarrow{\sim}\overline{D}$ is a weak equivalence, all vertical maps in the upper cube of the above diagram are weak equivalences.
+        Since by the pasting law for homotopy pullbacks the upper vertical squares are also homotopy pullbacks and $D'\xrightarrow{\sim}\overline{D}$ is a weak equivalence, all vertical maps in the upper cube of the above diagram are weak equivalences.
         Thus it is sufficient to show that the square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -227,7 +227,7 @@ Using \cref{prop:poAlongHCofibIsHtpyPo} and the following theorem, we first prov
                 \widehat{C} \arrow[>->, r, "h"] & \widehat{B}\cup_A\widehat{C} \\
             \end{tikzcd}
         \end{center}
-        along $q$ by the pasting law for pullbacks gives the cube
+        along $q$ gives the cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 \overline{A} \arrow [>->,dr,"h"] \arrow [>->,rr,"h"] \arrow [->>,dd,"h"] & & \widehat{B}\times_{D}\overline{D} \arrow [>->,dr,"h"] \arrow [->>,dd,near start,"h"] \\
@@ -236,7 +236,7 @@ Using \cref{prop:poAlongHCofibIsHtpyPo} and the following theorem, we first prov
                 & \widehat{C} \arrow [->>,from=uu, crossing over,near start,"h"] \arrow [>->,rr,"h"] & & \widehat{B}\cup_A\widehat{C}
             \end{tikzcd}
         \end{center}
-        where the top horizontal maps are h-cofibrations since pullbacks of h-cofibrations along h-fibrations are again h-cofibrations by \cref{thm:pbOfHcofibIsHcofib}.
+        by the pasting law for pullbacks, where the top horizontal maps are h-cofibrations since pullbacks of h-cofibrations along h-fibrations are again h-cofibrations by \cref{thm:pbOfHcofibIsHcofib}.
         We now claim that the top square of this cube is an ordinary pushout.
 
         First note that the pullback of a given map $f\colon X\to B$ along an inclusion $A\xhookrightarrow{} B$ can be identified with the map $f^{-1}(A)\xrightarrow{f|_{f^{-1}(A)}}A$ where $f^{-1}(A)$ is equipped with the subspace topology of $X$. 
@@ -341,13 +341,13 @@ As a first step we will fix some notation related to pairs and triples of spaces
     Then given a homotopy $h\colon(X_1,X_1\cap X_2)\times I\to(Y,A)$ and a map $f\colon(X,X_2)\to(Y,A)$ such that $h_0=f|_{X_1}$, there exists a homotopy $H\colon(X,X_2)\times I\to(Y,A)$ such that $H|_{X_1\times I}=h$ and $H_0=f$.
     \begin{proof}
         We apply the homotopy extension property twice: First we extend $h|_{\left(X_1\cap X_2\right)\times I}$ to a homotopy $h'\colon X_2\times I\to A$ with $h'_0=f|_{X_2}$.
-        Then we can extend $h\cup_{X_1\cap X_2} h'\colon \left(X_1\cup X_2\right)\times I\to Y$ to the desired homotopy $H$.
+        Then we can extend $h\cup_{(X_1\cap X_2)\times I} h'\colon \left(X_1\cup X_2\right)\times I\to Y$ to the desired homotopy $H$.
     \end{proof}
 \end{lemma}
 \begin{remark}\label{rmk:cwInclIsHCofib}
     Let $J^n=\set{0}\times I^n\cup I\times\partial I^n\subset\partial I^{n+1}\subset I^{n+1}$.
     The triads $(I^{n+1};J^n,\set{1}\times I^n)$ fulfill the requirements of \cref{lem:rHEP} for all $n\geq 0$.
-    This is because all the required maps can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are cofibrations and thus also h-cofibrations.
+    This is because all the maps required to be h-cofibrations can be identified with maps $S^{n-1}\hookrightarrow D^n$ (where $S^{-1}=\emptyset$) which are cofibrations and thus also h-cofibrations.
     
     The inclusion $J^n\subset I^{n+1}$ is an h-cofibration as well as a homotopy equivalence (since both spaces are contractible), hence by \cite[Corollary 0.20]{hatcher2002algebraic} $J^n$ is a (strong) deformation retract of $I^{n+1}$.
 \end{remark}
@@ -368,13 +368,13 @@ As a first step we will fix some notation related to pairs and triples of spaces
     Note that these definitions also preserve homotopies/maps of pairs and triples.
 \end{definition}
 \begin{remark}\label{rmk:choiceOfConstantHtpy}
-    Let $H,H_1,H_2,H_3\colon X\times I\to Y$ be homotopies with $(H_1)_1=(H_2)_0$ and $(H_2)_1=(H_3)_0$ and let $f\colon X\to Y$ be a map.
-    Then one can give explicit homotopies between homotopies $\const_f*H\simeq H$, $H*\const_f\simeq H$, $H*\overline{H}\simeq \const_{H_0}$, $\overline{H}*H\simeq\const_{H_1}$ and $(H_1*H_2)*H_3\simeq H_1*(H_2*H_3)$ that are constant at $X\times\set{0}\times I$ and $X\times\set{1}\times I$.
+    Let $H,K,L,M\colon X\times I\to Y$ be homotopies with $K_1=L_0$ and $L_1=M_0$.
+    Then one can give explicit homotopies between homotopies $\const_{H_0}*H\simeq H$, $H*\const_{H_1}\simeq H$, $H*\overline{H}\simeq \const_{H_0}$, $\overline{H}*H\simeq\const_{H_1}$ and $(K*L)*M\simeq K*(L*M)$ that are constant at $X\times\set{0}\times I$ and $X\times\set{1}\times I$.
 
     Note that this is also true for homotopies of pairs and triples.
 \end{remark}
 We next fix a model for the homotopy groups/sets of pairs.
-For us the model as maps of triples from $(I^n,\partial I^n,J^{n-1})$ is the most convenient.
+For us the model as maps of triples with domain $(I^n,\partial I^n,J^{n-1})$ is the most convenient.
 \begin{definition}[Homotopy Groups/Sets of Pairs]
     For a pair of spaces $(X,A)$, $a\in A$ and $n\geq 1$ we set $\pi_n(X,A,a)$ to be the set of equivalence classes of maps $(I^n,\partial I^n,J^{n-1})\to(X,A,a)$ modulo homotopies of triples $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ between such maps.
 \end{definition}
@@ -768,7 +768,7 @@ The following technical lemma will allow us to reduce to the case of an inclusio
             \item given a fixed $r\in\set{0,\ldots,s-1}$ and $m\in\set{0,\ldots,n}$, the inner induction step extends them from $L_r^m$ to $L_r^{m+1}$, hence it extends them over all cells of the form $I_r\times K$ with $K\in\Gamma^m$
             \item and given a fixed $r\in\set{0,\ldots,s-2}$, the outer induction step extends them from $L_r^{n+1}$ to $L_{r+1}^{n+1}$.
         \end{itemize}
-        As an example, provided $n=1$ and $s=3$, the inner and outer induction correspond to horizontal and vertical arrows respectively in the following diagram:
+        As an example, provided $n=1$ and $s=3$, the inner and outer induction correspond to extensions of domains as indicated by the arrows in the following diagram:
         \begin{center}
             \begin{tikzpicture}[scale = .7, opacity = .7]
                 \newcommand\xshift{5}
@@ -1283,10 +1283,10 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
     \begin{center}
         \begin{tikzcd} [sep = 1 cm]
             \emptyset \arrow [r] \arrow [d] & X \arrow [d]\\
-            Y \arrow [r] & X\coprod^h Y
+            Y \arrow [r] & X\coprod\limits^h Y
         \end{tikzcd}
     \end{center}
-    (where $\emptyset$ is the initial object and $X\coprod^h Y$ a homotopy coproduct) is a homotopy pullback.
+    (where $\emptyset$ is the initial object and $X\coprod\limits^h Y$ a homotopy coproduct) is a homotopy pullback.
 \end{definition}
 \begin{lemma}\label{lem:binCoprodDisjoint}
     Binary homotopy coproducts in the model category $\Top$ are disjoint.
@@ -1329,8 +1329,8 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 P_{kj} \arrow [r] \arrow [d] & X_j \arrow [d]\\
-                P_{k} \arrow [d] \arrow [r] & Y_k \arrow [d]\\
-                X_k \arrow [r] & Y_k\coprod^h X_k\simeq\coprod\limits_{i\in I}^h X_i
+                P_{k} \arrow [d] \arrow [r] & Y_k \arrow [d, shorten >= -.7em]\\
+                X_k \arrow [r] & Y_k\coprod\limits^h X_k\simeq\coprod\limits_{i\in I}^h X_i
             \end{tikzcd}
         \end{center}
         and by disjointness of binary homotopy coproducts we have $P_k\simeq\emptyset$.
@@ -1343,7 +1343,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 X_k \arrow [r] \arrow [d] & X_k \arrow [d]\\
-                X_k \arrow [r] & X_k\coprod^h Y_k
+                X_k \arrow [r] & X_k\coprod\limits^h Y_k
             \end{tikzcd}
         \end{center}
         is a homotopy pullback square.
@@ -1374,7 +1374,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
                 Y_k \arrow [r] & \coprod\limits_{i\in I}^hY_i
             \end{tikzcd}
         \end{center}
-        and since $X_j\to\coprod\limits_{i\in I}^hX_i\to\coprod\limits_{i\in I}^hY_i$ is equal to $X_j\to Y_j\to\coprod\limits_{i\in I}^hY_i$, we can also compute $P_{kj}$ as the successive homotopy pullback
+        then since $X_j\to\coprod\limits_{i\in I}^hX_i\to\coprod\limits_{i\in I}^hY_i$ is equal to $X_j\to Y_j\to\coprod\limits_{i\in I}^hY_i$, we can also compute $P_{kj}$ as the successive homotopy pullback
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 P_{kj} \arrow [r] \arrow [d] & X_j \arrow [d]\\
@@ -1410,7 +1410,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
             Y_k \arrow [r] & \coprod\limits_{i\in I}Y_i
         \end{tikzcd}
     \end{center}
-    is a pullback square as can be checked by point set topology and since the map $Y_k\to\coprod\limits_{i\in I}Y_i$ is a fibration, it is already a homotopy pullback which proves the proposition.
+    is a pullback square as can be checked by point set topology and since the map $Y_k\xhookrightarrow{}\coprod\limits_{i\in I}Y_i$ is a fibration, it is already a homotopy pullback which proves the proposition.
 \end{remark}
 Now all that remains for our proof that $\spaces$ is an \inftytop/ is to assemble the parts. 
 \begin{corollary}\label{cor:spacesIsInftyTop}

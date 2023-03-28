@@ -129,7 +129,7 @@ We will require the following proposition for the proof.
         where $S$ is the set of non-degenerate simplices of dimension $n+1$.
         For ease of notation, we set $X_{0}=\coprod\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\coprod\limits_S \Delta^{n+1}$.
 
-        Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ or $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoint of $q_i$ to be the colimit, and the conepoint of $p_i$ to be the pullback 
+        Let $p_i,q_i\colon X_i^{\rhd}\to C$ be the maps obtained by precomposing $p$ and $q$ with the respective map to $K$ from the skeletal filtration and taking the conepoint of $q_i$ to be the colimit, and the conepoint of $p_i$ to be the pullback 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p_i(\infty) \arrow[r] \arrow[d] & p(\infty) \arrow[d]\\
@@ -176,7 +176,7 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         is a pushout square.
-        Furthermore, the natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd},C\right)_1$ induced by $\alpha$ and the $\alpha_i$ which we represent by a cube
+        Furthermore, the natural transformations $\alpha$ and $\alpha_i$ induce a natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd},C\right)_1$ which we represent by a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 p_0(\infty) \arrow [dr] \arrow [rr] \arrow [dd] & & p_1(\infty) \arrow [dr] \arrow [dd] \\
@@ -185,7 +185,7 @@ We will require the following proposition for the proof.
                 & q_2(\infty) \arrow [from=uu, crossing over] \arrow [rr] & & q(\infty) &
             \end{tikzcd}
         \end{center}
-        is cartesian by the pasting law.
+        and by the pasting law this natural transformation is also cartesian.
         By universality for pushouts (since the bottom square is pushout) we thus have that the top square is also a pushout.
         Again by \cref{prop:colimitDecompositionPushouts} it follows that $p$ is a colimit cone.
         It now remains to show that statement for general $K$.
@@ -231,7 +231,7 @@ We will require the following proposition for the proof.
         By the induction hypothesis we know that $\alpha_0$ and $\alpha_1$ are cartesian.
         We claim that the natural transformation $\alpha_2$ is cartesian as well: 
 
-        For $i\in\set{0,\ldots,n+1}$ and $s\in S$ let $i_s\in X_2$ denote the $i$-th vertex of the $s$-th component in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$.
+        For $i\in\set{0,\ldots,n+1}$ and $s\in S$ let $i_s\in \left(X_2\right)_0$ denote the $i$-th vertex of the $s$-th component in $X_2=\coprod\limits_{s\in S} \Delta^{n+1}$.
         Since the objects $(n+1)_s$ are terminal in their respective component $\Delta^{n+1}$, we have $q_2(\infty)\simeq\coprod\limits_{s\in S} q_2((n+1)_s)$ as well as $p_2(\infty)\simeq\coprod\limits_{s\in S} p_2((n+1)_s)$ by \cref{prop:colimitDecompositionPushouts}.
         For each $s\in S$ and $i\in\set{0,\ldots,n+1}$ the outer square of the diagram
         \begin{center}
@@ -268,7 +268,7 @@ We will require the following proposition for the proof.
         \end{center}
         are pullbacks: 
 
-        For all objects $x$ in $X_0$ and $i\in\set{1,2}$ the left square of the diagram 
+        For all objects $x\in \left(X_0\right)_0$ and $i\in\set{1,2}$ the left square of the diagram 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p_0(x) \arrow[r] \arrow[d] & q_0(\infty)\times_{q_i(\infty)}p_i(\infty) \arrow[r] \arrow[d] & p_i(\infty) \arrow[d] \\
@@ -298,7 +298,7 @@ We will require the following proposition for the proof.
                 q_i(x_i)=q(x) \arrow[r] & q_i(\infty) \arrow[r] & q(\infty)\\
             \end{tikzcd}
         \end{center}
-        is a pullback by the pasting lemma because the left square is cartesian as $\alpha_i$ is cartesian and the right square is cartesian due as $\beta$ is cartesian.
+        is a pullback by the pasting law since the left square is cartesian as $\alpha_i$ is cartesian and the right square is cartesian because $\beta$ is cartesian.
 
         The case for general $K$ follows from the following argument:
         Let $p,q\colon K^{\rhd}\to C$  be colimit cones and $\alpha\colon p\to q$ be a natural transformation such that $\alpha|_K$ is cartesian.
@@ -316,7 +316,7 @@ We will require the following proposition for the proof.
                 q|_{K^n}(x) \arrow[r] & q|_{K^n}(\infty) \arrow[r] & q|_{K^{n+1}}(\infty)\\
             \end{tikzcd}
         \end{center}
-        is a pullback and hence by the pasting lemma so is the left square.
+        is a pullback and hence by the pasting law so is the left square.
         By universality this implies that $q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty)\simeq p|_{K^n}(\infty)$ which shows that
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -342,7 +342,7 @@ We will require the following proposition for the proof.
                 q(x) \arrow[r] & q(\infty)
             \end{tikzcd}
         \end{center}
-        is a pullback for all $x\in K_0$
+        is a pullback for all $x\in K_0$.
         But every such $x$ is already in some $K^n$, which gives a factorization
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -350,6 +350,6 @@ We will require the following proposition for the proof.
                 q(x)=q|_{K^n}(x) \arrow[r] & q|_{K^n}(\infty) \arrow[r] & q(\infty)
             \end{tikzcd}\;.
         \end{center}
-        Since we have already proven that both left and right square of this diagram are cartesian, the outer square is also cartesian which proves the proposition.
+        Since we have already proven that both left and right square of this diagram are cartesian, the outer square is also cartesian by the pasting law which proves the proposition.
     \end{proof}
 \end{lemma}
