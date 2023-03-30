@@ -11,9 +11,8 @@ A generalization characterizing higher loop spaces was proven in \cite{may2006ge
     We call a map $U\colon\N(\Delta)^{\op}\to C$ a \emph{simplicial object of the \inftycat/ $C$}.
     We call a map $U^+\colon\N(\Delta_+)^{\op}\to C$ an \emph{augmented simplicial object of the \inftycat/ $C$}.
 
-    For any nonempty finite linearly ordered set $J$ we always have a canonical nondecreasing bijection $J\cong[n]$ for some $n\in\Nat$.
-    Analogous to the definition of simplicial sets (\cref{def:simpSet}), given a simplicial object $U$ we will write $U_J$ for the evaluation $U_n$ under this canonical identification. 
-    We also use the analogous convention for augmented simplicial objects.
+    For any finite linearly ordered set $J$ we always have a canonical nondecreasing bijection $J\cong[n]$ for some $n\in\Nat\cup\set{-1}$.
+    Analogous to the definition of simplicial sets (\cref{def:simpSet}), given an (augmented) simplicial object $U$ we will write $U_J$ for the evaluation $U_n$ under this canonical identification. 
 \end{definition}
 \begin{definition}[Groupoid Object]
     Let $C$ be an \inftycat/ and let $U\colon\N(\Delta)^{\op}\to C$ be a simplicial object such that for every $n\in\Nat$ and partition $[n]=S\cup T$ with $S\cap T=\set{s}$ consisting of a single element, the square 
@@ -39,8 +38,6 @@ The \Cech/ nerve construction is a way to associate a groupoid object to a given
     
     Then by \cref{prop:exKanExt} there exists a functor $\CN\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
     An object $U^+\in\Fun(\N(\Delta_+)^{\op},C)_0$ in the essential image of $\CN$ is called a \emph{\Cech/ nerve}.
-
-    Note that 
 \end{definition}
 \begin{remark}\label{rmk:cechNerveExplicit}
     Computing the \Cech/ nerve for a map $f\colon x\to y$ explicitly via \cref{def:ptwiseKanExt}, one can see that up to equivalence it is given by
@@ -92,7 +89,7 @@ The following proposition provides an alternative characterization of a \Cech/ n
     Let $C$ be an \inftycat/ with finite limits and small colimits. 
     Then a groupoid object $U\colon\N(\Delta)^{\op}\to C$ is effective if and only if its induced colimit cone $\N(\Delta)^{\op}\star\Delta^0\cong\N(\Delta_+)^{\op}\to C$ is a \Cech/ nerve.
     \begin{proof}
-        This follows directly from the equivalent characterization of an effective groupoid from \cref{prop:grpdEffectiveIfPullback}.
+        This follows directly from the equivalent characterization of an effective groupoid provided by \cref{prop:grpdEffectiveIfPullback}.
     \end{proof}
 \end{corollary}
 The following proposition allows us to construct colimit diagrams out of simplicial objects by shifting the degrees.
@@ -141,8 +138,8 @@ The proof follows \cite[29-30]{toposes_and_htpy_toposes}.
         The outer square is equivalent to
         \begin{center}
             \begin{tikzcd} [sep = 4em]
-                \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"{\overline{U}\left(\set{f(n)}\subset[n]\right)}"'] & U_n \arrow[d, "{U\left(\set{f(n)}\subset[n]\right)}"] \\
-                \overline{U}_{\set{f(m)}}=U_{\set{f(m),n+1}} \arrow[r] & U_{\set{f(n)}}
+                \overline{U}_n=U_{n+1} \arrow[r] \arrow[d,"{\overline{U}\left(\set{f(m)}\subset[n]\right)}"'] & U_n \arrow[d, "{U\left(\set{f(m)}\subset[n]\right)}"] \\
+                \overline{U}_{\set{f(m)}}=U_{\set{f(m),n+1}} \arrow[r] & U_{\set{f(m)}}
             \end{tikzcd}
         \end{center}
         under the canonical identifications, thus it is also a pullback square since $U$ is a groupoid object.
@@ -158,7 +155,8 @@ The proof follows \cite[29-30]{toposes_and_htpy_toposes}.
             \end{tikzcd}
         \end{center}
         is a pullback diagram.
-        By \cref{prop:shiftIsColimDiam} we have that $\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}\simeq\overline{U}_{-1} = U_0$, $\overline{U}_0=U_1$ and thus that $\overline{U}_{0}\to\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}$ corresponds to $U(d_0^1)$ which proves the proposition.
+        By \cref{prop:shiftIsColimDiam} we have $\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}\simeq\overline{U}_{-1} = U_0$, $\overline{U}_0=U_1$.
+        Since the map $\overline{U}_{0}\to\colim\limits_{\N(\Delta)^{\op}}\overline{U}|_{\N(\Delta)^{\op}}$ corresponds to $U(d_0^1)$ under these identifications, this proves the proposition.
     \end{proof}
 \end{prop}
 \begin{definition}[Effective Epimorphism]
@@ -188,11 +186,12 @@ The proof follows \cite[29-30]{toposes_and_htpy_toposes}.
         Then by definition of an effective epimorphism it is already a colimit diagram, and since $U|_{\N(\Delta)^{\op}}$ is a groupoid, it is in the essential image of $F$.
 
         Now let $V$ be an element in the essential image of $F$. 
-        Then by \cref{prop:groupoidObjInToposAreEffective} and \cref{cor:groupoidEffectiveIffColimCechNerve} we know that it is a \Cech/ nerve and since $\CN(f)|_{\Delta^1}\simeq f$ it is in the essential image of $G$.
+        Then by \cref{prop:groupoidObjInToposAreEffective} and \cref{cor:groupoidEffectiveIffColimCechNerve} we know that it is a \Cech/ nerve.
+        Since $\CN(f)|_{\Delta^1}\simeq f$ because $\CN(-)$ is a fully faithful right adjoint, it is in the essential image of $G$.
     \end{proof}
 \end{prop}
-The above proposition is a more general version of the delooping of pointed objects.
-We can restrict it appropriately to obtain the version for pointed objects.
+The above proposition is a generalization of the delooping of pointed objects to groupoids.
+We can restrict it appropriately to obtain the desired version for group objects.
 \begin{definition}[Pointed Objects]
     Let $C$ be an \inftycat/ with a terminal object.
     Then write $C_*\subset\Fun(\Delta^1,C)$ for the full subcategory of maps with domain a fixed terminal object $*\in C_0$.
@@ -205,11 +204,10 @@ We can restrict it appropriately to obtain the version for pointed objects.
 \end{remark}
 \begin{definition}\label{def:catOfPtdConnObj}
     Let $C$ be an \inftycat/ with finite limits and let $\Conn(C_*)\subset C_*$ be the full subcategory of effective epimorphisms.
-    We call $\Conn(C_*)$ the \emph{\inftycat/ of pointed connected objects}.
+    We call $\Conn(C_*)$ the \emph{\inftycat/ of pointed connected objects of $C$} and refer to objects of this category as \emph{pointed connected objects of $C$}.
 \end{definition}
 \begin{remark}
-    We will later (see \cref{def:connected}) introduce notions of higher connectedness. 
-    It will follow from \cref{prop:conn} \ref{prop:connSection} that the notion of a connected pointed space $*\to X$ here means that the space $X$ is $0$-connected in the language of \cref{def:connected}, which is why we call these objects connected.
+    We will prove in the next section that this notion of pointed connected objects characterizes the pointed connected spaces in $\spaces$.
 \end{remark}
 \begin{corollary}[Delooping of Pointed Objects]\label{prop:mayRecognitionTheoremGroup}
     Let $C$ be an \inftytop/. 
@@ -228,6 +226,7 @@ We can restrict it appropriately to obtain the version for pointed objects.
         \end{tikzcd}
     \end{center}
     a \emph{loop space of $X$}.
+    Note that by the universal property there exists an essentially unique map $*\to\Omega X$, hence $\Omega X$ is canonically pointed.
 \end{definition}
 \begin{remark}
     By \cref{rmk:cechNerveExplicit} the \Cech/ nerve of a map $x\colon*\to X$ in an \inftytop/ $C$ is given by
@@ -252,7 +251,7 @@ We can restrict it appropriately to obtain the version for pointed objects.
     \end{itemize}
     (This implies in particular $U_n\simeq X\times\ldots\times X$ for $n\geq1$ with $X$ appearing $n$ times.)
 
-    This is because when such a group object exists, a delooping of $X$ is given by taking the colimit $A=\colim\limits_{\N\left(\Delta\right)^{\op}} U$ of this group object, which gives a pointed connected space $a\colon*\to A$ that fulfills $\Omega A\simeq X$ by \cref{prop:mayRecognitionTheoremGroup}.
+    This is because when such a group object exists, a delooping of $X$ is given by taking the colimit $A=\colim\limits_{\N\left(\Delta\right)^{\op}} U$ of this group object, which gives a pointed connected space $a\colon*\to A$ that fulfills $\Omega A\simeq X$ as pointed objects by \cref{prop:mayRecognitionTheoremGroup}.
 
     Conversely, \cref{prop:mayRecognitionTheoremGroup} also implies that when given a delooping $X\simeq\Omega A$, a group object of the above form exists by taking the \Cech/ nerve of the pointed connected space $a\colon*\to A$ and restricting it to $\N(\Delta)^{\op}$.
 \end{remark}
@@ -261,13 +260,13 @@ We can restrict it appropriately to obtain the version for pointed objects.
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             \Omega X \arrow[r] \arrow[d] & P_{x_0}X \arrow[->>,d, "h"] \\
-            * \arrow[r] & X \\
+            * \arrow[r, "x_0"] & X \\
         \end{tikzcd}
     \end{center}
     (which is also a homotopy pullback) as a model for the loop space.
     Hence the loop space consists of all paths $\gamma\colon [0,1]\to X$ that start and end at $x_0\in X$ and is equipped with the subspace topology of the compact open topology on $\hom_{\Top}\left([0,1],X\right)$ (see e.g. \cite[Definition 1.2.1]{cubical_htpy_theory}).
     
-    Then by explicit computation and \cref{rmk:cechNerveExplicit}, one can show that the \Cech/ nerve of a map $x_0\colon*\to X$ in $\Top$ is given by
+    Then by explicit computation and \cref{rmk:cechNerveExplicit}, one can show that the \Cech/ nerve of the map $x_0\colon*\to X$ is given by
     \begin{center}
         \begin{tikzcd}
             & \CN(x)_3 & \CN(x)_2 & \CN(x)_1 & \CN(x)_0 &  \CN(x)_{-1} \\ 
@@ -292,7 +291,7 @@ We can restrict it appropriately to obtain the version for pointed objects.
 \addcontentsline{toc}{subsection}{Delooping of Pointed Objects in $\spaces$}
 \subsection*{Delooping of Pointed Objects in $\spaces$}
 We now want to check that the notion of pointed connected objects of general \inftytops/ coincides with pointed connected spaces in the \inftytop/ $\spaces$.
-Thus we recover the statement of the May Recognition Theorem for $n=1$, which says that a pointed space is equivalent to a loop space of a pointed connected object if and only if it admits the structure of a group object in $\Top$. 
+Thus we recover the statement of the May Recognition Theorem for $n=1$, which says that a pointed space is equivalent to a loop space of a pointed connected object if and only if it admits the structure of a group object in $\spaces$. 
 \begin{definition}\label{def:truncatedMap}
     Let $C$ be an \inftytop/.
     With the convention that the $(-2)$-truncated maps are the equivalences, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-truncated} for $k\geq -1$ if the diagonal map $X\to X\times_YX$ is $(k-1)$-truncated.
@@ -333,7 +332,7 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
 \end{definition}
 \begin{prop}\label{prop:inclOfSetIsFF}
     There is a canonical fully faithful functor $i\colon\N(\Set)\to\spaces$ whose essential image consists precisely of $\Disc(\spaces)$. 
-    Furthermore, this functor $i$ has $\pi_0\colon\spaces\to\N(\Set)$ (induced by the path-connected component functor $\pi_0\colon\Top\to\Set$) as a left adjoint.
+    Furthermore, the functor $\pi_0\colon\spaces\to\N(\Set)$ induced by the path-connected component functor $\pi_0\colon\Top\to\Set$ is left adjoint to $i$.
     \begin{reference}
         \cite[Proposition 7.8.3]{cisinski_2019}
     \end{reference}
@@ -346,20 +345,22 @@ Thus we recover the statement of the May Recognition Theorem for $n=1$, which sa
     \end{reference}
 \end{prop}
 \begin{remark}
-    It follows from the argument given in \cite[Notation 5.5.6.2]{HTT} that $\Disc(C)$ is in fact equivalent to $\N(\ho(\Disc(C)))$.
+    By \cite[Proposition 5.5.6.18]{HTT} a left adjoint to the inclusion $\Disc(C)\subset C$ always exists.
+   
+    Furthermore, it follows from the argument given in \cite[Notation 5.5.6.2]{HTT} that $\Disc(C)$ is in fact equivalent to $\N(\ho(\Disc(C)))$.
 \end{remark}
 \begin{prop}\label{prop:effInSpaceIffSurj}
     A map $f\colon x\to y$ in $\spaces$ is an effective epimorphism if and only if it induces a surjection on connected components.
     \begin{proof}
         First, by \cref{prop:inclOfSetIsFF} there is a fully faithful functor $i\colon\N(\Set)\to\spaces$ whose essential image consists precisely of the discrete objects and has $\pi_0\colon\spaces\to\N(\Set)$ as a left adjoint.
         By \cref{prop:testEffEpiInDisc} the statement of the lemma is thus equivalent to checking whether $\pi_0(f)$ is an effective epimorphism in $\Set$.
-        In $\Set$, computation shows that the effective epimorphisms are exactly the surjective morphisms, hence a map $f$ in $\spaces$ is an effective epimorphism precisely if $\pi_0(f)$ is surjective.
+        In $\Set$ computation shows that the effective epimorphisms are exactly the surjective morphisms, hence a map $f$ in $\spaces$ is an effective epimorphism precisely if $\pi_0(f)$ is surjective.
     \end{proof}
 \end{prop}
 \begin{corollary}
     Let $*\to X$ be a pointed space in $\spaces$.
     Then it is an effective epimorphism if and only if $X$ is path-connected as a topological space.
     \begin{proof}
-        This follows from \cref{prop:effInSpaceIffSurj} and the fact that $*$ has exactly one connected component.
+        Since $*$ has exactly one connected component, this follows from \cref{prop:effInSpaceIffSurj}.
     \end{proof}
 \end{corollary}

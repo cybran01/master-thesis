@@ -18,8 +18,8 @@ After this we will define universality and descent via cartesian natural transfo
     \end{proof}
 \end{corollary}
 Note that $\Top$ as an ordinary category is not locally presentable:
-One can show that all objects of a locally presentable category must be compact, meaning $\kappa$-compact for some regular cardinal $\kappa$ (see \cite[Remark 1.30 (1)]{access_and_pres_cats}).
-However all compact spaces of $\Top$ are discrete spaces (see \cite[Examples 1.14 (6)]{access_and_pres_cats}).
+One can show that all objects of a locally presentable category must be compact, here meaning $\kappa$-compact (\cref{def:kappaCompactObject}) for some regular cardinal $\kappa$ (see \cite[Remark 1.30 (1)]{access_and_pres_cats}).
+However all compact objects of $\Top$ in this sense are discrete spaces (see \cite[Examples 1.14 (6)]{access_and_pres_cats}).
 
 An overview for some equivalent characterizations for an \inftycat/ to be locally presentable can be found in \cite[Theorem 5.5.1.1 and Proposition A.3.7.6]{HTT}.
 
@@ -278,7 +278,7 @@ We will require the following proposition for the proof.
         is a pullback by the pasting law, since the outer square is a pullback as $\alpha_i$ is cartesian.
         By universality, this implies that $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)$ is a colimit of $p_0|_{X_0}$ and therefore $q_0(\infty)\times_{q_i(\infty)}p_i(\infty)\simeq p_0(\infty)$ which proves our claim.
 
-        The natural transformations $\alpha$ and $\alpha_i$ induce a natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd}, C\right)_1$ which we represent by a cube
+        The natural transformation $\alpha$ together with the $\alpha_i$ induces a natural transformation $\beta\in\Fun\left(\left(\Lambda_0^2\right)^{\rhd}, C\right)_1$ which we represent by a cube
         \begin{center}
             \begin{tikzcd} [sep = .5 cm]
                 p_0(\infty) \arrow [dr] \arrow [rr] \arrow [dd] & & p_1(\infty) \arrow [dr] \arrow [dd] \\

@@ -14,8 +14,8 @@ We begin by introducing some well known constructions that we will need througho
                 * \arrow[r, "i_1"] & \Sigma X \\
             \end{tikzcd}
         \end{center}
-        a \emph{suspension of $X$}. 
-        Note that since both canonical maps $X\to *\to \Sigma X$ are equivalent, when $X$ is pointed then so is $\Sigma X$ via the map $*\to X\to\Sigma X$.
+        a \emph{suspension of $X$}.
+        Note that if $X$ is pointed then $\Sigma X$ is canonically pointed by the essentially unique map $*\to X\to\Sigma X$ since both canonical maps $X\to *\to \Sigma X$ are equivalent.
         \item for pointed objects $X$ and $Y$ in $C$, we call a pushout
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -151,7 +151,7 @@ We will prove that both are associative and that the smash product distributes o
             \end{tikzcd}
         \end{center}
         are pullbacks by the pasting law.
-        Hence by universality the middle and top square of the stacked cube are also pushouts.
+        Hence by universality the middle and top square of the stacked cube are pushouts.
 
         Now taking pushouts of the back and front square of the upper cube induces the square 
         \begin{center}
@@ -170,20 +170,21 @@ We will prove that both are associative and that the smash product distributes o
         \end{center} 
         can be written as a composite square in two ways:
         \begin{center}
-            \begin{tikzcd} [sep = 4em]
+            $\begin{tikzcd} [sep = 4em]
                 A\times X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{1}"] & B\times X \arrow[d] \\
                 C\times X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{2}"]& D\times X \arrow[d] \\
                 C\times Y \arrow[r] & C\times Y\cup_{A\times X}B\times X
             \end{tikzcd}
+            \hspace{-1.6em}\text{and}\hspace{1em}
             \begin{tikzcd} [sep = 4em]
                 A\times X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{3}"] & B\times X \arrow[d] \\
                 A\times Y \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{4}"] & B\times Y \arrow[d] \\
                 C\times Y \arrow[r] & C\times Y\cup_{A\times X}B\times X
-            \end{tikzcd}
+            \end{tikzcd}\hspace{-2em}.$
         \end{center} 
         The square $\Circled{1}$ is a pushout, thus by the pasting law $C\times Y\cup_{A\times X}B\times X\simeq C\times Y\cup_{C\times X} D\times X$.
 
-        Using this identification and taking the pushout of $\Circled{3}$ we obtain 
+        Using this identification and taking the pushout of $\Circled{3}$, we obtain 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 A\times X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{3'}"] & B\times X \arrow[d] \\
@@ -239,7 +240,7 @@ We will prove that both are associative and that the smash product distributes o
         \end{center}
         is a pushout by the pasting law.
 
-        The analogous construction starting with 
+        The analogous construction when starting with the pushout square
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 B\vee C \arrow[r] \arrow[d] & B\times C \arrow[d] \\
@@ -275,7 +276,7 @@ We will prove that both are associative and that the smash product distributes o
             \end{tikzcd}
         \end{center}
         commutes.
-        Thus the indicated universal map $(A\wedge B)\wedge C\to A\wedge(B\wedge C)$ is an equivalence of pointed objects.
+        Thus the indicated universal map $(A\wedge B)\wedge C\to A\wedge(B\wedge C)$ is an equivalence of pointed objects, proving the lemma.
     \end{proof}
 \end{lemma}
 \addcontentsline{toc}{subsection}{The Fundamental James Splitting}
@@ -336,7 +337,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         where the three vertical squares are pullbacks, and the bottom square is a pushout.
 
         Now let $\Fun(\Delta^1\times\Delta^1,C)_{pb}\subset\Fun(\Delta^1\times\Delta^1,C)$ denote the full subcategory of pullback squares.
-        Then the functor $\lim\colon\Fun(\Lambda_0^2,C)\to\Fun(\Delta^1\times\Delta^1,C)_{pb}$ is an equivalence of \inftycats/ since it is essentially surjective by definition and fully faithful since it is a right Kan-extension along the inclusion $\Lambda_0^2\subset\Delta^1\times\Delta^1$.
+        Then the functor $\lim\colon\Fun(\Lambda_2^2,C)\to\Fun(\Delta^1\times\Delta^1,C)_{pb}$ is an equivalence of \inftycats/ since it is essentially surjective by definition and fully faithful since it is a right Kan-extension along the inclusion $\Lambda_2^2\subset\Delta^1\times\Delta^1$.
 
         The previous diagram corresponds to a natural transformation $\lambda\in\Fun(\Lambda_2^2,C)_1$ where $\lambda_1$ and $\lambda_1 $ are the restrictions of the back square and the front square to $\Lambda_2^2$ respectively.
         The induced natural transformation $\overline{\lambda}=\lim(\lambda)$ is a map between pullback squares, and since back and front square in the above diagram were already pullbacks, they are equivalent to $\overline{\lambda}_0$ and $\overline{\lambda}_1$ respectively.
@@ -385,7 +386,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
     The map $\alpha\colon X\times\Omega\Sigma X\to\Omega\Sigma X$ can in general not be identified with the projection $\pi_2$.
     It is not sufficient to choose the map $\alpha$ such that only the squares of the cube commute, since the higher simplices of the cube must also be compatible (our map $\alpha$ fulfills this by construction since it is a universal map).
 
-    If we assume $\alpha=\pi_2$ then by universality we have that 
+    If we assume $\alpha=\pi_2$, by universality we have that 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             X\times \Omega\Sigma X \arrow[r,"\pi_2"] \arrow[d, "\pi_2"'] & \Omega\Sigma X \arrow[d] \\
@@ -468,14 +469,15 @@ We will also need to prove some basic facts about wedges and smash products.
         It remains to show that the maps $X\to\Sigma\left(X\wedge Y\right)$ and $Y\to\Sigma\left(X\wedge Y\right)$ factor through $*$.
         But this follows directly from the starting diagram since the colimit cone $\left(\Lambda_0^2\times\Lambda_0^2\right)^{\rhd}\to C$ has $2$-simplices of the form
         \begin{center}
-            \begin{tikzcd}[sep = 3em]
+            $\begin{tikzcd}[sep = 3em, column sep = 1.5em]
                 & \Sigma\left(X\wedge Y\right) & \\
                 X \ar[rr] \ar[ur]& & * \ar[ul]
             \end{tikzcd}
-            \begin{tikzcd}[sep = 3em]
+            \text{and}
+            \begin{tikzcd}[sep = 3em, column sep = 1.5em]
                 & \Sigma\left(X\wedge Y\right) & \\
                 Y \ar[rr] \ar[ur]& & * \ar[ul]
-            \end{tikzcd}\;.
+            \end{tikzcd}$\;.
         \end{center}
     \end{proof}
 \end{lemma}
@@ -517,7 +519,7 @@ The following corollary is not needed for our proof, however it is useful and im
     Let $C$ be an \inftytop/ and let $X,Y$ be pointed objects in $C$. 
     Then there is a canonical equivalence $\Sigma\left(X\wedge Y\right)\simeq X\wedge\Sigma Y$ of pointed objects.
     \begin{proof}
-        Let $i_0,i_1\colon *\to\Sigma Y$ be the canonical maps from the definition $\Sigma Y$ as a pushout.
+        Let $i_0,i_1\colon *\to\Sigma Y$ be the canonical maps from the definition of $\Sigma Y$ as a pushout.
         These induce maps $j_0,j_1\colon X \to X\vee\Sigma Y$ and $k_0,k_1\colon X\to X\times\Sigma Y$.
         The squares
         \begin{center}
@@ -546,7 +548,7 @@ The following corollary is not needed for our proof, however it is useful and im
     Let $C$ be an \inftytop/ and let $X$ be a pointed object in $C$. 
     Then there exists a canonical equivalence $\Sigma\Omega\Sigma X\simeq\Sigma X\vee\left(X\wedge\Sigma\Omega\Sigma X\right)$ of pointed objects.
     \begin{proof}
-        Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the big left square ($\Circled{1}+\Circled{3}$ of \cref{lem:allSqArePo} combined) is equivalent to the square 
+        Applying \cref{lem:allSqArePo} to $X$ and $Y=\Omega\Sigma X$, the big left square $\Circled{1}+\Circled{3}$ of \cref{lem:allSqArePo} is equivalent to the square 
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 X\times\Omega\Sigma X \arrow[r, "\pi_2"] \arrow[d] & \Omega\Sigma X \arrow[d] \\
@@ -614,8 +616,8 @@ in fact, only the very last step will require us to restrict to $C=\Fun(A,\space
     of pointed objects which we refer to as the \emph{comparison map}.
 \end{definition}
 Our proof of the James Splitting Theorem requires us to introduce higher connectedness of maps. 
-We will give a recursive definition of connectedness of maps similar to the definition of truncatedness (see \cref{def:truncatedMap}).
-Also note that in view of \cref{prop:conn} \ref{prop:connSection}, the previously introduced notion of a pointed connected object (see \cref{def:catOfPtdConnObj}) agrees with the definition of a $0$-connected object that is pointed.
+We will give a recursive definition of connectedness of maps similar to the definition of truncatedness (\cref{def:truncatedMap}).
+Also note that in view of \cref{prop:conn} \ref{prop:connSection}, the previously introduced notion of a pointed connected object (\cref{def:catOfPtdConnObj}) agrees with the definition of a $0$-connected object that is pointed.
 \begin{definition}\label{def:connected}
     Let $C$ be an \inftytop/.
     With the convention that every map is $(-2)$-connected, we recursively define that a map $f\colon X\to Y$ in $C$ is \emph{$k$-connected} for $k\geq -1$ if
@@ -691,7 +693,7 @@ For this proof we need some stability properties of connectedness.
     \end{reference}
 \end{prop}
 \begin{thm}[Blakers-Massey Theorem]\label{prop:blakersMassey}
-    Let $C$ be an \inftytop/, $m,n\geq-1$ and
+    Let $C$ be an \inftytop/, $m,n\geq-1$ and let
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             A \arrow[r, "g"] \arrow[d, "f"] &  C \arrow[d] \\
@@ -739,14 +741,14 @@ With these we can deduce the following statements:
         
         Since $\Fun(A,\spaces)$ is hypercomplete it suffices to prove that $c_X$ is $\infty$-connected.
 
-        First for each $n\in\Nat_{\geq 1}$ we have $2$-simplices in $\Fun(A,\spaces)$
+        First, for each $n\in\Nat_{\geq 1}$ we have a $2$-simplex
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \bigvee\limits_{i=1}^{n}\Sigma X^{\wedge i} \arrow[r] \arrow[dr, "c_X^n"'] & \bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i} \arrow[d, "c_X"] \\
                 & \Sigma\Omega\Sigma X \\
             \end{tikzcd}
         \end{center}
-        induced by the universal property of $\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}$.
+        in $\Fun(A,\spaces)$ induced by the universal property of $\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}$.
 
         By \cref{cor:connEst} \ref{cor:connEstIteratedSmash} $X^{\wedge n}$ is $(n-1)$-connected.
         By \cref{prop:conn} \ref{prop:connStableUnderPo} and \cref{prop:conn} \ref{prop:connStableUnderPb} we have that $\Omega\Sigma X$ is $0$-connected, so by \cref{cor:connEst} \ref{cor:connEstSuspension} $\Sigma\Omega\Sigma X$ is $1$-connected.
@@ -825,10 +827,10 @@ We will do this using the next proposition.
         By induction and using \cref{rmk:cechNerveExplicit} we see that we only need to prove the case $n=0$, hence that the projection $E\times_Y A\to A$ is an equivalence.
 
         Setting $V=U^+\times_Y A\colon\N(\Delta_+)^{\op}\to C$ (which is again a colimit diagram by universality), we note that $V|_{\N(\Delta)^{\op}}\simeq (U\circ\N(F)^{\op})|_{\N(\Delta)^{\op}}$ using the map $F\colon\Delta_+\to\Delta$ from \cref{prop:shiftIsColimDiam}.
-        Then \cref{prop:shiftIsColimDiam} implies that $E\times_Y A\simeq V_{-1}\simeq\colim\limits_{\N(\Delta)^{\op}}V|_{\N(\Delta)^{\op}}\simeq(U\circ\N(F)^{\op})_{-1}= U_0\simeq A$.
+        \Cref{prop:shiftIsColimDiam} implies that $E\times_Y A\simeq V_{-1}\simeq\colim\limits_{\N(\Delta)^{\op}}V|_{\N(\Delta)^{\op}}\simeq(U\circ\N(F)^{\op})_{-1}= U_0\simeq A$.
         Since this map $E\times_YA\to A$ is the canonical projection the claim follows.
         
-        Lastly we prove that a map $f\colon X\to Y$ that is both $(-1)$-connected and $(-1)$-truncated is an equivalence. 
+        Lastly we prove that a map $f\colon X\to Y$ which is both $(-1)$-connected and $(-1)$-truncated is an equivalence. 
         The proof follows \cite[Lemma 6.2.3.16]{HTT}.
 
         Since $f$ is $(-1)$-truncated, the projections in the pullback diagram
@@ -857,12 +859,12 @@ We will do this using the next proposition.
 \begin{remark}
     The statement of \cref{prop:factorConnTrunc} generalizes to all $-2\leq m<\infty$:
 
-    By \cite[\S 6.5.1 and Example 5.2.8.16]{HTT} the $m$-connected and $m$-truncated maps form a factorization system (see \cite[Definition 5.2.8.8]{HTT}).
+    By \cite[\S 6.5.1 and Example 5.2.8.16]{HTT} the $m$-connected and $m$-truncated maps form a ``factorization system '' (see \cite[Definition 5.2.8.8]{HTT}).
     In particular, an $m$-connected and $m$-truncated map is an equivalence by the lifting properties of a factorization system.
     A construction of this factorization system for model topoi can be found in \cite[Proposition 8.5]{toposes_and_htpy_toposes}.
 
     The name Epi/Mono factorization derives from the fact that $(-1)$-truncated morphisms are also referred to as \emph{monomorphisms} and $(-1)$-connected maps are precisely the effective epimorphisms.
-    It is analogous to the factorization of a map into epimorphism follows by a monomorphism in $\Set$ over the image.
+    It is analogous to the factorization of a map in $\Set$ into an epimorphism followed by a monomorphism over the image.
 \end{remark}
 \begin{corollary}[James Splitting for \inftyTops/]\label{lem:genTopoiComparisonMapEq}
     Let $C$ be an \inftytop/ and $X$ be a pointed and $0$-connected object in $C$.
@@ -873,7 +875,7 @@ We will do this using the next proposition.
     from \cref{def:jamesSplittingMap} is an equivalence of pointed objects.
     \begin{proof}
         Let $L$ and $i$ be the induced adjoint functors from \cref{thm:charTopoiByAdj} and let $X$ be a pointed $0$-connected object in $C$.
-        Thus by \cref{prop:conn} \ref{prop:connSection} the map $x\colon*\to X$ is $(-1)$-connected.
+        Then by \cref{prop:conn} \ref{prop:connSection} the map $x\colon*\to X$ is $(-1)$-connected.
         As both functors $L$ and $i$ preserve finite limits and thus preserve terminal objects, they descend to the categories of pointed objects.
 
         We factor the map $i(x)\colon*\simeq i(*)\to i(X)$ in $\Fun(A,\spaces)$ into a $(-1)$-connected map $y\colon*\to Y$ followed by a $(-1)$-truncated map $g\colon Y\to i(X)$ via \cref{prop:factorConnTrunc}.
@@ -882,7 +884,7 @@ We will do this using the next proposition.
         Thus the map $L(y)$ is $(-1)$-connected (in particular, $L(Y)$ is a $0$-connected object), and by \cref{prop:conn} \ref{prop:connRightCancel} the map $L(g)$ is $(-1)$-connected as well as $(-1)$-truncated, hence an equivalence by \cref{prop:factorConnTrunc}.
         This shows that $X$ and $L(Y)$ are equivalent as pointed objects.
 
-        Since $L$ preserves colimits and finite limits, it preserves all colimits and limits appearing in $c_Y$, hence $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
+        Since $L$ preserves colimits and finite limits, it preserves all colimits and limits appearing in $c_Y$, thus we have $L(c_Y)\simeq c_{L(Y)}$ in $C_*$.
         But since $L(Y)\simeq X$ in $C_*$, this means that $c_{L(Y)}\simeq c_X$ in $C_*$ which proves that $c_X$ is an equivalence in $C_*$.
     \end{proof}
 \end{corollary}
@@ -895,7 +897,7 @@ Lastly, we give an application of the James Splitting Theorem in $\spaces$.
     \end{equation*}
     \begin{proof}
         Note that for $n\geq1$ the sphere is $0$-connected.
-        Thus by \cref{cor:classicalJamesSplitting} we have an isomorphism 
+        By \cref{cor:classicalJamesSplitting} we therefore have an isomorphism 
         \begin{equation*}
             H_{k+1}\left(\bigvee\limits_{i=1}^{\infty}\Sigma \left(S^n\right)^{\wedge i}\right)\cong H_{k+1}\left(\Sigma\Omega\Sigma S^n\right)\;.
         \end{equation*}
@@ -907,7 +909,8 @@ Lastly, we give an application of the James Splitting Theorem in $\spaces$.
     \end{proof}
 \end{lemma}
 \begin{corollary}
-    For $H_*$ reduced ordinary homology and $S^n$ with $n\geq1$ a model of the pointed $n$-sphere, we have
+    Let $H_*$ be reduced ordinary homology and let $S^n$ with $n\geq1$ be a model of the pointed $n$-sphere.
+    Then we have
     \begin{equation*}
         H_k(\Omega S^{n+1})\cong
         \begin{cases}

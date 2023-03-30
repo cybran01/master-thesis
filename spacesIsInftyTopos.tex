@@ -86,7 +86,7 @@ The cases of pushouts, pullbacks and coproducts are especially important by \cre
         Let $\Ho(C)$ denote the homotopy category for a model category $C$. 
         Since $\Ho(C)$ is a model of the (ordinary) localization of $C$ by the weak equivalences, there is a canonical equivalence $\Ho(C)\cong\ho(\N(C)[W^{-1}])$ since both fulfill the same universal property.
         
-        Thus $\ho(\N(M)[W^{-1}])\cong\Ho(M)$ and using \cref{thm:locCommutesWithHom} we also have $\ho(\Fun(\N(J),\N(M)[W^{-1}]))\cong\Ho(\Fun(J,M)_{proj})$.
+        Thus $\ho(\N(M)[W^{-1}])\cong\Ho(M)$ and using \cref{thm:locCommutesWithHom} we have $\Ho(\Fun(J,M)_{proj})\cong\ho(\Fun(\N(J),\N(M)[W^{-1}]))$.
         This yields an adjunction
         \begin{equation*}
             \Ho(\Fun(J,M)_{proj})\rightleftarrows\Ho(M)\mkern+3mu:\mkern-3mu c
@@ -520,7 +520,7 @@ The next proposition is the most important part of the proof of \cref{prop:desce
 \begin{prop}\label{prop:eqCharInjSurj}
     Given a map $f\colon(X,A)\to (Y,B)$ and $n\geq0$, the following are equivalent:
     \begin{enumerate}[label={(\roman*)}]
-        \item For every $a\in A$ the map $\pi_n(X,A,a)\to \pi_n(Y,B,f(a))$ is injective and $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(a))$ is surjective.
+        \item For every $a\in A$, the map $\pi_n(X,A,a)\to \pi_n(Y,B,f(a))$ is injective and the map $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(a))$ is surjective.
             If $n=0$, replace the injectivity statement by $\pi_0(f)^{-1}\im\left(\pi_0(B)\to\pi_0(Y)\right)=\im\left(\pi_0(A)\to\pi_0(X)\right)$. \label{itm:injAndSurjOfHtpyGrps}
         \item Given maps $e\colon(I^{n+1},\set{1}\times I^n)\to (Y,B)$, $g\colon(J^n,\set{1}\times\partial I^n)\to(X,A)$ and a homotopy $h\colon(J^n,\set{1}\times\partial I^n)\times I\to(Y,B)$ from $e|_{J^n}$ to $fg$, there exists a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ and homotopy $H\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ from $e$ to $fG$ such that $H|_{J^n\times I}=h$ and $G|_{J^n}=g$. \label{itm:liftingMapsAndHtpy} 
         \begin{center}
@@ -553,7 +553,7 @@ The next proposition is the most important part of the proof of \cref{prop:desce
         Then $e|_{J^n}=fg$ and so by \ref{itm:liftingMapsAndHtpyConst} we get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ with $G|_{J^n}=g$. 
         Thus $G$ is a homotopy $(I^n,\partial I^n,J^{n-1})\times I\to(X,A,a)$ from $\lambda$ to $\mu$, hence $[\lambda]=[\mu]$ in $\pi_n(X,A,a)$.
 
-        Lastly we show that for $n\geq 0$, \ref{itm:liftingMapsAndHtpyConst} implies surjectivity of $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(a))$.
+        Lastly we show that for $n\geq 0$, \ref{itm:liftingMapsAndHtpyConst} implies surjectivity of the map $\pi_{n+1}(X,A,a)\to \pi_{n+1}(Y,B,f(a))$.
         Let $[\lambda]\in\pi_{n+1}(Y,B,f(a))$ and set $e=\lambda$ and $g=\const_a$. 
         Then we get a map $G\colon(I^{n+1},\set{1}\times I^n)\to(X,A)$ and homotopy $H\colon(I^{n+1},\set{1}\times I^n)\times I\to(Y,B)$ from $e$ to $fG$ such that $H|_{J^n\times I}$ is $\const_{f(a)}$ and $G|_{J^n}=\const_a$.
         Thus $G$ is a map $(I^{n+1},\partial I^{n+1},J^n)\to (X,A,a)$ and $H$ is a homotopy $(I^{n+1},\partial I^{n+1},J^n)\times I\to(Y,B,f(a))$ from $\lambda$ to $fG$ which shows $[\lambda]=[fG]$ in $\pi_{n+1}(Y,B,f(a))$.
@@ -737,7 +737,7 @@ The following technical lemma will allow us to reduce to the case of an inclusio
     \end{proof}
 \end{lemma}
 \begin{prop}\label{prop:descentForPairs}
-    Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
+    Let $(X;X_1,X_2)$ and $(Y;Y_1,Y_2)$ be excisive triads and let the map $f\colon (X;X_1,X_2)\to (Y;Y_1,Y_2)$ be a map of triads.
     Then, if the maps $f|_{X_i}\colon(X_i,X_1\cap X_2)\to(Y_i,Y_1\cap Y_2)$ are weak equivalences of pairs for $i\in\set{1,2}$, the maps $f_i\colon(X,X_i)\to(Y,Y_i)$ are weak equivalences of pairs for $i\in\set{1,2}$ as well.
     \begin{proof}
         The proof will follow \cite[Theorem 1.2]{may1990weak}.
