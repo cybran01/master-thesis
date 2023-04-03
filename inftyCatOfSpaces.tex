@@ -1,6 +1,6 @@
 In the following we will describe three model structures that will be used throughout:
-The Quillen model structure on $\sSet$ (which was already introduced in the previous section), the Quillen model structure on $\Top$ and the \Strom/ model structure on $\Top$.
-The first two will turn out to be Quillen equivalent and will be used to define the \inftycat/ of spaces $\spaces$.
+The Quillen model structure on $\sSet$ (which was already introduced in the previous section), the Quillen model structure on $\Top$ and the \Strom/ model structure on $\Top$, where $\Top$ is the category of topological spaces with continuous maps.
+The first two model categories will turn out to be Quillen equivalent and will be used to define the \inftycat/ of spaces $\spaces$.
 
 The \Strom/ model structure will be important later on; its interaction with the Quillen model structure on $\Top$ will be an important part of our proof that $\spaces$ is an \inftytop/.
 \begin{prop}\label{prop:sSetCombSimpModelStructure}
@@ -9,7 +9,7 @@ The \Strom/ model structure will be important later on; its interaction with the
         First we note that the category $\sSet$ together with the Quillen model structure is a combinatorial model category (see e.g. \cite[Remark 7.11.15]{cisinski_2019}).
         
         The category $\sSet$ is enriched over itself by $\Fun(A,B)_n=\hom_{\sSet}(A\times\Delta^n,B)$, thus it is a simplicial category.
-        It is thus tensored (via the product) and powered (via $\Fun(-,-)$) over $\sSet$.
+        It is tensored (via the product) and powered (via $\Fun(-,-)$) over $\sSet$.
         By \cite[Corollary 1.4.5.6, Theorem 3.1.3.1 and Theorem 3.1.3.5]{kerodon} we have that for a cofibration $A\xtailrightarrow{} B$ and a fibration $X\xtwoheadrightarrow{} Y$ the induced map 
         \begin{equation*}
             \Fun(B,X)\to\Fun(A,X)\times_{\Fun(A,Y)}\Fun(B,Y)
@@ -18,10 +18,10 @@ The \Strom/ model structure will be important later on; its interaction with the
     \end{proof}
 \end{prop}
 \begin{definition}[Serre Fibration]
-    A map $f\colon X\to Y$ is called a \emph{Serre fibration} if it has the right lifting property against the maps $\set{D^n\times\set{0}\xhookrightarrow{}D^n\times I\mid n\in\Nat}$.
+    A map $f\colon X\to Y$ in $\Top$ is called a \emph{Serre fibration} if it has the right lifting property against the maps $\set{D^n\times\set{0}\xhookrightarrow{}D^n\times I\mid n\in\Nat}$.
 \end{definition}
 \begin{definition}[Hurewicz Fibration]
-    A map $f\colon X\to Y$ is called a \emph{Hurewicz fibration} if it has the right lifting property against the maps $\set{X\times\set{0}\xhookrightarrow{}X\times I\mid X\in\Top}$.
+    A map $f\colon X\to Y$ in $\Top$ is called a \emph{Hurewicz fibration} if it has the right lifting property against the maps $\set{X\times\set{0}\xhookrightarrow{}X\times I\mid X\in\Top}$.
 \end{definition}
 \begin{definition}[Hurewicz Cofibration]
     Let $i\colon A\to B$ be a map of topological spaces.
@@ -128,7 +128,7 @@ The following proposition provides a convenient characterization of homotopy pul
         Now note that all simplicial sets are cofibrant and all topological spaces are fibrant.
         Hence this Quillen adjunction is Quillen equivalence if for every $X\in\sSet$ and $Y\in\Top$, a map $f\colon X\to\Sing(Y)$ is a weak equivalence if and only if the adjunct map $g\colon\lvert X\rvert\to Y$ is.
         
-        This follows from the fact that unit and counit of the adjunction are objectwise weak equivalences:
+        This however follows from the fact that unit and counit of the adjunction are objectwise weak equivalences:
         The case for the adjunction unit is proven in e.g. \cite[Theorem 3.5.4.1]{kerodon} (and originally due to \cite{milnor_unit_we}) and the case for the counit can be derived from this (see \cite[Corollary 3.5.4.2]{kerodon}).
     \end{proof}
 \end{thm}

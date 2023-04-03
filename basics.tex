@@ -81,6 +81,7 @@ We will not give proofs for any statements in this section; we will however poin
     For a simplicial category $C$, we let $\Hom_C(-,-)\colon C^{\op}\times C\to\sSet$ denote the enriched $\Hom$-functor.
    
     Let $\Cat_{\Delta}$ denote the \emph{category of small simplicial categories} with morphisms the \emph{$\sSet$-enriched functors}.
+    Note that the category $\sSet$ is enriched over itself by $\Fun(A,B)_n=\left(\Hom_{\sSet}(A,B)\right)_n=\hom_{\sSet}(A\times\Delta^n,B)$, and thus is a simplicial category.
     
     We say that a simplicial category $C$ is \emph{tensored over $\sSet$} if for each $X\in C$ and $K\in\sSet$ there is an object $X\otimes K$ such that there is a natural isomorphism
     \begin{equation*}
@@ -95,7 +96,7 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition}
 \begin{definition}[LLP/RLP]
     Let $C$ be a category and let $S$ be a class of maps in $C$.
-    We say that a morphism $f\colon A\to B$ has the \emph{left lifting property (LLP) with respect to $S$} if for every map $g\colon X\to Y\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ such that the square
+    We say that a morphism $f\colon A\to B$ has the \emph{left lifting property (LLP) with respect to $S$} if for every map $g\colon X\to Y\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ such that the solid square
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             A \arrow[r,"\lambda"] \arrow[d, "f"] & X \arrow[d, "g"] \\
@@ -104,7 +105,7 @@ We will not give proofs for any statements in this section; we will however poin
     \end{center}
     commutes, there exists a map $B\to X$ as indicated making the diagram commute.
 
-    Dually, we say that a morphism $g\colon X\to Y$ has the \emph{right lifting property (RLP) with respect to $S$} if for every map $f\colon A\to B\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ such that the square
+    Dually, we say that a morphism $g\colon X\to Y$ has the \emph{right lifting property (RLP) with respect to $S$} if for every map $f\colon A\to B\in S$ and all choices of maps $\lambda\colon A\to X$ and $\mu\colon B\to Y$ such that the solid square
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             A \arrow[r,"\lambda"] \arrow[d, "f"] & X \arrow[d, "g"] \\
@@ -146,12 +147,15 @@ We will not give proofs for any statements in this section; we will however poin
         \item $(\Cof\cap\W,\Fib)$ is a weak factorization system.
         \item $(\Cof,\Fib\cap\W)$ is a weak factorization system.
     \end{itemize}
+    We will denote cofibrations and fibrations of a model category as $\xtailrightarrow{}$ and $\xtwoheadrightarrow{}$ respectively, and maps that are weak equivalences will be tagged with $\sim$.
+    We will refer to cofibrations that are weak equivalences (denoted $\xtailrightarrow{\sim}$) and fibrations that are weak equivalences (denoted $\xtwoheadrightarrow{\sim}$) as \emph{trivial cofibrations} and \emph{trivial fibrations} respectively.
 \end{definition}
 \begin{definition}[$\kappa$-Filtered Category]
     Let $C$ be a category and $\kappa$ a regular cardinal.
     Then we call $C$ \emph{$\kappa$-filtered} if every functor $F\colon K\to C$, where $K$ is a category whose class of morphisms $\Map(K)$ has cardinality less than $\kappa$, admits an extension to a cone diagram $F^{\rhd}\colon K^{\rhd}\to C$.
 
     We call a colimit $F^{\rhd}\colon K^{\rhd}\to C$ a \emph{$\kappa$-filtered colimit} if $K$ is $\kappa$-filtered.
+    If the cardinal $\kappa$ is omitted, we let $\kappa=\aleph_0=|\Nat|$.
 \end{definition}
 \begin{definition}[$\kappa$-Compact Object]\label{def:kappaCompactObject}
     Let $C$ be a category, $X\in C$ an object and $\kappa$ a regular cardinal.
@@ -187,7 +191,7 @@ We will not give proofs for any statements in this section; we will however poin
 \end{definition}
 %TODO stress importance
 \begin{thm}[Small Object Argument] %Proposition 10.5.16 Model Categories and Their Localizations 
-    Let $C$ be a category with small colimits and $I$ a set of morphisms of $C$.
+    Let $C$ be a category with small colimits and let $I$ be a set of morphisms of $C$.
     If there exists a cardinal $\kappa$ such that the domains of all morphisms in $I$ are $\kappa$-small relative to transfinite compositions of pushouts of maps in $I$, we say that \emph{$I$ admits the small object argument}.
     
     In this case $(l(r(I)),r(I))$ is a functorial weak factorization system and $l(r(I))$ is the smallest (with respect to inclusion) saturated class containing $I$.
@@ -234,7 +238,7 @@ We will frequently use the following proposition and its analogue for \inftycats
     \end{center}
     a commutative diagram in $M$.
 
-    Then if the right square is a homotopy pullback, then the outer square is a homotopy pullback if and only if the left square is a homotopy pullback.
+    If the right square is a homotopy pullback, then the outer square is a homotopy pullback if and only if the left square is a homotopy pullback.
 
     Dually, if the left square is a homotopy pushout, then the outer square is a homotopy pushout if and only if the right square is a homotopy pushout.
 
@@ -254,7 +258,7 @@ The following is the analogous statement for \inftycats/.
     \end{center}
     a $\Delta^2\times\Delta^1$-shaped diagram in $C$.
 
-    Then if the right square is a pullback, then the outer square is a pullback if and only if the left square is a pullback.
+    If the right square is a pullback, then the outer square is a pullback if and only if the left square is a pullback.
 
     Dually, if the left square is a pushout, then the outer square is a pushout if and only if the right square is a pushout.
 
@@ -287,7 +291,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
         \item tensored and powered over $\sSet$
         \item equipped with a model structure
     \end{itemize} 
-    such that for a cofibration $i:A\rightarrowtail B$ and a fibration $p:X\twoheadrightarrow Y$ in the model structure the induced map of simplicial sets
+    such that for a cofibration $i\colon A\rightarrowtail B$ and a fibration $p\colon X\twoheadrightarrow Y$ in the model structure on $C$, the induced map of simplicial sets
     \begin{equation*}
         \Hom_C(B,X)\to\Hom_C(A,X)\times_{\Hom_C(A,Y)}\Hom_C(B,Y)
     \end{equation*}
@@ -342,7 +346,7 @@ Whenever we speak of cofibrations, fibrations or weak equivalences between simpl
 \end{prop}
 \begin{corollary}
     Let $M$ be a simplicial model category.
-    Then the simplicial set $\Nhc(M^°)$ where $M^°$ denotes the restriction to the full subcategory of cofibrant-fibrant objects is an \inftycat/.
+    Then the simplicial set $\Nhc(M^°)$, where $M^°$ denotes the restriction to the full subcategory of cofibrant-fibrant objects, is an \inftycat/.
     \begin{proof}
         The axioms of a simplicial model category imply that for every pair of objects $X,Y\in M^°$ the simplicial set $\Hom_{M^°}(X,Y)$ is a Kan-complex.
     \end{proof}
@@ -359,7 +363,7 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
     
     This model structure is called the \emph{Joyal Model Structure on $\sSet$}.
     \begin{reference}
-        \cite[Definition 3.3.7, Theorem 3.6.8 and Theorem 3.6.1]{cisinski_2019}
+        \cite[Definition 3.3.7, Theorem 3.6.1 and Theorem 3.6.8]{cisinski_2019}
     \end{reference}
 \end{thm}
 \begin{definition}[Equivalences in an \inftyCat/]
@@ -394,17 +398,18 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
     If $\essim F=D$ we say that $F$ is \emph{essentially surjective}.
 \end{definition}
 \begin{definition}[Mapping Space]\label{def:mappingSpace}
-    Let $C$ be an \inftycat/ and let $x,y\in C_0$ and let $\Map_C(x,y)$ denote the pullback 
+    Let $C$ be an \inftycat/ and let $x,y\in C_0$. 
+    Then we call the pullback 
     \begin{center}
         \begin{tikzcd} [sep = 3em]
             \Map_C(x,y) \ar[d] \ar[r] & \Fun(\Delta^1,C) \ar[d, "{(\ev_0,\ev_1)}"] \\
             \Delta^0 \ar[r, "{(x,y)}"] & C\times C
         \end{tikzcd}
     \end{center}
-    which we refer to as the \emph{mapping space from $x$ to $y$}.
+    the \emph{mapping space from $x$ to $y$}.
 \end{definition}
 \begin{remark}[The Boardmann-Vogt Construction]\label{rmk:boardmanVogt}
-    For an \inftycat/ $C$ there is an explicit construction of $\ho(C)$ (see \cref{lem:nerveFF}) due to Boardman and Vogt (\cite[Theorem 1.6.6]{cisinski_2019} for details).
+    For \inftycats/ $C$ there is an explicit construction of $\ho(C)$ (see \cref{lem:nerveFF}) due to Boardman and Vogt (\cite[Theorem 1.6.6]{cisinski_2019} for details).
     In this construction the set of maps $\hom_{\ho(C)}(x,y)$ is a quotient of $\Map_C(x,y)_0$, hence we have a canonical map $\Map_C(x,y)_0\to\hom_{\ho(C)}(x,y)$ sending a map $f\colon\Delta^1\to C\in\Map_C(x,y)_0$ to its class $[f]\in\hom_{\ho(C)}(x,y)$.
     In fact, a map $f$ is invertible in $C$ if and only if $[f]$ is an isomorphism in $\ho(C)$.
 \end{remark}
@@ -419,7 +424,7 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
             & \Delta^0 \arrow [from=uu, crossing over] \arrow [rr, "{(F(x),F(y))}"] & & D\times D
         \end{tikzcd}
     \end{center}
-    is a weak equivalence of Kan-complexes.
+    is a weak equivalence.
 \end{definition}
 \begin{thm}\label{thm:eqCharEqOfInftycats}
     Let $F\colon C\to D$ be a functor between \inftycats/.
@@ -436,7 +441,7 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
 \begin{definition}[Simplicial Localization]
     Let $C$ be a simplicial set and $W\subset C$ be a simplicial subset.
 
-    For a given \inftycat/ $D$, let $\Fun_W(C,D)\subset\Fun(C,D)$ be the full subcategory of functors $f\colon C\to D$ such that for every map in $u\in W_1$, $f(u)$ is invertible.
+    For a given \inftycat/ $D$, let $\Fun_W(C,D)\subset\Fun(C,D)$ be the full subcategory of functors $f\colon C\to D$ such that for every map in $u\in W_1$, $f(u)\in D_1$ is invertible.
     Then a \emph{localization of $C$ by $W\subset C$} is an \inftycat/ $C[W^{-1}]$ together with a functor $\gamma\in\Fun_W(C, C[W^{-1}])_0$ such that for every \inftycat/ $D$, $\gamma$ induces an equivalence of \inftycats/
     \begin{equation*}
         \Fun(C[W^{-1}],D)\xrightarrow{\sim}\Fun_W(C,D)\;.
@@ -522,23 +527,23 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
 \begin{definition}[Kan-Extension]
     Let $u\colon A\to B$ be a functor between \inftycats/ and let $C$ be an \inftycat/.
     
-    If the functor $u^*\colon\Fun(B,C)\to\Fun(A,C)$ has a right adjoint $u_*\colon\Fun(A,C)\to\Fun(B,C)$, we say that \emph{$u_*$ is the right Kan-extension of $u$ in $C$}.
-    For a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{right Kan extension of $f$ along $u$} if $g$ is equivalent to $u_*(f)$.
+    If the functor $u^*\colon\Fun(B,C)\to\Fun(A,C)$ has a right adjoint $u_*\colon\Fun(A,C)\to\Fun(B,C)$, we say that $u_*$ is a \emph{right Kan-extension functor along $u$ for $C$}.
+    Given a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{right Kan extension of $f$ along $u$} if $g$ is equivalent to $u_*(f)$.
 
-    Dually, if $u^*$ has a left adjoint $u_!\colon\Fun(A,C)\to\Fun(B,C)$, we say that \emph{$u_!$ is the left Kan-extension of $u$ in $C$}.
-    For a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{left Kan extension of $f$ along $u$} if $g$ is equivalent to $u_!(f)$.
+    Dually, if $u^*$ has a left adjoint $u_!\colon\Fun(A,C)\to\Fun(B,C)$, we say that $u_!$ is a \emph{left Kan-extension functor along $u$ for $C$}.
+    Given a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{left Kan extension of $f$ along $u$} if $g$ is equivalent to $u_!(f)$.
 \end{definition}
-We will only deal with Kan-extensions where $u$ is an inclusion and $C$ is complete and cocomplete.
-In this case, we can give a more explicit description.
+We will only need to deal with Kan-extensions where $u$ is an inclusion and $C$ is complete and cocomplete.
+We can give a more explicit description for this case.
 \begin{definition}[Pointwise Kan-Extension]\label{def:ptwiseKanExt} %kerodon Definition 7.3.2.1
     Let $F\colon C\to D$ be a functor between \inftycats/ and let $i\colon B\subset C$ be a full subcategory.
-    Then $F$ is a \emph{pointwise right Kan-extension along $i$} if for all objects $c\in C$ the diagram
+    Then $F$ is a \emph{pointwise right Kan-extension along $i$} if for all objects $c\in C_0$ the diagram
     \begin{equation*}
         \left(C_{c/}\times_C B\right)^{\lhd}\to \Delta^0\star C_{c/}\xrightarrow{c} C\xrightarrow{F} D
     \end{equation*}
     where the map $c\colon\Delta^0\star C_{c/}\to C$ is the coslice contraction map, is a limit cone.
 
-    Dually, $F$ is a \emph{pointwise left Kan-extension along $i$} if for all objects $c\in C$ the diagram
+    Dually, $F$ is a \emph{pointwise left Kan-extension along $i$} if for all objects $c\in C_0$ the diagram
     \begin{equation*}
         \left(C_{/c}\times_C B\right)^{\rhd}\to C_{/c}\star\Delta^0 \xrightarrow{c} C\xrightarrow{F} D
     \end{equation*}
@@ -547,12 +552,10 @@ In this case, we can give a more explicit description.
 \begin{prop}[Existence of Pointwise Kan-Extensions]\label{prop:exKanExt}
     Let $C,D$ be \inftycats/ and $i\colon B\subset C$ a full subcategory.
     
-    If $D$ admits $\left(C_{c/}\times_C B\right)$-shaped limits for all $c\in C_0$, then there exists a fully faithful right Kan-extension $i_*\colon\Fun(B,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon B\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
+    If $D$ admits $\left(C_{c/}\times_C B\right)$-shaped limits for all $c\in C_0$, then there exists a fully faithful right Kan-extension functor $i_*\colon\Fun(B,D)\to\Fun(C,D)$ along $i$ such that for every map $f\colon B\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
 
-    Dually if $D$ admits $\left(C_{c/}\times_C B\right)$-shaped colimits for all $c\in C_0$, then there exists a fully faithful left Kan-extension $i_!\colon\Fun(B,D)\to\Fun(C,D)$ of $i$ such that for every map $f\colon B\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
+    Dually if $D$ admits $\left(C_{c/}\times_C B\right)$-shaped colimits for all $c\in C_0$, then there exists a fully faithful left Kan-extension functor $i_!\colon\Fun(B,D)\to\Fun(C,D)$ along $i$ such that for every map $f\colon B\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
     \begin{reference}
-        The existence and computation of the Kan-extensions via the pointwise description is shown by \cite[Proposition 6.4.9]{cisinski_2019} (and its dual).
-        
-        For the full faithfulness, it is implied by \cite[Corollary 7.3.1.16]{kerodon} that counit/unit respectively of the adjunction is an equivalence.
+        \cite[Proposition 6.4.9]{cisinski_2019} (and the dual) for existence of pointwise Kan-extensions, \cite[Corollary 7.3.1.16]{kerodon} for fully faithfulness.
     \end{reference}
 \end{prop}
