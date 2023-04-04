@@ -284,7 +284,7 @@ Using \cref{prop:poAlongHCofibIsHtpyPo} and the following theorem, we first prov
             \end{center}
             that is a homotopy pullback.
 
-            Note that every inclusion map $X_k\xhookrightarrow{}\coprod\limits_{i\in I} X_i$ is already a fibration as can be checked by its lifting properties.
+            Note that every inclusion map $X_k\xhookrightarrow{}\coprod\limits_{i\in I} X_i$ is also a fibration as can be checked by its lifting properties.
             Therefore, the ordinary pullback
             \begin{center}
                 \begin{tikzcd} [sep = 1 cm]
@@ -423,7 +423,7 @@ We will need the following lemma to translate our statements about homotopy pull
         where $P_{x_0}X$ and $P_{y_0}Y$ are the path mapping spaces of the maps $x_0\colon *\to X$ and  $y_0\colon *\to Y$ respectively.
         We can identify $F_{x_0}$ with the subspace of $P_{x_0}X$ of paths that start at $x_0$ and end at a point in $A$ (and analogously for $G_{y_0}$).
         Let $\alpha\colon F_{x_0}\to G_{f(x_0)}, \gamma\mapsto f\gamma$ denote the induced map between fibers.
-        Proving \ref{itm:htpyPb} is equivalent to showing that this map is a weak equivalence for all $x_0\in X$.
+        By \cref{prop:fiberwiseCharOfHtpyPb}, proving \ref{itm:htpyPb} is equivalent to showing that this map is a weak equivalence for all $x_0\in X$.
 
         If $F_{x_0}\neq\emptyset$ we have that for every point $z\in F_{x_0}$ and $n\geq 1$ the induced maps $\pi_n(X,A,z(1))\to \pi_{n-1}(F_{z(1)},\const_{z(1)})$ and $\pi_n(Y,B,f(z(1)))\to \pi_{n-1}(G_{\alpha(z)(1)},\const_{\alpha(z)(1)})$ are isomorphisms by \cite[Theorem 5.1.8]{lectures_htpy_thy}.
         The map $\Lambda\colon F_{x_0}\to F_{z(1)}, \gamma\mapsto \overline{z}*\gamma$ is a homotopy equivalence with homotopy inverse $\Lambda^{-1}\colon F_{z(1)}\to F_{x_0}, \gamma\mapsto z*\gamma$, hence it induces an isomorphism $\pi_{n-1}(F_{x_0},z)\to\pi_{n-1}(F_{z(1)},\overline{z}*z)$.
@@ -450,13 +450,13 @@ The next lemma is a variant of what is commonly referred to as the ``compression
         First pick a homeomorphism $\alpha\colon I^n\cong J^n$ such that $\alpha|_{\partial I^n}(x)=(1,x)\in J^n$.
         Then we can pick a map $F\colon I^{n+1}\cong I\times I^n\to I^{n+1}$ such that 
         \begin{itemize}
-            \item $F|_{\set{0}\times I^n}(0,x)=\alpha$
+            \item $F|_{\set{0}\times I^n}=\alpha$
             \item $F|_{\set{1}\times I^n}=\id_{\set{1}\times I^n}$
             \item $F|_{I\times \partial I^n}(t,x)=(1,x)\in I^{n+1}$
         \end{itemize}
         because this data determines a map $\partial I^{n+1}\to I^{n+1}$ that can be lifted along the cofibration $\partial I^{n+1}\xtailrightarrow{}I^{n+1}$ since $I^{n+1}$ is contractible.
 
-        An explicit construction is also possible:
+        An explicit construction of $F$ is also possible:
         As indicated below, one can pick $F$ such that for all $t_0\in I$, the map $F|_{\set{t_0}\times I^n}$ is a homeomorphism onto $J_{t_0}^n=\set{t_0}\times I^n\cup[t_0,1]\times\partial I^n$ and such that $F|_{\set{t_0}\times\partial I^n}(t_0,x)=(1,x)$.
         \begin{center}
             \begin{tikzpicture}[scale = 2, opacity = .7]
@@ -1031,7 +1031,7 @@ The following weak version of the locality of quasifibrations (\cref{cor:locOfQu
         Using \cref{rmk:parallelQuasifibsInPb} the given assumptions imply that the first square is a homotopy pullback since top and bottom map are quasifibrations.
         Thus $f$ is a map of excisive triads $(X;f^{-1}(U_1),f^{-1}(U_2))\to(Y;U_1,U_2)$ such that $f|_{f^{-1}(U_i)}\colon(f^{-1}(U_i),f^{-1}(U_1)\cap f^{-1}(U_2))\to (U_i,U_1\cap U_2)$ are weak equivalences for $i\in\set{1,2}$ by \cref{lem:weOfaPairsIsHtpyPb}.
 
-        Now \cref{prop:descentForPairs} implies that the second square is also homotopy pullback.
+        Now \cref{prop:descentForPairs} implies that the second square is also homotopy pullback for $i\in\set{1,2}$.
         The proposition now follows since every point $y\in Y$ lies in some $U_i$, hence the ordinary fiber of $f\colon X\to Y$ is the homotopy fiber by the pasting law for ordinary pullbacks.
     \end{proof}
 \end{corollary}
@@ -1042,7 +1042,7 @@ The relationship of locality of quasifibrations and descent also goes the other 
     Let $f\colon X\to Y$ be a map and $(U_i)_{i\in I}$ an open cover of $Y$ such that for every pair of indices $i,j\in I$ and point $b\in U_i\cap U_j$, there is a $k\in I$ such that $b\in U_k\subset U_i\cap U_j$.
     Then if $f^{-1}(U_i)\to U_i$ is a quasifibration for all $i\in I$, $f$ is a quasifibration.
 
-    One can prove this by using that the homotopy colimit of such a cover is the space itself (see \cite[Proposition 4.6 (c)]{hypercovers}):
+    One can prove this by using that the homotopy colimit of such a cover is the space itself (see \cite[Corollary 1.4]{hypercovers}):
     Because all squares
     \begin{center}
         \begin{tikzcd} [sep = 4em]
@@ -1200,7 +1200,7 @@ The next two lemmas will be used to reduce to a situation where \cref{cor:locOfQ
         Since the right square is pullback (since $Y=\Gamma^{-1}(B)$) and homotopy pullback and the left side is as well (since $q$ is a quasifibration), this means that the fiber $F$ is already a homotopy fiber which proves the lemma.
     \end{proof}
 \end{lemma}
-This finishes the preparation and we will now prove descent for pushouts via the weak locality of quasifibrations.
+This finishes the preparation and we will now prove descent for pushouts again via the weak locality of quasifibrations.
 \begin{prop}\label{lem:topDescentPoAlt}
     The model category $\Top$ has descent for homotopy pushouts. 
     \begin{proof}
@@ -1305,7 +1305,7 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
 \end{lemma}
 \begin{corollary}\label{cor:genCoproductComponentPb}
     Let $M$ be a model category with universal homotopy coproducts and disjoint binary homotopy coproducts.
-    Let $\left(X_i\right)_{i\in I}$ be a small family of objects and let $\coprod\limits_{i\in I}^h X_i$ be its homotopy coproduct.
+    Let $\left(X_i\right)_{i\in I}$ be a small family of objects and let $\coprod\limits_{i\in I}^h X_i$ be the homotopy coproduct.
     Then
     \begin{center}
         \begin{tikzcd} [sep = 1 cm]
@@ -1347,9 +1347,9 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
             \end{tikzcd}
         \end{center}
         is a homotopy pullback square.
-        By universality of homotopy coproducts we have that $\left(X_k\times_{X_k\coprod^h Y_k}^h X_k\right)\coprod^h\left(X_k\times_{X_k\coprod^h Y_k}^hY_k\right)\simeq X_k$.
-        But by disjointness of homotopy coproducts we also have $X_k\times_{X_k\coprod^h Y_k}^hY_k\simeq\emptyset$.
-        Since $\left(X_k\times_{X_k\coprod^h Y_k}^h X_k\right)\coprod^h\emptyset\simeq\left(X_k\times_{X_k\coprod^h Y_k}^hX_k\right)$, we get $X_k\times_{X_k\coprod^h Y_k}^hX_k\simeq X_k$ which completes the proof.
+        By universality of homotopy coproducts we have that $\left(X_k\times_{X_k\coprod\limits^h Y_k}^h X_k\right)\coprod\limits^h\left(X_k\times_{X_k\coprod\limits^h Y_k}^hY_k\right)\simeq X_k$.
+        But by disjointness of homotopy coproducts we also have $X_k\times_{X_k\coprod\limits^h Y_k}^hY_k\simeq\emptyset$.
+        Since $\left(X_k\times_{X_k\coprod\limits^h Y_k}^h X_k\right)\coprod\limits^h\emptyset\simeq\left(X_k\times_{X_k\coprod\limits^h Y_k}^hX_k\right)$, we get $X_k\times_{X_k\coprod\limits^h Y_k}^hX_k\simeq X_k$ which completes the proof.
     \end{proof}
 \end{corollary}
 \begin{corollary}\label{cor:disjointImpliesDescent}
@@ -1372,9 +1372,9 @@ To avoid confusion between homotopy and ordinary limits/colimits, we will tag ho
                 P_{kj} \arrow [r] \arrow [dd] & X_j \arrow [d]\\
                 & \coprod\limits_{i\in I}^hX_i \arrow [d]\\
                 Y_k \arrow [r] & \coprod\limits_{i\in I}^hY_i
-            \end{tikzcd}
+            \end{tikzcd}\;.
         \end{center}
-        then since $X_j\to\coprod\limits_{i\in I}^hX_i\to\coprod\limits_{i\in I}^hY_i$ is equal to $X_j\to Y_j\to\coprod\limits_{i\in I}^hY_i$, we can also compute $P_{kj}$ as the successive homotopy pullback
+        Since $X_j\to\coprod\limits_{i\in I}^hX_i\to\coprod\limits_{i\in I}^hY_i$ is equal to $X_j\to Y_j\to\coprod\limits_{i\in I}^hY_i$, we can also compute $P_{kj}$ as the successive homotopy pullback
         \begin{center}
             \begin{tikzcd} [sep = 1 cm]
                 P_{kj} \arrow [r] \arrow [d] & X_j \arrow [d]\\

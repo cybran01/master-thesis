@@ -38,13 +38,13 @@ Next we introduce cartesian transformations which allow us to encode universalit
 \end{definition}
 \begin{definition}[Universality] 
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set.
-    We say that \emph{$C$ has universal colimits for $K$-shaped diagrams} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $q$ is a colimit cone and $\alpha$ is cartesian, $p$ is also a colimit cone.
+    We say that \emph{$C$ has universal colimits for $K$-shaped diagrams} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $q$ is a colimit cone and $\alpha$ is cartesian, then $p$ is also a colimit cone.
     
     We say that \emph{$C$ has universal colimits} if $C$ has universal colimits for $K$-shaped diagrams for every small simplicial set $K$.
 \end{definition}
 \begin{definition}[Descent] 
     Let $C$ be an \inftycat/ that admits small colimits and pullbacks and let $K$ be a small simplicial set.
-    We say that \emph{$C$ has descent for $K$-shaped diagrams} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ where $p,q$ are colimit cones and $\alpha|_K$ is cartesian, $\alpha$ is also cartesian.
+    We say that \emph{$C$ has descent for $K$-shaped diagrams} if for all natural transformations $\alpha\colon p\to q\in\Fun(K^{\rhd},C)_1$ such that $p,q$ are colimit cones and $\alpha|_K$ is cartesian, then $\alpha$ is also cartesian.
     
     We say that \emph{$C$ has descent} if $C$ has descent for $K$-shaped diagrams for every small simplicial set $K$.
 \end{definition}
@@ -122,9 +122,9 @@ We will require the following proposition for the proof.
         For $\dim K=-1$ the statement follows since $K=\emptyset$ is the coproduct over the empty indexing category.
         
         Let $\dim K=n+1$. 
-        Then by the skeletal filtration
+        Then by the skeletal filtration we have
         \begin{equation*}
-            K=K^{n+1}=K^n\bigcup\limits_{\coprod\limits_S \partial\Delta^{n+1}}\left(\coprod_S \Delta^{n+1}\right)
+            K=K^{n+1}\cong K^n\bigcup\limits_{\coprod\limits_S \partial\Delta^{n+1}}\left(\coprod_S \Delta^{n+1}\right)
         \end{equation*}
         where $S$ is the set of non-degenerate simplices of dimension $n+1$.
         For ease of notation, we set $X_{0}=\coprod\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\coprod\limits_S \Delta^{n+1}$.
@@ -196,7 +196,7 @@ We will require the following proposition for the proof.
         Since $L\subset\N(\Nat)$ is a weak categorical equivalence (which preserve and reflect (co)limits), it even suffices to compute the colimit of the induced diagram $L\to C$.
 
 
-        For $q\colon K\to C$, let $F_q\colon L^{\rhd}\to C$ be the colimit diagram constructed as described above.
+        For $q|_K\colon K\to C$, let $F_q\colon L^{\rhd}\to C$ be the colimit diagram constructed as described above.
         Let $F_p\colon L^{\rhd}\to C$ be given by taking pullbacks
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -219,9 +219,9 @@ We will require the following proposition for the proof.
         For $\dim K=-1$ the statement follows since $K=\emptyset$ is the coproduct over the empty indexing category.
 
         So let $\dim K=n+1$.
-        Then by the skeletal filtration
+        Then by the skeletal filtration we have
         \begin{equation*}
-            K=K^{n+1}=K^n\bigcup\limits_{\coprod\limits_S \partial\Delta^{n+1}}\left(\coprod_S \Delta^{n+1}\right)
+            K=K^{n+1}\cong K^n\bigcup\limits_{\coprod\limits_S \partial\Delta^{n+1}}\left(\coprod_S \Delta^{n+1}\right)
         \end{equation*}
         where $S$ is the set of non-degenerate simplices of dimension $n+1$.
         For ease of notation, we again set $X_{0}=\coprod\limits_S \partial\Delta^{n+1}$, $X_1=K^n$ and $X_2=\coprod\limits_S \Delta^{n+1}$.
@@ -317,7 +317,7 @@ We will require the following proposition for the proof.
             \end{tikzcd}
         \end{center}
         is a pullback and hence by the pasting law so is the left square.
-        By universality this implies that $q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty)\simeq p|_{K^n}(\infty)$ which shows that
+        By universality, this implies that $q|_{K^n}(\infty)\times_{q|_{K^{n+1}}(\infty)}p|_{K^{n+1}}(\infty)\simeq p|_{K^n}(\infty)$ which shows that
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 p|_{K^n}(\infty) \arrow[d] \arrow[r] & p|_{K^{n+1}}(\infty) \arrow[d] \\

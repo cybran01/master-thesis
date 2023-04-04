@@ -155,7 +155,8 @@ We will not give proofs for any statements in this section; we will however poin
     Then we call $C$ \emph{$\kappa$-filtered} if every functor $F\colon K\to C$, where $K$ is a category whose class of morphisms $\Map(K)$ has cardinality less than $\kappa$, admits an extension to a cone diagram $F^{\rhd}\colon K^{\rhd}\to C$.
 
     We call a colimit $F^{\rhd}\colon K^{\rhd}\to C$ a \emph{$\kappa$-filtered colimit} if $K$ is $\kappa$-filtered.
-    If the cardinal $\kappa$ is omitted, we let $\kappa=\aleph_0=|\Nat|$.
+    
+    If the cardinal $\kappa$ is omitted, we implicitly set $\kappa=\aleph_0=|\Nat|$.
 \end{definition}
 \begin{definition}[$\kappa$-Compact Object]\label{def:kappaCompactObject}
     Let $C$ be a category, $X\in C$ an object and $\kappa$ a regular cardinal.
@@ -182,7 +183,7 @@ We will not give proofs for any statements in this section; we will however poin
 \begin{definition}[Relative $\kappa$-Small] %Definition 2.1.3 hovey or Definition 10.4.1 hirschhorn
     Let $C$ be a category with small colimits, let $S$ be a class of morphisms in $C$ and let $\kappa$ be a cardinal.
     
-    We say that an object $A\in C$ is \emph{$\kappa$-small relative to $S$} if colimits indexed by $\lambda$-sequences $X$ such that 
+    We say that an object $A\in C$ is \emph{$\kappa$-small relative to $S$} if colimits indexed by $\lambda$-sequences $X\colon\lambda\to C$ such that 
     \begin{itemize}
         \item $\lambda$ is a $\kappa$-filtered ordinal (note that by \cref{rmk:linOrderedAsCat} we can view ordinals as categories)
         \item $X(\beta)\to X(\beta+1)$ is in $S$ for $\beta+1<\lambda$
@@ -197,11 +198,11 @@ We will not give proofs for any statements in this section; we will however poin
     In this case $(l(r(I)),r(I))$ is a functorial weak factorization system and $l(r(I))$ is the smallest (with respect to inclusion) saturated class containing $I$.
 \end{thm}
 \begin{reference}
-    \cite[Theorem 2.1.14]{hovey2007model} and \cite[Proposition 2.1.5]{cisinski_2019}
+    \cite[Theorem 2.1.14]{hovey2007model}
 \end{reference}
 \begin{definition}[Cofibrantly Generated Model Structure]
     Let $C$ be a model category with $\Cof,\Fib$ and $\W$ the cofibrations, fibrations and weak equivalences respectively.
-    Then we say that $C$ is \emph{cofibrantly generated} if there exist sets of morphisms $I,J$ such that
+    Then we say that $C$ is \emph{cofibrantly generated} if there exist sets of morphisms $I,J$ of $C$ such that
     \begin{itemize}
         \item $I$ and $J$ admit the small object argument
         \item $(\Cof,\Fib\cap\W)=(l(r(I)),r(I))$
@@ -269,7 +270,7 @@ The following is the analogous statement for \inftycats/.
 \end{prop}
 We will need the standard model structure on $\sSet$, the Quillen model structure. 
 Whenever we speak of cofibrations, fibrations or weak equivalences between simplicial sets, we are referring to this model structure.
-\begin{thm}[Quillen Model Structure on $\sSet$]
+\begin{thm}[Quillen Model Structure on $\sSet$]\label{thm:quillenModelSSet}
     There is a unique model structure on $\sSet$ where 
     \begin{itemize}
         \item the cofibrations are the monomorphisms, which also admit the following description: 
@@ -358,7 +359,7 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
         \item The cofibrations are the monomorphisms.
         \item The weak equivalences are the maps $A\to B$ such that for every \inftycat/ $C$ the induced map $\ho(\Fun(B,C))\to\ho(\Fun(A,C))$ is an equivalence of ordinary categories.
     \end{itemize}
-    The fibrant objects of this model structure are called \inftycats/ and are precisely the simplicial sets whose map to the point has the right lifting property with respect to $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0< k< n, n\in\Nat}$.
+    The fibrant objects of this model structure are the \emph{\inftycats/} and are precisely the simplicial sets whose map to the point has the right lifting property with respect to $\set{\Lambda_k^n\xhookrightarrow{}\Delta^n\mid 0< k< n, n\in\Nat}$.
     We refer to the weak equivalences of this model structure as \emph{weak categorical equivalences}, and to weak categorical equivalences whose domain and target are both \inftycats/ as \emph{equivalences of \inftycats/}.
     
     This model structure is called the \emph{Joyal Model Structure on $\sSet$}.
@@ -527,34 +528,34 @@ We will also describe the Joyal model structure on $\sSet$ which plays a similar
 \begin{definition}[Kan-Extension]
     Let $u\colon A\to B$ be a functor between \inftycats/ and let $C$ be an \inftycat/.
     
-    If the functor $u^*\colon\Fun(B,C)\to\Fun(A,C)$ has a right adjoint $u_*\colon\Fun(A,C)\to\Fun(B,C)$, we say that $u_*$ is a \emph{right Kan-extension functor along $u$ for $C$}.
-    Given a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{right Kan extension of $f$ along $u$} if $g$ is equivalent to $u_*(f)$.
+    If the functor $u^*\colon\Fun(B,C)\to\Fun(A,C)$ induced by precomposition with $u$ has a right adjoint $u_*\colon\Fun(A,C)\to\Fun(B,C)$, we say that $u_*$ is a \emph{right Kan-extension functor along $u$ for $C$}.
+    Given a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{right Kan-extension of $f$ along $u$} if $g$ is equivalent to $u_*(f)$.
 
     Dually, if $u^*$ has a left adjoint $u_!\colon\Fun(A,C)\to\Fun(B,C)$, we say that $u_!$ is a \emph{left Kan-extension functor along $u$ for $C$}.
-    Given a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{left Kan extension of $f$ along $u$} if $g$ is equivalent to $u_!(f)$.
+    Given a map $f\in\Fun(A,C)_0$, we say that a map $g\in\Fun(B,C)_0$ is a \emph{left Kan-extension of $f$ along $u$} if $g$ is equivalent to $u_!(f)$.
 \end{definition}
 We will only need to deal with Kan-extensions where $u$ is an inclusion and $C$ is complete and cocomplete.
 We can give a more explicit description for this case.
 \begin{definition}[Pointwise Kan-Extension]\label{def:ptwiseKanExt} %kerodon Definition 7.3.2.1
-    Let $F\colon C\to D$ be a functor between \inftycats/ and let $i\colon B\subset C$ be a full subcategory.
-    Then $F$ is a \emph{pointwise right Kan-extension along $i$} if for all objects $c\in C_0$ the diagram
+    Let $F\colon B\to C$ be a functor between \inftycats/ and let $i\colon A\subset B$ a full subcategory.
+    Then $F$ is a \emph{pointwise right Kan-extension along $i$} if for all objects $b\in B_0$ the diagram
     \begin{equation*}
-        \left(C_{c/}\times_C B\right)^{\lhd}\to \Delta^0\star C_{c/}\xrightarrow{c} C\xrightarrow{F} D
+        \left(B_{b/}\times_B A\right)^{\lhd}\to \Delta^0\star B_{b/}\xrightarrow{c} B\xrightarrow{F} C
     \end{equation*}
-    where the map $c\colon\Delta^0\star C_{c/}\to C$ is the coslice contraction map, is a limit cone.
+    where the map $c\colon\Delta^0\star B_{b/}\to B$ is the coslice contraction map, is a limit cone.
 
-    Dually, $F$ is a \emph{pointwise left Kan-extension along $i$} if for all objects $c\in C_0$ the diagram
+    Dually, $F$ is a \emph{pointwise left Kan-extension along $i$} if for all objects $b\in B_0$ the diagram
     \begin{equation*}
-        \left(C_{/c}\times_C B\right)^{\rhd}\to C_{/c}\star\Delta^0 \xrightarrow{c} C\xrightarrow{F} D
+        \left(B_{/b}\times_B A\right)^{\rhd}\to B_{/b}\star\Delta^0 \xrightarrow{c} B\xrightarrow{F} C
     \end{equation*}
-    where the map $c\colon C_{/c}\star\Delta^0\to C$ is the slice contraction map, is a colimit cone.
+    where the map $c\colon B_{/b}\star\Delta^0\to B$ is the slice contraction map, is a colimit cone.
 \end{definition}
 \begin{prop}[Existence of Pointwise Kan-Extensions]\label{prop:exKanExt}
-    Let $C,D$ be \inftycats/ and $i\colon B\subset C$ a full subcategory.
+    Let $B,C$ be \inftycats/ and $i\colon A\subset B$ a full subcategory.
     
-    If $D$ admits $\left(C_{c/}\times_C B\right)$-shaped limits for all $c\in C_0$, then there exists a fully faithful right Kan-extension functor $i_*\colon\Fun(B,D)\to\Fun(C,D)$ along $i$ such that for every map $f\colon B\to D$ the induced map $i_*(f)$ is equivalent to a pointwise right Kan-extension along $i$.
+    If $C$ admits $\left(B_{b/}\times_B A\right)$-shaped limits for all $b\in B_0$, then there exists a fully faithful right Kan-extension functor $i_*\colon\Fun(A,C)\to\Fun(B,C)$ along $i$ such that for every map $f\colon A\to C$ the induced map $i_*(f)$ is a pointwise right Kan-extension along $i$.
 
-    Dually if $D$ admits $\left(C_{c/}\times_C B\right)$-shaped colimits for all $c\in C_0$, then there exists a fully faithful left Kan-extension functor $i_!\colon\Fun(B,D)\to\Fun(C,D)$ along $i$ such that for every map $f\colon B\to D$ the induced map $i_!(f)$ is equivalent to a pointwise left Kan-extension along $i$.
+    Dually if $C$ admits $\left(B_{/b}\times_B A\right)$-shaped colimits for all $b\in B_0$, then there exists a fully faithful left Kan-extension functor $i_!\colon\Fun(A,C)\to\Fun(B,C)$ along $i$ such that for every map $f\colon A\to C$ the induced map $i_!(f)$ is a pointwise left Kan-extension along $i$.
     \begin{reference}
         \cite[Proposition 6.4.9]{cisinski_2019} (and the dual) for existence of pointwise Kan-extensions, \cite[Corollary 7.3.1.16]{kerodon} for fully faithfulness.
     \end{reference}

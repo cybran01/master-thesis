@@ -6,7 +6,7 @@ The \Strom/ model structure will be important later on; its interaction with the
 \begin{prop}\label{prop:sSetCombSimpModelStructure}
     The Quillen model structure on $\sSet$ together with its natural enrichment over itself gives it the structure of a combinatorial simplicial model category.
     \begin{proof}
-        First we note that the category $\sSet$ together with the Quillen model structure is a combinatorial model category (see e.g. \cite[Remark 7.11.15]{cisinski_2019}).
+        The category $\sSet$ together with the Quillen model structure is a combinatorial model category by e.g. \cite[Remark 7.11.15]{cisinski_2019}.
         
         The category $\sSet$ is enriched over itself by $\Fun(A,B)_n=\hom_{\sSet}(A\times\Delta^n,B)$, thus it is a simplicial category.
         It is tensored (via the product) and powered (via $\Fun(-,-)$) over $\sSet$.
@@ -128,8 +128,7 @@ The following proposition provides a convenient characterization of homotopy pul
         Now note that all simplicial sets are cofibrant and all topological spaces are fibrant.
         Hence this Quillen adjunction is Quillen equivalence if for every $X\in\sSet$ and $Y\in\Top$, a map $f\colon X\to\Sing(Y)$ is a weak equivalence if and only if the adjunct map $g\colon\lvert X\rvert\to Y$ is.
         
-        This however follows from the fact that unit and counit of the adjunction are objectwise weak equivalences:
-        The case for the adjunction unit is proven in e.g. \cite[Theorem 3.5.4.1]{kerodon} (and originally due to \cite{milnor_unit_we}) and the case for the counit can be derived from this (see \cite[Corollary 3.5.4.2]{kerodon}).
+        Since the adjunction counit $\varepsilon\colon\lvert\Sing(-)\rvert\to\id_{\Top}$ is an objectwise weak equivalence (see e.g. \cite[Corollary 3.5.4.2]{kerodon}, originally due to \cite{giever_counit}), this follows from the fact that $g=\lvert X\rvert\xrightarrow{\lvert f\rvert}\lvert\Sing(Y)\rvert\xrightarrow{\sim} Y$ since a map is a weak equivalence of simplicial sets if and only if its geometric realization is a weak equivalence in $\Top$ by \cref{thm:quillenModelSSet}.
     \end{proof}
 \end{thm}
 \begin{remark}
