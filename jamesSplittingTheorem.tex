@@ -15,7 +15,7 @@ We begin by introducing some well known constructions that we will need througho
             \end{tikzcd}
         \end{center}
         a \emph{suspension of $X$}.
-        Note that if $X$ is pointed then $\Sigma X$ is canonically pointed by the essentially unique map $*\to X\to\Sigma X$ since both canonical maps $X\to *\to \Sigma X$ are equivalent.
+        Note that if $X$ is pointed, then $\Sigma X$ is canonically pointed by the essentially unique map $*\to X\to\Sigma X$ since the canonical maps $X\to *\xrightrightarrows[i_1]{i_0}\Sigma X$ are equivalent.
         \item for pointed objects $X$ and $Y$ in $C$, we call a pushout
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -38,8 +38,8 @@ We now want to establish some fundamental properties of the wedge sum and smash 
 It is clear from their definition that both are commutative.
 We will prove that both are associative and that the smash product distributes over the wedge sum.
 \begin{lemma}\label{lem:assocWedge}
-    Let $C$ be an \inftytop/.
-    Then the wedge sum is associative in the sense that for pointed objects $A,B,C$ of $C$ there is a canonical equivalence $(A\vee B)\vee C\simeq A\vee (B\vee C)$ of pointed objects.
+    Let $D$ be an \inftycat/.
+    Then the wedge sum is associative in the sense that for pointed objects $A,B,C$ of $D$ there is a canonical equivalence $(A\vee B)\vee C\simeq A\vee (B\vee C)$ of pointed objects.
     In fact, $(A\vee B)\vee C\simeq(A\vee B)\cup_{B}(B\vee C)\simeq A\vee (B\vee C)$ as pointed objects.
     \begin{proof}
         From the horizontal composite square of the diagram 
@@ -55,14 +55,14 @@ We will prove that both are associative and that the smash product distributes o
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:productPreservesPushout}
-    Let $C$ be an \inftytop/, $X$ an object in $C$ and
+    Let $T$ be an \inftytop/, $X$ an object in $T$ and
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             A \arrow[r] \arrow[d] & B \arrow[d] \\
             C \arrow[r] & D \\
         \end{tikzcd}
     \end{center} 
-    and pushout in $C$.
+    and pushout in $T$.
 
     Then the induced square
     \begin{center}
@@ -87,8 +87,8 @@ We will prove that both are associative and that the smash product distributes o
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:smashDist}
-    Let $C$ be an \inftytop/.
-    Then the smash product distributes over the wedge sum in the sense that for pointed objects $X,A,B$ of $C$ there is a canonical equivalence $(A\vee B)\wedge X\simeq (A\wedge X)\vee (B\wedge X)$ of pointed objects.
+    Let $T$ be an \inftytop/.
+    Then the smash product distributes over the wedge sum in the sense that for pointed objects $X,A,B$ of $T$ there is a canonical equivalence $(A\vee B)\wedge X\simeq (A\wedge X)\vee (B\wedge X)$ of pointed objects.
     \begin{proof}
         Because colimits commute, the colimit of a diagram indexed by $\Lambda_0^2\times\Lambda_0^2$ can be computed by either taking object-wise pushouts of the first argument and then the pushout of the resulting $\Lambda_0^2$-shaped diagram, or taking object-wise pushouts of the second argument and then taking pushout of the resulting $\Lambda_0^2$-shaped diagram.
         Hence given the diagram
@@ -121,7 +121,7 @@ We will prove that both are associative and that the smash product distributes o
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:pushoutProdSquareIsPushout}
-    Let $C$ be an \inftytop/, $f\colon X\to Y\in C_1$ a morphism and 
+    Let $T$ be an \inftytop/, $f\colon X\to Y\in T_1$ a morphism and 
     \begin{center}
         \begin{tikzcd} [sep = 4em]
             A \arrow[r] \arrow[d] & B \arrow[d] \\
@@ -206,8 +206,8 @@ We will prove that both are associative and that the smash product distributes o
     \end{proof}
 \end{lemma}
 \begin{lemma}\label{lem:assocSmash}
-    Let $C$ be an \inftytop/.
-    Then the smash product is associative in the sense that for pointed objects $A,B,C$ of $C$ there is a canonical equivalence $(A\wedge B)\wedge C\simeq A\wedge (B\wedge C)$ of pointed objects.
+    Let $T$ be an \inftytop/.
+    Then the smash product is associative in the sense that for pointed objects $A,B,C$ of $T$ there is a canonical equivalence $(A\wedge B)\wedge C\simeq A\wedge (B\wedge C)$ of pointed objects.
     \begin{proof}
         We apply \cref{lem:pushoutProdSquareIsPushout} to the pushout
         \begin{center}
