@@ -34,9 +34,9 @@ A generalization characterizing higher loop spaces was proven in \cite{may_geome
 \end{definition}
 The \Cech/ nerve construction is a way to associate a groupoid object to a given map (see \cref{prop:grpdEffectiveIfPullback}).
 \begin{definition}[\Cech/ Nerve]
-    Let $C$ be an \inftycat/ with finite limits and let $\Delta^1\subset\N(\Delta_+)^{\op}$ be the inclusion corresponding to the full subcategory $[0]\to[-1]$.
+    Let $C$ be an \inftycat/ with finite limits and let $\Delta^1\subset\N(\Delta_+)^{\op}$ be the inclusion corresponding to the full subcategory $\set{[0]\to[-1]}\subset\Delta_+^{\op}$.
     
-    Then by \cref{prop:exKanExt} there exists a functor $\CN\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ that is right adjoint to the restriction functor $F\colon\Fun(\N(\Delta_+)^{\op},C)\to\Fun(\Delta^1,C)$ and for a map $f\colon x\to y\in\Fun(\Delta^1,C)_0$ is the right Kan-extension of $f$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
+    Then by \cref{prop:exKanExt} there exists a right Kan-extension functor $\CN\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ along $\Delta^1\subset\N(\Delta_+)^{\op}$.
     An object $U^+\in\Fun(\N(\Delta_+)^{\op},C)_0$ in the essential image of $\CN$ is called a \emph{\Cech/ nerve}.
 \end{definition}
 \begin{remark}\label{rmk:cechNerveExplicit}
@@ -177,8 +177,8 @@ The proof follows \cite[29-30]{toposes_and_htpy_toposes}.
     
     Thus they induce an equivalence of \inftycats/ $\Gpd(C)\simeq\Fun(\Delta^1,C)_{\text{eff}}$.
     \begin{proof}
-        The functors $\colim\colon\Fun(\N(\Delta)^{\op},C)\to\Fun(\N(\Delta_+)^{\op},C)$ and $\CN\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ are both pointwise Kan-extensions along fully faithful functors:
-        The first is a left Kan-extension along $\N(\Delta)^{\op}\subset\N(\Delta_+)^{\op}$, and the latter a right Kan-extension along $\Delta^1\subset\N(\Delta_+)^{\op}$.
+        The functors $\colim\colon\Fun(\N(\Delta)^{\op},C)\to\Fun(\N(\Delta_+)^{\op},C)$ and $\CN\colon\Fun(\Delta^1,C)\to\Fun(\N(\Delta_+)^{\op},C)$ are both Kan-extension functors along inclusions:
+        The first is a left Kan-extension functor along $\N(\Delta)^{\op}\subset\N(\Delta_+)^{\op}$, and the latter a right Kan-extension functor along $\Delta^1\subset\N(\Delta_+)^{\op}$.
         Thus they are both fully faithful by \cref{prop:exKanExt} and hence $F$ and $G$ are as well.
         It remains to show that they have the same essential image.
 

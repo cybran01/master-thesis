@@ -116,25 +116,6 @@
   }{\scriptstyle#1}{U}{c}{F}{F}{S}%
 }}}
 
-\makeatletter
-\newcommand*{\relrelbarsep}{.386ex}
-\newcommand*{\relrelbar}{%
-  \mathrel{%
-    \mathpalette\@relrelbar\relrelbarsep
-  }%
-}
-\newcommand*{\@relrelbar}[2]{%
-  \raise#2\hbox to 0pt{$\m@th#1\relbar$\hss}%
-  \lower#2\hbox{$\m@th#1\relbar$}%
-}
-\providecommand*{\rightrightarrowsfill@}{%
-  \arrowfill@\relrelbar\relrelbar\rightrightarrows
-}
-\providecommand*{\xrightrightarrows}[2][]{%
-  \ext@arrow 0359\rightrightarrowsfill@{#1}{#2}%
-}
-\makeatother
-
 \DeclareDocumentCommand{\newfaktor}{s m O{0.5} m O{-0.5}}{% 
   \setbox0=\hbox{\ensuremath{#2}}% 
   \setbox1=\hbox{\ensuremath{\diagup}}%

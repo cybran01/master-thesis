@@ -3,7 +3,7 @@ The classical James Splitting Theorem in $\spaces$ states that for connected poi
 The proof will follow \cite[\S 2.2 and \S 4]{splittings_21}.
 
 We begin by introducing some well known constructions that we will need throughout the rest of this section.
-\begin{definition}
+\begin{definition}\label{def:suspWedgeSmash}
     Let $C$ be an \inftytop/.
     Then 
     \begin{itemize}
@@ -15,7 +15,9 @@ We begin by introducing some well known constructions that we will need througho
             \end{tikzcd}
         \end{center}
         a \emph{suspension of $X$}.
-        Note that if $X$ is pointed, then $\Sigma X$ is canonically pointed by the essentially unique map $*\to X\to\Sigma X$ since the canonical maps $X\to *\xrightrightarrows[i_1]{i_0}\Sigma X$ are equivalent.
+        Note that if $X$ is pointed, then $\Sigma X$ is canonically pointed as the maps $i_0,i_1\colon*\to\Sigma X$ are equivalent.
+        This due to the fact that a map $*\to X$ is a section of the map $X\to *$, and the fact that the canonical maps $X\to *\xrightarrow{i_0}\Sigma X$ and $X\to *\xrightarrow{i_1}\Sigma X$ are equivalent.
+
         \item for pointed objects $X$ and $Y$ in $C$, we call a pushout
         \begin{center}
             \begin{tikzcd} [sep = 4em]
@@ -309,8 +311,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
             \end{tikzcd}$
         \end{center}
         be the suspension of $X$ and loop space of $*\xrightarrow{i_0}\Sigma X$ respectively.
-        The definition of $\Sigma X$ shows that $i_0$ and $i_1$ are equivalent maps in $C$, since $X\to *\xrightarrow{i_0}\Sigma X$ and $X\to *\xrightarrow{i_1}\Sigma X$ are equivalent by construction and the canonical point $x\colon*\to X$ is a section of $X\to *$.
-        Thus we get that
+        Since $i_0$ and $i_1$ are equivalent maps in $C$ (see \cref{def:suspWedgeSmash}), we get that
         \begin{center}
             \begin{tikzcd} [sep = 4em]
                 \Omega\Sigma X \arrow[r] \arrow[d] & * \arrow[d, "i_0"] \\
@@ -337,7 +338,7 @@ There is some subtlety involved in it, see \cref{rmk:mapNotProj}.
         where the three vertical squares are pullbacks, and the bottom square is a pushout.
 
         Now let $\Fun(\Delta^1\times\Delta^1,C)_{pb}\subset\Fun(\Delta^1\times\Delta^1,C)$ denote the full subcategory of pullback squares.
-        Then the functor $\lim\colon\Fun(\Lambda_2^2,C)\to\Fun(\Delta^1\times\Delta^1,C)_{pb}$ is an equivalence of \inftycats/ since it is essentially surjective by definition and fully faithful since it is a right Kan-extension along the inclusion $\Lambda_2^2\subset\Delta^1\times\Delta^1$.
+        Then the functor $\lim\colon\Fun(\Lambda_2^2,C)\to\Fun(\Delta^1\times\Delta^1,C)_{pb}$ is an equivalence of \inftycats/ since it is essentially surjective by definition and fully faithful since it is a right Kan-extension functor along the inclusion $\Lambda_2^2\subset\Delta^0\star\Lambda_2^2\cong\Delta^1\times\Delta^1$.
 
         The previous diagram corresponds to a natural transformation $\lambda\in\Fun(\Lambda_2^2,C)_1$ where $\lambda_1$ and $\lambda_1 $ are the restrictions of the back square and the front square to $\Lambda_2^2$ respectively.
         The induced natural transformation $\overline{\lambda}=\lim(\lambda)$ is a map between pullback squares, and since back and front square in the above diagram were already pullbacks, they are equivalent to $\overline{\lambda}_0$ and $\overline{\lambda}_1$ respectively.
@@ -463,7 +464,7 @@ We will also need to prove some basic facts about wedges and smash products.
         \end{center}
         first row-wise and then column-wise.
         
-        Taking pushouts of the rows results in the diagram $*\xleftarrow{}*\rightarrow X\cup_{X\times Y} Y$ where we use \cref{lem:poOfCollapseMapsIsTrivial} and taking pushouts of the columns results in the diagram $*\xleftarrow{}X\wedge Y\rightarrow *$. 
+        Taking pushouts of the rows results in the diagram $*\xleftarrow{}*\rightarrow X\cup_{X\times Y} Y$ where we use \cref{lem:poOfCollapseMapsIsTrivial}, and taking pushouts of the columns results in the diagram $*\xleftarrow{}X\wedge Y\rightarrow *$. 
         Since the pushout of the latter diagram is $\Sigma\left(X\wedge Y\right)$ and the pushout of the first diagram must be equivalent to this, we have $X\cup_{X\times Y} Y\simeq\Sigma\left(X\wedge Y\right)$.
         
         It remains to show that the maps $X\to\Sigma\left(X\wedge Y\right)$ and $Y\to\Sigma\left(X\wedge Y\right)$ factor through $*$.
@@ -486,7 +487,7 @@ We will also need to prove some basic facts about wedges and smash products.
     Then all squares of the diagram         
     \begin{center}
         \begin{tikzcd} [sep = 4em]
-            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"'] \ar[dr,phantom,"\Circled{1}"] & Y \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{2}"] & * \arrow[d] \\
+            X\times Y \arrow[r, "\pi_2"] \arrow[d, "\pi_1"'] \ar[dr,phantom,"\Circled{1}"] & Y \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{2}", pos = .56] & * \arrow[d] \\
             X \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{3}"] & \Sigma\left(X\wedge Y\right) \arrow[r] \arrow[d] \ar[dr,phantom,"\Circled{4}"] & \Sigma Y\vee\Sigma\left(X\wedge Y\right) \arrow[d]\\
             * \arrow[r] &  \Sigma X\vee\Sigma\left(X\wedge Y\right)\arrow[r] & \Sigma X\vee\Sigma Y\vee\Sigma\left(X\wedge Y\right) \\
         \end{tikzcd}
@@ -644,7 +645,7 @@ Also note that in view of \cref{prop:conn} \ref{prop:connSection}, the previousl
     This definition agrees with the definition of connectedness in $\spaces$:
     \begin{itemize}
         \item For $n=-2$ there is nothing to prove.
-        \item For $n\geq -1$ all homotopy fibers of $f$ are nonempty, hence $f$ is an effective epimorphism (see \cref{prop:effInSpaceIffSurj}).
+        \item For $n\geq -1$ all homotopy fibers of $f$ are nonempty, hence $f$ is an effective epimorphism (see \cref{rmk:emptyFiber} and \cref{prop:effInSpaceIffSurj}).
             Furthermore, given the pullback square
             \begin{center}
                 \begin{tikzcd} [sep = 4em]
@@ -764,7 +765,7 @@ With these we can deduce the following statements:
         So by \cref{cor:connEst} \ref{cor:connEstVeeIncl} we have that the horizontal map $\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\to\bigvee\limits_{i=1}^n\Sigma X^{\wedge i}\vee\bigvee\limits_{i=n+1}^{\infty}\Sigma X^{\wedge i}\simeq\bigvee\limits_{i=1}^{\infty}\Sigma X^{\wedge i}$ of the above triangle is $n$-connected.
 
         As the diagonal as well as the horizontal map of the triangle above are $n$-connected, it follows from \cref{prop:conn} \ref{prop:connRightCancel} that $c_X$ is $n$-connected. 
-        As $n$ was arbitrary, $c_X$ is therefore an equivalence by hypercompleteness of $\Fun(A,\spaces)$.
+        As $n$ was arbitrary, $c_X$ is $\infty$-connected and therefore an equivalence by hypercompleteness of $\Fun(A,\spaces)$.
     \end{proof}
 \end{prop}
 \begin{corollary}[Classical James Splitting]\label{cor:classicalJamesSplitting}
@@ -842,7 +843,7 @@ We will do this using the next proposition.
         \end{center}
         are equivalences. 
         This pullback diagram induces a natural transformation $\alpha\colon\CN(\pi_1)\to\CN(f)$.
-        For all $n\geq 1$ using \cref{rmk:cechNerveExplicit} and the pasting law, we obtain the left square of the diagram
+        Using \cref{rmk:cechNerveExplicit} and the pasting law, we obtain that for all $n\geq 1$ the left square of the diagram
         \begin{center}
             \begin{tikzcd}[sep = 4em]
                 X\times_Y(X\times_Y\ldots\times_YX)\simeq\CN(\pi_1)_n \ar[r, "{(\pi_1,\pi_2)}"] \ar[d, "\alpha_n\simeq{(\pi_2,\ldots,\pi_{n+2})}"'] & X\times_YX\simeq\CN(f)_0 \ar[d, "\alpha_0\simeq\pi_2",  "\simeq"'] \ar[r, "\pi_1"] & X \ar[d, "f"]\\
@@ -859,7 +860,7 @@ We will do this using the next proposition.
 \begin{remark}
     The statement of \cref{prop:factorConnTrunc} generalizes to all $-2\leq m<\infty$:
 
-    By \cite[\S 6.5.1 and Example 5.2.8.16]{HTT} the $m$-connected and $m$-truncated maps form a ``factorization system '' (see \cite[Definition 5.2.8.8]{HTT}).
+    By \cite[\S 6.5.1 and Example 5.2.8.16]{HTT} the $m$-connected and $m$-truncated maps form a ``factorization system'' (see \cite[Definition 5.2.8.8]{HTT}).
     In particular, an $m$-connected and $m$-truncated map is an equivalence by the lifting properties of a factorization system.
     A construction of this factorization system for model topoi can be found in \cite[Proposition 8.5]{toposes_and_htpy_toposes}.
 
